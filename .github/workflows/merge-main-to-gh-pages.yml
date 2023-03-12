@@ -9,8 +9,13 @@ jobs:
   merge_to_ghpages:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout main repository
+        uses: actions/checkout@v3
+
+      - name: Checkout gh-pages repository
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
 
       - name: Set up Git
         run: |
