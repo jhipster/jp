@@ -24,8 +24,7 @@ jobs:
 
       - name: Merge main to gh-pages
         run: |
-          git checkout gh-pages
-          git merge --no-commit --no-ff main
+          git merge --no-commit --no-ff origin/main
           if [[ -n $(git status -s) ]]; then
             echo "There are conflicts. Merge aborted."
             exit 1
