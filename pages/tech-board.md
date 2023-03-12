@@ -7,36 +7,36 @@ sitemap:
     lastmod: 2021-03-31T00:00:00-00:00
 ---
 
-# Technology Advisory Board
+# テクノロジーアドバイザリーボード
 
-JHipster is supported by a technical board that ensures the platform continues to reflect and serve its diverse and growing user community. 
-The Board discusses and makes recommendations regarding the roadmap and technical directions.
+JHipsterは、多様な成長するユーザーコミュニティを反映し、サービス提供し、プラットフォームの継続を確かなものにしていくテクノロジーボード（技術委員会）によって支えられています。
+ボードでは、ロードマップや技術的な方向性について議論し、提言しています。
 
-The meetings review and advise on industry trends, market strategy, project strategy and roadmap, ecosystem development.
+会合では、業界動向、市場戦略、プロジェクト戦略・ロードマップ、エコシステム開発などの検討や助言をしています。
 
-This board helps the project by giving advice and feedback on how the project and the related technologies are going.
-For the same reason, the board helps target incoming technologies and help to build the future of the project.
+このボードでは、プロジェクトや関連技術の進捗状況についてアドバイスやフィードバックすることで、プロジェクトを支援しています。
+また同様の理由で、このボードでは、新しく入ってくる技術をターゲットにし、プロジェクトの未来を作る手助けをします。
 
-In the end, this should help the project to raise resources to make those choices real by focusing on specific features, helps on finding new contributors, and advertise on the next project decisions…
+最終的には、特定の機能にフォーカスすることで、その選択を実現するためのリソースを調達できます。そして、新しい貢献者を見つけられ、次のプロジェクトの決定について宣伝する、といったようにプロジェクトに役立つはずです。
 
-The decisions and materials produced by the committee are public and used to benefit the community rather than private interests.
+ボードでの決定事項や作成した資料は公開され、私的な利益ではなくコミュニティのために使われます。
 
-The board meets quarterly, with the ability to meet more frequently if needed.
+ボードの会合は四半期ごとに開催されますが、必要に応じて頻繁に開催できます。
 
-## Board Membership
+## ボードメンバー
 
-Current members:
+現在のメンバー：
 * Julien Dubois (Microsoft)
 * Deepu K Sasidharan (Adyen)
 * Matt Raible (Okta)
 * Paul Hinz (Entando)
 * Alina Yurenko (Oracle)
 
-The members are chosen by the project leaders and should come from:
-* representative industry companies and leaders
-* representative organisations that use JHipster
-* open-source project leaders
-* community and technology leaders
-* people from academia
+メンバーは、プロジェクトリーダーによって選ばれ、以下のようなメンバーである必要があります。
+* 業界を代表する企業やリーダー
+* JHipsterをご利用いただいている代表的な組織
+* オープンソースプロジェクトリーダー
+* コミュニティとテクノロジーのリーダー
+* アカデミア出身者
 
-If you are interested to be part of this technical board, please contact us.
+このテクニカルボードの一員となることに興味のある方は、ぜひご連絡ください。
