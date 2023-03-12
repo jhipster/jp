@@ -9,9 +9,9 @@ sitemap:
     lastmod: 2014-02-17T00:00:00-00:00
 ---
 
-# <i class="fa fa-file-text-o"></i> Release notes
+# <i class="fa fa-file-text-o"></i> リリースノート
 
-To get the latest JHipster news, please follow us on Twitter: [@jhipster](https://twitter.com/jhipster)
+JHipsterの最新ニュースは、Twitterをフォローしてください。: [@jhipster](https://twitter.com/jhipster)
 
 {% for post in site.posts %}
   {% assign split_post_title = post.title | split: "Release " %}
