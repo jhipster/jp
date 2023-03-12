@@ -1,0 +1,29 @@
+name: Merge main to gh-pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  merge_to_ghpages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Merge main to gh-pages
+        run: |
+          git checkout gh-pages
+          git merge --no-commit --no-ff main
+          if [[ -n $(git status -s) ]]; then
+            echo "There are conflicts. Merge aborted."
+            exit 1
+          fi
+          git commit -m "Merge changes from main"
+          git push origin
