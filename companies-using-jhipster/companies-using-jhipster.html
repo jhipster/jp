@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Companies using JHipster
+title: JHipsterを導入している会社
 permalink: /companies-using-jhipster/
 redirect_from:
   - /companies-using-jhipster/companies-using-jhipster.html
@@ -11,26 +11,26 @@ sitemap:
     lastmod: 2015-12-10T00:00:00-00:00
 ---
 
-<h1><i class="fa fa-thumbs-up"></i> Companies using JHipster</h1>
+<h1><i class="fa fa-thumbs-up"></i> JHipsterを導入している会社</h1>
 
 <p>
-    JHipster has got a <a href="https://npmcharts.com/compare/generator-jhipster" target="_blank" rel="noopener">lot of downloads</a>, and as it's Open Source it's impossible to have a complete list of who uses it. We have made this list from what people tell us, and from resources available on the Internet (conferences, GitHub tickets, StackOverflow questions).
+    JHipsterは<a href="https://npmcharts.com/compare/generator-jhipster" target="_blank" rel="noopener">数多くダウンロードされており</a>オープンソースであるため、誰が使っているかの完全なリストを持つことは不可能です。私たちはこのリストを、人々が私たちに語ったことや、インターネット上で入手可能なリソース（カンファレンス、GitHubチケット、StackOverflowの質問）から作成しました。
 </p>
 <p>
-    If you want to add a company to the list, please <a href="https://docs.google.com/forms/d/1-Ut-U2NtOAcT9yEZcETnxsxMAsyS-DkBK9zlXLGW1zs" target="_blank" rel="noopener">Fill up this form</a>.
+    企業をリストに追加したい場合は、<a href="https://docs.google.com/forms/d/1-Ut-U2NtOAcT9yEZcETnxsxMAsyS-DkBK9zlXLGW1zs" target="_blank" rel="noopener">このフォームに記入してください</a>。
 </p>
 
 <div ng-app="jhipster.users">
     <div ng-controller="UsersCtrl">
         <div class="form-group search-form ng-scope">
-            <input class="form-control search-field" ng-model="searchText" placeholder="Filter by name or keyword" id="search-field">
+            <input class="form-control search-field" ng-model="searchText" placeholder="名前またはキーワードによるフィルタリング" id="search-field">
             <label class="fa fa-search inline-search" for="search-field"></label>
         </div>
         <div ng-cloak>
             <div class="margin-bottom">
                 <ul class="nav nav-pills">
-                    <li role="userlist" ng-class="{active: showFeatured == true}"><a href="#" ng-click="showFeatured = true">Featured <span class="badge">{(filteredUsers.length)}</span></a></li>
-                    <li role="userlist" ng-class="{active: showFeatured == false}"><a href="#" ng-click="showFeatured = false">All <span class="badge">{(allUsers.length)}</span></a></li>
+                    <li role="userlist" ng-class="{active: showFeatured == true}"><a href="#" ng-click="showFeatured = true">特集 <span class="badge">{(filteredUsers.length)}</span></a></li>
+                    <li role="userlist" ng-class="{active: showFeatured == false}"><a href="#" ng-click="showFeatured = false">全て <span class="badge">{(allUsers.length)}</span></a></li>
                 </ul>
             </div>
             <div class="container-fluid" ng-show="showFeatured">
