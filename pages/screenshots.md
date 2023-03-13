@@ -9,32 +9,32 @@ sitemap:
     lastmod: 2014-02-17T00:00:00-00:00
 ---
 
-# <i class="fa fa-picture-o"></i> Screenshots of the generated application
+# <i class="fa fa-picture-o"></i> 生成されたアプリケーションのスクリーンショットです
 
-## The welcome screen
+## Welcome画面
 
 ![]({{ site.url }}/images/screenshot_1.png)
 
 * * *
 
-## The monitoring screen
+## モニタリング画面
 
 ![]({{ site.url }}/images/screenshot_2.png)
 
 * * *
 
-## One of the generated forms
+## フォームの生成
 
 ![]({{ site.url }}/images/screenshot_3.png)
 
 * * *
 
-## The log management screen
+## ログ管理画面
 
 ![]({{ site.url }}/images/screenshot_4.png)
 
 * * *
 
-## The generated "Book" entity
+## Bookエンティティの生成
 
 ![]({{ site.url }}/images/screenshot_5.png)
