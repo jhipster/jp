@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Showcase
+title: ショーケース
 permalink: /showcase/
 redirect_from:
   - /showcase.html
@@ -9,11 +9,11 @@ sitemap:
   lastmod: 2020-06-12T00:00:00-00:00
 ---
 
-# <i class="fa fa-file-image-o"></i> Showcase
+# <i class="fa fa-file-image-o"></i> ショーケース
 
-A showcase of awesome applications built with JHipster.
+JHipsterで作られた素晴らしいアプリケーションのショーケースです。
 
-If you want your application to be featured here submit a PR to the [website](https://github.com/jhipster/jhipster.github.io) or let us know via Twitter by mentioning the [@jhipster](https://twitter.com/jhipster) handle.
+掲載を希望される方は、[ウェブサイト](https://github.com/jhipster/jhipster.github.io)にPRしていただくか、Twitterで[@jhipster](https://twitter.com/jhipster)のハンドルネームを明記してお知らせください。
 
 <br/><br/><br/>
 
