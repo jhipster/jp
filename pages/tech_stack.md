@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Technology stack
+title: 技術スタック
 permalink: /tech-stack/
 redirect_from:
   - /tech_stack.html

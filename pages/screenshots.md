@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Screenshots of the generated application
+title: 生成されたアプリケーションのスクリーンショット
 permalink: /screenshots/
 redirect_from:
   - /screenshots.html
@@ -9,7 +9,7 @@ sitemap:
     lastmod: 2014-02-17T00:00:00-00:00
 ---
 
-# <i class="fa fa-picture-o"></i> 生成されたアプリケーションのスクリーンショットです
+# <i class="fa fa-picture-o"></i> 生成されたアプリケーションのスクリーンショット
 
 ## Welcome画面
 
