@@ -1,78 +1,78 @@
 ---
 layout: default
-title: Sponsors
+title: スポンサー
 permalink: /sponsors/
 sitemap:
     priority: 0.1
     lastmod: 2017-11-29T00:00:00-00:00
 ---
-# <i class="fa fa-usd"></i> Sponsors
+# <i class="fa fa-usd"></i> スポンサー
 
-JHipster uses [OpenCollective](https://opencollective.com/generator-jhipster) to gather money. This money is used to cover project expenses (like running this website) in a transparent way ([See the OpenCollective documentation](https://opencollective.com/how-it-works)), and your donation will help the project live and grow successfully.
+JHipsterは資金を集めるために[OpenCollective](https://opencollective.com/generator-jhipster)を使っています。資金は透明性のある方法でプロジェクトの経費（このウェブサイトの運営など）に充てられます（[OpenCollectiveのドキュメントを参照](https://opencollective.com/how-it-works)）。あなたの寄付は、プロジェクトが存続し、成長するのに役立ちます。
 
-Please go to our [OpenCollective page](https://opencollective.com/generator-jhipster) to become a backer or a sponsor.
+後援者やスポンサーになるには、[OpenCollectiveページ](https://opencollective.com/generator-jhipster)からお願いします。
 
-## Benefits of being a backer
+## 後援者としての特典
 
-Backers donate $2 per month to the project, and get the following benefits:
+後援者は、毎月2ドルをプロジェクトに寄付していただくことで、以下の特典を得ることができます。
 
-- Visibility on the front page of [https://www.jhipster.tech](https://www.jhipster.tech) in the "backers" section (about 110,000 views/month on January, 2018).
-- Visibility on the GitHub main project page in the "backers" section (about 15,000 views/month on January, 2018).
+- [https://www.jhipster.tech](https://www.jhipster.tech)のトップページの「後援者」欄に掲載されます（2018年1月現在、約11万ビュー/月）。
+- GitHubのメインプロジェクトページの「後援者」欄に掲載されます（2018年1月で約15,000ビュー/月）。
 
-## Benefits of being a bronze sponsor
+## ブロンズスポンサーとしての特典
 
-Bronze sponsors donate $100 per month to the project, and get the following benefits:
+ブロンズスポンサーは、毎月100ドルをプロジェクトに寄付していただくことで、以下の特典を得ることができます。
 
-- Visibility on the front page of [https://www.jhipster.tech](https://www.jhipster.tech) in the "sponsors" section (about 110,000 views/month on January, 2018).
-- Visibility on the GitHub main project page in the "sponsors" section (about 15,000 views/month on January, 2018).
+- [https://www.jhipster.tech](https://www.jhipster.tech) のトップページの「スポンサー」欄に掲載されます（2018年1月現在、約11万ビュー/月）。
+- GitHubのメインプロジェクトページの「sponsors」欄に掲載されます（2018年1月時点で約15,000ビュー/月）。
 
-## Benefits of being a silver sponsor
+## シルバースポンサーとしての特典
 
-There is a limit to 10 silver sponsors.
+シルバースポンサーは10社までとさせていただきます。
 
-Silver sponsors donate $500 per month to the project, and get the following benefits:
+シルバースポンサーは、毎月500ドルをプロジェクトに寄付していただくことで、以下の特典を得ることができます。
 
-- Same benefits as bronze sponsors (visibility on main pages).
-- "Thank you" tweet from [@jhipster](https://twitter.com/jhipster).
-- The ability to create 1 "[bug bounty]({{ site.url }}/bug-bounties/)" every month, non transferable. If that bug bounty is not created by the end of the month, it is lost.
+- ブロンズスポンサーと同じ特典（メインページでの掲載）。
+- "@jhipster"(https://twitter.com/jhipster)からの "Thank you "ツイート。
+- 毎月1件の「[バグバウンディ]({{ site.url }}/bug-bounties/)」を作成できます（譲渡不可）。バグバウンディの作成が月末までにされなかった場合、そのバグバウンディは失われます。
 
-## Benefits of being a gold sponsor
+## ゴールドスポンサーとしての特典
 
-There is a limit to 3 gold sponsors.
+ゴールドスポンサーは3社までとさせていただきます。
 
-Gold sponsors donate $1,000 per month to the project, and get the following benefits:
+ゴールドスポンサーは、毎月1,000ドルをプロジェクトに寄付していただくことで、以下の特典を得ることができます。
 
-- Same benefits as silver sponsors (visibility on main pages, and thank you tweet).
-- The ability to create 3 "[bug bounties]({{ site.url }}/bug-bounties/)" every month, non transferable. If all bug bounties are not created by the end of the month, the remaining ones are lost.
-- Company logos on all [https://www.jhipster.tech](https://www.jhipster.tech) page footers (about 550,000 views/month on January, 2018).
+- シルバースポンサーと同じ特典（メインページでの掲載、お礼のツイート）。
+- 毎月3件の「[バグバウンディ]({{ site.url }}/bug-bounties/)」を作成できます（譲渡不可）。月末までにすべてのバグバウンディが作成されない場合、残りのバグバウンディは失われます。
+- すべての[https://www.jhipster.tech](https://www.jhipster.tech)ページのフッターに企業ロゴを掲載（2018年1月時点で約55万ビュー/月）。
 
-## Benefits of being a platinum sponsor
+## プラチナスポンサーとしての特典
 
-There is a limit to only 1 platinum sponsor.
+プラチナスポンサーは1社のみとさせていただきます。
 
-The Platinum sponsor donates $2,500 per month to the project, and gets the following benefits:
+プラチナスポンサーは、毎月2,500ドルをプロジェクトに寄付していただくことで、以下の特典を得ることができます。
 
-- Same benefits as gold sponsors (visibility on all pages, thank you tweet, 3 bug bounties).
-- Visibility on JHipster Online, with a logo on the welcome page, and on the main page to generate applications.
-- A message to add at the end of each generation. This message will need to be submitted as a PR by the sponsor and will be on each release published during the sponsorship period.
-- The option to add a custom JHipster logo in the official logo list. This logo will be submitted as a PR by the sponsor and will be in the JHipster official logo list. It will need to comply with JHipster's code of conduct.
-- A reserved slot for each JHipster conference organized by the JHipster Developers Association. For organizational reasons, those slots will be reserved starting 3 months after the initial sponsorship payment, and will be available until 3 months after the last sponsorship payment.
+- ゴールドスポンサーと同じ特典（全ページへの掲載、お礼のツイート、バグバウンディ3回分）。
+- JHipster Onlineのウェルカムページ、およびアプリケーション生成するメインページにロゴを掲載します。
+- 各アプリケーション生成の最後にメッセージを追加。このメッセージは、スポンサーがPRとして提出する必要があり、スポンサーシップ期間中公開される各リリースに掲載されます。
+- 公式ロゴリストにJHipsterのカスタムロゴを追加するオプション。このロゴは、スポンサーによるPRとして提出され、JHipsterの公式ロゴリストに掲載されます。このロゴはJHipsterの行動規範に準拠する必要があります。
+- JHipster開発者協会が主催する各JHipsterカンファレンスに1枠を確保します。組織上の理由から、これらの枠は最初のスポンサーシップの支払いから3か月後に予約され、最後のスポンサーシップの支払いから3か月後まで利用可能です。
 
-## What will the project do with the money?
+## プロジェクトはその資金で何をするのでしょうか
 
-As you can read in [the OpenCollective documentation](https://docs.opencollective.com), the way your money will be used will be public and totally transparent.
+[OpenCollectiveのドキュメント](https://docs.opencollective.com)にあるように、あなたのお金がどのように使われるかは公開され、完全に透明性が確保されます。
 
-Anyone can file an expense. If the expense makes sense for the development of the community, it will be "merged" in the ledger of our open collective by the core contributors and the person who filed the expense will be reimbursed.
+誰でも経費を申請できます。その経費がコミュニティの発展にとって意味のあるものであれば、コアコントリビューターたちによって私たちのOpenCollectivの台帳に「マージ」され、経費を申請した人へ償還されます。
 
-Money will first be used to cover direct project costs:
+資金はまず、プロジェクトの直接経費に充当されます。
 
-- [Bug bounties]({{ site.url }}/bug-bounties/)
-- Website hosting
-- Developer tooling
-- Legal protection
+- [バグバウンディ]({{ site.url }}/bug-bounties/)
+- ウェブサイトホスティング
+- デベロッパーツール
+- 法的保護
 
-Then, money will be used to:
+その後、以下の用途でも使用します。
 
-- Pay for project goodies
-- Pay Meetup fees
-- Pay expenses for developer gatherings: travel & food expenses for core team meetings
+- プロジェクトグッズの支払い
+- ミートアップ料金の支払い
+- 開発者の集まりのための費用：コアチームの会議のための旅費と食事代
