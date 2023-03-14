@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Contributing Companies
+title: 企業の貢献
 permalink: /contributing-companies/
 redirect_from:
   - /thanks/
@@ -9,41 +9,41 @@ sitemap:
     priority: 0.1
     lastmod: 2017-11-29T00:00:00-00:00
 ---
-# <i class="fa fa-building"></i> Companies contributing or helping the project
+# <i class="fa fa-building"></i> プロジェクトに貢献・支援している企業
 
-## Companies contributing to JHipster
+## JHipster に貢献していただいている企業
 
-*   [Ippon Technologies](https://fr.ippon.tech/), which provides 1 day per month to contribute for everyone who is in the Ippon JHipster team.
-*   [Microsoft](https://www.microsoft.com/), which provides time and hardware to [@juliendubois](https://twitter.com/juliendubois) to improve the project.
-*   [Okta](https://developer.okta.com/), which provides time and hardware to [@mraible](https://twitter.com/mraible) to improve the project. They also contributed the [OIDC support]({{ site.url }}/security/#oauth2) and [Ionic module]({{ site.url }}/modules/marketplace/#/details/generator-jhipster-ionic).
-*   [Google](https://google.com) contributed the [Kubernetes sub-generator]({{ site.url }}/kubernetes/). It is maintained by [Ray Tsang](https://twitter.com/saturnism).
-*   [Heroku](https://www.heroku.com/) contributed the [Heroku sub-generator]({{ site.url }}/heroku/). It is maintained by [Joe Kutner](https://twitter.com/codefinger).
-*   [CloudCaptain](https://cloudcaptain.sh/) has added [specific support for JHipster]({{ site.url }}/cloudcaptain/). It is maintained by [Axel Fontaine](https://twitter.com/axelfontaine).
-*   [Software AG](http://www.softwareag.com/), which sponsors Ehcache, contributed to greatly improve our Ehcache support.
-*   [Hazelcast](https://hazelcast.com/) contributed to greatly improve our Hazelcast support.
-*   [Liquibase](http://www.liquibase.com/) has continuously helped us and corrected bugs for our Liquibase support.
-*   [Redhat](https://www.redhat.com/en) contributed the [Openshift sub-generator]({{ site.url }}/openshift/) and Infinispan support.
-*   [JFrog](https://jfrog.com/) which provides us with a free Artifactory instance, which is used for our builds and our releases.
+* [Ippon Technologies](https://fr.ippon.tech/)からは、JHipsterチームに所属する全員に月1日の貢献時間を提供いただいています。
+* [Microsoft](https://www.microsoft.com/)からは、[@juliendubois](https://twitter.com/juliendubois)にプロジェクトを改善するための時間とハードウェアを提供いただいています。
+* [Okta](https://developer.okta.com/)からは、[@mraible](https://twitter.com/mraible)にプロジェクトを改善するための時間やハードウェアを提供いただいています。また、[OIDCサポート]({{ site.url }}/security/#oauth2)や[Ionicモジュール]({{ site.url }}/modules/marketplace/#/details/generator-jhipster-ionic) も寄贈していただきました。
+* [Google](https://google.com) からは [Kubernetes sub-generator]({{ site.url }}/kubernetes/) を寄贈していただきました。[Ray Tsang](https://twitter.com/saturnism)によってメンテナンスされています。
+* [Heroku](https://www.heroku.com/) からは [Heroku sub-generator]({{ site.url }}/heroku/) を寄稿していただきました。[Joe Kutner](https://twitter.com/codefinger)によってメンテナンスされています。
+* [CloudCaptain](https://cloudcaptain.sh/) からは [specific support for JHipster]({{ site.url }}/cloudcaptain/) を追加していただきました。これは[Axel Fontaine](https://twitter.com/axelfontaine)によってメンテナンスされています。
+* Ehcacheのスポンサーである[Software AG](http://www.softwareag.com/)からは、私たちのEhcacheサポートを大幅に改善するために貢献いただきました。
+* [Hazelcast](https://hazelcast.com/)からは、Hazelcastのサポートを大幅に向上させるために貢献していただきました。
+* [Liquibase](http://www.liquibase.com/) からは、Liquibaseサポートのバグを修正し、継続的に私たちを支援していただいています。
+* [Redhat](https://www.redhat.com/en) からは、[Openshift sub-generator]({{ site.url }}/openshift/) と Infinispan のサポートを提供していただきました。
+* [JFrog](https://jfrog.com/) は、私たちのビルドとリリースに使用される無料のArtifactoryインスタンスを提供いただいています。
 
-## Companies helping to develop JHipster
+## JHipsterの開発に協力していただいいる企業
 
-These companies help us to develop JHipster
+以下の企業より、JHipsterの開発に協力いただいています。
 
-*   [Google](https://google.com), which has given the project $7,000 worth of "Google cloud credits" since 2016.
-*   Pivotal, which gives us free credits on their [Pivotal Web Services](http://run.pivotal.io/) cloud.
-*   [ElephantSQL](http://www.elephantsql.com/), which gives us several of their "Pretty Panda" Postgresql databases.
-*   YourKit, LLC, which gives us free licenses for the [YourKit Java profiler](http://www.yourkit.com/java/profiler/index.jsp).
-*   EJ Technologies, which gives us free licenses for the [JProfiler Java profiler](http://www.ej-technologies.com/products/jprofiler/overview.html).
+* [Google](https://google.com)は、2016年から7,000ドル相当の「Google cloud credits」をプロジェクトに与えてくれています。
+* Pivotalは、彼らの[Pivotal Web Services](http://run.pivotal.io/)クラウド上で私たちに無料のクレジットを与えてくれています。
+* [ElephantSQL](http://www.elephantsql.com/)は、彼らの「Pretty Panda」Postgresqlデータベースのいくつかを私たちに与えてくれています。
+* YourKit, LLCは、[YourKit Java profiler](http://www.yourkit.com/java/profiler/index.jsp)のライセンスを無料で提供してくれています。
+* EJテクノロジーズは、[JProfiler Java profiler](http://www.ej-technologies.com/products/jprofiler/overview.html)のライセンスを無償で提供してくれています。
 
-## Projects and communities contributing to JHipster
+## JHipsterに貢献しているプロジェクトとコミュニティ
 
-JHipster works closely with other OSS communities, which often contributes code, advice and reviews to the project.  Important contributions have been made by:
+JHipsterは他のOSSコミュニティと密接に連携しており、多くのコード、アドバイス、レビューをプロジェクトに提供してくれています。重要な貢献は、以下の方々によってなされました。
 
-*   [Webpack](https://webpack.github.io/), the module bundler that JHipster uses for its Angular and React support.
-*   [Gradle](https://gradle.org/), one of the build tools supported by JHipster.
-*   [Angular](https://angular.io/).
-*   [UI Router](https://ui-router.github.io/), the Angular router used until JHipster 4.
+* [Webpack](https://webpack.github.io/)は、JHipsterがAngularとReactのサポートに使用しているモジュールバンドルラーです。
+* [Gradle](https://gradle.org/)は、JHipsterがサポートするビルドツールの1つです。
+* [Angular](https://angular.io/)
+* [UI Router](https://ui-router.github.io/)、JHipster 4まで使用されていたAngularルータです。
 
 ## Special thanks
 
-And a very special thanks to the development team from [Galeries Lafayette](http://www.galerieslafayette.com/), which had the original idea of making Grunt work with Ant, and create a modern Web front-end on top of a more classical Spring MVC application.
+そして、GruntをAntで動作させ、より古典的なSpring MVCアプリケーションの上にモダンなWebフロントエンドを作成するというオリジナルのアイデアを持った[Galeries Lafayette](http://www.galerieslafayette.com/)の開発チームには、非常に感謝しています。
