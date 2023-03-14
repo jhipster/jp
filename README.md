@@ -1,21 +1,22 @@
-# This is the source of JHipster's public [Web site](https://www.jhipster.tech/).
+# JHipsterの公開[Webサイト](https://www.jhipster.tech/) のソースです
 
-**Note**: When changing styles, please update the `.scss` files under `css/scss` and run `npm run sass` to generate CSS. DO NOT UPDATE CSS directly.
+**Note**:スタイルを変更する場合は、`css/scss`以下にある`.scss`ファイルを更新し、`npm run sass`を実行してCSSを生成してください。CSSを直接更新しないでください。
 
-This Web site is rendered with GitHub pages.
+このWebサイトはGitHub Pagesでレンダリングされています。
 
-To run this locally
+ローカルで実行する場合は以下のとおりです。
 
-- [Fork this](https://github.com/jhipster/jhipster.github.io/fork) repo and clone to your file system
-- [Install Jekyll](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/)
-- Run `npm install && bundle install` if you are running it for the first time.
-- If you want to avoid installing to system directories, install to vendor directory instead: `bundle install --path vendor/bundle`
-- On MacOS, if you have trouble installing `nokogiri`, try: `bundle config build.nokogiri --use-system-libraries=true --with-xml2-include="$(xcrun --show-sdk-path)"/usr/include/libxml2`
-- Run `bundle exec jekyll serve` or `npm start` in the cloned repo folder
-- You will be able to access the site at http://localhost:4000
+- [ここをForkして](https://github.com/jhipster/jhipster.github.io/fork) リポジトリを作成し、あなたのファイルシステムにクローンします
+- [Jekyllをインストールしてください](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/)
+- 初めての場合は、`npm install && bundle install`を実行します
+- システムディレクトリへのインストールを避けたい場合は、代わりに`bundle install --path vendor/bundle`によってvendorディレクトリにインストールします
+- Mac OSで`nokogiri`のインストールがうまくいかない場合は、`bundle config build.nokogiri  -use-system-libraries=true --with-xml2-include="$(xcrun --show-sdk-path)"/usr/include/libxml2` を試してください
+- リポジトリをクローンしたフォルダで `bundle exec jekyll serve` または `npm start` を実行します
+- http://localhost:4000 からアクセスできるようになります
 
-Or with Docker and Docker-Compose (recommended way on Windows)
+（Windows環境では推奨）DockerとDocker-Composeで実行する場合は以下のとおりです。
 
-- [Fork this](https://github.com/jhipster/jhipster.github.io/fork) repo and clone to your file system
-- Run `docker-compose up`
-- You will be able to access the site at http://0.0.0.0:4000
+- [ここをForkして](https://github.com/jhipster/jhipster.github.io/fork) リポジトリを作成し、あなたのファイルシステムにクローンします
+- `docker-compose up`を実行します
+- http://0.0.0.0:4000 からアクセスできるようになります
+
