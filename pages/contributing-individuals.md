@@ -1,28 +1,28 @@
 ---
 layout: default
-title: Contributing Individuals
+title: 個人の貢献
 permalink: /contributing-individuals/
 sitemap:
     priority: 0.1
     lastmod: 2017-11-29T00:00:00-00:00
 ---
-# <i class="fa fa-keyboard-o"></i> Individual contributions
+# <i class="fa fa-keyboard-o"></i>個人の貢献
 
-JHipster has a lot of [contributors](https://github.com/jhipster/generator-jhipster/graphs/contributors), and we make our best to help people contribute! We'd love to have you on board!
+JHipsterには[多くのコントリビューター](https://github.com/jhipster/generator-jhipster/graphs/contributors)がおり、ベストな貢献ができるよう我々は最善を尽くしています。ぜひ、あなたの参加をお待ちしています。
 
-## Code of conduct
+## 行動規範
 
-Before you contribute, please read our [Code of Conduct](https://github.com/jhipster/generator-jhipster/blob/main/CODE_OF_CONDUCT.md).
+ご貢献いただく前に、我々の[行動規範](https://github.com/jhipster/generator-jhipster/blob/main/CODE_OF_CONDUCT.md)をお読みください。
 
-## Reaching for help
+## リーチング・フォー・ヘルプ
 
-As anybody on the project, you can reach for help using our usual support channels, as listed on our [Help page]({{ site.url }}/help/).
+[ヘルプページ]({{ site.url }}/help/)  に記載されているように、プロジェクトに参加する誰もが、通常のサポートチャネルを使用してヘルプを求めることができます。
 
-Whatever you do, the team will do its best to help you by:
+どんなことでも、チームは全力でサポートします。
 
-- Commenting your tickets
-- Reviewing your Pull Requests
+- チケットにコメントする
+- プルリクエストをレビューする
 
-## How to contribute
+## 貢献方法
 
-Our [Contributing guide](https://github.com/jhipster/generator-jhipster/blob/main/CONTRIBUTING.md) should give you all the pointers to get started and do your first Pull Request.
+私たちの[貢献ガイド](https://github.com/jhipster/generator-jhipster/blob/main/CONTRIBUTING.md)は、あなたが始めての最初のPull Requestを出すためのすべての情報を提供しています。
