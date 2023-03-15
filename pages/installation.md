@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Installing JHipster
+title: JHipsterのインストール
 permalink: /installation/
 redirect_from:
   - /installation.html
@@ -9,210 +9,210 @@ sitemap:
     lastmod: 2018-08-30T08:20:00-00:00
 ---
 
-# <i class="fa fa-cloud-download"></i> Installing JHipster
+# <i class="fa fa-cloud-download"></i> JHipsterのインストール
 
-## Installation types
+## インストールの種類
 
-We provide 4 ways of working with JHipster. If in doubt, choose our 2nd option, "Local installation with NPM":
+JHipsterでは、4つの方法を用意しています。迷ったら、2番目の「NPMによるローカルインストール」を選んでください。
 
-*   [JHipster Online](https://start.jhipster.tech/) is a way to generate an application without installing JHipster in the first place.
-*   "Local installation with NPM" is the classical way of working with JHipster. Everything is installed on your machine, which can be a little complex to set up, but that's how most people usually work. In case of doubt, choose this installation.
-*   "Local installation with Yarn" is the same as classical "Local installation with NPM", but using [Yarn](https://yarnpkg.com/) instead of NPM. Please note that Yarn is a lot less popular than NPM in our community, so this isn't a recommended option for newcomers.
-*   The "[Docker](https://www.docker.io/)" container, which brings you a lightweight container with JHipster installed.
+* [JHipster Online](https://start.jhipster.tech/)は、JHipsterをインストールせずにアプリケーションを生成するための方法です。
+* 「NPMによるローカルインストール」は、JHipsterで作業する本格的な方法です。すべてはあなたのマシンにインストールされ、セットアップが少し複雑になりますが、ほとんどの人は通常この方法で作業します。迷ったらこのインストールを選択してください。
+* 「Yarnによるローカルインストール」は、本格的な「NPMによるローカルインストール」と同じですが、NPMの代わりに [Yarn](https://yarnpkg.com/) を使用します。Yarnは私たちのコミュニティではNPMに比べてあまり使われておらず、初心者にはお勧めできない選択であることに注意してください。
+* 「[Docker](https://www.docker.io/)」コンテナは、JHipsterがインストールされた軽量コンテナを提供する方法です。
 
-## JHipster Online (for users wanting a simplified way to run JHipster)
+## JHipster Online (JHipsterを簡単に実行したいユーザー向け)
 
-[JHipster Online](https://start.jhipster.tech/) allows you to generate JHipster applications, without having to install JHipster.
+[JHipster Online](https://start.jhipster.tech/)は、JHipsterをインストールすることなく、JHipsterアプリケーションを生成できます。
 
-This is intended for people trying JHipster for the first time, or who want to have a look at what JHipster provides.
+初めてJHipsterを試す方や、JHipsterがどのようなものかを見てみたい方を対象としています。
 
-While it is easier to use, it is not the "full JHipster experience", and once your application is generated you will still need to follow most of the steps from the next section ("Local installation with NPM"), as you will still need Java (to run your application) and NPM (to manage your front-end code).
+アプリケーションを生成した後も、Java（アプリケーションの実行）とNPM（フロントエンドのコードの管理）が必要です。したがって、次のセクション（「NPMによるローカルインストール」）の手順のほとんどを実行する必要があります。
 
-In the future, we expect JHipster Online to provide more features.
+今後は、JHipster Onlineがより多くの機能を提供することを期待しています。
 
-## Local installation with NPM (recommended for normal users)
+## NPMによるローカルインストール（一般ユーザー向け推奨）
 
-### Quick setup
+### クイックセットアップ
 
-1.  Install Java 11. We recommend you use [Eclipse Temurin builds](https://adoptium.net/temurin/releases/?version=11), as they are open source and free.
-2.  Install Node.js from [the Node.js website](http://nodejs.org/) (please use an LTS 64-bit version, non-LTS versions are not supported)
-3.  Install JHipster: `npm install -g generator-jhipster`
-4.  (optional) If you want to use a module or a blueprint (for instance from the [JHipster Marketplace]({{ site.url }}/modules/marketplace/#/list)), install [Yeoman](https://yeoman.io/): `npm install -g yo`
+1. Java 11をインストールします。オープンソースで無償のため、[Eclipse Temurin builds](https://adoptium.net/temurin/releases/?version=11)を使用することをお勧めします。
+2. [Node.jsのウェブサイト](http://nodejs.org/)からNode.jsをインストールします（LTSの64ビット版を使用してください、LTS以外のバージョンはサポートされていません）。
+3. `npm install -g generator-jhipster`でJHipsterをインストールします。
+4. （オプション）モジュールやブループリントを使用したい場合（例えば[JHipster Marketplace]({{ site.url }}/modules/marketplace/#/list)から取得）`npm install -g yo`で[Yeoman](https://yeoman.io/) をインストールします。
 
-Now that JHipster is installed, your next step is to [create an application]({{ site.url }}/creating-an-app/)
+JHipsterがインストールされました。次のステップは[アプリケーションの作成]({{ site.url }}/creating-an-app/)です。
 
-### Optional installations
+### オプションのインストール
 
-1. Install a Java build tool.
-    *   Whether you choose to use [Maven](http://maven.apache.org/) or [Gradle](http://www.gradle.org/), you normally don't have to install anything, as JHipster will automatically install the [Maven Wrapper](https://github.com/takari/maven-wrapper) or the [Gradle Wrapper](http://gradle.org/docs/current/userguide/gradle_wrapper.html) for you.
-    *   If you don't want to use those wrappers, go to the official [Maven website](http://maven.apache.org/) or [Gradle website](http://www.gradle.org/) to do your own installation.
-2.  Install Git from [git-scm.com](http://git-scm.com/). We recommend you also use a tool like [SourceTree](http://www.sourcetreeapp.com/) if you are starting with Git.
-    * JHipster will try to commit your project to Git, if it is installed.
-    * The [JHipster upgrade sub-generator]({{ site.url }}/upgrading-an-application/) requires to have Git installed.
+1. Javaビルドツールをインストールします。
+    * [Maven](http://maven.apache.org/)、[Gradle](http://www.gradle.org/)のどちらを使うにしても、通常は何もインストールする必要はありません。JHipsterは自動的に[Maven Wrapper](https://github.com/takari/maven-wrapper) や [Gradle Wrapper](http://gradle.org/docs/current/userguide/gradle_wrapper.html) をインストールしてくれます。
+    * もし、これらのラッパーを使用したくない場合は、公式の [Maven ウェブサイト](http://maven.apache.org/) または [Gradle ウェブサイト](http://www.gradle.org/) にアクセスして、自分でインストールを行ってください。
+2.  [git-scm.com](http://git-scm.com/)からGitをインストールします。Gitを始める場合は、[SourceTree](http://www.sourcetreeapp.com/)のようなツールも使用することをお勧めします。
+    * JHipsterは、Gitがインストールされている場合、プロジェクトをGitにコミットしようとします。
+    * [JHipster upgrade sub-generator]({{ site.url }}/upgrading-an-application/) は、Gitをインストールしておく必要があります。
 
-### Additional information
+### 追加情報
 
-JHipster uses [Yeoman](http://yeoman.io/) for code generation.
-To find more information, tips and help, please have a look at [the Yeoman "getting starting" guide](http://yeoman.io/learning/index.html) before [submitting a bug](https://github.com/jhipster/generator-jhipster/issues?state=open).
+JHipsterは、コード生成に[Yeoman](http://yeoman.io/)を使用しています。
+より多くの情報、ヒント、ヘルプを見つけるには、[バグを報告する](https://github.com/jhipster/generator-jhipster/issues?state=open)前に[Yeoman "getting starting" guide](http://yeoman.io/learning/index.html) を参照してください。
 
-The configuration will be stored in a generated `.yo-rc.json` file, so it is **strongly** recommended not to generate a JHipster project in your HOME directory. If you did it, you won't be able to generate another project in a sub directory. To solve it, delete the `.yo-rc.json` file.
+設定は生成された `.yo-rc.json` ファイルに保存します。そのため、HOMEディレクトリにJHipsterプロジェクトを生成しないことを **強く** 推奨します。もしそうしてしまうと、サブディレクトリに別のプロジェクトを生成できなくなります。これを解決するには、`.yo-rc.json`ファイルを削除してください。
 
-## Local installation with Yarn (alternative to NPM)
+## Yarnによるローカルインストール (NPM の代替)
 
-### Quick setup
+### クイックセットアップ
 
-This is the same procedure as using NPM, with two differences:
+これは、NPMを使うのと同じ手順ですが、2つの違いがあります。
 
-1. Install Yarn from [the Yarn website](https://yarnpkg.com/en/docs/install)
-2. Install JHipster: `yarn global add generator-jhipster`
+1. [Yarnのウェブサイト](https://yarnpkg.com/en/docs/install)からYarnをインストールします。
+2. `yarn global add generator-jhipster`でJHipsterをインストールします。 
 
-### Troubleshooting
+### トラブルシューティング
 
-If you have problems using Yarn globally, be sure to have `$HOME/.config/yarn/global/node_modules/.bin` in your path.
+Yarnをグローバルに使用する際、問題がある場合は、`$HOME/.config/yarn/global/node_modules/.bin`がパスに入っていることを確認してください。
 
-On Mac or Linux: ```export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"```
+MacまたはLinuxの場合```export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"```を実施します。
 
-## Docker installation (for advanced users only)
+## Dockerのインストール（上級者向けのみ）
 
-_Please note: this Docker image is for running the JHipster generator inside a container. It's completely different from the [Docker and Docker Compose configurations]({{ site.url }}/docker-compose/) that JHipster will generate, which goal is to run your generated application inside a container_
+_このDockerイメージは、JHipsterジェネレータをコンテナ内で動作させるためのものであることに注意してください。JHipsterが生成する[DockerとDocker Composeの設定]({{ site.url }}/docker-compose/) とは全く異なります。これは生成したアプリケーションをコンテナ内で実行することが目的です。_
 
-### Information
+### 情報
 
-JHipster has a specific [Dockerfile](https://github.com/jhipster/generator-jhipster/blob/main/Dockerfile), which provides a [Docker](https://www.docker.io/) image.
+JHipsterは固有の[Dockerfile](https://github.com/jhipster/generator-jhipster/blob/main/Dockerfile)を持っており、[Docker](https://www.docker.io/)イメージを生成できます。
 
-It makes a Docker "Automated build" that is available on: [https://hub.docker.com/r/jhipster/jhipster/](https://hub.docker.com/r/jhipster/jhipster/)
+またJHipsteは[https://hub.docker.com/r/jhipster/jhipster/](https://hub.docker.com/r/jhipster/jhipster/)上で"Automated build"を提供しています。
 
-This image will allow you to run JHipster inside Docker.
+このイメージにより、Docker内でJHipsterを動作させることができます。
 
-### Prerequisites
+### 前提条件
 
-1.  **(Recommended) Docker Desktop:** the easiest way to build, run and test the dockerized apps. [Docker Desktop](https://docs.docker.com/desktop/) comes with graphical interface for managing containers/images/volumes, Docker developer tools, Kubernetes support and much more.
-2.  **Docker Engine:** client-server application with command line interface (CLI). Follow the [Docker Engine](https://docs.docker.com/engine/install/) installation instructions
+1.  **Docker Desktop(推奨）:** Docker化されたアプリを構築、実行、テストするための最も簡単な方法です。[Docker Desktop](https://docs.docker.com/desktop/)には、コンテナ/イメージ/ボリュームを管理するためのグラフィカルインタフェース、Docker開発者ツール、Kubernetesサポート、その他多くの機能が付属しています。
+2.  **Docker Engine:** コマンドラインインタフェース（CLI）を持つクライアント／サーバーアプリケーションです。[Docker Engine](https://docs.docker.com/engine/install/)のインストール手順に従ってください。
 
-As the generated files are in your shared folder, they will not be deleted if you stop your Docker container. However, if you don't want Docker to keep downloading all the Maven and NPM dependencies every time you start the container, you should commit its state or mount a volume.
+生成されたファイルは共有フォルダにあるため、Dockerコンテナを停止しても削除されることはありません。ただし、コンテナを起動するたびにDockerにMavenとNPMの依存関係をすべてダウンロードさせ続けたくない場合は、その状態をコミットするかボリュームをマウントする必要があります。
 
-<div class="alert alert-warning"><i>Warning: </i>
+<div class="alert alert-warning"><i>注意: </i>
 
-Based on your OS, your <code>DOCKER_HOST</code> will differ. On Linux, it will be your localhost.
-For Mac/Windows, you will have to obtain the IP using following command: <code>docker-machine ip default</code>
+お使いのOSによって<code>DOCKER_HOST</code>は異なります。Linuxの場合はlocalhostとなります。
+Mac/Windowsの場合は、<code>docker-machine ip default</code>のコマンドでIPを取得する必要があります。
 
 </div>
 
-On Linux, you might need to run the `docker` command as root user if your user is not part of docker group. It's a good idea to add your user to docker group so that you can run docker commands as a non-root user. Follow the steps on [http://askubuntu.com/a/477554](http://askubuntu.com/a/477554) to do so.
+Linuxでは、自分のユーザがdockerグループに属していない場合、rootユーザとして`docker`コマンドを実行することになります。そこで、自分のユーザーをdockerグループに追加し、非rootユーザーとしてdockerコマンドを実行できるようにするとよいでしょう。そのためには、[http://askubuntu.com/a/477554](http://askubuntu.com/a/477554)の手順に従ってください。
 
-### Usage on Linux/Mac Windows (with Docker)
+### Linux/Mac Windowsでの使用方法（Dockerを使用した場合）
 
-#### Pull the image
+#### イメージのPull
 
-Pull the latest JHipster Docker image:
+最新のJHipsterのDockerイメージをPullします。
 
 `docker image pull jhipster/jhipster`
 
-Pull the development JHipster Docker image:
+開発用JHipsterのDockerイメージをPullします。
 
 `docker image pull jhipster/jhipster:master`
 
-You can see all tags [here](https://hub.docker.com/r/jhipster/jhipster/tags/)
+すべてのタグは[こちら](https://hub.docker.com/r/jhipster/jhipster/tags/)です。
 
-#### Run the image
+#### イメージを実行する
 
-<div class="alert alert-warning"><i>Warning: </i>
+<div class="alert alert-warning"><i>注意:</i>
 
-If you are using Docker Machine on Mac or Windows, your Docker daemon has only limited access to your OS X or Windows file system. Docker Machine tries to auto-share your /Users (OS X) or C:\Users\&lt;username&gt; (Windows) directory. So you have to create the project folder under these directory to avoid any volume mounting issues.
+MacまたはWindowsでDocker Machineを使用している場合、DockerデーモンはOS XまたはWindowsのファイルシステムに対して限られたアクセスしかできません。Docker Machineは/Users (OS X)やC:\Users\&lt;username&gt; (Windows)ディレクトリを自動で共有しようとします。そのため、ボリュームマウントの問題を避けるために、これらのディレクトリの下にプロジェクトフォルダを作成する必要があります。
 
 </div>
 
 
-Create a "jhipster" folder in your home directory:
+ホームディレクトリに「jhipster」フォルダを作成します。
 
 `mkdir ~/jhipster`
 
-Run the Docker image, with the following options:
+以下のオプションを指定して、Dockerイメージを実行します。
 
-*   The Docker "/home/jhipster/app" folder is shared to the local "~/jhipster" folder
-*   Forward all ports exposed by Docker (8080 for the Java application, 9000 for BrowserSync, 3001 for the BrowserSync UI)
+* Dockerの"/home/jhipster/app"フォルダをローカルの"~/jhipster"フォルダに共有します。
+* Dockerが公開する全てのポート（Javaアプリケーションは8080、BrowserSyncは9000、BrowserSync UIは3001）をフォワードします。
 
 `docker container run --name jhipster -v ~/jhipster:/home/jhipster/app -v ~/.m2:/home/jhipster/.m2 -p 8080:8080 -p 9000:9000 -p 3001:3001 -d -t jhipster/jhipster`
 
-<div class="alert alert-info"><i>Tip: </i>
+<div class="alert alert-info"><i>Tip:</i>
 
-If you have already started the container once before, you do not need to run the above command, you can start/stop the existing container.
+過去に一度でもコンテナを起動している場合は、上記コマンドを実行する必要はなく、既存のコンテナを起動/停止できます。
 
 </div>
 
-#### Check if the container is running
+#### コンテナが起動しているかどうかを確認する
 
-To check that your container is running, use the command `docker container ps`:
+コンテナが起動していることを確認するには、`docker container ps`コマンドを使用します。
 
     CONTAINER ID    IMAGE               COMMAND                 CREATED         STATUS          PORTS                                                       NAMES
     4ae16c0539a3    jhipster/jhipster   "tail -f /home/jhipst"  4 seconds ago   Up 3 seconds    0.0.0.0:9000-3001->9000-3001/tcp, 0.0.0.0:8080->8080/tcp    jhipster
 
-#### Common operations
+#### 共通的な操作
 
-*   To stop the container run: `docker container stop jhipster`
-*   And to start again, run: `docker container start jhipster`
+* コンテナ実行を停止する場合`docker container stop jhipster` を実行します。
+* そのあと起動するには`docker container start jhipster` を実行します。
 
-In case you update the Docker image (rebuild or pull from the Docker hub), it's better to remove the existing container, and run the container all over again. To do so, first stop the container, remove it and then run it again:
+Dockerイメージを更新する場合（リビルドまたはDocker hubからのPull）、既存のコンテナを削除し、コンテナを一から実行する方がよいでしょう。そのためには、まずコンテナを停止し、それを削除してから再度実行します。
 
 1.  `docker container stop jhipster`
 2.  `docker container rm jhipster`
 3.  `docker image pull jhipster/jhipster`
 4.  `docker container run --name jhipster -v ~/jhipster:/home/jhipster/app -v ~/.m2:/home/jhipster/.m2 -p 8080:8080 -p 9000:9000 -p 3001:3001 -d -t jhipster/jhipster`
 
-### Accessing the container
+### コンテナにアクセスする
 
-<div class="alert alert-warning"><i>Warning: </i>
+<div class="alert alert-warning"><i>注意:</i>
 
-On Windows, you need to run the Docker Quick Terminal as Administrator to be able to create symlinks during the `npm install` step.
+Windowsでは、Docker Quick TerminalをAdministratorで実行しないと、`npm install`のステップでシンボリックリンクを作成できません。
 
 </div>
 
-The easiest way to log into the running container is by executing following command:
+実行中のコンテナにログインする最も簡単な方法は、以下のコマンドを実行します。
 
-`docker container exec -it <container_name> bash`
+`docker container exec -it <コンテナ名> bash`
 
-If you copy-pasted the above command to run the container, notice that you have to specify `jhipster` as the container name:
+上記のコマンドをコピーペーストしてコンテナを実行した場合、コンテナ名として `jhipster` を指定する必要があることに注意してください。
 
 `docker container exec -it jhipster bash`
 
-You will log in as the "jhipster" user.
+"jhipster" ユーザーでログインします。
 
-If you want to log in as "root", as the `sudo` command isn't available in Ubuntu Xenial, you need to run:
+Ubuntu Xenialでは`sudo`コマンドが使えないので、"root"でログインしたい場合は、以下のようにする必要があります。
 
 `docker container exec -it --user root jhipster bash`
 
-### Your first project
+### あなたの最初のプロジェクト
 
-You can then go to the /home/jhipster/app directory in your container, and start building your app inside Docker:
+コンテナ内の/home/jhipster/appディレクトリに移動し、Docker内部でアプリの構築を開始できます。
 
 `cd /home/jhipster/app`
 
 `jhipster`
 
-<div class="alert alert-info"><i>Tip: </i>
+<div class="alert alert-info"><i>ヒント:</i>
 
-If you prefer using Yarn, you can use <code>jhipster --yarn</code>, to use Yarn instead of NPM.
+Yarnを使用したい場合は、<code>jhipster --yarn</code> により、NPMの代わりにYarnを使用できます。
 
 </div>
 
-Once your application is created, you can run all the normal gulp/bower/maven commands, for example:
+アプリケーションが作成されたら、以下のように、通常のgulp/bower/mavenのコマンドをすべて実行できます。
 
 `./mvnw`
 
-**Congratulations! You've launched your JHipster app inside Docker!**
+**おめでとうございます。Docker内でJHipsterアプリを起動できました。**
 
-On your machine, you should be able to:
+あなたのマシンにおいて以下が可能です。
 
-*   Access the running application at `http://DOCKER_HOST:8080`
-*   Get all the generated files inside your shared folder
+* `http://DOCKER_HOST:8080`で実行中のアプリケーションにアクセスできます。
+* 生成されたすべてのファイルを共有フォルダ内で参照できます。
 
-<div class="alert alert-warning"><i>Warning: </i>
-    By default, Docker is not installed inside the <code>jhipster/jhipster</code> image.
+<div class="alert alert-warning"><i>Warning:</i>
+    デフォルトでは、<code>jhipster/jhipster</code>イメージ内にDockerはインストールされません。
     <br/>
-    So you won't be able to:
+    したがって以下は実施できません。
     <ul>
-        <li>use the docker-compose files</li>
-        <li>build a Docker image with the docker daemon (Maven goal: <code>jib:dockerBuild</code> or Gradle task: <code>jibDockerBuild</code>)</li>
+        <li>docker-composeのファイルを使用すること</li>
+        <li>dockerデーモンでDockerイメージを構築すること（Mavenゴール：<code>jib:dockerBuild</code>またはGradleタスク：<code>jibDockerBuild</code>）</li>
     </ul>
-    However, you will be able to use <a href="https://github.com/GoogleContainerTools/jib">jib</a>'s daemonless mode which can build a docker image and push it to a registry without access to a docker daemon (Maven goal: <code>jib:build</code> or Gradle task: <code>jibBuild</code>). But you will need to setup credentials to the docker registry as a pre-requisite of building the app. See the <a href="https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#configuration">Jib plugin configuration documentations</a> for more details.
+    ただし、<a href="https://github.com/GoogleContainerTools/jib">jib</a>のデーモンレスのモードを使えば、dockerデーモンにアクセスしなくてもdockerイメージを構築してレジストリにプッシュできます（Mavenゴール：<code>jib:build</code>またはGradleタスク：<code>jibBuild</code>)。 一方、アプリをビルドする前提条件としてdockerレジストリへ認証情報をセットアップする必要があります。詳しくは<a href="https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#configuration">Jib プラグイン設定ドキュメント</a>を参照してください。
 </div>
