@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Configuring Eclipse with Gradle
+title: EclipseとGradleの設定
 permalink: /configuring-ide-eclipse-gradle/
 redirect_from:
   - /configuring-ide-eclipse-gradle.html
@@ -9,36 +9,36 @@ sitemap:
     lastmod: 2015-05-22T18:40:00-00:00
 ---
 
-# <i class="fa fa-keyboard-o"></i> Configuring Eclipse with Gradle
+# <i class="fa fa-keyboard-o"></i> EclipseとGradleの設定
 
-To get full Gradle support in eclipse you should install the [buildship plugin](https://gradle.org/eclipse/).
-For configuring the [JavaScript]({{ site.url }}/configuring-ide-eclipse/) side you can follow the instructions for Maven.
+EclipseでGradleをフルサポートするには、[buildship plugin](https://gradle.org/eclipse/)をインストールする必要があります。
+[JavaScript]({{ site.url }}/configuring-ide-eclipse/) 側の設定は、Mavenの説明に従ってください。
 
-## 1. Import your project as a Gradle project
+## 1.プロジェクトをGradleプロジェクトとしてインポート
 
-- Select ``File -> Import``
-- Choose ``Gradle Project``
-- Select your projects root directory
-- Click on ``Next`` and finish the wizard
+- ``File -> Import``を選択します。
+- ``Gradle Project``を選択します。
+- プロジェクトのルートディレクトリを選択します。
+- ``Next``をクリックし、ウィザードを終了します。
 
-![Import]({{ site.url }}/images/configuring_ide_eclipse_gradle_1.png)
+![インポート]({{ site.url }}/images/configuring_ide_eclipse_gradle_1.png)
 
-![Select]({{ site.url }}/images/configuring_ide_eclipse_gradle_2.png)
+![選択]({{ site.url }}/images/configuring_ide_eclipse_gradle_2.png)
 
-## 2. Add apt generated source folder to build path
+## 2. aptで生成されたソースフォルダをビルドパスに追加
 
-When using buildship gradles default outputfolder is filtered and not visible in your workspace.
-Therefore you need to remove it from eclipse's resource filter setting.
+buildship gradlesを使用する場合、outputfolderがフィルタリングされ、ワークスペースに表示されません。
+そのため、Eclipseのリソースフィルタ設定から削除する必要があります。
 
-- Right click on your project and select ``Properties``
-- Select ``Resources``
-- Remove the entry ``build``
-- Select ``Java Build Path``
-- Click ``Add Folder...``
-- Check the path ``build/generated/source/apt/main``
+- プロジェクトを右クリックし、``Properties``を選択します。
+- ``Resources``を選択します。
+- ``build``エントリを削除します。
+- ``Java Build Path``を選択します。
+- ``Add Folder...``をクリックします。
+- ``build/generated/source/apt/main``をチェックします。
 
-Make sure the new source folder contains the correctly generated mapper implementations when running JHipster via eclipse.
+Eclipse経由でJHipsterを実行する場合、新しいソースフォルダに正しく生成されたマッパー実装が含まれていることを確認してください。
 
-![Exclude]({{ site.url }}/images/configuring_ide_eclipse_gradle_3.png)
+![除外]({{ site.url }}/images/configuring_ide_eclipse_gradle_3.png)
 
-![Buildpath]({{ site.url }}/images/configuring_ide_eclipse_gradle_4.png)
+![ビルドパス]({{ site.url }}/images/configuring_ide_eclipse_gradle_4.png)
