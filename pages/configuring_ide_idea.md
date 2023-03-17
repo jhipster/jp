@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Configuring Intellij IDEA
+title: Intellij IDEAの設定
 permalink: /configuring-ide-idea/
 redirect_from:
   - /configuring_ide_idea.html
@@ -9,74 +9,74 @@ sitemap:
     lastmod: 2015-11-28T17:13:00-00:00
 ---
 
-# <i class="fa fa-keyboard-o"></i> Configuring Intellij IDEA
+# <i class="fa fa-keyboard-o"></i> Intellij IDEAの設定
 
-## Open your project
+## プロジェクトを開く
 
-- Open your project normally
-- Maven should be detected, and your project will build automatically
+- プロジェクトを通常通り開きます。
+- Mavenが検出され、プロジェクトが自動的にビルドされるはずです。
 
-If you want more control on your setup, you can also choose "Import project".
+セットアップをよりコントロールしたい場合は、「プロジェクトのインポート」を選択できます。
 
-## Exclude directories
+## 除外するディレクトリ
 
-If you use Git, initialize your project (`git init && git add . && git commit -m 'Initial commit'`), Intellij IDEA will automatically exclude directories which are ignored by Git (so you don't have anything to do).
+Gitを使用している場合、プロジェクトの初期化（`git init && git add . && git commit -m 'Initial commit'`）を行うと、Intellij IDEAはGitが無視するディレクトリを自動的に除外します（つまり、あなたは何もする必要がありません）。
 
-To exclude directories manually:
+手動でディレクトリを除外する場合は以下のとおりです。
 
-- Right-click on the `node_modules/` folder
-- Select "Mark Directory As" and select "Excluded"
+- `node_modules/`フォルダを右クリックします。
+- "Mark Directory As"を選択し、"Excluded"を選択します。
 
-![Exclude]({{ site.url }}/images/configuring_ide_idea_1.png)
+![除外]({{ site.url }}/images/configuring_ide_idea_1.png)
 
-**Note:** If you are using Intellij IDEA Ultimate and would like to use IDEA to code the frontend you should **not** exclude `node_modules` folder. Otherwise
-you will not have any code assistance for the frontend code!
+**注意:** Intellij IDEA Ultimateを使用していて、IDEAでフロントエンドをコーディングしたい場合は、`node_modules`フォルダを**除外する必要はありません**。もし除外してしまうと
+フロントエンドのコードのアシストを受けられなくなります。
 
-## Spring Support (not available in Community Edition)
+## Spring サポート (Community Edition では利用できません)
 
-To add Spring support to many of the JHipster modules from a new project first go to `File → Project Structure`.
+新しいプロジェクトでJHipsterの多くのモジュールにSpringサポートを追加するには、まず`File → Project Structure`に進みます。
 
-![Project Structure]({{ site.url }}/images/configuring_ide_idea_2.png)
+![プロジェクト構成]({{ site.url }}/images/configuring_ide_idea_2.png)
 
-Then go to the Modules tab, click on the `+` button, and then click on "Spring" to add Spring code assistance to your project.
+次にモジュールタブを開き、`+`ボタンをクリックし、"Spring"をクリックして、プロジェクトにSpringコードアシストを追加します。
 
 ![Spring]({{ site.url }}/images/configuring_ide_idea_3.png)
 
-It will tell you there are unmapped Spring configuration files, click on the `+` sign on the  bottom right (not the original one) and select all the Spring files that belong to your project, clicking the folder is enough to select everything.
+右下の`+`記号（本来の記号ではありません）をクリックして、プロジェクトに属するすべてのSpringファイルを選択してください、フォルダをクリックするだけですべてが選択されます。
 
 ![Spring Application Context]({{ site.url }}/images/configuring_ide_idea_4.png)
 
-After that click `OK`, and Spring should be configured with proper code assistance.
+その後、`OK`をクリックすると、Springが適切なコードアシストで構成されるはずです。
 
-Now click on the original `+` button which you used to add Spring in the first place, and add Hibernate. 
-You do not need to add any files on this one, adding it there will give you Hibernate based code assistance. Remember to click `OK` on the Project structure dialog.
+次に、最初にSpringを追加するために使用した元の`+`ボタンをクリックし、Hibernateを追加します。
+Hibernateを追加することで、Hibernateベースのコードアシストが得られるので、ここではファイルを追加する必要はありません。プロジェクト構造ダイアログで`OK`をクリックするのを忘れないようにしましょう。
 
-You should now have Spring support for most of the codebase. You have to repeat this step every time you start a new project, as these settings are project-specific.
+これで、コードベースのほとんどでSpringがサポートされるようになったはずです。なお、これらの設定はプロジェクト固有のため、新しいプロジェクトを始めるたびにこのステップを繰り返す必要があります。
 
-## Application "hot restart" with Spring Boot devtools
+## Spring Bootのdevtoolsを使ったアプリケーションの「ホットリスタート」
 
-[Spring Boot devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html) is configured by JHipster, and will "hot restart" your application when classes from your project are compiled. This is a must-have feature, as it makes your application updated on the fly.
+[Spring Boot devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html)はJHipsterによって設定され、プロジェクトからのクラスがコンパイルされると、アプリケーションを「ホットリスタート」します。これはアプリケーションがその場で更新されるようになる必須の機能です。
 
-By default IntelliJ IDEA does not automatically compile files when the application is running. To enable the "Compile on save" feature:
+デフォルトでは、IntelliJ IDEAは、アプリケーションの実行時にファイルを自動的にコンパイルしません。「保存時にコンパイルする」機能を有効にするには、以下のようにします。
 
-* Go to `File -> Settings -> Build, Execution, Deployment -> Compiler` and enable "Make project automatically"
-* Open the Action window :
+* `File → Settings → Build, Execution, Deployment → Compiler` に行き、"Make project automatically"を有効にします。
+* Action windowを開きます。
   * Linux : `CTRL+SHIFT+A`
   * Mac OSX : `SHIFT+COMMAND+A`
   * Windows : `CTRL+ALT+SHIFT+/`
-* Enter `Registry...` and enable `compiler.automake.allow.when.app.running`
+* `Registry...`に入り`compiler.automake.allow.when.app.running`を有効にします。
 
-Note: For IntelliJ IDEA version 2021.2
-* Go to `File -> Settings -> Build, Execution, Deployment -> Compiler` and enable "Build project automatically"
-* Go to `File -> Advanced Settings -> Compiler` and enable "Allow auto-make to start even if developed application is currently running"
+注意：IntelliJ IDEA version 2021.2では以下のようにします。
+* `File → Settings → Build, Execution, Deployment → Compiler`に行き、"Build project automatically"を有効にします。
+* `File → Advanced Settings → Compiler`に行き、"Allow auto-make to start even if developed application is currently running"を有効にします。
 
-## Maven IDE profile
+## Maven IDEプロファイル
 
-If you are using Maven, you need to activate the `IDE` profile in IntelliJ. This is used for applying IDE-specific tweaks
-which currently only includes applying the MapStruct annotation processor.
+Mavenを使用している場合、IntelliJで`IDE`プロファイルを有効にする必要があります。これはIDE固有の調整を適用するために使用されます。
+現在はMapStructアノテーション・プロセッサーを適用することだけが含まれています。
 
-Open the "Maven Projects" tool window (View -> Tool Windows), check the `IDE` maven profile to activate it.
+"Maven Projects"ツールウィンドウ（View → Tool Windows）を開き、`IDE`のmaven profileにチェックを入れて有効にします。
 
 ## Gradle
 
-In order to get the best out-of-the-box experience with Gradle you should delegate all [IDE build/run actions to Gradle](https://www.jetbrains.com/idea/whatsnew/#v2017-3-gradle) directly. With this setting annotation processing is automatically configured and you won't have duplicated classes when mixing IDE and cli builds. If you are using an older version ( < 2016.3) you have to enable annotation processing manually.
+Gradleですぐに開発できる最高の体験を得るためには、すべての[IDEビルド/ランアクションをGradleに](https://www.jetbrains.com/idea/whatsnew/#v2017-3-gradle)直接委ねるべきです。この設定により、アノテーション処理が自動的に設定され、IDEとcliのビルドを混在させても、重複したクラスが発生することはありません。古いバージョン（2016.3より前）を使用している場合は、手動でアノテーション処理を有効にする必要があります。
