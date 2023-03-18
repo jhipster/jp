@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Creating an application
+title: アプリケーションの構築
 permalink: /creating-an-app/
 redirect_from:
   - /creating_an_app.html
@@ -9,259 +9,259 @@ sitemap:
     lastmod: 2018-03-18T18:20:00-00:00
 ---
 
-# <i class="fa fa-rocket"></i> Creating an application
+# <i class="fa fa-rocket"></i> アプリケーションの構築
 
-_**Please check our [video tutorial]({{ site.url }}/video-tutorial/) on creating a new JHipster application!**_
+_**新しいJHipsterアプリケーションの作成については、[ビデオチュートリアル]({{ site.url }}/video-tutorial/)を参照してください。**_
 
-1. [Quick start](#1)
-2. [Questions asked when generating an application](#2)
-3. [Using a blueprint](#5)
-4. [Command-line options](#3)
-5. [Tips](#4)
+1. [クイックスタート](#1)
+2. [アプリケーション生成時の質問](#2)
+3. [Blueprintを使う](#5)
+4. [コマンドラインオプション](#3)
+5. [ヒント](#4)
 
-<h2 id="1">Quick start</h2>
+<h2 id="1">クイックスタート</h2>
 
-First of all, create an empty directory in which you will create your application:
+最初に、アプリケーションを作成する空のディレクトリを作成します。
 
 `mkdir myapplication`
 
-Go to that directory:
+ディレクトリに移動します。
 
 `cd myapplication/`
 
-To generate your application, type:
+アプリケーションを生成するには、次のように入力します。
 
 `jhipster`
 
-Answer the questions asked by the generator to create an application tailored to your needs. Those options are described in [the next section](#2).
+ジェネレータからの質問に答えて、ニーズに合ったアプリケーションを作成します。これらのオプションについては、[次のセクション](#2)で説明します。
 
-Once the application is generated, you can launch it using Maven (`./mvnw` on Linux/MacOS/Windows PowerShell, `mvnw` on Windows Cmd) or Gradle (`./gradlew` on Linux/MacOS/Windows PowerShell, `gradlew` on Windows Cmd).
+アプリケーションが生成されると、Maven(Linux/Mac OS/Windows PowerShellの場合は`./mvnw`、Windows Cmdの場合は`mvnw`)またはGradle(Linux/Mac OS/Windows PowerShellの場合は`./gradlew`、Windows Cmdの場合は`gradlew`)を使用して起動できます。
 
-**Note** if you are using Maven and changed front end files after first run of the `./mvnw` command then you must run `./mvnw -Pwebapp` to see the latest front end version (Gradle detects front end changes automatically and recompiles front end if needed).
+**注意** Mavenを使用していて、`./mvnw`コマンドを最初に実行した後フロントエンドファイルを変更した場合は、`./mvnw -Pwebapp`を実行して最新のフロントエンドバージョンを表示する必要があります（Gradleはフロントエンドの変更を自動的に検出し、必要に応じてフロントエンドを再コンパイルします）。
 
-The application will be available on [http://localhost:8080](http://localhost:8080)
+アプリケーションは[http://localhost:8080](http://localhost:8080)にあります。
 
-**Important** if you want to have "live reload" of your JavaScript/TypeScript code, you will need run `npm start` or `yarn start`. You can go to the [Using JHipster in development]({{ site.url }}/development/) page for more information.
+**重要** JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`または`yarn start`を実行する必要があります。詳細については、[開発でのJHipsterの使用]({{ site.url }}/development/)ページにアクセスしてください。
 
-If you are using "live reload" then you can speed up server start up by excluding client side tasks by `./mvnw -P-webapp` or `./gradlew -x webapp`. It speeds up especially Gradle.
+「ライブリロード」を使用している場合は、`./mvnw -P-webapp`または`./gradlew -x webapp`を使用してクライアント側のタスクを除外することで、サーバの起動を高速化できます。特にGradleの速度が向上します。
 
-<h2 id="2">Questions asked when generating an application</h2>
+<h2 id="2">アプリケーション生成時の質問</h2>
 
-_Some questions change depending on the previous choices you have made. For example, you won't need to configure an Hibernate cache if you didn't select an SQL database._
+_いくつかの質問は、以前に行った選択によって変わります。たとえば、SQLデータベースを選択しなかった場合は、Hibernateキャッシュを構成する必要はありません。_
 
-### Which _type_ of application would you like to create?
+### どの種類のアプリケーションを作成したいですか？（Which _type_ of application would you like to create?）
 
-Your type of application depends on whether you wish to use a microservices architecture or not. A full explanation on microservices is [available here]({{ site.url }}/microservices-architecture/), if unsure use the default "Monolithic application".
+アプリケーションのタイプは、マイクロサービスアーキテクチャを使用するかどうかによって異なります。マイクロサービスの詳細な説明は[ここにあります]({{ site.url }}/microservices-architecture/)。不明な場合は、デフォルトの"Monolithic application"を使用してください。
 
-You can either use:
+次のいずれかを使用できます。
 
-*   Monolithic application: this a classical, one-size-fits-all application. It's easier to use and develop, and is our recommended default.
-*   Microservice application: in a microservices architecture, this is one of the services.
-*   Microservice gateway: in a microservices architecture, this is an edge server that routes and secures requests.
+*   Monolithic application：これは古典的で、フリーサイズのアプリケーションです。使用と開発が容易であり、推奨されるデフォルトです。
+*   Microservice application：マイクロサービスアーキテクチャでは、これはサービスの1つです。
+*   Microservice gateway：マイクロサービスアーキテクチャでは、これはリクエストをルーティングして保護するエッジサーバです。
 
-### What is the base name of your application?
+### アプリケーションのベース名は何ですか?（What is the base name of your application?）
 
-This is the name of your application.
+アプリケーションの名前です。
 
-### What is your default Java package name?
+### デフォルトのJavaパッケージ名は何ですか?（What is your default Java package name?）
 
-Your Java application will use this as its root package. This value is stored by Yeoman so that the next time you run the generator the last value will become default. 
-You can override it by providing a new value.
+Javaアプリケーションはこれをルート・パッケージとして使用します。この値はYeomanによって保存されるため、次にジェネレータを実行するときには、最後の値がデフォルトになります。
+この値は、新しい値を指定することで上書きできます。
 
-### Do you want to use the JHipster Registry to configure, monitor and scale your application?
+### JHipsterレジストリを使用して、アプリケーションの構成、監視、拡張を行いますか?（Do you want to use the JHipster Registry to configure, monitor and scale your application?）
 
-The [JHipster Registry]({{ site.url }}/jhipster-registry/) is an Open Source tool used to manage your application at runtime.
+[JHipster Registry]({{ site.url }}/jhipster-registry/)は、実行時にアプリケーションを管理するためのオープンソースツールです。
 
-It is required when using a microservices architecture (this is why this question is only asked when generating a monolith).
+マイクロサービスアーキテクチャを使用する場合に必要です（これが、この質問がモノリスを生成するときにのみ尋ねられる理由です）。
 
-### Which _type_ of authentication would you like to use?
+### どの _種類_ の認証を使用しますか?（Which _type_ of authentication would you like to use?）
 
-Answers to this question depend on previous answers. For example, if you selected the [JHipster Registry]({{ site.url }}/jhipster-registry/) above, you can only use JWT authentication.
+この質問に対する回答は、以前の回答によって異なります。たとえば、前述の[JHipster Registry]({{ site.url }}/JHipster-registry/)を選択した場合は、JWT認証のみを使用できます。
 
-Here are all the possible options:
+可能なすべてのオプションを以下に示します。
 
-*   JWT authentication: use a [JSON Web Token (JWT)](https://jwt.io/), which is the default choice and what most people use.
-*   OAuth 2.0 / OIDC Authentication: this uses an OpenID Connect server, like [Keycloak](https://www.keycloak.org/) or [Okta](https://developer.okta.com), which handles authentication outside of the application. This is more secured than JWT, but it requires to set up an OpenID Connect server, so it's a bit more complex. Please note that by default JHipster will synchronize the user data from the OpenID Connect server, and for this it will need a database.
-*   HTTP Session Authentication: the classical session-based authentication mechanism, which is what people usually do with [Spring Security](http://docs.spring.io/spring-security/site/index.html).
+* JWT認証：[JSON Web Token(JWT)](https://jwt.io/)を使用します。これはデフォルトの選択肢であり、ほとんどの人が使用しています。
+* OAuth 2.0/OIDC認証：アプリケーションの外部で認証を処理します。[Keycloak](https://www.keycloak.org/)または[Okta](https://developer.okta.com)などのOpenID Connectサーバを使用します。これはJWTよりも安全ですが、OpenID Connectサーバを設定する必要があるため、少し複雑です。デフォルトでは、JHipsterはOpenID Connectサーバからのユーザデータを同期するため、データベースが必要になることに注意してください。
+* HTTPセッション認証：古典的なセッションベースの認証メカニズムで、[Spring Security](http://docs.spring.io/spring-security/site/index.html)で通常行われるものです。
 
-You can find more information on our [securing your application]({{ site.url }}/security/) page.
+詳細については、[アプリケーションのセキュリティ保護]({{ site.url }}/security/)ページを参照してください。
 
-### Which _type_ of database would you like to use?
+### どの _種類_ のデータベースを使用しますか？（Which _type_ of database would you like to use?）
 
-You can choose between:
+次のいずれかを選択できます。
 
-- An SQL database (H2, MySQL, MariaDB, PostgreSQL, MSSQL, Oracle), which you will access with Spring Data JPA
+- SQLデータベース（H2, MySQL, MariaDB, PostgreSQL, MSSQL, Oracle）。Spring Data JPAでアクセスします。
 - [MongoDB]({{ site.url }}/using-mongodb/)
 - [Cassandra]({{ site.url }}/using-cassandra/)
 - [Couchbase]({{ site.url }}/using-couchbase/)
 - [Neo4j]({{ site.url }}/using-neo4j/)
-- No database (only available when using a [microservice application]({{ site.url }}/microservices-architecture/) with JWT authentication)
+- データベースなし（JWT認証で[マイクロサービス・アプリケーション]({{ site.url }}/microservices-architecture/)を使用する場合にのみ使用可能）
 
-### Which _production_ database would you like to use?
+### どの _プロダクション_ データベースを使用しますか?（Which _production_ database would you like to use?）
 
-This is the database you will use with your "production" profile. To configure it, please modify your `src/main/resources/config/application-prod.yml` file.
+これは、「プロダクション」のプロファイルで使用するデータベースです。構成するには、`src/main/resources/config/application-prod.yml`ファイルを変更してください。
 
-If you want to use Oracle, you might need to be aware of current limitations when [using Oracle database]({{ site.url }}/using-oracle/).
+Oracleを使用する場合は、[Oracleデータベースの使用]({{ site.url }}/using-oracle/)時の現在の制限に注意する必要があります。
 
-### Which _development_ database would you like to use?
+### どの _開発_ データベースを使用しますか?（Which _development_ database would you like to use?）
 
-This is the database you will use with your "development" profile. You can either use:
+これは、「開発」プロファイルで使用するデータベースです。次のいずれかを使用できます。
 
-*   H2, running in-memory. This is the easiest way to use JHipster, but your data will be lost when you restart your server.
-*   H2, with its data stored on disk. This is a better option than running in-memory, as you won't lose your data upon application restart.
-*   The same database as the one you chose for production: it's a bit more complex to set up, but it should be better in the end to work on the same database as the one you will use in production. This is also the best way to use liquibase-hibernate as described in [the development guide]({{ site.url }}/development/).
+*   インメモリで実行するH2：これはJHipsterを使用する最も簡単な方法ですが、サーバーを再起動するとデータが失われます。
+*   データをディスクに保存するH2：これは、アプリケーションの再起動時にデータが失われないため、インメモリで実行するよりも優れたオプションです。
+*   プロダクション用に選択したのと同じデータベース：セットアップは少し複雑ですが、最終的にはプロダクションで使用するデータベースと同じデータベースで作業する方がよいでしょう。これは、[開発ガイド]({{ site.url }}/development/)で説明されているように、liquibase-hibernateを使用する最善の方法でもあります。
 
-To configure it, please modify your `src/main/resources/config/application-dev.yml` file.
+構成するには、`src/main/resources/config/application-dev.yml`ファイルを変更してください。
 
-### Do you want to use the Spring cache abstraction?
+### Springのキャッシュ抽象化を使用しますか?（Do you want to use the Spring cache abstraction?）
 
-The Spring cache abstraction allows to use different cache implementations: you can use [ehcache](http://ehcache.org/) (local cache), [Caffeine](https://github.com/ben-manes/caffeine) (local cache), [Hazelcast](http://www.hazelcast.com/) (distributed cache), [Infinispan](http://infinispan.org/) (distributed cache), [Memcached](https://memcached.org/) (another distributed cache) or [Redis](https://redis.io/) (configured as a single server cache). This can have a very positive impact on your application's performance, and hence it is a recommended option.
+Springのキャッシュ抽象化では、さまざまなキャッシュ実装を使用できます。[ehcache](http://ehcache.org/)（ローカルキャッシュ）、[Caffeine](https://github.com/ben-manes/caffeine)（ローカルキャッシュ）、[Hazelcast](http://www.hazelcast.com/)（分散キャッシュ）、[Infinispan](http://infinispan.org/)（分散キャッシュ）、[Memcached](https://memcached.org/)（その他の分散キャッシュ）、または[Redis](https://redis.io/)（単一サーバキャッシュとして構成）を使用できます。これはアプリケーションのパフォーマンスに非常にプラスの影響を与える可能性があるため、推奨されるオプションです。
 
-### Do you want to use Hibernate 2nd level cache?
+### Hibernateの第2レベルのキャッシュを使用しますか?（Do you want to use Hibernate 2nd level cache?）
 
-This option will only be available if you selected to use an SQL database (as JHipster will use Spring Data JPA to access it) and selected a cache provider in the previous question.
+このオプションは、SQLデータベースの使用を選択し（JHipsterはSpring Data JPAを使用してアクセスするため）、前の質問でキャッシュプロバイダを選択した場合にのみ使用できます。
 
-[Hibernate](http://hibernate.org/) is the JPA provider used by JHipster, and it can use a cache provider to greatly improve its performance. As a result, we highly recommend you to use this option, and to tune your cache implementation according to your application's needs.
+[Hibernate](http://hibernate.org/)は、JHipsterで使用されるJPAプロバイダであり、キャッシュプロバイダを使用してパフォーマンスを大幅に向上させることができます。そのため、このオプションを使用し、アプリケーションのニーズに応じてキャッシュ実装を調整することを強くお勧めします。
 
-### Would you like to use Maven or Gradle?
+### MavenとGradleのどちらを使用しますか?（Would you like to use Maven or Gradle?）
 
-You can build your generated Java application either with [Maven](http://maven.apache.org/) or [Gradle](http://www.gradle.org/). Maven is more stable and more mature. Gradle is more flexible, easier to extend, and more hype.
+生成されたJavaアプリケーションは、[Maven](http://maven.apache.org/)または[Gradle](http://www.gradle.org/)を使用して構築できます。Mavenはより安定しており、より成熟しています。Gradleはより柔軟で、拡張が容易で、話題が豊富です。
 
-### Which other technologies would you like to use?
+### 他にどのテクノロジーを使用しますか?（Which other technologies would you like to use?）
 
-This is a multi-select answer, to add one or several other technologies to the application. Available technologies are:
+これは、1つ以上の他のテクノロジをアプリケーションに追加するための複数選択の回答です。使用可能なテクノロジは以下のとおりです。
 
-#### API first development using swagger-codegen
+#### swagger-codegenを使用したAPIファーストな開発（API first development using swagger-codegen）
 
-This option lets you do [API-first development]({{ site.url }}/doing-api-first-development) for your application by integrating the [Swagger-Codegen](https://github.com/swagger-api/swagger-codegen) into the build.
+このオプションを使用すると、[Swagger-Codegen](https://github.com/swagger-api/swagger-codegen)をビルドに統合することによって、アプリケーションに対して[APIファーストな開発]({{ site.url }}/doing-api-first-development)を実施できます。
 
-#### Search engine using ElasticSearch
+#### ElasticSearchを使用した検索エンジン（Search engine using ElasticSearch）
 
-[Elasticsearch](https://github.com/elastic/elasticsearch) will be configured using Spring Data Elasticsearch. You can find more information on our [Elasticsearch guide]({{ site.url }}/using-elasticsearch/).
+[Elasticsearch](https://github.com/elastic/elasticsearch)は、Spring Data Elasticsearchを使用して構成されます。詳細については[Elasticsearchガイド]({{ site.url }}/using-elasticsearch/)を参照してください。
 
-#### Clustered HTTP sessions using Hazelcast
+#### Hazelcastを使ったクラスタ化されたHTTPセッション（Clustered HTTP sessions using Hazelcast）
 
-By default, JHipster uses a HTTP session only for storing [Spring Security](http://docs.spring.io/spring-security/site/index.html)'s authentication and authorisation information. You can choose to put more data in your HTTP sessions.
-Using HTTP sessions will cause issues if you are running in a cluster, especially if you don't use a load balancer with "sticky sessions".
-If you want to replicate your sessions inside your cluster, choose this option to have [Hazelcast](http://www.hazelcast.com/) configured.
+デフォルトでは、JHipsterは[Spring Security](http://docs.spring.io/spring-security/site/index.html)の認証および認可情報を格納するためにのみHTTPセッションを使用し、HTTPセッションにより多くのデータを格納することを選択できます。
+HTTPセッションを使用すると、クラスタで実行している場合、特に「スティッキーセッション」でロードバランサを使用していない場合に問題が発生します。
+クラスター内でセッションを複製する場合は、[Hazelcast](http://www.hazelcast.com/)を設定するためにこのオプションを選択してください。
 
-#### WebSockets using Spring Websocket
+#### WebSocket（Spring Websocket）の使用（WebSockets using Spring Websocket）
 
-Websockets can be enabled using Spring Websocket. We also provide a complete sample to show you how to use the framework efficiently.
+WebSocketは、Spring Websocketを使用して有効にできます。また、フレームワークを効率的に使用する方法を示す完全なサンプルも提供します。
 
-#### Asynchronous messages using Apache Kafka
+#### Apache Kafkaを使用した非同期メッセージ（Asynchronous messages using Apache Kafka）
 
-Use [Apache Kafka]({{ site.url }}/using-kafka/) as a publish/subscribe message broker.
+[Apache Kafka]({{ site.url }}/using-kafka/)をパブリッシュ/サブスクライブ・メッセージ・ブローカーとして使用します。
 
-### Which _Framework_ would you like to use for the client?
+### クライアントにどの _フレームワーク_ を使用しますか?（Which _Framework_ would you like to use for the client?）
 
-The client-side framework to use.
+使用するクライアント側のフレームワークです。
 
-You can either use:
+次のいずれかを使用できます。
 
 *   Angular
 *   React
 *   Vue
 
-### Would you like to use a Bootswatch theme?
+### Bootswatchのテーマを使用しますか?（Would you like to use a Bootswatch theme?）
 
-The client theme to use.
+使用するクライアントテーマです。
 
-You can use any themes from [Bootswatch](https://bootswatch.com/) or keep the default one.
+[Bootswatch](https://bootswatch.com/)の任意のテーマを使用するか、デフォルトのテーマをそのまま使用できます。
 
-### Would you like to use the Sass stylesheet preprocessor for your CSS?
+### CSSにSassスタイルシートプリプロセッサを使用しますか?（Would you like to use the Sass stylesheet preprocessor for your CSS?）
 
-[Sass](https://sass-lang.com/) a great solution to simplify designing CSS. To be used efficiently, you will need to run a [Webpack](https://webpack.js.org) dev server, which will be configured automatically.
+[Sass](https://sass-lang.com/)は、CSSの設計を単純化するための優れたソリューションです。効率的に使用するには、[Webpack](https://webpack.js.org)開発サーバを実行する必要があります。これは自動的に設定されます。
 
-### Would you like to enable internationalization support?
+### 国際化のサポートを有効にしますか?（Would you like to enable internationalization support?）
 
-By default JHipster provides excellent internationalization support, both on the client side and on the server side. However, internationalization adds a little overhead, and is a little bit more complex to manage, so you can choose not to install this feature.
+デフォルトでは、JHipsterはクライアント側とサーバー側の両方で優れた国際化サポートを提供します。ただし、国際化は少しオーバーヘッドが追加され、管理が少し複雑になるため、この機能をインストールしないことを選択できます。
 
-Please note that JHipster covers only UI internationalization. For data internationalization, you will need to code it yourself in JPA/Hibernate layer.
+JHipsterはUIの国際化のみをカバーしていることに注意してください。データの国際化のためには、JPA/Hibernateレイヤーを自分でコーディングする必要があります。
 
-### Which testing frameworks would you like to use?
+### どのテストフレームワークを使用しますか?（Which testing frameworks would you like to use?）
 
-By default JHipster provide Java unit/integration testing (using Spring's JUnit support) and JavaScript unit testing (using Jest). As an option, you can also add support for:
+デフォルトでは、JHipsterはJavaのユニット/統合テスト（SpringのJUnitサポートを使用）とJavaScriptのユニット・テスト（Jestを使用）を提供します。オプションとして、以下のサポートを追加できます。
 
-*   Performance tests using Gatling
-*   Behaviour tests using Cucumber
-*   Angular integration tests with Protractor
+*   Gatlingを使用したパフォーマンステスト
+*   Cucumberを使用した受け入れテスト
+*   Protractorを使用したAngularとの統合テスト
 
-You can find more information on our ["Running tests" guide]({{ site.url }}/running-tests/).
+詳細については、[「テストの実行」ガイド]({{ site.url }}/running-tests/)を参照してください。
 
-### Would you like to use incremental Liquibase changelogs?
+### Liquibaseの増分変更ログを使用しますか?（Would you like to use incremental Liquibase changelogs?）
 
-JHipster optionally creates incremental changelogs for you, so you don't need to recreate the database or to manually generate Liquibase diff.
+JHipsterはオプションで増分変更ログを作成します。そのため、データベースを再作成したりLiquibaseのdiffを手動で生成したりする必要はありません。
 
-Run JHipster using `--incremental-changelog` option anytime to enable it.
+JHipsterを有効にするには、いつでも`--incremental-changelog`オプションを使用してJHipsterを実行してください。
 
-When executing JHipster, entities contain two states:
+JHipsterを実行する場合、エンティティには次の2つの状態が含まれます。
 
-*   The old state which is already saved to disk
-*   The new state, which is in the memory (generated from jdl or prompts)
+*   ディスクにすでに保存されている古い状態
+*   メモリー内にある新しい状態（jdlまたはプロンプトから生成）
 
-A diff is generated between them and changelogs are created.
+それらの間で相違が生成され、変更ログが作成されます。
 
-Supported features:
+サポートされている機能は以下のとおりです。
 
-*   Create/remove fields
-*   Create/remove relationships
-*   JDL and prompts
+*   フィールドの作成/削除
+*   関係の作成/削除
+*   JDLおよびプロンプト
 
-Doesn't support attribute changes like type and constraints.
+タイプや制約などの属性の変更はサポートしていません。
 
-Conflicts with:
+以下とは競合します。
 
-*   `--fork` option, since it saves to disk overriding the old state.
+*   `--fork`オプションを指定すると、古い状態を上書きしてディスクに保存します。
 
-### Would you like to install other generators from the JHipster Marketplace?
+### JHipster Marketplaceから他のジェネレータをインストールしますか?（Would you like to install other generators from the JHipster Marketplace?）
 
-The [JHipster Marketplace]({{ site.url }}/modules/marketplace/) is where you can install additional modules, written by third-party developers, to add non-official features to your project.
+[JHipster Marketplace]({{ site.url }}/modules/marketplace/)では、サードパーティの開発者によって作成された追加モジュールをインストールして、プロジェクトに非公式機能を追加できます。
 
-<h2 id="5">Using a blueprint</h2>
+<h2 id="5">Blueprintの使用</h2>
 
-JHipster 5 introduces the concept of a blueprint. Blueprints are JHipster modules that can provide custom client/server side templates that will override the ones from JHipster. For example, the [Kotlin blueprint](https://github.com/jhipster/jhipster-kotlin) replaces most of the Java server side code with Kotlin.
+JHipster 5は、Blueprintの概念を導入しています。Blueprintは、JHipsterからのテンプレートをオーバーライドするカスタムのクライアント／サーバ側テンプレートを提供できるJHipsterモジュールです。例えば、[KotlinのBlueprint](https://github.com/jhipster/jhipster-kotlin)は、Javaサーバ側コードの大部分をKotlinに置き換えます。
 
-For example, to use the Kotlin blueprint pass the name of the blueprint like below while generating an app.
+例えば、KotlinのBlueprintを使用するには、アプリを生成する際に以下のようにBlueprintの名前を渡します。
 
 ```bash
 jhipster --blueprint kotlin
 ```
 
-The name of the blueprint is saved in the `.yo-rc.json` and will be automatically used while executing sub-generators like `entity`, `spring-controller` and `spring-service`.
+Blueprintの名前は`.yo-rc.json`に保存され、`entity`、`spring-controller`、`spring-service`などのサブジェネレータを実行する際に自動的に使用されます。
 
-If a blueprint doesn't implement a specific sub-generator, it will be skipped and the JHipster templates for the same sub-generator will be used.
+Blueprintに特定のサブジェネレータが実装されていない場合、そのサブジェネレータはスキップされ、同じサブジェネレータのJHipsterテンプレートが使用されます。
 
-**Note:** An application can use only one blueprint, multiple blueprints are not supported yet.
+**注意：**アプリケーションは1つのBlueprintのみを使用できます。複数のBlueprintはまだサポートされていません。
 
-<h2 id="3">Command-line options</h2>
+<h2 id="3">コマンドラインオプション</h2>
 
-You can also run JHipster with some optional command-line options. Reference for those options can be found by typing `jhipster app --help`.
+オプションのコマンドラインオプションを使用してのJHipsterの実行もできます。これらのオプションのリファレンスは、`JHipster app--help`と入力することで見つけることができます。
 
-Here are the options you can pass:
+渡すことができるオプションは次のとおりです。
 
-* `--help` - Print the generator's options and usage
-* `--blueprint` - Specify a blueprint to use. For example `jhipster --blueprint kotlin`
-* `--skip-cache` - Do not remember prompt answers (Default: false)
-* `--skip-git` - Do not add the generated project to Git automatically (Default: false)
-* `--skip-install` - Do not automatically install dependencies (Default: false)
-* `--skip-client` - Skip the client-side application generation, so you only have the Spring Boot back-end code generated (Default: false).
-* `--skip-server` - Skip the server-side application generation, so you only have the front-end code generated (Default: false).
-* `--skip-user-management` - Skip the user management generation, both on the back-end and on the front-end (Default: false)
-* `--i18n` - Disable or enable i18n when skipping client side generation, has no effect otherwise (Default: true)
-* `--auth` - Specify the authentication type when skipping server side generation, has no effect otherwise but mandatory when using `skip-server`
-* `--db` - Specify the database when skipping server side generation, has no effect otherwise but mandatory when using `skip-server`
-* `--with-entities` - Regenerate the existing entities if they were already generated (using their configuration in the `.jhipster` folder) (Default: false)
-* `--skip-checks` - Skip the check of the required tools (Default: false)
-* `--jhi-prefix` - Add prefix before services, components and state/route names (Default: jhi)
-* `--entity-suffix` - Add suffix after entities class names (Default: empty string)
-* `--dto-suffix` - Add suffix after DTOs class names (Default: DTO)
-* `--yarn` - Use Yarn instead of NPM (Default: false)
-* `--prettier-java` - Use [prettier-java](https://github.com/jhipster/prettier-java) for formatting all Java classes (Default: false)
-* `--experimental` - Enable experimental features. Please note that these features may be unstable and may undergo breaking changes at any time
-* `--skip-fake-data` - Skip generation of fake data for development
-* `--creation-timestamp` - Set a timestamp for reproducible build. Timestamp should be a parsable js date ex: 2019-01-01. Must be used with --with-entities or import-jdl (generator-jhipster > 6.5.1)
+* `--help` - ジェネレータのオプションと使用法を出力します
+* `--blueprint` - 使用するBlueprintを指定します。例：`jhipster --blueprint kotlin`
+* `--skip-cache` - プロンプトの応答を記憶しません（デフォルト：false）
+* `--skip-git` - 生成されたプロジェクトをGitに自動的に追加しません（デフォルト：false）
+* `--skip-install` - 依存関係を自動的にインストールしません（デフォルト：false）
+* `--skip-client` - クライアント側アプリケーションの生成をスキップし、Spring Bootバックエンドコードのみを生成します（デフォルト：false）
+* `--skip-server` - フロントエンドコードのみが生成されるように、サーバ側アプリケーションの生成をスキップします（デフォルト：false）
+* `--skip-user-management` - バックエンドとフロントエンドの両方でユーザ管理の生成をスキップします（デフォルト：false）
+* `--i18n` - クライアント側の生成をスキップする場合にi18nを無効または有効にします。それ以外の場合は影響ありません（デフォルト：true）
+* `--auth` - サーバ側の生成をスキップする場合に認証タイプを指定します。それ以外の場合は影響ありませんが、`skip-server`を使用する場合は必須です
+* `--db` - サーバ側の生成をスキップする場合にデータベースを指定します。それ以外の場合は影響ありませんが、`skip-server`を使用する場合は必須です
+* `--with-entities` - 既存のエンティティがすでに生成されている場合は、それらを再生成します（`.jhipster`フォルダ内の構成を使用）（デフォルト：false）
+* `--skip-checks` - 必要なツールのチェックをスキップします（デフォルト：false）
+* `--jhi-prefix` - サービス、コンポーネント、および状態/ルート名の前にプレフィックスを追加します（デフォルト：jhi）
+* `--entity-suffix` - エンティティクラス名の後に接尾辞を追加します（デフォルト：空の文字列）
+* `--dto-suffix` - DTOクラス名の後にサフィックスを追加します（デフォルト：DTO）
+* `--yarn` - NPMの代わりにYarnを使用します（デフォルト：false）
+* `--prettier-java` - すべてのJavaクラスをフォーマットするために[prettier-java](https://github.com/jhipster/prettier-java)を使用します（デフォルト：false）
+* `--experimental` - 実験的な機能を有効にします。これらの機能は不安定であり、いつでも重大な変更を受ける可能性があることに注意してください
+* `--skip-fake-data` - 開発用のフェイクデータの生成をスキップします
+* `--creation-timestamp` - 再現可能なビルドのタイムスタンプを設定します。タイムスタンプは解析可能なjs日付である必要があります（例：2019-01-01）。--with-entitiesまたはimport-jdl（generator-jhipster > 6.5.1）とともに使用する必要があります
 
-<h2 id="4">Tips</h2>
+<h2 id="4">ヒント</h2>
 
-You can also use the Yeoman command-line options, like `--force` to automatically overwrite existing files. So if you want to regenerate your whole application, including its entities, you can run `jhipster --force --with-entities`.
+また、`--force`のようなYeomanコマンドラインオプションを使用して、既存のファイルを自動的に上書きもできます。そのため、エンティティを含むアプリケーション全体を再生成したい場合は、`jhipster--force--with-entities`を実行できます。
