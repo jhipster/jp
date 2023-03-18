@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Configuring a corporate proxy
+title: 企業向けプロキシの設定
 permalink: /configuring-a-corporate-proxy/
 redirect_from:
   - /configuring_a_corporate_proxy.html
@@ -9,63 +9,63 @@ sitemap:
     lastmod: 2016-08-18T08:00:00-00:00
 ---
 
-# <i class="fa fa-exchange"></i> Configuring a corporate proxy
+# <i class="fa fa-exchange"></i> 企業向けプロキシの設定
 
-When JHipster is used in a company, you probably will need to configure all tools to bypass the corporate proxy.
+JHipsterを企業内で使用する場合、企業内プロキシをバイパスするように全てのツールを設定する必要があります。
 
-You can try to configure the `HTTP_PROXY` and `HTTPS_PROXY` environment variables or use a tool like [Cntlm](http://cntlm.sourceforge.net/).
+`HTTP_PROXY`と`HTTPS_PROXY`の環境変数を設定するか、または[Cntlm](http://cntlm.sourceforge.net/)のようなツールを使う方法があります。
 
-But this probably won't be enough, so you will need to configure separately all the tools that are used with JHipster.
+しかし、これだけではおそらく不十分で、JHipsterで使用するすべてのツールを個別に設定する必要があります。
 
-## Introduction
+## はじめに
 
-Supposing your proxy is defined with:
+以下のようなプロキシが定義されているとします。
 
-- username
-- password
-- host
-- port
+- ユーザー名
+- 暗号
+- ホスト
+- ポート
 
-The resulting configuration is: `http://username:password@host:port`
+結果としての設定は、`http://username:password@host:port`です。
 
-If you use [Cntlm](http://cntlm.sourceforge.net/), then your configuration would be: `127.0.0.1:3128`. Otherwise, follow the next steps to configure each tool individually.
+[Cntlm](http://cntlm.sourceforge.net/)を使う場合は、`127.0.0.1:3128`のような設定になります。それ以外の場合は、次の手順で各ツールを個別に設定してください。
 
-## NPM configuration
+## NPMの設定
 
-Use these commands:
+以下のコマンドを使用します。
 
 ```
 npm config set proxy http://username:password@host:port
 npm config set https-proxy http://username:password@host:port
 ```
 
-Or you can edit directly your `~/.npmrc` file:
+または、`~/.npmrc`ファイルを直接編集してください。
 
 ```
-proxy=http://username:password@host:port
+プロキシ=http://username:password@host:port
 https-proxy=http://username:password@host:port
 https_proxy=http://username:password@host:port
 ```
 
-## Yarn configuration
+## Yarnの設定
 
-Use these commands:
+以下のコマンドを使用します。
 
 ```
 yarn config set proxy http://username:password@host:port
 yarn config set https-proxy http://username:password@host:port
 ```
 
-## Git configuration
+## Gitの設定
 
-Use these commands:
+以下のコマンドを使用します。
 
 ```
 git config --global http.proxy http://username:password@host:port
 git config --global https.proxy http://username:password@host:port
 ```
 
-Or you can edit directly your `~/.gitconfig` file:
+または、`~/.gitconfig`ファイルを直接編集してください。
 
 ```
 [http]
@@ -74,9 +74,9 @@ Or you can edit directly your `~/.gitconfig` file:
         proxy = http://username:password@host:port
 ```
 
-## Maven configuration
+## Mavenの設定
 
-Edit the `proxies` session in your `~/.m2/settings.xml` file:
+`~/.m2/settings.xml`ファイルの`proxies`セッションを編集します。
 
 ```
 <proxies>
@@ -95,7 +95,7 @@ Edit the `proxies` session in your `~/.m2/settings.xml` file:
 
 ### Maven Wrapper
 
-Create a new file `.mvn/jvm.config` inside the project folder and set the properties accordingly:
+プロジェクトフォルダ内に`.mvn/jvm.config`というファイルを新規作成し、以下のようにプロパティを設定します。
 
 ```
 -Dhttp.proxyHost=host 
@@ -106,11 +106,11 @@ Create a new file `.mvn/jvm.config` inside the project folder and set the proper
 -Dhttp.proxyPassword=password
 ```
 
-## Gradle configuration
+## Gradleの設定
 
-Add the below in your `gradle.properties` file and in your `gradle/wrapper/gradle-wrapper.properties` file if you are downloading the wrapper over a proxy
+プロキシ経由でラッパーをダウンロードしている場合は、`gradle.properties`ファイルと`gradle/wrapper/gradle-wrapper.properties`ファイルに以下を追加します。
 
-If you want to set these properties globally then add it in `USER_HOME/.gradle/gradle.properties` file
+これらのプロパティをグローバルに設定したい場合は、`USER_HOME/.gradle/gradle.properties`ファイルに追加します。
 
 ```
 ## Proxy setup
@@ -135,16 +135,16 @@ systemProp.https.nonProxyHosts=local.net|some.host.com
 
 ### Native Docker
 
-Depending on your OS, you have to edit a specific file (`/etc/sysconfig/docker` or `/etc/default/docker`).
+OSによっては、特定のファイル（`/etc/sysconfig/docker`または`/etc/default/docker`）を編集する必要があります。
 
-Then, you have to restart the docker service with: `sudo service docker restart`.
+その後、dockerサービスを`sudo service docker restart`により再起動します。 
 
-It will not apply to systemd. See this [page from docker](https://docs.docker.com/engine/admin/systemd/#http-proxy)
-to configure the proxy.
+systemdに適用されることはありません。この[dockerのページ](https://docs.docker.com/engine/admin/systemd/#http-proxy)を参照して、
+プロキシを設定してください。
 
-### Docker with docker-machine
+### docker-machineによるDocker
 
-You can create your docker-machine with:
+以下のコマンドでdocker-machineを作成できます。
 
 ```
 docker-machine create -d virtualbox \
@@ -153,4 +153,4 @@ docker-machine create -d virtualbox \
     default
 ```
 
-Or you can edit the file `~/.docker/machine/machines/default/config.json`.
+あるいは`~/.docker/machine/machines/default/config.json`を編集してください。

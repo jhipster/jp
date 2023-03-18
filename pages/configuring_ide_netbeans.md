@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Configuring Netbeans
+title: Netbeansの設定
 permalink: /configuring-ide-netbeans/
 redirect_from:
   - /configuring_ide_netbeans.html
@@ -9,17 +9,17 @@ sitemap:
     lastmod: 2016-08-20T18:40:00-00:00
 ---
 
-# <i class="fa fa-keyboard-o"></i> Configuring Apache Netbeans
+# <i class="fa fa-keyboard-o"></i> Apache Netbeansの設定
 
-Importing your JHipster application in NetBeans is straightforward.
+NetBeansでJHipsterアプリケーションをインポートするのは簡単です。
 
-## 1. Open your project
+## 1. プロジェクトを開く
 
-- Select File -> Open Project
-- Browse and select your project's folder
+- File → Open Projectを選択します。
+- プロジェクトのフォルダを参照し、選択します。
 
-![Open]({{ site.url }}/images/configuring_ide_netbeans_1.png)
+![開く]({{ site.url }}/images/configuring_ide_netbeans_1.png)
 
-**That's All** : To run your project, do a right-click on the Application class (at the root of the package hierarchy) and select "Run File".
+**以上です** プロジェクトを実行するには、Applicationクラス（パッケージ階層のルート）を右クリックし、"Run File" を選択します。
 
-![Open]({{ site.url }}/images/configuring_ide_netbeans_2.png)
+![開く]({{ site.url }}/images/configuring_ide_netbeans_2.png)
