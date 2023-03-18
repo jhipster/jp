@@ -1,65 +1,65 @@
 ---
 layout: default
-title: Configuring Visual Studio Code
+title: Visual Studio Codeの設定
 permalink: /configuring-ide-visual-studio-code/
 sitemap:
     priority: 0.7
     lastmod: 2016-09-15T17:13:00-00:00
 ---
 
-# <i class="fa fa-keyboard-o"></i> Configuring Visual Studio Code
+# <i class="fa fa-keyboard-o"></i> Visual Studio Codeの設定
 
-Visual Studio Code is an Open Source text editor made by Microsoft. It has excellent support for TypeScript, so many people want to use it for developing Angular 2 applications.
+Visual Studio Codeは、マイクロソフト社製のオープンソーステキストエディタです。TypeScriptのサポートが充実しているため、Angular 2アプリケーションの開発に使いたい人が多くいます。
 
-![Screenshot]({{ site.url }}/images/configuring_ide_visual_studio_code_1.png)
+![スクリーンショット]({{ site.url }}/images/configuring_ide_visual_studio_code_1.png)
 
-## Yeoman Support
+## Yeomanのサポート
 
-**Warning! At the time of this writing, this extension is broken**
+**注意：この記事を書いている時点では、この拡張機能は壊れています**
 
-Visual Studio Code has a Yeoman extension, which should help you run JHipster commands.
+Visual Studio CodeにはYeomaの拡張機能があり、JHipsterコマンドを実行するのに役立つはずです。
 
-You can install it by using the Visual Studio Code marketplace:
+Visual Studio Codeのマーケットプレイスを利用することでインストールできます。
 
-![Screenshot]({{ site.url }}/images/configuring_ide_visual_studio_code_2.png)
+![スクリーンショット]({{ site.url }}/images/configuring_ide_visual_studio_code_2.png)
 
-## Java Code Support
+## Javaコードのサポート
 
-Visual Studio Code has a Java extension developed by Red Hat. It has a good Java support, using Maven or Gradle.
+Visual Studio Codeには、Red Hatにより開発されたJava拡張機能があり、MavenやGradleを利用したJavaのサポートが充実しています。
 
-You can install it by using the Visual Studio Code marketplace:
+Visual Studio Codeのマーケットプレイスを利用することでインストールできます。
 
-![Screenshot]({{ site.url }}/images/configuring_ide_visual_studio_code_3.png)
+![スクリーンショット]({{ site.url }}/images/configuring_ide_visual_studio_code_3.png)
 
-## Common tasks: compiling, running and packaging the code
+## 共通タスク：コードのコンパイル、実行、パッケージング
 
-The Visual Studio Code Java extension can't be used to run commands: it can't compile, run the code, or package the application.
+Visual Studio CodeのJava拡張機能は、コマンドの実行には使用できません。コンパイル、コードの実行、アプリケーションのパッケージ化はできません。
 
-For all those tasks, there are 2 solutions:
+そのような課題に対して、2つの解決策があります。
 
-- Use the terminal, for instance the internal terminal provided by Visual Studio Code, to run those commands manually
-- Use the [JHipster App]({{ site.url }}/jhipster-app), which offers a graphical interface for all those commands. **Note:** JHipster App is deprecated.
+- ターミナル（Visual Studio Codeが提供する内部ターミナルなど）を使用して、これらのコマンドを手動で実行します。
+- [JHipster App]({{ site.url }}/jhipster-app) を使用すると、これらのコマンドのグラフィカルなインタフェースを提供できます。**注意：** JHipster Appは非推奨です。
 
-## Application "hot restart" with Spring Boot devtools
+## Spring Bootのdevtoolsを使ったアプリケーションの「ホットリスタート」
 
-[Spring Boot devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html) is configured by JHipster, and will "hot restart" your application when classes from your project are compiled. This is a must-have feature, as it makes your application updated on the fly.
+[Spring Boot devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html)はJHipsterによって設定され、プロジェクトからのクラスがコンパイルされると、アプリケーションを「ホットリスタート」します。これはアプリケーションがその場で更新されるようになる必須の機能です。
 
-To use it within Visual Studio Code, you need to:
+Visual Studio Code内で使用するには、次のことが必要です。
 
-- Run your application in a terminal, typically by typing `./mvnw`
-- In another terminal, compile your application: `./mvnw compile`
+- ターミナルでアプリケーションを実行します。通常、`./mvnw`と入力します。
+- 別の端末で、アプリケーションをコンパイルします。`./mvnw compile`と入力します。
 
-In the first terminal, your JHipster application should automatically redeploy, and use your new code.
+最初の端末においてJHipsterアプリケーションが自動的に再デプロイされ、新しいコードが使用されるはずです。
 
-If you use the JHipster App, this is only a matter of clicking on 2 buttons (one for running the application, the other for compiling it), and your application will automatically redeploy in the same way.
+同様に、JHipster Appを使用する場合、2つのボタン（アプリケーションを実行するボタンとコンパイルするボタン）をクリックするだけで、アプリケーションは自動的に再デプロイされます。
 
-## Custom settings
+## カスタム設定
 
-For best performance, it's recommended to exclude some folders, in your project's `.vscode` folder create a `settings.json` file as below:
+プロジェクトの `.vscode` フォルダに以下のように `settings.json` ファイルを作成し、いくつかのフォルダを除外することをお勧めします。
 
 ```
 {
-    // Configure glob patterns for excluding files and folders.
+    // ファイルやフォルダを除外するためのglobパターンを設定
     "files.exclude": {
         "**/.git": true,
         "**/.gradle": true,
@@ -69,7 +69,7 @@ For best performance, it's recommended to exclude some folders, in your project'
         "**/.hg": true,
         "**/.DS_Store": true
     },
-    // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the files.exclude setting.
+    // 検索でファイルやフォルダを除外するためのglobパターンを設定。files.excludeの設定からすべてのglobパターンを継承。
     "search.exclude": {
         "**/node": true,
         "**/node_modules": true,
