@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using Fisher
+title: Fisherを使う
 permalink: /fisher/
 redirect_from:
   - /fisher.html
@@ -9,20 +9,20 @@ sitemap:
     lastmod: 2018-10-20T18:40:00-00:00
 ---
 
-# <i class="fa fa-terminal"></i> Using Fisher
+# <i class="fa fa-terminal"></i> Fisherを使う
 
-If you are using Linux or Mac OS X, [fisher](https://github.com/jorgebucaran/fisher) is a great tool to manage your [fish shell](http://fishshell.com/) configuration.
+LinuxまたはMac OS Xを使用している場合は、[fisher](https://github.com/jorgebucaran/fisher)は、[fish shell](http://fishshell.com/)の設定を管理するための優れたツールです。
 
-Some of the JHipster development team use fish shell with Fisher, and if you see people using shortcuts in their terminal, the magic comes from here!
+JHipster開発チームの中には、Fisherでfish shellを使用している人もいますが、端末でショートカットを使用している人を見ると、ここから魔法が生まれているのです！
 
-## Fisher JHipster plugin
+## Fisher JHipsterプラグイン
 
-The JHipster Fisher plugin is available on GitHub at [https://github.com/jhipster/jhipster-fisher-plugin](https://github.com/jhipster/jhipster-fisher-plugin).
+JHipster FisherプラグインはGithubの[https://github.com/jhipster/jhipster-fisher-plugin](https://github.com/jhipster/jhipster-fisher-plugin)にあります。
 
-Currently it only adds shortcuts (full list [here](https://github.com/jhipster/jhipster-fisher-plugin/blob/main/conf.d/jhipster.aliases.fish)), but we welcome contributions to have better auto-completion!
+現在はショートカットを加えるのみですが（全てのリストは[こちら](https://github.com/jhipster/jhipster-fisher-plugin/blob/main/conf.d/jhipster.aliases.fish)）自動補完を改善するためのコントリビューションを歓迎します！
 
-1. Install it via ``fisher`` command:
+1. ``fisher``経由のインストール
 
     `fisher install jhipster/jhipster-fisher-plugin`
 
-For more details about [Fisher](https://github.com/jorgebucaran/fisher) have a look at their [usage](https://github.com/jorgebucaran/fisher#usage) section.
+詳しくは[Fisher](https://github.com/jorgebucaran/fisher)の[usage](https://github.com/jorgebucaran/fisher#usage)を参照ください。
