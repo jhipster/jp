@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Shell plugins
+title: Shellプラグイン
 permalink: /shell-plugins/
 redirect_from:
   - /shell-plugins.html
@@ -9,11 +9,11 @@ sitemap:
     lastmod: 2016-08-14T18:40:00-00:00
 ---
 
-# <i class="fa fa-terminal"></i> JHipster Shell Plugins
+# <i class="fa fa-terminal"></i> JHipster Shellプラグイン
 
-Shell plugins bring additional shortcuts for using JHipster, which makes it faster and easier to use. If you've seen people having a beautiful shell, with nice auto-completion and ultra-fast shortcuts, the magic comes from here!
+シェルプラグインには、JHipsterを使用するための追加のショートカットが用意されており、JHipsterをより高速で簡単に使用できます。優れたオートコンプリートと超高速ショートカットを備えた美しいシェルを持っている人を見たことがあるなら、魔法はここから生まれているのです。
 
-Currently there are two shell plugins:
+現在、次の2つのシェルプラグインがあります。
 
-* [Oh-My-Zsh JHipster plugin]({{ site.url }}/oh-my-zsh/) for [Oh-My-Zsh](https://ohmyz.sh/)
-* [Fisher JHipster plugin]({{ site.url }}/fisher/) for [Fisher](https://github.com/jorgebucaran/fisher)
+* [Oh-My-Zsh JHipsterプラグイン]({{ site.url }}/oh-my-zsh/) for [Oh-My-Zsh](https://ohmyz.sh/)
+* [Fisher JHipsterプラグイン]({{ site.url }}/fisher/) for [Fisher](https://github.com/jorgebucaran/fisher)

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Docker and Docker Compose
+title: DockerとDocker Compose
 permalink: /docker-compose/
 redirect_from:
   - /docker_compose.html
@@ -9,261 +9,261 @@ sitemap:
     lastmod: 2016-12-01T00:00:00-00:00
 ---
 
-# <i class="fa fa-music"></i> Docker and Docker Compose
+# <i class="fa fa-music"></i> DockerとDocker Compose
 
-## Summary
+## 要旨
 
-Using Docker and Docker Compose is highly recommended in development, and is also a good solution in production.
+DockerとDocker Composeの使用は、開発では非常に推奨されており、プロダクション環境でも良い解決策となります。
 
-1. [Description](#1)
-2. [Prerequisites](#2)
-3. [Building a Docker image of your application](#3)
-4. [Generating a custom Docker-Compose configuration for multiple applications](#docker-compose-subgen)
-5. [Working with databases](#4)
+1. [説明](#1)
+2. [前提条件](#2)
+3. [アプリケーションのDockerイメージを構築する](#3)
+4. [複数のアプリケーション用のカスタムDocker-Compose設定の生成](#docker-compose-subgen)
+5. [データベースの操作](#4)
 6. [Elasticsearch](#5)
 7. [Sonar](#6)
 7. [Keycloak](#7)
-8. [Common commands](#8)
-9. [Memory Tweaking](#9)
+8. [共通コマンド](#8)
+9. [メモリの調整](#9)
 
 <h2 id="1">Description</h2>
 
-_Please note: this Docker configuration is used to run your generated application(s) inside a container image. It's completely different from the [Docker setup]({{ site.url }}/installation/) that JHipster also provides, which is for running the JHipster generator inside a container_
+_注意:このDocker設定は、生成されたアプリケーションをコンテナイメージ内で実行するために使用されます。これは、JHipsterが提供する[Docker setup]({{ site.url }}/installation/)とはまったく異なります。これは、コンテナ_内でJHipsterジェネレータを実行するためのものです。_
 
-JHipster provides a complete Docker support, in order to:
+JHipsterは、次の目的のために、完全なDockerサポートを提供します。
 
-- Facilitate development, as you can start a full infrastructure with a single command, even when using a complex microservices architecture
-- For people using Docker Swarm, deploying to production directly, as it uses the same Docker Compose configuration
+- 開発が容易になります。複雑なマイクロサービスアーキテクチャを使用している場合でも、1つのコマンドで完全なインフラストラクチャを開始できます。
+- Docker Swarmを使用しているユーザであれば、同じDocker Compose設定を使用するため、プロダクション環境に直接デプロイできます。
 
-One great feature of using Docker Compose is that you can scale your containers, using the `docker-compose scale` command. This is very interesting if you use JHipster with [a microservices architecture](#3).
+Docker Composeの優れた機能の1つは、`docker-compose scale`コマンドを使用してコンテナをスケールできることです。これは、[マイクロサービスアーキテクチャ](#3)でJHipsterを使用する場合に非常に興味深いことです。
 
-When generating your application, JHipster generates for you several Docker Compose configurations to help you run your application with third-party services, for example a database. Those files are located inside folder `src/main/docker/`.
+アプリケーションを生成するとき、JHipsterは、データベースなどのサードパーティサービスでアプリケーションを実行するのに役立ついくつかのDocker Compose構成を生成します。これらのファイルは、フォルダ`src/main/docker/`内にあります。
 
-<h2 id="2">Prerequisites</h2>
+<h2 id="2">前提条件</h2>
 
-You have to install Docker and Docker Compose:
+DockerとDocker Composeをインストールする必要があります。
 
 - [Docker](https://docs.docker.com/installation/#installation)
 - [Docker Compose](https://docs.docker.com/compose/install)
 
-Docker now requires creating an account to the docker store to download Docker for Mac and Docker for Windows. To bypass this
+Docker for MacとDocker for Windowsをダウンロードするには、Dockerストアのアカウントを作成する必要があります。今回はこれを回避します。
 
 <div class="alert alert-info"><i>Tip: </i>
 
-On Windows and Mac OS X, Kitematic is an easy-to-use graphical interface provided with the Docker Toolbox, which will makes using Docker a lot easier.
+WindowsとMac OS Xにおいては、KitematicはDocker Toolboxで提供される使いやすいグラフィカルインタフェースであり、Dockerをより簡単に使用できます。
 
 </div>
 
-<div class="alert alert-warning"><i>Warning: </i>
+<div class="alert alert-warning"><i>注意: </i>
 
-If you are using Docker Machine on Mac or Windows, your Docker daemon has only limited access to your OS X or Windows file system. Docker Machine tries to auto-share your /Users (OS X) or C:\Users\&lt;username&gt; (Windows) directory. So you have to create the project folder under this directory to avoid any issues.
+MacまたはWindowsでDocker Machineを使用している場合、DockerデーモンはOS XまたはWindowsファイルシステムへのアクセスが制限されています。Docker Machineは、/Users(OS X)やC:\Users\&lt;username&gt;(Windows)ディレクトリを自動共有しようとします。そのため、問題を回避するには、このディレクトリの下にプロジェクトフォルダを作成する必要があります。
 
 </div>
 
 
-If you encounter the error `npm ERR! Error: EACCES: permission denied` when installing JHipster UML (or any unbundled package), your container may not have `sudo` installed (for instance, sudo isn't bundled with Ubuntu Xenial).
+JHipster UML（またはバンドルされていないパッケージ）のインストール時にエラー`npm ERR! Error: EACCES: permission denied`が発生した場合は、コンテナに`sudo`がインストールされていない可能性があります（たとえば、sudoはUbuntu Xenialにバンドルされていません）。
 
-__Solution 1__
+__手順 1__
 
-The NPM documentation recommends not installing any NPM package as root. Follow the [official documentation](https://docs.npmjs.com/getting-started/fixing-npm-permissions) to fix this.
+NPMのドキュメントでは、NPMパッケージをルートとしてインストールしないことを推奨しています。これを修正するには、[公式ドキュメント](https://docs.npmjs.com/getting-started/fixing-npm-permissions)に従ってください。
 
-__Solution 2__
+__手順 2__
 
   - `docker container exec -u root -it jhipster bash`,
   - `npm install -g YOUR_PACKAGE`,
-  - then exit and log into the container normally: `docker container exec -it jhipster bash`
+  - exitしてから `docker container exec -it jhipster bash` でコンテナにログインします。
 
-<h2 id="3">Building and running a Docker image of your application</h2>
+<h2 id="3">アプリケーションのDockerイメージの構築と実行</h2>
 
-To build a Docker image of your application using [Jib](https://github.com/GoogleContainerTools/jib) connecting to the local Docker daemon:
+[Jib](https://github.com/GoogleContainerTools/jib)を使用してアプリケーションのDockerイメージを構築するために、ローカルのDockerデーモンに接続します。
 
-- NPM: `npm run java:docker`, on Apple Silicon: `npm run java:docker:arm64`
+- NPM: `npm run java:docker`を実行。Apple Siliconの場合は`npm run java:docker:arm64`となります。
 - Maven: `./mvnw package -Pprod verify jib:dockerBuild`
 - Gradle: `./gradlew -Pprod bootJar jibDockerBuild`
 
-To build a Docker image of your application without Docker and push it directly into your Docker registry, run:
+Dockerを使用せずにアプリケーションのDockerイメージを構築し、Dockerレジストリに直接プッシュするには、次のコマンドを実行します。
 
 - Maven: `./mvnw package -Pprod verify jib:build -Djib.to.image=<dockerhub-username>/<artifact-id>`
 - Gradle: `./gradlew -Pprod bootJar jib -Djib.to.image=<dockerhub-username>/<artifact-id>`
 
-If this doesn't work out of the box for you, refer to the Jib documentation for configurations details, specifically regarding how to set up authentication to a Docker registry:
+これがそのままではうまくいかない場合、Jibのドキュメントを参照して、設定の詳細、特にDockerレジストリへの認証の設定方法に関する詳細を確認してください。
 
 - [Jib maven plugin documentation](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#configuration)
 - [Jib gradle plugin documentation](https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin#configuration)
 
 <div id="3-warning" class="alert alert-warning"><i>Warning: </i>
 <p>
-Due to the way Jib works, it will first try to pull the latest version of the base Docker image from the configured Docker registry. This is on purpose as in a CI environment you must ensure that you always build on top of the latest patched base image.
+Jibの動作原理として、Jibはまず、設定されたDockerレジストリからベースDockerイメージの最新バージョンをプルしようとします。CI環境では、常に最新のパッチが適用されたベースイメージの上に構築する必要があるため、これは意図的な動作です。
 </p>
 <p>
-However in a local environment, this might fail your build if jib cannot access the Docker registry. A workaround for this is to use the `--offline` flag and will fix the issue as long as jib has already pulled the base Docker image in its cache.
+ただしローカル環境では、jibがDockerレジストリにアクセスできない場合ビルドに失敗する可能性があります。この回避策は、`--offline`フラグを使用することであり、jibがキャッシュ内のベースDockerイメージをすでにプルしている限り、この問題を修正します。
 </p>
 <p>
-With Maven, type: <pre>./mvnw -Pprod package verify jib:dockerBuild --offline</pre>
-With Gradle, type: <pre>./gradlew -Pprod bootJar jibDockerBuild --offline</pre>
+Mavenでは<pre>./mvnw -Pprod package verify jib:dockerBuild --offline</pre>とします。
+Gradleでは<pre>./gradlew -Pprod bootJar jibDockerBuild --offline</pre>とします。
 </p>
 <p>
-If jib has not already pulled the base Docker image in its cache, to do it, you need to modify the pom.xml (in case of Maven) or the docker.gradle (in case of Gradle) by adding `docker://` as prefix of your base image (at the "image" tag, nested in the "from" tag).
+jibがキャッシュ内のベースDockerイメージをまだプルしていない場合、それを行うには、pom.xml(Mavenの場合)またはdocker.gradle(Gradleの場合)を修正して、ベースイメージのプレフィックスとして`docker://`を追加する必要があります("from"タグにネストされた"image"タグの位置に該当します)。
 </p>
 <p>
-Example: <pre>docker://imagename:latest</pre>
-In this way jib puts the image present in your local docker daemon in its cache.
+例: <pre>docker://imagename:latest</pre>
+このようにして、jibはローカルのdockerデーモンにあるイメージをキャッシュに入れます。
 </p>
 </div>
 
-To run this image, use the Docker Compose configuration located in the `src/main/docker` folder of your application:
+このイメージを実行するには、アプリケーションの`src/main/docker`フォルダにあるDocker Compose設定を使用します。
 
 - `docker-compose -f src/main/docker/app.yml up`
 
-This command will start up your application and the services it relies on (database, search engine, JHipster Registry...).
+このコマンドによって、アプリケーションとそれに依存するサービス（データベース、検索エンジン、JHipster Registryなど）が起動されます。
 
-If you chose OAuth 2.0 for authentication, be sure to read our [Keycloak section on this documentation](#7).
+認証にOAuth 2.0を選択した場合は、[このドキュメントのKeycloakセクション](#7)を必ずお読みください。
 
-<h2 id="docker-compose-subgen">Generating a custom Docker-Compose configuration for multiple applications</h2>
+<h2 id="docker-compose-subgen">複数のアプリケーション用のカスタムDocker-Compose設定の生成</h2>
 
-If your architecture is composed of several JHipster applications, you can use the specific `docker-compose` sub-generator, which will generate a global Docker Compose configuration for all selected applications. This will allow you to deploy and scale your complete architecture with one command.
-To use the `docker-compose` subgenerator:
+アーキテクチャが複数のJHipsterアプリケーションで構成されている場合は、`docker-compose`サブジェネレータを使用して、選択したすべてのアプリケーションに対してグローバルなDocker Compose設定を生成できます。これにより、1つのコマンドでアーキテクチャ全体をデプロイし、スケーリングできます。
+`docker-compose`サブジェネレータを使用するには以下のようにします。
 
-- You need to have all your monolith(s), gateway(s) and microservices in the same directory.
-- Create another directory, for example `mkdir docker-compose`.
-- Go into that directory: `cd docker-compose`.
-- Run the sub-generator: `jhipster docker-compose`.
-- The sub-generator will ask you which application you want to have in your architecture, and if you want to setup monitoring with ELK or Prometheus.
+- すべてのモノリス、ゲートウェイ、マイクロサービスを同じディレクトリに置く必要があります。
+- `mkdir docker-compose` で、別のディレクトリを作成します。
+- `cd docker-compose` で、ディレクトリに移動します。
+- サブジェネレータ`jhipster docker-compose`を実行します。
+- サブジェネレータは、アーキテクチャにどのアプリケーションを含めるか、また、ELKまたはPrometheusを使用して監視を設定するかどうかを尋ねます。
 
-This will generate a global Docker Compose configuration, type `docker-compose up` to run it, and have all your services running at once.
+これにより、グローバルなDocker Compose設定が生成され、`docker-compose up`と入力して実行すると、すべてのサービスが一度に実行されます。
 
-In the case of a microservice architecture, this configuration will also pre-configure a JHipster Registry or Consul, that will configure your services automatically:
+マイクロサービスアーキテクチャの場合、この設定によりJHipster RegistryまたはConsulも事前設定され、サービスも自動的に設定されます。
 
-- Those services will wait until the JHipster Registry (or Consul) is running to start. This can be configured in your `bootstrap-prod.yml` file using the `spring.cloud[.consul].config.fail-fast` and `spring.cloud[.consul].config.retry` keys.
-- The registry will configure your applications, for example it will share the JWT secret token between all services.
-- Scaling each service is done using Docker Compose, for example type `docker-compose scale test-app=4` to have 4 instances of application "test" running. Those instances will be automatically load-balanced by the gateway(s), and will automatically join the same Hazelcast cluster (if Hazelcast is your Hibernate 2nd-level cache).
+- これらのサービスは、JHipsterレジストリ（またはConsul）が起動するまで待機します。これは、`spring.cloud[.consul].config.fail-fast`および`spring.cloud[.consul].config.retry`キーを使用して、`bootstrap-prod.yml`ファイルで設定できます。
+- レジストリーはアプリケーションを構成します。例えば、すべてのサービス間でJWTシークレットトークンを共有します。
+- 各サービスのスケーリングはDocker Composeを使用して行われます。たとえば、`docker-compose scale test-app=4`と入力すると、アプリケーション"test"の4つのインスタンスが実行されます。これらのインスタンスはゲートウェイによって自動的にロードバランシングされ、同じHazelcastクラスタに自動的に参加します（HazelcastがHibernateの第2レベルのキャッシュである場合）。
 
 
-<h2 id="4">Working with databases</h2>
+<h2 id="4">データベースの操作</h2>
 
-### MySQL, MariaDB, PostgreSQL, Oracle, MongoDB, Couchbase, Neo4j or Cassandra
+### MySQL, MariaDB, PostgreSQL, Oracle, MongoDB, Couchbase, Neo4j, Cassandra
 
-Running `docker-compose -f src/main/docker/app.yml up` already starts up your database automatically.
+`docker-compose -f src/main/docker/app.yml up`を実行するとデータベースが自動的に起動されます。
 
-If you only want to start your database, and not the other services, use the Docker Compose configuration of your database:
+データベースのみを起動し、他のサービスを起動しない場合は、データベースのDocker Compose設定を使用します。
 
-- With MySQL: `docker-compose -f src/main/docker/mysql.yml up`
-- With MariaDB: `docker-compose -f src/main/docker/mariadb.yml up`
-- With PostgreSQL: `docker-compose -f src/main/docker/postgresql.yml up`
-- With Oracle: `docker-compose -f src/main/docker/oracle.yml up`
-- With MongoDB: `docker-compose -f src/main/docker/mongodb.yml up`
-- With Cassandra: `docker-compose -f src/main/docker/cassandra.yml up`
-- With Couchbase: `docker-compose -f src/main/docker/couchbase.yml up`
-- With Neo4j: `docker-compose -f src/main/docker/neo4j.yml up`
+- MySQL: `docker-compose -f src/main/docker/mysql.yml up`
+- MariaDB: `docker-compose -f src/main/docker/mariadb.yml up`
+- PostgreSQL: `docker-compose -f src/main/docker/postgresql.yml up`
+- Oracle: `docker-compose -f src/main/docker/oracle.yml up`
+- MongoDB: `docker-compose -f src/main/docker/mongodb.yml up`
+- Cassandra: `docker-compose -f src/main/docker/cassandra.yml up`
+- Couchbase: `docker-compose -f src/main/docker/couchbase.yml up`
+- Neo4j: `docker-compose -f src/main/docker/neo4j.yml up`
 
-### MongoDB Cluster Mode
+### MongoDBのクラスタモード
 
-If you want to use MongoDB with a replica set or shards and a shared configuration between them, you need to build and set up manually MongoDB images.
-Follow these steps to do so:
+MongoDBをレプリカセットまたはシャードとそれらの間の共有構成で使用したい場合は、手動でMongoDBイメージを構築して設定する必要があります。
+そのためには、次の手順を実行します。
 
-- Build the image: `docker-compose -f src/main/docker/mongodb-cluster.yml build`
-- Run the database: `docker-compose -f src/main/docker/mongodb-cluster.yml up -d`
-- Scale the MongoDB node service (you have to choose an odd number of nodes): `docker-compose -f src/main/docker/mongodb-cluster.yml scale <name_of_your_app>-mongodb-node=<X>`
-- Init the replica for mongo config server: `docker exec -it <name_of_your_app>-mongodb-config mongo  --port 27019 --eval 'rs.initiate();'`
-- Init the replica set (parameter X is the number of nodes you input in the previous step, folder is the folder where the YML file is located, it's `docker` by default): `docker container exec -it <yml_folder_name>_<name_of_your_app>-mongodb-node_1 mongo --port 27018 --eval 'var param=<X>, folder="<yml_folder_name>"' init_replicaset.js`
-- Init the shard: `docker container exec -it <yml_folder_name>_<name_of_your_app>-mongodb_1 mongo --eval 'sh.addShard("rs1/<yml_folder_name>_<name_of_your_app>-mongodb-node_1:27018")'`
-- Build a Docker image of your application: `./mvnw -Pprod clean verify jib:dockerBuild` or `./gradlew -Pprod clean bootJar jibDockerBuild`
-- Start your application: `docker-compose -f src/main/docker/app.yml up -d <name_of_your_app>-app`
+- イメージをビルドします：`docker-compose -f src/main/docker/mongodb-cluster.yml build`
+- データベースを実行します：`docker-compose -f src/main/docker/mongodb-cluster.yml up -d`
+- MongoDBノードサービスをスケールさせます（奇数のノードを選択する必要があります）：`docker-compose -f src/main/docker/mongodb-cluster.yml scale <name_of_your_app>-mongodb-node=<X>`
+- mongo設定サーバのレプリカを初期化します：`docker exec -it <name_of_your_app>-mongodb-config mongo  --port 27019 --eval 'rs.initiate();'`
+- レプリカセットを初期化します（パラメータXは前のステップで入力したノードの数です。フォルダはYMLファイルがあるフォルダ、デフォルトでは`docker`です）:`docker container exec -it <yml_folder_name>_<name_of_your_app>-mongodb-node_1 mongo --port 27018 --eval 'var param=<X>, folder="<yml_folder_name>"' init_replicaset.js`
+- シャードを初期化します：`docker container exec -it <yml_folder_name>_<name_of_your_app>-mongodb_1 mongo --eval 'sh.addShard("rs1/<yml_folder_name>_<name_of_your_app>-mongodb-node_1:27018")'`
+- アプリケーションのDockerイメージを構築します：`./mvnw -Pprod clean verify jib:dockerBuild`または`./gradlew -Pprod clean bootJar jibDockerBuild`
+- アプリケーションを起動します：`docker-compose -f src/main/docker/app.yml up -d <name_of_your_app>-app`
 
-If you want to add or remove some MongoDB nodes, repeat step 3 and 4.
+MongoDBノードを追加または削除する場合は、ステップ3と4を繰り返します。
 
-### Couchbase Cluster Mode
+### Couchbaseクラスタモード
 
-If you want to use Couchbase with multiple nodes, you need to build and set up manually Couchbase images.
-Follow these steps to do so:
+Couchbaseを複数のノードで使用したい場合は、Couchbaseイメージを手動で構築して設定する必要があります。
+そのためには、次の手順を実行します。
 
-- Build the image: `docker-compose -f src/main/docker/couchbase-cluster.yml build`
-- Run the database: `docker-compose -f src/main/docker/couchbase-cluster.yml up -d`
-- Scale the Couchbase node service (you have to choose an odd number of nodes): `docker-compose -f src/main/docker/couchbase-cluster.yml scale <name_of_your_app>-couchbase-node=<X>`
-- Build a Docker image of your application: `./mvnw -Pprod clean verify jib:dockerBuild` or `./gradlew -Pprod clean bootJar jibDockerBuild`
-- Start your application: `docker-compose -f src/main/docker/app.yml up -d <name_of_your_app>-app`
+- イメージをビルドします：`docker-compose -f src/main/docker/couchbase-cluster.yml build`
+- データベースを実行します：`docker-compose -f src/main/docker/couchbase-cluster.yml up -d`
+- Couchbaseノードサービスをスケールさせます（奇数のノードを選択する必要があります）：`docker-compose -f src/main/docker/couchbase-cluster.yml scale <name_of_your_app>-couchbase-node=<X>`
+- アプリケーションのDockerイメージを構築します：`./mvnw -Pprod clean verify jib:dockerBuild`または`./gradlew -Pprod clean bootJar jibDockerBuild`
+- アプリケーションを起動します：`docker-compose -f src/main/docker/app.yml up -d <name_of_your_app>-app`
 
 ### Cassandra
 
-Unlike the other databases, where the schema migrations are applied by the application itself, Cassandra schema migrations are applied by a dedicated Docker container.
+スキーママイグレーションがアプリケーション自体によって適用される他のデータベースとは異なり、Cassandraのスキーママイグレーションは専用のDockerコンテナによって適用されます。
 
-<h4 id="cassandra-in-development">Cassandra in development</h4>
-To start a Cassandra cluster to run your application locally, you can use the docker_compose file for development use:
+<h4 id="cassandra-in-development">開発環境のCassandra</h4>
+Cassandraクラスタを起動してアプリケーションをローカルで実行するには、開発用のdocker_composeファイルを使用します。
 `docker-compose -f src/main/docker/cassandra.yml up -d`
 
-Docker-compose will start 2 services:
+Docker-composeは2つのサービスを開始します。
 
-- `<name_of_your_app>-cassandra`:  a container with the Cassandra node contact point
-- `<name_of_your_app>-cassandra-migration`: a container to automatically apply all CQL migrations scripts (create the Keyspace, create the tables, all data migrations, ...)
+- `<name_of_your_app>-cassandra`:  Cassandraノードのコンタクト・ポイントを持つコンテナ
+- `<name_of_your_app>-cassandra-migration`: すべてのCQL移行スクリプト（キースペースの作成、テーブルの作成、すべてのデータ移行など）を自動的に適用するコンテナ
 
-See the [Cassandra page]({{ site.url }}/using-cassandra/) for more information on how to add new CQL scripts without restarting the local cluster.
+ローカルクラスタを再起動せずに新しいCQLスクリプトを追加する方法の詳細については、[Cassandraのページ]({{ site.url }}/using-cassandra/)を参照してください。
 
-#### Cassandra in production:
-The `app.yml` docker-compose file uses `cassandra-cluster.yml` to configure the cluster.
-The application starts after few seconds (see _JHIPSTER_SLEEP_ variable) to gives the time to the cluster to start and the migrations to be applied.
+#### プロダクション環境のCassandra：
+`app.yml`docker-composeファイルは、クラスタの設定に`cassandra-cluster.yml`を使用します。
+アプリケーションは数秒後に起動し（_JHIPSTER_SLEEP_変数を参照）、クラスタが起動して移行が適用されるまでの時間が与えられます。
 
-One big difference between Cassandra and the other databases, is that you can scale your cluster with Docker Compose. To have X+1 nodes in your cluster, run:
+Cassandraと他のデータベースの大きな違いとして、Docker Composeを使用してクラスタをスケールできることがあります。クラスタ内にX+1ノードを配置するには、次のコマンドを実行します。
 
 - `docker-compose -f src/main/docker/cassandra-cluster.yml scale <name_of_your_app>-cassandra-node=X`
 
 ### Microsoft SQL Server
 
-If you want to use the MSSQL Docker image with JHipster, there are a few steps to follow:
+JHipsterでMSSQL Dockerイメージを使用したい場合は、以下のステップに従う必要があります。
 
-- Increase the RAM available to Docker to at least 3.25GB
-- Run the database: `docker-compose -f src/main/docker/mssql.yml up -d`
-- Create the database with a MSSQL client of your choice
-- Start your application: `docker-compose -f src/main/docker/app.yml up -d <name_of_your_app>-app`
+- Dockerで利用可能なRAMを少なくとも3.25 GBに増やします。
+- データベースを起動します：`docker-compose -f src/main/docker/mssql.yml up -d`
+- 任意のMSSQLクライアントを使用してデータベースを作成します。
+- アプリケーションを起動します：`docker-compose -f src/main/docker/app.yml up -d <name_of_your_app>-app`
 
 <h2 id="5">Elasticsearch</h2>
 
-Running `docker-compose -f src/main/docker/app.yml up` already starts up your search engine automatically.
+`docker-compose -f src/main/docker/app.yml up` によって検索エンジンが自動的に起動されます。
 
-If you only want to start your Elasticsearch node, and not the other services, use its specific Docker Compose configuration:
+Elasticsearchノードのみを起動し、他のサービスを起動しない場合は、特定のDocker Compose設定を使用します。
 
 - `docker-compose -f src/main/docker/elasticsearch.yml up`
 
 <h2 id="6">Sonar</h2>
 
-A Docker Compose configuration is generated for running Sonar:
+Sonarを実行するためのDocker Compose設定が生成されます。
 
 - `docker-compose -f src/main/docker/sonar.yml up`
 
-To analyze your code, run Sonar on your project:
+コードを分析するには、プロジェクトでSonarを実行します。
 
-- With Maven: `./mvnw initialize sonar:sonar`
-- With Gradle: `./gradlew sonar`
+- Maven: `./mvnw initialize sonar:sonar`
+- Gradle: `./gradlew sonar`
 
-The Sonar reports will be available at: [http://localhost:9000](http://localhost:9000)
+Sonarのレポートは次のサイトで入手できます：[http://localhost:9000](http://localhost:9000)
 
 <h2 id="7">Keycloak</h2>
 
-If you chose OAuth 2.0 as your authentication, Keycloak is used as the default identity provider. Running `docker-compose -f src/main/docker/app.yml up` starts up Keycloak automatically.
+認証にOAuth 2.0を選択した場合、KeycloakがデフォルトのIDプロバイダとして使用されます。`docker-compose -f src/main/docker/app.yml up`によりKeycloakが自動的に起動します。
 
-To make Keycloak work, you need to add the following line to your hosts file (`/etc/hosts` on Mac/Linux, `c:\Windows\System32\Drivers\etc\hosts` on Windows).
+Keycloakを動作させるには、hostsファイルに次の行を追加する必要があります（Mac/Linuxの場合は`/etc/hosts`、Windowsの場合は`c:\Windows\System 32\Drivers\etc\hosts`）。
 
 ```
 127.0.0.1	keycloak
 ```
 
-This is because you will access your application with a browser on your machine (which name is localhost, or `127.0.0.1`), but inside Docker it will run in its own container, which name is `keycloak`.
+理由として、マシン上のブラウザ（名前はlocalhostまたは`127.0.0.1`）を使用してアプリケーションにアクセスしますが、Docker内では独自のコンテナ（名前は`keycloak`）で実行されるためです。
 
-If you only want to start Keycloak, and not the other services, use its specific Docker Compose configuration:
+他のサービスではなく、Keycloakのみを起動したい場合は、特定のDocker Compose設定を使用します。
 
 - `docker-compose -f src/main/docker/keycloak.yml up`
 
-<h2 id="8">Common commands</h2>
+<h2 id="8">共通コマンド</h2>
 
-### List the containers
+### コンテナの一覧を出力
 
-You can use `docker container ps -a` to list all the containers
+`docker container ps -a`でコンテナ一覧を出力できます。
 
     $ docker container ps -a
     CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
     fc35e1090021        mysql               "/entrypoint.sh mysql"   4 seconds ago       Up 4 seconds        0.0.0.0:3306->3306/tcp   sampleApplication-mysql
 
-### Docker stats for containers
-`docker container stats` or {% raw %}`docker container stats $(docker container ps --format={{.Names}})`{% endraw %} to list all running containers with CPU, Memory, Networking I/O and Block I/O stats.
+### コンテナのDocker統計情報
+`docker container stats` or {% raw %}`docker container stats $(docker container ps --format={{.Names}})`{% endraw %} により実行中のすべてのコンテナについて、CPU、メモリ、ネットワークI/O、およびブロックI/Oの統計情報とともに一覧表示します。
 
     $ docker container stats {% raw %}$(docker container ps --format={{.Names}}){% endraw %}
     CONTAINER                 CPU %               MEM USAGE / LIMIT     MEM %               NET I/O               BLOCK I/O             PIDS
@@ -276,42 +276,42 @@ You can use `docker container ps -a` to list all the containers
     msmongo-mongodb           0.34%               44.8 MB / 7.966 GB    0.56%               49.72 kB / 48.08 kB   33.97 MB / 811 kB     18
     gateway-mysql             0.03%               202.7 MB / 7.966 GB   2.54%               60.84 kB / 31.22 kB   27.03 MB / 297 MB     37
 
-### Scale a container
+### コンテナのスケール
 
-Run `docker-compose scale test-app=4` to have 4 instances of application "test" running.
+`docker-compose scale test-app=4`により、アプリケーション"test"の4つのインスタンスを実行します。
 
-### Stop containers
+### コンテナの停止
 
 `docker-compose -f src/main/docker/app.yml stop`
 
-You can also use directly Docker:
+Dockerへの直接の操作もできます。
 
 `docker container stop <container_id>`
 
-When you stop a container, the data is not deleted, unless you delete the container.
+コンテナを停止しても、コンテナを削除しない限り、データは削除されません。
 
-### Delete a container
+### コンテナの削除
 
-Be careful! All data will be deleted:
+すべてのデータが削除されることに注意してください。
 
 `docker container rm <container_id>`
 
 
-<h2 id="9">Memory Tweaking</h2>
+<h2 id="9">メモリの調整</h2>
 
-In order to optimize memory usage for applications running in the container, you can setup Java memory parameters on `Dockerfile` or `docker-compose.yml`
+コンテナで実行されるアプリケーションのメモリ使用量を最適化するために、`Dockerfile`または`docker-compose.yml`でJavaメモリパラメータを設定できます。
 
-### Adding memory parameters to Dockerfile
+### Dockerfileへのメモリパラメータの追加
 
-Set the environment variable.
+環境変数を設定します。
 
     ENV JAVA_OPTS=-Xmx512m -Xms256m
 
-### Adding memory parameters to docker-compose.yml
+### docker-compose.ymlへのメモリパラメータの追加
 
-This solution is desired over Dockerfile. In this way, you have a single control point for your memory configuration on all containers that compose your application.
+Dockerfileよりも望ましい方法です。このようにすると、アプリケーションを構成するすべてのコンテナのメモリ構成に対して、単一のコントロールポイントを持つことができます。
 
-Add the `JAVA_OPTS` into `environment` section.
+`JAVA_OPTS`を`environment`セクションに追加します。
 
 ```
     environment:
@@ -319,7 +319,7 @@ Add the `JAVA_OPTS` into `environment` section.
       - JAVA_OPTS=-Xmx512m -Xms256m
 ```
 
-Depending on the Docker base image, `JAVA_OPTS` won't work. In this case, try to use `_JAVA_OPTIONS` instead:
+Dockerベースイメージによっては、`JAVA_OPTS`が動作しない場合があります。この場合は、代わりに`_JAVA_OPTIONS`を使用してみてください。
 
 ```
     environment:

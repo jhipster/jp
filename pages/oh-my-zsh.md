@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using Oh-My-Zsh
+title: Oh-My-Zshを使う
 permalink: /oh-my-zsh/
 redirect_from:
   - /oh-my-zsh.html
@@ -9,48 +9,49 @@ sitemap:
     lastmod: 2016-07-25T18:40:00-00:00
 ---
 
-# <i class="fa fa-terminal"></i> Using Oh-My-Zsh
+# <i class="fa fa-terminal"></i> Oh-My-Zshを使う
 
-If you are using Linux or Mac OS X, [Oh-My-Zsh](http://ohmyz.sh/) is a great tool to manage your ZSH configuration.
+LinuxまたはMac OS Xを使用している場合は、[Oh-My-Zsh](http://ohmyz.sh/)はZSHの設定を管理するための優れたツールです。
 
-Most of the JHipster development team uses Oh-My-Zsh, and if you see people using shortcuts in their terminal, the magic comes from here!
+JHipster開発チームのほとんどはOh-My-Zshを使用しており、端末でショートカットを使用している人を見ると、ここから魔法が生まれているのです！
 
-## Oh-My-Zsh JHipster plugin
+## Oh-My-Zsh JHipsterプラグイン
 
-The JHipster Oh-My-Zsh plugin is available on GitHub at [https://github.com/jhipster/jhipster-oh-my-zsh-plugin](https://github.com/jhipster/jhipster-oh-my-zsh-plugin).
+JHipster Oh-My-ZshプラグインはGithubの[https://github.com/jhipster/jhipster-oh-my-zsh-plugin](https://github.com/jhipster/jhipster-oh-my-zsh-plugin)にあります。
 
-Currently it only adds shortcuts (full list [here](https://github.com/jhipster/jhipster-oh-my-zsh-plugin/blob/main/jhipster.plugin.zsh)), but we welcome contributions to have better auto-completion!
+現在はショートカットを加えるのみですが（全てのリストは[こちら](https://github.com/jhipster/jhipster-oh-my-zsh-plugin/blob/main/jhipster.plugin.zsh)）自動補完を改善するためのコントリビューションを歓迎します！
 
-It is not part (yet) of the official plugin list, so you need to install it manually:
+公式のプラグインリストには（まだ）含まれていないので、手動でインストールする必要があります。
 
-1. Edit your `~/.zshrc` and add `jhipster` to the list of plugins to enable:
+1. `~/.zshrc`を編集し、`jhipster`を有効にするプラグインのリストに追加します。
 
     `plugins=( ... jhipster )`
 
-2. In the command line, change to _oh-my-zsh_'s custom plugin directory and clone the repository:
+2. コマンドラインで、_oh-my-zsh_のカスタムプラグインディレクトリに移動し、リポジトリのクローンを作成します。
 
     `cd ~/.oh-my-zsh/custom/plugins && git clone https://github.com/jhipster/jhipster-oh-my-zsh-plugin.git jhipster && cd && . ~/.zshrc`
 
-## Recommended plugins
+## 推奨プラグイン
 
-The `git`, `docker` and `docker-compose` plugins are usually useful with JHipster.
+`git`, `docker`, `docker-compose`プラグインはJHipsterで役立ちます。
 
-So your plugins section in your `.zshrc` file would be:
+`.zshrc`ファイルのプラグインセクションは次のようになります。
 
     plugins=(git docker docker-compose jhipster)
 
-## Other installation methods
+## その他のインストール方法
 
 ### Antigen
 
-If you're using [Antigen](https://github.com/zsh-users/antigen):
+[Antigen](https://github.com/zsh-users/antigen)を使用する場合、以下のようにします。
 
-1. Add `antigen bundle jhipster/jhipster-oh-my-zsh-plugin` to your `.zshrc` where you've listed your other plugins.
-2. Close and reopen your Terminal/iTerm window to **refresh context** and use the plugin. Alternatively, you can run `antigen bundle jhipster/jhipster-oh-my-zsh-plugin` in a running shell to have antigen clone and load *jhipster*.
+1. `antigen bundle jhipster/jhipster-oh-my-zsh-plugin`を`.zshrc`の他のプラグインがリストされている場所に追加します。
+
+2. Terminal/iTermを閉じて再開し**コンテキストをリフレッシュ**することによりプラグインを使用します。あるいは`antigen bundle jhipster/jhipster-oh-my-zsh-plugin`実行中のシェルで、antigenのクローンを作成し、*jhipster*をロードします。
 
 ### zgen
 
-If you're using [zgen](https://github.com/tarjoilija/zgen):
+[zgen](https://github.com/tarjoilija/zgen)を使用する場合、以下のようにします。
 
-1. Add `zgen load jhipster/jhipster-oh-my-zsh-plugin` to your `.zshrc` along with your other `zgen load` commands.
-2. `rm ${ZGEN_INIT}/init.zsh && zgen save`
+1. `zgen load jhipster/jhipster-oh-my-zsh-plugin`を`.zshrc`他の`zgen load`コマンドと同じ場所に追加します。
+2. `rm ${ZGEN_INIT}/init.zsh && zgen save`を実行します。
