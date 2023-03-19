@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Managing relationships
+title: リレーションシップの管理
 permalink: /managing-relationships/
 redirect_from:
   - /managing_relationships.html
@@ -9,89 +9,89 @@ sitemap:
     lastmod: 2020-11-25T09:07:00-00:00
 ---
 
-# <i class="fa fa-sitemap"></i> Managing relationships
+# <i class="fa fa-sitemap"></i> リレーションシップ（以下「関係」と記載）の管理
 
-When JPA is used, the [entity sub-generator]({{ site.url }}/creating-an-entity/) can create relationships between entities.
+JPAを使用すると、[エンティティ・サブジェネレーター]({{ site.url }}/creating-an-entity/)によってエンティティ間の関係を作成できます。
 
-## Presentation
+## プレゼンテーション
 
-Relationships only work when JPA is used. If you choose to use [Cassandra]({{ site.url }}/using-cassandra/) they won't be available. In case you use [MongoDB]({{ site.url }}/using-mongodb/), [Couchbase]({{ site.url }}/using-couchbase/) or [Neo4j]({{ site.url }}/using-neo4j) relations have a different semantics, but they are all available to be used. For more information about Couchbase and MongoDB relationships please refer to [Embedded Entities for Couchbase and MongoDB](#embedded-entities-for-couchbase-and-mongodb).
+関係は、JPAが使用されている場合にのみ機能します。[Cassandra]({{ site.url }}/using-cassandra/)の使用を選択した場合は使用できません。[MongoDB]({{ site.url }}/using-mongodb/)、[Couchbase]({{ site.url }}/using-couchbase/)、または[Neo4j]({{ site.url }}/using-neo4j)の関係を使用する場合、セマンティクスは異なりますが、すべて使用できます。CouchbaseとMongoDBの関係の詳細については、[CouchbaseとMongoDBの組込みエンティティ](#embedded-entities-for-couchbase-and-mongodb)を参照してください。
 
-A relationship works between two entities, and JHipster will generate the code for:
+関係は2つのエンティティ間で機能し、JHipsterは次のコードを生成します。
 
-- Managing this relationship with JPA in the generated entities
-- Creating the correct Liquibase changelog, in order for the relationship to exist in the database
-- Generating the Angular/React front-end so you can manage this relationship graphically in the user interface
+- 生成されたエンティティでのJPAとの関係を管理します
+- 関係がデータベースに存在するように、正しいLiquibase変更ログを作成します
+- Angular/Reactフロントエンドを生成して、この関係をユーザインタフェースでグラフィカルに管理できるようにします
 
-## JHipster UML and JDL Studio
+## JHipster UMLとJDL Studio
 
-This page describes how to create relationships with JHipster using the standard command-line interface.  If you want to create many entities and relationships, you might prefer to use a graphical tool.
+このページでは、標準のコマンドライン・インタフェースを使用してJHipsterとの関係を作成する方法について説明します。多数のエンティティおよび関係を作成する場合は、グラフィカル・ツールを使用することをお薦めします。
 
-In that case, three options are available:
+この場合、次の3つのオプションを使用できます。
 
-- [JDL Studio](https://start.jhipster.tech/jdl-studio/), our online tool to create entities and relationships using our domain-specific language.
-- [JHipster IDE]({{ site.url }}/jhipster-ide/), a plugin that provides textual editing support of JDL files for popular IDEs.
-- Deprecated: _[JHipster UML]({{ site.url }}/jhipster-uml/), which allows you to use an UML editor._
+- [JDL Studio](https://start.jhipster.tech/jdl-studio/)は、ドメイン固有の言語を使用してエンティティと関係を作成するためのオンライン・ツールです。
+- [JHipster IDE]({{ site.url }}/jhipster-ide/)は、よく使われるIDEのJDLファイルのテキスト編集サポートを提供するプラグインです。
+- 非推奨：_[JHipster UML]({{ site.url }}/jhipster-uml/)では、UMLエディタを使用できます。_
 
-You can generate entities with relationships from a JDL file using the `jdl` sub-generator, by running `jhipster jdl your-jdl-file.jh`.
+`jhipster jdl your-jdl-file.jh`を実行することにより、`jdl`サブジェネレータを使用して、JDLファイルから関係を持つエンティティを生成できます。
 
-## Available relationships
+## 使用可能な関係
 
-As we use JPA, the usual one-to-many, many-to-one, many-to-many and one-to-one relationships are available:
+JPAを使用すると、通常の1対多（one-to-many）、多対1（many-to-one）、多対多（many-to-many）、1対1（one-to-one）の関係が使用可能になります。
 
-- [<i class="fa fa-sitemap"></i> Managing relationships](#i-classfa-fa-sitemapi-managing-relationships)
-  - [Presentation](#presentation)
-  - [JHipster UML and JDL Studio](#jhipster-uml-and-jdl-studio)
-  - [Available relationships](#available-relationships)
-  - [A bidirectional one-to-many relationship](#a-bidirectional-one-to-many-relationship)
-  - [A bidirectional many-to-one relationship](#a-bidirectional-many-to-one-relationship)
-  - [A unidirectional many-to-one relationship](#a-unidirectional-many-to-one-relationship)
-  - [A unidirectional one-to-many relationship](#a-unidirectional-one-to-many-relationship)
-  - [Two one-to-many relationships on the same two entities](#two-one-to-many-relationships-on-the-same-two-entities)
-  - [A many-to-many relationship](#a-many-to-many-relationship)
-  - [A one-to-one relationship](#a-one-to-one-relationship)
-  - [A unidirectional one-to-one relationship](#a-unidirectional-one-to-one-relationship)
-    - [Using JPA Derived Identifiers(@MapsId) for one-to-one relationship](#using-jpa-derived-identifiersmapsid-for-one-to-one-relationship)
-    - [Setting fetching data strategy to eager (FetchType.EAGER)](#setting-fetching-data-strategy-to-eager-fetchtypeeager)
-  - [Embedded Entities for Couchbase and MongoDB](#embedded-entities-for-couchbase-and-mongodb)
+- [<i class="fa fa-sitemap"></i>リレーションシップの管理](#i-classfa-fa-sitemapi-managing-relationships)
+  - [プレゼンテーション](#presentation)
+  - [JHipster UMLおよびJDL Studio](#jhipster-uml-and-jdl-studio)
+  - [使用可能な関係](#available-relationships)
+  - [双方向の1対多の関係](#a-bidirectional-one-to-many-relationship)
+  - [双方向の多対1の関係](#a-bidirectional-many-to-one-relationship)
+  - [単方向の多対1の関係](#a-unidirectional-many-to-one-relationship)
+  - [単一方向の1対多の関係](#a-unidirectional-one-to-many-relationship)
+  - [同じ2つのエンティティ上の2つの1対多の関係](#two-one-to-many-relationships-on-the-same-two-entities)
+  - [多対多の関係](#a-many-to-many-relationship)
+  - [1対1の関係](#a-one-to-one-relationship)
+  - [単方向の1対1の関係](#a-unidirectional-one-to-one-relationship)
+    - [JPA派生識別子(@MapsId)を使用した1対1の関係](#using-jpa-derived-identifiersmapsid-for-one-to-one-relationship)
+    - [フェッチデータストラテジをEagerに設定（FetchType.EAGER）](#setting-fetching-data-strategy-to-eager-fetchtypeeager)
+  - [CouchbaseとMongoDBの組込みエンティティ](#embedded-entities-for-couchbase-and-mongodb)
 
-_Tip: the `User` entity_
+_ヒント: `User`エンティティ_
 
-Information about it is located [here]({{ site.url }}/user-entity/).
+これについての情報は[ここにあります]({{ site.url }}/user-entity/)。
 
-**A small warning about entity & relationship generation**: in the following examples, you'll notice that compilation
-_may_ fail in some cases because destination entities aren't generated and that's normal (this warning can be ignored).
-There are two ways to avoid that:
-  - Generate the entities first, then the relationships
-  - Use the JDL
+**エンティティと関係の生成に関する小さな警告**：以下の例では、コンパイル時に
+関係先のエンティティが生成されないために失敗することがありますが、これは正常なことです（この警告は無視できます）。
+これを回避するには、次の2つの方法があります。
+- 最初にエンティティを生成し、次に関係を生成します
+- JDLを使用します
 
 ---
 
-## A bidirectional one-to-many relationship
+## 双方向の1対多の関係
 
-Let's start with two entities, a `Owner` and a `Car`. A owner can have many cars, and a car can have only one owner.
+「所有者（`Owner`）」と「車（`Car`）」という2つのエンティティから始めましょう。1人の所有者は複数の車を持つことができ、1台の車の所有者は1人だけです。
 
-So this is a one-to-many relationship (one owner has many cars) on one side, and a many-to-one relationship (many cars have one owner) on the other side:
+これは、一方の側では1対多の関係（1人の所有者が多くの車を所有）であり、もう一方の側では多対1の関係（多くの車が1人の所有者を所有）です。
 
     Owner (1) <-----> (*) Car
 
-Note that after generating the entity, the generator will inform you that some errors occurred while generating
-the files. That's normal as the destination entity has not yet been generated, so you can safely ignore this warning.
+エンティティの生成後、生成中にエラーが発生したことを知らせるメッセージが表示されます。
+これは、参照先のエンティティがまだ生成されていないので、正常な動作です。したがって、この警告は無視してもかまいません。
 
-We will create the `Owner` first. Here are the relevant JHipster questions for the `Owner`:
+最初に`Owner`を作成します。`Owner`に関連するJHipsterの質問は次のとおりです。
 
     jhipster entity Owner
     ...
-    Generating relationships to other entities
-    ? Do you want to add a relationship to another entity? Yes
-    ? What is the name of the other entity? Car
-    ? What is the name of the relationship? car
-    ? What is the type of the relationship? one-to-many
-    ? What is the name of this relationship in the other entity? owner
+    Generating relationships to other entities（他のエンティティとの関係の生成）
+    ? Do you want to add a relationship to another entity?（別のエンティティに関係を追加しますか？） Yes
+    ? What is the name of the other entity?（他のエンティティの名前は何ですか？） Car
+    ? What is the name of the relationship?（関係の名前は何ですか？） car
+    ? What is the type of the relationship?（関係のタイプは何ですか） one-to-many
+    ? What is the name of this relationship in the other entity?（他のエンティティにおけるこの関係の名前は何ですか） owner
 
-Please note that we selected the default options concerning the names of the relationships.
+関係の名前に関するデフォルトのオプションを選択したことに注意してください。
 
-Now we can generate the `Car`:
+これで`Car`を生成できます。
 
     jhipster entity Car
     ...
@@ -100,10 +100,9 @@ Now we can generate the `Car`:
     ? What is the name of the other entity? Owner
     ? What is the name of the relationship? owner
     ? What is the type of the relationship? many-to-one
-    ? When you display this relationship with Angular, which field from 'Owner' do you want to use? id
+    ? When you display this relationship with Angular, which field from 'Owner' do you want to use?（Angularでこの関係を表示する場合'Owner'のどのフィールドを使用しますか？） id
 
-
-The same can be achieved using the below JDL as well
+以下のJDLを使用しても同じことができます。
 
     entity Owner
     entity Car
@@ -112,11 +111,11 @@ The same can be achieved using the below JDL as well
       Owner{car} to Car{owner}
     }
 
-That's it, you now have a one-to-many relationship between those two entities! On the generated Angular/React client UI you will have a dropdown in `Car` to select a `Owner`.
+これで、これら2つのエンティティ間に1対多の関係ができました！　生成されたAngular/ReactクライアントUIでは`Car`にドロップダウンが表示され、`Owner`を選択できます。
 
-## A bidirectional many-to-one relationship
+## 双方向の多対1の関係
 
-This is equivalent to the bidirectional one-to-many relationship after inversing the sides in the JDL file:
+これは、JDLファイルの内容を反転した後の双方向の1対多の関係と同じです。
 
 
     entity Owner
@@ -127,27 +126,27 @@ This is equivalent to the bidirectional one-to-many relationship after inversing
     }
 
 
-## A unidirectional many-to-one relationship
+## 単一方向の多対1の関係
 
-In the previous example we had a bidirectional relationship: from a `Car` instance you could find its owner, and from a `Owner` instance you could get all of its cars.
+前の例では、双方向の関係がありました。`Car`インスタンスからその所有者を見つけることができ、`Owner`インスタンスからそのすべての車を取得できます。
 
-A many-to-one unidirectional relationship means that the cars know their owner, but not the opposite.
+多対1の一方向の関係は、車がその所有者を知っていることを意味しますが、その逆はありません。
 
     Owner (1) <----- (*) Car
 
-You would do that relationship for two reasons:
+このような関係にする理由は2つあります。
 
-- From a business point of view, you only use your entities in this way. So you don't want to have an API that allows developers to do something which doesn't make sense.
-- You have a small performance gain when using the `Owner` entity (as it won't have to manage the collection of cars).
+- ビジネスの観点からは、この方法でのみエンティティを使用します。そのため、開発者に意味のないことを実行させるAPIは必要ありません。
+- `Owner`エンティティを使用する際に、パフォーマンスがわずかに向上します（`Car`のコレクションを管理する必要がないため）。
 
-In that case, you would still create the `Owner` first, this time with no relationship:
+その場合でも、最初に`Owner`を作成し、今度は関係なしで作成します。
 
     jhipster entity Owner
     ...
     Generating relationships to other entities
     ? Do you want to add a relationship to another entity? No
 
-And then the `Car` entity, as in the previous example:
+次に、前の例のように`Car`エンティティを作成します。
 
     jhipster entity Car
     ...
@@ -158,8 +157,9 @@ And then the `Car` entity, as in the previous example:
     ? What is the type of the relationship? many-to-one
     ? When you display this relationship with Angular, which field from 'Owner' do you want to use? id
 
-This will work as in the previous example, but you won't be able to add or remove cars from the `Owner` entity. On the generated Angular/React client UI you will have a dropdown in `Car` to select a `Owner`.
-This is the corresponding JDL:
+これは前の例と同じように動作しますが、`Owner`エンティティから車を追加または削除はできません。生成されたAngular/ReactクライアントUIでは、`Owner`を選択するためのドロップダウンが`Car`にあります。
+
+対応するJDLは以下のとおりです。
 
     entity Owner
     entity Car
@@ -169,33 +169,33 @@ This is the corresponding JDL:
     }
 
 
-## A unidirectional one-to-many relationship
+## 単一方向の1対多の関係
 
-A one-to-many unidirectional relationship means that the `Owner` instance can get its collection of cars, but not the opposite. It is the opposite from the previous example.
+1対多の単方向関係は、`Owner`インスタンスが車のコレクションを取得できることを意味しますが、その逆はありません。これは、前の例とは逆です。
 
     Owner (1) -----> (*) Car
 
-This type of relationship is not provided by default in JHipster at the moment, see [#1569](https://github.com/jhipster/generator-jhipster/issues/1569) for more information.
+このタイプの関係は、現時点ではJHipsterのデフォルトでは提供されていません。詳細については、[#1569](https://github.com/jhipster/generator-jhipster/issues/1569)を参照してください。
 
-You have two solutions for this:
+これには2つの解決策があります。
 
-- Do a bidirectional mapping, and use it without modification: this is our recommended approach, as it is much simpler
-- Do a bidirectional mapping, and then modify it to transform it into a unidirectional mapping:
-    - Remove the "mappedBy" attribute on your `@OneToMany` annotation
-    - Generate the required join table: you can do a `mvn liquibase:diff` to generate that table, see the [documentation about using Liquibase diff]({{ site.url }}/development/)
+- 双方向マッピングを行い、それを変更せずに使用します。そても単純であるため推奨されるアプローチです。
+- 双方向マッピングを実行し、それを修正して単方向マッピングに変換します：
+    - `@OneToMany`アノテーションの"mappedBy"属性を削除します。
+    - 必要な結合テーブルを生成します。`mvn liquibase:diff`を実行してそのテーブルを生成できます。[Liquibase diffの使用に関するドキュメント]({{ site.url }}/development/)を参照してください。
 
-This is not supported with JDL as it isn't in JHipster.
+これはJHipsterではサポートされていないため、JDLでもサポートされていません。
 
-## Two one-to-many relationships on the same two entities
+## 同じ2つのエンティティ上の2つの1対多の関係
 
-For this example, a `Person` can be the owner of many cars and can also be the driver of many cars:
+この例では、`Person`は多くの車の所有者になることができ、多くの車の運転手になることもできます。
 
     Person (1) <---owns-----> (*) Car
     Person (1) <---drives---> (*) Car
 
-For this we need to use the relationship names, which we have left with their default values in the previous examples.
+このためには、前の例でデフォルト値のままにしておいた関係名を使用する必要があります。
 
-Generate the `Person` entity, which has two one-to-many relationships to the `Car` entity:
+`Person`エンティティを生成します。このエンティティは、`Car`エンティティに対して2つの1対多の関係を持ちます。
 
     jhipster entity Person
     ...
@@ -213,7 +213,7 @@ Generate the `Person` entity, which has two one-to-many relationships to the `Ca
     ? What is the type of the relationship? one-to-many
     ? What is the name of this relationship in the other entity? driver
 
-Generate the `Car` entity, which use the same relationship name has was configured in the `Person` entity:
+同じ関係名を使用する`Car`エンティティを生成し、`Person`エンティティで設定します。
 
     jhipster entity Car
     ...
@@ -231,7 +231,7 @@ Generate the `Car` entity, which use the same relationship name has was configur
     ? What is the type of the relationship? many-to-one
     ? When you display this relationship with Angular, which field from 'Person' do you want to use? id
 
-The same can be achieved using the below JDL as well
+以下のJDLを使用しても同じことができます。
 
     entity Person
     entity Car
@@ -244,22 +244,22 @@ The same can be achieved using the below JDL as well
       Person{drivenCar} to Car{driver}
     }
 
-A `Car` can now have a driver and a owner, which are both `Person` entities. On the generated Angular/React client UI you will dropdowns in `Car` to select a `Person` for `owner` field and `driver` field.
+`Car`はドライバと所有者を持つことができ、どちらも`Person`エンティティです。生成されたAngular/ReactクライアントUIでは、`Car`にドロップダウンを設け、`owner`フィールドと`driver`フィールドのための`Person`を選択します。
 
-## A many-to-many relationship
+## 多対多の関係
 
-A `Driver` can drive many cars, but a `Car` can also have many drivers.
+`Driver`は多くの車を運転できますが、`Car`も多くのドライバーを持つことができます。
 
     Driver (*) <-----> (*) Car
 
-At the database level, this means we will have a join table between the `Driver` and the `Car` tables.
+データベースレベルでは、これは`Driver`テーブルと`Car`テーブルの間に結合テーブルがあることを意味します。
 
-For JPA, one of those two entities will need to manage the relationship: in our case, that would be the `Car` entity, which will be responsible to add or remove drivers.
+JPAの場合、これら2つのエンティティのうちの1つが関係を管理する必要があります。この例では、ドライバの追加または削除を担当する`Car`エンティティです。
 
-Please note that, after generating the entity, the generator will inform you that some errors occurred while generating
-the files. That's normal as the destination entity has not yet been generated, so you can safely ignore this warning.
+エンティティの生成後、生成中にエラーが発生したことが通知されます。
+これは、参照先のエンティティがまだ生成されていないので、正常な動作です。したがって、この警告は無視してもかまいません。
 
-Let us generate the non-owning side of the relationship, the `Driver`, with a many-to-many relationship:
+多対多の関係を持つ、関係の所有される側である`Driver`を生成しましょう。
 
     jhipster entity Driver
     ...
@@ -271,7 +271,7 @@ Let us generate the non-owning side of the relationship, the `Driver`, with a ma
     ? Is this entity the owner of the relationship? No
     ? What is the name of this relationship in the other entity? driver
 
-Then generate the `Car`, with the owning side of the many-to-many relationship:
+次に、多対多の関係の所有する側となる`Car`を生成します。
 
     jhipster entity Car
     ...
@@ -282,9 +282,9 @@ Then generate the `Car`, with the owning side of the many-to-many relationship:
     ? What is the type of the relationship? many-to-many
     ? Is this entity the owner of the relationship? Yes
     ? What is the name of this relationship in the other entity? car
-    ? When you display this relationship on client-side, which field from 'Driver' do you want to use? This field will be displayed as a String, so it cannot be a Blob id
+    ? When you display this relationship on client-side, which field from 'Driver' do you want to use? This field will be displayed as a String, so it cannot be a Blob（この関係をクライアント側で表示する場合`Driver`のどのフィールドを使用しますか？　このフィールドは文字列として表示されるためBlobにはできません） id
 
-The same can be achieved using the below JDL as well
+以下のJDLを使用しても同じことができます。
 
     entity Driver
     entity Car
@@ -293,15 +293,15 @@ The same can be achieved using the below JDL as well
       Car{driver} to Driver{car}
     }
 
-That's it, you now have a many-to-many relationship between those two entities! On the generated Angular/React client UI you will have a multi-select dropdown in `Car` to select multiple `Driver` since `Car` is the owning side.
+これで、これら2つのエンティティ間に多対多の関係ができました！　生成されたAngular/ReactクライアントUIでは、`Car`が所有側であるため、複数の`Driver`を選択するための複数選択ドロップダウンが`Car`に表示されます。
 
-## A one-to-one relationship
+## 1対1の関係
 
-Following our example, a one-to-one relationship would mean that a `Driver` can drive only one `Car`, and a `Car` can only have one `Driver`.
+1対1の関係の例として、`Driver`は1つの`Car`のみを運転でき、`Car`は1つの`Driver`のみを持つことができるとします。
 
     Driver (1) <-----> (1) Car
 
-Let us create the non-owning side of the relationship, in our case the `Driver`:
+関係の所有者ではない側、この場合は`Driver`を作成しましょう。
 
     jhipster entity Driver
     ...
@@ -313,7 +313,7 @@ Let us create the non-owning side of the relationship, in our case the `Driver`:
     ? Is this entity the owner of the relationship? No
     ? What is the name of this relationship in the other entity? driver
 
-Then generate the `Car`, which owns the relationship:
+次に、関係を所有する`Car`を生成します。
 
     jhipster entity Car
     ...
@@ -323,11 +323,11 @@ Then generate the `Car`, which owns the relationship:
     ? What is the name of the relationship? driver
     ? What is the type of the relationship? one-to-one
     ? Is this entity the owner of the relationship? Yes
-    ? Do you want to use JPA Derived Identifier - @MapsId? No
+    ? Do you want to use JPA Derived Identifier - @MapsId?（JPA派生識別子@MapsId?を使用しますか？） No
     ? What is the name of this relationship in the other entity? car
     ? When you display this relationship on client-side, which field from 'Driver' do you want to use? This field will be displayed as a String, so it cannot be a Blob id
 
-The same can be achieved using the below JDL as well
+以下のJDLを使用しても同じことができます。
 
     entity Driver
     entity Car
@@ -336,24 +336,24 @@ The same can be achieved using the below JDL as well
       Car{driver} to Driver{car}
     }
 
-That's it, you now have a one-to-one relationship between those two entities! On the generated Angular/React client UI you will have a dropdown in `Car` to select a `Driver` since `Car` is the owning side.
+これで、これら2つのエンティティ間に1対1の関係ができました！　生成されたAngular/ReactクライアントUIでは、`Car`が所有側であるため、`Car`にドロップダウンが表示され、`Driver`を選択できます。
 
-[More information on using one-to-one with JPA Derived Identifiers](#using-jpa-derived-identifiersmapsid-for-one-to-one-relationship)
+[JPA派生識別子を使用した1対1の使用に関する詳細がこちらにあります](#using-jpa-derived-identifiersmapsid-for-one-to-one-relationship)
 
-## A unidirectional one-to-one relationship
+## 単一方向の1対1の関係
 
-A unidirectional one-to-one relationship means that the `citizen` instance can get its passport, but the `passport` instance can't get to its owner.
+単一方向の1対1の関係の例として、`citizen`インスタンスはそのパスポートを取得できるが、`passport`インスタンスはその所有者に取得できないものとします。
 
     Citizen (1) -----> (1) Passport
 
-Generate the `Passport` entity first, without any relationship to its owner:
+まず、所有者との関係を持たない`Passport`エンティティを生成します。
 
     jhipster entity Passport
     ...
     Generating relationships to other entities
     ? Do you want to add a relationship to another entity? No
 
-Then, generate the `Citizen` entity:
+次に、`Citizen`エンティティを生成します。
 
     jhipster entity Citizen
     ...
@@ -367,8 +367,8 @@ Then, generate the `Citizen` entity:
     ? What is the name of this relationship in the other entity? citizen
     ? When you display this relationship with Angular, which field from 'Passport' do you want to use? id
 
-After doing this, a `Citizen` possesses a passport, but no `Citizen` instance is defined in `Passport`. On the generated Angular/React client UI you will have a dropdown in `Citizen` to select a `Passport` since `Citizen` is the owning side.
-This is the corresponding JDL:
+これを行うと、`Citizen`はパスポートを所有しますが、`Passport`には`Citizen`インスタンスが定義されていません。生成されたAngular/ReactクライアントUIでは、`Citizen`が所有側であるため、`Citizen`にドロップダウンが表示され、`Passport`を選択できます。
+対応するJDLは次のとおりです。
 
 
     entity Citizen
@@ -378,11 +378,11 @@ This is the corresponding JDL:
       Citizen{passport} to Passport
     }
 
-### Using JPA Derived Identifiers(@MapsId) for one-to-one relationship
+### JPA派生識別子(@MapsId)を使用した1対1の関係
 
-[JPA Derived Identifiers](https://javaee.github.io/javaee-spec/javadocs/javax/persistence/MapsId.html) can be used to have [the most efficient mapping](https://vladmihalcea.com/the-best-way-to-map-a-onetoone-relationship-with-jpa-and-hibernate/).
+[JPA派生識別子](https://javaee.github.io/javaee-spec/javadocs/javax/persistence/MapsId.html)を使用すると[最も効率的なマッピング](https://vladmihalcea.com/the-best-way-to-map-a-onetoone-relationship-with-jpa-and-hibernate/)を行うことができます。
 
-This is the corresponding JDL for previous uni-directional one-to-one example:
+これは、前述の単方向1対1の例に対応するJDLです。
 
 
     entity Citizen
@@ -392,7 +392,7 @@ This is the corresponding JDL for previous uni-directional one-to-one example:
       Citizen{passport} to Passport with jpaDerivedIdentifier
     }
 
-This is the corresponding JDL for previous bi-directional one-to-one example:
+これは、前述の双方向1対1の例に対応するJDLです。
 
     entity Driver
     entity Car
@@ -401,66 +401,66 @@ This is the corresponding JDL for previous bi-directional one-to-one example:
       Car{driver} to Driver{car} with jpaDerivedIdentifier
     }
 
- However, based on business requirements, there might be cases where this should be avoided because it has following constraint:
-**Once the id(primary key) is set at owning side, it is not changeable using JPA/Hibernate. You should not change it anyway.**
+ただし、ビジネス要件によっては、次の制約があるため、これを回避する必要があります。
+**ID（主キー）が所有側で設定されると、JPA/Hibernateを使用しての変更はできません。いずれにしても変更しないでください。**
 
-**Here are a few suggestions regarding usage:**
+**使用方法に関するいくつかの提案があります:**
 
-Use `@MapsId` when:
-* Dependent - if the owning side (child entity) seems tightly dependent on the non-owning (parent entity).
-* Association value is never meant to be changed - if you are never going to change the id(primary key) of the child entity once it is set.
+次の場合には`@MapsId`を使用してください。
+* 依存関係 - 所有する側（子エンティティ）が所有される側（親エンティティ）に強く依存していると思われる場合
+* 関連付けの値が変更されない - 子エンティティのID（主キー）を一度設定したら変更しない場合
 
-    For example:
+    以下に例を示します。
 
     ```
     class User{}
-    class Profile{ @OneToOne @MapsId private User user; } // profile is only meant for that user
-    class Preferences{ @OneToOne @MapsId private User user; } // preference is only meant for that user
+    class Profile{ @OneToOne @MapsId private User user; } // プロファイルはそのユーザー専用です
+    class Preferences{ @OneToOne @MapsId private User user; } // プリファレンスはそのユーザーのみを対象としています
     ```
 
-    Once a profile or a preference is created for a user, it will never change to refer to another user.
+    ユーザーのプロファイルまたはプリファレンスが作成されると、別のユーザーを参照するように変更されることはありません。
 
-Do not use  `@MapsId` when:
-* Not dependent - If the owning side (child entity) seems not dependent on the non-owning (parent entity)
-* Association value is meant to be changed - if you think that the child entity is going to refer to another parent entity in future.
+次の場合には`@MapsId`を使用しないでください。
+* 依存関係ではない - 所有する側（子エンティティ）が所有される側（親エンティティ）に依存していないと思われる場合
+* 関連付けの値が変更される可能性がある - 子エンティティが将来別の親エンティティを参照すると思われる場合
 
-    For example:
+    以下に例を示します。
 
     ```
-    class Car{ @OneToOne @JoinColumn(name="current_driver_id") Driver currentDriver} // car can be drived by another driver in future
-    class Driver{@OneToOne(mappedBy = "currentDriver") Car drivingCar} // driver drives another car in future
-    ```
-    Both car and driver association value may change in future.
+    class Car{ @OneToOne @JoinColumn(name="current_driver_id") Driver currentDriver} // 車は将来別のドライバーによって運転される可能性がある
+    class Driver{@OneToOne(mappedBy = "currentDriver") Car drivingCar} // ドライバーが将来別の車を運転する可能性がある
+    ```    
+    車とドライバーの両方の関係は、将来変更される可能性があります。
 
-**Note: There is [a known issue regarding using `@OneToOne` with `@MapsId` and how to avoid it](https://www.jhipster.tech/tips/026_tip_issue_of_onetoone_with_mapsid_how_to_avoid_it.html)**.
+**Note: 注意：[`@MapsId`で`@OneToOne`を使用することと、それを回避する方法に関しては既知の問題があります](https://www.jhipster.tech/tips/026_tip_issue_of_onetoone_with_mapsid_how_to_avoid_it.html)**
 
 
-### Setting fetching data strategy to eager (FetchType.EAGER)
+### フェッチデータストラテジをeagerに設定(FetchType.EAGER)
 
-All the relationships use the default JPA FetchType:
+すべての関係は、デフォルトのJPA FetchTypeを使用します。
 - OneToMany: LAZY
 - ManyToOne: EAGER
 - ManyToMany: LAZY
 - OneToOne: EAGER
 
-There is [a known issue of NPE during JSON deserialization](https://github.com/jhipster/generator-jhipster/issues/10981) due to eager fetch type. If you would like to set either `OneToMany` or `ManyToMany` relationship to `FetchType.EAGER`, you can use one of the following solutions:
-- Use ```@JsonInclude(JsonInclude.Include.NON_EMPTY)``` on the relationship
+eagerフェッチタイプにおいては[JSONデシリアライズ中のNPEの既知の問題があります](https://github.com/jhipster/generator-jhipster/issues/10981)。`OneToMany`または`ManyToMany`関係を`FetchType.EAGER`に設定する場合は、次のいずれかの解決策を使用できます。
+- 関係に ```@JsonInclude(JsonInclude.Include.NON_EMPTY)``` を使用する
 
-    For example:
+    以下に例を示します。
 
     ```
     @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Set<Child> child = new HashSet<>();
     ```
-- Return null if the collection is empty when fetching the resource in the backend
-- Using DTO and handle the edge case of empty collection
+- バックエンドでリソースをフェッチするときにコレクションが空の場合はnullを返す
+- DTOを使用し、空のコレクションに特化した処理を行う
 
-### Embedded Entities for Couchbase and MongoDB
+### CouchbaseとMongoDBの組込みエンティティ
 
-Couchbase and MongoDB supports relationships through embedded documents. For more information regarding embedded documents in MongoDB refer to [https://docs.mongodb.com/manual/applications/data-models-relationships/](https://docs.mongodb.com/manual/applications/data-models-relationships/) and for Couchbase refer to [https://docs.couchbase.com/server/5.1/data-modeling/modeling-relationships.html](https://docs.couchbase.com/server/5.1/data-modeling/modeling-relationships.html).
+CouchbaseとMongoDBは、埋め込みドキュメントを通じた関係をサポートしています。MongoDBの埋め込みドキュメントに関する詳細については、[https://docs.mongodb.com/manual/applications/data-models-relationships/](https://docs.mongodb.com/manual/applications/data-models-relationships/)を参照してください。Couchbaseについては、[https://docs.couchbase.com/server/5.1/data-modeling/modeling-relationships.html](https://docs.couchbase.com/server/5.1/data-modeling/modeling-relationships.html)を参照してください。
 
-You can define embedded documents simply by using `@embedded`. For example to define a one-to-one relationship;
+`@embedded`を使用すると、埋込みドキュメントを簡単に定義できます。たとえば、1対1の関係を定義するには、次のようにします。
 
 ```
 entity Country {
@@ -478,7 +478,7 @@ relationship OneToOne {
 }
 ```
 
-Similarly, for a one-to-many relationship,
+同様に、1対多の関係では以下となります。
 
 ```
 entity Country {
@@ -496,7 +496,7 @@ relationship OneToMany {
 }
 ```
 
-For a many-to-many relationship you can simply use the `@embedded` keyword in both directions;
+多対多の関係では、単純に両方向に`@embedded`キーワードを使用できます。
 
 ```
 @embedded
