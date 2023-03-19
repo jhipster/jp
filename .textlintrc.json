@@ -3,8 +3,16 @@
   "filters": {},
   "rules": {
     "preset-ja-spacing": true,
-    "preset-ja-technical-writing": true,
-    "preset-jtf-style": true,
+    "preset-ja-technical-writing": {
+      "sentence-length": {
+        "max": 500
+      },
+      "no-exclamation-question-mark": false
+    },
+    "preset-jtf-style": {
+      "4.2.1.感嘆符(！)": false,
+      "4.3.2.大かっこ［］": false
+    },    
     "spellcheck-tech-word": true
   }
 }

@@ -1,37 +1,37 @@
 ---
 layout: default
-title: Creating a controller
+title: controllerの構築
 permalink: /creating-a-spring-controller/
 sitemap:
     priority: 0.7
     lastmod: 2019-02-01T00:00:00-00:00
 ---
 
-# <i class="fa fa-bolt"></i> Creating a Spring controller
+# <i class="fa fa-bolt"></i> Spring controllerの構築
 
-## Introduction
+## はじめに
 
-_Note: this sub-generator is much simpler than the [entity sub-generator]({{ site.url }}/creating-an-entity/) that creates full CRUD entities_
+_注意：このサブジェネレータは、完全なCRUDエンティティを作成する[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)よりもはるかに単純です。_
 
-This sub-generator generates a Spring MVC REST Controller. It is also able to create REST methods.
+このサブジェネレータは、Spring MVC RESTコントローラを生成します。RESTメソッドの作成もできます。
 
-In order to generate a "Foo" Spring MVC REST controller, type:
+"Foo"のSpring MVC RESTコントローラを生成するには、次のように入力します。
 
 `jhipster spring-controller Foo`
 
-The sub-generator will ask you which method you want to generate: answer the method name and the HTTP verb you want to use, and a method will be generated.
+サブジェネレータは、どのメソッドを生成するかを尋ねます。メソッド名と使用するHTTPメソッドに答えると、メソッドが生成されます。
 
-## Can we document this Spring MVC REST Controller with Swagger?
+## Spring MVC RESTコントローラをSwaggerでドキュメント化できますか?
 
-Yes! In fact it's already done! In `dev` mode, use the `Administration > API` menu to access Swagger UI and start using the generated controller.
+はい！　実際にはすでに完成しています！　`dev`モードで、`管理 > API`メニューを使用してSwagger UIにアクセスし、生成されたコントローラの使用を開始します。
 
-## Can we add security to Spring MVC REST Controllers?
+## Spring MVC RESTコントローラにセキュリティを追加できますか?
 
-Yes! Add Spring Security's `@Secured` annotation on your class or on your methods, and use the provided `AuthoritiesConstants` class to restrict access to specific user authorities.
+はい！　クラスまたはメソッドにSpring Securityの`@Secured`アノテーションを追加し、生成された`AuthoritiesConstants`クラスを使用して特定のユーザー権限へのアクセスを制限します。
 
-## Can we proxy it from our Microservice Gateway dev server?
+## Microservice Gateway開発サーバからプロキシすることはできますか?
 
-Yes! By adding the servicename to the context of the proxy in webpack/webpack.dev.js
+はい！　webpack/webpack.dev.jsのプロキシのコンテキストにサービス名を追加します。
 ```javascript
 module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
     devtool: 'eval-source-map',
