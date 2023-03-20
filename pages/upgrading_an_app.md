@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Updating an application
+title: アプリケーションのアップグレード
 permalink: /upgrading-an-application/
 sitemap:
     priority: 0.7
@@ -8,50 +8,50 @@ sitemap:
 gitgraph: http://jsfiddle.net/lordlothar99/tqp9gyu3
 ---
 
-# <i class="fa fa-refresh"></i> Upgrading an application
+# <i class="fa fa-refresh"></i> アプリケーションのアップグレード
 
-## Summary
+## サマリー
 
-1. [Option 1 - automatic upgrade](#automatic_upgrade)
-2. [Option 2 - manual upgrade](#manual_upgrade)
+1. [選択1 - 自動アップグレード](#automatic_upgrade)
+2. [選択2 - 手動アップグレード](#manual_upgrade)
 
-<h2 id="automatic_upgrade">Option 1 - automatic upgrade</h2>
+<h2 id="automatic_upgrade">選択1 - 自動アップグレード</h2>
 
-When a new version of JHipster is released, the JHipster upgrade sub-generator helps upgrading an existing application to this new version, without erasing your changes.
+JHipsterの新しいバージョンがリリースされると、JHipsterアップグレードサブジェネレータは、変更を消去することなく、既存のアプリケーションを新しいバージョンにアップグレードするのを手助けします。
 
-This is helpful to:
+これは、以下の場合に役立ちます。
 
-- Have the latest JHipster features in an existing application
-- Get the changes when there is an important bug fix or security update
-- Retain your changes in your codebase, and merge them with newly generated code
+- 既存のアプリケーションに最新のJHipsterの機能を搭載させる
+- 重要なバグ修正またはセキュリティ更新がある場合に変更を取得する
+- コードベースに加えた変更を保持し、新しく生成されたコードとマージする
 
-_Please read this page carefully before doing an upgrade, to understand how the upgrade process works_
+_アップグレードを行う前にこのページをよく読んで、アップグレードプロセスがどのように機能するかを理解してください_
 
-### Requirements
+### 要件
 
-For this sub-generator to work you need to have `git` installed from [http://git-scm.com](http://git-scm.com/).
+このサブジェネレータを動作させるには、[http://git-scm.com](http://git-scm.com/)から`git`をインストールする必要があります。
 
-### Running the upgrade sub-generator
+### アップグレードサブジェネレータの実行
 
-Go into the application's root directory:
+アプリケーションのルートディレクトリに移動します。
 
 `cd myapplication/`
 
-To upgrade your application, type:
+アプリケーションをアップグレードするには、次のように入力します。
 
 `npx jhipster upgrade`
 
-Here are the options you can pass:
+渡すことができるオプションは以下のとおりです。
 
-* `--verbose` - Log each step of the upgrade process in detail
-* `--target-version 6.6.0` - Upgrade to the target version of JHipster instead of the latest release, useful if a project is several versions behind
-* `--target-blueprint-versions kotlin@1.4.0,vuejs@1.3.0` - Upgrade to the target blueprints version instead of the latest release of each blueprint. The target version of a blueprint should however be compatible with the target JHipster version. 
-* `--force` - Run the upgrade sub-generator even if no new JHipster version is available
-* `--skip-checks` - Disable checks during project regeneration
-* `--skip-install` - Skips installing dependencies during the upgrade process
-* `--silent` - Hides output of the generation process
+* `--verbose` - アップグレードプロセスの各ステップを詳細に記録します。
+* `--target-version 6.6.0` - 最新リリースではなく、ターゲットバージョンのJHipsterにアップグレードします。プロジェクトが数個のバージョン分遅れている場合に便利です。
+* `--target-blueprint-versions kotlin@1.4.0,vuejs@1.3.0` - 各Blueprintの最新リリースではなく、ターゲットのBlueprintのバージョンにアップグレードします。ただし、Blueprintのターゲットバージョンは、ターゲットのJHipsterバージョンと互換性がある必要があります。
+* `--force` - 新しいJHipsterバージョンが利用できない場合でも、アップグレードサブジェネレータを実行します。
+* `--skip-checks` - プロジェクトの再生成時のチェックを無効にします。
+* `--skip-install` - アップグレードプロセス中の依存関係のインストールをスキップします。
+* `--silent` - 生成プロセスの出力を非表示にします。
 
-If you are doing the upgrade more than once you could consider to first upgrade the JHipster tree like this:
+複数回アップグレードする場合は、最初に次のようにJHipsterツリーをアップグレードすることを検討できます。
 	
     git checkout jhipster_upgrade
 	git checkout --patch master .yo-rc.json
@@ -60,125 +60,125 @@ If you are doing the upgrade more than once you could consider to first upgrade 
 	git push --set-upstream origin jhipster_upgrade
 	git checkout master
 
-With doing the above you upgrade the jhipster_upgrade tree with your latest changes so JHipster can make use of that during the upgrade. For example when you changed your model.
+上記の手順を実行すると、jhipster_upgradeツリーが最新の変更内容でアップグレードされるため、JHipsterはアップグレード中にそのツリーを利用できます。たとえば、モデルを変更した場合などです。
 
-### Graphical view of the upgrade process
+### アップグレードプロセスをグラフィカルに表示
 
-Here is how the upgrade process works graphically (read the sections below to have a textual explanation):
+以下にアップグレードプロセスの動作を図で示します（テキストによる説明については、次のセクションを参照してください）。
 
 ![GitGraph]({{ site.url }}/images/upgrade_gitgraph.png)
 
-(this image comes from [JSFiddle](http://jsfiddle.net/lordlothar99/tqp9gyu3/) )
+（イメージは[JSFiddle](http://jsfiddle.net/lordlothar99/tqp9gyu3/)より（[日本語バージョンはこちら](https://jsfiddle.net/hide212131/gsxmucap/10/)））
 
-Please note that the `jhipster_upgrade` branch will be created orphan on your project, although it doesn't display correctly on the above graph.
+上のグラフでは正しく表示されていませんが、`jhipster_upgrade`ブランチはプロジェクトで孤立して作成されることに注意してください。
 
-### Step-by-step explanation of the upgrade process
+### アップグレードプロセスの段階的な説明
 
-Below are the steps processed by the JHipster upgrade sub-generator:
+JHipsterアップグレードサブジェネレータによって処理される手順は以下のとおりです。
 
-1. Check if there is a new version of JHipster available (not applicable if you are using `--force`).
-2. Check if the application is already initialized as a `git` repository, or else JHipster will initialize one for you and commit the current codebase to the master branch.
-3. Check to ensure that there are no un-committed local changes in the repository. The process will exit if there are un-committed changes found.
-4. Check if a `jhipster_upgrade` branch exists. If not, a branch is created: details about this step is provided in the "Specific steps on first upgrade" section.
-5. Checkout the `jhipster_upgrade` branch.
-6. Upgrade JHipster to the latest available version globally.
-7. Clean the current project directory.
-8. Re-generate the application using the `jhipster --force --with-entities` command.
-9. Commit the generated code to the `jhipster_upgrade` branch.
-10. Merge the `jhipster_upgrade` branch back to the original branch from where the `npx jhipster upgrade` command was launched.
-11. Now you need to proceed with resolving merge conflicts if there are any.
+1. 新しいバージョンのJHipsterが利用可能かどうかをチェックします（`--force`を使用している場合は適用されません）。
+2. アプリケーションがすでに`git`リポジトリとして初期化されているかどうかをチェックします。そうでない場合は、JHipsterがリポジトリを初期化し、現在のコードベースをmasterブランチにコミットします。
+3. リポジトリにコミットされていないローカル変更がないことを確認します。コミットされていない変更が見つかった場合、プロセスは終了します。
+4. `jhipster_upgrade`ブランチが存在するかどうかをチェックします。存在しない場合は、ブランチが作成されます。このステップの詳細については、「最初のアップグレードの具体的な手順」のセクションを参照してください。
+5. `jhipster_upgrade`ブランチをチェックアウトします。
+6. JHipsterを利用可能な最新バージョンにグローバルにアップグレードします。
+7. 現在のプロジェクトフォルダをクリーンアップします。
+8. `jhipster --force --with-entities`コマンドを使用してアプリケーションを再生成します。
+9. 生成されたコードを`jhipster_upgrade`ブランチにコミットします。
+10. `npx jhipster_upgrade`コマンドが起動された元のブランチに`jhipster_upgrade`ブランチをマージして戻します。
+11. ここで、マージ競合がある場合は、それを解決する必要があります。
 
-Congratulations, your application is now upgraded with the latest version of JHipster!
+おめでとうございます。アプリケーションが最新バージョンのJHipsterにアップグレードされました。
 
-### Specific steps on first upgrade
+### 最初のアップグレードの具体的な手順
 
-On the first run of the JHipster upgrade sub-generator, in order to avoid erasing all your changes, some additional steps are run:
+JHipsterアップグレードサブジェネレータの最初の実行では、すべての変更が消去されないようにするため、いくつかの追加手順が実行されます。
 
-1. A `jhipster_upgrade` branch is created orphan (it has no parent).
-2. The whole application is generated (using your current JHipster version).
-3. A block-merge commit is made on the `master` branch: no alteration is made on your codebase on the `master` branch; this is a practical way to record in Git that the HEAD of `master` is up-to-date with the current JHipster version.
+1. `jhipster_upgrade`ブランチが孤立して作成されます（親がありません）。
+2. アプリケーション全体が生成されます（現在のJHipsterバージョンを使用）。
+3. ブロック・マージ（訳注：[Oursマージストラテジでのマージのようです](https://github.com/jhipster/generator-jhipster/issues/3696#issuecomment-225164954)）コミットが`master`ブランチで行われます。`master`ブランチのコードベースは変更されません。これは、`master`のHEADが現在のJHipsterバージョンで最新であることをGitに記録するための実用的な方法です。
 
-#### Advice
+### アドバイス
 
-- Don't commit anything on the `jhipster_upgrade` branch. This branch is dedicated to the JHipster upgrade sub-generator: each time the sub-generator is run, a new commit will be created.
+- `jhipster_upgrade`ブランチでは何もコミットしないでください。このブランチはJHipsterアップグレードサブジェネレータ専用です。サブジェネレータが実行されるたびに、新しいコミットが作成されます。
 
-- If you are updating from a very old version (example from 5.0.0 to latest) we suggest updating gradually between each minor/patch version and performing tests to make sure the application works as expected. 
+- 非常に古いバージョン（5.0.0から最新など）からアップデートする場合は、各マイナー/パッチバージョンの間に徐々にアップデートし、アプリケーションが期待どおりに動作することを確認するためのテストを実行することをお勧めします。
 
-- There are some helpful approaches from the JHipster community around designing the application in such a way that makes the update process easier, and reduces the amount of merge conflicts. We recommend using [JHipster Side-by-Side approach](https://www.youtube.com/watch?v=Gg5CYoBdpVo).  
+- 更新プロセスを容易にし、マージ競合の量を減らすような方法でアプリケーションを設計することに関して、JHipsterコミュニティからいくつかの有用なアプローチがあります。[JHipsterのSide-by-Sideアプローチ](https://www.youtube.com/watch?v=Gg5CYoBdpVo)の使用をお勧めします。
 
-<h2 id="manual_upgrade">Option 2 - manual upgrade</h2>
+<h2 id="manual_upgrade">選択2 - 手動アップグレード</h2>
 
-For a manual upgrade, first upgrade your version of JHipster with:
+手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
 
 ```
 npm install -g generator-jhipster
 ```
 
-Delete your project `node_modules` folder and then run:
+プロジェクトの`node_modules`フォルダを削除し、次のコマンドを実行します。
 
 ```
 jhipster
 ```
 
-You can also update your project and all its entities by running
+次のコマンドの実行で、プロジェクトとそのすべてのエンティティの更新もできます。
 
 ```
 jhipster --with-entities
 ```
 
-You can also update your entities one-by-one by running again the entity sub-generator, for example if your entity is named _Foo_
+また、エンティティサブジェネレータを再度実行して、エンティティの1つずつの更新もできます。たとえば、エンティティの名前が _Foo_ の場合は次のとおりです。
 
 ```
 jhipster entity Foo
 ```
 
-### Hints about renamed files
+### 名前を変更したファイルに関するヒント
 
-Sometimes files may be renamed in the generator. If you want to see Git rename detection result then you can run `git add` (`git add .` stages all) and view changes after that with your favorite Git client.
+ジェネレータ内でファイルの名前が変更されることがあります。Gitの名前変更の検出結果を確認したい場合は、`git add`（`git add .` で全てをステージングへ）を実行し、その後の変更をお気に入りのGitクライアントで確認できます。
 
-If many files are renamed then you may want to increase `diff.renameLimit` in Git config to make Git rename detection work as expected. For example `git config --replace-all diff.renameLimit 10000`.
+多くのファイルの名前が変更された場合、Gitの名前変更の検出が期待通りに動作するように、Git設定の`diff.renameLimit`を増やしたい場合があります。例えば、`git config --replace-all diff.renameLimit 10000`です。
 
-By default Git rename detection uses similarity threshold 50%. To see less similar files as renamed, you can use option `--find-renames=<n>` in Git commands. For example `git diff --staged --find-renames=30`.
+デフォルトでは、Gitの名前変更の検出は50％の類似性しきい値を使用します。名前が変更されたファイルの類似度を低くするには、Gitコマンドでオプション`--find-renames=<n>`を使用できます。たとえば、`git diff --staged --find-renames=30`です。
 
-### See your own changes
+### 独自の変更を表示
 
-If you would like to see changes you have done after generating project you can follow the steps described below.
+プロジェクトの生成後に行った変更を確認するには、次の手順に従います。
 
-Clone your project into the new folder with `git clone`.
+`git clone`を使用して、プロジェクトを新しいフォルダにクローンします。
 
-Delete all files and folders from cloned project except `.git`, `.jhipster` and `.yo-rc.json`.
+`.git`、`.jhipster`および`.yo-rc.json`を除くすべてのファイルとフォルダをクローンプロジェクトから削除します。
 
-Find out what JHipster version you used last time to generate your project: look at the `.yo-rc.json` in the project root folder, find out the value of the `jhipsterVersion`.
+前回プロジェクトを生成したときに使用したJHipsterのバージョンを調べます。プロジェクトルートフォルダの`.yo-rc.json`を見て、`jhipsterVersion`の値を調べます。
 
-Install JHipster version you used last time you generated your project:
+前回プロジェクトを生成したときに使用したバージョンのJHipsterをインストールします。
 
 ```
-npm install -g generator-jhipster@jhipsterVersionYouUsedLastTime
+npm install -g generator-jhipster@前回使用したJHipsterのバージョン
 ```
 
-Regenerate your project:
+プロジェクトを再生成します。
 
 ```
 jhipster --force --with-entities --skip-install
 ```
 
-With `git diff` you can now see all your changes as reverted. If you would like to see all your changes as added then you can commit all to Git and then revert the last commit.
+`git diff`を使用すると、すべての変更が打ち消し（revert）された状態として確認できます。すべての変更を追加（add）された状態として確認したい場合は、すべてをGitにコミットしてから、前回のコミットを打ち消しします。
 
-### See JHipster changes
+### JHipsterの変更点を参照
 
-If you would like to see changes done by JHipster you can follow the steps described below.
+JHipsterによる変更を確認したい場合は、以下の手順に従ってください。
 
-Generate project with JHipster version you used last time to generate your project:
-* create a new folder
-* copy your project `.yo-rc.json` file and `.jhipster` folder into this new folder
-* find out what JHipster version you used last time to generate your project: look at the `.yo-rc.json`, find out the value of the `jhipsterVersion`
-* install JHipster version you used last time to generate your project: `npm install -g generator-jhipster@jhipsterVersionYouUsedLastTime`
-* in the created folder run: `jhipster --with-entities --skip-install`
+前回プロジェクトの生成に使用したJHipsterバージョンでプロジェクトを生成します。
+* 新しいフォルダを作成します。
+* プロジェクト`.yo-rc.json`ファイルと`.jhipster`フォルダをこの新しいフォルダにコピーします。
+* 前回プロジェクトを生成したときに使用したJHipsterのバージョンを調べます。`.yo-rc.json`を見て、`jhipsterVersion`の値を調べます。
+* 前回プロジェクトの生成に使用したJHipsterのバージョンをインストールします：`npm install-g generator-jhipster@前回使用したJHipsterのバージョン`
+* 作成したフォルダで、次のコマンドを実行します：`jhipster --with-entities --skip-install`
 
-Generate project with the latest JHipster:
-* create a new folder
-* copy your project `.yo-rc.json` file and `.jhipster` folder into this new folder
-* install the latest JHipster version: `npm install -g generator-jhipster`
-* in the created folder run: `jhipster --with-entities --skip-install`
+最新のJHipsterでプロジェクトを生成します。
+* 新しいフォルダを作成します。
+* プロジェクト`.yo-rc.json`ファイルと`.jhipster`フォルダをこの新しいフォルダにコピーします。
+* 最新のJHipsterバージョンをインストールします：`npm install -g generator-jhipster`
+* 作成したフォルダで、次のコマンドを実行します：`jhipster --with-entities --skip-install`
 
-Compare those 2 folders with your favorite file and folder compare tool to see changes done by JHipster.
+これらの2つのフォルダをお好きなファイルおよびフォルダ比較ツールと比較して、JHipsterによって行われた変更を確認します。
