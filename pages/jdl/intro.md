@@ -41,7 +41,7 @@ JDLがまだわからない場合は、まず[JHipsterドメイン言語（JDL�
 
 ただし、すでにJDLに精通していて、JDLを使用して何ができるかを知っている場合は、詳細の参照もできます。
 マニュアルは以下です。
-  1. [利用方法](/jdl/applications)
+  1. [アプリケーション](/jdl/applications)
   1. [エンティティとフィールド](/jdl/entities-fields)
   1. [列挙型](/jdl/enums)
   1. [リレーションシップ](/jdl/relationships)
