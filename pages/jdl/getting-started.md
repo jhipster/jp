@@ -1,15 +1,15 @@
 ---
 layout: default
-title: JHipsterドメイン言語（JDL）入門
+title: JHipsterドメイン言語(JDL) - 入門
 permalink: /jdl/getting-started
 sitemap:
   priority: 0.5
   lastmod: 2021-03-08T12:00:00-00:00
 ---
 
-# <i class="fa fa-star"></i> JHipsterドメイン言語（JDL）入門
+# <i class="fa fa-star"></i> JHipsterドメイン言語（JDL） - 入門
 
-## まとめ
+## 概要
 
 このページでは、JDLとアプリケーションとその周辺のすべてを作成する方法について学びます。
 

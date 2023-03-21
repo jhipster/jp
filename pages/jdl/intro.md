@@ -37,7 +37,7 @@ _[JHipsterドメイン言語](https://github.com/jhipster/jhipster-core/)が気�
 
 ---
 
-JDLがまだわからない場合は、まず[JHipsterドメイン言語（JDL）入門](/jdl/getting-started)ページにアクセスすることをお勧めします。
+JDLがまだわからない場合は、まず[JHipsterドメイン言語(JDL) - 入門](/jdl/getting-started)ページにアクセスすることをお勧めします。
 
 ただし、すでにJDLに精通していて、JDLを使用して何ができるかを知っている場合は、詳細の参照もできます。
 マニュアルは以下です。

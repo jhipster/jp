@@ -9,7 +9,7 @@ sitemap:
 
 # <i class="fa fa-star"></i> JHipsterドメイン言語(JDL) - アプリケーション
 
-## まとめ
+## 概要
 
 1.  [構文](#syntax)
 1.  [アプリケーションのオプション](#options-in-applications)
