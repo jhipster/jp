@@ -1,62 +1,62 @@
 ---
 layout: default
-title: JHipster Domain Language - Relationships
+title: JHipsterドメイン言語 - リレーションシップ
 permalink: /jdl/relationships
 sitemap:
     priority: 0.5
     lastmod: 2019-11-03T12:00:00-00:00
 ---
 
-# <i class="fa fa-star"></i> JHipster Domain Language (JDL) - Relationships
+# <i class="fa fa-star"></i> JHipsterドメイン言語(JDL) - リレーションシップ
 
 ## Summary
 
-1. [Relationship types](#relationship-types)
-1. [Relationship methods](#relationship-methods)
-1. [Multiple relationship bodies](#multiple-relationship-bodies)
-1. [Syntax](#syntax)
-1. [Examples](#examples)
-   1. [Basic example](#basic-example)
-   1. [With injected fields](#with-injected-fields)
-   1. [With joint fields](#with-joint-fields)
-   1. [With methods](#with-methods)
-   1. [With required sides](#with-required-sides)
-   1. [Reflexive relationships](#reflexive-relationships)
-   1. [Commenting](#commenting)
+1. [リレーションシップの種類](#リレーションシップの種類)
+1. [リレーションシップのメソッド](#リレーションシップのメソッド)
+1. [複数のリレーションシップのボディ](#複数のリレーションシップのボディ)
+1. [構文](#構文)
+1. [例](#例)
+   1. [基本の例](#基本の例)
+   1. [注入フィールド](#注入フィールド)
+   1. [結合フィールド](#結合フィールド)
+   1. [メソッド](#メソッド)
+   1. [必須のサイド](#必須のサイド)
+   1. [再帰リレーションシップ](#再帰リレーションシップ)
+   1. [コメント](#コメント)
 
 ---
 
-### Relationship types
+### リレーションシップの種類
 
-Mentioned after the `relationship` keyword.
+キーワード`relationship`の後に記述されます。
 
-There are four relationship types:
+次の4つのリレーションシップタイプがあります。
   - `OneToOne`
   - `OneToMany`
   - `ManyToOne`
   - `ManyToMany`
 
-To know more about relationships and what's possible to achieve, you can head
-to [the dedicated page](/managing-relationships).
+リレーションシップについてと何を達成できるかについてもっと知りたい場合は
+[専用ページ](/managing-relationships)を参照ください。
 
-A note on plural names: JHipster handles them so that you don't have to in your relationships.
-
----
-
-### Relationship methods
-
-Mentioned after the source and destination entity, used with the `with` keyword.
-
-Supported methods:
-  - `jpaDerivedIdentifier`: `@MapsId` is used for the association (**applicable only for OneToOne**)
+名前を複数形にすることに関する注意：JHipsterはそれらを処理するので、リレーションシップの中で処理する必要はありません。
 
 ---
 
-### Multiple relationship bodies
+### リレーションシップのメソッド
 
-If you're tired of having _n_ relationships of the same type in your JDL file, don't worry! There's a solution.
+元のエンティティと先のエンティティの後に記述され、`with`キーワードとともに使用されます。
 
-Take this JDL sample for instance:
+サポートされているメソッドは以下です。
+  - `jpaDerivedIdentifier`: `@MapsId`は、関連付けに使用されます。 (**OneToOneにのみ適用可能**)
+
+---
+
+### 複数のリレーションシップのボディ
+
+JDLファイルに同じタイプの _n_ 個のリレーションシップがあることにうんざりしている場合でも、心配する必要はありません。解決策はあります。
+
+例えば、次のJDLサンプルを見てください。
 ```jdl
 relationship OneToOne {
   A to B
@@ -72,7 +72,7 @@ relationship OneToOne {
 }
 ```
 
-The solution consists in having every relationship body inside on relationship declaration, like this:
+解決策として、次のように、リレーションシップ宣言内にすべてのリレーションシップ本体を含めることができます。
 ```jdl
 relationship OneToOne {
   A to B,
@@ -82,37 +82,37 @@ relationship OneToOne {
 }
 ```
 
-This syntax is really useful when:
-  - You have lots of relationships of the same type,
-  - You want to know what the relationships are,
-  - You don't want to waste time looking for them in your JDL file(s)
+この構文は、次の場合に非常に役立ちます。
+  - 同じタイプのリレーションシップをたくさん持っている場合
+  - どのようなリレーションシップがあるかを知りたい場合
+  - JDLファイルでそれらを探すために時間を無駄にしたくない場合
 
 ---
 
-### Syntax
+### 構文
 
-Relationship declaration is done as follows:
+リレーションシップの宣言は次のように行われます。
 ```
 relationship (OneToMany | ManyToOne | OneToOne | ManyToMany) {
   <from entity>[{<relationship name>[(<display field>)]}] to <to entity>[{<relationship name>[(<display field>)]}]+
 }
 ```
 
-  - `(OneToMany | ManyToOne| OneToOne | ManyToMany)` is the type of your relationship,
-  - `<from entity>` is the name of the entity owner of the relationship: the source,
-  - `<to entity>` is the name of the entity where the relationship goes to: the destination,
-  - `<relationship name>` is the name of the field having the other end as type,
-  - `<display field>` is the name of the field that should show up in select boxes (default: `id`),
-  - `required` whether the injected field is required.
-  - `with jpaDerivedIdentifier` whether `@MapsId` is used for the association (applicable only for one-to-one)
-  - And you can have more than one relationship body
-    - See the [Multiple relationship bodies](#multiple-relationship-bodies) section for more info!
+  - `(OneToMany | ManyToOne| OneToOne | ManyToMany)`はリレーションシップのタイプです。
+  - `<from entity>`は、リレーションシップのエンティティの所有者の名前です：いわゆる「元」です。
+  - `<to entity>`は、リレーションシップの先となるエンティティの名前です：いわゆる「先」です。
+  - `<relationship name>`は、もう一方の端をタイプとするフィールドの名前です。
+  - `<display field>`は、選択ボックスに表示されるフィールドの名前です（デフォルト：`id`）。
+  - `required`注入されたフィールドが必須かどうか。
+  - `with jpaDerivedIdentifier`は、関連付けに`@MapsId`が使用されているかどうかを示します（1対1の場合のみ適用可能）。
+  - 複数のリレーションシップ主体を持つことができます。
+    - 詳細については、[複数のリレーションシップのボディ](#複数のリレーションシップのボディ)セクションを参照してください。
 
 ---
 
-### Examples
+### 例
 
-#### Basic example
+#### 基本の例
 
 ```jdl
 relationship OneToOne {
@@ -120,26 +120,26 @@ relationship OneToOne {
 }
 ```
 
-Note that this example is the same as:
+この例は以下の例と同じです。
 ```jdl
 relationship OneToOne {
   A{b} to B{a}
 }
 ```
-Not specifying an injected field is the short form of having a bidirectional relationship.
+注入されたフィールドを指定しないことで、短い形式で双方向のリレーションシップを持たせます。
 
-Another example:
+別の例です。
 ```jdl
 relationship OneToOne {
   A{b} to B
 }
 ```
-This will generate a unidirectional relationship. You can only find entity B through entity A, but you cannot find entity A through entity B.
+これにより、単一方向のリレーションシップが生成されます。エンティティBはエンティティAを介してのみ探索できますが、エンティティAはエンティティBを介して探索できません。
 
 
 ---
 
-#### With injected fields
+#### 注入フィールド
 
 ```jdl
 relationship ManyToMany {
@@ -147,14 +147,14 @@ relationship ManyToMany {
 }
 ```
 
-This is a bidirectional relationship, meaning that both entities will be generated with an "instance" of the other
-entity.
+これは双方向のリレーションシップです。つまり、両方のエンティティがもう一方のエンティティの「インスタンス」を持って
+生成されます。
 
 ---
 
 ---
 
-#### With methods
+#### メソッド
 
 ```jdl
 relationship OneToOne {
@@ -164,22 +164,22 @@ relationship OneToOne {
 
 ---
 
-#### With required sides
+#### 必須のサイド
 
-Used to make at least one relationship side required.
+少なくとも1つのリレーションシップサイドを必須にするために使用します。
 
 ```jdl
 relationship ManyToMany {
   A{b required} to B{a}
 }
 
-// or
+// または
 
 relationship ManyToMany {
   A{b} to B{a required}
 }
 
-or
+または
 
 relationship ManyToMany {
   A{b(name) required} to B{a required}
@@ -188,9 +188,9 @@ relationship ManyToMany {
 
 ---
 
-#### Reflexive relationships
+#### 再帰リレーションシップ
 
-A reflexive relationship is a relationship whose source & destination entities are the same.
+再帰リレーションシップは、元と先のエンティティが同じリレーションシップです。
 
 ```jdl
 relationship ManyToMany {
@@ -200,32 +200,32 @@ relationship ManyToMany {
 
 ---
 
-#### A note on required reflexive relationships
+#### 必須な再帰リレーションシップに関する注意
 
-As noted [here](https://github.com/jhipster/generator-jhipster/issues/11495), required relationships to the same entity
-are not supported. The issue is that a child must **always** have a parent, which in turn must have one too, etc.
-A possible workaround is to have explicit root and children entities.
+[ここ](https://github.com/jhipster/generator-jhipster/issues/11495)で指摘されているように、同じエンティティとの必須なリレーションシップ
+はサポートされていません。必須とは、子は**常に**親を持たなければならず、親も常に親を持たなければならない、といったことです。
+可能な回避策は、明示的なルートおよび子エンティティを持つことです。
 
 ----
 
-#### Commenting
+#### コメント
 
-Adding comments for relationships is possible:
+リレーションシップにコメントを追加できます。
 
 ```jdl
 relationship OneToOne {
-  /** This comment will be put before b in entity A*/
+  /** このコメントはエンティティAのbの前に置かれます*/
   A{b}
   to
-  /** This comment will be put before a in entity B*/
+  /** このコメントはエンティティBのaの前に置かれます*/
   B{a}
 }
 ```
 
-The same commenting rules are applied here.
-These comments will later be added as Javadoc comments by JHipster. The JDL possesses its own kind of comment:
-  - // an ignored comment
-  - /** not an ignored comment */
+ここでもこれまでと同じコメント規則が適用されます。
+これらのコメントは、後でJHipsterによってJavadocコメントとして追加されます。JDLには独自のコメントがあります。
+  - // 無視されるコメント
+  - /** 無視されるコメントではありません */
 
-Therefore, anything that starts with `//` is considered an internal comment for JDL, and will not be counted as Javadoc.
-Please note that the JDL Studio directives that start with `#` will be ignored during parsing.
+したがって、`//`で始まるものはすべてJDLの内部コメントと見なされ、Javadocとしてカウントされません。
+`#`で始まるJDL Studioディレクティブは、構文解析中に無視されることに注意してください。
