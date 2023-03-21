@@ -1,27 +1,27 @@
 ---
 layout: default
-title: JHipster Domain Language - Enums
+title: JHipsterドメイン言語(JDL) -  列挙型型
 permalink: /jdl/enums
 sitemap:
     priority: 0.5
     lastmod: 2019-10-27T12:00:00-00:00
 ---
 
-# <i class="fa fa-star"></i> JHipster Domain Language (JDL) - Enums
+# <i class="fa fa-star"></i> JHipsterドメイン言語(JDL) - 列挙型
 
-## Summary
+## 概要
 
-1. [Syntax](#syntax)
-1. [Examples](#examples)
-   1. [Basic example](#basic-example)
-   1. [With values](#with-values)
-   1. [Commenting](#commenting)
+1. [構文](#構文)
+1. [例](#例)
+   1. [基本の例](#基本の例)
+   1. [値](#値)
+   1. [コメント](#コメント)
 
 ---
 
-### Syntax
+### 構文
 
-Enumeration declaration is done as follows:
+列挙型の宣言は次のように行われます。
 
 ```
 enum <enum name> {
@@ -29,15 +29,16 @@ enum <enum name> {
 }
 ```
 
-  - Enumeration entry values are mandatory
-    - And uppercase keys must be used
-  - Enumeration entry values are optional, and must be wrapped inside parenthesises
+  - 列挙型エントリの値は必須です。
+  - 大文字のキーを使用する必要があります。
+  - 列挙型エントリの値はオプションです。丸カッコで囲む必要があります。
 
 ---
 
-### Examples
+### 例
 
-#### Basic example
+
+#### 基本の例
 
 ```jdl
 enum Country {
@@ -47,7 +48,7 @@ enum Country {
 }
 ```
 
-And its use:
+使用方法は以下です。
 
 ```jdl
 enum Country {}
@@ -59,9 +60,9 @@ entity A {
 
 ---
 
-#### With values
+#### 値
 
-Starting from JHipster Core v6, enum values can have explicit values:
+JHipster Core v6以降では、enum値は明示的な値を持つことができます。
 
 ```jdl
 enum Country {
@@ -74,16 +75,16 @@ enum Country {
 
 ---
 
-#### Commenting
+#### コメント
 
-Just like relationships, entities and fields, commenting is possible for enums, with the same rules.
+リレーションシップ、エンティティ、フィールドと同じように、同じルールでenumにコメントを付けることができます。
 
-Comments will later be added as Javadoc comments by JHipster. The JDL possesses its own kind of comment:
-  - // an ignored comment
-  - /** not an ignored comment */
+コメントは、後でJHipsterによってJavadocコメントとして追加されます。JDLには独自のコメントがあります。
+  - // 無視されるコメント
+  - /** 無視されるコメントではありません */
 
-Therefore, anything that starts with `//` is considered an internal comment for JDL, and will not be counted as Javadoc.
-Please note that the JDL Studio directives that start with `#` will be ignored during parsing.
+したがって、`//`で始まるものはすべてJDLの内部コメントと見なされ、Javadocとしてカウントされません。
+`#`で始まるJDL Studioディレクティブは、構文解析中に無視されることに注意してください。
 
 ```jdl
 /** This comment will be taken into account */
