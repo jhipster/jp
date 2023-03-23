@@ -1,47 +1,47 @@
 ---
 layout: default
-title: JHipster Domain Language - Troubleshooting
+title: JHipsterドメイン言語 - トラブルシューティング
 permalink: /jdl/troubleshooting
 sitemap:
     priority: 0.5
     lastmod: 2019-10-27T12:00:00-00:00
 ---
 
-# <i class="fa fa-star"></i> JHipster Domain Language (JDL)
+# <i class="fa fa-star"></i> JHipsterドメイン言語(JDL)
 
-## Troubleshooting
+## トラブルシューティング
 
-We tried to keep the syntax as friendly as we can for developers.
-You can do these things with it:
-  - Declare applications with their options and entities,
-  - Declare entities with their attributes,
-  - Declare the relationships between them,
-  - And declare some JHipster specific options.
+私たちは、開発者にとって構文をできるだけ使いやすいものにするよう努めました。
+これにより、次のことが可能になります。
+  - オプションとエンティティを使用してアプリケーションを宣言します。
+  - エンティティをその属性とともに宣言します。
+  - それらの間のリレーションシップを宣言します。
+  - JHipster固有のオプションをいくつか宣言します。
 
-If you wish to view the JDL's grammar, there is an HTML file available
-[here](https://github.com/jhipster/jhipster-core/blob/master/lib/dsl/gen/grammar.html).
-
----
-
-### The JDL import only finds one entity when matching MS baseName
-
-This is a known issue regarding the parsing system and fixing it is tricky.
-A workaround is to use different names for the microservice and the entities inside.
-
-See [JHipster Core issue #308](https://github.com/jhipster/jhipster-core/issues/308) for more information.
+JDLの文法は
+[こちら](https://github.com/jhipster/jhipster-core/blob/master/lib/dsl/gen/grammar.html)で見ることができます。
 
 ---
 
-<h2 id="issues">Issues and bugs</h2>
+### マイクロサービスのbaseNameとエンティティ名が一致する場合、JDLインポートで1つのエンティティしか検出されない
 
-The JDL is [available on GitHub](https://github.com/jhipster/jhipster-core), and follows the same
-[contributing guidelines as JHipster]( https://github.com/jhipster/generator-jhipster/blob/main/CONTRIBUTING.md).
+これは、構文解析システムに関する既知の問題であり、修正は困難です。
+回避策は、マイクロサービスと内部のエンティティに異なる名前を使用することです。
 
-Please use our project for submitting issues and Pull Requests concerning the library itself.
+詳細については、[JHipster Core issue#308](https://github.com/jhipster/jhipster-core/issues/308)を参照してください。
 
-- [JDL issue tracker](https://github.com/jhipster/jhipster-core/issues)
-- [JDL Pull Requests](https://github.com/jhipster/jhipster-core/pulls)
+---
 
-When submitting anything, you must be as precise as possible:  
-  - **One posted issue must only have one problem** (or one demand/question);  
-  - Pull requests are welcome, but the commits must be 'atomic' to really be understandable.  
+<h2 id="issues">イシューとバグ</h2>
+
+JDLは[GitHubで利用可能であり](https://github.com/jhipster/jhipster-core)、JHipsterと同じ
+[コントリビューションガイドライン]( https://github.com/jhipster/generator-jhipster/blob/main/CONTRIBUTING.md)に従っています。
+
+ライブラリ自体に関するイシューおよびプルリクエストの送信については、プロジェクトを使用してください。
+
+- [JDLイシュートラッカー](https://github.com/jhipster/jhipster-core/issues)
+- [JDLプルリクエスト](https://github.com/jhipster/jhipster-core/pulls)
+
+何かを送信するときは、できるだけ正確である必要があります。
+  - **1つの投稿されたイシューには、1つの問題**（または1つの要求/質問）のみが含まれている必要があります。
+  - プルリクエストは歓迎されますが、本当に理解できるようにするため、コミットは「アトミック」である必要があります。

@@ -1,39 +1,39 @@
 ---
 layout: default
-title: JHipster Domain Language - Deployments
+title: JHipsterドメイン言語 - デプロイメント
 permalink: /jdl/deployments
 sitemap:
     priority: 0.5
     lastmod: 2021-07-08T12:00:00-00:00
 ---
 
-# <i class="fa fa-star"></i> JHipster Domain Language (JDL) - Deployments
+# <i class="fa fa-star"></i> JHipsterドメイン言語(JDL) - デプロイメント
 
-## Summary
+## 概要
 
-1. [Syntax](#syntax)
-1. [Examples](#examples)
-1. [Available deployment options](#available-deployment-options)
+1. [構文](#構文)
+1. [例](#例)
+1. [使用可能なデプロイメントのオプション](#使用可能なデプロイメントのオプション)
 
 ---
 
-### Syntax
+### 構文
 
-The deployment declaration is done as follows:
+デプロイメント宣言は次のように行われます。
 
 ```
 deployment {
-  <deployment option name> <deployment option value>
+  <デプロイメントオプション名> <デプロイメントオプション値>
 }
 ```
 
-  - Similar to applications, deployment declaration works by specifying option keys & values
+  - アプリケーションと同様に、オプションのキーと値を指定することでデプロイメント宣言が機能します。
 
 ---
 
-### Examples
+### 例
 
-#### Basic example
+#### 基本の例
 
 ```jdl
 deployment {
@@ -45,19 +45,19 @@ deployment {
 
 ---
 
-#### More than one deployment
+#### 複数のデプロイメント
 
-If you want more than one deployment, here's how you do it:
+複数のデプロイメントが必要な場合は、次のようにします。
 
 ```
-// will be created under the 'docker-compose' folder
+// 'docker-compose'フォルダの下に作成されます
 deployment {
   deploymentType docker-compose
   appsFolders [foo, bar]
   dockerRepositoryName "yourDockerLoginName"
 }
 
-// will be created under the 'kubernetes' folder
+// 'kubernetes'フォルダの下に作成されます
 deployment {
   deploymentType kubernetes
   appsFolders [foo, bar]
@@ -65,32 +65,32 @@ deployment {
 }
 ```
 
-You can have one deployment per `deploymentType`. The applications defined in `appsFolders` should be in the same 
-folder where you are creating deployments or in the folder defined in `directoryPath`.
+`deploymentType`ごとに1つの配置を持つことができます。`appsFolders`で定義されたアプリケーションは、デプロイメントを作成するフォルダと同じフォルダ、または`directoryPath`
+で定義されたフォルダにある必要があります。
 
-For example, above you need to have a folder structure like this:
+たとえば、上記では、次のようなフォルダ構造が必要です。
 
 ```
 .
 ├── yourJdlFile.jdl
 ├── foo
 ├── bar
-├── kubernetes // will be created by the JDL
-└── docker-compose // will be created by the JDL
+├── kubernetes // JDLによって作成されます
+└── docker-compose // JDLによって作成されます
 ```
 
 ---
 
-### Available deployment options
+### 使用可能なデプロイメントのオプション
 
-Here are the deployment options supported in the JDL:
+JDLでサポートされているデプロイメントオプションは次のとおりです。
 
 <table class="table table-striped table-responsive">
   <tr>
-    <th>JDL option name</th>
-    <th>Default value</th>
-    <th>Possible values</th>
-    <th>Comment</th>
+    <th>JDLオプション名</th>
+    <th>デフォルト値</th>
+    <th>指定可能な値</th>
+    <th>コメント</th>
   </tr>
   <tr>
     <td>deploymentType</td>
@@ -102,24 +102,24 @@ Here are the deployment options supported in the JDL:
     <td>directoryPath</td>
     <td>"../"</td>
     <td></td>
-    <td>Relative path. Must be in double quotes</td>
+    <td>相対パス。二重引用符で囲む必要があります</td>
   </tr>
   <tr>
     <td>appsFolders</td>
     <td>[]</td>
     <td></td>
-    <td>Directory names for the applications separated by comma. Must be a list, example [foo, bar]</td>
+    <td>アプリケーションのディレクトリ名。カンマで区切られたリストである必要があります。例:[foo, bar]</td>
   </tr>
   <tr>
     <td>clusteredDbApps</td>
     <td>[]</td>
     <td></td>
-    <td>Directory names for the applications with clustered DB separated by comma. Must be a list, example [foo, bar]</td>
+    <td>クラスタ化されたDBを持つアプリケーションのディレクトリ名。カンマで区切られたリストである必要があります。例:[foo, bar]</td>
   </tr>
   <tr>
     <td>gatewayType</td>
     <td>SpringCloudGateway</td>
-    <td>Value is ignored when serviceDiscoveryType is `no`</td>
+    <td>serviceDiscoveryTypeが`no`の場合、値は無視されます</td>
   </tr>
   <tr>
     <td>monitoring</td>
@@ -137,72 +137,72 @@ Here are the deployment options supported in the JDL:
     <td>dockerRepositoryName</td>
     <td></td>
     <td></td>
-    <td>The name or URL of the docker repository. Must be in double quotes</td>
+    <td>Dockerリポジトリの名前またはURL。二重引用符で囲む必要があります</td>
   </tr>
   <tr>
     <td>dockerPushCommand</td>
     <td>"docker push"</td>
     <td></td>
-    <td>The docker push command to use. Must be in double quotes</td>
+    <td>使用するdocker pushコマンド。二重引用符で囲む必要があります</td>
   </tr>
   <tr>
     <td>kubernetesNamespace</td>
     <td>default</td>
     <td></td>
-    <td>Applicable only when deploymentType is kubernetes</td>
+    <td>deploymentTypeがkubernetesの場合にのみ適用可能</td>
   </tr>
   <tr>
     <td>kubernetesUseDynamicStorage</td>
     <td>false</td>
     <td>true, false</td>
-    <td>Applicable only when deploymentType is kubernetes, enables the kubernetesStorageClassName option</td>
+    <td>deploymentTypeがkubernetesの場合にのみ適用され、kubernetesStorageClassNameオプションが有効になります</td>
   </tr>
   <tr>
     <td>kubernetesStorageClassName</td>
     <td>""</td>
     <td></td>
-    <td>Applicable only when deploymentType is kubernetes, can be left empty (two double-quotes)</td>
+    <td>deploymentTypeがkubernetesの場合にのみ適用されます。空のままにすることができます(2つの二重引用符)</td>
   </tr>
   <tr>
     <td>kubernetesServiceType</td>
     <td>LoadBalancer</td>
     <td>LoadBalancer, NodePort, Ingress</td>
-    <td>Applicable only when deploymentType is kubernetes</td>
+    <td>deploymentTypeがkubernetesの場合にのみ適用可能</td>
   </tr>
   <tr>
     <td>ingressDomain</td>
     <td></td>
     <td></td>
-    <td>The domain for Ingress when kubernetesServiceType is `Ingress`. Must be in double quotes. Applicable only when deploymentType is kubernetes</td>
+    <td>kubernetesServiceTypeが`Ingress`の場合のIngressのドメイン。二重引用符で囲む必要があります。deploymentTypeがkubernetesの場合にのみ適用されます。</td>
   </tr>
   <tr>
     <td>ingressType</td>
     <td>nginx</td>
     <td>nginx, gke</td>
-    <td>The kubernetes ingress type, only set when `kubernetesServiceType` is set to Ingress</td>
+    <td>kubernetesのIngressタイプ。`kubernetesServiceType`がIngressに設定されている場合にのみ設定されます。</td>
   </tr>
   <tr>
     <td>istio</td>
     <td>false</td>
     <td>true, false</td>
-    <td>Applicable only when deploymentType is kubernetes</td>
+    <td>deploymentTypeがkubernetesの場合にのみ適用可能</td>
   </tr>
   <tr>
     <td>openshiftNamespace</td>
     <td>default</td>
     <td></td>
-    <td>Applicable only when deploymentType is openshift</td>
+    <td>deploymentTypeがopenshiftの場合にのみ適用可能</td>
   </tr>
   <tr>
     <td>storageType</td>
     <td>ephemeral</td>
     <td>ephemeral, persistent</td>
-    <td>Applicable only when deploymentType is openshift</td>
+    <td>deploymentTypeがopenshiftの場合にのみ適用可能</td>
   </tr>
   <tr>
     <td>registryReplicas</td>
     <td>2</td>
     <td></td>
-    <td>The number of replicas, when using the openshift deployment type</td>
+    <td>レプリカの数(deploymentTypeがopenshiftの場合)</td>
   </tr>
 </table>

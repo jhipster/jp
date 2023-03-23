@@ -1,84 +1,84 @@
 ---
 layout: default
-title: JHipster Domain Language - Getting Started
+title: JHipsterドメイン言語(JDL) - 入門
 permalink: /jdl/getting-started
 sitemap:
   priority: 0.5
   lastmod: 2021-03-08T12:00:00-00:00
 ---
 
-# <i class="fa fa-star"></i> JHipster Domain Language (JDL) - Getting Started
+# <i class="fa fa-star"></i> JHipsterドメイン言語（JDL） - 入門
 
-## Summary
+## 概要
 
-In this page, you'll learn about the JDL and how to create applications and everything around them.
+このページでは、JDLとアプリケーションとその周辺のすべてを作成する方法について学びます。
 
-1. [Generating content](#generating-content)
-   1. [Using files](#using-files)
-   1. [Using an inline JDL](#using-an-inline-jdl)
-1. [Applications](#generating-applications)
-1. [Entities](#generating-entities)
-1. [Fields](#generating-fields)
-1. [Enums](#enumerations)
-1. [Relationships](#adding-relationships)
-1. [Options](#options)
-1. [Deployments](#deployments)
-1. [Constants](#constants)
-1. [Exporting to a JDL file](#exporting-to-a-jdl-file)
+1. [コンテンツの生成](#コンテンツの生成)
+   1. [ファイルの使用](#ファイルの使用)
+   1. [インラインJDLの使用](#インラインjdlの使用)
+1. [アプリケーションの生成](#アプリケーションの生成)
+1. [エンティティの生成](#エンティティの生成)
+1. [フィールドの生成](#フィールドの生成)
+1. [列挙型](#列挙型)
+1. [リレーションシップの追加](#リレーションシップの追加)
+1. [オプション](#オプション)
+1. [デプロイ](#デプロイ)
+1. [定数](#定数)
+1. [JDLファイルへのエクスポート](#jdlファイルへのエクスポート)
 
 ---
 
-## Generating content
+## コンテンツの生成
 
-### Using files
+### ファイルの使用
 
-You can use JDL files to generate entities:
+JDLファイルを使用してエンティティを生成できます。
 
-- Create a file with the extension '.jh' or '.jdl',
-- Declare your applications, deployments, entities and relationships or create and download the file with [JDL-Studio](https://start.jhipster.tech/jdl-studio/) or [JHipster IDE](https://www.jhipster.tech/jhipster-ide/),
-- If you are creating only entities then run `jhipster jdl my_file.jdl` in your JHipster application's root folder.
-- If you are creating applications then run `jhipster jdl my_file.jdl` in a folder.
+- 拡張子が'.jh'または'.jdl'のファイルを作成します。
+アプリケーション、デプロイ、エンティティ、およびリレーションシップを宣言するか、または[JDL-Studio](https://start.jhipster.tech/jdl-studio/)や[JHipster IDE](https://www.jhipster.tech/jhipster-ide/)を使ってファイルを生成、ダウンロードします。
+- エンティティのみを作成する場合は、JHipsterアプリケーションのルートフォルダで`jhipster jdl my_file`を実行します。
+- アプリケーションを作成する場合は、フォルダ内で`jhipster jdl my_file.jdl`を実行します。
 
-and _Voilà_, you are done!
+_ジャジャーン_ おしまいです！
 
-If you work in a team, perhaps you would like to have multiple files instead of one.
-We added this option so that you don't manually concatenate all the files into one, you have to run:
+チームで作業する場合は、1つではなく複数のファイルが必要になることがあります。
+その場合、手動ですべてのファイルを1つに連結するのではなく、次のコマンドを実行します。
 
     jhipster jdl my_file1.jdl my_file2.jdl
 
-If you do not want to regenerate your entities while importing a JDL, you can use the `--json-only` flag to skip the
-entity creation part and create only the json files in `.jhipster` folder.
+JDLのインポート中にエンティティを再生成したくない場合は `--json-only` フラグを使用して
+エンティティ作成部分をスキップし、`.jhipster`フォルダ内のファイルのみを作成します。
 
     jhipster jdl ./my-jdl-file.jdl --json-only
 
-By default `jdl` regenerates only entities that have changed, if you want all your entities to be regenerated
-then pass in the `--force` flag.
-Please note that this will overwrite all your local changes to the entity files:
+デフォルトでは`jdl`は変更されたエンティティのみを再生成します。すべてのエンティティを再生成したい場合は
+`--force`フラグを渡します。
+これにより、エンティティファイルに対するローカルの変更がすべて上書きされることに注意してください。
 
     jhipster jdl ./my-jdl-file.jdl --force
 
-If you want to use it in your project, you can add do so by doing:
+JDLをプロジェクトで使用する場合は、次のようにして追加できます。
 
 - NPM: `npm install jhipster-core --save`
 - Yarn: `yarn add jhipster-core`
 
-to install it locally, and save it in your `package.json` file.
+ローカルにインストールされ、`package.json`に書き込まれます。
 
 ---
 
-### Using an inline JDL
+### インラインJDLの使用
 
-The other way to generate content is to pass a JDL code in your CLI, this way:
+コンテンツを生成するもう1つの方法は、次のようにCLIでJDLコードを渡すことです。
 `jhipster jdl --inline "application { config { baseName jhipster, applicationType microservice } }"`.
 
-This way of generating content is especially useful when generating entities.
+このコンテンツの生成方法は、エンティティを生成する場合に特に便利です。
 
 ---
 
-For now, we'll start with small JDL content to get to know the various ways to generate content.
-Explanations will be made in other sections about the syntax but focus is gonna be made on the generation here.
+ここでは、コンテンツを生成するさまざまな方法を理解するために、小さなJDLコンテンツから始めます。
+構文については他のセクションで説明しますが、ここでは生成に焦点を当てます。
 
-Here's the basic content we'll use:
+ここでは、基本的なコンテンツを使用します。
 
 ```jdl
 application {
@@ -89,16 +89,16 @@ application {
 }
 ```
 
-This is a very basic microservice application named "jhipster", and we'll see the various ways to generate a
-application from this sample.
+これは、"jhipster"という名前の非常に基本的なマイクロサービスアプリケーションです。このサンプルから
+アプリケーションを生成するさまざまな方法について説明します。
 
-You'll see that, with this little sample, you've managed to create an application from scratch.
+この小さなサンプルで、アプリケーションをゼロから作成できることがわかります。
 
 ---
 
-## Using a remote JDL file
+## リモートJDLファイルを使用する
 
-You can also use an URL with the `jdl` command. Just pass the URL instead of the file name as below
+URLは `jdl` コマンドを使用します。次のように、ファイル名の代わりにURLを渡してください。
 
 ```
 jhipster jdl https://my-site.com/my.jdl
@@ -107,16 +107,16 @@ jhipster jdl https://my-site.com/my.jdl
 jhipster jdl https://gist.githubusercontent.com/user/id/raw/id/myapp.jdl
 ```
 
-You can also fetch a remote JDL file from our [JDL sample repository](https://github.com/jhipster/jdl-samples) by just specifying the filename and we will automatically resolve the URL
+ファイル名を指定するだけで、[JDLサンプルリポジトリ](https://github.com/jhipster/jdl-samples)からリモートJDLファイルを取得もできます。URLは自動的に解決されます。
 
 ```
 jhipster jdl default.jdl
 ```
 
-## Generating applications
+## アプリケーションの生成
 
-As we've seen in the previous example, generating applications is quite straightforward, let's take the previous example
-and add more things to it:
+前の例で見たように、アプリケーションの生成は非常に簡単です。前の例を見てみましょう。
+さらに要素を追加します。
 
 ```jdl
 application {
@@ -129,47 +129,47 @@ application {
 }
 ```
 
-Let's break it down:
+内訳を見てみましょう。
 
-- `application` is the keyword to say you want to declare an application
-- `config` to say that you want to specify the configuration
-  - we'll later see that you can also declare entities in applications
-- `baseName`, `applicationType`, etc. are keywords to tweak the application
+- `application`は、アプリケーションであることの宣言を示すキーワードです。
+- `config`は、設定を宣言したいことを示します。
+  - 後で説明しますが、アプリケーションでエンティティの宣言もできます。
+- `baseName`、`applicationType`などは、アプリケーションを微調整するためのキーワードです。
 
-This is how you create an application using the JDL.
-To see all supported application options, head to [this page](/jdl/applications).
+これが、JDLを使用してアプリケーションを作成する方法です。
+サポートされているすべてのアプリケーションのオプションを確認するには、[このページ](/jdl/applications)に移動します。
 
 ---
 
-## Generating entities
+## エンティティの生成
 
-Generating entities is a bit less straightforward.
-You can also go to the dedicated [entity page](/jdl/entities-fields) to know more about what you can do with entities.
+エンティティの生成はそれほど簡単ではありません。
+専用の[エンティティページ](/jdl/entities-fields)にアクセスして、エンティティで実行できる操作の詳細を確認できます。
 
-### Generating a basic entity
+### 基本的なエンティティの生成
 
 ```jdl
 entity A
 ```
 
-This entity doesn't have fields, or even an explicit table name (even though JHipster sets one for you from the entity's
-name).
-This is the simplest way possible to declare an entity.
+このエンティティにはフィールドがなく、明示的なテーブル名もありません（ただしJHipsterはエンティティの
+名前からテーブル名を設定します）。
+これは、エンティティを宣言する最も簡単な方法です。
 
-Note that this form is equivalent to:
+この形式は次と同じです。
 
 ```jdl
 entity A(a) {}
 ```
 
-We've added a table name and braces.
-By default, JHipster generates a table name based on the specified entity name.
+テーブル名と中括弧が追加されました。
+デフォルトでは、JHipsterは指定されたエンティティ名に基づいてテーブル名を生成します。
 
-The braces are needed when declaring fields.
+中括弧は、フィールドを宣言するときに必要です。
 
-### Adding comments
+### コメントの追加
 
-This is the way to add a comment to an entity:
+エンティティにコメントを追加する方法は、次のとおりです。
 
 ```jdl
 /**
@@ -178,11 +178,11 @@ This is the way to add a comment to an entity:
 entity A
 ```
 
-If the backend is in Java, this will add a Javadoc comment.
+バックエンドがJavaの場合は、Javadocコメントが追加されます。
 
-### Entities in applications
+### アプリケーション内のエンティティ
 
-To only generate some entities in an application, the `entities` keyword can be used:
+アプリケーション内の一部のエンティティのみを生成するには、`entities`キーワードを使用できます。
 
 ```jdl
 application {
@@ -200,13 +200,13 @@ entity B
 entity C
 ```
 
-This is especially useful in microservice architectures.
+これはマイクロサービスアーキテクチャでは特に有用です。
 
 ---
 
-## Generating fields
+## フィールドの生成
 
-Fields are declared in entities, by specifying a body to an entity:
+フィールドは、エンティティに対してボディを指定することによって、エンティティで宣言されます。
 
 ```jdl
 entity MyEntity {
@@ -215,11 +215,11 @@ entity MyEntity {
 }
 ```
 
-There are more than these two types, check them out in the [entities & fields page](/jdl/entities-fields).
+これらの2つの型以外にもあります。[エンティティとフィールドのページ](/jdl/entities-fields)で確認してください。
 
-### Adding comments and validations
+### コメントと検証の追加
 
-The same way we've added comments to entities, we can add comments to fields:
+エンティティにコメントを追加したのと同じ方法で、フィールドにコメントを追加できます。
 
 ```jdl
 entity MyEntity {
@@ -228,13 +228,13 @@ entity MyEntity {
 }
 ```
 
-Validations depend on the field type, and are also detailed in the [entities & fields page](/jdl/entities-fields).
+検証はフィールド型によって異なり、[エンティティとフィールドのページ](/jdl/entities-fields)にも詳細が記載されています。
 
 ---
 
-## Enumerations
+## 列挙型
 
-Enumerations are types with fixed values:
+列挙型は、固定値を持つ型です。
 
 ```jdl
 enum Type {
@@ -247,17 +247,17 @@ entity E {
 }
 ```
 
-Notice how enumeration's values are optional.
+列挙型の値がオプションであることに注意してください。
 
-They only have one validation: `required`.
+ただ一つの`required`の検証を持っています。
 
-You can check the dedicated [enum page](/jdl/enums) for details about enums.
+enumの詳細については、専用の[enumページ](/jdl/enums)を確認できます。
 
 ---
 
-## Adding relationships
+## リレーションシップの追加
 
-Relationships between entities are also available and are declared with the `relationship` keyword.
+エンティティ間のリレーションシップも利用可能であり、`relationship`キーワードで宣言されます。
 
 ```jdl
 entity A
@@ -268,20 +268,20 @@ relationship OneToOne {
 }
 ```
 
-Here's what we can see:
+次のように表示されます。
 
-- `OneToOne` is the relationship type
-  - there are also `OneToMany`, `ManyToMany` and `ManyToOne`
-- we declare the source and the destination of the relationship (from `A` to `B`)
-- we also declare the injected fields in each entity (`a` in `B`, and `b` in `A`)
-  - this means the relationship is bidirectional
+- `OneToOne`はリレーションシップの型です。
+- `OneToMany`、`ManyToMany`、`ManyToOne`もあります。
+- リレーションシップの元と先（`A`から`B`へ）を宣言します。
+- 各エンティティに注入されたフィールド（`B`内に`a`、`A`内に`b`）（訳注：であれば`A{a} to B{b}`は`A{b} to B{a}`の誤植かもしれないです）も宣言します。
+- これは、リレーションシップが双方向であることを意味します。
 
-To know more about relationships, you can head to [the dedicated page](/managing_relationships).
+リレーションシップの詳細については、[専用ページ](/managing_relationships)を参照してください。
 
-### Unidirectional or bidirectional relationships?
+### 単一方向または双方向のリレーションシップ
 
-Depending on how you design your models, you may want unidirectional relationships instead of bidirectional ones.
-This is achieved by not specifying an injected field like this:
+モデルの設計方法によっては、双方向のリレーションシップではなく単方向のリレーションシップが必要になる場合があります。
+これは、次のように注入フィールドを指定しないことで実現されます。
 
 ```jdl
 relationship OneToOne {
@@ -289,7 +289,7 @@ relationship OneToOne {
 }
 ```
 
-You can also not specify them, and at least one will be injected by default (the source)
+指定しないことも可能で、少なくとも1つ（ソース側）はデフォルトで注入されます。
 
 ```jdl
 relationship OneToOne {
@@ -297,9 +297,9 @@ relationship OneToOne {
 }
 ```
 
-### Relationship comments & validations
+### リレーションシップのコメントと検証
 
-Relationships also have comments, validations (only one: `required`):
+リレーションシップにはコメントと検証もあります（`required`1つだけ）。
 
 ```jdl
 relationship OneToOne {
@@ -307,18 +307,18 @@ relationship OneToOne {
 }
 ```
 
-In this example we can see:
+この例では、次のことがわかります。
 
-- `required` to specify if a side of the relationship is required
-  - instead of having 0..1, this One to One relationship requires 1 side not to be nil
+- `required`は、リレーションシップの片側が必須かどうかを指定します。
+- この1対1のリレーションシップでは、0..1ではなく、一方がnilでないことが必要です。
 
-To know more about relationships, you can go to the dedicated [relationship page](/jdl/relationships)
+リレーションシップの詳細については、専用の[リレーションシップページ](/jdl/relationships)にアクセスしてください。
 
 ---
 
-## Options
+## オプション
 
-The same way you can apply options to entities in the CLI, you can also do that in the JDL:
+CLIでエンティティにオプションを適用できるのと同じ方法で、JDLでも適用できます。
 
 ```jdl
 entity A
@@ -331,22 +331,22 @@ service * with serviceImpl
 paginate A, B with pager
 ```
 
-There a some interesting things happening here:
+ここでは興味深いことが起きています。
 
-- `dto`, `paginate` and `service` are binary options as they need an entity list and a value
-  - `with` is used to specify the option value
-  - note the `*` which means the option is to be applied to all the entities
-- `readOnly` is an unary option, that means that such options only take an entity list
+- `dto`, `paginate`, `service`はバイナリオプションです。エンティティリストと値が必要です。
+  - `with`はオプション値を指定するために使用されます。
+  - `*`はオプションがすべてのエンティティに適用されることを意味することに注意してください。
+- `readOnly`は単項オプションです。つまり、このようなオプションはエンティティリストのみを取り扱います。
 
-There are more than one way to declare an entity list:
+エンティティリストを宣言する方法は複数あります。
 
-- you can enumerate them one by one: `A, B, C`
-- you can select all of them: `*` or `all`
-  - you can have exceptions to exclude entities: `service * with serviceImpl except A, B`
+- 1つずつ列挙：`A, B, C`
+- すべてを選択：`*`または`all`
+  - エンティティを除外する例外を設定可能：`service * with serviceImpl except A, B`
 
-### Annotations
+### アノテーション
 
-Annotations are another way to declare options, let's rewrite the previous example:
+アノテーションはオプションを宣言するもう1つの方法です。前の例を書き直しましょう。
 
 ```jdl
 @readOnly
@@ -365,18 +365,18 @@ entity B
 entity C
 ```
 
-Similar to Java, or Typescript, annotations are "decorators", options to entities.
+JavaまたはTypescriptと同様に、アノテーションはエンティティのオプションである「デコレータ」です。
 
-This example and the previous are equivalent as they can be used to generate the same code.
+この例と前の例は同等であり、同じコードを生成できます。
 
-To know more about options, you can go to the [option page](/jdl/options)
+オプションの詳細については、[オプションページ](/jdl/options)を参照してください。
 
 ---
 
-## Deployments
+## デプロイ
 
-Finally, deployments can also be generated from a JDL file using the `deployment` keyword, compatible with JHipster
-v5.7 and above:
+最後に、JHipsterと互換性のある`deployment`キーワードを使用して、JDLファイルからデプロイ環境の生成もできます。
+v5.7以降になります。
 
 ```jdl
 deployment {
@@ -386,13 +386,13 @@ deployment {
 }
 ```
 
-_To import one or several deployments, you need not be in a JHipster application folder._
+_1つまたは複数のデプロイをインポートするためにJHipsterアプリケーションフォルダにいる必要はありません。_
 
-Deployments are described in [their own page](/jdl/deployments).
+デプロイについては、[デプロイのページ](/jdl/deployments)で説明されています。
 
-A JHipster deployment has a config with default values for all other properties and using the previous syntax will
-ensure your deployment will use the default values (as if you didn't make any specific choice).
-The resulting deployment will have:
+JHipsterのデプロイは、他のすべてのプロパティはデフォルト値を持つような構成があり、前述の宣言にすると
+デプロイにおいてデフォルト値が使用されます（特に選択がなかった場合も同様）。
+結果としてデプロイ環境は次のようになります。
 
 - deploymentType: `docker-compose`
 - appsFolders: `foo, bar`
@@ -402,7 +402,7 @@ The resulting deployment will have:
 - directoryPath: `../`
 - etc.
 
-Now, if you want some custom options:
+ここで、カスタムオプションが必要な場合は、次のようになります。
 
 ```jdl
 deployment {
@@ -417,15 +417,15 @@ deployment {
 }
 ```
 
-Those options are only a sample of what's available in the JDL.
-The complete list of options is available in the deployment page, [here](/jdl/deployments).
+これらのオプションは、JDLで利用可能なもののサンプルにすぎません。
+オプションの完全なリストは、[デプロイのページ](/jdl/deployments)にあります。
 
 ---
 
-## Constants
+## 定数
 
-The JDL supports numerical constants.
-Here is an example:
+JDLは数値定数をサポートしています。
+次に例を示します。
 
 ```jdl
 DEFAULT_MIN_LENGTH = 1
@@ -444,13 +444,13 @@ entity A {
 
 ---
 
-## Exporting to a JDL file
+## JDLファイルへのエクスポート
 
-If you already have entities in your application and wish to have a JDL file, don't worry! You don't have to write it from
-scratch as there's a sub-generator that does that for you.
+アプリケーションにすでにエンティティがあり、JDLファイルが必要な場合も、心配する必要はありません！　サブジェネレータがそれをしてくれるので、
+スクラッチから作成する必要はありません。
 
-Run `jhipster export-jdl <FILE_NAME>` in your app's root folder and you'll have all your applications, entities,
-relationships and options exporting in a single JDL file.
+アプリケーションのルートフォルダで`jhipster export-jdl <ファイル名>`を実行すると、すべてのアプリケーション、エンティティ、
+リレーションシップ、オプションが、単一のJDLファイルへエクスポートされます。
 
-Note: you can also not provide a file name to the sub-generator, the exported JDL file will be named after the app's
-base name. For instance, if your application's named 'mySuperApp' then your JDL file will be `mySuperApp.jdl`.
+注意：サブジェネレータにファイル名の指定はできません。エクスポートされたJDLファイルには、アプリケーションの名前にちなんだ名前になります。
+例えば、もしアプリケーションの名前が'mySuperApp'なら、JDLファイルは`mySuperApp.jdl`になります。

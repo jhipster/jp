@@ -1,32 +1,32 @@
 ---
 layout: default
-title: JHipster Domain Language - Entities & fields
+title: JHipsterドメイン言語 - エンティティとフィールド
 permalink: /jdl/entities-fields
 sitemap:
     priority: 0.5
     lastmod: 2019-10-27T12:00:00-00:00
 ---
 
-# <i class="fa fa-star"></i> JHipster Domain Language (JDL) - Entities
+# <i class="fa fa-star"></i> JHipsterドメイン言語(JDL) - エンティティ
 
-## Summary
+## 概要
 
-1. [Syntax](#syntax)
-1. [Examples](#examples)
-   1. [Basic example](#basic-example)
-   1. [With a custom table name](#with-a-custom-table-name)
-   1. [With fields](#with-fields)
-   1. [With field validations](#with-field-validations)
-   1. [Blob declaration](#blob-declaration)
-   1. [Regular expressions](#regular-expressions)
-   1. [Commenting](#commenting)
-1. [Field types and validations](#field-types-and-validations)
+1. [構文](#構文)
+1. [例](#例)
+   1. [基本の例](#基本の例)
+   1. [カスタム・テーブル名](#カスタムテーブル名)
+   1. [フィールド](#フィールド)
+   1. [フィールド検証](#フィールド検証)
+   1. [Blob宣言](#blob宣言)
+   1. [正規表現](#正規表現)
+   1. [コメント](#コメント)
+1. [フィールドタイプと検証](#フィールドタイプと検証)
 
 ---
 
-### Syntax
+### 構文
 
-The entity declaration is done as follows:
+エンティティの宣言は次のように行われます。
 ```
 [<entity javadoc>]
 [<entity annotation>*]
@@ -37,40 +37,41 @@ entity <entity name> [(<table name>)] {
 }
 ```
 
-  - `<entity name>` the name of the entity,
-  - `<field name>` the name of one field of the entity,
-  - `<field type>` the JHipster supported type of the field,
-  - and as an option:
-    - `<entity javadoc>` the documentation of the entity,
-    - `<entity annotation>` the options for the entity (see [Options][] for a complete list of available options),
-    - `<table name>` the database table name (if you want to specify something different that the name automatically computed from the entity name),
-    - `<field javadoc>` the documentation of the field,
-    - `<field annotation>` the options for the field,
-    - `<validation>` the validations for the field.
+  - `<entity name>` エンティティの名前
+  - `<field name>` エンティティのフィールドの名前
+  - `<field type>` JHipsterがサポートするフィールドの型
+  - オプションとして以下があります。
+    - `<entity javadoc>` エンティティのドキュメント
+    - `<entity annotation>` エンティティのオプション（使用可能なオプションの完全なリストについては、[オプション][]を参照）
+    - `<table name>` データベーステーブル名（エンティティ名から自動的に計算された名前とは別のものを指定する場合）
+    - `<field javadoc>` フィールドのドキュメント
+    - `<field annotation>` フィールドのオプション
+    - `<validation>` フィールドの検証
+
 
 ---
 
-### Examples
+### 例
 
-#### Basic example
+#### 基本の例
 
 ```jdl
 entity A
 ```
 
-This is equivalent to:
+これは以下と同じです。
 
 ```jdl
 entity A(a) {}
 ```
 
-The former the simpler form, without specifying a "body" (braces for fields) and a table name.
+前者は、"body"（フィールドの中括弧）とテーブル名を指定しない、より単純な形式です。
 
 ---
 
-#### With a custom table name
+#### カスタム・テーブル名
 
-Specifying a custom table name is possible too:
+カスタムテーブル名の指定もできます。
 
 ```jdl
  entity A(my_super_entity)
@@ -78,7 +79,7 @@ Specifying a custom table name is possible too:
 
 ---
 
-#### With fields
+#### フィールド
 
 ```jdl
 entity A {
@@ -89,7 +90,7 @@ entity A {
 
 ---
 
-#### With field validations
+#### フィールド検証
 
 ```jdl
 entity A {
@@ -100,21 +101,21 @@ entity A {
 
 ---
 
-#### Blob declaration
+#### Blob宣言
 
-JHipster gives a great choice as one can choose between an image type or any binary type. JDL lets you do the same.
-Create a custom type (see DataType) with the editor, name it according to these conventions:
-  - `AnyBlob` or `Blob` to create a field of the "any" binary type;
-  - `ImageBlob` to create a field meant to be an image.
-  - `TextBlob` to create a field for a CLOB (long text).
+JHipsterは、イメージ・タイプまたは任意のバイナリ・タイプのいずれかを選択できる優れた選択肢を提供します。JDLでも同じことができます。
+エディタを使用してカスタムタイプ（DataTypeを参照）を作成し、次の規則に従って名前を付けます。
+  - "any"バイナリ型のフィールドを作成するための`AnyBlob`または`Blob`
+  - イメージのフィールドを作成するための`ImageBlob`
+  - CLOB（ロングテキスト）のフィールドを作成するための`TextBlob`
 
-And you can create as many DataTypes as you like.
+また、DataTypeは必要な数だけ作成できます。
 
 ---
 
-#### Regular expressions
+#### 正規表現
 
-This is a certain validation (only available to String types), and its syntax is:
+これは特別な検証で（String型でのみ使用可能）、構文は次のとおりです。
 
 ```jdl
 entity A {
@@ -122,17 +123,17 @@ entity A {
 }
 ```
 
-Let's break it down:
-  - `pattern` is the keyword to declare a regex validation (with the normal parenthesises)
-  - `/.../` the pattern is declared inside two slashes
-  - `\` anti-slashes needn't be escaped
+内訳を見てみましょう。
+  - `pattern`は正規表現の検証を宣言するためのキーワードです（通常の括弧付き）。
+  - `/.../` パターンは2つのスラッシュの内側で宣言されます。
+  - `\` アンチスラッシュはエスケープする必要はありません。
 
 ---
 
-#### Commenting
+#### コメント
 
-Commenting is possible in the JDL for entities and fields, and will generate documentation (Javadoc or JSDoc, depending
-on the backend).
+JDLでは、エンティティとフィールドに対してコメントを付けることができ、ドキュメント（バックエンドのJavadocまたはJSDoc
+）を生成します。
 
 ```jdl
 /**
@@ -150,43 +151,43 @@ entity A {
 }
 ```
 
-These comments will later be added as Javadoc comments by JHipster. The JDL possesses its own kind of comment:
-  - // an ignored comment
-  - /** not an ignored comment */
+これらのコメントは、後でJHipsterによってJavadocコメントとして追加されます。JDLには独自のコメントがあります。
+  - // 無視されるコメント
+  - /** 無視されるコメントではありません */
 
-Therefore, anything that starts with `//` is considered an internal comment for JDL, and will not be counted as Javadoc.
-Please note that the JDL Studio directives that start with `#` will be ignored during parsing.
+したがって、`//`で始まるものはすべてJDLの内部コメントと見なされ、Javadocとしてカウントされません。
+`#`で始まるJDL Studioディレクティブは、構文解析中に無視されることに注意してください。
 
-Another form of comments are the following comments:
+別の形式のコメントは、次のコメントです。
 ```
 entity A {
-  name String /** My super field */
-  count Integer /** My other super field */
+  name String /** 凄いフィールド */
+  count Integer /** その他の凄いフィールド */
 }
 ```
 
-Here A's name will be commented with `My super field`, B with `My other super field`.
+ここで、Aの名前には「凄いフィールド」というコメントが付けられ、Bの名前には「その他の凄いフィールド」というコメントが付けられます。
 
-Yes, commas are not mandatory but it's wiser to have them so as not to make mistakes in the code.
-**If you want to mix commas and following comments, beware!**
+また、カンマは必須ではありませんが、コード内でミスをしないようにカンマを使用することをお勧めします。
+**カンマとその後のコメントを混在させたい場合は、注意してください!**
 ```
 entity A {
-  name String, /** My comment */
+  name String, /** 私のコメント */
   count Integer
 }
 ```
-A's name won't have the comment, because the count will.
+Aのnameにはコメントが付きません。countの方にコメントが付くからです。
 
 ---
 
-### Field types and validations
+### フィールドタイプと検証
 
-Each field type has its own validation list. Here are the types supported in the JDL:
+各フィールド・タイプには独自の検証リストがあります。JDLでサポートされているタイプは次のとおりです。
 
 <table class="table table-striped table-responsive">
   <tr>
-    <th>JDL type</th>
-    <th>Validations</th>
+    <th>JDLタイプ</th>
+    <th>検証</th>
   </tr>
   <tr>
     <td>String</td>
@@ -258,4 +259,4 @@ Each field type has its own validation list. Here are the types supported in the
   </tr>
 </table>
 
-[Options]: options#available-options "Options"
+[オプション]: options#使用可能なオプション "Options"
