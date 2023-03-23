@@ -1,32 +1,32 @@
 ---
 layout: default
-title: Doing microservices with JHipster
+title: JHipsterでマイクロサービスを実行する
 permalink: /microservices-architecture/
 sitemap:
     priority: 0.7
     lastmod: 2021-03-08T12:00:00-00:00
 ---
 
-# <i class="fa fa-sitemap"></i> Doing microservices with JHipster
+# <i class="fa fa-sitemap"></i> JHipsterでマイクロサービスを実行する
 
-<h2 id="microservices_vs_monolithic">Microservices vs Monolithic architecture</h2>
+<h2 id="microservices_vs_monolithic">マイクロサービスvsモノリシックアーキテクチャ</h2>
 
-The first question JHipster will ask you is the kind of application you want to generate. You have the choice between two architecture styles:
+JHipsterが最初に尋ねる質問は、生成するアプリケーションの種類です。次の2つのアーキテクチャスタイルから選択できます。
 
-- A "monolithic" architecture uses a single, one-size-fits-all application, which contains both the front-end code, and the back-end Spring Boot code.
-- A "microservices" architecture splits the front-end and the back-end, so that it's easier for your application to scale and survive infrastructure issues.
+- 「モノリシック」アーキテクチャは、フロントエンドコードとバックエンドのSpring Bootコードの両方を含む、単一の汎用アプリケーションを使用します。
+- 「マイクロサービス」アーキテクチャはフロントエンドとバックエンドを分割するため、アプリケーションのスケーリングとインフラストラクチャの問題への対応が容易になります。
 
-A "monolithic" application is much easier to work on, so if you don't have any specific requirements, this is the option we recommend, and our default option.
+「モノリシック」アプリケーションの方が作業がはるかに簡単なので、特定の要件がない場合は、これがお勧めのオプションであり、デフォルトのオプションです。
 
-<h2 id="overview">Microservices architecture overview</h2>
+<h2 id="overview">マイクロサービスアーキテクチャの概要</h2>
 
-The JHipster microservices architecture works in the following way:
+JHipsterのマイクロサービスアーキテクチャは次のように動作します。
 
- * A [gateway]({{ site.url }}/api-gateway/) is a JHipster-generated application (using application type `microservice gateway` when you generate it) that handles Web traffic, and serves an Angular/React/VueJs application. There can be several different gateways, if you want to follow the [Backends for Frontends pattern](https://www.thoughtworks.com/insights/blog/bff-soundcloud), but that's not mandatory.
- * The [JHipster Registry]({{ site.url }}/jhipster-registry/) is a runtime application on which all applications registers and get their configuration from. It also provides runtime monitoring dashboards.
- * [Consul]({{ site.url }}/consul/) is a service discovery service, as well as a key/value store. It can be used as an alternative to the JHipster Registry.
-  * [Microservices]({{ site.url }}/creating-microservices/) are JHipster-generated applications (using application type `microservice application` when you generate them), that handle REST requests. They are stateless, and several instances of them can be launched in parallel to handle heavy loads.
+* [ゲートウェイ]({{ site.url }}/api-gateway/)は、JHipsterにより生成されるアプリケーションです（生成時にアプリケーションタイプ`microservice gateway`を使用します）。Webトラフィックを処理し、Angular/React/VueJsアプリケーションを提供します。もし[Backends for Frontendsパターン](https://www.thoughtworks.com/insights/blog/bff-soundcloud)に従いたい場合は、複数の異なるゲートウェイを用意できますが、必須ではありません。
+* [JHipsterレジストリ]({{ site.url }}/jhipster-registry/)は、すべてのアプリケーションが登録され、その構成を取得するランタイム・アプリケーションです。また、ランタイム監視ダッシュボードも提供します。
+* [Consul]({{ site.url }}/consul/)は、サービスディスカバリサービスであり、キー/値ストアでもあります。JHipsterレジストリの代替として使用できます。
+* [マイクロサービス]({{ site.url }}/creating-microservices/)は、JHipsterによって生成されたアプリケーションです（生成時にアプリケーションタイプ`microservice application`を使用します）。RESTリクエストを処理します。ステートレスであり、高い負荷を処理するために複数のインスタンスを並行して起動できます。
 
-In the diagram below, the green components are specific to your application and the blue components provide its underlying infrastructure.
+次の図では、緑のコンポーネントはアプリケーションに固有のもので、青のコンポーネントはその基盤となるインフラストラクチャを提供します。
 
 <img src="{{ site.url }}/images/microservices_architecture_2.png" alt="Diagram" style="width: 930px; height: 558px"/>
