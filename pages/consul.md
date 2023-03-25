@@ -9,37 +9,37 @@ sitemap:
 
 # <i class="fa fa-bullseye"></i> Consul
 
-## Consul overview
+## Consulの概観
 
-As an alternative to the JHipster Registry you can choose to use [Consul](https://www.consul.io/), a datacenter management solution from Hashicorp.
-Compared to Eureka it has a number of advantages:
+JHipster Registryの代替として、Hashicorpのデータセンター管理ソリューションである[Consul](https://www.consul.io/)を使用することを選択できます。
+Eurekaと比較すると、多くの利点があります。
 
-- It is easier to operate in a multi-node cluster than Eureka.
-- It favors consistency over availability so changes in the state of your cluster are propagated more quickly.
-- Consul service discovery can interoperate with existing applications through its [DNS interface](https://www.consul.io/docs/agent/dns.html) or [HTTP API](https://www.consul.io/docs/agent/http.html).
+- マルチノードクラスタでの操作は、Eurekaよりも簡単です。
+- 可用性よりも一貫性を優先するため、クラスタの状態の変更がより迅速に伝播されます。
+- Consulサービスディスカバリは、[DNSインターフェイス](https://www.consul.io/docs/agent/dns.html)または[HTTP API](https://www.consul.io/docs/agent/http.html)を介して既存のアプリケーションと相互運用できます。
 
-## Architecture diagram
+## アーキテクチャ図
 
 <img src="{{ site.url }}/images/microservices_architecture_detail.003.png" alt="Diagram" style="width: 800; height: 600" class="img-responsive"/>
 
-## Getting started
+## 入門
 
-To get started with developing applications that rely on a Consul registry, you can start a Consul instance in a docker container:
+Consulレジストリに依存するアプリケーションの開発を開始するには、DockerコンテナでConsulインスタンスを起動します。
 
-- run `docker-compose -f src/main/docker/consul.yml up` to start a Consul server in `dev` mode. Consul will then be available on port `8500` of your Docker host, so if it runs on your machine it should be at [http://127.0.0.1:8500/](http://127.0.0.1:8500/).
+- `docker-compose -f src/main/docker/consul.yml up`を実行して、Consulサーバを`dev`モードで起動します。その後、ConsulはDockerホストのポート`8500`で使用可能になり、マシンで実行する場合は[http://127.0.0.1:8500/](http://127.0.0.1:8500/)となります。
 
-You can also use the [Docker Compose subgenerator]({{ site.url }}/docker-compose/#docker-compose-subgen) to generate a docker configuration for several consul-enabled applications.
+[Docker Composeサブジェネレータ]({{ site.url }}/docker-compose/#docker-compose-subgen)を使用して、複数のConsul対応アプリケーションのDocker設定の生成もできます。
 
-## Application configuration with Consul
+## Consulを使用したアプリケーション構成
 
-If you have chosen the Consul option when generating your JHipster microservice or gateway app, they will be automatically configured to retrieve their configuration from Consul's **Key/Value store**.
+JHipsterマイクロサービスまたはゲートウェイアプリケーションを生成するときにConsulオプションを選択した場合、Consulの**Key/Valueストア**から設定を取得するように自動的に設定されます。
 
-The Key/Value (K/V) store can be modified using either its UI available at [http://localhost:8500/v1/kv/](http://localhost:8500/v1/kv/) or its [REST API](https://www.consul.io/intro/getting-started/kv.html). However changes made this way are temporary and will be lost on Consul server/cluster shutdown.
-So, in order to help you interact with the Key/Value store and manage your configuration as YAML files, the JHipster Team has developed a small tool: the [consul-config-loader](https://github.com/jhipster/consul-config-loader). 
-The **consul-config-loader** is automatically configured when starting Consul from the `consul.yml` docker-compose file but it can also be run as a standalone tool.
-It can be run in two modes:
+Key/Value (K/V)ストアは、[http://localhost:8500/v1/kv/](http://localhost:8500/v1/kv/)または[REST API](https://www.consul.io/intro/getting-started/kv.html)で使用可能なUIを使用して変更できます。ただし、この方法で行われた変更は一時的なものであり、Consulサーバ/クラスタのシャットダウン時に失われます。
+そのため、Key/Valueストアを操作し、YAMLファイルとして構成を管理するために、JHipsterチームは[consul-config-loader](https://github.com/jhipster/consul-config-loader)という小さなツールを開発しました。
+**consul-config-loader**は、`consul.yml`docker-composeファイルからConsulを起動するときに自動的に設定されますが、スタンドアローンツールとしての実行もできます。
+次の2つのモードで実行できます。
 
-- a **dev** mode, where YAML files from the `central-server-config` directory are automatically loaded into Consul. Moreover any change to this directory will be immediately synchronized with Consul.
-- a **prod** mode, that uses Git2Consul to setup the YAML files contained in a Git repository as a configuration source for the Key/Value store.
+- **dev**モードでは、`central-server-config`ディレクトリのYAMLファイルが自動的にConsulにロードされます。さらに、このディレクトリに対する変更はすべて、すぐにConsulと同期されます。
+- **prod**モードでは、Git2Consulを使用して、Gitリポジトリに含まれるYAMLファイルをKey/Valueストアの設定ソースとして設定します。
 
-Note that as with the JHipster Registry, your configuration files will need to be named `appname-profile.yml` where appname and profile correspond to the application’s name and profile of the service that you want to configure. For example, adding properties in a `consulapp-prod.yml` file will set those properties only for the application named `consulapp` started with a `prod` profile. Moreover, properties defined in `application.yml` will be set for all your applications.
+JHipsterレジストリと同様に、構成ファイルには`appname-profile.yml`という名前を付ける必要があります。ここで、appnameとprofileは、構成するサービスのアプリケーション名とプロファイルに対応します。たとえば、`consulapp-prod.yml`ファイルにプロパティを追加すると、これらのプロパティは、`prod`プロファイルで開始された`consulapp`という名前のアプリケーションに対してのみ設定されます。さらに、`application.yml`で定義されたプロパティは、すべてのアプリケーションに対して設定されます。

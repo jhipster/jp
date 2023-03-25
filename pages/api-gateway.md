@@ -1,133 +1,133 @@
 ---
 layout: default
-title: API Gateway
+title: APIゲートウェイ
 permalink: /api-gateway/
 sitemap:
     priority: 0.7
     lastmod: 2017-05-03T00:00:00-00:00
 ---
 
-# <i class="fa fa-exchange"></i> The JHipster API Gateway
+# <i class="fa fa-exchange"></i> JHipster APIゲートウェイ
 
-JHipster can generate API gateways. A gateway is a normal JHipster application, so you can use the usual JHipster options and development workflows on that project, but it also acts as the entrance to your microservices. More specifically, it provides HTTP routing and load balancing, quality of service, security and API documentation for all microservices.
+JHipsterはAPIゲートウェイを生成できます。ゲートウェイは通常のJHipsterアプリケーションであるため、そのプロジェクトでは通常のJHipsterオプションと開発ワークフローを使用できますが、マイクロサービスへの入り口としても機能します。より具体的には、HTTPルーティングとロードバランシング、サービス品質、セキュリティ、およびすべてのマイクロサービスのAPIドキュメントを提供します。
 
-## Summary
+## サマリー
 
-1. [Architecture diagram](#architecture_diagram)
-2. [HTTP routing](#http_routing)
-3. [Security](#security)
-4. [Automatic documentation](#documentation)
-5. [Rate limiting](#rate_limiting)
-6. [Access control policy](#acl)
+1. [アーキテクチャ図](#architecture_diagram)
+2. [HTTPルーティング](#http_routing)
+3. [セキュリティ](#security)
+4. [自動ドキュメンテーション](#documentation)
+5. [レート制限](#rate_limiting)
+6. [アクセス制御ポリシー](#acl)
 
-<h2 id="architecture_diagram">Architecture diagram</h2>
+<h2 id="architecture_diagram">アーキテクチャ図</h2>
 
 <img src="{{ site.url }}/images/microservices_architecture_detail.001.png" alt="Diagram" style="width: 800; height: 600" class="img-responsive"/>
 
-<h2 id="http_routing">HTTP requests routing using the gateway</h2>
+<h2 id="http_routing">ゲートウェイを使用したHTTPリクエストのルーティング</h2>
 
-When the gateways and the microservices are launched, they will register themselves in the registry (using the `eureka.client.serviceUrl.defaultZone` key in the `src/main/resources/config/application.yml` file).
+ゲートウェイとマイクロサービスが起動されると、（`src/main/resources/config/application.yml`ファイルにある`eureka.client.serviceUrl.defaultZone`キーを使用して）自身をレジストリに登録します。
 
-The gateway will automatically proxy all requests to the microservices, using their application name: for example, when microservices `app1` is registered, it is available on the gateway on the `/services/app1` URL.
+ゲートウェイは、アプリケーション名を使用して、すべてのリクエストをマイクロサービスに自動的にプロキシします。たとえば、マイクロサービス`app1`が登録されている場合、ゲートウェイの`/services/app1`のURLで利用できます。
 
-For example, if your gateway is running on `localhost:8080`, you could point to [http://localhost:8080/services/app1/api/foos](http://localhost:8080/services/app1/api/foos) to
-get the `foos` resource served by microservice `app1`. If you're trying to do this with your Web browser, don't forget REST resources are secured by default in JHipster, so you need to send the correct JWT header (see the point on security below), or remove the security on those URLs in the microservice's `MicroserviceSecurityConfiguration` class.
+たとえば、ゲートウェイが`localhost:8080`で実行されている場合、[http://localhost:8080/services/app1/api/foos](http://localhost:8080/services/app1/api/foos)の指定で、
+マイクロサービス`app1`で提供されている`foos`のリソースを取得できます。Webブラウザでこれを行おうとしている場合は、RESTリソースがJHipsterでデフォルトで保護されていることを忘れないでください。したがって、正しいJWTヘッダーを送信するか（以下のセキュリティのポイントを参照）、以降のセキュリティに関するポイントを確認するか、またはマイクロサービスの`MicroserviceSecurityConfiguration`クラスでそれらのURLのセキュリティを削除する必要があります。
 
-If there are several instances of the same service running, the gateway will get those instances from the JHipster Registry, and will:
+同じサービスのインスタンスが複数実行されている場合、ゲートウェイはそれらのインスタンスをJHipsterレジストリから取得し、次の処理を実行します。
 
-- Load balance HTTP requests using [Spring Coud Load Balancer](https://spring.io/guides/gs/spring-cloud-loadbalancer/).
-- Provide a circuit breaker using [Netflix Hystrix](https://github.com/Netflix/hystrix), so that not available instances are quickly and safely removed.
+- [Spring Coud Load Balancer](https://spring.io/guides/gs/spring-cloud-loadbalancer/)を使用してHTTPリクエストをロードバランスします。
+- [Netflix Hystrix](https://github.com/Netflix/hystrix)を使用してサーキットブレーカを提供することで、利用できないインスタンスを迅速かつ安全に削除します。
 
-Each gateway has a specific "admin > gateway" menu, where opened HTTP routes and microservices instances can be monitored.
+各ゲートウェイには特定の"admin > gateway"メニューがあり、オープンされたHTTPルートとマイクロサービスインスタンスを監視できます。
 
-<h2 id="security">Security</h2>
+<h2 id="security">セキュリティ</h2>
 
-Standard JHipster security options are detailed on [this security documentation page]({{ site.url }}/security/). However, securing a microservice architecture has some specific tunings and options, which are detailed here.
+標準のJHipsterセキュリティオプションについては、[このセキュリティドキュメントページ]({{ site.url }}/security/)で詳しく説明されています。ただし、マイクロサービスアーキテクチャのセキュリティ保護には、いくつかの特定のチューニングとオプションがあります。これらについては、ここで詳しく説明します。
 
 ### JWT (JSON Web Token)
 
-JWT (JSON Web Token) is an industry standard, easy-to-use method for securing applications in a microservices architecture.
+JWT (JSON Web Token)は、マイクロサービスアーキテクチャでアプリケーションを保護するための、業界標準の使いやすい方法です。
 
-JHipster uses the [JJWT library](https://github.com/jwtk/jjwt), provided by Okta, for implementing JWT.
+JHipsterは、Okta社が提供する[JJWTライブラリ](https://github.com/jwtk/jjwt)のJWT実装を使用します。
 
-Tokens are generated by the gateway, and sent to the underlying microservices: as they share a common secret key, microservices are able to validate the token, and authenticate users using that token.
+トークンはゲートウェイによって生成され、基盤となるマイクロサービスに送信されます。共通のシークレットキーを共有するため、マイクロサービスはトークンを検証し、そのトークンを使用するユーザを認証できます。
 
-Those tokens are self-sufficient: they have both authentication and authorization information, so microservices do not need to query a database or an external system. This is important in order to ensure a scalable architecture.
+これらのトークンは自己充足的であり、認証情報と認可情報の両方を持っているため、マイクロサービスはデータベースや外部システムに問い合わせる必要がありません。これは、スケーラブルなアーキテクチャを確保するために重要です。
 
-For security to work, a JWT secret token must be shared between all applications.
+セキュリティーを機能させるためには、JWTのシークレットトークンをすべてのアプリケーションで共有する必要があります。
 
-- For each application the default token is unique, and generated by JHipster. It is stored in the `.yo-rc.json` file.
-- Tokens are configured with the `jhipster.security.authentication.jwt.secret` key in the `src/main/resources/config/application.yml` file.
-- To share this key between all your applications, copy the key from your gateway to all the microservices, or share it using the [JHipster Registry]({{ site.url }}/jhipster-registry/)'s Spring Config Server or [JHipster's specific configuration of the Consul K/V store]({{ site.url }}/consul/). This is one of the main reasons why people use those central configuration servers.
-- A good practice is to have a different key in development and production.
+- 各アプリケーションのデフォルトトークンは固有であり、JHipsterによって生成されます。これは`.yo-rc.json`ファイルに格納されます。
+- トークンは、`src/main/resources/config/application.yml`ファイル内の`jhipster.security.authentication.jwt.secret`キーで構成されます。
+- このキーをすべてのアプリケーション間で共有するには、ゲートウェイからすべてのマイクロサービスにキーをコピーするか、[JHipster Registry]({{ site.url }}/jhipster-registry/)のSpring Config Serverまたは[JHipster固有のConsul K/Vストアの設定]({{ site.url }}/consul/)を使用してキーを共有します。これが、中央構成サーバが使用される主な理由の1つです。
+- 開発と本番で異なるキーを使用することをお勧めします。
 
 ### OpenID Connect
 
-JHipster provides OpenID Connect support, as detailed [in our OpenID Connect documentation]({{ site.url }}/security/#oauth2).
+JHipsterはOpenID Connectのサポートを提供しており、詳細は[OpenID Connectのドキュメント]({{ site.url }}/security/#oauth2)に記載されています。
 
-When selecting this option, you will use Keycloak by default, and you will probably want to run your complete microservice architecture using Docker Compose: be sure to read our [Docker Compose documentation]({{ site.url }}/docker-compose/), and configure correctly your `/etc/hosts` for Keycloak.
+このオプションを選択すると、デフォルトでKeycloakが使用され、Docker Composeを使用して完全なマイクロサービスアーキテクチャを実行することになります。[Docker Composeドキュメント]({{ site.url }}/docker-compose/)を必ず読み、Keycloak用に`/etc/hosts`を正しく設定してください。
 
-When using OpenID Connect, the JHipster gateway will send OAuth2 tokens to microservices, which will accept those tokens as they are also connected to Keycloak.
+OpenID Connectを使用する場合、JHipsterゲートウェイはOAuth2トークンをマイクロサービスに送信し、マイクロサービスはKeycloakにも接続されているトークンを受け入れます。
 
-Unlike JWT, those tokens are not self-sufficient, and should be stateful, which causes following issues:
+JWTとは異なり、これらのトークンは自己充足的ではなく、ステートフルである必要があるため、次のような問題が発生します。
 
-- A performance issue in microservices: as it is very common to look for the current user's security information (otherwise we wouldn't be using any security option from the beginning), each microservice will call the OpenID Connect server to get that data. So in a normal setup, those calls will be made by each microservice, each time they get a request, and this will quickly cause a performance issue.
-  - If you have selected a caching option ([here is the "Using a cache" documentation]({{ site.url }}/using-cache/)) when generating your JHipster microservice, a specific `CachedUserInfoTokenServices` Spring Bean will be generated, which will cache those calls. When properly tuned, this will remove the performance issue.
-  - If you want more information on this "user info" request, it is configured using the standard Spring Boot configuration key `security.oauth2.resource.userInfoUri` in your `src/main/resources/application.yml` configuration file.
+- マイクロサービスのパフォーマンスの問題：現在のユーザのセキュリティ情報を探すことは非常に一般的なため（そうでなければ最初からセキュリティオプションを使用することはありません）、各マイクロサービスはOpenID Connectサーバを呼び出してデータを取得します。そのため、通常のセットアップでは、これらの呼び出しは、リクエストを受け取るたびに各マイクロサービスによって行われ、これはすぐにパフォーマンスの問題を引き起こします。
+  - JHipsterマイクロサービスを生成するときに、キャッシュオプション（[「キャッシュの使用」のドキュメントを参照]({{ site.url }}/using-cache/)）を選択した場合、これらの呼び出しをキャッシュする固有の`CachedUserInfoTokenServices`Spring Beanが生成されます。適切にチューニングされれば、パフォーマンスの問題は解消されます。
+  - この「ユーザー情報」リクエストに関する詳細が必要な場合は、`src/main/resources/application.yml`構成ファイル内の標準のSpring Boot構成キー`security.oauth2.resource.userInfoUri`を使用して構成されます。
 
-<h2 id="documentation">Automatic documentation</h2>
+<h2 id="documentation">自動ドキュメンテーション</h2>
 
-The gateway exposes the Swagger API definitions of the services it proxifies so you can benefit from all useful tools like Swagger UI and swagger-codegen.
+ゲートウェイは、proxifiesのサービスのSwagger API定義を公開するため、Swagger UIやswagger-codegenなどのすべての有用なツールの恩恵を受けることができます。
 
-The "admin > API" menu of a gateway has a specific drop-down list, showing the gateway's API and all the APIs from the registered microservices.
+ゲートウェイの「admin>API」メニューには、ゲートウェイのAPIと登録されたマイクロサービスのすべてのAPIを示す、固有のドロップダウンリストがあります。
 
-Using this drop-down list, all microservices APIs are automatically documented, and testable from the gateway.
+このドロップダウンリストを使用すると、すべてのマイクロサービスAPIが自動的に文書化され、ゲートウェイからテスト可能になります。
 
-When using a secured API, security tokens are automatically added to the Swagger UI interface, so all requests work out-of-the-box.
+セキュアなAPIを使用すると、セキュリティトークンがSwagger UIインタフェースに自動的に追加されるため、すべてのリクエストがすぐに機能するようになります。
 
-<h2 id="rate_limiting">Rate limiting</h2>
+<h2 id="rate_limiting">レート制限</h2>
 
-This is an advanced feature that uses [Bucket4j](https://github.com/vladimir-bukhtoyarov/bucket4j) and [Hazelcast](https://hazelcast.com/) to provide quality of service on microservices.
+これは、[Bucket4j](https://github.com/vladimir-bukhtoyarov/bucket4j)と[Hazelcast](https://hazelcast.com/)を使用して、マイクロサービスのQoSを提供する高度な機能です。
 
-Gateways provide rate-limiting features, so the number of REST requests can be limited:
+ゲートウェイはレート制限機能を提供するため、RESTリクエストの数を制限できます。
 
-- by IP address (for anonymous users)
-- by user login (for logged-in users)
+- IPアドレスによる制限（匿名ユーザの場合）
+- ユーザログインによる制限（ログインユーザの場合）
 
-JHipster will then use [Bucket4j](https://github.com/vladimir-bukhtoyarov/bucket4j) and [Hazelcast](https://hazelcast.com/) to calculate request counts, and will send HTTP 429 (too many requests) errors when the limit is exceeded. The default limit per user is 100,000 API calls per hour.
+JHipsterは、[Bucket4j](https://github.com/vladimir-bukhtoyarov/bucket4j)と[Hazelcast](https://hazelcast.com/)を使用してリクエスト数を計算し、制限を超えた場合にHTTP 429（過大なリクエストが発生）エラーを送信します。ユーザごとのデフォルトの制限は、1時間あたり100,000 APIコールです。
 
-This is an important feature, to protect a microservice architecture from being flooded by a specific user's requests.
+これは、特定のユーザのリクエストの洪水からマイクロサービスアーキテクチャを保護するための重要な機能です。
 
-As the gateway secures the REST endpoints, it has full access to the user's security information, so it can be extended to provide specific rate limits depending on the user's security roles.
+ゲートウェイはRESTエンドポイントを保護するため、ユーザのセキュリティ情報に完全にアクセスできるので、ユーザのセキュリティロールに応じて特定のレート制限を提供するように拡張できます。
 
-To enable rate limiting, open up the `application-dev.yml` or `application-prod.yml` file and set `enabled` to `true`:
+レート制限を有効にするには、`application-dev.yml`または`application-prod.yml`ファイルを開き、`enabled`を`true`に設定します。
 
     jhipster:
         gateway:
             rate-limiting:
                 enabled: true
 
-Data is stored in Hazelcast, so it is possible to scale gateways as long as the Hazelcast distributed cache is configured, which should work out-of-the-box:
+データはHazelcastに格納されるため、Hazelcast分散キャッシュが設定されていれば、ゲートウェイの拡張が可能であり、すぐに動作するはずです。
 
-- All gateways have Hazelcast configured by default
-- If you use the [JHipster Registry]({{ site.url }}/jhipster-registry/), all instances of a gateway should automatically register themselves in a distributed cache
+- すべてのゲートウェイには、デフォルトでHazelcastが設定されています。
+- [JHipster Registry]({{ site.url }}/jhipster-registry/)を使用する場合、ゲートウェイのすべてのインスタンスは自動的に自身を分散キャッシュに登録されます。
 
-If you want to add more rules, or modify the existing rules, you need to code them in the `RateLimitingFilter` class. Examples of modifications could be:
+さらにルールを追加する場合、または既存のルールを変更する場合は、それらを`RateLimitingFilter`クラスでコーディングする必要があります。変更の例は次のとおりです。
 
-- Lowering the limit of HTTP calls
-- Adding limits per minute or per day
-- Removing all limits for "admin" users
+- HTTP呼び出しの制限を下げる
+- 1分または1日あたりの制限を追加
+- "admin"ユーザーの制限をすべて削除
 
-<h2 id="acl">Access control policy</h2>
+<h2 id="acl">アクセス制御ポリシー</h2>
 
-By default all registered microservices are available through the gateway. If you want to exclude a specific API from being exposed through the gateway, you can use the gateway's specific access control policy filter. It is configurable using the `jhipster.gateway.authorized-microservices-endpoints` key in the `application-*.yml` files:
+デフォルトでは、登録されたすべてのマイクロサービスがゲートウェイを通じて利用可能です。ゲートウェイを通じて公開される特定のAPIを除外する場合は、ゲートウェイ固有のアクセス制御ポリシーフィルタを使用できます。これは、`application-*.yml`ファイルの`jhipster.gateway.authorized-microservices-endpoints`キーを使うことで設定可能です。
 
     jhipster:
         gateway:
-            authorized-microservices-endpoints: # Access Control Policy, if left empty for a route, all endpoints will be accessible
-                app1: /api,/v2/api-docs # recommended dev configuration
+            authorized-microservices-endpoints: # アクセス制御ポリシー。ルートに対して空のままにすると、すべてのエンドポイントがアクセス可能になります。
+                app1: /api,/v2/api-docs # 開発時の推奨設定
 
-For example, if you only want the `/api/foo` endpoint of microservice `bar` to be available:
+たとえば、マイクロサービス`bar`の`/api/foo`エンドポイントのみを使用可能にする場合は、次のように入力します。
 
     jhipster:
         gateway:
