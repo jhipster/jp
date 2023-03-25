@@ -1,160 +1,160 @@
 ---
 layout: default
-title: JHipster Control Center
+title: JHipsterコントロールセンター
 permalink: /jhipster-control-center/
 sitemap:
     priority: 0.7
     lastmod: 2020-10-20T00:00:00-00:00
 ---
 
-# <i class="fa fa-codepen"></i> The JHipster Control Center
+# <i class="fa fa-codepen"></i> JHipsterコントロールセンター
 
-## Overview
+## 概観
 
-The main purpose of JHipster Control Center is to monitor and manage applications.
+JHipsterコントロールセンターの主な目的は、アプリケーションの監視と管理です。
 
-All its features are packaged into one external application with a modern Vue user interface. Its source code is available on GitHub under the JHipster organization at [jhipster/jhipster-control-center](https://github.com/jhipster/jhipster-control-center).
+そのすべての機能は、最新のVueユーザインタフェースを備えた1つの外部アプリケーションにパッケージ化されています。そのソースコードは、[jhipster/jhipster-control-center](https://github.com/jhipster/jhipster-control-center)のJHipster組織の下のGitHubで入手できます。
 
 ![]({{ site.url }}/images/jhipster-control-center-animation.gif)
 
-## Summary
+## 概要
 
-1. [Specific Spring profiles](#profiles)
-2. [Installation](#installation)
-3. [Architecture](#architecture)
-4. [Authentication mechanism](#authentication)
-5. [Features](#features)
+1. [特有のSpringプロファイル](#profiles)
+2. [インストール](#installation)
+3. [アーキテクチャ](#architecture)
+4. [認証メカニズム](#authentication)
+5. [機能](#features)
 
-<h2 id="profiles"> Specific Spring profiles</h2>
+<h2 id="profiles"> 特有のSpringプロファイル</h2>
 
-**The Control Center uses the usual JHipster `dev` and `prod` Spring profiles. But, to work properly, it has to be started with a spring profile corresponding to a spring cloud discovery backend.**
+**コントロールセンターは、通常のJHipsterの`dev`および`prod`Springプロファイルを使用します。しかし、正しく動作するためには、Spring Cloud Discoveryバックエンドに対応するSpring Profileから開始する必要があります。**
 
-- `eureka`: Connect to an Eureka server and fetch its registered instances, configured in application-eureka.yml
-- `consul`: Connect to a Consul server and fetch its registered instances, configured in application-consul.yml
-- `static`: Uses a static list of instances provided as properties, configured in application-static.yml
-- `kubernetes`: Configured in application-kubernetes.yml
+- `eureka`: Eurekaサーバに接続し、application-eureka.ymlで設定された登録済みインスタンスを取得します。
+- `consul`: Consulサーバに接続し、application-consul.ymlで設定された登録済みインスタンスを取得します。
+- `static`: application-static.ymlで設定された、プロパティとして提供されるインスタンスの静的リストを使用します。
+- `kubernetes`: application-kubernetes.ymlに設定されます。
 
-This is very useful for microservices architectures: this is how the Control Center know which microservices are available, and which instances are up.
+これはマイクロサービスアーキテクチャにとって非常に有用です。これにより、コントロールセンターはどのマイクロサービスが利用可能で、どのインスタンスが起動しているかを知ることができます。
 
-For all applications, including monoliths, this is how the Hazelcast distributed cache can automatically scale, see [the Hazelcast cache documentation]({{ site.url }}/using-cache/)
+モノリスを含むすべてのアプリケーションにとっては、Hazelcast分散キャッシュを自動的にスケーリングできる方法となります。[Hazelcastキャッシュドキュメント]({{ site.url }}/using-cache/)を参照してください。
 
-<h2 id="installation">Installation</h2>
+<h2 id="installation">インストール</h2>
 
-### Running locally
+### ローカルでの実行
 
-* ### Step 1: Run server used by Spring Cloud discovery backend
+* ### ステップ1：Spring Cloudディスカバリバックエンドで使用されるサーバを実行する
 
-    Eureka and Consul docker-compose files exist under src/main/docker to ease testing the project (see [specific spring profiles](#profiles)).
+    EurekaとConsulのdocker-composeファイルはsrc/main/dockerの下にあり、プロジェクトのテストが容易に可能です（[特有のSpringプロファイル](#profiles)を参照）。
 
-    - for Consul: run `docker-compose -f src/main/docker/consul.yml up -d`
-    - for Eureka: run `docker-compose -f src/main/docker/jhipster-registry.yml up -d`
-    - for Kubernetes : see [kubernetes documentation](https://www.jhipster.tech/kubernetes/#deploying-to-kubernetes)
-    - Otherwise, to use a static list of instances, you can directly go to the next step.
+    - Consulの実行：`docker-compose -f src/main/docker/consul.yml up -d`
+    - Eurekaの実行：`docker-compose -f src/main/docker/jhipster-registry.yml up -d`
+    - Kubernetesについては[kubernetesのドキュメント](https://www.jhipster.tech/kubernetes/#deploying-to-kubernetes)を参照
+    - それ以外の場合でインスタンスの静的リストを使用するには、直接次の手順に進みます。
 
-* ### Step 2: Choose your authentication profile
+* ### ステップ2：認証プロファイルを選択する
 
-    There is 2 types of authentication (see [authentication mechanism](#authentication)):
+    認証には2つのタイプがあります（[認証メカニズム](#authentication)を参照）。
 
-    - JWT: This is the default authentication, if you choose this one, you have to do nothing.
-    - OAuth2: To use OAuth2 authentication, you have to launch Keycloak. Run `docker-compose -f src/main/docker/keycloak.yml up -d`
+    - JWT：デフォルトの認証で、これを選択した場合は何もする必要はありません。
+    - OAuth2：OAuth2認証を使用するには、Keycloakを起動する必要があります。`docker-compose -f src/main/docker/keycloak.yml up -d`を実行してください。
     
 
-* ### Step 3: Run the cloned project
+* ### ステップ3：複製したプロジェクトを実行する
 
-    Run the Control Center according to the specific spring profiles you want, here are some examples:
+    特有のSpringプロファイルに従って、コントロールセンターを実行します。次に例を示します。
 
-    - For development with JWT and Consul, run `./mvnw -Dspring.profiles.active=consul,dev`
-    - For development with JWT and Eureka, run`./mvnw -Dspring.profiles.active=eureka,dev`
-    - For development with JWT and a static list of instances, run `./mvnw -Dspring.profiles.active=static,dev`
-    - For development with OAuth2 and Consul, run `./mvnw -Dspring.profiles.active=consul,dev,oauth2`
-    - For development with OAuth2 and Eureka, run `./mvnw -Dspring.profiles.active=eureka,dev,oauth2`
-    - To just start in development run `./mvnw` and in another terminal run `npm start` for hot reload of client side code
+    - JWTおよびConsulを使用した開発の場合、`./mvnw -Dspring.profiles.active=consul,dev`
+    - JWTおよびEurekaを使用した開発の場合、`./mvnw -Dspring.profiles.active=eureka,dev`
+    - JWTおよびインスタンスの静的リストを使用した開発の場合、`./mvnw -Dspring.profiles.active=static,dev`
+    - OAuth2およびConsulを使用した開発の場合、`./mvnw -Dspring.profiles.active=consul,dev,oauth2`
+    - OAuth2およびEurekaを使用した開発の場合`./mvnw -Dspring.profiles.active=eureka,dev,oauth2`
+    - 開発環境で起動するには、`./mvnw`を実行し、別の端末では、クライアント側コードのホットリロード用に`npm start`を実行します。
 
-### Running from Docker
+### Dockerからの実行
 
-A container image has been made available on Docker hub. To use it, run these commands:
+コンテナイメージがDocker hubで利用可能となりました。これを使用するには、次のコマンドを実行します。
 
 - `docker pull jhipster/jhipster-control-center`
 - `docker run -d --name jhcc -p 7419:7419 jhipster/jhipster-control-center:latest`
 
-<h2 id="architecture">Architecture</h2>
+<h2 id="architecture">アーキテクチャ</h2>
 
-This is a standard web application that connects to one or several JHipster applications through their management API endpoints. Those management endpoints can either be exposed on the standard API port (typically 8080, 8081, ...) or preferably on a dedicated management port (typically 9999) so that they are isolated from the outside world.
+これは、管理APIエンドポイントを介して1つまたは複数のJHipsterアプリケーションに接続する標準のWebアプリケーションです。これらの管理エンドポイントは、標準のAPIポート（通常は8080, 8081, ...）や専用の管理ポート（通常は9999）で公開されることにより、外部から隔離されます。
 
-The Control Center use [Spring Cloud Gateway](https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/) for routing APIs and Spring Cloud LoadBalancer to provide client-side load-balancing in calls to another microservice (Ribbons is disabled by default to use implementation of load balancing by Spring Cloud LoadBalancer).
+コントロールセンターは[Spring Cloud Gateway](https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/)をルーティングAPIに使用し、Spring Cloud LoadBalancerを、別のマイクロサービスへの呼び出し時のクライアント側のロードバランシングのために使用します（Spring Cloud LoadBalancerによるロードバランシングの実装を使用するために、Ribbonはデフォルトで無効になっています）。
 
 ![]({{ site.url }}/images/jhipster-control-center-architecture.png)
 
-<h2 id="authentication">Authentication mechanism</h2>
+<h2 id="authentication">認証メカニズム</h2>
 
-In order to access to your applications, the JHipster Control Center use a specific security mechanism depending on the profile.
+アプリケーションにアクセスするために、JHipster Control Centerはプロファイルに応じた特有のセキュリティメカニズムを使用します。
 
 #### ***JWT***
-This is a custom JHipster implementation. The JWT key used to sign the request should be the same for the applications and the Control Center: as by default the Control Center configures applications through Spring Cloud Config, this should work out-of-the-box, as it will send the same key to all applications.
+これはJHipster独自の実装です。リクエストの署名に使用されるJWTキーは、アプリケーションとコントロールセンターで同じである必要があります。デフォルトでは、コントロールセンターはSpring Cloud Configを使用してアプリケーションを設定し、すべてのアプリケーションに同じキーを送信するため、これはすぐに機能するはずです。
 
 #### ***OAuth2***
-This profile use a third-party authorization - authentication server like Keycloak (or Okta soon). The Control Center will use the OAuth2 protocol to generate a session in Keycloak when you connect to the Control Center. 
+このプロファイルは、Keycloak（もしくはそのうちOktaも）のようなサード・パーティの認可認証サーバーを使用します。コントロール・センターに接続すると、コントロール・センターはOAuth2プロトコルを使用してKeycloakでセッションを生成します。
 
-Then, our security configuration, in Oauth2SecurityConfiguration.java, will use Spring Security's filter chain to get an authorization from Keycloak ang generate a Spring's Principal (current user) with `http.oauth2Login()`. Afterwards, Spring Security's filter chain will apply `http.oauth2ResourceServer().jwt().jwtAuthenticationConverter(jwtAuthenticationConverter())` to get an authentication with his roles. With this way, we can change our provider (Keycloak, Okta, etc.) easly.
+次に、Oauth2SecurityConfiguration.javaのセキュリティ設定では、Spring Securityのフィルタチェインを使用してKeycloakから認可情報を取得し、`http.oauth2Login()`を使用してSpringのプリンシパル（現在のユーザー）を生成します。その後、Spring Securityのフィルタチェインは、`http.oauth2ResourceServer().jwt().jwtAuthenticationConverter(jwtAuthenticationConverter())`を適用して、彼のロールで認証を取得します。これにより、プロバイダ（Keycloak、Oktaなど）を簡単に変更できます。
 
-<h2 id="features">Features</h2>
+<h2 id="features">機能</h2>
 
-### ***Instances***
+### ***インスタンス***
 
-The JHipster Control Center provides a list of application's instances. As soon as an application registers on a server (consul or eureka), it will become available in the list.
+JHipsterコントロールセンターは、アプリケーションのインスタンスのリストを提供します。アプリケーションがサーバー（consulまたはeureka）に登録されるとすぐに、リストで使用可能になります。
 
 ![]({{ site.url }}/images/jhipster-control-center-instances.png)
 
-### ***Metrics***
+### ***メトリクス***
 
-The metrics page uses Micrometer to give a detailed view of the application performance.
+メトリクスページでは、Micrometerを使用してアプリケーションパフォーマンスの詳細なビューを提供します。
 
-It gives metrics on:
+次のメトリックが表示されます。
 
-- the JVM
-- HTTP requests
-- cache usage
-- database connection pool
+- JVM
+- HTTPリクエスト
+- キャッシュの使用状況
+- データベース接続プール
 
-By clicking on the Expand button next to the JVM thread metrics, you will get a stacktrace of the running application, which is very useful to find out blocked threads.
+JVMスレッド・メトリクスの横にある展開ボタンをクリックすると、実行中のアプリケーションのスタック・トレースが表示されます。これは、ブロックされているスレッドを見つけるのに非常に役立ちます。
 
 ![]({{ site.url }}/images/jhipster-control-center-metrics.png)
 
-### ***Health***
+### ***稼働状態***
 
-The health page uses Spring Boot Actuator's health endpoint to give health information on various parts of the application. 
+ヘルスページは、Spring Boot Actuatorのヘルスエンドポイントを使用して、アプリケーションのさまざまな部分の稼働状態の情報を提供します。
 
-Many health checks are provided out-of-the-box by Spring Boot Actuator, and you can add application-specific health checks.
+多くのヘルスチェックは、Spring Boot Actuatorによってすぐに使用できる状態で提供され、アプリケーション固有のヘルスチェックを追加できます。
 
 ![]({{ site.url }}/images/jhipster-control-center-health.png)
 
-### ***Configuration***
+### ***設定***
 
-The configuration page uses Spring Boot Actuator's configuration endpoint to give a full view of the Spring configuration of the current application.
+設定ページでは、Spring Boot Actuatorの設定エンドポイントを使用して、現在のアプリケーションのSpring設定の完全なビューを提供します。
 
 ![]({{ site.url }}/images/jhipster-control-center-configuration.png)
 
-### ***Logs***
+### ***ログ***
 
-The logs page allows to manage at runtime the Logback configuration of the running application. 
+ログページでは、実行中のアプリケーションのLogback設定を実行時に管理できます。
 
-You can change the log level of Java package by clicking on a button, which is very convenient both in development and in production.
+Javaパッケージのログ・レベルを変更するには、ボタンをクリックします。これは、開発環境と本番環境の両方で非常に便利です。
 
 ![]({{ site.url }}/images/jhipster-control-center-logs.png)
 
-### ***Logfile***
+### ***ログファイル***
 
-The logfile page allows to see at runtime the log of the running application. By default it is disabled, you need to configure it. This message is display if the logfile is disabled:
+ログファイルのページでは、実行中のアプリケーションのログを実行時に表示できます。デフォルトでは無効になっているため、設定する必要があります。ログ・ファイルが無効になっている場合は、次のメッセージが表示されます。
 
 ```
-No available logfile. Please note that it is not available by default, you need to set up the Spring Boot properties below! 
-Please check:
- - if the microservice is up
- - if these properties are set: 
+使用可能なログファイルがありません。デフォルトでは使用できません。以下のSpring Bootプロパティを設定する必要があります。
+以下を確認してください。
+ - マイクロサービスが起動しているかどうか
+ - 以下のプロパティが設定されているかどうか
      - logging.file.path
-     - logging.file.name (to avoid using the same spring.log)
+     - logging.file.name（同じspring.logを使用しないため）
 
-See:
+参考:
  - https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
  - https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html
 ```
@@ -163,7 +163,7 @@ See:
 
 ### ***API***
 
-The API page allows to see all API documentation of your applications and test their endpoints through a single Swagger UI frame.
+APIページでは、アプリケーションのすべてのAPIドキュメントを表示し、単一のSwagger UIフレームを使用してエンドポイントをテストできます。
 
 ![]({{ site.url }}/images/jhipster-control-center-api.png)
 
