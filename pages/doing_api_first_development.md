@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Doing API-First development
+title: APIファーストな開発を行う
 permalink: /doing-api-first-development/
 redirect_from:
   - /doing-api-first-development.html
@@ -9,26 +9,26 @@ sitemap:
     lastmod: 2018-06-11T00:00:00-00:00
 ---
 
-# <i class="fa fa-search"></i> Doing API-First development
+# <i class="fa fa-search"></i> APIファーストな開発を行う
 
-When generating a JHipster application, you can choose the `API first development using OpenAPI-generator` option when prompted for additional technologies.
-This option will configure your build tool to use [OpenAPI-generator](https://github.com/OpenAPITools/openapi-generator) to generate API code from an OpenAPI (Swagger) definition file.
-Both Swagger v2 and OpenAPI v3 formats are supported.
+JHipsterアプリケーションを生成するときに、追加のテクノロジのプロンプトが表示されたら、`API first development using OpenAPI-generator`オプションを選択できます。
+このオプションは、[OpenAPI-generator](https://github.com/OpenAPITools/openapi-generator)を使用してOpenAPI(Swagger)定義ファイルからAPIコードを生成するようにビルドツールを設定します。
+Swagger v2とOpenAPI v3の両方のフォーマットがサポートされています。
 
-### Rationale for API-First development
+### APIファーストな開発が合理的である理由
 
-In API first development, instead of generating the documentation from the code, you need to write the specification first and then generate code from it.
-This has the following advantages:
+APIファースト開発では、コードからドキュメントを生成するのではなく、最初に仕様を記述してからコードを生成する必要があります。
+これには、次の利点があります。
 
-- You can design your API for the consumers and not as a consequence of your implementation.
-- You can use the specification file to mock your new server endpoints before they are released so you can more decouple frontend and backend development.
-- You don't need a live server to use your OpenAPI documentation.
+- 実装の結果としてではなく、ユーザのためにAPIを設計できます。
+- 新しいサーバエンドポイントがリリースされる前に仕様ファイルを使用してモックを作成できるため、フロントエンドとバックエンドの開発をより分離できます。
+- OpenAPIドキュメントを使用するためのライブサーバは必要ありません。
 
-### Using the OpenAPI-generator plugins
+### OpenAPIジェネレータプラグインの使用
 
-The OpenAPI specification file will be located at src/main/resources/swagger/api.yml and is used to generate endpoint interfaces that you can implement. 
-Those interfaces have default methods which answer with a `501 Not implemented` HTTP status and an empty body.
-Write your specification using a tool such as [swagger-editor](http://editor.swagger.io), put it in `src/main/resources/swagger/api.yml`, then run:
+OpenAPI仕様ファイルはsrc/main/resources/swagger/api.ymlにあり、実装可能なエンドポイント・インタフェースを生成するために使用されます。
+これらのインタフェースには、`501 Not implemented`HTTPステータスと空の本体で応答するデフォルトのメソッドがあります。
+[swagger-editor](http://editor.swagger.io)などのツールを使用して定義を記述し、それを`src/main/resources/swagger/api.yml`に置き、次のコマンドを実行します。
 ```bash
 ./mvnw generate-sources
 ```
@@ -36,9 +36,9 @@ Or for gradle:
 ```bash
 ./gradlew openApiGenerate
 ```
-Then implement the "Delegate" interfaces generated in `${buildDirectory}/generated-sources/openapi/src/main/java/${package}/web/api/` with `@Service` classes.
+次に、`${buildDirectory}/generated-sources/openapi/src/main/java/${package}/web/api/`で生成された"Delegate"インタフェースを`@Service`クラスで実装します。
 
-Example of code to write yourself for the famous [petstore](http://petstore.swagger.io):
+有名な[petstore](http://petstore.swagger.io)についてコードを書く例は以下のとおりです。
 ```java
 @Service
 public class PetApiDelegateImpl implements PetApiDelegate {
@@ -55,8 +55,8 @@ public class PetApiDelegateImpl implements PetApiDelegate {
     }
 }
 ```
-If you provide the `NativeWebRequest` bean to the delegate interface, then basic example bodies will be returned for the methods that have not been overridden (still with a 501 HTTP status code).
-This is useful to mock your endpoints before providing the actual implementation.
+デリゲートインタフェースに`NativeWebRequest`Beanを提供すると、オーバーライドされていないメソッドの基本的なサンプルボディが返されます（HTTPステータスコードは501のままです）。
+これは、実際の実装を提供する前にエンドポイントをモックするのに便利です。
 ```java
 @Service
 public class PetApiDelegateImpl implements PetApiDelegate {
@@ -73,7 +73,7 @@ public class PetApiDelegateImpl implements PetApiDelegate {
     }
 }
 ```
-Then you can get the examples
+そうすれば、以下のような例を得ることができます。
 ```sh
 $ curl -X GET --header 'Accept: application/json' 'http://localhost:8080/v2/pet/findByStatus?status=pending'
 {  "photoUrls" : [ "photoUrls", "photoUrls" ],  "name" : "doggie",  "id" : 0,  "category" : {    "name" : "name",    "id" : 6  },  "tags" : [ {    "name" : "name",    "id" : 1  }, {    "name" : "name",    "id" : 1  } ],  "status" : "available"}%
@@ -81,25 +81,25 @@ $ curl -X GET --header 'Accept: application/xml' 'http://localhost:8080/v2/pet/f
 <Pet>  <id>123456789</id>  <name>doggie</name>  <photoUrls>    <photoUrls>aeiou</photoUrls>  </photoUrls>  <tags>  </tags>  <status>aeiou</status></Pet>%
 ```
 
-Probably that your IDE exclude, from sources, the output folder. Be sure to reload the configuration to detect the generated classes.
-It can be done through your IDE UI or through command.
+IDEがソースから出力フォルダを除外している可能性があります。生成されたクラスを検出するには、必ず構成を再ロードしてください。
+これは、IDE UIまたはコマンドを使用して実行できます。
 
-When using Eclipse or VSCode
+EclipseまたはVSCodeを使用する場合は以下のとおりです。
 
-* With maven
+* mavenの場合
 ```bash
 ./mvnw eclipse:clean eclipse:eclipse
 ```
-When using IntelliJ
-* With maven
+IntelliJを使う場合は以下となります。
+* mavenの場合
 ```bash
 ./mvnw idea:idea
 ```
 
-### Using the `openapi-client` Sub-Generator
+### `openapi-client`サブジェネレータの使用
 
-JHipster also provides support for generation of client code using [Spring Cloud OpenFeign](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/) or Spring Webclient for reactive apps using an OpenAPI/Swagger specification.
-The generated Client can be used in both Monolithic and Micro-service applications and supports Swagger v2 and OpenAPI v3 definitions. To invoke this sub-generator run `jhipster openapi-client`.
+JHipsterは、[Spring Cloud OpenFeign](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/)を使用したクライアントコードの生成や、OpenAPI/Swagger仕様を使用したリアクティブアプリ用のSpring Webclientのサポートも提供します。
+生成されたクライアントは、モノリシックアプリケーションとマイクロサービスアプリケーションの両方で使用でき、Swagger v2とOpenAPI v3の定義をサポートします。このサブジェネレータを呼び出すには、`jhipster openapi-client`を実行してください。
 
 
 
