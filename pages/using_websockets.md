@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using Websockets
+title: Websocketの使用
 permalink: /using-websockets/
 redirect_from:
   - /using_websockets.html
@@ -9,20 +9,20 @@ sitemap:
     lastmod: 2015-08-31T18:40:00-00:00
 ---
 
-# <i class="fa fa-envelope"></i> Using WebSockets
+# <i class="fa fa-envelope"></i> WebSocketsの使用
 
-WebSockets are useful for having a very dynamic application, where data is shared in near real-time between the server and its clients.
+WebSocketは、サーバーとそのクライアントの間でデータがほぼリアルタイムで共有される、非常に動的なアプリケーションを持つ場合に便利です。
 
-JHipster currently uses Spring WebSockets as its implementation, so you will find a lot more information on this feature on the [Spring WebSockets website](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/websocket.html).
+JHipsterは現在、その実装としてSpring WebSocketsを使用しているので、[Spring WebSocketsウェブサイト](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/websocket.html)でこの機能に関するより多くの情報を見つけることができます。
 
-This option has a few limitations:
+このオプションには、いくつかの制限があります。
 
-- By default, we use the dispatcher provided by Spring Websockets, which is an in-memory implementation. It will not scale if you want to use several servers. If you want to do so, have a look at the [Spring WebSockets documentation](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/websocket.html) which explains how to configure an external broker.
+- デフォルトでは、Spring Websocketsが提供するディスパッチャを使用します。これはインメモリ実装です。複数のサーバを使用する場合は拡張できません。拡張する場合は、外部ブローカの設定方法を説明している[Spring WebSocketsドキュメント](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/websocket.html)を参照してください。
 
-## The "Tracker" example
+## 「トラッカー」の例
 
-JHipster provides a "tracker" example out-of-the-box. Located in the `admin` menu, it will track the other users' behavior: you will see their login and IP, and which page they are currently viewing.
+JHipsterは、すぐに利用できる「トラッカー」の例を提供しています。`admin`メニューにあり、他のユーザーの行動を追跡します。ログインとIP、および現在どのページを表示しているかがわかります。
 
-- This is provided as an example so you can get started using WebSockets, not as a "production-ready" user tracker, but it works quite well.
-- It will show you how to integrate WebSockets with Spring Security, which is quite a complex topic
-- This works because JHipster is a Single-Page Web Application, so the WebSockets connections are not reinitialized between each page: this is where you get one of the big benefits of JHipster's architecture
+- これは、WebSocketsの使用を開始できるようにするための例として提供されています。「本番対応」のユーザー・トラッカーとしてではありませんが、非常にうまく機能します。
+- WebSocketsをSpring Securityと統合する方法を示しますが、これは非常に複雑なトピックです。
+- これは、JHipsterがシングルページWebアプリケーションであるため、WebSockets接続が各ページ間で再初期化されないために機能します。これは、JHipsterのアーキテクチャの大きな利点の1つを得る場所です。
