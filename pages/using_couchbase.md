@@ -17,7 +17,7 @@ Couchbaseを選択した場合、以下のとおりとなります。
 
 * データベースへのアクセスにはSpring Data Couchbaseが使用されます。これはSpring Data JPAに非常に近いものであり、Couchbaseサポートが（デフォルトの）JPAサポートに非常に近いのはこのためです。
 * データベースの変更管理のために[Couchmove](https://github.com/differentway/couchmove)が[Liquibase](http://www.liquibase.org/)の代わりに使用されます。
-* [エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)は、NoSQLデータベースとのリレーションシップを持つことができない（少なくともJPAでリレーションシップを持つ方法ではない）ため、エンティティのリレーションシップを要求しません。
+* [エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)は、NoSQLデータベースとのリレーションシップは（少なくともJPAとのリレーションシップのようには）持つことができないため、エンティティのリレーションシップを要求しません。
 * [Couchbase Testcontainers](https://github.com/differentway/testcontainers-java-module-couchbase)は、ユニット・テストを実行するためのコンテナ化されたバージョンのデータベースを起動するために使用されます。
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
