@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using Oracle
+title: Oracleの使用
 permalink: /using-oracle/
 redirect_from:
   - /using_oracle.html
@@ -9,33 +9,33 @@ sitemap:
     lastmod: 2021-01-08T09:40:00-00:00
 ---
 
-# <i class="fa fa-database"></i> Using Oracle
+# <i class="fa fa-database"></i> Oracleの使用
 
-When using JPA, you have the option to use the Oracle database.
+JPAを使用する場合、Oracleデータベースを使用するオプションがあります。
 
-_This option is only supported with Oracle 12cR1 and upwards (e.g. 19c, 18c and 12cR2)._
+_このオプションは、Oracle 12cR1以降（19c、18c、12cR2など）でのみサポートされています。_
 
-When using Oracle with JHipster, the following limitations will be applicable according to the Oracle database version.
+JHipsterでOracleを使用する場合、Oracleデータベースのバージョンに応じて、次の制限が適用されます。
 
-For version 19c, 18c and 12cR2:
-- Entity names cannot be more than 124 characters, this is due to Oracle's 128 character limitation for object names, and we reserve 4 characters to generate primary key sequence for the generated tables.
-- Entity field names cannot be more than 128 characters.
-- When doing relationships, foreign key names cannot be more than 128 characters, so they will be truncated if they are too long.
-- When doing many-to-many relationships, the join table name will follow the JPA specification (in the form "firstTable_secondTable"): if it is more than 128 characters long, it will be truncated.
+バージョン19c、18c、および12cR2の場合は以下のとおりです。
+- エンティティ名は124文字を超えることはできません。これは、オブジェクト名に対するOracleの128文字制限によるもので、生成されたテーブルのプライマリ・キー・シーケンスを生成するために4文字が予約されています。
+- エンティティフィールド名は128文字以内です。
+- リレーションシップを作成する場合、外部キー名は128文字を超えることはできないため、長すぎる場合は切り捨てられます。
+- 多対多の関係を作成する場合、結合テーブル名はJPAの指定に従います（"firstTable_secondTable"の形式）。128文字を超える場合は切り捨てられます。
 
-For version 12cR1:
-- Entity names cannot be more than 26 characters, this is due to Oracle's 30 character limitation for object names, and we reserve 4 characters to generate primary key sequence for the generated tables.
-- Entity field names cannot be more than 30 characters.
-- When doing relationships, foreign key names cannot be more than 30 characters, so they will be truncated if they are too long.
-- When doing many-to-many relationships, the join table name will follow the JPA specification (in the form "firstTable_secondTable"): if it is more than 30 characters long, it will be truncated.
+バージョン12cR1の場合は以下のとおりです。
+- エンティティ名は26文字を超えることはできません。これは、オブジェクト名に対するOracleの30文字制限によるもので、生成されたテーブルのプライマリ・キー・シーケンスを生成するために4文字が予約されています。
+- エンティティフィールド名は30文字以内です。
+- リレーションシップを作成する場合、外部キー名は30文字を超えることはできないため、長すぎる場合は切り捨てられます。
+- 多対多の関係を作成する場合、結合テーブル名はJPA仕様に従います（"firstTable_secondTable"の形式）。長さが30文字を超える場合は切り捨てられます。
 
-- Oracle reserved keywords cannot be used as Entity names or Field names.
+- Oracle予約キーワードは、エンティティ名またはフィールド名として使用できません。
 
-- Oracle database 19c (EE, SE2, Single Instance and RAC) Docker images can be found here: https://container-registry.oracle.com
-- Oracle database 19c Docker build files can be found here: https://github.com/oracle/docker-images/tree/master/OracleDatabase
+- Oracle Database 19c(EE、SE2、シングルインスタンスおよびRAC)Dockerイメージは、 https://container-registry.oracle.com にあります。
+- Oracle database 19cのDockerビルドファイルは、 https://github.com/oracle/docker-images/tree/master/OracleDatabase にあります。
 
 
-Note that version 19c is highly recommended because it has Long Term Support (ending in 2027).
+バージョン19cは、長期サポート（2027で終了）があるため、強くお勧めします。
 
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
