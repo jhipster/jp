@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using Kafka
+title: Kafkaの使用
 permalink: /using-kafka/
 redirect_from:
   - /using_kafka.html
@@ -9,32 +9,32 @@ sitemap:
     lastmod: 2019-10-30T00:00:00-00:00
 ---
 
-# <i class="fa fa-envelope"></i> Using Kafka
+# <i class="fa fa-envelope"></i> Kafkaの使用
 
-## Features
+## 機能
 
-[Kafka](http://kafka.apache.org/) is a popular publish-subscribe messaging system. JHipster has an optional support for Kafka, that will:
+[Kafka](http://kafka.apache.org/)は人気のあるパブリッシュ/サブスクライブ型メッセージングシステムです。JHipsterはKafkaをオプションでサポートしており、次のことを実現します。
 
-- Configure [Kafka clients](https://docs.confluent.io/5.3.1/clients/consumer.html#java-client) with JHipster.
-- Add the necessary configuration in the `application-*.yml`
-- Generate a Docker Compose configuration file, so Kafka is usable by typing `docker-compose -f src/main/docker/kafka.yml up -d`.
+- [Kafkaクライアント](https://docs.confluent.io/5.3.1/clients/consumer.html#java-client)をJHipsterで構成します。
+- `application-*.yml`に必要な設定を追加します。
+- Docker Compose設定ファイルを生成します。これによりKafkaが `docker-compose -f src/main/docker/kafka.yml up -d`で使用可能となります。
 
-## Prerequisite
+## 前提条件
 
-Generate a new application and make sure to select `Asynchronous messages using Apache Kafka` when prompted for technologies you would like to use. A Docker Compose configuration file is generated and you can start Kafka with the command:
+新しいアプリケーションを生成し、使用したいテクノロジのプロンプトが表示されたら、必ず`Asynchronous messages using Apache Kafka`を選択してください。Docker Compose設定ファイルが生成され、次のコマンドでKafkaを起動できます。
 
 `docker-compose -f src/main/docker/kafka.yml up -d`
 
-## Consumer and Producer
+## コンシューマとプロデューサ
 
-A consumer (`<appName>KafkaConsumer` class) is running and can be adapted to your needs.
+コンシューマ（`<appName>KafkaConsumer`クラス）が実行されており、ニーズに適合させることができます。
 
-A producer (`<appName>KafkaProducer` class) is also available and can be called through a REST endpoint (`<appName>KafkaResource class`).
+プロデューサ（`<appName>KafkaProducer`クラス）も使用でき、RESTエンドポイント（`<appName>KafkaResource`クラス）を介して呼び出すことができます。
 
-## Running the app
+## アプリケーションの実行
 
-Allow access to the endpoint in `SecurityConfiguration.java`:
+`SecurityConfiguration.java`においてエンドポイントへのアクセスを許可します。
 
 `.antMatchers("/api/<appName>-kafka/publish").permitAll()`
 
-If you invoke the endpoint `http://localhost:8080/api/<appName>-kafka/publish?message=...`, you should see the message logged to the console.
+エンドポイント`http://localhost:8080/api/<appName>-kafka/publish?message=...`を呼び出すと、コンソールにメッセージが記録されるはずです。
