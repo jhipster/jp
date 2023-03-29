@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using Cassandra
+title: Cassandraの使用
 permalink: /using-cassandra/
 redirect_from:
   - /using_cassandra.html
@@ -9,80 +9,80 @@ sitemap:
     lastmod: 2015-02-24T00:00:00-00:00
 ---
 
-# <i class="fa fa-eye"></i> Using Cassandra
+# <i class="fa fa-eye"></i> Cassandraの使用
 
-Cassandra is one of the supported databases that can be selected when your application is being generated.
+Cassandraは、アプリケーションの生成時に選択できる、サポートされているデータベースの1つです。
 
-This generator has one limitation:
+このジェネレータには1つの制限があります。
 
-*   It does not support OAuth2 authentication (we need to implement a Cassandra back-end to Spring Security's OAuth2 server)
+*    OAuth2認証はサポートしていません（Spring SecurityのOAuth2サーバにCassandraバックエンドを実装する必要があります）
 
-When Cassandra is selected:
+Cassandraが選択されている場合は以下のようになります。
 
-*   Spring Data Reactive for Apache Cassandra is used
-*   The [entity sub-generator]({{ site.url }}/creating-an-entity/) will not ask you for entity relationships, as you can't have relationships with a NoSQL database (at least not in the way you have relationships with JPA)
-*   The generated entities only support one partition key, which is the ID. Future versions will provide composite primary keys and clustering keys
+*   Spring Data Reactive for Apache Cassandraを使用します。
+*   [エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)は、NoSQLデータベースとのリレーションシップは（少なくともJPAとのリレーションシップのようには）持つことができないため、エンティティのリレーションシップを要求しません。
+*   生成されたエンティティは、IDである1つのパーティション・キーのみをサポートします。将来のバージョンでは、複合プライマリ・キーとクラスタリング・キーが提供される予定です。
 
-## Migration tool
+## 移行ツール
 
-Similar to [Liquibase](http://www.liquibase.org/), JHipster provide a tool to apply your CQL migration scripts, with some restrictions:
+[Liquibase](http://www.liquibase.org/)と同様に、JHipsterには、CQL移行スクリプトを適用するためのツールが用意されていますが、いくつかの制限があります。
 
-*   The tool is not run by the application itself when it is started but inside a Docker container or manually
-*   All CQL scripts must follow the pattern `{timestamp}_{description}.cql` and be placed in the changelog directory: `src/main/resources/config/cql/changelog/`
-*   All non already applied scripts located in the changelog directory are applied in alphabetical order (ie: following the timestamp)
-*   Because Cassandra is not a transactional database, if an error happen before inserting the metadata in the table used by the tool there is a risk to have your CQL migration script run multiple times
+*   このツールは、起動時にアプリケーション自体によって実行されるのではなく、Dockerコンテナ内または手動で実行されます。
+*   すべてのCQLスクリプトは、パターン`{timestamp}_{description}.cql`に従い、`src/main/resources/config/cql/changelog/`のchangelogディレクトリに配置される必要があります。
+*   changelogディレクトリにある、まだ適用されていないすべてのスクリプトは、アルファベット順（すなわち、タイムスタンプに従い）に適用されます。
+*   Cassandraはトランザクションデータベースではないため、ツールが使用するテーブルにメタデータを挿入する前にエラーが発生した場合、CQL移行スクリプトが複数回実行されるリスクがあります。
 
-Some information on the tool:
+ツールに関する情報は以下のとおりです。
 
-*   After generating an entity, its CQL file will be generated in `src/main/resources/config/cql/changelog/` in the same way we generate Liquibase changelogs for JPA
-*   For running tests, all the CQL scripts in the `src/main/resources/config/cql/changelog/` directory are automically applied to the in memory cluster
-    *   Meaning you have nothing to do but to drop your script in the changelog directory to have it applied for the tests
-*   The tool uses its own cassandra table `schema_version` to store the metadata info
+*   エンティティを生成した後、そのCQLファイルは、JPA用のLiquibase変更ログを生成するのと同じ方法で、`src/main/resources/config/cql/changelog/`に生成されます
+*   テストを実行する場合、`src/main/resources/config/cql/changelog/`ディレクトリ内のすべてのCQLスクリプトが、メモリ内のクラスタに自動的に適用されます。
+    *   これは、スクリプトをchangelogディレクトリにドロップしてテストに適用する以外に何もすることがないことを意味します。
+*   このツールは、独自のcassandraテーブル`schema_version`を使用してメタデータ情報を保存します。
 
-The tool will apply the migration scripts from `src/main/resources/config/cql/` in the following order:
+このツールは、`src/main/resources/config/cql/`からの移行スクリプトを次の順序で適用します。
 
-1.  `create-keyspace.cql` - create the keyspace and the `schema_version` table to store the migration metadata
-2.  all `cql/changelog/\*.cql` files in alphabetical order
+1.  `create-keyspace.cql` - 移行メタデータを格納するためのキースペースと`schema_version`テーブルを作成します
+2.  アルファベット順のすべての`cql/changelog/\*.cql`ファイル
 
-### Running the tool
+### ツールの実行
 
-Depending if you are using Docker or not, you have several options to run the migration tool.
+Dockerを使用しているかどうかに応じて、マイグレーションツールを実行するためのオプションがいくつかあります。
 
-#### With Docker:
+#### Dockerの場合:
 
-If you have started the Cassandra cluster with docker-compose, using the generated `app.yml` or `cassandra.yml` compose files, the tool has already been run and all cql scripts applied.
+生成された`app.yml`または`cassandra.yml`構成ファイルを使用して、docker-composeでCassandraクラスタを起動した場合、ツールはすでに実行され、すべてのcqlスクリプトが適用されています。
 
-After adding a CQL script in the changelog directory, you can relaunch the docker-service responsible to run the migration service again without stopping the cluster:  
+changelogディレクトリにCQLスクリプトを追加した後、クラスタを停止することなく、移行サービスを再度実行するdocker-serviceを再起動できます。
 `docker-compose -f src/main/docker/cassandra.yml up <app>-cassandra-migration`
 
-#### Manually:
+#### 手動:
 
-With some prerequisites, you can run the tool manually. It could be useful to familiarize you with the tool to later include it to your deployment pipeline.
+いくつかの前提条件があれば、ツールを手動で実行できます。後でデプロイメント・パイプラインに組み込むために、ツールに精通していると便利です。
 
-##### Prerequisites:
+##### 前提条件:
 
-*   Add the Cassandra contact point environment variable, typically locally: ``export CASSANDRA_CONTACT_POINT=`127.0.0.1` ``
-*   Install a recent (>4) bash version and md5sum with your favorite package manager
-*   Have CQLSH in your classpath
+*   Cassandraのコンタクトポイント環境変数を追加します。通常は``export CASSANDRA_CONTACT_POINT=`127.0.0.1` ``のようにローカルに設定します。
+*   お気に入りのパッケージマネージャを使って、最新（>4）のbashバージョンとmd5sumをインストールします。
+*   クラスパスにCQLSHを含めます。
 
-To run the tool use this command: `src/main/docker/cassandra/scripts/autoMigrate.sh src/main/resources/config/cql/changelog/`
+ツールを実行するには、`src/main/docker/cassandra/scripts/autoMigrate.sh src/main/resources/config/cql/changelog/`のコマンドを使用します。
 
-By default, the `src/main/resources/config/create-keyspace.cql` script is used to create the keyspace if necessary.
-You can override it with a second argument: `src/main/docker/cassandra/scripts/autoMigrate.sh src/main/resources/config/cql/changelog/ create-keyspace-prod.cql`
+デフォルトでは、必要に応じて`src/main/resources/config/create-keyspace.cql`スクリプトを使用してキースペースが作成されます。
+これは`src/main/docker/cassandra/scripts/autoMigrate.sh src/main/resources/config/cql/changelog/ create-keyspace-prod.cql`のように、2番目の引数で上書きできます。
 
-If you only want to run a specific script against your cluster use: `src/main/docker/cassandra/scripts/execute-cql.sh src/main/resources/config/cql/changelog/<your script>.cql`
+クラスタに対して特定のスクリプトのみを実行する場合は、`src/main/docker/cassandra/scripts/execute-cql.sh src/main/resources/config/cql/changelog/<your script>.cql`を使用します。
 
-## Cassandra and Docker on non-linux OSs
+## Linux以外のOSでのCassandraとDocker
 
-On Mac OSx and Windows, Docker containers are not hosted directly but on a VirtualBox VM.  
-Those, you can not access them in localhost but have to hit the VirtualBox IP.
+Mac OSxとWindowsでは、Dockerコンテナは直接ホストされるのではなく、VirtualBox VM上にホストされます。
+これらは、localhostではアクセスできませんが、VirtualBox IPをあてる必要があります。
 
-You can override the Cassandra contact point (localhost by default) with this environment variable: ``export SPRING_DATA_CASSANDRA_CONTACTPOINTS=`docker-machine ip default` ``
+Cassandraのコンタクトポイント（デフォルトではlocalhost）は、環境変数 ``export SPRING_DATA_CASSANDRA_CONTACTPOINTS=`docker-machine ip default` `` で上書きできます。
 
-#### Cassandra nodes:
+#### Cassandraノード:
 
-Because Cassandra nodes are also hosted in the Virtual machine, the Cassandra Java driver will receive an error when trying to contact them after receiving their address from the contact point.  
-To workaround this, you can add a routing rule to your routing table, [(source)](http://krasserm.github.io/2015/07/13/chaos-testing-with-docker-and-cassandra/#port-mapping).
+Cassandraノードも仮想マシンでホストされるため、コンタクトポイントからアドレスを受信した後にCassandra Javaドライバにコンタクトしようとすると、エラーが発生します。
+これを回避するには、ルーティングテーブルにルーティングルールを追加します。[(source)](http://krasserm.github.io/2015/07/13/chaos-testing-with-docker-and-cassandra/#port-mapping)（訳注：[リンク先はすでになく今はこちら](https://rbmhtechnology.github.io/chaos-testing-with-docker-and-cassandra/#port-mapping)）
 
-Assuming the containers running the Cassandra nodes have IP address 172.18.0.x:  
+Cassandraノードを実行しているコンテナのIPアドレスが172.18.0.xであると仮定します。
 ``sudo route -n add 172.18.0.0/16 `docker-machine ip default` ``
