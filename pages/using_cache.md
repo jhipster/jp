@@ -1,25 +1,25 @@
 ---
 layout: default
-title: Using a cache
+title: キャッシュの使用
 permalink: /using-cache/
 sitemap:
     priority: 0.7
     lastmod: 2017-02-10T18:40:00-00:00
 ---
 
-# <i class="fa fa-line-chart"></i> Using a cache
+# <i class="fa fa-line-chart"></i> キャッシュの使用
 
-A cache can be used at two levels in JHipster:
+JHipsterでは、キャッシュは2つのレベルで使用できます。
 
-- With the Spring Cache abstraction, which is a specific question when your application is generated, and which uses the Spring Boot `@EnableCaching` annotation. This needs to be tuned according to your specific business needs, and works at a higher level than the Hibernate 2nd-level cache.
-- As an Hibernate 2nd-level cache, a caching solution can give a huge performance boost to your application, and this is what people usually do with JHipster. Please note that this option is only available for SQL databases, and if you have selected to use Spring Cache.
+- Spring Cache抽象化を使用します。これは、アプリケーションが生成されるときの個別の質問にあり、Spring Bootの`@EnableCaching`アノテーションを使用します。これは、特定のビジネスニーズに合わせて調整する必要があり、Hibernateの第2レベルのキャッシュよりも高いレベルで動作します。
+- Hibernateの第2レベルのキャッシュを使用します。アプリケーションのパフォーマンスを大幅に向上させることができるキャッシュソリューションであり、JHipsterで一般的に行われている振る舞いです。このオプションは、SQLデータベースで、Spring Cacheの使用を選択した場合にのみ使用できます。
 
-Spring Cache and the Hibernate 2nd-level cache will use the same caching solution, but do not work at the same level: we do not recommend to use both for the same objects, as this will make cache invalidation issues even more complex. Instead, we recommend you use:
+Spring CacheとHibernateの第2レベルのキャッシュは同じキャッシングソリューションを使用しますが、同じレベルでは動作しません。キャッシュの無効化の問題がさらに複雑になるため、同じオブジェクトに対して両方を使用することはお勧めしません。代わりに、次のように使用することをお勧めします。
 
-- Spring Cache for higher-level or aggregate objects, like you typically have with DTOs
-- The Hibernate 2nd-level cache for entities mapped to the database, in order to reduce the number of SQL requests
+- Spring Cacheは、DTOで一般的に使用されるような、上位レベルまたは集約オブジェクト用
+- Hibernate第2レベルキャッシュは、SQLリクエストの数を減らすため、データベースにマップされたエンティティ用
 
-JHipster supports the following cache implementations: 
+JHipsterは、次のキャッシュ実装をサポートしています。
 1. Ehcache,
 2. Caffeine, 
 3. Hazelcast, 
@@ -27,47 +27,47 @@ JHipster supports the following cache implementations:
 5. Memcached,
 6. Redis.
 
-They are all detailed below.
+詳細は以下のとおりです。
 
-## Common configuration
+## 共通の構成
 
-Caches are configured in the `CacheConfiguration` class, and can also be tuned using the JHipster [common application properties]({{ site.url }}/common-application-properties/).
+キャッシュは`CacheConfiguration`クラスで構成され、JHipster[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)を使用しての調整もできます。
 
-## Caching with Ehcache
+## Ehcacheを使ったキャッシング
 
-[Ehcache](http://www.ehcache.org/) is the default cache with monoliths in JHipster. Ehcache starts up very fast, so it's a perfect solution for "normal" monoliths.
+[Ehcache](http://www.ehcache.org/)はJHipsterのモノリスを備えたデフォルトのキャッシュです。Ehcacheは非常に高速に起動するため、「通常の」モノリスに最適なソリューションです。
 
-With JHipster, Ehcache cannot work as a distributed cache, as it doesn't have an API allowing to add new nodes programmatically
+JHipsterではEhcacheは分散キャッシュとして動作できません。新しいノードをプログラムで追加できるAPIがないためです。
 
-Ehcache is configured in the `CacheConfiguration` Spring configuration bean, which defines 2 properties (`time-to-live-seconds` and `max-entries`) in the JHipster [common application properties]({{ site.url }}/common-application-properties/). More properties can be added in your application's specific `ApplicationProperties` Spring configuration bean.
+Ehcacheは、JHipsterの[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)の2つのプロパティ（`time-to-live-seconds`および`max-entries`）を定義する`CacheConfiguration`Spring configuration beanで構成されます。アプリケーション固有の`ApplicationProperties`Spring configuration beanには、さらにプロパティを追加できます。
 
-By default, `time-to-live-seconds` has a default value of 3600 seconds (1 hour) both in `dev` and in `prod` mode, and `max-entries` has a default value of 100 entries in `dev` mode and 1,000 entries in `prod` mode.
+デフォルトでは、`time-to-live-seconds`のデフォルト値は、`dev`モードと`prod`モードの両方で3600秒（1時間）です。また、`max-entries`のデフォルト値は、`dev`モードで100エントリ、`prod`モードで1,000エントリです。
 
-Those values should be tuned depending on your specific business needs, and the JHipster monitoring screen can help you better understand cache usage in your application. Please also refer to the Ehcache documentation to fine-tune those values.
+これらの値は、特定のビジネス・ニーズに応じてチューニングする必要があります。JHipster監視画面は、アプリケーションでのキャッシュの使用状況をよりよく理解するのに役立ちます。これらの値を調整するには、Ehcacheのドキュメントも参照してください。
 
-## Caching with Caffeine
+## Caffeineによるキャッシング
 
-[Caffeine](https://github.com/ben-manes/caffeine) is a [high performance](https://github.com/ben-manes/caffeine/wiki/Benchmarks), [near optimal](https://github.com/ben-manes/caffeine/wiki/Efficiency) caching library and is an alternative to Ehcache for use with monoliths in JHipster. 
+[Caffeine](https://github.com/ben-manes/caffeine)は、[ハイパフォーマンス](https://github.com/ben-manes/caffeine/wiki/Benchmarks)、[準最適](https://github.com/ben-manes/caffeine/wiki/Efficiency)キャッシュライブラリであり、JHipsterのモノリスで使用するためのEhcacheの代替です。
 
-Similar to Ehcache, Caffeine cannot work as a distributed cache.
+Ehcacheと同様に、Caffeineは分散キャッシュとしては動作しません。
 
-Jhipster generates a default configuration for Caffeine which is identical to Ehcache. However you may wish to add additional options to fine tune it to your needs. Caffeine cache configuration is done in `CacheConfiguration` Spring configuration bean whereas your application specific properties can be added to `ApplicationProperties` bean. You might find the following three files useful in defining your own Caffeine configuration.
+Jhipsterは、Ehcacheと同じCaffeineのデフォルト設定を生成します。ただし、追加のオプションを追加して、ニーズに合わせての調整もできます。Caffeineキャッシュ設定は`CacheConfiguration` Spring configuration beanで行われますが、アプリケーション固有のプロパティは`ApplicationProperties`Beanに追加できます。次の3つのファイルは、独自のCaffeine設定を定義するのに便利です。
 
-- We use the [`CaffeineConfiguration`](https://github.com/ben-manes/caffeine/blob/master/jcache/src/main/java/com/github/benmanes/caffeine/jcache/configuration/CaffeineConfiguration.java) class within the `CacheConfiguration` bean to add Caffeine properties.
+- `CacheConfiguration`Bean内の[`CaffeineConfiguration`](https://github.com/ben-manes/caffeine/blob/master/jcache/src/main/java/com/github/benmanes/caffeine/jcache/configuration/CaffeineConfiguration.java)クラスを使用し、Caffeineプロパティを追加します。
 
-- You might find [`TypesafeConfigurator`](https://github.com/ben-manes/caffeine/blob/master/jcache/src/main/java/com/github/benmanes/caffeine/jcache/configuration/TypesafeConfigurator.java) along with [`reference.conf`](https://github.com/ben-manes/caffeine/blob/master/jcache/src/main/resources/reference.conf) as a reference to all supported Caffeine properties.
+- [`TypesafeConfigurator`](https://github.com/ben-manes/caffeine/blob/master/jcache/src/main/java/com/github/benmanes/caffeine/jcache/configuration/TypesafeConfigurator.java)は[`reference.conf`](https://github.com/ben-manes/caffeine/blob/master/jcache/src/main/resources/reference.conf)とともに、サポートされているすべてのCaffeineプロパティへの参照として使用できます。
 
-## Caching with Hazelcast
+## Hazelcastを使ったキャッシング
 
-[Hazelcast](https://hazelcast.com/) can work as a local cache (like Ehcache), but can also work as a distributed cache. As a result:
+[Hazelcast](https://hazelcast.com/)は（Ehcacheのように）ローカルキャッシュとして動作できますが、分散キャッシュとしても動作できます。その結果、次のようになります。
 
-- It is the default option for microservices, as we expect microservices to scale
-- It is the default option for gateways, as we expect them to scale, and as Hazelcast is used to distribute the [gateway rate-limiting information]({{ site.url }}/api-gateway/#rate_limiting)
-- When used within a monolith, Hazelcast needs to have the [JHipster Registry]({{ site.url }}/jhipster-registry/) option in order to scale
+- マイクロサービスがスケールすることを考慮し、マイクロサービスのデフォルトオプションとなります。
+- ゲートウェイがスケールすることを考慮し、ゲートウェイのデフォルトオプションとなります。Hazelcastは[ゲートウェイのレート制限情報]({{ site.url }}/api-gateway/#rate_limiting)を配信するために使用されます。
+- モノリス内で使用される場合、Hazelcastは、スケールするために[JHipster Registry]({{ site.url }}/jhipster-registry/)オプションを持つ必要があります。
 
-For scaling applications, Hazelcast will use the configured service discovery in order to find new nodes, and scale horizontally. With microservices and gateways, this will work both with the JHipster Registry and Consul, and for monoliths this will only work with the JHipster Registry.
+アプリケーションをスケールさせるために、Hazelcastは設定されたサービスディスカバリを使用して新しいノードを見つけ、水平にスケールします。マイクロサービスとゲートウェイでは、これはJHipster RegistryとConsulの両方で動作し、モノリスではJHipster Registryでのみ動作します。
 
-When a new node is added, it will register itself to the service discovery (for instance, it will be available in the JHipster Registry), and look for other nodes of the same type. If it finds one or several nodes of the same type, it will create a clustered cache with them: you should see in the logs of each node a message, like in the following example:
+新しいノードが追加されると、それ自体がサービスディスカバリに登録され（たとえば、JHipsterレジストリで使用可能になります）、同じタイプの他のノードを検索します。同じタイプの1つまたは複数のノードが検出されると、それらを使用してクラスタ化されたキャッシュが作成されます。各ノードのログには、次の例のようなメッセージが表示されます。
 
     [172.18.0.10]:5701 [dev] [3.7]
     Members [4] {
@@ -77,62 +77,62 @@ When a new node is added, it will register itself to the service discovery (for 
     Member [172.18.0.11]:5701 - 6114ae28-56cd-4840-a575-4d73a6003744
     }
 
-To work better with Hazelcast, JHipster includes support for the Hazelcast Management Center:
+Hazelcastとうまく連携するために、JHipsterにはHazelcast Management Centerのサポートが含まれています。
 
-- Please note that you can only monitor 2 nodes for free, as this is a proprietary product. But that's already enough for testing your application.
-- It is configured using JHipster [common application properties]({{ site.url }}/common-application-properties/), using the key `jhipster.cache.hazelcast.management-center`, in your `application-dev.yml` and `application-prod.yml` files. Please note that it is turned off by default.
-- JHipster generates a Docker Compose configuration to run the Hazelcast Management Center. Please read our [Docker Compose documentation]({{ site.url }}/docker-compose/), and run the application using `docker-compose -f src/main/docker/hazelcast-management-center.yml up -d`.
+- これは独自の製品であるため、無料で監視できるのは2つのノードのみであることに注意してください。しかし、アプリケーションのテストとしては十分です。
+- これは、JHipster[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)を使用し、キー`jhipster.cache.hazelcast.management-center`を使用して、`application-dev.yml`および`application-prod.yml`ファイルに設定されます。デフォルトではオフになっています。
+- JHipsterは、Hazelcast Management Centerを実行するためのDocker Compose設定を生成します。[Docker Composeドキュメント]({{ site.url }}/docker-compose/)を読み、`docker-compose -f src/main/docker/hazelcast-management-center.yml up -d`を使用してアプリケーションを実行してください。
 
-## Caching with Infinispan
+## Infinispanによるキャッシング
 
-[Infinispan](http://infinispan.org/) is a highly performant caching solution that can work as an in-memory local cache as well as clustered cache. It offers support for multiple cache modes:
-  - [Local](https://infinispan.org/docs/9.4.x/user_guide/user_guide.html#local_mode)
-  - [Invalidation](http://infinispan.org/docs/9.4.x/user_guide/user_guide.html#invalidation_mode)
-  - [Distributed](http://infinispan.org/docs/9.4.x/user_guide/user_guide.html#replicated_mode)
-  - [Replicated](http://infinispan.org/docs/9.4.x/user_guide/user_guide.html#distribution_mode)
-  - [Scattered](https://infinispan.org/docs/9.4.x/user_guide/user_guide.html#scattered_mode)
+[Infinispan](http://infinispan.org/)は、インメモリ・ローカル・キャッシュおよびクラスタ・キャッシュとして機能する、高性能なキャッシュ・ソリューションです。複数のキャッシュ・モードをサポートしています。
+  - [ローカル](https://infinispan.org/docs/9.4.x/user_guide/user_guide.html#local_mode)
+  - [無効化](http://infinispan.org/docs/9.4.x/user_guide/user_guide.html#invalidation_mode)
+  - [分散](http://infinispan.org/docs/9.4.x/user_guide/user_guide.html#replicated_mode)
+  - [複製](http://infinispan.org/docs/9.4.x/user_guide/user_guide.html#distribution_mode)
+  - [散在](https://infinispan.org/docs/9.4.x/user_guide/user_guide.html#scattered_mode)
 
-With JHipster, Infinispan can be used:
+JHipsterでは以下の用途でInfinispanを使用できます。
 
-- As an implementation of the Spring Cache abstraction
-- As an Hibernate 2nd level cache
+- Spring Cache抽象化の実装として
+- Hibernateの第2レベルのキャッシュとして
 
-Following is the pre-configured default configuration:
+事前設定されたデフォルト設定は次のとおりです。
 
-- Entities operate in invalidation cache mode
-- For application-specific caching, three caching configurations are pre-defined
-  - **local-app-data** for caching data local to the nodes
-  - **dist-app-data** for distributed caching of data across nodes (number of copies determined by the distributed replica count)
-  - **repl-app-data** for replicating data across nodes
+- エンティティは無効化キャッシュモードで動作します。
+- アプリケーション固有のキャッシュについては、3つのキャッシュ構成が事前に定義されています。
+  - **local-app-data**：ノードにローカルなデータをキャッシュする場合
+  - **dist-app-data**：ノード間（分散レプリカ数によって決定されるコピーの数分）でデータを分散キャッシュする場合
+  - **repl-app-data**：ノード間でデータをレプリケートする場合
 
-Eviction, time-to-live and max-entries for each of the individual operation mode in the cache and the replica count for the distributed mode can be fine-tuned using the JHipster [common application properties]({{ site.url }}/common-application-properties/). Fine tune the properties in `jhipster.cache.infinispan` for application-specific caching and `spring.jpa.properties` for Hibernate's 2nd level cache.
+JHipsterの[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)を使用すると、キャッシュ内の個々の操作モードのそれぞれに対する削除、存続可能時間、最大エントリ、および分散モードのレプリカ数を調整できます。アプリケーション固有のキャッシュの場合は`jhipster.cache.infinispan`のプロパティを、Hibernateの第2レベルのキャッシュの場合は`spring.jpa.properties`のプロパティを調整してください。
 
-If the JHipster Registry is enabled, then the node list will be populated from the registry. If the JHipster Registry is not enabled, node discovery will be based on the default transport settings defined in the `config-file` packaged within the Infinispan Jar. Infinispan supports discovery natively for most of the platforms like Kubernets/OpenShift, AWS, Azure and Google.
+JHipsterレジストリが有効になっている場合、ノードリストはレジストリから設定されます。JHipsterレジストリが有効になっていない場合、ノードのディスカバリはInfinispan Jar内にパッケージ化された`config-file`で定義されたデフォルトのトランスポート設定に基づいて行われます。Infinispanは、Kubernets/OpenShift、AWS、Azure、Googleなど、ほとんどのプラットフォームでディスカバリをネイティブにサポートしています。
 
-Though Infinispan 9.0.0.Final GA and later releases added support to run Infinispan embedded caching applications on Kubernetes and OpenShift by making use of native KUBE_PING discovery, Hibernate dependency is not yet updated to 9.x releases and hence native discovery is not supported on Kubernetes and OpenShift. However you can run the applications by making use of JHipster Registry for instances discovery.
+Infinispan 9.0.0.Final GA以降のリリースでは、ネイティブのKUBE_PINGディスカバリを使用して、KubernetesおよびOpenShiftでInfinispan組み込みキャッシングアプリケーションを実行するためのサポートが追加されましたが、Hibernateの依存関係はまだ9.xリリースに更新されていないため、ネイティブディスカバリはKubernetesおよびOpenShiftではサポートされていません。ただし、インスタンスディスカバリにJHipsterレジストリを使用することで、アプリケーションを実行できます。
 
-## Caching with Memcached
+## Memcachedを使ったキャッシング
 
-[Memcached](https://memcached.org/) is an Open Source distributed cache. It is quite different from the other cache implementations supported by JHipster:
+[Memcached](https://memcached.org/)はオープンソースの分散キャッシュです。これは、JHipsterがサポートする他のキャッシュ実装とは大きく異なります。
 
-- Memcached cannot work as an Hibernate 2nd level cache, it only supports the Spring Cache abstraction.
-- Memcached only works with a remote server, there is no local cache. As such, your objects are always serialized/deserialized and go through the network, which means it is probably less efficient if you have a small set of objects that could fit in memory.
-- It scales, and is cheap to operate. Most big cloud providers like Heroku, GCP or AWS have support for Memcached. As such, it is a lot easier to have a distributed (and cheap) Memcached cluster, than with the other caching implementations.
+- MemcachedはHibernateの第2レベルのキャッシュとしては動作せず、Spring Cacheの抽象化のみをサポートします。
+- Memcachedはリモートサーバでのみ動作し、ローカルキャッシュはありません。そのため、オブジェクトは常にシリアライズ/デシリアライズされ、ネットワークを通過します。つまり、メモリに収まる小さいオブジェクト集合の場合は、効率が低くなる可能性があります。
+- スケーラビリティがあり、操作が手軽です。Heroku、GCP、AWSなどのほとんどの大手クラウドプロバイダは、Memcachedをサポートしています。そのため、他のキャッシュ実装を使用するよりも、分散できる（かつ手軽な）Memcachedクラスタを使用する方がはるかに簡単です。
 
-JHipster uses the popular [Xmemcached](https://github.com/killme2008/xmemcached) Java client for Memcached, and configures its most important properties using the usual JHipster [common application properties]({{ site.url }}/common-application-properties/).
+JHipsterは、Memcachedで一般的に使われる[Xmemcached](https://github.com/killme2008/xmemcached)のJavaクライアントを使用し、通常のJHipster[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)を使用して最も重要なプロパティを設定します。
 
-Please note that each cache must be configured as a specific Spring bean inside the `CacheConfiguration` configuration bean.
+各キャッシュは、`CacheConfiguration`configuration bean内で特定のSpring Beanとして構成する必要があることに注意してください。
 
-As Memcached needs to serialize/deserialize objects in its classloader, it doesn't work when using the Spring Boot devtools (which uses a specific classloader to do hot reload of application classes). This is why Memcached is turned off by default in dev mode.
+Memcachedはクラスローダー内のオブジェクトをシリアライズ/デシリアライズする必要があるため、Spring Boot devtools（特定のクラスローダーを使用してアプリケーションクラスのホットリロードを行う）を使用する場合には機能しません。これが、Memcachedがdevモードでデフォルトでオフになっている理由です。
 
-As always with JHipster, a Docker Compose configuration is provided so you can start a Memcached server on your machine. In order to use it, please run `docker-compose -f src/main/docker/memcached.yml up -d`.
+JHipsterではいつものように、Docker Compose設定が提供されているので、マシン上でMemcachedサーバを起動できます。これを使用するには、`docker-compose -f src/main/docker/memcached.yml up -d`を実行してください。
 
-## Caching with Redis
+## Redisによるキャッシング
 
-[Redis](https://redis.io/) is an Open Source, in-memory data struture store that can be used as a performant caching solution. Depending on your configuration, you can choose to use Redis as a single server node or as a distributed cache.
+[Redis](https://redis.io/)はオープンソースのインメモリデータ構造ストアであり、パフォーマンスの高いキャッシングソリューションとして使用できます。構成に応じて、Redisを単一のサーバノードとして使用するか、分散キャッシュとして使用するかを選択できます。
 
-JHipster uses [Redisson](https://redisson.org/) as the redis Java client mainly for 2 reasons:
-- It is highly recommended by Redis
-- It offers a JCache (JSR-107) implementation
+JHipsterは、主に次の2つの理由から、[Redisson](https://redisson.org/)をRedis Javaクライアントとして使用しています。
+- Redisによって強く推奨されている
+- JCache (JSR-107)実装を提供する
 
-It allows both to stay consistent with the other caches since we are using JCache implementation when available and to share the same redis connection between Spring cache and the Hibernate 2nd level cache.
+JCache実装を使用しているため、他のキャッシュとの一貫性を維持し、SpringキャッシュとHibernate第2レベルキャッシュの間で同じRedis接続を共有できます。

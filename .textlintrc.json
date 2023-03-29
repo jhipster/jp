@@ -11,7 +11,8 @@
     },
     "preset-jtf-style": {
       "4.2.1.感嘆符(！)": false,
-      "4.3.2.大かっこ［］": false
+      "4.3.2.大かっこ［］": false,
+      "4.3.7.山かっこ<>": false
     },    
     "spellcheck-tech-word": true
   }

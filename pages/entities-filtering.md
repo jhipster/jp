@@ -1,83 +1,82 @@
 ---
 layout: default
-title: Filtering
+title: フィルタリング
 permalink: /entities-filtering/
 sitemap:
     priority: 0.7
     lastmod: 2017-08-22T00:00:00-00:00
 ---
 
-# <i class="fa fa-filter"></i> Filtering your entities
+# <i class="fa fa-filter"></i> エンティティのフィルタリング
 
-## Introduction
+## 導入
 
-After the basic CRUD functionalities are implemented for an entity, there is a very common request to create various filters for the attributes of the entity,
-so the server could be used more effectively. These filters should be sent as the request parameters, so any client - and any browser - could use it.
-Additionally, these filters should follow a resonable, and concise pattern, and they must be allowed combining them freely.
+基本的なCRUD機能がエンティティに実装された後、エンティティの属性に対してさまざまなフィルタを作成したいという、非常に一般的な要求があります。
+これにより、サーバをより効果的に使用できるようになります。これらのフィルタは、すべてのクライアント（およびすべてのブラウザ）がそれを使用できるように、リクエストパラメータとして送信される必要があります。
+さらに、これらのフィルタは、合理的で簡潔なパターンに従う必要があり、自由に組み合わせることができなければなりません。
 
-## How to activate
+## アクティブにする方法
 
-_Note_: `filter` is not compatible with `reactive`.
-When generating an entity with `jhipster entity` command, select services or service implementation to enable filtering on this entity. 
+_注意_：`filter`は`reactive`と互換性がありません。
+`jhipster entity`コマンドを使用してエンティティを生成する際に、サービスまたはサービス実装を選択して、このエンティティのフィルタリングを有効にします。
 
-If you want to enable filtering for existing entities, you can modify the entity configuration in your projects `.jhipster` directory, by setting `service` to `serviceClass` or `serviceImpl` from `no`, and `jpaMetamodelFiltering` to `true` and then re-generate with `jhipster entity <entity name>`.
+既存のエンティティのフィルタを有効にする場合は、プロジェクトの`.jhipster`ディレクトリでエンティティ構成を変更します。変更するには、`service`を`serviceClass`に、または`serviceImpl`を`no`とし、`jpaMetamodelFiltering`を`true`に設定して、`jhipster entity <エンティティ名>`で再生成します。
 
-When using JDL, add a line `filter <entity name>` to your JDL file and re-import the definitions with `jhipster jdl` command.
+JDLを使用する場合は、JDLファイルに行`filter <エンティティ名>`を追加し、`jhipster jdl`コマンドを使用して定義を再インポートします。
 
-## Public interface
+## パブリック・インタフェース
 
-For each entity, you can enable filtering in the entity generator, and after, you can call your `/api/my-entity` GET endpoint with the following parameters :
+エンティティごとに、エンティティジェネレータでフィルタリングを有効にできます。その後、次のパラメータを使用して`/api/my-entity`GETエンドポイントを呼び出すことができます。
 
-* For each *xyz* field
+* 各*xyz*フィールド用
     * *xyz.equals=someValue*
-        - To list all the entities, where xyz equals to 'someValue'
+        - xyzが'someValue'な、すべてのエンティティをリストします。
     * *xyz.in=someValue,otherValue*
-        - To list all the entities, where xyz equals to 'someValue' or 'otherValue'
+        - xyzが'someValue'または'otherValue'な、すべてのエンティティをリストします。
     * *xyz.specified=true*
-        - To list all the entities, where xyz is not null, specified.
+        - xyzはNULLではない、すべてのエンティティをリストします。
     * *xyz.specified=false*
-        - To list all the entities, where xyz is null, unspecified.
-* If *xyz*'s type is string:
+        - xyzはNULLまたは未指定となる、すべてのエンティティをリストします。
+* *xyz*のタイプが文字列の場合
     * *xyz.contains=something*
-        - To list all the entities, where xyz contains 'something'.
-* If *xyz*'s is either any of the number types, or the date types.
+        - xyzに'something'が含まれる、すべてのエンティティをリストします。
+* *xyz*が数値型または日付型のいずれかである場合
     * *xyz.greaterThan=someValue*
-        - To list all the entities, where xyz is greater than 'someValue'.
+        - xyzが'someValue'より大きくなる、すべてのエンティティをリストします。
     * *xyz.lessThan=someValue*
-        - To list all the entities, where xyz is less than 'someValue'.
+        - xyzが'someValue'より小さくなる、すべてのエンティティをリストします。        
     * *xyz.greaterThanOrEqual=someValue*
-        - To list all the entities, where xyz is greater than or equal to 'someValue'.
+        - xyzが'someValue'以上となる、すべてのエンティティをリストします。
     * *xyz.lessThanOrEqual=someValue*
-        - To list all the entities, where xyz is less than or equal to 'someValue'.
+        - xyzが'someValue'以下となる、すべてのエンティティをリストします。
 
-They can be combined freely.
+これらは自由に組み合わせられます。
 
-A good way to experience the expressiveness of this filter API is to use it from swagger-ui in the API docs page of your JHipster application.
+このフィルターAPIの表現力を体験する良い方法は、JHipsterアプリケーションのAPIドキュメント・ページにあるswagger-uiから使用することです。
 
 ![]({{ site.url }}/images/entities_filtering_swagger.png)
 
-## Implementation
+## 実装
 
-When this feature is enabled, a new service named as `EntityQueryService` and an `EntityCriteria` is generated. Spring will convert the request parameters into the fields of the `EntityCriteria` class.
+この機能を有効にすると、`EntityQueryService`という名前の新しいサービスと`EntityCriteria`が生成されます。Springはリクエストパラメータを`EntityCriteria`クラスのフィールドに変換します。
+`EntityQueryService`では、クライテリアオブジェクトを静的でタイプセーフなJPAクエリオブジェクトに変換します。このためには、ビルドで**静的メタモデル生成が有効になっている**ことが**必要**です。詳細については、[JPA静的メタモデルジェネレータのドキュメント](http://docs.jboss.org/hibernate/orm/current/topical/html_single/metamodelgen/MetamodelGenerator.html)を参照してください。
 
-In the `EntityQueryService`, we convert the criteria object into a static, and type safe, JPA query object. For this, it is **required** that the **static metamodel generation is enabled** in the build. See the [JPA Static Metamodel Generator documentation](http://docs.jboss.org/hibernate/orm/current/topical/html_single/metamodelgen/MetamodelGenerator.html) for details.
-
-To prove that the generated criteria is working, and Spring is well configured, the `EntityResourceIntTest` is extended with lots of test cases, one for each individual filter.
+生成されたクライテリアが機能し、Springが適切に構成されていることを証明するために、個々のフィルタごとに1つずつといった多くのテストケースを持つ`EntityResourceIntTest`が作られます。
 
 ### Angular
 
-When using Angular, the proper way to take advantage of this useful feature would look like this:
+Angularを使用する場合、この便利な機能を利用する適切な方法は、次のようになります。
 
-* Equals (same applies for `contains` and `notEquals`)
+* Equals（`contains`と`notEquals`にも当てはまります）
 ```javascript
 this.bookService.query({'title.equals':someValue}).subscribe(...);
 ```
-* greaterThan (same applies for `lessThan`, `greaterThanOrEqual` and `lessThanOrEqual` when using `date` and `number` data types)
+* greaterThan（`date`および`number`データ型を使用する場合、`lessThan`、`greaterThanOrEqual`、および`lessThanOrEqual`にも当てはまります）
 ```javascript
 this.bookService.query({'id.greaterThan':value}).subscribe(...);
 this.bookService.query({'birthday.lessThanOrEqual':value}).subscribe(...);
 ```
-* In (same applies for `notIn`)
+* In（`notIn`にも当てはまります）
 ```javascript
 this.bookService.query({'id.in':[value1, value2]}).subscribe(...);
 ```
@@ -86,6 +85,6 @@ this.bookService.query({'id.in':[value1, value2]}).subscribe(...);
 this.bookService.query({'author.specified':true}).subscribe(...);
 ```
 
-## Limitations
+## 制限事項
 
-Currently only SQL databases (with JPA) is supported, with the separate service or separate service implementation/interface combination.
+現在、SQLデータベース（JPAを使用）のみがサポートされており、個別のサービスまたは個別のサービス実装/インタフェースの組み合わせが提供されます。
