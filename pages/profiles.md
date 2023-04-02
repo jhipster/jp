@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Profiles
+title: プロファイル
 permalink: /profiles/
 redirect_from:
   - /profiles.html
@@ -9,73 +9,73 @@ sitemap:
     lastmod: 2014-11-26T00:00:00-00:00
 ---
 
-# <i class="fa fa-group"></i> Profiles
+# <i class="fa fa-group"></i>プロファイル
 
-JHipster comes with two [Spring profiles](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html):
+JHipsterには2つの[Springプロファイル](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html)が用意されています。
 
-*   `dev` for development: it focuses on ease of development and productivity
-*   `prod` for production: it focuses on performance and scalability
+*   開発のための`dev`:開発の容易さと生産性に重点を置いています。
+*   本番環境用の`prod`:パフォーマンスと拡張性に重点を置いています。
 
-Those profiles come in two different configurations:
+これらのプロファイルには、次の2つの異なる設定があります。
 
-*   The Maven/Gradle profiles are used at build time. For example `./mvnw -Pprod package` or `./gradlew -Pprod bootJar` will package a production application.
-*   The Spring profiles work at run time. Some Spring beans will behave differently, depending on the profile.
+*   Maven/Gradleプロファイルはビルド時に使用されます。たとえば、`./mvnw -Pprod package`または`./gradlew -Pprod bootJar`はプロダクションアプリケーションをパッケージ化します。
+*   Springプロファイルは実行時に機能します。一部のSpring Beanは、プロファイルによって動作が異なります。
 
-Spring profiles are set by Maven/Gradle, so we have a consistency between the two methods: you will have a `prod` profile on Maven/Gradle and Spring at the same time.
+SpringプロファイルはMaven/Gradleによって設定されるため、2つの方法の間に一貫性があります。つまり、Maven/GradleとSpringで同時に`prod`プロファイルを持つことになります。
 
-_Note:_ Spring profiles are used to configure the JHipster application properties, so you should be interested in reading our [common application properties documentation]({{ site.url }}/common-application-properties/).
+_注:_ SpringプロファイルはJHipsterアプリケーションプロパティの設定に使用されるため、[共通アプリケーションプロパティのドキュメント]({{ site.url }}/common-application-properties/)をお読みください。
 
-## By default, JHipster will use the `dev` profile
+## デフォルトでは、JHipsterは`dev`プロファイルを使用します
 
-If you run the application without Maven/Gradle, launch the "Application" class (you can probably run it directly from your IDE by right-clicking on it).
+Maven/Gradleを使用せずにアプリケーションを実行する場合は、"Application"クラスを起動します（おそらく、右クリックすることでIDEから直接実行できます）。
 
-If you run the application with Maven, run `./mvnw` to use our Maven Wrapper, or `mvn` to use your own Maven installation.
+Mavenでアプリケーションを実行する場合は、Maven Wrapperを使用して`./mvnw`を実行するか、独自のMavenインストールを使用して`mvn`を実行します。
 
-If you run the application with Gradle, run `./gradlew` to use our Gradle Wrapper, or `gradle` to use your own Gradle installation.
+Gradleでアプリケーションを実行する場合は、Gradle Wrapperを使用して`./gradlew`を実行するか、独自のGradleインストールを使用して`gradle`を実行します。
 
-When using Angular 2+ and Maven if you need to do a clean run with webpack compilation enabled for `dev` profile you can pass the `webapp` param as below
+Angular 2+とMavenを使用する場合、`dev`プロファイルに対してwebpackコンパイルを有効にしてのクリーンな実行が必要な場合は、以下のように`webapp`パラメータを渡すことができます。
 
   `./mvnw -Pdev,webapp`
 
-**Note** Gradle automatically runs webpack compilation in `dev` profile if front end has changed (only at start up, for live reload use `npm start` or `yarn start`).
+**注** フロントエンドが変更された場合、Gradleは自動的に`dev`プロファイルでwebpackコンパイルを実行します（ライブリロードのために、起動時のみ`npm start`または`yarn start`を使用してください）。
 
-## In production, JHipster has to run with the `prod` profile
+## 本番環境では、JHipsterは`prod`プロファイルで実行する必要があります
 
-You can run JHipster in production directly using Maven or Gradle:
+MavenまたはGradleを使用して、本番環境で直接JHipsterを実行できます。
 
-*   With Maven, run `./mvnw -Pprod` (or `mvn -Pprod`)
-*   With Gradle, run `./gradlew -Pprod` (or `gradle -Pprod`)
+*   Mavenでは、`./mvnw -Pprod`（または`mvn -Pprod`）を実行してください。
+*   Gradleでは、`./gradlew -Pprod`（または`gradle -Pprod`）を実行してください。
 
-If you want to package your application as an executable WAR file, you should provide Maven or Gradle with a profile. E.g.,:
+アプリケーションを実行可能なWARファイルとしてパッケージ化する場合は、MavenまたはGradleにプロファイルを提供する必要があります。以下は例です。
 
-*   With Maven, run `./mvnw -Pprod package` (or `mvn -Pprod package`)
-*   With Gradle, run `./gradlew -Pprod bootJar` (or `gradle -Pprod bootJar`)
+*   Mavenでは、`./mvnw -Pprod package`（または`mvn -Pprod package`）を実行してください。
+*   Gradleでは、`./gradlew -Pprod bootJar`（または`gradle -Pprod bootJar`）を実行してください。
 
-When you run your production application from a WAR file, the default is to use the same profile(s) as used during packaging. If you want to override this, you can explicitly provide an alternative in VM argument:
+WARファイルから本番アプリケーションを実行する場合、デフォルトでは、パッケージング中に使用されたものと同じプロファイルが使用されます。これをオーバーライドする場合は、VM引数の代替を明示的に指定できます。
 
 *   `java -jar jhipster-0.0.1-SNAPSHOT.jar --spring.profiles.active=...`
 
-## Spring profiles switches
+## Springプロファイルのスイッチ
 
-JHipster comes with three additional profiles used as switches:
+JHipsterには、スイッチとして使用される3つの追加プロファイルが用意されています。
 
-*   `api-docs` to enable swagger
-*   `no-liquibase` to disable liquibase
-*   `tls` to enable TLS security and use the HTTP/2 protocol (see [the TLS and HTTP/2 documentation]({{ site.url }}/tls/))
+*   `api-docs`でswaggerを有効にします
+*   `no-liquibase`でliquibaseを無効にします
+*   `tls`でTLSセキュリティを有効にし、HTTP/2プロトコルを使用します（[TLSおよびHTTP/2のドキュメント]({{ site.url }}/tls/)を参照してください）
 
-These can be used along with both the `dev` and `prod` profiles. Please note that by default, the `api-docs` profile is not enabled in `prod` and enabled in `dev` by setting the `spring.profiles.group.dev` profile group property in `application.yml`.
+これらは、`dev`プロファイルと`prod`プロファイルの両方と一緒に使用できます。デフォルトでは、`api-docs`プロファイルは`prod`では有効になっておらず`dev`で有効になることに注意してください。これは`application.yml`の`spring.profiles.group.dev`プロファイルグループプロパティに設定されています。
 
-`api-docs`, `no-liquibase`, `tls` are only used at runtime:
+`api-docs`、`no-liquibase`、`tls`は実行時にのみ使用されます。
 
-*   In your IDE, run your main application class with `spring.profiles.active=dev,no-liquibase` (please note you need to include the `dev` or `prod` profile explicitly)
-*   With a packaged application: `./java -jar jhipster-0.0.1-SNAPSHOT.war --spring.profiles.active=prod,no-liquibase`
+*   IDEで、`spring.profiles.active=dev,no-liquibase`を使用してメインアプリケーションクラスを実行します（`dev`または`prod`プロファイルを明示的に含める必要があることに注意してください）。
+*   パッケージ化されたアプリケーションの場合`./java -jar jhipster-0.0.1-SNAPSHOT.war --spring.profiles.active=prod,no-liquibase`となります。
 
-With Maven, you can also use those profiles directly:
+Mavenでは、これらのプロファイルの直接使用もできます。
 
 *   `./mvnw -Pprod,api-docs,no-liquibase`
 *   `./mvnw -Pdev,no-liquibase`
 
-With Gradle, you can also use those profiles directly:
+Gradleでは、これらのプロファイルの直接使用もできます。
 
 *   `./gradlew -Pprod -Papi-docs -Pno-liquibase`
 *   `./gradlew -Pno-liquibase`
