@@ -1,79 +1,79 @@
 ---
 layout: default
-title: Separating the front-end and the API server
+title: フロントエンドとAPIサーバの分離
 permalink: /separating-front-end-and-api/
 sitemap:
     priority: 0.7
     lastmod: 2021-03-08T12:00:00-00:00
 ---
 
-# <i class="fa fa-unlink"></i> Separating the front-end and the API server
+# <i class="fa fa-unlink"></i> フロントエンドとAPIサーバの分離
 
-## Introduction
+## はじめに
 
-JHipster is a "full-stack" development tool, and its goal is to make you work efficiently with your front-end code (Angular/React) and your back-end code (Spring Boot).
+JHipsterは「フルスタック」開発ツールであり、その目標はフロントエンドコード（Angular/React）とバックエンドコード（Spring Boot）で効率的に作業できるようにすることです。
 
-However, it is a common requirement to separate the front-end and the back-end codes, typically because they are developed by different teams and have a different lifecycle.
+ただし、フロントエンド・コードとバックエンド・コードを分離することは一般的な要件です。これは通常、これらのコードが異なるチームによって開発され、異なるライフサイクルを持つためです。
 
-**Please note** that this isn't the default JHipster way of working: this isn't complex to do, and works well, but this is an advanced topic. If you are getting started with JHipster, we recommend that you begin by using our standard way of working.
+**注意** これはデフォルトのJHipsterの作業方法ではありません。複雑ではなく、うまく機能しますが、高度なトピックです。JHipsterを使い始める場合は、私たちの標準的な作業方法を使用することから始めることをお勧めします。
 
-## Generating only a front-end or a back-end application
+## フロントエンド・アプリケーションまたはバックエンド・アプリケーションのみを生成
 
-You can choose to generate only a JHipster back-end or JHipster front-end application. At generation time, this is only a matter of choosing flags which are described in our [application generation documentation]({{ site.url }}/creating-an-app/):
+JHipsterバックエンドまたはJHipsterフロントエンドアプリケーションのみを生成するように選択できます。生成時には、[アプリケーション生成ドキュメント]({{ site.url }}/creating-an-app/)に記載されているフラグを選択するだけです。
 
-- `jhipster --skip-client` will only generate a back-end application (this is typically what JHipster microservices are)
-- `jhipster --skip-server [options]` will only generate a front-end application (e.g. `jhipster --skip-server --db=sql --auth=jwt`)
+- `jhipster --skip-client`はバックエンドアプリケーションのみを生成します（これは通常JHipsterマイクロサービスがそうなります）
+- `jhipster --skip-server [options]`はフロントエンドアプリケーションのみを生成します（例：`jhipster --skip-server --db=sql --auth=jwt`）
 
-This should only work well for monoliths, as this doesn't make much sense for microservices (which have no front-end anyway) and gateways (which are monoliths with the Spring Cloud Gateway service enabled).
+これは、マイクロサービス（いずれにしてもフロントエンドがない）やゲートウェイ（Spring Cloud Gatewayサービスが有効になっているモノリス）ではあまり意味がないため、モノリスでのみうまく機能するはずです。
 
-## Directory layout
+## ディレクトリのレイアウト
 
-JHipster uses the standard Maven directory layout. When working on the back-end, you can read the [Maven standard directory layout documentation](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html).
+JHipsterは、標準のMavenディレクトリ・レイアウトを使用します。バックエンドで作業する場合は、[Maven標準ディレクトリ・レイアウト・ドキュメント](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)を参照できます。
 
-When working on the front-end, there are 2 directories you need to know:
+フロントエンドで作業する場合は、次の2つのディレクトリを知っておく必要があります。
 
-- `src/main/webapp` is where the client application will be developed
-- `target/classes/static` is where your client application will be packaged
+- `src/main/webapp`は、クライアントアプリケーションが開発される場所です
+- `target/classes/static`は、クライアントアプリケーションがパッケージ化される場所です
 
-If you have separate teams working on the front-end and back-end, you have two solutions:
+フロントエンドとバックエンドで別々のチームが作業している場合は、2つのソリューションがあります。
 
-- Both teams can work on the same project. As the directories are separated, there won't have much conflicts between teams. To make things even cleaner, both teams could work on separate branches.
-- The front-end code can be stored in a specific Git project, and then imported into the main back-end project as a Git sub-module. This would require to move the client-side build scripts.
+- 両方のチームが同じプロジェクトで作業します。ディレクトリが分離されているので、チーム間の競合はあまりありません。さらにクリーンにするために、両方のチームが別々のブランチで作業もできます。
+- フロントエンドコードを特定のGitプロジェクトに格納し、Gitサブモジュールとしてメインのバックエンドプロジェクトにインポートできます。これには、クライアントサイドのビルドスクリプトを移動する必要があります。
 
-## HTTP requests routing and caching
+## HTTPリクエストのルーティングとキャッシング
 
-Once the front-end and back-end have been separated, the issue will be how to handle HTTP requests:
+フロントエンドとバックエンドが分離されると、問題はHTTPリクエストの処理方法になります。
 
-- All API calls will use a `/api` prefix. If you are using Angular, there is also a specific `SERVER_API_URL` constant, defined in the `webpack.common.js` configuration, that can enrich this prefix. For example, you can use `"http://api.jhipster.tech:8081/"` as a back-end API server (If you do this, please read our documentation on CORS below).
-- `/index.html` should not be cached by the browser or server.
-- Calls to `/` that serve static assets (from the front-end) `/app` (which contains the client-side application) and `/content` (which contains the static content, like images and CSS) should be cached in production, as those assets are hashed.
-- Calls to a non-existent route should forward the request to `index.html`. This is normally handled in the backend through `ClientForwardController`. When deploying the client separately, this needs to be configured.  See the [Angular](https://angular.io/guide/deployment#server-configuration) or [React](https://facebook.github.io/create-react-app/docs/deployment) documentation for several examples.
+- すべてのAPI呼び出しは`/api`プレフィックスを使用します。Angularを使用している場合、`webpack.common.js`設定で定義された特定の`SERVER_API_URL`定数もあり、このプレフィックスを強化できます。例えば、`"http://api.jhipster.tech:8081/"`をバックエンドAPIサーバとして使用できます（これを行う場合は、以下のCORSに関するドキュメントをお読みください）。
+- `/index.html`は、ブラウザまたはサーバによってキャッシュされるべきではありません。
+- （フロントエンドの）静的アセットである`/app`（クライアント側アプリケーションを含む）および`/content`（画像やCSSなどの静的コンテンツを含む）を提供する`/`の呼び出しは、これらのアセットがハッシュ化されるため、プロダクション環境でキャッシュされるべきです。
+- 存在しないルートへのコールは、リクエストを`index.html`に転送する必要があります。これは通常、`ClientForwardController`を介してバックエンドで処理されます。クライアントを個別にデプロイする場合、これを設定する必要があります。いくつかの例については、[Angular](https://angular.io/guide/deployment#server-configuration)または[React](https://facebook.github.io/create-react-app/docs/deployment)のドキュメントを参照してください。
 
-# Using BrowserSync
+# BrowserSyncの使用
 
-In `dev` mode, JHipster uses BrowserSync for hot-reload of the front-end application. BrowserSync has a proxy ([here is its documentation](https://www.browsersync.io/docs/options#option-proxy)) that will route requests from `/api` to a back-end server (by default, `http://127.0.0.1:8080`).
+`dev`モードでは、JHipsterはフロントエンドアプリケーションのホットリロードにBrowserSyncを使用します。BrowserSyncには、`/api`からバックエンドサーバ（デフォルトでは`http://127.0.0.1:8080`）にリクエストをルーティングするプロキシ（[ここにドキュメントがあります](https://www.browsersync.io/docs/options#option-proxy)）があります。
 
-This only works in `dev` mode, but this is a very powerful way of accessing different API servers from the front-end.
+これは`dev`モードでのみ動作しますが、フロントエンドから異なるAPIサーバにアクセスするための非常に強力な方法です。
 
-## Using CORS
+## CORSの使用
 
-CORS ([Cross-origin request sharing](https://wikipedia.org/wiki/Cross-origin_resource_sharing)) allow to access different back-end servers with the same front-end, without configuring a proxy.
+CORS ([Cross-origin request sharing](https://wikipedia.org/wiki/Cross-origin_resource_sharing))を使用すると、プロキシを設定せずに、同じフロントエンドを使用して異なるバックエンドサーバにアクセスできます。
 
-This is an easy-to-use solution, but it can be less secure in production.
+これは使いやすいソリューションですが、本番環境では安全性が低くなる可能性があります。
 
-JHipster provides out-of-the-box a CORS configuration:
+JHipsterは、すぐに利用できるCORS構成を提供します。
 
-- CORS can be configured using the `jhipster.cors` property, as defined in [the JHipster common application properties]({{ site.url }}/common-application-properties/)
-- It is enabled by default in `dev` mode for monoliths and gateways. It is turned off by default for microservices as you are supposed to access them through a gateway.
-- It is turned off by default in `prod` mode, for security reasons.
+- CORSは、[JHipster共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)で定義されているように、`JHipster.cors`プロパティを使用して構成できます。
+- モノリスとゲートウェイでは、`dev`モードでデフォルトで有効になっています。マイクロサービスでは、ゲートウェイを介してアクセスすることになっているため、デフォルトでは無効になっています。
+- セキュリティ上の理由から、`prod`モードではデフォルトでオフになっています。
 
-## Using NGinx
+## NGinxの使用
 
-Another solution to separate the front-end and back-end codes is to use a proxy server. This is very common in production, and some teams also use this technique in development.
+フロントエンドコードとバックエンドコードを分離するもう1つの解決策は、プロキシサーバを使用することです。これは本番環境では非常に一般的であり、一部のチームは開発でもこの手法を使用しています。
 
-This configuration will change depending on your specific use-case, so this cannot be automated by the generator, here is below a working configuration.
+この設定は特定のユースケースに応じて変更されるため、これをジェネレータで自動化はできません。実際に動作する設定を次に示します。
 
-Create a `src/main/docker/nginx.yml` Docker Compose file:
+`src/main/docker/nginx.yml`でDocker構成ファイルを作成します。
 
     version: '2'
     services:
@@ -85,11 +85,11 @@ Create a `src/main/docker/nginx.yml` Docker Compose file:
         ports:
         - "8000:80"
 
-This Docker image will configure an NGinx server, that reads the static assets from `target/static`: this is where the JHipster front-end application is generated by default. In production, you will probably have a specific folder for this.
+このDockerイメージは、`target/static`から静的アセットを読み取るNGinxサーバを設定します。これは、JHipsterフロントエンドアプリケーションがデフォルトで生成される場所です。プロダクション環境では、このための特定のフォルダがあると思われます。
 
-It also reads a `./nginx/site.conf` file: this is a NGinx-specific configuration file.
-### configuration lambda
-Here is a sample `site.conf`:
+また、`./nginx/site.conf`ファイルも読み込みます。これはNGinx固有の設定ファイルです。
+### lambdaの設定
+以下に`site.conf`の例を示します。
 
     server {
         listen 80;
@@ -120,11 +120,11 @@ Here is a sample `site.conf`:
         }
     }
 
-This configuration means that:
+この設定は、次のことを意味します。
 
-- NGinx will run on port `80`
-- It will read the static assets in folder `/usr/share/nginx/html`, and
-- It will act as a proxy from `/api` to `http://api.jhipster.tech:8081/api`
-- Any unhandled requests will forward to `index.html`
+- NGinxはポート`80`で動作します。
+- フォルダ`/usr/share/nginx/html`の静的アセットを読み込みます。
+- これは`/api`から`http://api.jhipster.tech:8081/api`へのプロキシとして動作します。
+- 処理されない要求はすべて`index.html`に転送されます。
 
-This configuration will require some tuning depending on your specific needs, but should be a good enough starting point for most applications.
+この構成は、特定のニーズに応じて調整する必要がありますが、ほとんどのアプリケーションにとって十分な出発点となるはずです。
