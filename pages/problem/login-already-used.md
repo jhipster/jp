@@ -1,28 +1,28 @@
 ---
 layout: default
-title: Error - login already used
+title: エラー - ログインは既に使用されています
 permalink: /problem/login-already-used/
 sitemap:
     priority: 0.7
     lastmod: 2017-09-10T00:00:00-00:00
 ---
 
-# <i class="fa fa-map-signs"></i> Welcome to the JHipster website!
+# <i class="fa fa-map-signs"></i> JHipsterのWebサイトへようこそ!
 
-You probably found this page by clicking on an error message in an application that was developed with JHipster.
+このページは、JHipsterで開発されたアプリケーションのエラー・メッセージをクリックすると表示されるはずです。
 
-JHipster is a an application generator, which was used to develop the application you are using. You can find more information about JHipster by going to our [home page]({{ site.url }}).
+JHipsterはアプリケーション・ジェネレータであり、あなたが使用しているアプリケーションを開発するために使用されました。JHipsterの詳細については、[ホームページ]({{ site.url }})にアクセスしてください。
 
-Please find below some information on the error that happened.
+発生したエラーに関する情報を以下に示します。
 
-## <i class="fa fa-warning"></i> Error: login already used
+## <i class="fa fa-warning"></i> エラー:ログインは既に使用されています
 
-### Error description
+### エラーの説明
 
-This is a JHipster error that is used when the end-user tries to use a login name that is already being used.
+これは、エンドユーザーがすでに使用されているログイン名を使用しようとしたときに使用されるJHipsterエラーです。
 
-### How can this page be customized?
+### このページはどのようにカスタマイズできますか?
 
-Error pages are configured in each application's `ErrorConstants` class. If you want to provide your own error pages in your application, please modify this class accordingly.
+エラーページは、各アプリケーションの`ErrorConstants`クラスで構成されます。アプリケーションに独自のエラーページを提供する場合は、このクラスを適宜変更してください。
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
