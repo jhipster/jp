@@ -7,39 +7,39 @@ sitemap:
     lastmod: 2018-03-07T00:00:00-00:00
 ---
 
-# <i class="fa fa-fire-extinguisher"></i> Managing server errors
+# <i class="fa fa-fire-extinguisher"></i> サーバー・エラーの管理
 
-JHipster has first-class support for error handling: it provides error pages and custom mechanisms to handle both business and technical errors on the server-side.
+JHipsterはエラー処理のための第一級のサポートを提供しており、エラーページとカスタムメカニズムを提供して、サーバ側でビジネスエラーとテクニカルエラーの両方を処理します。
 
-## Error pages
+## エラーページ
 
-JHipster generates a Single-Page Application (SPA), but it still requires custom error pages for people who do not (or cannot) access the application.
+JHipsterはSingle-Page Application(SPA)を生成しますが、アプリケーションにアクセスしない（またはアクセスできない）ユーザーのためにカスタム・エラー・ページが必要です。
 
-### Dynamic error pages
+### 動的エラーページ
 
-JHipster provides a generic error page, which is a [Thymeleaf](https://www.thymeleaf.org/) template, located at `src/main/resources/templates/error.html`.
+JHipsterは一般的なエラーページを提供します。これは[Thymeleaf](https://www.thymeleaf.org/)テンプレートで、`src/main/resources/templates/error.html`にあります。
 
-This page will display the server-side error message, for example if the user tried to access a non-existing page, it will display a 404 error, telling the user that the page wasn't found.
+このページには、サーバー側のエラー・メッセージが表示されます。たとえば、ユーザーが存在しないページにアクセスしようとすると、404エラーが表示され、ページが見つからなかったことがユーザーに通知されます。
 
-### Static 404 error page
+### 静的404エラーページ
 
-JHipster provides a specific, static 404 error page located at `src/main/webapp/404.html`. By default, this page isn't used by JHipster: it is here for projects using a proxy before JHipster (Apache/NGinx/etc.), so that the proxy can also display a 404 error page, even if the JHipster application isn't available.
+JHipsterは、`src/main/webapp/404.html`にある特定の静的な404エラーページを提供します。デフォルトでは、このページはJHipsterによって使用されません。JHipster（Apache/NGinx/など）の前にプロキシを使用するプロジェクトのためにここにあるので、JHipsterアプリケーションが使用できない場合でも、プロキシは404エラーページを表示できます。
 
-It needs to be specifically configured on the front-end proxy.
+これはフロントエンドプロキシで特別に設定する必要があります。
 
-## API errors
+## APIエラー
 
-To handle Spring MVC REST errors, JHipster uses [Zalando's Problem Spring Web  library](https://github.com/zalando/problem-spring-web), in order to provide rich, JSON-based error messages.
+Spring MVC RESTエラーを処理するために、JHipsterは[Zalandoの Problem Spring Webライブラリ](https://github.com/zalando/problem-spring-web)を使用して、豊富なJSONベースのエラーメッセージを提供します。
 
-In order to help the end-user, for each known problem this library will provide a link to a specific error page, that will give more details. Those links are configured in the `ErrorConstants` class, and point by default to this website. In your application, you should customize those links, and point them to your own API documentation.
+エンドユーザを支援するために、このライブラリは既知の問題ごとに、詳細を提供する特定のエラーページへのリンクを提供します。これらのリンクは`ErrorConstants`クラスで設定され、既定ではこのWebサイトをポイントします。アプリケーションでは、これらのリンクをカスタマイズし、独自のAPIドキュメントをポイントする必要があります。
 
-Here are the available error links:
+利用可能なエラーリンクは次のとおりです。
 
-- [Problem with message]({{ site.url }}/problem/problem-with-message)
-- [Constraint violation]({{ site.url }}/problem/constraint-violation)
-- [Problem with a parameterized message]({{ site.url }}/problem/parameterized)
-- [Entity not found]({{ site.url }}/problem/entity-not-found)
-- [Invalid password]({{ site.url }}/problem/invalid-password)
-- [E-mail already used]({{ site.url }}/problem/email-already-used)
-- [Login already used]({{ site.url }}/problem/login-already-used)
-- [E-mail not found]({{ site.url }}/problem/email-not-found)
+- [メッセージの問題]({{ site.url }}/problem/problem-with-message)
+- [制約違反]({{ site.url }}/problem/constraint-violation)
+- [パラメータ化されたメッセージの問題]({{ site.url }}/problem/parameterized)
+- [エンティティが見つかりません]({{ site.url }}/problem/entity-not-found)
+- [無効なパスワード]({{ site.url }}/problem/invalid-password)
+- [Eメールは既に使用されています]({{ site.url }}/problem/email-already-used)
+- [ログインは既に使用されています]({{ site.url }}/problem/login-already-used)
+- [Eメールが見つかりません]({{ site.url }}/problem/email-not-found)
