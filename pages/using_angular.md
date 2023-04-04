@@ -1,105 +1,105 @@
 ---
 layout: default
-title: Using Angular
+title: Angularの使用
 permalink: /using-angular/
 sitemap:
     priority: 0.7
     lastmod: 2015-01-29T23:41:00-00:00
 ---
 
-# <i class="fa fa-html5"></i> Using Angular
+# <i class="fa fa-html5"></i> Angularの使用
 
-## Tooling
+## ツール
 
-Angular is using TypeScript instead of JavaScript, and as a result some specific tooling is necessary to work efficiently with it. Our [development]({{ site.url }}/development/) workflow for an Angular 2+ application is as below, use `npm` instead of `yarn` if you prefer that.
+AngularはJavaScriptの代わりにTypeScriptを使用しており、その結果、効率的に動作するためには特定のツールが必要になります。Angular 2+アプリケーションの[開発]({{ site.url }}/development/)ワークフローは次のとおりです。`yarn`ではなく`npm`を使用することをお勧めします。
 
-1. When you generate an application the files are created and at the end of generation `npm install` task is triggered.
-2. Once `npm install` is complete it calls the `postInstall` script in `package.json`, this step triggers the `webapp:build` task.
-3. Now you should have all files generated and compiled into the `www` folder inside the `target` or `build` folder based on the build tool (Maven or Gradle) selected.
-4. Now run `./mvnw` or `./gradlew` to launch the application server and it should be available at [localhost:8080](localhost:8080) this also serves the client side code compiled from the above steps.
-5. Now run `npm start` or `yarn start` in a new terminal to launch Webpack dev-server with BrowserSync. This will take care of compiling your TypeScript code, and automatically reloading your browser.
+1. アプリケーションを生成すると、ファイルが作成され、生成の最後に`npm install`タスクがトリガーされます。
+2. `npm install`が完了すると、`package.json`の`postInstall`スクリプトが呼び出され、このステップによって`webapp:build`タスクがトリガーされます。
+3. これで、選択されたビルドツール（MavenまたはGradle）に基づいて、すべてのファイルが生成され、`target`または`build`フォルダ内の`www`フォルダにコンパイルされたはずです。
+4. 次に、`./mvnw`または`./gradlew`を実行してアプリケーションサーバーを起動すると、[localhost:8080](localhost:8080)で使用可能となるはずです。これは、上記の手順でコンパイルされたクライアント側のコードも提供します。
+5. 新しいターミナルで`npm start`または`yarn start`を実行して、BrowserSyncを使ってWebpack dev-serverを起動します。これにより、TypeScriptコードのコンパイルとブラウザの自動リロードが行われます。
 
-If you start making changes to the client side code without having `npm start` or `yarn start` running, nothing will be reflected as the changes are not compiled so you need to either run `npm run webapp:build` manually after changes or have `npm start` or `yarn start` running.
+`npm start`または`yarn start`を実行せずにクライアント側のコードに変更を加え始めた場合、変更はコンパイルされないので何も反映されません。そのため、変更後に`npm run webapp:build`を手動で実行するか、`npm start`や`yarn start`を実行する必要があります。
 
-You can also force Maven to run the `webapp:dev` task while starting by passing the `webapp` profile like `./mvnw -Pdev,webapp`.
+起動時に`./mvnw -Pdev,webapp`のような`webapp`プロファイルを渡すことで、Mavenに`webapp:dev`タスクを強制的に実行させることもできます。
 
-**Note** Gradle automatically runs webpack compilation in `dev` profile if front end has changed (only at start up, for live reload use `npm start` or `yarn start`).
+**注**フロントエンドが変更された場合、Gradleは自動的に`dev`プロファイルでwebpackコンパイルを実行します（起動時のみ、ライブリロードには`npm start`または`yarn start`を使用してください）。
 
-Other available yarn/npm commands can be found in the `scripts` section of your project's `package.json` file.
+その他の使用可能なyarn/npmコマンドは、プロジェクトの`package.json`ファイルの`scripts`セクションにあります。
 
-- To work on your code in your browser, we recommend using [Angular DevTools](https://angular.io/guide/devtools). Angular DevTools is a browser extension that provides debugging and profiling capabilities for Angular applications (**Note** Angular DevTools supports Angular v12 and later).
+- ブラウザでコードを操作するには、[Angular DevTools](https://angular.io/guide/devtools)を使用することをお勧めします。Angular DevToolsは、Angularアプリケーションのデバッグとプロファイリング機能を提供するブラウザ拡張です（**注**Angular DevToolsはAngular v12以降をサポートしています）。
 
-## Project Structure
+## プロジェクト構造
 
-The JHipster client code can be found under `src/main/webapp`, and follows closely the  [Angular style guide](https://angular.io/guide/styleguide). Please read this guide first if you have any question on our application structure, file names, TypeScript conventions...
+JHipsterのクライアントコードは`src/main/webapp`にあり、[Angularスタイルガイド](https://angular.io/guide/styleguide)に厳密に従っています。私たちのアプリケーション構造、ファイル名、TypeScriptの規則について質問がある場合は、まずこのガイドを読んでください。
 
-This style guide is endorsed by the Angular team, and provides best practices that every Angular project should follow.
+このスタイルガイドはAngularチームによって承認されており、すべてのAngularプロジェクトが従うべきベストプラクティスを提供しています。
 
-For Angular routes we follow a dash cased naming convention so that the URLs are clean and consistent.
-When you generate an entity the route names, route URLs and REST API endpoint URLs are generated according to this convention, also entity names are automatically pluralized where required.
+Angularルートの場合は、URLが明確で一貫性のあるものになるように、dash caseの命名規則に従います。
+エンティティを生成すると、この規則に従ってルート名、ルートURL、およびREST APIエンドポイントURLが生成され、必要に応じてエンティティ名が自動的に複数化されます。
 
-Here is the main project structure:
+プロジェクトの主な構成は次のとおりです。
 
     webapp
-    ├── app                               - Your application
-    │   ├── account                       - User account management UI
-    │   ├── admin                         - Administration UI
-    │   ├── blocks                        - Common building blocks like configuration and interceptors
-    │   ├── entities                      - Generated entities (more information below)
-    │   ├── home                          - Home page
-    │   ├── layouts                       - Common page layouts like navigation bar and error pages
-    │   ├── shared                        - Common services like authentication and internationalization
-    │   ├── app.main.ts                   - Main application class
-    │   ├── app.module.ts                 - Application modules configuration
-    │   ├── app-routing.module.ts         - Main application router
-    ├── content                           - Static content
-    │   ├── css                           - CSS stylesheets
-    │   ├── images                        - Images
-    ├── i18n                              - Translation files
-    ├── scss                              - Sass style sheet files will be here if you choose the option
-    ├── swagger-ui                        - Swagger UI front-end
-    ├── 404.html                          - 404 page
-    ├── favicon.ico                       - Fav icon
-    ├── index.html                        - Index page
-    ├── robots.txt                        - Configuration for bots and Web crawlers
+    ├── app                               - アプリケーション
+    │   ├── account                       - ユーザー・アカウント管理UI
+    │   ├── admin                         - 管理UI
+    │   ├── blocks                        - 設定やインターセプターなどの共通のビルディング・ブロック
+    │   ├── entities                      - 生成されたエンティティ（詳細は以下を参照）
+    │   ├── home                          - ホームページ
+    │   ├── layouts                       - ナビゲーションバーやエラーページなどの一般的なページレイアウト
+    │   ├── shared                        - 認証や国際化などの一般的なサービス
+    │   ├── app.main.ts                   - メインアプリケーションクラス
+    │   ├── app.module.ts                 - アプリケーションモジュールの設定
+    │   ├── app-routing.module.ts         - メインアプリケーションルータ
+    ├── content                           - 静的コンテンツ
+    │   ├── css                           - CSSスタイルシート
+    │   ├── images                        - 画像
+    ├── i18n                              - 翻訳ファイル
+    ├── scss                              - オプションを選択すると、ここにSassスタイルシートファイルが表示されます
+    ├── swagger-ui                        - Swagger UIフロントエンド
+    ├── 404.html                          - 404ページ
+    ├── favicon.ico                       - お気に入りアイコン
+    ├── index.html                        - 索引ページ
+    ├── robots.txt                        - ボットおよびWebクローラの構成
 
-Using the [entity sub-generator]({{ site.url }}/creating-an-entity/) to create a new entity called `Foo` generates the following front-end files under `src/main/webapp`:
+[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用して`Foo`という名前の新しいエンティティを作成すると、`src/main/webapp`の下に次のフロントエンドファイルが生成されます。
 
     webapp
     ├── app
     │   ├── entities
-    │       ├── foo                                    - CRUD front-end for the Foo entity
-    │           ├── foo.component.html                 - HTML view for the list page
-    │           ├── foo.component.ts                   - Controller for the list page
-    │           ├── foo.model.ts                       - Model representing the Foo entity
-    │           ├── foo.module.ts                      - Angular module for the Foo entity
-    │           ├── foo.route.ts                       - Angular Router configuration
-    │           ├── foo.service.ts                     - Service which access the Foo REST resource
-    │           ├── foo-delete-dialog.component.html   - HTML view for deleting a Foo
-    │           ├── foo-delete-dialog.component.ts     - Controller for deleting a Foo
-    │           ├── foo-detail.component.html          - HTML view for displaying a Foo
-    │           ├── foo-detail.component.ts            - Controller or displaying a Foo
-    │           ├── foo-dialog.component.html          - HTML view for editing a Foo
-    │           ├── foo-dialog.component.ts            - Controller for editing a Foo
-    │           ├── foo-popup.service.ts               - Service for handling the create/update dialog pop-up
-    │           ├── index.ts                           - Barrel for exporting everything
-    ├── i18n                                           - Translation files
-    │   ├── en                                         - English translations
-    │   │   ├── foo.json                               - English translation of Foo name, fields, ...
-    │   ├── fr                                         - French translations
-    │   │   ├── foo.json                               - French translation of Foo name, fields, ...
+    │       ├── foo                                    - FooエンティティのCRUDフロントエンド
+    │           ├── foo.component.html                 - リストページのHTMLビュー
+    │           ├── foo.component.ts                   - リストページのコントローラ
+    │           ├── foo.model.ts                       - Fooエンティティを表すモデル
+    │           ├── foo.module.ts                      - FooエンティティのAngularモジュール
+    │           ├── foo.route.ts                       - Angularルータの設定
+    │           ├── foo.service.ts                     - Foo RESTリソースにアクセスするサービス
+    │           ├── foo-delete-dialog.component.html   - Fooを削除するためのHTMLビュー
+    │           ├── foo-delete-dialog.component.ts     - Fooを削除するためのコントローラ
+    │           ├── foo-detail.component.html          - Fooを表示するためのHTMLビュー
+    │           ├── foo-detail.component.ts            - コントローラまたはFooの表示
+    │           ├── foo-dialog.component.html          - Fooを編集するためのHTMLビュー
+    │           ├── foo-dialog.component.ts            - Fooを編集するためのコントローラ
+    │           ├── foo-popup.service.ts               - 作成/更新ダイアログのポップアップを処理するサービス
+    │           ├── index.ts                           - すべてをエクスポートするためのバレル
+    ├── i18n                                           - 翻訳ファイル
+    │   ├── en                                         - 英訳
+    │   │   ├── foo.json                               - Foo名、フィールド、...の英語翻訳
+    │   ├── fr                                         - フランス語翻訳
+    │   │   ├── foo.json                               - Foo名、フィールド、...のフランス語翻訳
 
-Please note that the default language translations would be based on what you have choosen during app generation. 'en' and 'fr' are shown here only for demonstration.
+デフォルトの言語変換は、アプリケーションの生成時に選択した内容に基づいて行われることに注意してください。'en'および'fr'は、ここではデモンストレーションのためにのみ示されています。
 
-## Authorizations
+## 認証
 
-JHipster uses [the Angular router](https://angular.io/docs/ts/latest/guide/router.html) to organize the different parts of your client application.
+JHipsterは[Angularルータ](https://angular.io/docs/ts/latest/guide/router.html)を使用して、クライアントアプリケーションのさまざまな部分を整理します。
 
-For each state, the required authorities are listed in the state's data, and when the authority list is empty it means that the state can be accessed anonymously.
+各ステートごとに、必要な権限がステートのデータにリストされています。権限リストが空の場合は、ステートに匿名でアクセスできることを意味します。
 
-The authorities are also defined on the server-side in the class `AuthoritiesConstants.java`, and logically the client and server-side authorities should be the same.
+権限はサーバー側でもクラス`AuthoritiesConstants.java`で定義されており、論理的にはクライアント側とサーバー側の権限は同じでなければなりません。
 
-In the example below, the 'sessions' state is designed to be accessed only by authenticated users who have `ROLE_USER` authority:
+次の例では、'sessions'ステートは、`ROLE_USER`権限を持つ認証済みユーザーによってのみアクセスされるように設計されています。
 
     export const sessionsRoute: Route = {
         path: 'sessions',
@@ -111,48 +111,48 @@ In the example below, the 'sessions' state is designed to be accessed only by au
         canActivate: [UserRouteAccessService]
     };
 
-Once those authorities are defined in the router, they can be used through `jhiHasAnyAuthority` directive within its 2 variants based on type of argument:
+これらの権限がルータで定義されると、`jhiHasAnyAuthority`ディレクティブを通して、引数のタイプに応じた2種類のバリエーションで使用できます。
 
-- for a single string, the directive only displays the HTML component if the user has the required authority
-- for an array of strings, the directive displays the HTML component if the user has one of the listed authorities
+- 単一の文字列の場合、ユーザーが必要な権限を持っている場合にのみ、ディレクティブはHTMLコンポーネントを表示します。
+- 文字列の配列の場合、ユーザーがリストされた権限のいずれかを持っている場合、ディレクティブはHTMLコンポーネントを表示します。
 
-For example, the following text will only be displayed to users having the `ROLE_ADMIN` authority:
+たとえば、次のテキストは、`ROLE_ADMIN`権限を持つユーザーにのみ表示されます。
 
     <h1 *jhiHasAnyAuthority="'ROLE_ADMIN'">Hello, admin user</h1>
 
-For example, the following text will only be displayed to users having one of the `ROLE_ADMIN` or `ROLE_USER` authorities:
+たとえば、次のテキストは、`ROLE_ADMIN`または`ROLE_USER`権限のいずれかを持つユーザーにのみ表示されます。
 
     <h1 *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']">Hello, dear user</h1>
 
-*Please note* that those directives only show or hide HTML components on the client-side, and that you also need to secure your code on the server-side!
+*注意* これらのディレクティブは、クライアント側のHTMLコンポーネントを表示または非表示にするだけであり、サーバー側でもコードを保護する必要があります！
 
-## The ng-jhipster library
+## ng-jhipsterライブラリ
 
-The ng-jhipster library is free and OSS, and available on [https://github.com/jhipster/ng-jhipster](https://github.com/jhipster/ng-jhipster).
+ng-jhipsterライブラリはフリーでOSSであり、[https://github.com/jhipster/ng-jhipster](https://github.com/jhipster/ng-jhipster)から入手できます。
 
-The ng-jhipster library contains utility functions and common components that are used by Angular 2+ applications. They include:
+ng-jhipsterライブラリには、Angular 2+アプリケーションで使用されるユーティリティ関数と共通コンポーネントが含まれています。次のようなものがあります。
 
-- Validation directives
-- Internationalization components
-- Commonly-used pipes like capitalization, ordering and word truncation
-- Base64, date and pagination handling services
-- A notification system (see below)
+- 検証ディレクティブ
+- 国際化コンポーネント
+- 大文字化、順序付け、単語の切り詰めなどの一般的に使用されるパイプ
+- Base64、日付、およびページ区切り処理サービス
+- 通知システム（下記参照）
 
-### Notification System
+### 通知システム
 
-JHipster uses a custom notification system to send events from the server-side to the client-side, and has i18n-capable `JhiAlertComponent` and `JhiAlertErrorComponent` components which can be used throughout the generated applications.
+JHipsterは、サーバー側からクライアント側にイベントを送信するためにカスタム通知システムを使用し、生成されたアプリケーション全体で使用できるi18n対応の`JhiAlertComponent`および`JhiAlertErrorComponent`コンポーネントを備えています。
 
-By default JHipster will show error notifications when there is an error caught from an HTTP response.
+デフォルトでは、JHipsterはHTTP応答からエラーがキャッチされたときにエラー通知を表示します。
 
-To show a custom notification or alert, use the below methods after injecting the `AlertService` to your controller, directive or service.
+カスタムの通知またはアラートを表示するには、コントローラ、ディレクティブ、またはサービスに`AlertService`を挿入した後、次のメソッドを使用します。
 
-The shorthand methods `success`, `info`, `warning` and `error` will have a default timeout of 5 seconds, which can be configured:
+短縮メソッドである`success`、`info`、`warning`、`error`のデフォルトのタイムアウトは5秒で、設定は可能です。
 
     this.alerts.push(
         this.alertService.addAlert(
             {
                 type: 'danger',
-                msg: 'you should not have pressed this button!',
+                msg: 'このボタンを押すべきではありません。',
                 timeout: 5000,
                 toast: false,
                 scoped: true
@@ -161,44 +161,44 @@ The shorthand methods `success`, `info`, `warning` and `error` will have a defau
         )
     );
 
-## Using Angular CLI
+## Angular CLIの使用
 
-Angular CLI is used to build and test JHipster applications. 
-However, we added a custom webpack configuration file in order to improve the developer experience by adding BrowserSync, ESLint (Angular CLI is still on TSLint for now), merging JSON translation files and add notifications when build has completed or failed.
+Angular CLIは、JHipsterアプリケーションの構築とテストに使用されます。
+ただし、BrowserSync、ESLint（Angular CLIは現在もTSLint上にあります）の追加、JSON変換ファイルのマージ、ビルドが完了または失敗したときの通知の追加により、開発者のエクスペリエンスを向上させるために、カスタムWebpack設定ファイルを追加しました。
 
-### Overview
+### 概要
 
-[Angular CLI](https://cli.angular.io/) is a tool to develop, scaffold and maintain Angular applications. JHipster generates the Angular CLI configuration file, so the Angular CLI workflows work with JHipster.
+[Angular CLI](https://cli.angular.io/)は、Angularアプリケーションを開発、構築、維持するためのツールです。JHipsterはAngular CLI設定ファイルを生成し、Angular CLIワークフローはJHipsterと連携します。
 
-This integration is done by generating a `angular.json` file in the application root folder and adding its dependencies in the `package.json` file.
+この統合は、アプリケーションルートフォルダに`angular.json`ファイルを生成し、その依存関係を`package.json`ファイルに追加することによって行われます。
 
-### Usage
+### 使用方法
 
 ```bash
 ng help
 ```
 
-### Building
+### ビルド
 
-You can use `ng build` to build your front-end, but we still recommend to use the provided NPM scripts such as `npm start`, `npm run build`, etc. Check our ["using in development" documentation]({{ site.url }}/development/) and our ["using in production" documentation]({{ site.url }}/production/).
+フロントエンドの構築には`ng build`を使用できますが、`npm start`、`npm run build`などの提供されているNPMスクリプトを使用することをお勧めします。[開発での使用のドキュメント]({{ site.url }}/development/)および[プロダクション環境での使用のドキュメント]({{ site.url }}/production/)を確認してください。
 
-### Generating Components, Directives, Pipes and Services
+### コンポーネント、ディレクティブ、パイプ、およびサービスの生成
 
-You can use the `ng generate` (or `ng g`) command to generate Angular components:
+`ng generate`（または`ng g`）コマンドを使用して、Angularコンポーネントを生成できます。
 
 ```bash
 ng generate component my-new-component
-ng g component my-new-component # using the alias
+ng g component my-new-component # 別名の使用
 
-# Components support relative path generation
-# Go to src/app/feature/ and run
+# コンポーネントは相対パスの生成をサポート
+# src/app/feature/に移動して実行
 ng g component new-cmp
-# your component will be generated in src/app/feature/new-cmp
-# but if you were to run
+# コンポーネントはsrc/app/feature/new-cmpに生成されます
+# ただし以下を実行すると
 ng g component ../newer-cmp
-# your component will be generated in src/app/newer-cmp
+# コンポーネントはsrc/app/newer-cmpに生成されます
 ```
-You can find all possible blueprints in the table below:
+以下に、使用可能なすべてのブループリントの表を示します。
 
 Scaffold  | Usage
 ---       | ---
@@ -213,9 +213,9 @@ Scaffold  | Usage
 [Module](https://github.com/angular/angular-cli/wiki/generate-module)       | `ng g module my-module`
 
 
-### Test
+### テスト
 
-For consistency purpose on JHipster application, tests are available through the `npm` command:
+JHipsterアプリケーションでの一貫性のためのテストは`npm`コマンドを通じて利用できます。
 
 ```bash
 npm test
@@ -223,16 +223,16 @@ npm test
 
 ### i18n
 
-JHipster is using the `ngx-translate` dependency for translation purpose. Angular CLI i18n is based on the default Angular i18n support, which is incompatible with JHipster.
+JHipsterは、翻訳のために`ngx-translate`依存関係を使用しています。Angular CLI i18nは、JHipsterと互換性のないデフォルトのAngular i18nサポートに基づいています。
 
-### Running the server
+### サーバの実行
 
-If you prefer to use Angular CLI to develop you application, you can run your server directly by using its dedicated command.
+Angular CLIを使用してアプリケーションを開発する場合は、専用のコマンドを使用してサーバを直接実行できます。
 
 ```bash
 ng serve
 ```
 
-### Conclusion
+### まとめ
 
-For more information about the Angular CLI, please visit the official website [https://cli.angular.io/](https://cli.angular.io/)
+Angular CLIの詳細については、公式Webサイト[https://cli.angular.io/](https://cli.angular.io/)を参照してください。
