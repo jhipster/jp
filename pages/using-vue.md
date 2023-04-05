@@ -1,101 +1,101 @@
 ---
 layout: default
-title: Using Vue
+title: Vueの使用
 permalink: /using-vue/
 sitemap:
     priority: 0.7
     lastmod: 2019-03-27T23:41:00-00:00
 ---
 
-# <i class="fa fa-html5"></i> Using Vue
-This section refers to the JavaScript library **Vue.js**.
+# <i class="fa fa-html5"></i> Vueの使用
+このセクションでは、JavaScriptライブラリ**Vue.js**について説明します。
 
-## Project Structure
+## プロジェクト構造
 
-The JHipster client code can be found under `src/main/webapp`.
+JHipsterクライアントコードは`src/main/webapp`の下にあります。
 
-Please read this guide first if you have any question on our application structure, file names, TypeScript conventions...
+私たちのアプリケーション構造、ファイル名、TypeScriptの規則について質問がある場合は、まずこのガイドをお読みください。
 
-Note that we use TypeScript in our generated Vue application following [vue-class-component](https://github.com/vuejs/vue-class-component) style and guidelines.
+生成されたVueアプリケーションでは、[vue-class-component](https://github.com/vuejs/vue-class-component)スタイルとガイドラインに従ってTypeScriptを使用することに注意してください。
 
-For Vue routes we follow a dash cased naming convention so that the URLs are clean and consistent.
-When you generate an entity the route names, route URLs and REST API endpoint URLs are generated according to this convention, also entity names are automatically pluralized where required.
+Vueルートの場合は、URLが明確で一貫性があるように、dash caseの命名規則に従います。
+エンティティを生成すると、この規則に従ってルート名、ルートURL、およびREST APIエンドポイントURLが生成され、必要に応じてエンティティ名が自動的に複数化されます。
 
-Here is the main project structure:
+プロジェクトの主な構成は次のとおりです。
 
 ```
 webapp
-├── app                             - Your application
-│   ├── account                     - Account related components
-│   ├── admin                       - Administration related components
-│   ├── core                        - Main components such as Home, navbar, ...
-│   ├── entities                    - Generated entities
-│   ├── locale                      - I18n / translation related components
-│   ├── router                      - Routing configuration
-│   ├── shared                      - Shared elements such as your config, models and util classes
-│   ├── app.component.ts            - The application main class
-│   ├── app.vue                     - The application main SFC component
-│   ├── constants.ts                - Global application constants
-│   ├── main.ts                     - Index script, application entrypoint
+├── app                             - アプリケーション
+│   ├── account                     - アカウント関連のコンポーネント
+│   ├── admin                       - 管理関連のコンポーネント
+│   ├── core                        - メインコンポーネント(Home、navbarなど)
+│   ├── entities                    - 生成されたエンティティ
+│   ├── locale                      - I18n/翻訳関連コンポーネント
+│   ├── router                      - ルーティング設定
+│   ├── shared                      - 構成、モデル、utilクラスなどの共有要素
+│   ├── app.component.ts            - アプリケーションのメインクラス
+│   ├── app.vue                     - アプリケーションのメインSFCコンポーネント
+│   ├── constants.ts                - グローバルアプリケーション定数
+│   ├── main.ts                     - インデックススクリプト、アプリケーションエントリポイント
 │   └── shims-vue.d.ts
-├── content                         - Contains your static files such as images and fonts
-├── i18n                            - Translation files
-├── swagger-ui                      - Swagger UI front-end
-├── 404.html                        - 404 page
-├── favicon.ico                     - Fav icon
-├── index.html                      - Index page
-├── manifest.webapp                 - Application manifest
-└── robots.txt                      - Configuration for bots and Web crawlers
+├── content                         - イメージやフォントなどの静的ファイルが格納されます。
+├── i18n                            - 翻訳ファイル
+├── swagger-ui                      - Swagger UIフロントエンド
+├── 404.html                        - 404ページ
+├── favicon.ico                     - お気に入りアイコン
+├── index.html                      - 索引ページ
+├── manifest.webapp                 - アプリケーションマニフェスト
+└── robots.txt                      - ボットおよびWebクローラの構成
 ```
 
-Using the [entity sub-generator]({{ site.url }}/creating-an-entity/) to create a new entity called `Foo` generates the following front-end files under `src/main/webapp`:
+[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用して`Foo`という名前の新しいエンティティを作成すると、`src/main/webapp`の下に次のフロントエンドファイルが生成されます。
 
 ```
 webapp
 ├── app                                        
 │   ├── entities
-│   │   └── foo                           - CRUD front-end for the Foo entity
-│   │       ├── foo-details.vue           - Details SFC component
-│   │       ├── foo-detail.component.ts   - Details page component
-│   │       ├── foo-update.vue            - Creation / Update SFC component
-│   │       ├── foo-update.component.ts   - Creation / Update component class
-│   │       ├── foo.vue                   - Entity main SFC component
-│   │       ├── foo.component.ts          - Entity main component class
-│   │       └── foo.service.ts            - Foo entity service
+│   │   └── foo                           - FooエンティティのCRUDフロントエンド
+│   │       ├── foo-details.vue           - SFC構成要素の詳細
+│   │       ├── foo-detail.component.ts   - 詳細ページコンポーネント
+│   │       ├── foo-update.vue            - SFC構成要素を作成/更新
+│   │       ├── foo-update.component.ts   - 作成/更新コンポーネントクラス
+│   │       ├── foo.vue                   - エンティティメインSFCコンポーネント
+│   │       ├── foo.component.ts          - Entityメインコンポーネントクラス
+│   │       └── foo.service.ts            - Fooエンティティサービス
 │   ├── router
-│   │   └── index.ts                      - Entity main routes configuration
+│   │   └── index.ts                      - エンティティメインルートの設定
 │   └── shared
 │       └── model
-│           └── foo.model.ts              - Entity model class
-└── i18n                                  - Translation files
-     ├── en                               - English translations
-     │   ├── foo.json                     - English translation of Foo name, fields, ...
-     └── fr                               - French translations
-         └── foo.json                     - French translation of Foo name, fields, ...
+│           └── foo.model.ts              - エンティティモデルクラス
+└── i18n                                  - 翻訳ファイル
+     ├── en                               - 英訳
+     │   ├── foo.json                     - Foo名、フィールド、.の英語翻訳
+     └── fr                               - フランス語翻訳
+         └── foo.json                     - Foo名、フィールド、.のフランス語翻訳
 ```
 
-Please note that the default language translations would be based on what you have choosen during app generation. 'en' and 'fr' are shown here only for demonstration.
+デフォルトの言語変換は、アプリケーションの生成時に選択した内容に基づいて行われることに注意してください。'en'および'fr'は、ここではデモンストレーションのためにのみ示されています。
 
-## Store using VuexStore
+## VuexStoreを使用して保存
 
-Application will use a store [VuexStore](https://vuex.vuejs.org/guide/state.html) to maintain state within the application.
+アプリケーションは、ストア[VuexStore](https://vuex.vuejs.org/guide/state.html)を使用して、アプリケーション内の状態を維持します。
 
-This store is configured at startup in `app/config/config.ts:initVueXStore`. Please refer to Vuex documentation to add new states or mutations.
+このストアは、起動時に`app/config/config.ts:initVueXStore`に設定されます。新しい状態やミューテーションを追加するには、Vuexのドキュメントを参照してください。
 
-The application will use the store to maintain:
+アプリケーションはこのストアを使用して、次の項目を維持します。
 
-* User authentication information
-* Language and translation 
-* Notification and alert information
-* Active profiles data
+* ユーザー認証情報
+* 言語と翻訳
+* 通知およびアラート情報
+* アクティブなプロファイルデータ
 
-## Authorizations
+## 認証
 
-JHipster uses the [Vue router](https://router.vuejs.org/) to organize the differents parts of your application.
+JHipsterは、[Vueルーター](https://router.vuejs.org/)を使用して、アプリケーションのさまざまな部分を整理します。
 
-When it comes to routes that require authentication, the meta `authorities` is used on desired route. This component will prevent any unauthenticated or unauthorized user from accessing a route.
+認証を必要とするルートに関しては、メタ`authorities`が望ましいルートで使用されます。このコンポーネントは、認証されていない、または許可されていないユーザーがルートにアクセスするのを防ぎます。
 
-Here is an example of PrivateRoute usage:
+PrivateRouteでの使用例を次に示します。
 
 ``` typescript
 const Routes = () => [{
@@ -111,13 +111,13 @@ const Routes = () => [{
     }];
 ```
 
-As you can see, unauthenticated user can access `/public` but accessing `/private` requires at least to be logged in.
+このように、認証されていないユーザーは`/public`にアクセスできますが、`/private`にアクセスするには少なくともログインする必要があります。
 
-Please note that the interceptor uses the `$store.getters.authenticated` store value to know if the user is authenticated.
+インターセプターは、ユーザーが認証されているかどうかを知るために、`$store.getters.authenticated`ストア値を使用することに注意してください。
 
-## Validation system
+## 検証システム
 
-In order to perform form validation, we use [Vuelidate](https://vuelidate.netlify.com/) library. Besides adding validation constraints, several filters are already furnished and enable a full validation on form. Custom validation can be added as such:
+フォームを検証するには、[Vuelidate](https://vuelidate.netlify.com/)ライブラリを使用します。検証制約の追加に加えて、いくつかのフィルタが用意されており、フォームでの完全な検証が可能です。カスタム検証は、次のように追加できます。
 
 ```typescript
 import { required } from 'vuelidate/lib/validators';
@@ -137,6 +137,6 @@ export default class FooComponent extends Vue {
 }
 ```
 
-## Bootswatch theme
+## Bootswatchテーマ
 
-Theming Bootstrap can be done directly using [Bootswatch](https://bootswatch.com) themes. We now provide questions during generation to pick one of the many themes served by Bootswatch.
+Theming Bootstrapは、[Bootswatch](https://bootswatch.com)テーマを使用して直接実行できます。Bootswatchによって提供される多くのテーマの1つを選択するために、生成中に質問を提供するようにしました。
