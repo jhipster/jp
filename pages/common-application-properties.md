@@ -1,137 +1,137 @@
 ---
 layout: default
-title: Common application properties
+title: 共通アプリケーションプロパティ
 permalink: /common-application-properties/
 sitemap:
     priority: 0.7
     lastmod: 2018-03-18T18:20:00-00:00
 ---
 
-# <i class="fa fa-flask"></i> Common application properties
+# <i class="fa fa-flask"></i> 共通アプリケーションプロパティ
 
-JHipster generates a Spring Boot application, and can be configured using the standard Spring Boot properties mechanism.
+JHipsterはSpring Bootアプリケーションを生成し、標準のSpring Bootプロパティの仕組みを使用して設定できます。
 
-Those properties are configured at generation-time by JHipster, and often have different values in development and production modes: learn more about this in our [Profiles documentation]({{ site.url }}/profiles/).
+これらのプロパティはJHipsterによって生成時に設定され、開発モードとプロダクションモードでは値が異なることがよくあります。詳細については、[プロファイルのドキュメント]({{ site.url }}/profiles/)を参照してください。
 
-In a JHipster application, there are three kinds of properties:
+JHipsterアプリケーションには、次の3種類のプロパティがあります。
 
-1. [Spring Boot standard application properties](#1)
-2. [JHipster application properties](#2)
-3. [Application-specific properties](#3)
+1. [Spring Boot標準アプリケーションプロパティ](#1)
+2. [JHipsterアプリケーションプロパティ](#2)
+3. [アプリケーション固有のプロパティ](#3)
 
-<h2 id="1">Spring Boot standard application properties</h2>
+<h2 id="1">Spring Boot標準アプリケーションプロパティ</h2>
 
-Like any Spring Boot application, JHipster allows you to configure any standard [Spring Boot application property](http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html).
+他のSpring Bootアプリケーションと同様に、JHipsterでは標準の[Spring Bootアプリケーションプロパティ](http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)を設定できます。
 
-<h2 id="2">JHipster application properties</h2>
+<h2 id="2">JHipsterアプリケーションプロパティ</h2>
 
-JHipster provides specific application properties, which come from the [JHipster server-side library](https://github.com/jhipster/jhipster). Those properties are standard for all JHipster projects, but some of them only work depending on what you selected when you built your application: for example the `jhipster.cache.hazelcast` key only works if you selected Hazelcast as your 2nd-level Hibernate cache.
+JHipsterは、[JHipsterサーバサイドライブラリ](https://github.com/jhipster/jhipster)からなる固有のアプリケーションプロパティを提供します。これらのプロパティはすべてのJHipsterプロジェクトで標準ですが、アプリケーションを構築したときに選択した内容に応じてのみ機能するものもあります。たとえば、`jhipster.cache.hazelcast`キーは、第2レベルのHibernateキャッシュとしてHazelcastを選択した場合にのみ機能します。
 
-Those properties are configured using the `io.github.jhipster.config.JHipsterProperties` class.
+これらのプロパティは、`io.github.jhipster.config.JHipsterProperties`クラスを使用して設定されます。
 
-Here is a documentation for those properties:
+これらのプロパティのドキュメントを次に示します。
 
 ```YAML
     jhipster:
 
-        # Thread pool that will be used for asynchronous method calls in JHipster
+        # JHipsterの非同期メソッド呼び出しに使用されるスレッドプール
         async:
-            core-pool-size: 2 # Initial pool size
-            max-pool-size: 50 # Maximum pool size
-            queue-capacity: 10000 # Queue capacity of the pool
+            core-pool-size: 2 # 初期プール・サイズ
+            max-pool-size: 50 # 最大プール・サイズ
+            queue-capacity: 10000 # プールのキュー容量
 
-        # Specific configuration for JHipster gateways
-        # See https://www.jhipster.tech/api-gateway/ for more information on JHipster gateways
+        # JHipsterゲートウェイの特定の設定
+        # JHipsterゲートウェイの詳細についてはhttps://www.jhipster.tech/api-gateway/を参照
         gateway:
             rate-limiting:
-                enabled: false # Rate limiting is disabled by default
-                limit: 100_000L # By default we allow 100,000 API calls
-                duration-in-seconds: 3_600 # By default the rate limiting is reinitialized every hour
-            authorized-microservices-endpoints: # Access Control Policy, if left empty for a route, all endpoints will be accessible
-                app1: /api # recommended prod configuration, it allows the access to all API calls from the "app1" microservice
+                enabled: false # レート制限は、デフォルトでは無効
+                limit: 100_000L # デフォルトでは、100,000のAPIコールが許可
+                duration-in-seconds: 3_600 # デフォルトでは、レート制限は1時間ごとに再初期化
+            authorized-microservices-endpoints: # アクセスコントロールポリシー。ルートに対して空のままにしておくと、すべてのエンドポイントがアクセス可能になります。
+                app1: /api # プロダクション設定の推奨。"app1"マイクロサービスからのすべてのAPIコールへのアクセスを許可します。
 
-        # HTTP configuration
+        # HTTP設定
         http:
-            cache: # Used by io.github.jhipster.web.filter.CachingHttpHeadersFilter
-                timeToLiveInDays: 1461 # Static assets are cached for 4 years by default
+            cache: # io.github.jhipster.web.filter.CachingHttpHeadersFilterより使用
+                timeToLiveInDays: 1461 # 静的なアセットはデフォルトで4年間キャッシュ
 
-        # Hibernate 2nd level cache, used by CacheConfiguration
+        # Hibernateの第2レベルのキャッシュ（CacheConfigurationで使用）
         cache:
-            hazelcast: # Hazelcast configuration
-                time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
-                backup-count: 1 # Number of objects backups
-                # Configure the Hazelcast management center
-                # Full reference is available at: http://docs.hazelcast.org/docs/management-center/3.9/manual/html/Deploying_and_Starting.html
+            hazelcast: # Hazelcastの設定
+                time-to-live-seconds: 3600 # デフォルトでは、オブジェクトはキャッシュに1時間保持
+                backup-count: 1 # オブジェクトのバックアップ数
+                # Hazelcast管理センターの設定
+                # 完全なリファレンスは、http://docs.hazelcast.org/docs/management-center/3.9/manual/html/Deploying_and_Starting.htmlにあります。
                 management-center:
-                    enabled: false # Hazelcast management center is disabled by default
-                    update-interval: 3 # Updates are sent to the Hazelcast management center every 3 seconds by default
-                    # Default URL for Hazelcast management center when using JHipster's Docker Compose configuration
-                    # See src/main/docker/hazelcast-management-center.yml
-                    # Warning, the default port is 8180 as port 8080 is already used by JHipster
+                    enabled: false # Hazelcast管理センターはデフォルトで無効
+                    update-interval: 3 # アップデートはデフォルトで3秒ごとにHazelcast管理センターに送信
+                    # JHipsterのDocker Compose設定を使用する場合のHazelcast管理センターのデフォルトURL
+                    # src/main/docker/hazelcast-management-center.ymlを参照
+                    # 注意：ポート8080はすでにJHipsterによって使用されているため、デフォルトのポートは8180
                     url: http://localhost:8180/mancenter
-            ehcache: # Ehcache configuration
-                time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
-                max-entries: 100 # Number of objects in each cache entry
-            caffeine: # Caffeine configuration
-                time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
-                max-entries: 100 # Number of objects in each cache entry    
-            infinispan: #Infinispan configuration
+            ehcache: # Ehcacheの設定
+                time-to-live-seconds: 3600 # デフォルトでは、オブジェクトはキャッシュに1時間保持
+                max-entries: 100 # 各キャッシュ・エントリ内のオブジェクト数
+            caffeine: # Caffeineの設定
+                time-to-live-seconds: 3600 # デフォルトでは、オブジェクトはキャッシュに1時間保持
+                max-entries: 100 # 各キャッシュ・エントリ内のオブジェクト数
+            infinispan: #Infinispanの設定
                 config-file: default-configs/default-jgroups-tcp.xml
-                # local app cache
+                # ローカルアプリケーションキャッシュ
                 local:
-                    time-to-live-seconds: 60 # By default objects stay 1 hour (in minutes) in the cache
-                    max-entries: 100 # Number of objects in each cache entry
+                    time-to-live-seconds: 60 # デフォルトでは、オブジェクトはキャッシュに1時間(分単位)保持
+                    max-entries: 100 # 各キャッシュ・エントリ内のオブジェクト数
                 #distributed app cache
                 distributed:
-                    time-to-live-seconds: 60 # By default objects stay 1 hour (in minutes) in the cache
-                    max-entries: 100 # Number of objects in each cache entry
+                    time-to-live-seconds: 60 # デフォルトでは、オブジェクトはキャッシュに1時間(分単位)保持
+                    max-entries: 100 # 各キャッシュ・エントリ内のオブジェクト数
                     instance-count: 1
                 #replicated app cache
                 replicated:
-                    time-to-live-seconds: 60 # By default objects stay 1 hour (in minutes) in the cache
-                    max-entries: 100 # Number of objects in each cache entry
-            # Memcached configuration
-            # Uses the Xmemcached library, see https://github.com/killme2008/xmemcached
+                    time-to-live-seconds: 60 # デフォルトでは、オブジェクトはキャッシュに1時間(分単位)保持
+                    max-entries: 100 # 各キャッシュ・エントリ内のオブジェクト数
+            # Memcachedの設定
+            # Xmemcachedライブラリを使用。https://github.com/killme2008/xmemcachedを参照
             memcached:
-                # Disabled by default in dev mode, as it does not work with Spring Boot devtools
+                # Spring Boot devtoolsで動作しないため、開発モードではデフォルトで無効
                 enabled: true
-                servers: localhost:11211 # Comma or whitespace separated list of servers' addresses
-                expiration: 300 # Expiration time (in seconds) for the cache
-                use-binary-protocol: true # Binary protocol is recommended for performance (and security)
-                authentication: # if authentication is required you can set it with these parameters. Disabled by default
+                servers: localhost:11211 # コンマまたは空白で区切られたサーバーのアドレスのリスト
+                expiration: 300 # キャッシュの有効期限(秒単位)
+                use-binary-protocol: true # バイナリプロトコルが推奨。パフォーマンス（およびセキュリティ）のため
+                authentication: # 認証が必要な場合は、次のパラメータを使用して設定できます。デフォルトでは無効。
                     enabled: false,
-                    # username: unset by default
-                    # password: unset by default
-            redis: # Redis configuration
-                expiration: 3600 # By default objects stay 1 hour (in seconds) in the cache
-                server: redis://localhost:6379 # Server address
+                    # username: デフォルトでは設定なし
+                    # password: デフォルトでは設定なし
+            redis: # Redisの設定
+                expiration: 3600 # デフォルトでは、オブジェクトはキャッシュに1時間(秒単位)保持
+                server: redis://localhost:6379 # サーバアドレス
                 cluster: false
                 connectionPoolSize: 64,
                 connectionMinimumIdleSize: 24,
                 subscriptionConnectionPoolSize: 50,
                 subscriptionConnectionMinimumIdleSize: 1
 
-        # E-mail properties
+        # E-mailプロパティ
         mail:
-            enabled: false # If e-mail sending is enabled. The standard `spring.mail` keys will need to be configured
-            from: jhipster@localhost # The default "from" address for e-mails
-            base-url: http://127.0.0.1:8080 # URL to the application, used inside e-mails
+            enabled: false # 電子メールの送信が有効になっている場合、標準の`spring.mail`キーを設定する必要があります
+            from: jhipster@localhost # 電子メールのデフォルトの送信元アドレス
+            base-url: http://127.0.0.1:8080 # 電子メール内で使用されるアプリケーションのURL
 
-        # Spring Security specific configuration
+        # Spring Security固有の設定
         security:
-            remember-me: # JHipster secure implementation of the remember-me mechanism, for session-based authentication
-                # security key (this key should be unique for your application, and kept secret)
+            remember-me: # remember-meメカニズムのJHipsterセキュア実装。セッションベースの認証用
+                # セキュリティキー（このキーは、アプリケーションに固有で、秘密にしておく必要があります）
                 key: 0b32a651e6a65d5731e869dc136fb301b0a8c0e4
             authentication:
-                jwt: # JHipster specific JWT implementation
-                    # The secret token should be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line).
-                    # If both properties are configured, the `secret` property has a higher priority than the `base64-secret` property.
-                    secret: # JWT secret key in clear text (not recommended)
-                    base64-secret:  # JWT secret key encoded in Base64 (recommended)
-                    token-validity-in-seconds: 86400 # Token is valid 24 hours
-                    token-validity-in-seconds-for-remember-me: 2592000 # Remember me token is valid 30 days
+                jwt: # JHipster固有のJWT実装
+                    # シークレットトークンはBase64を使ってエンコードされるべきです（コマンドラインで`echo 'secret-key'|base64`とタイプできます）。
+                    # 両方のプロパティが設定されている場合、`secret`プロパティは`base64-secret`プロパティよりも優先順位が高くなります。
+                    secret: # クリア・テキストのJWT秘密鍵（推奨されません）
+                    base64-secret:  # Base64でエンコードされたJWT秘密鍵（推奨）
+                    token-validity-in-seconds: 86400 # トークンは24時間有効
+                    token-validity-in-seconds-for-remember-me: 2592000 # Remember meトークンは30日間有効
 
-        # Swagger configuration
+        # Swagger設定
         swagger:
             default-include-pattern: /api/.*
             title: JHipster API
@@ -146,42 +146,42 @@ Here is a documentation for those properties:
             host:
             protocols:
 
-        # DropWizard Metrics configuration, used by MetricsConfiguration
+        # DropWizard Metrics設定。MetricsConfigurationで使用します。
         metrics:
-            jmx: # Export metrics as JMX beans
-                enabled: true # JMX is enabled by default
-            # Send metrics to a Graphite server
-            # Use the "graphite" Maven profile to have the Graphite dependencies
+            jmx: # メトリックをJMX Beanとしてエクスポート
+                enabled: true # JMXはデフォルトで有効
+            # Graphiteサーバーにメトリックを送信します。
+            # "graphite" Mavenプロファイルを使用。Graphiteとの依存関係をもちます。
             graphite:
-                enabled: false # Graphite is disabled by default
+                enabled: false # Graphiteはデフォルトで無効
                 host: localhost
                 port: 2003
                 prefix: jhipster
-            # Send metrics to a Prometheus server
+            # Prometheusサーバにメトリックを送信します。
             prometheus:
-                enabled: false # Prometheus is disabled by default
+                enabled: false # Prometheusはデフォルトで無効
                 endpoint: /prometheusMetrics
-            logs: # Reports Dropwizard metrics in the logs
+            logs: # ログ内のDropwizardメトリックをレポート
                 enabled: false
-                reportFrequency: 60 # frequency of reports in seconds
+                reportFrequency: 60 # 秒単位のレポートの頻度
 
-        # Logging configuration, used by LoggingConfiguration
+        # ロギング設定。LoggingConfigurationで使用
         logging:
-            logstash: # Forward logs to Logstash over a socket
-                enabled: false # Logstash is disabled by default
-                host: localhost # Logstash server URL
-                port: 5000 # Logstash server port
-                queue-size: 512 # Queue for buffering logs
-            spectator-metrics: # Reports Netflix Spectator metrics in the logs
-                enabled: false # Spectator is disabled by default
+            logstash: # ソケット経由でLogstashにログを転送する
+                enabled: false # Logstashはデフォルトで無効
+                host: localhost # LogstashサーバーURL
+                port: 5000 # Logstashサーバーポート
+                queue-size: 512 # ログをバッファリングするためのキュー
+            spectator-metrics: # ログ内のNetflix Spectatorメトリクスをレポート
+                enabled: false # Spectatorはデフォルトで無効
 
-        # By default cross-origin resource sharing (CORS) is enabled in "dev" mode for
-        # monoliths and gateways.
-        # It is disabled by default in "prod" mode for security reasons, and for microservices
-        # (as you are supposed to use a gateway to access them).
-        # This configures a standard org.springframework.web.cors.CorsConfiguration
-        # Note that "exposed-headers" is mandatory for JWT-based security, which uses
-        # the "Authorization" header, and which is not a default exposed header.
+        # デフォルトでは、cross-origin resource sharing (CORS) は、モノリスおよびゲートウェイの"dev" モードで
+        # 有効になっています。
+        # セキュリティ上の理由から、"prod"モードではデフォルトで無効になっています。マイクロサービスの場合も同様です
+        # (アクセスにはゲートウェイを使用することを想定）。
+        # これにより、標準のorg.springframework.web.cors.CorsConfigurationが設定されます。
+        # "exposed-headers" がJWTベースのセキュリティーでは必須であることに注意してください。
+        # "Authorization"ヘッダーを使用し、デフォルトの公開ヘッダーではありません。
         cors:
             allowed-origins: "*"
             allowed-methods: "*"
@@ -190,14 +190,14 @@ Here is a documentation for those properties:
             allow-credentials: true
             max-age: 1800
 
-        # Ribbon displayed on the top left-hand side of JHipster applications
+        # JHipsterアプリケーションの左上に表示されるリボン
         ribbon:
-            # Comma-separated list of profiles that display a ribbon
+            # リボンを表示するプロファイルのカンマ区切りのリスト
             display-on-active-profiles: dev
 ```
 
-<h2 id="3">Application-specific properties</h2>
+<h2 id="3">アプリケーション固有のプロパティ</h2>
 
-Your generated application can also have its own Spring Boot properties. This is highly recommended, as it allows type-safe configuration of the application, as well as auto-completion and documentation within an IDE.
+生成されたアプリケーションは、独自のSpring Bootプロパティを持つこともできます。これは、アプリケーションのタイプセーフな設定と、IDE内でのオートコンプリートとドキュメント化を可能にするため、強く推奨されます。
 
-JHipster has generated a `ApplicationProperties` class in the `config` package, which is already preconfigured, and it is already documented at the bottom the `application.yml`, `application-dev.yml` and `application-prod.yml` files. All you need to do is code your own specific properties.
+JHipsterは、`config`パッケージに`ApplicationProperties`クラスを生成しました。このクラスはすでに事前設定されており、`application.yml`、`application-dev.yml`、`application-prod.yml`ファイルの下部に文書化されています。必要なのは、独自の特定のプロパティをコーディングすることだけです。

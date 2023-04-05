@@ -1,28 +1,28 @@
 ---
 layout: default
-title: Error - constraint violation
+title: エラー - 制約違反
 permalink: /problem/constraint-violation/
 sitemap:
     priority: 0.7
     lastmod: 2017-09-10T00:00:00-00:00
 ---
 
-# <i class="fa fa-map-signs"></i> Welcome to the JHipster website!
+# <i class="fa fa-map-signs"></i> JHipsterのWebサイトへようこそ!
 
-You probably found this page by clicking on an error message in an application that was developed with JHipster.
+このページは、JHipsterで開発されたアプリケーションのエラー・メッセージをクリックすると表示されるはずです。
 
-JHipster is an application generator, which was used to develop the application you are using. You can find more information about JHipster by going to our [home page]({{ site.url }}).
+JHipsterはアプリケーション・ジェネレータであり、あなたが使用しているアプリケーションを開発するために使用されました。JHipsterの詳細については、[ホームページ]({{ site.url }})にアクセスしてください。
 
-Please find below some information on the error that happened.
+発生したエラーに関する情報を以下に示します。
 
-## <i class="fa fa-warning"></i> Error: constraint violation
+## <i class="fa fa-warning"></i> エラー: 制約違反
 
-### Error description
+### エラーの説明
 
-This is a generic JHipster error, that is displayed when there is a validation error, typically using [Bean Validation](http://beanvalidation.org/). The error message should tell you which constraint has been violated, and for which reason.
+これは一般的なJHipsterエラーであり、通常は[Bean Validation](http://beanvalidation.org/)検証エラーが発生したときに表示されます。エラーメッセージには、違反した制約とその理由が示されます。
 
-### How can this page be customized?
+### このページはどのようにカスタマイズできますか?
 
-Error pages are configured in each application's `ErrorConstants` class. If you want to provide your own error pages in your application, please modify this class accordingly.
+エラーページは、各アプリケーションの`ErrorConstants`クラスで構成されます。アプリケーションに独自のエラーページを提供する場合は、このクラスを適宜変更してください。
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>

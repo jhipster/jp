@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using JHipster in development
+title: JHipsterを開発環境で使用する
 permalink: /development/
 redirect_from:
   - /development.html
@@ -9,142 +9,142 @@ sitemap:
     lastmod: 2023-01-05T00:00:00-00:00
 ---
 
-# <i class="fa fa-code"></i> Using JHipster in development
+# <i class="fa fa-code"></i> JHipsterを開発環境で使用する
 
-_**Please check our [video tutorial]({{ site.url }}/video-tutorial/) on creating a new JHipster application!**_
+_**新しいJHipsterアプリケーションの作成については、[ビデオチュートリアル]({{ site.url }}/video-tutorial/)を参照してください！**_
 
-## Summary
+## サマリー
 
-1.  [General configuration](#general-configuration)
-2.  [Running the Java server](#running-java-server)
-3.  [Working with Angular/React](#working-with-angular)
-4.  [Using a database](#using-a-database)
-5.  [Internationalization](#internationalization)
+1.  [一般構成](#general-configuration)
+2.  [Javaサーバの実行](#running-java-server)
+3.  [Angular/Reactでの作業](#working-with-angular)
+4.  [データベースを使用する](#using-a-database)
+5.  [国際化](#internationalization)
 
-<h2 id="general-configuration">General configuration</h2>
+<h2 id="general-configuration">一般構成</h2>
 
-### IDE configuration
+### IDE構成
 
-If you haven't configured your IDE yet, please go to the [Configuring your IDE]({{ site.url }}/configuring-ide/) page.
+IDEをまだ設定していない場合は、[IDEの設定]({{ site.url }}/configuring-ide/)ページに移動してください。
 
-### Application configuration
+### アプリケーション構成
 
-By default, JHipster uses the "development" profile, so you don't have to configure anything.
+デフォルトでは、JHipsterは「開発」プロファイルを使用するため、何も設定する必要はありません。
 
-If you want more information on the available profiles, please go the section titled "[Profiles]({{ site.url }}/profiles/)".
+利用可能なプロファイルの詳細については、「[プロファイル]({{ site.url }}/profiles/)」というタイトルのセクションを参照してください。
 
-If you want to configure some specific JHipster properties, have a look at the [common application properties]({{ site.url }}/common-application-properties/) page.
+特定のJHipsterプロパティを設定する場合は、[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)ページを参照してください。
 
-<h2 id="running-java-server">Running the Java server</h2>
+<h2 id="running-java-server">Javaサーバの実行</h2>
 
-### As a "main" Java class
+### "main"のJavaクラスとして
 
-From your IDE, right-click on the "Application" class at the root of your Java package hierarchy, and run it directly. You should also be able to debug it from your IDE.
+IDEで、Javaパッケージ階層のルートにある"Application"クラスを右クリックし、直接実行します。IDEからのデバッグもできます。
 
-The application will be available on [http://localhost:8080](http://localhost:8080).
+このアプリケーションは、[http://localhost:8080](http://localhost:8080)で利用可能です。
 
-This application will have "hot reload" enabled by default, so if you compile a class, the Spring application context should refresh itself automatically, without the need to restart the server.
+このアプリケーションでは「ホットリロード」がデフォルトで有効になっているため、クラスをコンパイルすると、Springアプリケーションのコンテキストが自動的に更新され、サーバーを再起動する必要はありません。
 
-### As a Maven project
+### Mavenプロジェクトとして
 
-You can launch the Java server with Maven. JHipster provides a Maven wrapper, so you don't need to install Maven, and you have the guarantee that all project users have the same Maven version:
+Mavenを使用してJavaサーバーを起動できます。JHipsterにはMavenラッパーが用意されているため、Mavenをインストールする必要はありません。また、すべてのプロジェクトユーザーが同じバージョンのMavenを使用できることが保証されます。
 
-`./mvnw` (on Mac OS X/Linux) of `mvnw` (on Windows)
+`./mvnw`（Mac OS X/Linuxの場合）または `mvnw`（Windowsの場合）
 
-(this will run our default Maven task, `spring-boot:run`)
+（これにより、デフォルトのMavenタスクである`spring-boot:run`が実行されます）
 
-The application will be available on [http://localhost:8080](http://localhost:8080).
+このアプリケーションは、[http://localhost:8080](http://localhost:8080)で利用可能です。
 
-If you will use live reload with `npm start` or `yarn start` then you can speed up server start up by excluding webpack tasks by:
+`npm start`または`yarn start`でライブリロードを使用する場合は、次の方法でwebpackタスクを除外することで、サーバの起動を高速化できます。
 
 `./mvnw -P-webapp`
 
-Alternatively, if you have installed Maven, you can launch the Java server with Maven:
+または、Mavenがインストールされている場合は、Mavenを使用してJavaサーバを起動できます。
 
 `mvn`
 
-If you want more information on using Maven, please go to [http://maven.apache.org](http://maven.apache.org)
+Mavenの使用方法の詳細については、[http://maven.apache.org](http://maven.apache.org)を参照してください。
 
-### (Optional) As a Gradle project
+### （オプション）Gradleプロジェクトとして
 
-If you selected the Gradle option, JHipster provides a Gradle wrapper, so you don't need to install Gradle, and you have the guarantee that all project users have the same Gradle version:
+Gradleオプションを選択した場合、JHipsterはGradleラッパーを提供するので、Gradleをインストールする必要はなく、すべてのプロジェクトユーザーが同じGradleバージョンを持っていることが保証されます。
 
-`./gradlew` (on Mac OS X/Linux) of `gradlew` (on Windows)
+`./gradlew`（Mac OS X/Linuxの場合）または`gradlew`（Windowsの場合）
 
-(this will run our default Gradle task, `bootRun`)
+（これにより、デフォルトのGradleタスクである`bootRun`が実行されます）
 
-The application will be available on [http://localhost:8080](http://localhost:8080).
+このアプリケーションは、[http://localhost:8080](http://localhost:8080)で利用可能です。
 
-If you will use live reload with `npm start` or `yarn start` then you can speed up server start up by excluding webpack tasks by:
+`npm start`または`yarn start`でライブリロードを使用する場合は、次の方法でwebpackタスクを除外することで、サーバの起動を高速化できます。
 
 `./gradlew -x webapp`
 
-Alternatively, if you have installed Gradle, you can launch the Java server with Gradle:
+あるいは、Gradleをインストールしている場合は、GradleでJavaサーバを起動できます。
 
 `gradle`
 
-If you want more information on using Gradle, please go to [https://gradle.org](https://gradle.org)
+Gradleの使用方法の詳細については、[https://gradle.org](https://gradle.org)を参照してください。
 
-<h2 id="working-with-angular">Working with Angular/React</h2>
+<h2 id="working-with-angular">Angular/Reactの操作</h2>
 
-### Running Webpack
+### Webpackの実行
 
-_This step is required to see changes in your TypeScript code and have live reloading of your client-side code._
+_このステップは、TypeScriptコードの変更を確認し、クライアントサイドコードのライブリロードを行うために必要です。_
 
-Running Webpack is the default task in the `package.json` file, so it is enough to run:
+Webpackの実行は`package.json`ファイルのデフォルトタスクなので、実行するにはこれで十分です。
 
 `npm start`
 
-(or, if you use Yarn, `yarn start`).
+（または、Yarnを使用する場合は、`yarn start`）
 
-This provides very impressive features:
+これにより、非常に優れた機能が提供されます。
 
-*   As soon as you modify one of your HTML/CSS/TypeScript file, your browser will refresh itself automatically
-*   When you test your application on several different browsers or devices, all your clicks/scrolls/inputs should be automatically synchronized on all screens
+*   HTML/CSS/TypeScriptファイルのいずれかを変更すると、ブラウザが自動的に更新されます。
+*   複数の異なるブラウザまたはデバイスでアプリケーションをテストする場合、すべてのクリック/スクロール/入力が、すべての画面で自動的に同期されることになります。
 
-This will launch:
+これにより、以下が起動されます。
 
-- A Webpack task that will automatically compile TypeScript code into JavaScript
-- A Webpack "hot module reload" server that will run on [http://localhost:9060/](http://localhost:9060/) (and has a proxy to [http://127.0.0.1:8080/api](http://127.0.0.1:8080/api) to access the Java back-end)
-- A BrowserSync task that will run on [http://localhost:9000/](http://localhost:9000/), which has a proxy to [http://localhost:9060/](http://localhost:9060/) (the Webpack "hot module reload" server), and which will synchronize the user's clicks/scrolls/inputs
-- The BrowserSync UI, which will be available on [http://localhost:3001/](http://localhost:3001/)
+- Webpackタスク：TypeScriptコードをJavaScriptに自動的にコンパイルします。
+- Webpackの"hot module reload"サーバ：[http://localhost:9060/](http://localhost:9060/)で動作します（バックエンドにアクセスするための[http://127.0.0.1:8080/api](http://127.0.0.1:8080/api)へのプロキシがあります）。
+- BrowserSyncタスク：[http://localhost:9000/](http://localhost:9000/)で動作します。[http://localhost:9060/](http://localhost:9060/)（Webpackの"hot module reload"サーバ）へのプロキシを持ち、ユーザのクリック/スクロール/入力を同期します。
+- BrowserSync UI：[http://localhost:3001/](http://localhost:3001/)で使用可能です。
 
-**NOTE:** BrowserSync by default enables [ghostMode](https://browsersync.io/docs/options#option-ghostMode) which can create some confusion
-especially [when using multiple browser tabs](https://github.com/jhipster/generator-jhipster/issues/11116#issuecomment-589362814). To avoid
-this you can always turn off ghostMode. Some commented code is provided in `webpack.dev.js` for easy disabling of ghostMode. 
+**注意:** BrowserSyncはデフォルトで[ghostMode](https://browsersync.io/docs/options#option-ghostMode)を有効にしているため、
+特に[複数のブラウザタブを使用する場合](https://github.com/jhipster/generator-jhipster/issues/11116#issuecomment-589362814)において混乱を招く可能性があります。
+このghostModeはいつでもオフにできます。ghostModeを簡単に無効にするために、いくつかのコメントコードが`webpack.dev.js`に提供されています。
 
-### Running NPM
+### NPMの実行
 
-Direct project dependencies are configured into `package.json`, but transitive dependencies are defined into the `package-lock.json` file, that get generated when `npm install` is run.
+プロジェクトの直接的な依存関係は`package.json`に設定されますが、推移的な依存関係は`npm install`が実行されるときに生成される`package-lock.json`ファイルに定義されます。
 
-It is advised to check [`package-lock.json`](https://docs.npmjs.com/files/package-lock.json) into source control, so that all team members of a project have the same versions of all dependencies. Running `npm install` again will regenerate the `package-lock.json` with the latest versions of transitive dependencies.
+プロジェクトのすべてのチームメンバーがすべての依存関係の同じバージョンを持つように、[`package-lock.json`](https://docs.npmjs.com/files/package-lock.json)をソース管理にチェックインすることをお勧めします。`npm install`を再度実行すると、最新バージョンの推移的な依存関係を持つ`package-lock.json`が再生成されます。
 
-### Other NPM/Yarn tasks
+### その他のNPM/Yarnタスク
 
-Those tasks are the same whether you use NPM or Yarn, we use the `npm` command as an example but you can replace it with `yarn`.
+以下のタスクは、NPMを使用するかYarnを使用するかにかかわらず同じです。ここでは例として`npm`コマンドを使用しますが、`yarn`に置き換えることができます。
 
-- `npm run lint`: check for code style issues in the TypeScript code
-- `npm run lint:fix`: try to automatically correct TypeScript lint issues
-- `npm run tsc`: compile the TypeScript code
-- `npm run test`: run unit tests with Jest
-- `npm run test:watch`: keep the Jest unit tests running, for live feedback when code is changed
-- `npm run e2e`: run "end to end" tests with Protractor (only works if the Protractor option has been selected when the project was generated)
+- `npm run lint`: TypeScriptコード内のコードスタイルの問題をチェックします。
+- `npm run lint:fix`: TypeScriptのlint問題を自動的に修正します。
+- `npm run tsc`: TypeScriptコードをコンパイルします。
+- `npm run test`: Jestを使ってユニットテストを実行します。
+- `npm run test:watch`: コードが変更されたときのライブフィードバックのために、Jestユニットテストを実行したままにします。
+- `npm run e2e`: Protractorを使用して"end to end"テストを実行します（プロジェクトの生成時にProtractorオプションが選択されている場合にのみ機能します）。
 
-<h2 id="using-a-database">Using a database</h2>
+<h2 id="using-a-database">データベースの使用</h2>
 
-### Running a database
+### データベースの実行
 
-If you use a non-embedded database, like MySQL, MariaDB, PostgreSQL, MSSQL, MongoDB, Cassandra or Couchbase, you will need to install and configure that database.
+MySQL、MariaDB、PostgreSQL、MSSQL、MongoDB、Cassandra、Couchbaseなどの非組み込みデータベースを使用する場合は、そのデータベースをインストールして設定する必要があります。
 
-The easiest and recommended way with JHipster is to use Docker Compose. [Follow our Docker Compose guide here.]({{ site.url }}/docker-compose/)
+JHipsterで最も簡単で推奨される方法は、Docker Composeを使用することです。[Docker Composeガイドはこちらです]({{ site.url }}/docker-compose/)。
 
-If you prefer to install and configure your database manually, you must create the schema and its user because Liquibase only creates the objects (tables, indexes, ...) in an existing schema. Then don't forget to configure your Spring Boot properties accordingly in your `src/main/resources/config/application-*.yml` files (for example your database URL, login and password).
+データベースを手動でインストールして設定したい場合は、スキーマとそのユーザを作成する必要があります。これは、Liquibaseが既存のスキーマ内のオブジェクト（テーブル、インデックス、等）のみを作成するためです。次に、`src/main/resources/config/application-*.yml`ファイル内のSpring Bootプロパティ（たとえば、データベースURL、ログイン、パスワード）を適宜設定することを忘れないでください。
 
-### Using the H2 database in development
+### 開発中のH2データベースの使用
 
-If you choose the H2 database, you will have an in-memory database running inside your application, and you can access its console at [http://localhost:8080/h2-console](http://localhost:8080/h2-console) by default.
+H2データベースを選択すると、メモリー内のデータベースがアプリケーション内で実行され、デフォルトで[http://localhost:8080/h2-console](http://localhost:8080/h2-console) からコンソールにアクセスできます。
 
-To connect to the database, select the pre-configured options:
+データベースに接続するには、事前設定されたオプションを選択します。
 
 *   Driver Class: org.h2.Driver
 *   JDBC URL: jdbc:h2:mem:jhipster
@@ -153,90 +153,90 @@ To connect to the database, select the pre-configured options:
 
 ![]({{ site.url }}/images/h2.png)
 
-### Using MySQL, MariaDB or PostgreSQL in development
+### 開発でのMySQL、MariaDB、またはPostgreSQLの使用
 
-This option is bit more complex than using H2, but you have a some important benefits:
+このオプションは、H2を使用するよりも少し複雑ですが、いくつかの重要な利点があります。
 
-*   Your data is kept across application restarts
-*   Your application starts a little bit faster
-*   You can use the great `./mvnw liquibase:diff` goal (see below)
+*   アプリケーションを再起動してもデータは保持されます。
+*   アプリケーションの起動が少し速くなります。
+*   優れた`./mvnw liquibase:diff`ゴールを使用できます（以下を参照）。
 
-**Note**: for MySQL, you probably need to start your database with these options:
+**注**:MySQLの場合、次のオプションを使用してデータベースを起動する必要があります。
 
-*   `--lower_case_table_names=1`: see the [MySQL Schema Object Names documentation](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html)
-*   `--skip-ssl`: see the [MySQL Server Options documentation](https://dev.mysql.com/doc/refman/8.0/en/server-options.html#option_mysqld_ssl)
-*   `--character_set_server=utf8`: see the [MySQL Server System Variables documentation](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_character_set_server)
-*   `--explicit_defaults_for_timestamp` : see the [MySQL Server System Variables documentation](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_explicit_defaults_for_timestamp)
+*   `--lower_case_table_names=1`: [MySQLスキーマオブジェクト名のドキュメント](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html)を参照
+*   `--skip-ssl`: [MySQLサーバーオプションのドキュメント](https://dev.mysql.com/doc/refman/8.0/en/server-options.html#option_mysqld_ssl)を参照
+*   `--character_set_server=utf8`: [MySQLサーバシステム変数のドキュメント](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_character_set_server)を参照
+*   `--explicit_defaults_for_timestamp` : [MySQLサーバシステム変数のドキュメント](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_explicit_defaults_for_timestamp)を参照
 
-The command is:
+コマンドは以下のとおりです。
 
     mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
 
-## Database updates
+## データベースの更新
 
-If you add or modify a JPA entity, you will need to update your database schema.
+JPAエンティティを追加または変更する場合は、データベーススキーマを更新する必要があります。
 
-JHipster uses [Liquibase](http://www.liquibase.org) to manage the database updates, and stores its configuration in the `/src/main/resources/config/liquibase/` directory. 
+JHipsterは[Liquibase](http://www.liquibase.org)を使用してデータベースの更新を管理し、その設定を`/src/main/resources/config/liquibase/`ディレクトリに保存します。
 
-There are 3 ways to work with Liquibase: 
-*   use the entity sub-generator
-*   use the liquibase plugin 
-*   update the configuration files manually
+Liquibaseを使用するには、次の3つの方法があります。
+*  エンティティサブジェネレータを使用
+*  Liquibaseプラグインを使用
+*  設定ファイルを手動で更新
 
-### Database updates with the entity sub-generator
+### エンティティサブジェネレータによるデータベースの更新
 
-If you use the [entity sub-generator]({{ site.url }}/creating-an-entity/), here is the development workflow:
+[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用する場合、開発ワークフローは次のようになります。
 
-*   Run the [entity sub-generator]({{ site.url }}/creating-an-entity/)
-*   A new "change log" is created in your `src/main/resources/config/liquibase/changelog` directory, and has been automatically added to your `src/main/resources/config/liquibase/master.xml` file
-*   Review this change log, it will be applied the next time you run your application
+*   [エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を実行します。
+*   新しい「変更ログ」が`src/main/resources/config/liquibase/changelog`ディレクトリに作成され、`src/main/resources/config/liquibase/master.xml`ファイルに自動的に追加されます。
+*   この変更ログを確認してください。このログは、次にアプリケーションを実行したときに適用されます。
 
-### Database updates with the liquibase plugin
+### Liquibaseプラグインによるデータベースの更新
 
-If you have chosen to use H2, MySQL, MariaDB or PostgreSQL in development, you can follow this section to automatically generate a changelog.
+開発でH2、MySQL、MariaDB、またはPostgreSQLを使用することを選択した場合は、このセクションに従って自動的に変更ログを生成できます。
 
-*Note: If you are running H2 with in-memory persistence, you need to startup your application before running the liquibase commands.*
+*注:インメモリパーシスタンスでH2を実行している場合は、liquibaseコマンドを実行する前にアプリケーションを起動する必要があります。*
 
 #### Maven
 
-[Liquibase Hibernate](https://github.com/liquibase/liquibase-hibernate) is a Maven plugin that is configured in your `pom.xml`, and is independent from your Spring `application.yml` file, so if you have changed the default settings (for example, changed the database password), you need to modify both files.
+[Liquibase Hibernate](https://github.com/liquibase/liquibase-hibernate)は、`pom.xml`で構成されるMavenプラグインであり、Springの`application.yml`ファイルから独立しています。そのため、デフォルト設定を変更した場合（データベースパスワードを変更した場合など）は、両方のファイルを変更する必要があります。
 
-Here is the development workflow:
+開発ワークフローは次のとおりです。
 
-1.   Modify your JPA entity (add a field, a relationship, etc.)
-2.   Skip changes in the re-generated liquibase file for that entity `config/liquibase/changelog/DATE_added_entity_ENTITY_NAME.xml` to avoid conflict with the soon to be generated changelog file bellow
-3.   Compile your application (this works on the compiled Java code, so don't forget to compile!)
-4.   Run `./mvnw liquibase:diff` (or `./mvnw compile liquibase:diff` to compile before)
-5.   A new "change log" is created in your `src/main/resources/config/liquibase/changelog` directory
-6.   Review this change log and add it to your `src/main/resources/config/liquibase/master.xml` file, so it is applied the next time you run your application
+1.   JPAエンティティーを変更します（フィールドやリレーションシップの追加など）。
+2.   そのエンティティに対して再生成されたliquibaseファイル`config/liquibase/changelog/DATE_added_entity_ENTITY_NAME.xml`の変更をスキップして、次に示す間もなく生成されるchangelogファイルとの競合を回避します。
+3.   アプリケーションをコンパイルします（コンパイルされたJavaコードで動作しますので、コンパイルを忘れないようにしてください）。
+4.   `./mvnw liquibase:diff`を実行します（または事前にコンパイルするには`./mvnw compile liquibase:diff`を実行します）。
+5.   新しい「変更ログ」が`src/main/resources/config/liquibase/changelog`ディレクトリに作成されます。
+6.   この変更ログを確認し、次にアプリケーションを実行するときに適用されるように、それを`src/main/resources/config/liquibase/master.xml`ファイルに追加します。
 
 #### Gradle
 
-[Liquibase gradle plugin](https://github.com/liquibase/liquibase-gradle-plugin) is a Gradle plugin that is configured in your `build.gradle`, and is independent from your Spring `application.yml` file, so if you have changed the default settings (for example, changed the database password), you need to modify both files.
+[Liquibase gradleプラグイン](https://github.com/liquibase/liquibase-gradle-プラグイン)は、`build.gradle`で設定されるGradleプラグインであり、Springの`application.yml`ファイルから独立しています。そのため、デフォルト設定を変更した場合（データベースパスワードを変更した場合など）は、両方のファイルを変更する必要があります。
 
-You can use the same workflow as for Maven except for the 4th step where you need to run `./gradlew liquibaseDiffChangelog -PrunList=diffLog`.
+Mavenと同じワークフローを使用できますが、4番目のステップでは`./gradlew liquibaseDiffChangelog -PrunList=diffLog`を実行する必要があります。
 
-### Database updates by manually editing the change log
+### 変更ログを手動で編集してデータベースを更新
 
-If you prefer (or need) to do a database update manually, here is the development workflow:
+データベースの更新を手動で行いたい（または行う必要がある）場合の開発ワークフローを次に示します。
 
-*   Modify your JPA entity (add a field, a relationship, etc.)
-*   Create a new "change log" in your `src/main/resources/config/liquibase/changelog` directory. The files in that directory are prefixed by their creation date (in yyyyMMddHHmmss format), and then have a title describing what they do. For example, `20141006152300_added_price_to_product.xml` is a good name.
-*   Add this "change log" file in your `src/main/resources/config/liquibase/master.xml` file, so it is applied the next time you run your application
+*   JPAエンティティを変更します（フィールドやリレーションシップの追加など）。
+*   `src/main/resources/config/liquibase/changelog`ディレクトリに新しい「変更ログ」を作成します。そのディレクトリ内のファイルには、作成日（yyyyMMddHHmmss形式）の接頭辞を付け、その後、それらの動作を説明するタイトルを付けます。たとえば、`20141006152300_added_price_to_product.xml`は良い名前です。
+*   この「変更ログ」ファイルを`src/main/resources/config/liquibase/master.xml`ファイルに追加して、次にアプリケーションを実行したときに適用されるようにします。
 
-If you want more information on using Liquibase, please go to [http://www.liquibase.org](http://www.liquibase.org).
+Liquibaseの使い方の詳細については、[http://www.liquibase.org](http://www.liquibase.org)にアクセスしてください。
 
-<h2 id="internationalization">Internationalization</h2>
+<h2 id="internationalization">国際化</h2>
 
-Internationalization (or i18n) is a first-class citizen in JHipster, as we believe it should be set up at the beginning of your project (and not as an afterthought).
+国際化（またはi18n）はJHipsterの第一級市民であり、プロジェクトの最初に（後付けではなく）設定する必要があると考えています。
 
-Usage is as follows:
+使用方法は次のとおりです。
 
-- With Angular, thanks to [NG2 translate](https://github.com/ocombe/ng2-translate) and a specific JHipster component, which uses JSON files for translation
-- With React, thanks to a specific JHipster component, which works the same way as the Angular component, and uses the same files
+- Angularでは、[NG2 translate](https://github.com/ocombe/ng2-translate)と専用のJHipsterコンポーネントにより、翻訳にJSONファイルを使用して翻訳を実現できます。
+- Reactでは、専用のJHipsterコンポーネントにより、Angularコンポーネントと同じように動作し、同じファイルを使用できます。
 
-For example, to add a translation to the "first name" field, add a "translate" attribute with a key: `<label jhiTranslate="settings.form.firstname">First Name</label>`
+例えば、"first name"フィールドに翻訳を追加するには、`<label jhiTranslate="settings.form.firstname">First Name</label>`というキーを持つ"translate"属性を追加します。
 
-This key references a JSON document, which will return the translated String. Angular/React will then replace the "First Name" String with the translated version.
+このキーは、翻訳されたStringを返すJSONドキュメントを参照します。Angular/Reactは、"First Name"の文字列を翻訳されたバージョンに置き換えます。
 
-If you want more information on using languages, read our [Installing new languages documentation]({{ site.url }}/installing-new-languages/).
+言語の使用方法の詳細については、[新しい言語のインストールに関するドキュメント]({{ site.url }}/installing-new-languages/)を参照してください。
