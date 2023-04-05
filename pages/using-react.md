@@ -1,87 +1,87 @@
 ---
 layout: default
-title: Using React
+title: Reactの使用
 permalink: /using-react/
 sitemap:
     priority: 0.7
     lastmod: 2018-04-02T23:41:00-00:00
 ---
 
-# <i class="fa fa-html5"></i> Using React (with Redux)
-This section refers to the JavaScript library **React** used with **Redux**.
+# <i class="fa fa-html5"></i> React（とRedux）の使用
+このセクションでは、JavaScriptライブラリ**React**（と**Redux**）について説明します。
 
-## Project Structure
+## プロジェクト構造
 
-The JHipster client code can be found under `src/main/webapp`, and follows closely the [Piotr Witek React style guide](https://github.com/piotrwitek/react-redux-typescript-guide/blob/master/README.md).
+JHipsterのクライアントコードは`src/main/webapp`にあり、[Piotr Witek Reactスタイルガイド](https://github.com/piotrwitek/react-redux-typescript-guide/blob/master/README.md)に厳密に従っています。
 
- Please read this guide first if you have any question on our application structure, file names, TypeScript conventions...
+私たちのアプリケーション構造、ファイル名、TypeScriptの規則について質問がある場合は、まずこのガイドをお読みください。
 
-For React routes we follow a dash cased naming convention so that the URLs are clean and consistent.
-When you generate an entity the route names, route URLs and REST API endpoint URLs are generated according to this convention, also entity names are automatically pluralized where required.
+Reactルートでは、URLが明確で一貫性のあるものになるように、dash caseの命名規則に従います。
+エンティティを生成すると、この規則に従ってルート名、ルートURL、およびREST APIエンドポイントURLが生成され、必要に応じてエンティティ名が自動的に複数化されます。
 
-Here is the main project structure:
+プロジェクトの主な構成は次のとおりです。
 
 ```
 webapp
-├── app                             - Your application
-│   ├── config                      - General configuration (redux store, middleware, etc.)
-│   ├── entities                    - Generated entities
-│   ├── modules                     - Main components directory
-│   │   ├── account                 - Account related components
-│   │   ├── administration          - Administration related components
-│   │   ├── home                    - Application homepage
-│   │   └── login                   - Login related components
-│   ├── shared                      - Shared elements such as your header, footer, reducers, models and util classes
-│   ├── app.scss                    - Your global application stylesheet if you choose the Sass option
-│   ├── app.css                     - Your global application stylesheet
-│   ├── app.tsx                     - The application main class
-│   ├── index.tsx                   - Index script
-│   ├── routes.tsx                  - Application main routes
+├── app                             - アプリケーション
+│   ├── config                      - 一般的な構成（Reduxストア、ミドルウェアなど）
+│   ├── entities                    - 生成されたエンティティ
+│   ├── modules                     - メインコンポーネントディレクトリ
+│   │   ├── account                 - アカウント関連のコンポーネント
+│   │   ├── administration          - 管理関連のコンポーネント
+│   │   ├── home                    - アプリケーションホームページ
+│   │   └── login                   - ログイン関連コンポーネント
+│   ├── shared                      - ヘッダー、フッター、レデューサ、モデル、utilクラスなどの共有要素
+│   ├── app.scss                    - Sassオプションを選択した場合のグローバルアプリケーションスタイルシート
+│   ├── app.css                     - グローバルアプリケーションスタイルシート
+│   ├── app.tsx                     - アプリケーションのメインクラス
+│   ├── index.tsx                   - インデックススクリプト
+│   ├── routes.tsx                  - アプリケーションのメインルート
 │   └── typings.d.ts                -
-├── i18n                            - Translation files
-├── static                          - Contains your static files such as images and fonts
-├── swagger-ui                      - Swagger UI front-end
-├── 404.html                        - 404 page
-├── favicon.ico                     - Fav icon
-├── index.html                      - Index page
-├── manifest.webapp                 - Application manifest
-└── robots.txt                      - Configuration for bots and Web crawlers
+├── i18n                            - 翻訳ファイル
+├── static                          - イメージやフォントなどの静的ファイルを格納
+├── swagger-ui                      - Swagger UIフロントエンド
+├── 404.html                        - 404ページ
+├── favicon.ico                     - お気に入りアイコン
+├── index.html                      - 索引ページ
+├── manifest.webapp                 - アプリケーションマニフェスト
+└── robots.txt                      - ボットおよびWebクローラの設定
 ```
 
-Using the [entity sub-generator]({{ site.url }}/creating-an-entity/) to create a new entity called `Foo` generates the following front-end files under `src/main/webapp`:
+[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用して`Foo`という名前の新しいエンティティを作成すると、`src/main/webapp`の下に次のフロントエンドファイルが生成されます。
 
 ```
 webapp
 ├── app                                        
 │   └── entities
-│       ├── foo                           - CRUD front-end for the Foo entity
-│       │   ├── foo-delete-dialog.tsx     - Delete dialog component
-│       │   ├── foo-detail.tsx            - Detail page component
-│       │   ├── foo-dialog.tsx            - Creation dialog component
-│       │   ├── foo.reducer.ts            - Foo entity reducer
-│       │   ├── foo.tsx                   - Entity main component
-│       │   └── index.tsx                 - Entity main routes
-│       └── index.tsx                     - Entities routes    
-└── i18n                                  - Translation files
-     ├── en                               - English translations
-     │   ├── foo.json                     - English translation of Foo name, fields, ...
-     └── fr                               - French translations
-         └── foo.json                     - French translation of Foo name, fields, ...
+│       ├── foo                           - FooエンティティのCRUDフロントエンド
+│       │   ├── foo-delete-dialog.tsx     - 削除ダイアログコンポーネント
+│       │   ├── foo-detail.tsx            - 詳細ページコンポーネント
+│       │   ├── foo-dialog.tsx            - 作成ダイアログコンポーネント
+│       │   ├── foo.reducer.ts            - Fooエンティティレデューサ
+│       │   ├── foo.tsx                   - エンティティのメインコンポーネント
+│       │   └── index.tsx                 - エンティティメインルート
+│       └── index.tsx                     - エンティティルート
+└── i18n                                  - 翻訳ファイル
+     ├── en                               - 英訳
+     │   ├── foo.json                     - Foo名、フィールド、...の英語翻訳
+     └── fr                               - フランス語翻訳
+         └── foo.json                     - Foo名、フィールド、...のフランス語翻訳
 ```
 
-Please note that the default language translations would be based on what you have choosen during app generation. 'en' and 'fr' are shown here only for demonstration.
+デフォルトの言語翻訳は、アプリケーションの生成時に選択した内容に基づいて行われることに注意してください。'en'および'fr'は、ここではデモンストレーションのためにのみ示されています。
 
 ## Redux
 
-[Redux](https://redux.js.org/) is a predictable state container for JavaScript. It is used
-together with React to manage the state of your React components.
+[Redux](https://redux.js.org/)はJavaScriptでの状態管理を容易にするコンテナです。
+Reactと連携して、Reactコンポーネントの状態を管理します。
 
-Redux provides an object **store** used to store the whole state of your application.
-To access this store and therefore update your state components, the only way is to dispatch
-**actions** which describe the fact that an update is requested, then the **reducers** will
-define how the state is updated in response to these actions.
+Reduxは、アプリケーションの状態全体を保存するためのオブジェクト**ストア**を提供します。
+このストアにアクセスして状態コンポーネントを更新する唯一の方法は、
+更新が要求されたという事実を記述する**アクション**をディスパッチすることです。
+その後、**レデューサ**は、これらのアクションに応答して状態を更新する方法を定義します。
 
-Here is an example of a reducer:
+レデューサの例を次に示します。
 
 ``` typescript
 export const ACTION_TYPES = {
@@ -126,12 +126,12 @@ export default (state = initialState, action) => {
 };
 ```
 
-In order to access your store and update the current application state, you need to dispatch
-actions to the store as mentioned previously. Actions are JavaScript objects and must have a **type**, which describe what
-the action is going to perform and a usually they have also a **payload** which corresponds to
-data you want to pass to the store.
+ストアにアクセスして現在のアプリケーションの状態を更新するには、
+前述のようにアクションをストアにディスパッチする必要があります。アクションはJavaScriptオブジェクトであり、
+アクションが実行する内容を記述する**タイプ**を持つ必要があります。
+通常、ストアに渡すデータに対応する**ペイロード**もあります。
 
-Here is an action to access the store:
+ストアにアクセスするには、次の操作となります。
 
 ``` typescript
 const apiUrl = SERVER_API_URL + '/api/foos';
@@ -143,18 +143,18 @@ export const getFoos = () => ({
 });
 ```
 
-The action described above indicates that we want to retrieve all the Foo objects by
-sending a GET request. The action type will match
-Notice that the **export** keyword is used to able the connected component to use that action
-when necessary (for instance, everytime the component is updated).
+上記のアクションは、GET要求を送信することによってすべてのFooオブジェクトを
+取得することを示しています。アクションタイプは
+**export**キーワードは、接続されたコンポーネントが必要に応じて
+（たとえば、コンポーネントが更新されるたびに）そのアクションを使用するために付与することに注意してください。
 
-## Authorizations
+## 認証
 
-Jhipster uses the [React router](https://github.com/ReactTraining/react-router) to organize the differents parts of your application.
+Jhipsterは、[Reactルータ](https://github.com/ReactTraining/react-router)を使用して、アプリケーションのさまざまな部分を整理します。
 
-When it comes to routes that require authentication, the `PrivateRoute` component generated is used. This component will prevent any unauthenticated user from accessing a route.
+認証を必要とするルートの場合は、生成された`PrivateRoute`コンポーネントが使用されます。このコンポーネントにより、認証されていないユーザーがルートにアクセスできなくなります。
 
-Here is an example of PrivateRoute usage:
+PrivateRouteでの使用例を次に示します。
 
 ``` typescript
 const Routes = () => (
@@ -166,17 +166,17 @@ const Routes = () => (
 );
 ```
 
-As you can see, unauthenticated user can access `/` and `/login` but accessing `/account` requires to be logged in.
+ご覧のように、非認証ユーザーは`/`および`/login`にアクセスできますが、`/account`にアクセスするにはログインする必要があります。
 
-Please note that PrivateRoute uses the `authentication.isAuthenticated` store value to know if the user is authenticated.
+PrivateRouteは、ユーザーが認証されているかどうかを知るために、`authentication.isAuthenticated`ストア値を使用することに注意してください。
 
-## Notification System
+## 通知システム
 
-JHipster uses [react-toastify](https://github.com/fkhadra/react-toastify) alerts for the notification system.
+JHipsterは、通知システムに[react-toastify](https://github.com/fkhadra/react-toastify)アラートを使用します。
 
-By default JHipster will show success notifications whenever an entity is created/updated/deleted
-and error notifications when there is an error caught from the response.
+デフォルトでは、JHipsterはエンティティが作成/更新/削除されるたびに成功通知を表示します。
+レスポンスからエラーが検出された場合は、エラー通知が表示されます。
 
-## React JHipster library
+## React JHipsterライブラリ
 
-The [react-jhipster](https://github.com/jhipster/react-jhipster) lib provides utilities and generic services for a generated application. It handles i18n as well.
+[react-jhipster](https://github.com/jhipster/react-jhipster)ライブラリは、生成されたアプリケーションにユーティリティと汎用サービスを提供します。i18nも処理します。
