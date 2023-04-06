@@ -1,48 +1,48 @@
 ---
 layout: default
-title: Code Quality
+title: コード品質
 permalink: /code-quality/
 sitemap:
     priority: 0.7
     lastmod: 2018-08-18T12:40:00-00:00
 ---
 
-# <i class="fa fa-diamond"></i> Code quality
+# <i class="fa fa-diamond"></i> コード品質
 
-Code quality can be analyzed using [SonarCloud](https://sonarcloud.io), which is automatically configured by JHipster.
+コードの品質は、[SonarCloud](https://sonarcloud.io)を使用して分析でき、これはJHipsterによって自動的に設定されます。
 
-## Using Sonar with JHipster
+## JHipsterでのSonarの使用
 
-JHipster provides a specific Docker Compose configuration for Sonar ([here is the JHipster Docker Compose documentation]({{ site.url }}/docker-compose/)) that provides an out-of-the box Sonar instance. At the root of your project, please run:
+JHipsterは、Sonar用の特定のDocker Compose設定（[ここにJHipster Docker Composeドキュメントがあります]({{ site.url }}/docker-compose/)）を提供し、すぐに利用できるSonarインスタンスを提供します。プロジェクトのルートで、次のコマンドを実行してください。
 
     docker-compose -f src/main/docker/sonar.yml up -d
 
-If you use Maven, it has been automatically configured:
+Mavenを使用する場合は、自動的に設定されています。
 
     ./mvnw -Pprod clean verify sonar:sonar -Dsonar.host.url=http://localhost:9001
 
-If you need to re-run the Sonar phase, please be sure to specify at least the `initialize` phase since Sonar properties are loaded from the sonar-project.properties file.
+Sonarフェーズを再実行する必要がある場合は、少なくとも`initialize`フェーズを指定してください。これは、Sonarプロパティがsonar-project.propertiesファイルからロードされるためです。
 
     ./mvnw initialize sonar:sonar -Dsonar.host.url=http://localhost:9001
 
-If you use Gradle, it has also been automatically configured:
+Gradleを使用している場合は、自動的に設定されています。
 
     ./gradlew -Pprod clean check jacocoTestReport sonarqube -Dsonar.host.url=http://localhost:9001
 
-In every cases you can, now, run analysis with [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) if you already have installed it.
+どの場合でも、[sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner)が既にインストールされている場合は、それを使って分析できます。
 
     sonar-scanner
 
-Once the analysis completes, it will be available on the Sonar dashboard, which by default is available on [http://127.0.0.1:9001/](http://127.0.0.1:9001/).
+分析が完了すると、Sonarのダッシュボードで利用できるようになります。デフォルトでは[http://127.0.0.1:9001/](http://127.0.0.1:9001/)です。
 
-## Excluding Files from Jacoco Analysis
+## Jacoco解析からのファイルの除外
 
-In case you would like to exclude certain classes from coverage analysis (e.g. generated classes or the application class) and would like to have the correct
-coverage in the default jacoco html report you have to exclude the classes from analysis and from reporting.
+カバレッジ分析から特定のクラス（生成されたクラスやアプリケーションクラスなど）を除外し、デフォルトのjacoco htmlレポートに正しい
+カバレッジを含める場合は、クラスを分析およびレポートから除外する必要があります。
 
 ### Maven
 
-You need to add exclusions to the `prepare-agent` and `report` goal of both unit and integration tests:
+ユニットテストと統合テストの両方の`prepare-agent`および`report`ゴールに除外を追加する必要があります。
 
 ```xml
 <plugin>
@@ -56,7 +56,7 @@ You need to add exclusions to the `prepare-agent` and `report` goal of both unit
                 <goal>prepare-agent</goal>
             </goals>
             <configuration>
-                <!-- Exclude any class named Application from instrumentation -->
+                <!-- Applicationという名前のクラスを計測から除外 -->
                 <excludes>**/Application.*</excludes>
                 <destFile>${jacoco.utReportFile}</destFile>
             </configuration>
@@ -68,7 +68,7 @@ You need to add exclusions to the `prepare-agent` and `report` goal of both unit
                 <goal>report</goal>
             </goals>
             <configuration>
-                <!-- Exclude any class named Application from reporting-->
+                <!-- Applicationという名前のクラスをレポートから除外 -->
                 <excludes>**/Application.*</excludes>
                 <dataFile>${jacoco.utReportFile}</dataFile>
                 <outputDirectory>${jacoco.reportFolder}</outputDirectory>
@@ -80,7 +80,7 @@ You need to add exclusions to the `prepare-agent` and `report` goal of both unit
                 <goal>prepare-agent-integration</goal>
             </goals>
             <configuration>
-                <!-- Exclude any class named Application from instrumentation -->
+                <!-- Applicationという名前のクラスを計測から除外 -->
                 <excludes>**/Application.*</excludes>
                 <destFile>${jacoco.itReportFile}</destFile>
             </configuration>
@@ -92,7 +92,7 @@ You need to add exclusions to the `prepare-agent` and `report` goal of both unit
                 <goal>report-integration</goal>
             </goals>
             <configuration>
-                <!-- Exclude any class named Application from reporting-->
+                <!-- Applicationという名前のクラスをレポートから除外 -->
                 <excludes>**/Application.*</excludes>
                 <dataFile>${jacoco.itReportFile}</dataFile>
                 <outputDirectory>${jacoco.reportFolder}</outputDirectory>
@@ -104,7 +104,7 @@ You need to add exclusions to the `prepare-agent` and `report` goal of both unit
 
 ### Gradle
 
-You can add the following to `sonar.gradle` file:
+`sonar.gradle`ファイルに次を追加できます。
 
 ```gradle
 test {
@@ -124,12 +124,12 @@ jacocoTestReport {
 }
 ```
 
-## Automatic analysis of the default generated project
+## デフォルトで生成されたプロジェクトの自動分析
 
-The JHipster generator project publishes a sample project which is analyzed every time a new commit is merged in the "main" branch:
+JHipsterジェネレータプロジェクトは、新しいコミットが"main"ブランチにマージされるたびに分析されるサンプルプロジェクトを公開しています。
 
-[Analysis of the JHipster Sample Application](https://sonarcloud.io/dashboard?id=jhipster-sample-application) under the [JHipster Organization](https://sonarcloud.io/organizations/jhipster)
+[JHipster組織](https://sonarcloud.io/organizations/jhipster)の下の[JHipsterサンプルアプリケーションの分析](https://sonarcloud.io/dashboard?id=jhipster-sample-application)
 
-This allows the JHipster team to make sure that you will start developing your project on the cleanest code possible.
+これにより、JHipsterチームは、可能な限りクリーンなコードでプロジェクトの開発を開始できるようになります。
 
-This analysis is provided for free by [SonarCloud](https://sonarcloud.io).
+この分析は、[SonarCloud](https://sonarcloud.io)によって無料で提供されています。
