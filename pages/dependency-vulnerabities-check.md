@@ -1,49 +1,49 @@
 ---
 layout: default
-title: Dependency Vulnerabilities Check
+title: 依存関係の脆弱性チェック
 permalink: /dependency-vulnerabities-check/
 sitemap:
     priority: 0.7
     lastmod: 2018-09-15T19:00:00-00:00
 ---
 
-# <i class="fa fa-check-circle-o"></i> Dependency Vulnerabilities Check
+# <i class="fa fa-check-circle-o"></i> 依存関係の脆弱性チェック
 
-## Why project dependencies should be checked
+## プロジェクトの依存関係をチェックする必要がある理由
 
-JHipster uses many technologies, and the project is very careful at selecting them. But maybe the project missed one vulnerability in those many dependencies, or maybe you added or updated one dependency that triggered a new vulnerability.
+JHipsterは多くの技術を使用しており、プロジェクトはそれらを選択する際に非常に慎重です。しかし、プロジェクトがそれらの多くの依存関係の中の1つの脆弱性を見逃すか、あるいは新しい脆弱性を引き起こした1つの依存関係を追加または更新するかもしれません。
 
-According to [OWASP Top 10 Most Critical Web Application Security Risks](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project), using Components (ie. dependencies) with known vulnerabilities is ranked 9th, and there are many known stories of security breaches provided by (malicious or not) third-party dependencies.
+[OWASP Webアプリケーションの最も重大なセキュリティリスクトップ10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)によると、既知の脆弱性を持つコンポーネント（依存関係）の使用は9位にランクされており、（悪意のあるものであるかどうかにかかわらず）サードパーティの依存関係によるセキュリティ違反の話が多く知られています。
 
-## Why the dependency check is not provided by default by JHipster
+## JHipsterがデフォルトで依存関係チェックを提供しない理由
 
-Proposing a dependency check by default in JHipster build has been discussed a couple of times ([#6329](https://github.com/jhipster/generator-jhipster/issues/6329), [#8191](https://github.com/jhipster/generator-jhipster/issues/8191)). To summarise, it is complicated to have a realistic report (removing false-positive) and context dependent (security is always a trade off between the actual risk/criticity and the effort to prevent it).
+JHipsterビルドでデフォルトで依存関係チェックを提案することは、何度か議論されました（[#6329](https://github.com/jhipster/generator-jhipster/issues/6329)、[#8191](https://github.com/jhipster/generator-jhipster/issues/8191)）。要約すると、現実的なレポート（偽陽性を削除する）とコンテキスト依存（セキュリティは常に実際のリスク/批判とそれを防ぐ努力との間のトレードオフである）を持つことは複雑です。
 
-However we highly recommend using a dependency analysis tool such as [Dependabot](https://dependabot.com/) or [Snyk](https://snyk.io/) if you are using JHipster in production.  
+ただし、本番環境でJHipsterを使用している場合は、[Dependabot](https://dependabot.com/)または[Snyk](https://snyk.io/)などの依存性分析ツールを使用することを強くお勧めします。
 
-## What to do do if you detect a vulnerability in one of JHipster's dependencies
+## JHipsterの依存関係の1つに脆弱性が検出された場合の対処法
 
-If you found a vulnerability in one of JHipster's dependencies, please check if there is not an existing  [issue](https://github.com/jhipster/generator-jhipster/issues) already opened on that vulnerability.
+JHipsterの依存関係の1つに弱点を見つけた場合は、その弱点に対してすでにオープンされている既存の[issue](https://github.com/jhipster/generator-jhipster/issues)がないかどうかを確認してください。
 
-If nothing is mentioned, please send us a security vulnerability report privately. Please read our [security policy](https://github.com/jhipster/generator-jhipster/security/policy) on how to send one. Include steps to reproduce the exploit, security report, blog post, etc.
+何も言及されていない場合は、セキュリティ脆弱性レポートを個人的に送信してください。送信方法については、[セキュリティポリシー](https://github.com/jhipster/generator-jhipster/security/policy)をお読みください。エクスプロイトを再現する手順、セキュリティレポート、ブログ記事などを含めてください。
 
-Be sure that the JHipster team is committed to provide a high-quality, enterprise-ready and secure development stack and that this issue will be a top priority for us.
+JHipsterチームは、高品質でエンタープライズ対応の安全な開発スタックを提供することを約束し、この問題が私たちにとって最優先事項であることを確認してください。
 
-# How to check a JHipster project's dependencies
+# JHipsterプロジェクトの依存関係をチェックする方法
 
-## Checking on the Server side
+## サーバ側でのチェック
 
-To check if a Java dependency has a known Common Vulnerabilities and Exposures (aka. CVE), visit the [NIST National Vulnerability Database](https://nvd.nist.gov/) which maintains an up-to-date list.
+Javaの依存関係に既知のCommon Vulnerabilities and Exposures(aka.CVE)があるかどうかをチェックするには、[NIST脆弱性データベース](https://nvd.nist.gov/)にアクセスしてください。
 
-The OWASP project provides Maven and Gradle plugins to check the whole dependency chain automatically, generate a report and even block a build (not recommended, it can be very aggressive when doing continuous integration).
+OWASPプロジェクトは、依存関係チェイン全体を自動的にチェックし、レポートを生成し、ビルドをブロックするためのMavenとGradleプラグインを提供しています（推奨されませんが、継続的インテグレーションを行う場合は非常に積極的に行うことができます）。
 
-[Here is the documentation explaining how to read the dependency check report](https://jeremylong.github.io/DependencyCheck/general/thereport.html).
+[依存性チェックレポートの読み方を説明したドキュメントはこちら](https://jeremylong.github.io/DependencyCheck/general/thereport.html)。
 
-### Using Maven
+### Mavenの使用
 
-See the [OWASP Maven Dependency Check plugin documentation](https://jeremylong.github.io/DependencyCheck/dependency-check-maven/index.html)
+[OWASP Maven依存関係チェックプラグインのドキュメント](https://jeremylong.github.io/DependencyCheck/dependency-check-maven/index.html)を参照してください。
 
-Add the owasp dependency-check plugin:
+owasp dependency-checkプラグインを追加します。
 ```
 <build>
 ...
@@ -66,16 +66,16 @@ Add the owasp dependency-check plugin:
   ...
 </build>
 ```
-Running `./mvnw verify` will generate a dependency check report under the `target` directory.
+`./mvnw verify`を実行すると、`target`ディレクトリの下に依存関係チェックレポートが生成されます。
 
-### Using Gradle
-See the [OWASP Gradle Dependency Check plugin documentation](https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html)
+### Gradleの使用
+[OWASP Gradle依存関係チェックプラグインドキュメント](https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html)を参照してください。
 
-Update the `build.gradle` file to apply the [OWASP dependency-check-gradle plugin](https://plugins.gradle.org/plugin/org.owasp.dependencycheck).
+`build.gradle`ファイルを更新して、[OWASP dependency-check-gradleプラグイン](https://plugins.gradle.org/plugin/org.owasp.dependencycheck)を適用します。
 
 ```
 plugins {
-  // Add the plugin in the existing plugins block
+  // 既存のプラグインブロックにプラグインを追加
   id "org.owasp.dependencycheck" version "5.2.4"
 
 }
@@ -85,11 +85,11 @@ if(project.hasProperty('strict-security')) {
 }
 ```
 
-Running `./gradlew dependencyCheckAnalyze` generates a dependency check report inside the `build/report` directory.
+`./gradlew dependencyCheckAnalyze`を実行すると、`build/report`ディレクトリ内に依存性チェックレポートが生成されます。
 
-Updating continuous integration builds with a dependency check is done by running `./gradlew check -Pstrict-security`
+継続的インテグレーションのビルドを依存性チェック付きで更新するには、`./gradlew check -Pstrict-security`を実行します。
 
-## Checking on the client side
+## クライアント側でのチェック
 
-Since version 6, NPM includes a security audit by default for each dependency installation. Check the [About security audits
-](https://docs.npmjs.com/getting-started/running-a-security-audit) page for more information.
+バージョン6以降、NPMには、各依存関係インストールごとにデフォルトでセキュリティー監査が組み込まれています。[セキュリティー監査について
+](https://docs.npmjs.com/getting-started/running-a-security-audit)ページを参照してください。

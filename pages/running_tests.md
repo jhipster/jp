@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Running tests
+title: テストの実行
 permalink: /running-tests/
 redirect_from:
   - /running_tests.html
@@ -9,110 +9,110 @@ sitemap:
     lastmod: 2019-04-19T00:00:00-00:00
 ---
 
-# <i class="fa fa-shield"></i> Running tests
+# <i class="fa fa-shield"></i> テストの実行
 
-## Introduction
+## はじめに
 
-JHipster comes with an extensive set of tests, and each generated application has:
+JHipsterには広範なテストセットが用意されており、生成された各アプリケーションには次のものがあります。
 
-*   Unit tests using [JUnit 5](https://junit.org/junit5/){:target="_blank" rel="noopener"}.
-*   Integration tests using the Spring Test Context framework.
-*   UI tests with [Jest](https://facebook.github.io/jest/){:target="_blank" rel="noopener"}.
-*   Architecture tests with [ArchUnit](https://www.archunit.org/){:target="_blank" rel="noopener"}.
+*   [JUnit 5](https://junit.org/junit5/){:target="_blank" rel="noopener"}を使用したユニットテスト
+*   Spring Test Contextフレームワークを使用した統合テスト
+*   [Jest](https://facebook.github.io/jest/){:target="_blank" rel="noopener"}を使用したUIテスト
+*   [ArchUnit](https://www.archunit.org/){:target="_blank" rel="noopener"}を使用したアーキテクチャテスト
 
-Optionally, JHipster can also generate:
+オプションで、JHipsterは次も生成できます。
 
-*   Performance tests with [Gatling](http://gatling.io/){:target="_blank" rel="noopener"}.
-*   Behaviour-driven tests with [Cucumber](https://cucumber.io/){:target="_blank" rel="noopener"}.
-*   Angular/React/Vue integration tests with [Cypress](https://www.cypress.io/){:target="_blank" rel="noopener"} or [Protractor](https://angular.github.io/protractor/#/){:target="_blank" rel="noopener"}.
+*   [Gatling](http://gatling.io/){:target="_blank" rel="noopener"}を使用したパフォーマンステスト
+*   [Cucumber](https://cucumber.io/){:target="_blank" rel="noopener"}を使用した動作駆動型テスト
+*   [Cypress](https://www.cypress.io/){:target="_blank" rel="noopener"}または[Protractor](https://angular.github.io/protractor/#/){:target="_blank" rel="noopener"}を使用したAngular/React/Vue統合テスト
 
-We have two goals in generating those tests:
+これらのテストの生成には、2つの目標があります。
 
-*   Help every JHipster user to follow best practices, as we believe tests are a very useful part of every application
-*   Validate that what is being generated is correct. So even if you don't plan to use those tests at all, doing `./mvnw clean verify` and `npm test` after generating your application is a good way of knowing if everything is fine. You are then free to ignore those tests if you think that testing is a waste of time!
+*   テストはすべてのアプリケーションの非常に有用な部分であると私たちは信じているので、すべてのJHipsterユーザーがベストプラクティスに従うことを支援します。
+*   生成されたものが正しいことを検証します。そのため、これらのテストをまったく使用する予定がない場合でも、アプリケーションの生成後に`./mvnw clean verify`および`npm test`を実行することは、すべてが正常であるかどうかを確認するための優れた方法です。テストが時間の無駄であると思われる場合は、これらのテストを無視してもかまいません!
 
-All those tests will be generated in the standard Maven `src/test` folder.
+これらのテストはすべて、標準のMaven`src/test`フォルダに生成されます。
 
-## Integration tests
+## 統合テスト
 
-Integration tests are done with the Spring Test Context framework, and are located in the `src/test/java` folder. JHipster will launch a specific Spring test context, which will be re-used along all tests, as:
+統合テストはSpring Test Contextフレームワークを使用して実行され、`src/test/java`フォルダに格納されます。JHipsterは、すべてのテストで再利用される特定のSpringテストコンテキストを次のように起動します。
 
-*   Your Spring beans should be stateless and thread-safe, and thus can be re-used across your different tests suites.
-*   Launching only one Spring context for all tests is a lot faster than launching a new Spring context for each test.
+*    Spring Beanはステートレスでスレッドセーフである必要があるため、さまざまなテストスイートで再利用できます。
+*    すべてのテストに対して1つのSpringコンテキストのみを起動する方が、各テストに対して新しいSpringコンテキストを起動するよりもはるかに高速です。
 
-This Spring test context will use a specific test database to run its tests:
+このSpringテスト・コンテキストでは、特定のテスト・データベースを使用してテストを実行します。
 
-*   If you use an SQL database, JHipster will launch an in-memory H2 instance in order to use a temporary database for its integration tests. Alternatively, by using the `testcontainers` profile, JHipster will launch a containerized version of the production database using [Testcontainers](https://www.testcontainers.org/modules/databases/){:target="_blank" rel="noopener"}. Either way, Liquibase will be run automatically, and will generate the database schema.
-*   If you use Cassandra, JHipster will launch a containerized version of Cassandra with Docker using [Testcontainers](https://www.testcontainers.org){:target="_blank" rel="noopener"}.
-*   If you use MongoDB, JHipster will launch an in-memory MongoDB instance using [de.flapdoodle.embed.mongo](https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo){:target="_blank" rel="noopener"}.
-*   If you use Elasticsearch, JHipster will launch an in-memory Elasticsearch instance using Spring Data Elasticsearch.
-*   If you use Couchbase, JHipster will launch a containerized version of Couchbase with Docker using [Couchbase Testcontainers](https://github.com/differentway/testcontainers-java-module-couchbase){:target="_blank" rel="noopener"}.
-*   If you use Neo4j, JHipster will launch a containerized version of Neo4j with Docker using [Neo4j Testcontainers](https://www.testcontainers.org/modules/databases/neo4j/){:target="_blank" rel="noopener"}.
+*   SQLデータベースを使用する場合、JHipsterは統合テストに一時データベースを使用するためにインメモリH2インスタンスを起動します。または、`testcontainers`プロファイルを使用することにより、JHipsterは[Testcontainers](https://www.testcontainers.org/modules/databases/){:target="_blank" rel="noopener"}を使用してコンテナ化されたバージョンのプロダクションデータベースを起動します。いずれの場合も、Liquibaseが自動的に実行され、データベーススキーマが生成されます。
+*    Cassandraを使用している場合、JHipsterは、[Testcontainers](https://www.testcontainers.org){:target="_blank" rel="noopener"}を使用して、Dockerでコンテナ化されたバージョンのCassandraを起動します。
+*    MongoDBを使用している場合、JHipsterは[de.flapdoodle.embed.mongo](https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo){:target="_blank" rel="noopener"}を使用してインメモリMongoDBインスタンスを起動します。
+*    Elasticsearchを使用している場合、JHipsterはSpring Data Elasticsearchを使用してインメモリElasticsearchインスタンスを起動します。
+*    Couchbaseを使用している場合、JHipsterは、[Couchbase Testcontainers](https://github.com/differentway/testcontainers-java-module-couchbase){:target="_blank" rel="noopener"}を使用して、DockerでCouchbaseのコンテナ化バージョンを起動します。
+*    Neo4jを使用している場合、JHipsterは、[Neo4j Testcontainers](https://www.testcontainers.org/modules/databases/Neo4j/){:target="_blank" rel="noopener"}を使用して、DockerでNeo4jのコンテナ化バージョンを起動します。
 
-Those tests can be run directly in your IDE, by right-clicking on each test class, or by running `./mvnw clean verify` (or `./gradlew test integrationTest` if you use Gradle).
+これらのテストは、各テストクラスを右クリックするか、`./mvnw clean verify`（Gradleを使用している場合は`./gradlew test integrationTest`）を実行することによって、IDEで直接実行できます。
 
-**Limitations:** if the generated entities have validation enabled, JHipster is not enable to generate the correct values depending on the validation rules. Those rules can be so complex, for example if a Regex pattern is used, that this not possible. In this case, the tests will fail validation, and the default values used in the test will need to changed manually, so they can pass the validation rules.
+**制限事項：** 生成されたエンティティで検証が有効になっている場合、JHipsterは検証ルールに応じて正しい値を生成できません。これらのルールは非常に複雑である可能性があるため（Regexパターンが使用されている場合など）、これは不可能です。この場合、テストは検証に失敗し、テストで使用されるデフォルト値は、検証ルールに合格できるように手動で変更する必要があります。
 
-## UI tests
+## UIテスト
 
-UI tests come in two flavors with JHipster: unit tests with Jest, and integration tests with Protractor. Only Jest is provided by default, but if you want to have a good test coverage of your application, we recommend that you use both tools together.
+JHipsterのUIテストには、JestによるユニットテストとProtractorによる統合テストの2種類があります。デフォルトではJestのみが提供されていますが、アプリケーションのテストカバレッジを良好にしたい場合は、両方のツールを一緒に使用することをお勧めします。
 
 ### Jest
 
-UI unit tests are located in the `src/test/javascript/spec` folder. They use [Jest](https://facebook.github.io/jest/){:target="_blank" rel="noopener"}.
+UIユニットテストは`src/test/javascript/spec`フォルダにあります。それらは[Jest](https://facebook.github.io/jest/){:target="_blank" rel="noopener"}を使用します。
 
-Those tests will mock up the access to the application's REST endpoints, so you can test your UI layer without having to launch the Java back-end.
+これらのテストはアプリケーションのRESTエンドポイントへのアクセスをモックアップするため、Javaバックエンドを起動せずにUIレイヤーをテストできます。
 
-*   Those tests can be run using `npm test`.
-*   Tip: if you want to focus on a single test change the module description from `describe('...', function() {` to `fdescribe('...', function() {` and Jest will run this test only.
+*   これらのテストは`npm test`を使用して実行できます。
+*   ヒント：1つのテストに集中したい場合は、モジュールの記述を`describe('...', function() {`から`fdescribe('...', function() {`に変更すると、Jestはこのテストのみを実行します。
 
 ### Cypress/Protractor
 
-UI integration tests are done with [Cypress](https://www.cypress.io/){:target="_blank" rel="noopener"} or [Protractor](https://angular.github.io/protractor/#/){:target="_blank" rel="noopener"}, and are located in the `src/test/javascript/e2e` folder.
+UI統合テストは、[Cypress](https://www.cypress.io/){:target="_blank" rel="noopener"}または[Protractor](https://angular.github.io/protractor/#/){:target="_blank" rel="noopener"}で行われ、`src/test/javascript/e2e`フォルダにあります。
 
-Those tests will launch a Web browser and use the application like a real user would do, so you need to have a real application running, with its database set-up.
+これらのテストでは、ブラウザを起動し、実際のユーザーと同じようにアプリケーションを使用するため、データベースを設定した実際のアプリケーションを実行する必要があります。
 
-Those tests can be run using `npm run e2e`.
+これらのテストは、`npm run e2e`を使用して実行できます。
 
-## Architecture tests
+## アーキテクチャテスト
 
-Architecture tests, which enforce certain constrainsts and best practices are done with [ArchUnit](https://www.archunit.org/){:target="_blank" rel="noopener"}.
-You can write your own rules to check custom constraints for your architecture at build time following the [official documentation](https://www.archunit.org/userguide/html/000_Index.html){:target="_blank" rel="noopener"}.
+特定の制約とベストプラクティスを適用するアーキテクチャテストは、[ArchUnit](https://www.archunit.org/){:target="_blank" rel="noopener"}を使用して実行されます。
+[公式ドキュメント](https://www.archunit.org/userguide/html/000_Index.html){:target="_blank" rel="noopener"}に従って、ビルド時にアーキテクチャのカスタム制約をチェックするための独自のルールを作成できます。
 
-## Performance tests
+## パフォーマンステスト
 
-Performance tests are done with [Gatling](http://gatling.io/){:target="_blank" rel="noopener"}, and are located in the `src/test/gatling` folder. They are generated for each entity, and allows to test each of them with a lot of concurrent user requests.
+パフォーマンステストは[Gatling](http://gatling.io/){:target="_blank" rel="noopener"}で行われ、`src/test/gatling`フォルダにあります。これらはエンティティごとに生成され、多くの同時ユーザー要求でそれぞれをテストできます。
 
-To run Gatling tests, you must 
+Gatlingテストを実行するには、次の手順を実行する必要があります。
 
-1. [Download Gatling](https://gatling.io/open-source/){:target="_blank" rel="noopener"}
-2. Extract it and add the location to your `PATH`
-3. cd into `src/test/gatling` and run `gatling.sh` or `gatling.bat` depending on your OS
+1. [Gatlingをダウンロードします](https://gatling.io/open-source/){:target="_blank" rel="noopener"}。
+2. ファイルを抽出し、その場所を`PATH`に追加します。
+3. cdで`src/test/gatling`に移動し、お使いのOSに応じて`gatling.sh`または`gatling.bat`を実行します。
 
-**Warning!** At the moment, those tests do not take into account the validation rules you may have enforced on your entities. Also tests for creating entities that have a required relationship with another entity will fail out of the box. You will anyway need to change those tests, according to your business rules, so here are few tips to improve your tests:
+**警告!** 現時点では、これらのテストではエンティティに適用した検証ルールが考慮されていません。また、別のエンティティと必要な関係を持つエンティティを作成するためのテストは、そのままでは失敗します。いずれにしても、ビジネス・ルールに従ってこれらのテストを変更する必要があるため、テストを改善するためのヒントをいくつか示します。
 
-*   On your running application, go to the `Administration > Logs` screen, and put `org.springframework` in `debug` mode. You will see the validation errors, for example.
-*   Use the application normally and open the Chrome `console log`: you will be able to see the REST requests with all their parameters, including the HTTP headers.
+*   実行中のアプリケーションで、`管理 > ログ`画面に移動し、`org.springframework`を`debug`モードにします。例えば、検証エラーが表示されます。
+*   アプリケーションを通常に使用し、Chromeの`console log`を開くと、HTTPヘッダーを含むすべてのパラメータを持つRESTのリクエストを確認できます。
 
-For running Gatling tests on a microservice application, you have to:
+マイクロサービスアプリケーションでGatlingテストを実行するには、次のことが必要です。
 
-*   Run a registry
-*   Run a gateway
-*   Run the microservice application
-*   Then, you can run Gatling tests
+*   レジストリの実行
+*   ゲートウェイの実行
+*   マイクロサービスアプリケーションの実行
+*   その後、Gatlingテストを実行できます
 
-### Using Maven/Gradle to run Gatling
+### Gatlingを実行するためのMaven/Gradleの使用
 
-We do not generate Maven or Gradle configuration to run Gatling tests as this might cause some classpath issues with other plugins (mainly because of the use of Scala).
-Nevertheless you can leverage the offical [Maven plugin](https://gatling.io/docs/current/extensions/maven_plugin/){:target="_blank" rel="noopener"}  or [Gradle plugin](https://gatling.io/docs/current/extensions/gradle_plugin/){:target="_blank" rel="noopener"} to execute the Gatling tests.
+Gatlingテストを実行するためのMavenまたはGradleの設定は生成しません。これは、他のプラグインでクラスパスの問題（主にScalaを使用時）が発生する可能性があるためです。
+ただし、公式の[Mavenプラグイン](https://gatling.io/docs/current/extensions/maven_plugin/){:target="_blank" rel="noopener"}または[Gradleプラグイン](https://gatling.io/docs/current/extensions/gradle_plugin/){:target="_blank" rel="noopener"}を利用してGatlingテストの実行は可能です。
 
-#### Using Maven
+#### Mavenの使用
 
-You need to change `pom.xml`:
+`pom.xml`を変更する必要があります。
 
-1. Add Gatling dependency with `test` scope
-2. Add Gatling plugin 
-3. Adapt plugin configuration to JHipster layout and naming conventions
+1.  `test`スコープのGatling依存関係を追加
+2.  Gatlingプラグインの追加
+3.  プラグイン構成をJHipsterのレイアウトと命名規則に適合
 
 ```
 ...
@@ -138,28 +138,28 @@ You need to change `pom.xml`:
 ...
 ```
 
-You can execute all Gatling tests with `./mvnw gatling:test`.
-#### Using Gradle 
+すべてのGatlingテストは`./mvnw gatling:test`で実行できます。
+#### Gradleの使用
 
-You need to change `build.gradle`:
+`build.gradle`を変更する必要があります。
 
-1. Add the Gatling plugin to the plugin section
-2. Adapt source sets to the JHipster layout
-3. Adapt the included simulations to the JHipster naming conventions
+1. Gatlingプラグインをプラグインセクションに追加する
+2. ソースセットをJHipsterレイアウトに適合させる
+3. 含まれているシミュレーションをJHipsterの命名規則に適合させる
 
-In case you are using the reactive option you might [need to make sure the Spring Boot-managed Netty version does not interfere with the one needed by Gatling](https://gatling.io/docs/current/extensions/gradle_plugin/#spring-boot-and-netty-version){:target="_blank" rel="noopener"}.
+リアクティブオプションを使用している場合は、[Spring Bootが管理するNettyバージョンが、Gatlingが必要とするバージョンと干渉しないことを確認する必要があります](https://gatling.io/docs/current/extensions/gradle_plugin/#spring-boot-and-netty-version){:target="_blank" rel="noopener"}。
 
 ```
 plugins {
     ...
     id "io.spring.nohttp"
-    // Add the Gatling plugin, please check for the latest version here https://plugins.gradle.org/plugin/io.gatling.gradle 
+    // Gatlingプラグインを追加するには、https://plugins.gradle.org/plugin/io.gatling.gradle で最新バージョンを確認してください
     id 'io.gatling.gradle' version "3.5.0" 
-    //jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
+    //jhipster-needle-gradle-plugins - JHipsterはここにgradleプラグインを追加します。
 }
 
 ...
-// adapt the source sets to the JHipster specific layout
+// ソースセットをJHipster固有のレイアウトに適合させます
 sourceSets {
    gatling {
     scala.srcDirs = ["src/test/gatling/user-files/simulations"]
@@ -173,9 +173,9 @@ gatling {
 ...
 ```
 
-You can execute all Gatling tests with `./gradlew gatlingRun`.
-## Behaviour-driven development (BDD)
+すべてのGatlingのテストは`./gradlew gatlingRun`で実行できます。
+## ビヘイビア駆動開発（BDD）
 
-Behaviour-driven development (BDD) is available using [Cucumber](https://cucumber.io/){:target="_blank" rel="noopener"}, with its [JVM implementation](https://github.com/cucumber/cucumber-jvm){:target="_blank" rel="noopener"}.
+振る舞い駆動開発（BDD）は、[Cucumber](https://cucumber.io/){:target="_blank" rel="noopener"}とその[JVM実装](https://github.com/cucumber/cucumber-jvm){:target="_blank" rel="noopener"}を使用して利用できます。
 
-[Gherkin](https://docs.cucumber.io/gherkin/reference/){:target="_blank" rel="noopener"} features will have to be written in your `src/test/features` directory.
+[Gherkin](https://docs.cucumber.io/gherkin/reference/){:target="_blank" rel="noopener"}のfeatureは、`src/test/features`ディレクトリに書き込む必要があります。
