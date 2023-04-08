@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Setting up Continuous Integration on Jenkins 2
+title: Jenkins 2での継続的インテグレーションのセットアップ
 permalink: /setting-up-ci-jenkins2/
 redirect_from:
   - /setting_up_ci_jenkins2.html
@@ -9,33 +9,33 @@ sitemap:
     lastmod: 2017-01-19T14:15:00-00:00
 ---
 
-# <i class="fa fa-stethoscope"></i> Setting up Continuous Integration on Jenkins 2
+# <i class="fa fa-stethoscope"></i> Jenkins 2での継続的インテグレーションのセットアップ
 
-## Installing Jenkins 2
+## Jenkins 2のインストール
 
-### Standard
+### 標準
 
-Install JDK 8 on your machine.
+マシンにJDK 8をインストールします。
 
-Go to the official site [https://jenkins.io/2.0/](https://jenkins.io/2.0/)
+公式サイト[https://jenkins.io/2.0/](https://jenkins.io/2.0/)に行き
 
-Download the `jenkins.war`
+`jenkins.war`をダウンロードします。
 
-### With Docker
+### Dockerの場合
 
-Launch the [Docker image](https://hub.docker.com/r/jenkins/jenkins) 
-(_the default port has been changed to 18080 since the JHipster app is configured to run on 8080_)
+[Dockerイメージ](https://hub.docker.com/r/jenkins/jenkins)を起動します。
+(_JHipsterアプリケーションが8080で実行するように設定されているため、デフォルトのポートは18080に変更されています_)
 
 `docker container run -d --name jenkins2 -p 18080:8080 -p 50000:50000 jenkins/jenkins`
 
-You can then access the Jenkins dashboard on 
-- http://localhost:18080 (on MacOS & Linux)
-- http://192.168.99.100:18080 (on Windows)
-  - If this doesn't work replace `192.168.99.100` with your docker's default ip address: `docker-machine ip default`
+その後、Jenkinsのダッシュボードにアクセスできます。
+- http://localhost:18080（MacOSおよびLinuxの場合）
+- http://192.168.99.100:18080（Windowsの場合）
+  - これがうまくいかない場合は、`192.168.99.100`をあなたのDockerのデフォルトのIPアドレス`docker-machine ip default`に置き換えてください。
 
-Note: You'll be asked for an `initialAdminPassword` which you'll find in the logs during your container startup.
-You can also access it via `docker logs jenkins2`
-e.g.
+注：`initialAdminPassword`を入力するよう求められます。パスワードはコンテナの起動時にログに記録されています。
+`docker logs jenkins2`からもアクセスできます。
+例：
 ```
 *************************************************************
 *************************************************************
@@ -53,22 +53,22 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 *************************************************************
 ```
 
-## Create a new Job
+## 新しいジョブの作成
 
-- Add New Item
-    - Enter an item name
-    - Select pipeline
-    - Click OK
+- 新しいアイテムの追加
+    - 項目名を入力
+    - パイプラインを選択
+    - OKをクリック
 
 ![Jenkins2 item]({{ site.url }}/images/jenkins2_add_item.png)
 
 - Definition: Pipeline script from SCM
 - SCM: Git
 - Repositories
-    - Repository URL: select your repository here
+    - Repository URL: ここでリポジトリを選択します
 
 ![Jenkins2 pipeline]({{ site.url }}/images/jenkins2_pipeline.png)
 
-## Jenkinsfile
+## Jenkinsファイル
 
 ![Jenkins2 result]({{ site.url }}/images/jenkins2_result.png)
