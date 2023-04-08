@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Setting up Jenkins 1 on Linux
+title: LinuxでのJenkins 1のセットアップ
 permalink: /setting-up-ci-linux/
 redirect_from:
   - /setting_up_ci_linux.html
@@ -9,13 +9,13 @@ sitemap:
     lastmod: 2015-01-09T12:40:00-00:00
 ---
 
-# <i class="fa fa-stethoscope"></i> Setting up Jenkins 1 on Linux
+# <i class="fa fa-stethoscope"></i> LinuxでのJenkins 1のセットアップ
 
-The instructions below are for a Red Hat/CentOS server but can be adapted for other Linux distributions.
+以下の手順はRed Hat/CentOSサーバ用ですが、他のLinuxディストリビューションにも適用できます。
 
-## Installing Jenkins
+## Jenkinsのインストール
 
-Follow the instructions from [https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions](https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions)
+[https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions](https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions)の指示に従ってください。
 
 ~~~~
 sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
@@ -25,58 +25,58 @@ sudo yum install jenkins
 sudo service jenkins start
 ~~~~
 
-A `jenkins` user has been created, its home directory is `/var/lib/jenkins`
+`jenkins`ユーザーが作成され、ホームディレクトリは`/var/lib/jenkins`となります。
 
-## Configuring Jenkins
+## Jenkinsの設定
 
-### Installing JDK 8
+### JDK 8のインストール
 
-Through Jenkins administration, add a JDK 8 automatic installer.
+Jenkinsの管理を通じて、JDK 8自動インストーラを追加します。
 
-### Installing Maven
+### Mavenのインストール
 
-Through Jenkins administration, add a Maven automatic installer from Apache's site.
+Jenkinsの管理を通じて、ApacheのサイトからMaven自動インストーラを追加します。
 
-### Installing NodeJS
+### NodeJSのインストール
 
-You could install NodeJS globally but it's very likely that you may want to have different versions of NodeJS for different projects.
+NodeJSのグローバルなインストールもできますが、プロジェクトごとに異なるバージョンのNodeJSが必要になる可能性があります。
 
-We suggest 2 alternatives below, choose the one you prefer.
+次の2つの代替案を提案します。お好みのものを選択してください。
 
-#### Jenkins NodeJS plugin
+#### Jenkins NodeJSプラグイン
 
-Install Jenkins NodeJS plugin.
+Jenkins NodeJSプラグインをインストールします。
 
-Through Jenkins administration, add a NodeJS installation:
+Jenkins管理を通じて、NodeJSインストールを追加します。
 
-- Automatic installer from nodejs.org, use the latest LTS (Long Term Support) 64-bit version
-- Global npm packages to install: bower gulp
+- nodejs.orgからの自動インストーラ、最新のLTS（Long Term Support）64ビットバージョンを使用します。
+- インストールするグローバルnpmパッケージは、bower gulpです。
 
-#### Local NodeJS installation
+#### ローカルNodeJSインストール
 
-Install NodeJS locally using the script below and then update the Jenkins PATH to use it.
+次のスクリプトを使用してNodeJSをローカルにインストールし、それを使用するようにJenkins PATHを更新します。
 
 ~~~ bash
-# specify which version we want
+# 必要なバージョンを指定
 export NODE_VERSION=4.3.1
 
-# download
+# ダウンロード
 cd /tmp
 wget http://nodejs.org/dist/v$NODE_VERSION/node-v4.3.1.tar.gz
 tar xvfz node-v$NODE_VERSION.tar.gz
 
-# build it and install it only locally
+# ビルドとインストールはローカルでのみ
 cd node-v$NODE_VERSION
 ./configure --prefix=/var/lib/jenkins/node-v$NODE_VERSION && make && make install
 
-# Check versions of node and  npm
+# nodeおよびnpmのバージョンを検査
 export PATH=/var/lib/jenkins/node-v$NODE_VERSION/bin:$PATH
 node --version
 # v4.3.1
 npm --version
 # 3.7.5
 
-# install tools
+# ツールをインストール
 npm install -g bower gulp
 bower --version
 # 1.7.7
@@ -84,4 +84,4 @@ gulp --version
 # 3.9.1
 ~~~
 
-Make sure you update the Jenkins PATH.
+必ずJenkins PATHを更新してください。
