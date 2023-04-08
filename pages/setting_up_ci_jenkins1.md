@@ -1,24 +1,24 @@
 ---
 layout: default
-title: Setting up Jenkins 1
+title: Jenkins 1のセットアップ
 permalink: /setting-up-ci-jenkins1/
 sitemap:
     priority: 0.7
     lastmod: 2016-11-03T12:40:00-00:00
 ---
 
-# <i class="fa fa-wrench"></i> Setting up a Jenkins server
+# <i class="fa fa-wrench"></i> Jenkinsサーバの設定
 
-To configure a Jenkins server for JHipster, refer to the following guides:
+JHipster用にJenkinsサーバを設定するには、次のガイドを参照してください。
 
-- [Setting up Jenkins 1 on Linux]({{ site.url }}/setting-up-ci-linux/)
-- [Setting up Jenkins 1 on Windows]({{ site.url }}/setting-up-ci-windows/)
+- [LinuxでのJenkins 1のセットアップ]({{ site.url }}/setting-up-ci-linux/)
+- [WindowsでのJenkins 1のセットアップ]({{ site.url }}/setting-up-ci-windows/)
 
-# <i class="fa fa-sliders"></i> Jenkins Configuration
+#<i class="fa fa-sliders"></i> Jenkinsの設定
 
-To setup a JHipster project in Jenkins, use the following configuration:
+JenkinsでJHipsterプロジェクトを設定するには、次の設定を使用します。
 
-## For Maven:
+## Mavenの場合:
 
 ```
 * Project name: `yourApplicationName`
@@ -42,7 +42,7 @@ To setup a JHipster project in Jenkins, use the following configuration:
     * Publish JUnit test result report / Test Report XMLs: `build/test-results/*.xml`
 ```
 
-## For Gradle:
+## Gradleの場合:
 ```
 * Project name: `yourApplicationName`
 * Source Code Management
