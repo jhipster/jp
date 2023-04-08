@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Setting up Continuous Integration
+title: 継続的インテグレーションの設定
 permalink: /setting-up-ci/
 redirect_from:
   - /setting_up_ci.html
@@ -9,38 +9,38 @@ sitemap:
     lastmod: 2018-08-03T14:40:00-00:00
 ---
 
-# <i class="fa fa-stethoscope"></i> Setting up Continuous Integration
+# <i class="fa fa-stethoscope"></i> 継続的インテグレーションの設定
 
-Setting up Continuous Integration (CI) for a JHipster application is more complex than for a classic typical Spring MVC application because of the complexity associated with maintaining a build composed of 2 software stacks:
+JHipsterアプリケーションの継続的インテグレーション（CI）のセットアップは、2つのソフトウェアスタックで構成されるビルドのメンテナンスに関連する複雑さのため、従来の一般的なSpring MVCアプリケーションよりも複雑です。
 
-- the Java back-end code with Maven or Gradle
-- the JavaScript front-end with NodeJS, NPM or Yarn
+- MavenまたはGradleを使用したJavaバックエンドコード
+- NodeJS、NPM、またはYarnを使用したJavaScriptフロントエンド
 
-Each stack comes with its own dependency management (Maven artifacts, NPM packages) with potential conflicts to solve.
+各スタックには、解決すべき潜在的な競合を持つ独自の依存関係管理（Mavenアーティファクト、NPMパッケージ）が付属しています。
 
-JHipster should support the following CI systems out of the box:
+JHipsterは、次のCIシステムをサポートします。
 
-- Jenkins:
-    - [Setting up Jenkins 1]({{ site.url }}/setting-up-ci-jenkins1/)
-    - [Setting up Jenkins 2]({{ site.url }}/setting-up-ci-jenkins2/) (recommended)
-- Travis: refer to the [Travis Documentation](https://docs.travis-ci.com/user/getting-started/)
-- GitLab CI: refer to the [GitLab CI Documentation](https://about.gitlab.com/gitlab-ci/)
-- Azure Pipelines: refer to the [Azure Pipelines Documentation](https://docs.microsoft.com/fr-fr/azure/devops/pipelines/?view=vsts)
-- GitHub Actions: refer to [GitHub Actions Documentation](https://github.com/features/actions)
-- CircleCI: refer to [CircleCI Documentation](https://circleci.com/docs/)
+- Jenkins
+    - [Jenkinsのセットアップ1]({{ site.url }}/setting-up-ci-jenkins1/)
+    - [Jenkinsのセットアップ2]({{ site.url }}/setting-up-ci-jenkins2/) （推奨）
+- Travis:[Travisドキュメント](https://docs.travis-ci.com/user/getting-started/)を参照してください
+- GitLab CI:[GitLab CIドキュメント](https://about.gitlab.com/gitlab-ci/)を参照してください
+- Azure Pipelines:[Azure Pipelinesドキュメント](https://docs.microsoft.com/fr-fr/azure/devops/pipelines/?view=vsts)を参照してください
+- GitHub Actions:[GitHub Actionsドキュメント](https://github.com/features/actions)を参照してください
+- CircleCI:[CircleCIドキュメント](https://circleci.com/docs/)
 
-## Running the sub-generator
+## サブジェネレータの実行
 
-To generate these config files, run this command in your project folder:
+これらの構成ファイルを生成するには、プロジェクトフォルダで次のコマンドを実行します。
 
 `jhipster ci-cd`
 
-Then answer all the questions.
+次に、すべての質問に答えます。
 
 
-### What CI/CD pipeline do you want to generate ?
+### どのCI/CDパイプラインを生成しますか?
 
-The CI/CD pipeline you want to generate:
+生成できるCI/CDパイプラインは以下です。
 
 - Jenkins pipeline
 - Azure Pipelines
@@ -49,111 +49,111 @@ The CI/CD pipeline you want to generate:
 - Travis CI
 - CircleCI
 
-**Note**: when you select Jenkins pipeline, a new `src/main/docker/jenkins.yml` file will be generated.
-So you can test Jenkins locally by running:
+**注**: Jenkins pipelineを選択すると、新しい`src/main/docker/jenkins.yml`ファイルが生成されます。
+そのため、次のコマンドを実行することで、Jenkinsをローカルでテストできます。
 
 ```
 docker-compose -f src/main/docker/jenkins.yml up -d
 ```
 
-### Would you like to perform the build in a Docker container ? (Jenkins / GitLab)
+### Dockerコンテナでビルドを実行しますか?(Jenkins/GitLab)
 
-If Docker is installed, you can perform the build inside a Docker container.
+Dockerがインストールされている場合は、Dockerコンテナ内でビルドを実行できます。
 
-### In GitLab CI, perform the build in a docker container (hint: GitLab.com uses Docker container) ? (GitLab)
+### GitLab CIで、Dockerコンテナ(ヒント:GitLab.comはDockerコンテナを使用)でビルドを実行しますか?(GitLab)
 
-If you use a private GitLab CI, you can use directly the runners.
+プライベートGitLab CIを使用する場合は、ランナーを直接使用できます。
 
-If you use official GitLab.com pipeline, you need to use Docker container.
+公式のGitLab.comパイプラインを使用する場合は、Dockerコンテナを使用する必要があります。
 
-### Would you like to send build status to GitLab ? (Jenkins)
+### ビルドステータスをGitLabに送信しますか?(Jenkins)
 
-If your Jenkins relies to a GitLab repository, you can send build status to GitLab. Your Jenkins must be correctly configured.
+JenkinsがGitLabリポジトリに依存している場合は、ビルドステータスをGitLabに送信できます。なおJenkinsは正しく設定されている必要があります。
 
-### What tasks/integrations do you want to include ?
+### どのタスク/統合を含めますか?
 
-- Deploy your application to an *Artifactory*
-- Analyze your code with *Sonar*
-- Build and publish a *Docker* image
-- *Snyk*: dependency scanning for security vulnerabilities (requires SNYK_TOKEN)
-- Deploy to *Heroku* (requires HEROKU_API_KEY set on CI service)
-- Would you like to enable the Cypress Dashboard (requires both CYPRESS_PROJECT_ID and CYPRESS_RECORD_KEY set on CI service)
+- アプリケーションを*Artifactory*にデプロイ
+- *Sonar*でコードを解析
+- *Docker*イメージの構築と公開
+- *Snyk*：セキュリティ脆弱性の依存性スキャン（SNYK_TOKENが必要）
+- *Heroku*にデプロイ（CIサービスでHEROKU_API_KEYが設定されている必要があります）
+- Cypressダッシュボードを有効にしますか（CIサービスでCYPRESS_PROJECT_IDとCYPRESS_RECORD_KEYの両方が設定されている必要があります）
 
-### Deploy your application to an *Artifactory* (Jenkins / GitLab)
+### アプリケーションを*Artifactory*にデプロイする (Jenkins/GitLab)
 
-- *Artifactory*: what is the ID of distributionManagement for snapshots ?
-- *Artifactory*: what is the URL of distributionManagement for snapshots ?
-- *Artifactory*: what is the ID of distributionManagement for releases ?
-- *Artifactory*: what is the URL of distributionManagement for releases ?
+- *Artifactory*：スナップショットのdistributionManagementのIDは何ですか？
+- *Artifactory*：スナップショットのdistributionManagementのURLは何ですか？
+- *Artifactory*：リリースのdistributionManagementのIDは何ですか？
+- *Artifactory*：リリースのdistributionManagementのURLは何ですか？
 
-### Analyze your code with *Sonar*
+### *Sonar*を使用してコードを分析
 
-- *Sonar*: what is the name of the Sonar server ?
+- *Sonar*：Sonarサーバの名前は何ですか？
 
-Choose the name of the Sonar server, defined in your Jenkins Configuration.
+Jenkins Configurationで定義されているSonarサーバの名前を選択します。
 
-- *Sonar*: what is the URL of the Sonar server ?
-- *Sonar*: what is the Organization of the Sonar server ? 
+- *Sonar*：SonarサーバのURLは何ですか？
+- *Sonar*：Sonarサーバの組織は何ですか？
 
-Here, you can choose to push your Sonar Analyze to [SonarCloud.io](https://sonarcloud.io).
-In this case, you have to add the `SONAR_TOKEN` environment variable.
+ここで、Sonar Analyzeを[SonarCloud.io](https://sonarcloud.io)にプッシュすることを選択できます。
+この場合は、`SONAR_TOKEN`環境変数を追加する必要があります。
 
-### Build and publish a *Docker* image
+### *Docker*イメージのビルドと公開
 
-- *Docker*: what is the URL of the Docker registry ?
+- *Docker*：DockerレジストリのURLは何ですか？
 
-By default, you can use Docker Hub: [https://registry.hub.docker.com](https://registry.hub.docker.com)
+デフォルトでは、Docker Hub（[https://registry.hub.docker.com](https://registry.hub.docker.com)）を使用できます。
 
-- *Docker*: what is the Jenkins Credentials ID for the Docker registry ?
+- *Docker*：DockerレジストリのJenkins Credentials IDは何ですか？
 
-By default, you can use: `docker login`
+デフォルトでは、`docker login`を使用できます。
 
-- *Docker*: what is the Organization Name for the Docker registry ?
+- *Docker*：Dockerレジストリの組織名は何ですか？
 
-### Snyk: dependency scanning for security vulnerabilities
+### Snyk：セキュリティの脆弱性に対する依存性スキャン
 
-You have to add the `SNYK_TOKEN` environment variable (check your [Snyk account](https://app.snyk.io/account))
+`SNYK_TOKEN`環境変数を追加する必要があります（[Snykアカウント](https://app.snyk.io/account)を確認してください）
 
-See full documentation at [https://snyk.io/](https://snyk.io/)
+詳細なドキュメントは[https://snyk.io/](https://snyk.io/)にあります。
 
-### Cypress Dashboard: record your tests in a web application provided by Cypress
+### Cypress Dashboard：Cypressが提供するWebアプリケーション内でテストを記録
 
-You have to add the `CYPRESS_PROJECT_ID` and the `CYPRESS_RECORD_KEY` environment variables (check your [Dashboard project](https://dashboard.cypress.io/))
+`CYPRESS_PROJECT_ID`と`CYPRESS_RECORD_KEY`環境変数を追加する必要があります（[ダッシュボードプロジェクト](https://dashboard.cypress.io/)を確認してください）。
 
-You can disable the record by changing `CYPRESS_ENABLE_RECORD` environment variable value to false.
+このレコードを無効にするには、`CYPRESS_ENABLE_RECORD`環境変数の値をfalseに変更します。
 
-See full the documentation at [cypress.io/dashboard](https://www.cypress.io/dashboard/)
+ドキュメントの詳細については、[cypress.io/dashboard](https://www.cypress.io/dashboard/)を参照してください。
 
-### Deploy to *Heroku*
+### *Heroku*にデプロイ
 
-- *Heroku: name of your Heroku Application ?
+- *Heroku*：Herokuアプリケーションの名前はなんですか？
 
-You have to add the `HEROKU_API_KEY` environment variable.
+`HEROKU_API_KEY`環境変数を追加する必要があります。
 
-Note: before using the deployment to Heroku, you need to use the [Heroku sub-generator]({{ site.url }}/heroku) locally.
-It will create all files needed by your Continuous Integration Tool.
+注：Herokuへのデプロイメントを使用する前に、[Herokuサブジェネレータ]({{ site.url }}/heroku)をローカルで使用する必要があります。
+継続的インテグレーション・ツールに必要なすべてのファイルが作成されます。
 
 
-## Additional information
+## 追加情報
 
-Depending on your OS and where you pushed your project, you will probably need to make the wrapper executable before using a CI/CD.
+OSやプロジェクトをプッシュした場所によっては、CI/CDを使用する前にラッパーを実行可能にする必要があります。
 
-If you use Maven:
+Mavenを使用する場合は以下です。
 
 - `chmod +x mvnw`
 - `git update-index --chmod=+x mvnw`
 
-If you use Gradle:
+Gradleを使用する場合は以下です。
 
 - `chmod +x gradlew`
 - `git update-index --chmod=+x gradlew`
 
 
-## Documentation about environment variables:
+## 環境変数に関するドキュメント
 
-- Jenkins pipeline: you should use the [Credentials plugin](https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Plugin)
-- GitLab CI: read the [documentation about secret-variables](https://docs.gitlab.com/ce/ci/variables/#secret-variables)
-- Travis CI: read the [environment variables](https://docs.travis-ci.com/user/environment-variables/)
-- GitHub Actions: read the [documentation about environment variables](https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables)
-- Azure Pipelines: read the [documentation about predefined variables](https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml)
-- CircleCI: read the [documentation about environment variables](https://circleci.com/docs/2.0/env-vars/#built-in-environment-variables)
+- Jenkins pipeline：[Credentials plugin](https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Plugin)を使用します。
+- GitLab CI：[secret-variablesに関するドキュメント](https://docs.gitlab.com/ce/ci/variables/#secret-variables)を参照ください。
+- Travis CI：[環境変数](https://docs.travis-ci.com/user/environment-variables/)を参照ください。
+- GitHub Actions：[環境変数に関するドキュメント](https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables)を参照ください。
+- Azure Pipelines：[定義済み変数に関するドキュメント](https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml)を参照ください。
+- CircleCI：[環境変数に関するドキュメント](https://circleci.com/docs/2.0/env-vars/#built-in-environment-variables)を参照ください。
