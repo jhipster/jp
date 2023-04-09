@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deploying to AWS
+title: AWSへのデプロイ
 permalink: /aws/
 # redirect_from:
 #   - /aws.html
@@ -13,74 +13,74 @@ sitemap:
 
 [![Powered by AWS Cloud Computing]({{ site.url }}/images/logo/logo-aws.png)](https://aws.amazon.com/what-is-cloud-computing)
 
-## *aws* sub-generator
+## *aws*サブジェネレータ
 
-This sub-generator allows you to automatically deploy your JHipster application to the [Amazon AWS cloud](https://aws.amazon.com/) using [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html) to provision the infrastructure.
+このサブジェネレータを使用すると、インフラストラクチャのプロビジョニングに[AWS Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html)を使用して、JHipsterアプリケーションを[Amazon AWSクラウド](https://aws.amazon.com/)に自動的にデプロイできます。
 
-<div class="alert alert-info"> <i>Tip:</i> As an alternative to Elastic Beanstalk you can also deploy your JHipster application to AWS using <a href="{{ site.url }}/cloudcaptain/">CloudCaptain</a>.  
-CloudCaptain comes with first-class support for JHipster as well as support for both MySQL and PostgreSQL databases.</div>
+<div class="alert alert-info"> <i>ヒント:</i>Elastic Beanstalkの代わりに、<a href="{{ site.url }}/cloudcaptain/">CloudCaptain</a>を使ってJHipsterアプリケーションをデプロイすることもできます。
+CloudCaptainは、JHipsterの優れたサポートに加えて、MySQLおよびPostgreSQLデータベースの両方をサポートしています。</div>
 
-### Limitations
+### 制限事項
 
-*   You can only use it with a SQL database (but note that Oracle and Microsoft SQL Server aren't supported).
-*   Websockets don't work behind the load balancer by default.
+*   SQLデータベースでのみ使用できます（ただし、OracleおよびMicrosoft SQL Serverはサポートされていません）。
+*   WebSocketは、デフォルトではロードバランサの背後で動作しません。
 
-### Prerequisites
+### 前提条件
 
-Before running the sub-generator, create AWS SDK credentials so that JHipster can deploy to Elastic Beanstalk. 
+サブジェネレータを実行する前に、AWS SDKの認証情報を作成して、JHipsterがElastic Beanstalkにデプロイできるようにします。
 
-Log into your Amazon AWS account and create an IAM user with programmatic access. 
+Amazon AWSアカウントにログインし、プログラムによるアクセス権を持つIAMユーザーを作成します。
 
-Attach the following policies to grant the user the necessary permissions:
+次のポリシーをアタッチして、ユーザに必要な権限を付与します。
 - `AdministratorAccess-AWSElasticBeanstalk`
 - `AmazonS3FullAccess`
 - `AmazonRDSFullAccess`
 - `IAMFullAccess`
 
-Create the user and download the `csv` file with the new credentials. Use them to create a credentials file called `~/.aws/credentials` on Mac/Linux or `C:\Users\USERNAME\.aws\credentials` on Windows, as follows:
+ユーザーを作成し、新しい認証情報が含まれた`csv`ファイルをダウンロードします。これらを使用して、次のように、Mac/Linuxでは`~/.aws/credentials`、Windowsでは`C:\Users\USERNAME\.aws\credentials`という認証情報ファイルを作成します。
 ```ini
 [default]
 aws_access_key_id = your_access_key
 aws_secret_access_key = your_secret_key
 ```
-If you already have a `default` profile, create a new named profile and set the environment variable `AWS_PROFILE` to the new profile name (see [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html) for details).
+すでに`default`プロファイルがある場合は、新しい名前付きプロファイルを作成し、環境変数`AWS_PROFILE`に新しいプロファイル名を設定します（詳細は[ここ](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)を参照してください）。
 
-Test your access by executing `aws sts get-caller-identity`.
+`aws sts get-caller-identity`を実行して、アクセスをテストします。
 
-### Deploying your application
+### アプリケーションのデプロイ
 
-To deploy your application to Amazon AWS, type:
+アプリケーションをAmazon AWSにデプロイするには、次のように入力します。
 
 `jhipster aws`
 
-You will be prompted for:
-- Application name: Name of the collection of Elastic Beanstalk components that make up the application (default is the project name)
-- Environment name: Name of the AWS resource environment that will run the application
-- Name of S3 bucket: Holds the static web components
-- Database name: name of the RDS database
-- Database username: RDS database username
-- Database password: [hidden]
-- On which EC2 instance type do you want to deploy? Select the capacity of the AWS EC2 virtual machine 
-- On which RDS instance class do you want to deploy? Select the capacity of the RDS database instance
-- On which region do you want to deploy? Select the AWS region to host the instance
+次のプロンプトが表示されます。
+- Application name：アプリケーションを構成するElastic Beanstalkコンポーネントのコレクションの名前（デフォルトはプロジェクト名）
+- Environment name：アプリケーションを実行するAWSリソース環境の名前
+- Name of S3 bucket：静的Webコンポーネントを保持します
+- Database name：RDSデータベースの名前
+- Database username：RDSデータベースユーザ名
+- Database password：[hidden]
+- On which EC2 instance type do you want to deploy?（どのEC2インスタンスタイプにデプロイしますか？）：AWS EC2仮想マシンの容量を選択します
+- On which RDS instance class do you want to deploy（どのRDSインスタンスクラスに展開しますか？）：RDSデータベースインスタンスの容量を選択します
+- On which region do you want to deploy?（どのリージョンにデプロイしますか？）：インスタンスをホストするAWSリージョンを選択します
 
-This should package your application in "production" mode, create a Beanstalk application (with a SQL database), upload your code on S3, and start the application.
+これにより、アプリケーションが「プロダクション」モードでパッケージ化され、（SQLデータベースを使用して）Beanstalkアプリケーションが作成され、S3にコードがアップロードされ、アプリケーションが起動されます。
 
-### Updating your deployed application
+### 展開したアプリケーションの更新
 
-You can update a deployed application by running the sub-generator again with `jhipster aws`.
+`jhipster aws`を使用してサブジェネレータを再度実行することで、デプロイされたアプリケーションを更新できます。
 
-Note that you will be prompted for your database credentials again but they will be ignored during the update.
+データベースの資格情報の入力が再度求められますが、更新時には無視されます。
 
-### Deleting your application
+### アプリケーションの削除
 
-- Delete the Elastic Beanstalk.
-- Delete S3 buckets relevant to the application.
-- Delete the [Amazon Relational Database Service (RDS)](https://aws.amazon.com/rds/) instance.
-- Delete the EC2 security groups relevant to the application. You can find this by looking at the description of the 
-security group which should say `Enable database access to Beanstalk application`.
+- Elastic Beanstalkを削除します。
+- アプリケーションに関連するS3バケットを削除します。
+- [Amazon Relational Database Service(RDS)](https://aws.amazon.com/rds/)インスタンスを削除します。
+- アプリケーションに関連するEC2セキュリティグループを削除します。
+これには`Enable database access to Beanstalk application`と書かれているはずです。
 
-### More information
+### 詳細情報
 
-*   [AWS SDK for JavaScript](http://aws.amazon.com/sdk-for-node-js)
-*   [Progressbar for WAR upload](https://github.com/tj/node-progress)
+*   [JavaScript用のAWS SDK](http://aws.amazon.com/sdk-for-node-js)
+*   [WARアップロードの進行状況バー](https://github.com/tj/node-progress)
