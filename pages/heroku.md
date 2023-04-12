@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deploying to Heroku
+title: Herokuへのデプロイ
 permalink: /heroku/
 redirect_from:
   - /heroku.html
@@ -9,22 +9,22 @@ sitemap:
     lastmod: 2020-06-06T00:00:00-00:00
 ---
 
-# Deploying to Heroku
+# Herokuへのデプロイ
 
-This sub-generator allows deployment of your JHipster application to the [Heroku cloud](https://www.heroku.com/){:target="_blank" rel="noopener"}.
+このサブジェネレータを使用すると、JHipsterアプリケーションを[Herokuクラウド](https://www.heroku.com/){:target="_blank" rel="noopener"}にデプロイできます。
 
 [![]({{ site.url }}/images/logo/logo-heroku.png)](https://www.heroku.com/){:target="_blank" rel="noopener"}
 
-Heroku is helping JHipster in two ways:
+Herokuは2つの方法でJHipsterを支援しています。
 
-- Joe Kutner, from Heroku, is currently maintaining this sub-generator
-- Heroku gives us free credits, allowing us to test generated applications with complex, high-end setups, to guarantee everything works well for our common users
+- HerokuのJoe Kutner氏は現在、このサブジェネレータをメンテナンスしています。
+- Herokuは私たちに無料のクレジットを提供し、私たちが複雑でハイエンドなセットアップで生成されたアプリケーションをテストできるようにしてくださっています。その結果、一般的なユーザーに対してすべてがうまく機能することを保証できます。
 
-## Running the sub-generator
+## サブジェネレータの実行
 
-Before running the sub-generator, you must install the [Heroku CLI](https://cli.heroku.com/){:target="_blank" rel="noopener"}.
+サブジェネレータを実行する前に、[Heroku CLI](https://cli.heroku.com/){:target="_blank" rel="noopener"}をインストールする必要があります。
 
-You must also [create a Heroku account](http://signup.heroku.com/){:target="_blank" rel="noopener"} and log in with the CLI by running the following command:
+また、[Herokuアカウントの作成](http://signup.heroku.com/){:target="_blank" rel="noopener"}を実行し、次のコマンドを実行してCLIでログインする必要があります。
 
 <pre>**$ heroku login**
 Enter your Heroku credentials.
@@ -34,138 +34,138 @@ Authentication successful.
 </pre>
 
 <div class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i>
-The Heroku sub-generator will always use free tiers/options. 
-Nevertheless installing addons needs a properly <a href="https://devcenter.heroku.com/articles/account-verification" target="_blank" rel="noopener">verified Heroku account</a>. Therefore to avoid any unexpected build failures, we would recommend verifying your Heroku account before starting this sub-generator.
+Herokuサブジェネレータは、常にフリーティア/オプションを使用します。
+それにもかかわらず、アドオンをインストールするには、適切に<a href="https://devcenter.heroku.com/articles/account-verification" target="_blank" rel="noopener">検証されたHerokuアカウント</a>が必要です。したがって、予期しないビルドエラーを回避するため、このサブジェネレータを起動する前にHerokuアカウントを検証することをお勧めします。
 </div>
 
-The Heroku sub-generator creates an application using [free dynos](https://devcenter.heroku.com/articles/dyno-types){:target="_blank" rel="noopener"} with add-ons matching your selected configuration.
+Herokuサブジェネレータは、選択した構成に一致するアドオンを使用した[free dynos](https://devcenter.heroku.com/articles/dyno-types){:target="_blank" rel="noopener"}を使用してアプリケーションを作成します。
 
-We support the following addons:
+次のアドオンをサポートしています。
 
-* [Heroku Postgres](https://www.heroku.com/postgres){:target="_blank" rel="noopener"} when using PostgreSQL
-* [JawsDB](https://elements.heroku.com/addons/jawsdb){:target="_blank" rel="noopener"} when using MySQL or MariaDB
-* [Heroku Redis](https://elements.heroku.com/addons/heroku-redis){:target="_blank" rel="noopener"} when [using Redis](/using-cache/#caching-with-redis)
-* [MemCachier](https://elements.heroku.com/addons/memcachier){:target="_blank" rel="noopener"} when [using Memcached](/using-cache/#caching-with-memcached)
-* [Bonsai Elasticsearch](https://elements.heroku.com/addons/bonsai){:target="_blank" rel="noopener"} when [using Elasticsearch](/using-elasticsearch/)
-* [Okta](https://elements.heroku.com/addons/okta){:target="_blank" rel="noopener"} when [using OAuth2/OIDC (optional)](/security/#oauth2)
+* [Heroku Postgres](https://www.heroku.com/postgres){:target="_blank" rel="noopener"}：PostgreSQLの使用
+* [JawsDB](https://elements.heroku.com/addons/jawsdb){:target="_blank" rel="noopener"}：MySQLまたはMariaDBの使用
+* [Heroku Redis](https://elements.heroku.com/addons/heroku-redis){:target="_blank" rel="noopener"}：[Redisの使用](/using-cache/#caching-with-redis)
+* [MemCachier](https://elements.heroku.com/addons/memcachier){:target="_blank" rel="noopener"}：[Memcachedの使用](/using-cache/#caching-with-memcached)
+* [Bonsai Elasticsearch](https://elements.heroku.com/addons/bonsai){:target="_blank" rel="noopener"}：[Elasticsearchの使用](/using-elasticsearch/)
+* [Okta](https://elements.heroku.com/addons/okta){:target="_blank" rel="noopener"}：[OAuth2/OIDC（オプション）の使用](/security/#oauth2)
 
 
-To deploy your application to Heroku, run this command:
+アプリケーションをHerokuにデプロイするには、次のコマンドを実行します。
 
 `jhipster heroku`
 
-This should package your application in "production" mode, create an Heroku application with a database, upload your code, and start the application.
+これにより、アプリケーションが「プロダクション」モードでパッケージ化され、データベースを持つHerokuアプリケーションが作成され、コードがアップロードされ、アプリケーションが起動されます。
 
 <div class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i>
-Note that if your application is a microservice, you will be prompted to provide a registry URL. Scroll down to learn how to do this.
+アプリケーションがマイクロサービスの場合は、レジストリURLを指定するように求められることに注意してください。これを行う方法については、下にスクロールしてください。
 </div>
 
 <div class="alert alert-warning"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-Please be aware that your application must start under 90 seconds, or it will be shutdown.
-Depending on the platform load, starting under 90 seconds is not guaranteed!
+アプリケーションは90秒以内に起動する必要があります。起動しない場合はシャットダウンされます。
+プラットフォームの負荷によっては、90秒未満での開始は保証されません。
 </div>
 
-## Changing the Java version
+## Javaバージョンの変更
 
-You can select the Java version when executing the Heroku sub-generator.
-By default this will be Java 11.
-You can find all on Heroku [supported Java version in the official documentation](https://devcenter.heroku.com/articles/java-support#supported-java-versions){:target="_blank" rel="noopener"}.
+Herokuサブジェネレータの実行時にJavaバージョンを選択できます。
+デフォルトでは、Java 11です。
+Heroku[公式ドキュメントでサポートされているJavaバージョン](https://devcenter.heroku.com/articles/java-support#supported-java-versions){:target="_blank" rel="noopener"}にすべて記載されています。
 
-If you want to change the Java version e.g. from `11` to `14` later you need to change it in `system.properties` in your projects root folder:
+Javaのバージョンを例えば後で`11`から`14`に変更したい場合は、プロジェクトのルートフォルダの`system.properties`で変更する必要があります。
 
 ```
 java.runtime.version=14
 ```
 
-When you redeploy your application it will use Java 14.
+アプリケーションを再デプロイすると、Java 14が使用されます。
 
-## Deploying your application
+## アプリケーションの導入
 
-By default the application will be [deployed via git](https://devcenter.heroku.com/articles/git){:target="_blank" rel="noopener"}.
-This means you push your code and Heroku will build and deploy it on their servers.
-If you can't or don't want to push code to someone else's server you can use the jar option and [deploy an executable jar](https://devcenter.heroku.com/articles/deploying-executable-jar-files){:target="_blank" rel="noopener"}.
-Heroku also supports [deploying a docker image](https://devcenter.heroku.com/articles/container-registry-and-runtime){:target="_blank" rel="noopener"}, but the sub-generator does not support this option yet.
+デフォルトでは、アプリケーションは[git経由でデプロイされます](https://devcenter.heroku.com/articles/git){:target="_blank" rel="noopener"}。
+これは、コードをプッシュすると、Herokuがそれをビルドしてサーバにデプロイすることを意味します。
+コードを他のサーバーにプッシュできない場合、またはプッシュしたくない場合は、jarオプションを使用して[実行可能なjarをデプロイできます](https://devcenter.heroku.com/articles/deploying-executable-jar-files){:target="_blank" rel="noopener"}。
+Herokuは[dockerイメージのデプロイ](https://devcenter.heroku.com/articles/container-registry-and-runtime){:target="_blank" rel="noopener"}もサポートしていますが、サブジェネレータはまだこのオプションをサポートしていません。
 
-### Updating your deployed application
+### 展開したアプリケーションの更新
 
-#### Using git option
+#### gitオプションの使用
 
-When deploying via git a new remote has been created called heroku.
-To deploy new code you need to push the changes to the heroku remote:
+git経由でデプロイする場合、herokuと呼ばれる新しいリモートが作成されています。
+新しいコードをデプロイするには、変更をherokuリモートにプッシュする必要があります。
 
 `git push heroku master`
 
 <div class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i>
-This assumes you have run the generator on the machine you are executing this command from.
-If you have not, you will need to follow the <a href="https://devcenter.heroku.com/articles/git#for-an-existing-heroku-app" target="_blank" rel="noopener">instructions for creating a Heroku remote</a>.
+これは、このコマンドを実行するマシン上でジェネレータを実行したことを前提としています。
+まだ作成していない場合は、<a href="https://devcenter.heroku.com/articles/git#for-an-existing-heroku-app" target="_blank" rel="noopener">の手順に従ってHerokuリモートを作成する必要があります。</a>.
 </div>
 
-#### Using jar option
+#### jarオプションを使用
 
-When you selected to deploy an executable jar you need to create the updated jar and deploy the new file to Heroku.
+実行可能なjarをデプロイすることを選択した場合、更新されたjarを作成し、新しいファイルをHerokuにデプロイする必要があります。
 
-##### Preparing a new jar
+##### 新しいJARの準備
 
-When your application is already deployed, you can prepare a new deployment with:
+アプリケーションがすでにデプロイされている場合は、次を使用して新しいデプロイを準備できます。
 
 `./mvnw package -Pprod -DskipTests`
 
-Or when using gradle:
+gradleを使用する場合は、次のように入力します。
 
 `./gradlew -Pprod bootJar -x test`
 
-##### Pushing to production
+##### 本番環境へのプッシュ配信
 
 <div class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i>
-This assumes you have run the generator on the machine you are executing this command from.
-If you have not, you will need to follow the instructions for installing the <a href="https://devcenter.heroku.com/articles/deploying-executable-jar-files" target="_blank" rel="noopener">Heroku Java CLI</a>.
+これは、このコマンドを実行するマシン上でジェネレータを実行したことを前提としています。
+まだインストールしていない場合は、<a href="https://devcenter.heroku.com/articles/deploying-executable-jar-files" target="_blank" rel="noopener">Heroku Java CLI</a>のインストール手順に従う必要があります。
 </div>
 
-To push to production, type:
+本番にプッシュするには、次のように入力します。
 
 `heroku deploy:jar target/*.jar`
 
-Or when using gradle:
+gradleを使用する場合は、次のように入力します。
 
 `heroku deploy:jar build/libs/*jar`
 
-## Deploying Docker to Heroku
+## HerokuへのDockerのデプロイ
 
-You can deploy your app as a Docker container to Heroku too. While this works, there's no Heroku setup and configuration that happens, so you have to do that manually. This documentation assumes you've already run `jhipster heroku` to deploy your app and therefore leverages the integration and add-on provisioning that this process performs.
+アプリをDockerコンテナとしてHerokuにデプロイもできます。これは動作しますが、Herokuのセットアップや設定は行われないため、手動で行う必要があります。このドキュメントでは、すでに`jhipster heroku`を実行してアプリをデプロイしていることを前提としているため、このプロセスが実行する統合とアドオンのプロビジョニングを活用しています。
 
-**NOTE**: If you're using a version of JHipster that's prior to v6.10.2, you'll need to add the following to `src/main/resources/config/application-heroku.yml`:
+**注**:v6.10.2より前のバージョンのJHipsterを使用している場合は、`src/main/resources/config/application-heroku.yml`に次の内容を追加する必要があります。
 
 ```yaml
 server:
   port: ${PORT:8080}
 ```
 
-Build your Docker image:
+Dockerイメージをビルドします。
 
 ```
 ./mvnw package -Pprod verify jib:dockerBuild
 ```
 
-If you're using Gradle:
+Gradleを使用している場合は、次のように入力します。
 
 ```
 ./gradlew -Pprod bootJar jibDockerBuild
 ```
 
-You can test it out locally using Docker Compose.
+Docker Composeを使ってローカルでテストができます。
 
 ```shell
 docker-compose -f src/main/docker/app.yml up
 ```
 
-Once you've confirmed everything works, create a new app on Heroku, and add it as a remote.
+すべてが動作することを確認したら、Herokuで新しいアプリを作成し、それをリモートとして追加します。
 
 ```shell
 heroku apps:create
 git remote add docker https://git.heroku.com/<your-new-app>.git
 ```
 
-Then run the commands below to deploy your JHipster app as a Docker image. Be sure to replace the `<...>` placeholders with your Heroku app name. If you don't know your app name, run `heroku apps`.
+次に、以下のコマンドを実行して、JHipsterアプリをDockerイメージとしてデプロイします。`<...>`プレースホルダをHerokuアプリ名に置き換えてください。アプリ名がわからない場合は、`heroku apps`を実行してください。
 
 ```shell
 heroku container:login
@@ -173,7 +173,7 @@ docker tag space registry.heroku.com/<heroku-app>/web
 docker push registry.heroku.com/<heroku-app>/web
 ```
 
-For example:
+次に例を示します。
 
 ```shell
 heroku container:login
@@ -181,32 +181,32 @@ docker tag space registry.heroku.com/fast-peak-70014/web
 docker push registry.heroku.com/fast-peak-70014/web
 ```
 
-At this point, you can use the PostgreSQL and Okta add-ons you've already configured. Run the following command to get the identifiers of the add-ons from the `heroku` remote that you first deployed to.
+この時点で、すでに設定したPostgreSQLとOktaのアドオンを使用できます。最初に展開した`heroku`リモートからアドオンの識別子を取得するには、次のコマンドを実行します。
 
 ```shell
 heroku addons --remote heroku
 ```
 
-Then you can attach these instances to your new application.
+その後、これらのインスタンスを新しいアプリケーションにアタッチできます。
 
 ```shell
 heroku addons:attach <postgresql-addon-name> --remote docker
 heroku addons:attach <okta-addon-name> --remote docker
 ```
 
-When you use `jhipster heroku` to deploy your application, it properly configures the database for you. However, when deploying it as a Docker container, none of that happens. Therefore, you need to set a few configuration variables so your Docker container can talk to PostgreSQL. First, run the following command to get the PostgreSQL URL.
+アプリケーションのデプロイに`jhipster heroku`を使用すると、データベースが適切に構成されます。ただし、Dockerコンテナとしてデプロイする場合は、そのようなことはありません。そのため、DockerコンテナがPostgreSQLと通信できるように、いくつかの設定変数を設定する必要があります。まず、次のコマンドを実行してPostgreSQL URLを取得します。
 
 ```
 heroku config:get DATABASE_URL --remote docker
 ```
 
-This command will retrieve a value with the following syntax:
+このコマンドは、次の構文で値を取得します。
 
 ```
 postgres://username:password@address
 ```
 
-Then, set the database environment variables to match the keys that are in `application-heroku.yml`:
+次に、`application-heroku.yml`にあるキーと一致するようにデータベース環境変数を設定します。
 
 ```shell
 heroku config:set JDBC_DATABASE_URL=jdbc:postgresql://<address> --remote docker
@@ -214,112 +214,112 @@ heroku config:set JDBC_DATABASE_USERNAME=<username> --remote docker
 heroku config:set JDBC_DATABASE_PASSWORD=<password> --remote docker
 ```
 
-Set the max amount of Java memory to use and specify the Spring profiles.
+使用するJavaメモリの最大量を設定し、Springプロファイルを指定します。
 
 ```shell
 heroku config:set JAVA_OPTS=-Xmx256m
 heroku config:set SPRING_PROFILES_ACTIVE=prod,heroku
 ```
 
-Run the command below to open your browser and navigate to your app.
+次のコマンドを実行してブラウザを開き、アプリケーションに移動します。
 
 ```
 heroku open --remote docker
 ```
 
-Copy the URL of your app and log in to your Okta developer account. Go to **Applications** > **Web** > **General** and add the URL to Login and Logout redirect URIs. Make sure the login redirect URI ends with `/login/oauth2/code/oidc`.
+あなたのアプリのURLをコピーして、あなたのOkta開発者アカウントにログインします。**Applications** > **Web** > **General** に移動して、ログインおよびログアウトリダイレクトURIにURLを追加します。ログインリダイレクトURIが`/login/oauth2/code/oidc`で終わることを確認してください。
 
-Now you should be able to release your container and start the app.
+これで、コンテナを解放してアプリを起動できるようになります。
 
 ```
 heroku container:release web --remote docker
 ```
 
-You can watch the logs to see if your container started successfully.
+ログを監視して、コンテナが正常に起動したかどうかを確認できます。
 
 ```
 heroku logs --tail --remote docker
 ```
 
-Now you should be able to open your app, click the **sign in** link, and authenticate!
+これで、アプリを開き、**サインイン**リンクをクリックして、認証できるはずです!
 
 ```
 heroku open --remote docker
 ```
 
-**NOTE**: You will **NOT** be able to login to your JHipster app using the admin account the Okta add-on provisions. To make sure you're not logged in with that account, we suggest you use a new private window to log in.
+**注**:Oktaアドオンが提供するadminアカウントを使用してJHipsterアプリにログインは**できません**。そのアカウントでログインしていないことを確認するために、新しいプライベートウィンドウを使用してログインすることをお勧めします。
 
-If you test your Dockerized JHipster app on [securityheaders.com](https://securityheaders.com), you'll see it scores an **A**!
+Docker化されたJHipsterアプリを[securityheaders.com](https://securityheaders.com)でテストすると、**A**のスコアが出ます!
 
-## Deploying Microservices
+## マイクロサービスのデプロイ
 
-JHipster microservices require a JHipster Registry as described in the [Doing microservices with JHipster](/microservices-architecture/) documentation. You can deploy a registry to Heroku by clicking this button:
+JHipsterマイクロサービスには、[JHipsterでマイクロサービスを実行する](/microservices-architecture/)ドキュメントで説明されているように、JHipsterレジストリが必要です。次のボタンをクリックすると、レジストリをHerokuにデプロイできます。
 
-[![Deploy to Heroku](https://camo.githubusercontent.com/c0824806f5221ebb7d25e559568582dd39dd1170/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e706e67)](https://dashboard.heroku.com/new?&template=https%3A%2F%2Fgithub.com%2Fjhipster%2Fjhipster-registry)
+[![Herokuにデプロイ](https://camo.githubusercontent.com/c0824806f5221ebb7d25e559568582dd39dd1170/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e706e67)](https://dashboard.heroku.com/new?&template=https%3A%2F%2Fgithub.com%2Fjhipster%2Fjhipster-registry)
 
-Once the registry is deployed, you can run the `jhipster heroku` command against your microservice or gateway. The Heroku sub-generator will prompt you for the URL of your registry, which will be in the form `https://[appname].herokuapp.com`.
+レジストリがデプロイされたら、マイクロサービスまたはゲートウェイに対して`jhipster heroku`コマンドを実行できます。HerokuサブジェネレータはレジストリのURLを要求します。このURLは`https://[appname].herokuapp.com`のような形式になります。
 
-A registry running on Heroku has a few limitations, including:
+Herokuで実行されるレジストリには、次のようないくつかの制限があります。
 
-*   The registry will only work with native configuration (and not Git config).
-*   The registry service cannot be scaled up to multiple dynos to provide redundancy. You must deploy multiple applications (i.e. click the button more than once). This is because Eureka requires distinct URLs to synchronize in-memory state between instances.
+*   レジストリはネイティブ設定でのみ動作します（Git設定では動作しません）。
+*   レジストリサービスは、冗長性を提供する複数のdynosにスケールアップできません。複数のアプリケーションをデプロイする必要があります（つまり、ボタンを複数回クリックする必要があります）。これは、Eurekaがインスタンス間のメモリ内状態を同期するために個別のURLを必要とするためです。
 
-### Using security with your JHipster Registry on Heroku
+### HerokuのJHipsterレジストリでセキュリティを使用する
 
-To get the automatically-generated admin password on the JHipster Registry, type:
+JHipsterレジストリに自動的に生成されたadminパスワードを取得するには、次のように入力します。
 
 `heroku config:get JHIPSTER_PASSWORD`
 
-To use this password, update all of your microservices and your gateway to use the credentials for the registry by running this command:
+このパスワードを使用するには、次のコマンドを実行して、レジストリの資格情報を使用するように、すべてのマイクロサービスとゲートウェイを更新します。
 
 `heroku config:set JHIPSTER_REGISTRY_URL="https://admin:[password]@[appname].herokuapp.com"`
 
-## Troubleshooting
+## トラブルシューティング
 
-If your application is stopped by Heroku when your Liquibase changelog is being applied, your database will be marked as "locked" by Liquibase. You will need to manually clean the lock table. On Postgres, you make sure you have a [local Postgres client installed](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup){:target="_blank" rel="noopener"} and run the following command:
+Liquibaseの変更ログが適用されているときにアプリケーションがHerokuによって停止された場合、データベースはLiquibaseによって「ロック済み」とマークされます。ロックテーブルを手動でクリーンアップする必要があります。Postgresでは、[ローカルPostgresクライアントがインストールされている](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup){:target="_blank" rel="noopener"}ことを確認し、次のコマンドを実行します。
 
 `heroku pg:psql -c "update databasechangeloglock set locked=false;"`
 
-Heroku has a default boot-timeout limit of 90 seconds. If your app takes longer than this, Heroku will stop the process, which may leave the database in a locked state. If the problem is persistent, try contacting [Heroku Support](http://help.heroku.com){:target="_blank" rel="noopener"} to request a longer boot limit for your app.
+Herokuのデフォルトのブートタイムアウト制限は90秒です。アプリがこれより長くかかる場合、Herokuはプロセスを停止し、データベースがロック状態のままになる可能性があります。問題が解決しない場合は、[Herokuサポート](http://help.heroku.com){:target="_blank" rel="noopener"}に連絡して、アプリのブート制限を延長するよう依頼してください。
 
-### Using Elasticsearch
+### Elasticsearchの使用
 
-The Bonsai used addon with the free sandbox plan does [only support Elasticsearch 7.10.x](https://docs.bonsai.io/article/139-which-versions-bonsai-supports){:target="_blank" rel="noopener"}.
-This might lead to some [incompatibilities](https://github.com/jhipster/generator-jhipster/issues/10003){:target="_blank" rel="noopener"} depending in the Spring Data and [JHipster versions you are using](https://github.com/jhipster/generator-jhipster/issues/18650){:target="_blank" rel="noopener"}. 
-JHipster [enforces bonsai compatible Elasticsearch](https://github.com/jhipster/generator-jhipster/pull/18774){:target="_blank" rel="noopener"} dependencies (e.g. clients) when deploying to Heroku. 
+無料サンドボックスプランのBonsai usedアドオンは、[Elasticsearch 7.10.xのみをサポート](https://docs.bonsai.io/article/139-which-versions-bonsai-supports){:target="_blank" rel="noopener"}します。
+これにより、使用しているSpring Dataと[JHipsterのバージョン](https://github.com/jhipster/generator-jhipster/issues/18650){:target="_blank" rel="noopener"}によっては、いくつかの[非互換性](https://github.com/jhipster/generator-jhipster/issues/10003){:target="_blank" rel="noopener"}が生じる可能性がります。
+JHipsterは、Herokuにデプロイするとき、[bonsaiと互換性のあるElasticsearch依存関係（クライアントなど）を強制します](https://github.com/jhipster/generator-jhipster/pull/18774){:target="_blank" rel="noopener"} 
 
 <div class="alert alert-warning"><i class="fa fa-money" aria-hidden="true"></i>
-If you are willing to use a <b>paid</b> addon you can use the <a href="https://devcenter.heroku.com/articles/foundelasticsearch" target="_blank" rel="noopener">official Elastic Cloud integration</a> to get access to the latest Elasticsearch version and features.
+<b>有料</b>のアドオンを使用する場合は、<a href="https://devcenter.heroku.com/articles/foundelasticsearch" target="_blank" rel="noopener">公式のElastic Cloud統合</a>を使用して、最新のElasticsearchバージョンと機能にアクセスできます。
 </div>
 
-### Using Okta
+### Oktaの使用
 
-When you select [Okta](https://elements.heroku.com/addons/okta){:target="_blank" rel="noopener"} the sub-generator will create a bash script which creates all groups and roles required by JHipster.
-When you login with the user and credentials provided during creation you will need to select a new password as the script makes sure to expire the password directly, 
-as it is stored in `.yo-rc.json`.
+[Okta](https://elements.heroku.com/addons/okta){:target="_blank" rel="noopener"}を選択すると、サブジェネレータは、JHipsterに必要なすべてのグループとロールを作成するbashスクリプトを作成します。
+作成時に指定されたユーザーおよび認証情報を使用してログインする場合は、新しいパスワードを選択する必要があります。これは、スクリプトが`.yo-rc.json`に格納されているパスワードを
+直接期限切れにするためです。
 
 <div class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i>
-The script to provision the Okta addon requires
+Oktaアドオンをプロビジョニングするスクリプトには、次のものが必要です。
 <ul>
-  <li><a href="https://curl.haxx.se/" target="_blank" rel="noopener">cURL</a> for web request to the <a href="https://developer.okta.com/docs/reference/" target="_blank" rel="noopener">Okta API</a></li>
-  <li><a href="https://stedolan.github.io/jq/" target="_blank" rel="noopener">jq</a> for parsing/manipulating JSON data</li>
+  <li><a href="https://curl.haxx.se/" target="_blank" rel="noopener">cURL</a>：<a href="https://developer.okta.com/docs/reference/" target="_blank" rel="noopener">Okta API</a>へのWebリクエスト</li>
+  <li><a href="https://stedolan.github.io/jq/" target="_blank" rel="noopener">jq</a>：JSONデータの解析/操作</li>
 </ul>
-If it can't find these tools the sub-generator will warn you and you have to execute <code class="highlighter-rouge">./provision-okta-addon.sh</code> manually.
+これらのツールが見つからない場合は、サブジェネレータから警告が表示されるので、<code class="highlighter-rouge">./provision-okta-addon.sh</code>を手動で実行する必要があります。
 </div>
 
-### Free dynos
+### フリーのdyno
 
-Free dynos are limited and should not be used for production deployment, because
+フリーのdynoには制限があるため、実動デプロイメントには使用すべきではありません。以下に理由を示します。
 
-* they fall to sleep after [30 minutes idle period](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping){:target="_blank" rel="noopener"}
-* they have [limited dyno hours per month](https://devcenter.heroku.com/articles/free-dyno-hours#usage){:target="_blank" rel="noopener"}. When these are consumed your dynos won't run until the next month!
+* [30分間のアイドル期間](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping){:target="_blank" rel="noopener"}後に停止します。
+* [月にdynoが動く時間に制限があります](https://devcenter.heroku.com/articles/free-dyno-hours#usage){:target="_blank" rel="noopener"}。これらが消費されると、あなたのdynosは来月まで実行されません！
 
-You can upgrade your dyno configuration directly from the Heroku admin ui.
-If you realize e.g. a database plan is too small for you can select a new plan from the admin ui.
+Heroku管理UIから直接dyno設定をアップグレードできます。
+たとえば、データベース計画が小さすぎることに気付いた場合は、管理UIから新しい計画を選択できます。
 
-## More information
+## 詳細情報
 
-*   [Example Application](https://github.com/kissaten/jhipster-example){:target="_blank" rel="noopener"}
-*   [Spring Boot Heroku documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/deployment.html#cloud-deployment-heroku){:target="_blank" rel="noopener"}
-*   [Heroku free dyno documentation](https://devcenter.heroku.com/articles/free-dyno-hours){:target="_blank" rel="noopener"}
-*   [Heroku Java support documentation](https://devcenter.heroku.com/articles/java-support#supported-java-versions){:target="_blank" rel="noopener"}
+*   [適用例](https://github.com/kissaten/jhipster-example){:target="_blank" rel="noopener"}
+*   [Spring Boot Herokuドキュメント](https://docs.spring.io/spring-boot/docs/current/reference/html/deployment.html#cloud-deployment-heroku){:target="_blank" rel="noopener"}
+*   [Herokuフリーdynoドキュメント](https://devcenter.heroku.com/articles/free-dyno-hours){:target="_blank" rel="noopener"}
+*   [Heroku Javaサポートドキュメント](https://devcenter.heroku.com/articles/java-support#supported-java-versions){:target="_blank" rel="noopener"}
