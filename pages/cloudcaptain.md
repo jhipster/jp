@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deploying to AWS with CloudCaptain
+title: CloudCaptainを使ったデプロイ
 permalink: /cloudcaptain/
 redirect_from:
   - /cloudcaptain.html
@@ -11,44 +11,44 @@ sitemap:
     lastmod: 2022-01-21T00:00:00-00:00
 ---
 
-# Deploying to AWS with CloudCaptain
+# CloudCaptainを使ったデプロイ
 
-This guide show how to deploy your JHipster application to AWS using [CloudCaptain](https://cloudcaptain.sh/).
+このガイドでは、[CloudCaptain](https://cloudcaptain.sh/)を使用してJHipsterアプリケーションをデプロイする方法を示します。
 
 [![]({{ site.url }}/images/logo/logo-cloudcaptain.png)](https://cloudcaptain.sh/)
 
-CloudCaptain comes with **first-class support for JHipster** and works by creating minimal immutable machine images for your application, which can then be deployed either on VirtualBox or on AWS.
+CloudCaptainは**JHipsterの最高クラスのサポート**を提供しており、アプリケーションに対して最小限の不変マシンイメージを作成することで機能します。
 
-<div class="alert alert-info"><i>Tip: </i>
+<div class="alert alert-info"><i>ヒント:</i>
 
-As an alternative to CloudCaptain you can also deploy your JHipster application to AWS using <a href="{{ site.url }}/aws/">Elastic Beanstalk</a>.
+CloudCaptainの代わりに、<a href="{{ site.url }}/aws/">Elastic Beanstalk</a>を使用してJHipsterアプリケーションをデプロイできます。
 
 </div>
 
-## Prerequisites
+## 前提条件
 
-To be able to deploy, you must first [create a CloudCaptain account](https://console.cloudcaptain.sh) and install the [CloudCaptain Client](https://cloudcaptain.sh/getstarted/download).
+デプロイするには、まず[CloudCaptainのアカウントを作成](https://console.cloudcaptain.sh)し、[CloudCaptainクライアント](https://cloudcaptain.sh/getstarted/download)をインストールする必要があります。
 
-You will also need to connect your AWS account in the [CloudCaptain Console](https://console.cloudcaptain.sh).
+また、[CloudCaptainコンソール](https://console.cloudcaptain.sh)でアカウントに接続する必要があります。
 
-## Preparing a deployment
+## デプロイの準備
 
-When your application is ready, you can prepare it for deployment by typing:
+アプリケーションの準備ができたら、次のように入力してデプロイの準備をします。
 
 `./mvnw package -Pprod -DskipTests`
 
-Or when using gradle:
+gradleを使用する場合は以下です。
 
 `./gradlew -Pprod bootJar -x test`
 
-## Deploying to AWS
+## AWSへのデプロイ
 
-To deploy your application to AWS type:
+アプリケーションをAWSにデプロイするには、次のように入力します。
 
 `boxfuse run -env=prod`
 
-CloudCaptain will then analyse your application, fuse a minimal machine image for it and automatically provision, configure and secure all necessary
-AWS infrastructure (instances, security groups, Elastic IPs, ELBs, MySQL or PostgreSQL RDS databases, ...)
+その後、CloudCaptainはアプリケーションを分析し、そのための最小限のマシンイメージを融合し、必要なすべての
+AWSインフラストラクチャ（インスタンス、セキュリティグループ、Elastic IP、ELB、MySQL、PostgreSQL RDSデータベースなど）のプロビジョニング、設定、セキュリティ保護を自動的に行います。
 
 <pre>Creating jhipster ...
 Mapping jhipster-dev-myuser.boxfuse.io to 127.0.0.1 ...
@@ -78,16 +78,16 @@ Remapping Elastic IP 52.29.78.197 to i-95d15028 ...
 Waiting 15s for AWS to complete Elastic IP Zero Downtime transition ...
 Deployment completed successfully. myuser/jhipster:1.0 is up and running at http://jhipster-myuser.boxfuse.io:8080/</pre>
 
-Note that you didn't need to explicitly specify things like ports, healthcheck urls or database types. By default CloudCaptain auto-discovers those
-from your JHipster war based on your `application-prod.yml` file and the included jars. 
-You can override those auto-discovered settings if you want to, but in most cases you won't need to.
+ポート、ヘルスチェックURL、データベースタイプなどを明示的に指定する必要はないことに注意してください。デフォルトでは、CloudCaptainは
+`application-prod.yml`ファイルと含まれるjarに基づいて、JHipster warからそれらを自動検出します。
+必要に応じて、これらの自動検出設定を上書きできますが、ほとんどの場合、上書きする必要はありません。
 
-## Deploying updates
+## アップデートの導入
 
-To deploy an update to an existing application follow the preparation and deploy steps outlined above. All updates
-are performed as zero downtime-blue deployments.
+既存のアプリケーションに更新をデプロイするには、前述の準備およびデプロイの手順に従います。すべての更新は、
+停止時間ゼロのブルー・デプロイメントとして実行されます。
 
-## More information
+## 詳細情報
 
-*   [Get Started with CloudCaptain and JHipster](https://cloudcaptain.sh/getstarted/jhipster)
-*   [JHipster CloudCaptain documentation](https://cloudcaptain.sh/docs/payloads/jhipster)
+*   [CloudCaptainとJHipsterの入門](https://cloudcaptain.sh/getstarted/jhipster)
+*   [JHipster CloudCaptainドキュメント](https://cloudcaptain.sh/docs/payloads/jhipster)

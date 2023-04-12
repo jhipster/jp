@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deploying to Cloud Foundry
+title: Cloud Foundryへのデプロイ
 permalink: /cloudfoundry/
 redirect_from:
   - /cloudfoundry.html
@@ -9,56 +9,56 @@ sitemap:
     lastmod: 2014-11-04T00:00:00-00:00
 ---
 
-# Deploying to Cloud Foundry
+# Cloud Foundryへのデプロイ
 
-This sub-generator allows to deploy automatically your JHipster application to a [Cloud Foundry PaaS](http://cloudfoundry.org/).
+このサブジェネレータを使用すると、JHipsterアプリケーションを[Cloud Foundry PaaS](http://cloudfoundry.org/)に自動的にデプロイできます。
 
-It works with MySQL, PostgreSQL and MongoDB cloud providers.
+MySQL、PostgreSQL、MongoDBクラウドプロバイダで動作します。
 
-## Supported clouds
+## サポートされるクラウド
 
 [![]({{ site.url }}/images/logo/logo-pws.png)](http://run.pivotal.io/)
 
-As this sub-generator uses the Cloud Foundry command-line tool, it can deploy to all Cloud Foundry instances:
+このサブジェネレータはCloud Foundryコマンドラインツールを使用しており、すべてのCloud Foundryインスタンスにデプロイできます。
 
-*   [Pivotal Web Services](http://run.pivotal.io/), which officially sponsors JHipster, so it is the only one we can test and provide support on
+*   [Pivotal Web Services](http://run.pivotal.io/)は公式にJHipsterを後援しており、私たちが唯一テストやサポートを提供できるものです。
 *   [Atos Canopy](https://canopy-cloud.com/)
 *   [IBM Bluemix](https://console.ng.bluemix.net/)
-*   And your own private Cloud Foundry instance if you have decided to install Cloud Foundry yourself!
+*   また、Cloud Foundryを自分でインストールすることにした場合は、自分専用のCloud Foundryインスタンスを用意します！
 
-## Running the sub-generator
+## サブジェネレータの実行
 
-Before running the sub-generator, you need to install the [cf Command Line Interface (CLI)](http://docs.cloudfoundry.org/devguide/installcf/), and have a Cloud Foundry account created.
+サブジェネレータを実行する前に、[cf Command Line Interface (CLI)](http://docs.cloudfoundry.org/devguide/installcf/)をインストールし、Cloud Foundryアカウントを作成する必要があります。
 
-To deploy your application to Cloud Foundry, type:
+アプリケーションをCloud Foundryにデプロイするには、次のように入力します。
 
 `jhipster cloudfoundry`
 
-You will have a couple of questions to configure your database, asking you the name of your database service and the plan you want to use. The available databases depend on your current Cloud Foundry installation, type `cf marketplace` to know which services and plans are available on your Cloud Foundry marketplace. By default, the database and plan selected are the free PostgreSQL service from ElephantSQL on the public Pivotal Cloud Foundry instance, as they sponsor JHipster.
+データベースを設定するには、データベースサービスの名前と使用するプランを尋ねるいくつかの質問があります。使用可能なデータベースは、現在インストールされているCloud Foundryによって異なります。`cf marketplace`と入力すると、Cloud Foundryマーケットプレイスで使用可能なサービスとプランがわかります。デフォルトでは、JHipsterのスポンサーであることから、パブリックなPivotal Cloud Foundryインスタンス上でElephantSQLの無償PostgreSQLサービスがデータベースとプランとして選択されます。
 
-This should package your application (in production or development mode), create a Cloud Foundry application (with a database), upload your code, and start the application.
+これにより、アプリケーションが（プロダクションモードまたは開発モードで）パッケージ化され、Cloud Foundryアプリケーションが（データベースとともに）作成され、コードがアップロードされ、アプリケーションが起動します。
 
-## Updating your deployed application
+## デプロイしたアプリケーションを更新する
 
-When your application is already deployed, you can re-deploy it by building it normally by running:
+アプリケーションがすでにデプロイされている場合は、次のコマンドを実行して通常どおりに構築することで、再デプロイできます。
 
-**With Maven:**
+**Mavenの場合:**
 
 `./mvnw -Pprod package`
 
 `cf push -f ./deploy/cloudfoundry/manifest.yml -p target/*.jar`
 
-**With Gradle:**
+**Gradleの場合:**
 
 `./gradlew -Pprod bootJar`
 
 `cf push -f ./deploy/cloudfoundry/manifest.yml -p build/libs/*.jar`
 
-You can also run the sub-generator again, by typing another time:
+別の機会に次のように入力して、サブジェネレータを再度実行できます。
 
 `jhipster cloudfoundry`
 
-## More information
+## 詳細情報
 
-*   [Spring Boot Cloud Foundry documentation](http://docs.spring.io/spring-boot/docs/current/reference/html/cloud-deployment.html)
-*   [Spring Cloud Connectors](http://cloud.spring.io/spring-cloud-connectors/)
+*   [Spring Boot Cloud Foundryドキュメント](http://docs.spring.io/spring-boot/docs/current/reference/html/cloud-deployment.html)
+*   [Spring Cloudコネクタ](http://cloud.spring.io/spring-cloud-connectors/)

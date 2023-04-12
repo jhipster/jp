@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deploying to Cloud
+title: クラウドへのデプロイ
 permalink: /clever-cloud/
 redirect_from:
   - /clever-cloud.html
@@ -9,29 +9,29 @@ sitemap:
     lastmod: 2020-10-09T00:00:00-00:00
 ---
 
-# Deploying to Clever Cloud
-[Clever cloud](https://www.clever-cloud.com/){:target="_blank" rel="noopener"} is an IT Automation platform
+# Clever Cloudへのデプロイ
+[Clever cloud](https://www.clever-cloud.com/){:target="_blank" rel="noopener"}はIT自動化プラットフォームです。
 
 [<img src="{{ site.url }}/images/logo/logo_clever_cloud.png" alt="Clever cloud logo" width="300px" />](https://www.clever-cloud.com/){:target="_blank" rel="noopener"}
 
-## Before you start
+## 開始する前に
 
-You must install the [Clever cloud CLI](https://www.clever-cloud.com/doc/clever-tools/getting_started/){:target="_blank" rel="noopener"}.
+[Clever cloud CLI](https://www.clever-cloud.com/doc/clever-tools/getting_started/){:target="_blank" rel="noopener"}をインストールする必要があります。
 
-You must also [create a Clever Cloud account](https://api.clever-cloud.com/v2/sessions/signup){:target="_blank" rel="noopener"} and log in with the CLI by running the following command `clever login`
+また、[Clever Cloudアカウントを作成](https://api.clever-cloud.com/v2/sessions/signup){:target="_blank" rel="noopener"}し、次のコマンド`clever login`を実行してCLIでログインする必要があります。
 <pre>
 Opening https://console.clever-cloud.com/cli-oauth?cli_version=2.7.1&cli_token=XXX in your browser to log you in…
 Login successful as ...
 </pre>
 
 
-## Create your Clever Cloud application
+## Clever Cloudアプリケーションを作成する
 
-1. If you are using maven `clever create --type maven [your application name]` or using gradle `clever create --type gradle [your application name]`
+1. mavenの場合は`clever create --type maven [your application name]`、gradleの場合は`clever create --type gradle [your application name]`となります。
 
-2. Add a database addon to your application `clever addon create [addon provider] [your addon name] --link [your application name]`
+2. データベースアドオンをアプリケーションに追加します。`clever addon create [addon provider] [your addon name] --link [your application name]`
 
-    List supported addon providers `clever addon providers`
+    サポートされているアドオンプロバイダの一覧は`clever addon providers`で出力されます。    
     <pre>
     cellar-addon      Cellar S3 storage       S3-like online file storage web service
     config-provider   Configuration provider  Expose configuration to your applications  (via environment variables)
@@ -43,21 +43,21 @@ Login successful as ...
     redis-addon       Redis                   Redis by Clever Cloud is an in-memory key-value data store, powered by Clever Cloud
     </pre>
 
-    [see supported addons](https://www.clever-cloud.com/doc/addons/clever-cloud-addons/#available-add-ons)
+    [サポートされているアドオンはこちらを参照ください](https://www.clever-cloud.com/doc/addons/clever-cloud-addons/#available-add-ons)
 
-3. Setup env var `clever env set CC_PRE_RUN_HOOK "cp ./clevercloud/application-clevercloud.yml ./application-prod.yml"`
+3. 環境変数をセットアップします。`clever env set CC_PRE_RUN_HOOK "cp ./clevercloud/application-clevercloud.yml ./application-prod.yml"`
 
-4. Enable dedicated build `clever scale --build-flavor M`
+4. 専用ビルドを有効にします `clever scale --build-flavor M`
 
-    [see dedicated build](https://www.clever-cloud.com/doc/admin-console/apps-management/#dedicated-build)
+    [専用ビルドを参照ください](https://www.clever-cloud.com/doc/admin-console/apps-management/#dedicated-build)
 
 
-## Configure your JHipster application
-1. Add a `clevercloud/` folder in your project.
+## JHipsterアプリケーションの設定
+1. プロジェクトに`clevercloud/`フォルダを追加します。
 
-2. create `clevercloud/application-clevercloud.yml` for using predefined clever cloud addon env var
+2. 事前定義されたclever cloud addon環境変数を使用するための`clevercloud/application-clevercloud.yml`を作成します。
 
-    For PostgreSQL
+    PostgreSQLの場合
     <pre>
     spring:
         datasource:
@@ -69,7 +69,7 @@ Login successful as ...
                 maximumPoolSize: 2
     </pre>
 
-    For MySQL
+    MySQLの場合
     <pre>
     spring:
         datasource:
@@ -81,7 +81,7 @@ Login successful as ...
                 maximumPoolSize: 2
     </pre>
 
-    For MongoDB
+    MongoDBの場合
     <pre>
     spring:
       data:
@@ -92,10 +92,10 @@ Login successful as ...
 
 
 
-3. add a json file that contain the goal field to indicate how to start your application
+3. アプリケーションの起動方法を示すゴールフィールドを含むjsonファイルを追加します。
 
-    For maven
-    create `clevercloud/maven.json` file and using your pom.xml **artifactId**
+    mavenの場合
+    `clevercloud/maven.json`ファイルを作成し、pom.xmlの**artifactId**を使用します。
     
     <pre>
     {
@@ -109,8 +109,8 @@ Login successful as ...
     }
     </pre>
 
-    For gradle
-    create `clevercloud/gradle.json` file  and using gradle.properties **rootProject.name**
+    gradleの場合
+    `clevercloud/gradle.json`ファイルを作成し、gradleを使用します。プロパティは**rootProject.name**を使用します。
 
     <pre>
     {
@@ -124,21 +124,21 @@ Login successful as ...
     }
     </pre>
 
-## Deploy your application
-### Using CLI
-You must commit before deploy
+## アプリケーションのデプロイ
+### CLIの使用
+デプロイ前にコミットする必要があります。
 
 `git commit -m "Clever deploy"`
 
-then run :
+その後、実行します。
 
 `clever deploy`
 
-### Using gitlab CI
+### gitlab CIの使用
 
-define `$CLEVER_TOKEN` and `CLEVER_SECRET` to gitlab CI/CD environment variables
+gitlab CI/CD環境変数に`$CLEVER_TOKEN`と`CLEVER_SECRET`を定義してください。
 
-add this stage to your `.gitlab-ci.yml`
+このステージを`.gitlab-ci.yml`に追加してください。
 <pre>
 deploy-to-clever-env:
   stage: deploy
@@ -156,11 +156,11 @@ deploy-to-clever-env:
     url: https://${APP_NAME}.cleverapps.io
 </pre>
 
-## Using Github Action
+## Githubアクションの使用
 
-define `CLEVER_TOKEN` and `CLEVER_SECRET` to Github secret (Settings > Secret)
+Githubシークレットに`CLEVER_TOKEN`と`CLEVER_SECRET`を定義します（Settings > Secret）。
 
-add this step to your `.github-action.yml`
+このステップを`.github-action.yml`に追加してください。
 <pre>
 - uses: actions/checkout@v2
 - name: Deploy on cc
@@ -176,15 +176,15 @@ add this step to your `.github-action.yml`
     ./clever-tools-latest_linux/clever deploy -f -a ${{ env.APP_NAME }}
 </pre>
 
-## Changing the Java version
+## Javaバージョンの変更
 
-You can select the Java version (Java 11 by default)
+Javaバージョン（デフォルトではJava 11）を選択できます。
 ```
 clever env set CC_JAVA_VERSION 12
 ```
 
-## More information
+## 詳細情報
 
-*   [Clever Cloud documentation](https://www.clever-cloud.com/doc/)
-*   [Clever Cloud Java maven deployment](https://www.clever-cloud.com/doc/java/java-maven/)
-*   [Clever Cloud Java gradle deployment](https://www.clever-cloud.com/doc/java/java-gradle/)
+*   [Clever Cloudドキュメント](https://www.clever-cloud.com/doc/)
+*   [Clever Cloud Java mavenによるデプロイ](https://www.clever-cloud.com/doc/java/java-maven/)
+*   [Clever Cloud Java gradleによるデプロイ](https://www.clever-cloud.com/doc/java/java-gradle/)

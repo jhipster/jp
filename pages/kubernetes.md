@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deploying to Kubernetes
+title: Kubernetesへのデプロイ
 permalink: /kubernetes/
 redirect_from:
   - /kubernetes.html
@@ -9,169 +9,169 @@ sitemap:
     lastmod: 2018-06-10T00:00:00-00:00
 ---
 
-# Deploying to Kubernetes
+# Kubernetesへのデプロイ
 
-JHipster app(s) and associated services can be deployed in the following ways
+JHipsterアプリケーションおよび関連サービスは、次の方法でデプロイできます。
 
-- Standard kubectl/kustomize/skaffold sub-generator `jhipster kubernetes|k8s`
-- Helm sub-generator `jhipster kubernetes-helm|helm-k8s`
-- Knative sub-genarator `jhipster kubernetes-knative|knative`
+- 標準kubectl/kustomize/skaffoldサブジェネレータ`jhipster kubernetes|k8s`
+- Helmサブジェネレータ`jhipster kubernetes-helm|helm-k8s`
+- Knativeサブジェネレータ`jhipster kubernetes-knative|knative`
 
 # `jhipster kubernetes | k8s`
 
-This sub-generator generates manifests that is deployed to [Kubernetes](http://kubernetes.io/) through `kubectl/kustomize/skaffold cli`.
+このサブジェネレータは、`kubectl/kustomize/skaffold cli`を介して[Kubernetes](http://kubernetes.io/)にデプロイされるマニフェストを生成します。
 
 [![]({{ site.url }}/images/logo/logo-kubernetes.png)](http://kubernetes.io/)
 
-## Limitations
+## 制限事項
 
-- Cassandra is not supported yet
-- Kubernetes v1.9+ is required
+- Cassandraはまだサポートされていません。
+- Kubernetes v1.9以上が必要です。
 
-## Pre-requisites
+## 前提条件
 
-You have to install:
+次をインストールする必要があります。
 
 - [Docker](https://docs.docker.com/installation/#installation)
 - [kubectl](http://kubernetes.io/docs/user-guide/prereqs/)
 
-You must have a Docker registry. If you don’t have one, you can use the official [Docker Hub](https://hub.docker.com/).
+Dockerのレジストリが必要です。レジストリがない場合は、公式の[Docker Hub](https://hub.docker.com/)を使用できます。
 
 ## Minikube
 
-[Minikube](https://github.com/kubernetes/minikube) is a tool that helps to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM on your laptop for users looking to try out Kubernetes or develop with it day-to-day.
+[Minikube](https://github.com/kubernetes/minikube)は、Kubernetesをローカルで実行するのに役立つツールです。Minikubeは、Kubernetesを試したり日常的にKubernetesを使用して開発したりすることを検討しているユーザーむけに、ラップトップ上のVM内で単一ノードのKubernetesクラスタを実行します。
 
-You can use it to test your application before pushing it to [Kubernetes](http://kubernetes.io/).
+[Kubernetes](http://kubernetes.io/)にプッシュする前にアプリケーションをテストする目的で使用できます。
 
-## Running the sub-generator
+## サブジェネレータの実行
 
-To generate config files for Kubernetes, run this command in a new folder:
+Kubernetesの設定ファイルを生成するには、新しいフォルダで次のコマンドを実行します。
 
 `jhipster kubernetes | k8s`
 
-Then answer all the questions to deploy your application.
+次に、アプリケーションをデプロイするためのすべての質問に答えます。
 
-### Which *type* of application would you like to deploy?
+### Which *type* of application would you like to deploy?（どの*種類*のアプリケーションを展開しますか?）
 
-Your type of application depends on whether you wish to deploy a microservices architecture or classical applications.
+アプリケーションのタイプは、マイクロサービスアーキテクチャをデプロイするか、従来のアプリケーションをデプロイするかによって異なります。
 
-### Enter the root directory where your applications are located
+### Enter the root directory where your applications are located（アプリケーションが格納されているルートディレクトリを入力してください）
 
-Enter the path.
+パスを入力します。
 
-### Which applications do you want to include in your Kubernetes configuration?
+### Which applications do you want to include in your Kubernetes configuration?（どのアプリケーションをKubernetes構成に含めますか?）
 
-Select your applications.
+アプリケーションを選択します。
 
-### Do you want to setup monitoring for your applications?
+### Do you want to setup monitoring for your applications?（アプリケーションのモニタリングを設定しますか?）
 
-Select the option.
+オプションを選択します。
 
-### Enter the admin password used to secure the JHipster Registry admin
+### Enter the admin password used to secure the JHipster Registry admin（JHipsterレジストリの管理者を保護するために使用する管理者パスワードを入力してください）
 
-This question is only displayed if you choose microservices architecture.
+この質問は、マイクロサービスアーキテクチャを選択した場合にのみ表示されます。
 
-### What should we use for the Kubernetes namespace?
+### What should we use for the Kubernetes namespace?（Kubernetesネームスペースには何を使用しますか?）
 
-See the documentation on namespace [here](http://kubernetes.io/docs/user-guide/namespaces/)
+namespaceに関する[この](http://kubernetes.io/docs/user-guide/namespaces/)ドキュメントを参照してください。
 
-### What should we use for the base Docker repository name?
+### What should we use for the base Docker repository name?（ベースのDockerリポジトリ名には何を使用しますか?）
 
-If you choose [Docker Hub](https://hub.docker.com/) as main registry, it will be your Docker Hub login.
+メインレジストリとして[Docker Hub](https://hub.docker.com/)を選択すると、それがDocker Hubログインになります。
 
-If you choose [Google Container Registry](https://cloud.google.com/container-registry/), then it'll be `gcr.io/[PROJECT ID]`, or a regional registry, such as `eu.gcr.io/[PROJECT ID]`, `us.gcr.io/[PROJECT ID]`, or `asia.gcr.io/[PROJECT ID]`. See [Pushing and Pulling Images](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for more detial.
+[Google Container Registry](https://cloud.google.com/container-registry/)を選択した場合は、`gcr.io/[PROJECT ID]`、または`eu.gcr.io/[PROJECT ID]`、`us.gcr.io/[PROJECT ID]`、`asia.gcr.io/[PROJECT ID]`などの地域レジストリになります。詳細は、[イメージのプッシュとプル](https://cloud.google.com/container-registry/docs/pushing-and-pulling)を参照してください。
 
-If you choose other registries like [Harbor](https://goharbor.io/), [Quay](https://www.openshift.com/products/quay) or something similar, then the login would be like `<registry_server>/<repo>/[PROJECT ID]`
+[Harbor](https://goharbor.io/),[Quay](https://www.openshift.com/products/quay)などの他のレジストリを選択した場合、ログインは`<registry_server>/<repo>/[PROJECT ID]`のようになります。
 
-### What command should we use for push Docker image to repository?
+### What command should we use for push Docker image to repository?（Dockerイメージをリポジトリにプッシュするために、どのコマンドを使用しますか?）
 
-The default command to push to Docker Hub is `docker image push`
+Docker Hubにプッシュするデフォルトのコマンドは`docker image push`です。
 
-If you use Google Container Registry to publish your Docker images, it will be: `gcloud docker push`
+Google Container Registryを使用してDockerイメージを公開する場合は、`gcloud docker push`になります。
 
-### Choose the Kubernetes service type for your edge services?
+### Choose the Kubernetes service type for your edge services?（エッジサービスのKubernetesサービスタイプを選択しますか?）
 
-Select the appropriate K8s routing type.
+適切なk8sのルーティングタイプを選択します。
 
-These are the standard prompts. In addition, other prompts will be shown based on choosing options like Istio, Ingress etc.
+これらは標準のプロンプトです。さらに、IstioやIngressなどのオプションを選択すると、他のプロンプトが表示されます。
 
-## Updating your deployed application
+## 展開したアプリケーションを更新
 
-### Preparing a new deployment
+### 新しい展開の準備
 
-When your application is already deployed, you can re-deploy it by building a new Docker image:
+アプリケーションがすでにデプロイされている場合は、新しいDockerイメージを構築することで再デプロイできます。
 
 `./mvnw package -Pprod -DskipTests jib:dockerBuild`
 
-Or when using Gradle:
+Gradleを使用する場合は次のようにします。
 
 `./gradlew -Pprod bootJar jibDockerBuild -x test`
 
-### Pushing to Docker Hub
+### Docker Hubへのプッシュ
 
-Tag locally your image:
+イメージにローカルでタグを付けます。
 
 `docker image tag application username/application`
 
-Push your image to Docker Hub:
+イメージをDocker Hubにプッシュします。
 
 `docker image push username/application`
 
-## Deploying a monolith/microservice application
+## モノリス/マイクロサービスアプリケーションのデプロイ
 
-You can deploy all your apps by running the below command:
+次のコマンドを実行すると、すべてのアプリケーションを展開できます。
 
 ```
 ./kubectl-apply.sh -f (default option)  [or] ./kubectl-apply.sh -k (kustomize option) [or] ./kubectl-apply.sh -s (skaffold run)
 ```
 
-You can deploy apps using kustomize:
+kustomizeを使用してアプリケーションをデプロイできます。
 
 ```
 kubectl apply -k ./
 ```
 
-You can deploy apps using skaffold:
+skaffoldを使用してアプリケーションをデプロイできます。
 
 ```
 skaffold run [or] skaffold deploy
 ```
 
-It will deploy your apps and its associated dependent services (database, elasticsearch, etc.).
+アプリケーションとそれに関連する依存サービス（データベース、elasticsearchなど）をデプロイします。
 
-### Custom namespaces
+### カスタム名前空間
 
-It is possible to specify a custom namespace for the entire deployment. To perform custom commands, you have to specify the target namespace, like in this example:
+配置全体に対してカスタム・ネームスペースを指定できます。カスタム・コマンドを実行するには、次の例のようにターゲット・ネームスペースを指定する必要があります。
 
 `kubectl get pods -n <custom-namespace>`
 
-### Scaling your deployments
+### 導入環境の拡張
 
-You can scale your applications using
+次の方法でアプリケーションを拡張できます。
 
 `kubectl scale deployment <app-name> --replicas <replica-count> `
 
-### Zero downtime deployments
+### ダウンタイムなしの導入
 
-The default way to update a running application in Kubernetes is to deploy a new image tag to your Docker registry and then deploy it using:
+Kubernetesで実行中のアプリケーションを更新するデフォルトの方法として、新しいイメージタグをDockerレジストリにデプロイし、それを使って次のようにしてデプロイします。
 
 `kubectl set image deployment/<app-name>-app <app-name>=<new-image>`
 
-Using livenessProbes and readinessProbe allows you to tell Kubernetes about the state of your applications, in order to ensure availability of your services. You will need a minimum of 2 replicas for every application if you want to have zero downtime deployment. This is because the rolling upgrade strategy first stops a running replica in order to place a new one. Running only one replica will cause a short downtime during upgrades.
+livenessProbesとreadinessProbeを使用すると、サービスの可用性を確保するために、アプリケーションの状態をKubernetesに通知できます。ダウンタイムをゼロにしてデプロイする場合は、各アプリケーションに少なくとも2つのレプリカが必要です。これは、ローリングアップグレード戦略では、新しいレプリカを配置するために、実行中のレプリカを最初に停止するためです。1つのレプリカのみを実行すると、アップグレード中に短いダウンタイムが発生します。
 
-### Deploying a Service Registry in Kubernetes
+### Kubernetesでのサービスレジストリのデプロイ
 
-Although Kubernetes features its own internal service discovery with **Kube-DNS**, JHipster rely on Spring Cloud for service discovery, so it depends on a third party service registry like Eureka or Consul. This has the advantage of being platform independent and to work similarly in production and on a local development machine.
+Kubernetesは**Kube-DNS**を使用した独自の内部サービスディスカバリを特徴としていますが、JHipsterはサービスディスカバリをSpring Cloudに依存しているため、EurekaやConsulのようなサードパーティのサービスレジストリに依存しています。これには、プラットフォームに依存せず、プロダクション環境とローカル開発マシンで同様に動作するという利点があります。
 
-Consequently, for microservices applications, the JHipster Kubernetes sub-generator will generate Kubernetes manifest files to deploy service registries like the **JHipster-Registry** (based on Eureka) or **Consul**. Moreover, the generated microservices and gateway Kubernetes manifests will contains the appropriate configuration to register themselves to their central registry.
+その結果、マイクロサービスアプリケーションの場合、JHipster Kubernetesサブジェネレータは、**JHipster-Registry**（Eurekaベース）や**Consul**などのサービスレジストリをデプロイするためのKubernetesマニフェストファイルを生成します。さらに、生成されたマイクロサービスとゲートウェイKubernetesマニフェストには、自身を中央レジストリに登録するための適切な設定が含まれます。
 
-### Managing the JHipster Registry or Consul in Kubernetes
+### KubernetesでのJHipsterレジストリまたはConsulの管理
 
-For the JHipster Registry and Consul, [StatefulSets](https://kubernetes.io/docs/concepts/abstractions/controllers/statefulsets/) configurations are provided. Those are a certain kind of Kubernetes resources which can handle stateful applications and will let you scale your service registries for high availability. For more information on high-availability for Eureka and Consul refer to their respective documentation.
+JHipster RegistryとConsulの場合、[StatefulSets](https://kubernetes.io/docs/concepts/abstractions/controllers/statefulsets/)設定が提供されます。これらは、ステートフルアプリケーションを処理でき、高可用性のためにサービスレジストリを拡張できる、ある種のKubernetesリソースです。EurekaとConsulの高可用性の詳細については、それぞれのドキュメントを参照してください。
 
-### Centralized configuration in Kubernetes
+### Kubernetesでの一元的な設定
 
-Centralized configuration is also setup using either **Spring Cloud Config Server** (when using the JHipster Registry) or the **Consul Key/Value store** (when using Consul). By default, both configuration servers load their configuration from a Kubernetes [ConfigMap](http://kubernetes.io/docs/user-guide/configmap/) which contains property files in this format:
+一元化された設定は、**Spring Cloud Config Server**（JHipster Registryを使用する場合）または**Consul Key/Valueストア**（Consulを使用する場合）を使用して設定できます。デフォルトでは、両方の設定サーバは、次の形式のプロパティファイルを含むKubernetesの[ConfigMap](http://kubernetes.io/docs/user-guide/configmap/)から設定をロードします。
 
 ```
 apiVersion: v1
@@ -180,138 +180,138 @@ metadata:
   name: application-config
   namespace: default
 data:
-  application.yml: |- # global properties shared by all applications
+  application.yml: |- # すべてのアプリケーションで共有されるグローバルプロパティ
     jhipster:
       security:
         authentication:
           jwt:
             secret: secret
-  gateway-prod.yml: |- # gateway application properties for the "prod" profile
+  gateway-prod.yml: |- # "prod"プロファイルのゲートウェイ・アプリケーション・プロパティー
     foo:
       bar: foobar
 ```
 
-By default, configuration servers run in development mode, which means that YAML property files are read directly from the filesystem and hot-reloaded on changes. For production it is advised to setup configuration from a Git repository as explained in our microservice documentation for the [JHipster-Registry config server]({{ site.url }}/jhipster-registry) and [Consul config server]({{ site.url }}/consul).
+デフォルトでは、コンフィギュレーションサーバは開発モードで実行されます。つまり、YAMLプロパティファイルはファイルシステムから直接読み込まれ、変更時にホットリロードされます。本番環境では、[JHipsterレジストリ設定サーバー]({{ site.url }}/jhipster-registry)および[Consul config server]({{ site.url }}/consul)のマイクロサービスドキュメントで説明されているように、Gitリポジトリから設定をセットアップすることをお勧めします。
 
-### Exposing headless services
+### ヘッドレスサービスの公開
 
-The registry is deployed using a headless service in Kubernetes, so the primary service has no IP address, and cannot get a node port. You can create a secondary service for any type, using:
+レジストリはKubernetesのヘッドレスサービスを使用してデプロイされるため、プライマリサービスにはIPアドレスがなく、ノードポートの取得はできません。次を使用して、任意のタイプのセカンダリサービスを作成できます。
 
 `kubectl expose service jhipster-registry --type=NodePort --name=exposed-registry `
 
-and explore the details using
+詳細を調べるには、次のようにします。
 
 `kubectl get svc exposed-registry `
 
-For scaling the JHipster Registry, use
+JHipsterレジストリをスケーリングするには、次のようにします。
 
 `kubectl scale statefulset jhipster-registry --replicas 3 `
 
-## Monitoring tools
+## モニタリングツール
 
-The sub-generator provides monitoring tools and configuration for usage with your applications.
+サブジェネレータは、アプリケーションで使用するためのモニタリングツールと設定を提供します。
 
-### Prometheus metrics
+### Prometheusメトリクス
 
-If not already done, install the [Prometheus operator by CoreOS](https://github.com/coreos/prometheus-operator). You can quickly deploy the operator using
+まだインストールされていない場合は、[CoreOSによるPrometheusオペレータ](https://github.com/coreos/prometheus-operator)をインストールします。
 
 `kubectl create -f https://raw.githubusercontent.com/coreos/prometheus-operator/master/bundle.yaml`
 
-**hint**: More information on how to enable and protect prometheus metrics in your application you can find in our [monitoring documentation]({{ site.url }}/monitoring/#configuring-metrics-forwarding).
+**ヒント**:アプリケーションでprometheusメトリクスを有効にして保護する方法の詳細については、[モニタリングのドキュメント]({{ site.url }}/monitoring/#configuring-metrics-forwarding)を参照してください。
 
-The Prometheus instance for your applications can be explored using
+アプリケーションのPrometheusインスタンスは、次のコマンドを使用して表示できます。
 
 `kubectl get svc prometheus-appname `
 
-## Taking Advantage of Kubernetes
+## Kubernetesを活用する
 
-Kubernetes offers a number of facilities out-of-the-box to help with Microservices deployments, such as:
-* Service Registry - Kubernetes `Service` is a first-class citizen that provides service registry and lookup via DNS name.
-* Load Balancing - Kubernetes Service acts as a L4 load balancer.
-* Health Check - Liveness probes and readiness probes help determine the health of the service.
-* Configuration - Kubernetes `ConfigMap` can be used to store and apply configuration outside of the application.
+Kubernetesは、マイクロサービスのデプロイを支援するために、次のような多くの機能をすぐに利用できるようしています。
+* サービスレジストリ - Kubernetesの`Service`は、サービスレジストリとDNS名を介してのルックアップを提供するファーストクラスの市民です。
+* ロードバランシング - Kubernetes ServiceはL4ロードバランサとして機能します。
+* ヘルスチェック - liveness probeとreadiness probeは、サービスの状態を判断するのに役立ちます。
+* 設定 - Kubernetesの`ConfigMap`は、アプリケーションの外部で設定を保存および適用するために使用できます。
 
-There are a number of benefits of using Kubernetes facilities:
-* Simplified deployment
-* No need for additional Eureka/Consul deployment
-* No need for Spring Cloud Gateway to proxy/route requests
-* No need for Spring Cloud Load Balancer
+Kubernetesの機能を使用することには、いくつかのメリットがあります。
+* シンプルなデプロイ
+* Eureka/Consulの追加導入が不要
+* Spring Cloud Gatewayによるリクエストのプロキシ/ルーティングが不要
+* Spring Cloud Load Balancerが不要
 
-At the same time, there are some drawbacks:
-* No Application Management through JHipster Registry - This function relies on Spring Cloud's `DiscoveryClient`. This can be updated in the future to add `spring-cloud-kubernetes`
-* No local Docker Compose support - You must use `minikube` for local development, and use Ingress to route traffic
-* No request-level load balancing - Kubernetes Service is a L4 load balancer that load balances per connection. Use Istio for request level load balancing (see below).
+同時に、いくつかの欠点もあります。
+* JHipsterレジストリを介したアプリケーション管理はありません - この機能はSpring Cloudの`DiscoveryClient`に依存しています。これは将来更新され、`spring-cloud-kubernetes`が追加される可能性があります。
+* ローカルDocker Composeのサポートはありません - ローカル開発には`minikube`を使用し、トラフィックのルーティングにはIngressを使用する必要があります。
+* リクエストレベルのロードバランシングなし - Kubernetes Serviceは、接続ごとにロードバランシングを行うL4ロードバランサです。リクエストレベルのロードバランシングにはIstioを使用します（下記参照）。
 
-### Using Kubernetes as Service Registry
+### Kubernetesをサービスレジストリとして使用する
 
-To avoid relying on Eureka or Consul, you'll need to disable service discovery altogether
-* When asked `Which service discovery server do you want to use?`, choose `No service discovery`
+EurekaやConsulに依存しないようにするには、サービスディスカバリを完全に無効にする必要があります。
+* `Which service discovery server do you want to use?（どのサービス検出サーバーを使用しますか?）`というメッセージが表示されたら、`No service discovery（サービス検出なし）`を選択します。
 
-A JHipster Gateway usually fronts the API calls and routing these calls using Spring Cloud Gateway. Without a service registry, routing via Spring Cloud Gateway won't work. You'll need to use Kubernetes Ingress to route the traffic to microservices.
-* When asked `Choose the kubernetes service type for your edge services`, choose `Ingress`.
+JHipster Gatewayは通常、APIコールをフロントし、Spring Cloud Gatewayを使用してこれらのコールをルーティングします。サービスレジストリがなければ、Spring Cloud Gatewayを介したルーティングは機能しません。トラフィックをマイクロサービスにルーティングするには、Kubernetes Ingressを使用する必要があります。
+* `Choose the kubernetes service type for your edge services（エッジサービスのKubernetesサービスタイプを選択してください）`と尋ねられたら、`Ingress`を選択します。
 
 ## Istio
 
-You can deploy microservices into [Istio](https://istio.io)-enabled Kubernetes cluster. While Kubernetes manages microservices deployment and configuration, Istio can manage service to service communication, such as request-level load balancing, retries, circuit breakers, traffic routing/splitting, and more.
+マイクロサービスは、[Istio](https://istio.io)対応のKubernetesクラスタにデプロイできます。Kubernetesがマイクロサービスのデプロイと構成を管理するのに対して、Istioは、リクエストレベルのロードバランシング、リトライ、サーキットブレーカ、トラフィックルーティング/スプリットなど、サービス間通信を管理できます。
 
-To enable Istio support:
-* When asked `Do you want to configure Istio?`, choose one of the Istio options
-* When asked `Do you want to generate Istio route files`, choose `Yes` to generate default configuration for circuit breaking, etc.
+Istioサポートを有効にするには、次の手順に従います。
+* `Do you want to configure Istio?（Istioを設定しますか?）`というメッセージと尋ねられたら、Istioオプションのいずれかを選択します。
+* `Do you want to generate Istio route files（Istioルートファイルを生成しますか）`と尋ねられたら、`Yes`を選択して、サーキットブレーカなどのためのデフォルト設定を生成します。
 
-## Troubleshooting
+## トラブルシューティング
 
-> My applications don't get pulled, because of 'imagePullBackoff'
+> 'imagePullBackoff'によりアプリケーションがプルされません
 
-Check the registry your Kubernetes cluster is accessing. If you are using a private registry, you should add it to your namespace by `kubectl create secret docker-registry` (check the [docs](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) for more information).
+Kubernetesクラスタがアクセスしているレジストリを確認してください。プライベートレジストリを使用している場合は、`kubectl create secret docker-registry`によって名前空間に追加する必要があります（詳細については、[ドキュメント](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)を確認してください）。
 
-> My applications get stopped, before they can boot up
+> アプリケーションが起動する前に停止しまいます
 
-This can occur, if your cluster has low resources (e.g. Minikube). Increase the `initialDelySeconds` value of livenessProbe of your deployments.
+これは、（Minikubeなど）クラスタのリソースが少ない場合に発生する可能性があります。デプロイのlivenessProbeの`initialDelySeconds`値を増やしてください。
 
-> My applications are starting very slow, despite I have a cluster with many resources
+> クラスタに多くのリソースがあるにもかかわらず、アプリケーションの起動が非常に遅くなります
 
-The default setting is optimized for middle-scale clusters. You are free to increase the JAVA_OPTS environment variable, resource requests and limits to improve the performance. Be careful!
+デフォルトの設定は、中規模クラスタ用に最適化されています。JAVA_OPTS環境変数、リソース要求、および制限を自由に増やして、パフォーマンスを向上させることができますが、注意してください!
 
-> I have selected Prometheus but no targets are visible
+> Prometheusを選択しましたが、ターゲットが表示されません
 
-This depends on the setup of Prometheus operator and the access control policies in your cluster. Version 1.6.0+ is needed for the RBAC setup to work.
+これは、Prometheusオペレータの設定とクラスタ内のアクセス制御ポリシーに依存します。RBACの設定を機能させるには、バージョン1.6.0以降が必要です。
 
-> I have selected Prometheus, but my targets never get scraped
+> Prometheusを選択しましたが、ターゲットがスクレーピングされません
 
-This means your applications are probably not built using the `prometheus` profile in Maven/Gradle
+これは、あなたのアプリケーションがおそらくMaven/Gradleの`prometheus`プロファイルを使って構築されていないことを意味します。
 
-> My SQL-based microservice are stuck during Liquibase initialization when running multiple replicas
+> 複数のレプリカを実行しているときに、Liquibaseの初期化中にSQLベースのマイクロサービスが停止しまう
 
-Sometimes the database changelog lock gets corrupted. You will need to connect to the database using `kubectl exec -it` and removes all lines of liquibases `databasechangeloglock` table.
+データベースのchangelogロックが破損することがあります。`kubectl exec -it`を使用してデータベースに接続し、liquibasesの`databasechangeloglock`テーブルのすべての行を削除する必要があります。
 
 # `jhipster kubernetes-helm | k8s-helm`
 
-This sub-generator generates manifests that is deployed to [Kubernetes](http://kubernetes.io/) through `helm cli`.
+このサブジェネレータは、`helm cli`を介して[Kubernetes](http://kubernetes.io/)にデプロイされるマニフェストを生成します。
 
-## Prerequisites
+## 前提条件
 
-To use the manifest generated by this sub-generator `helm cli` should be installed. Follow [this link](https://github.com/helm/helm) for installation instructions. This requires `helm 2.12.x or later`.
+このサブジェネレータによって生成されたマニフェストを使用するには、`helm cli`をインストールする必要があります。インストール手順については、[このリンク](https://github.com/helm/helm)に従ってください。これには`helm 2.12.x以降`が必要です。
 
-Once Helm is installed you need to add the below repositories:
+Helmをインストールしたら、次のリポジトリを追加する必要があります。
 ```
 helm repo add stable https://kubernetes-charts.storage.googleapis.com
 helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com
 ```
-These repositories should be added to the local cache, because this sub-generator will pull stable production grade services charts from the above repos.
+これらのリポジトリは、このサブジェネレータが上記のリポジトリから安定したプロダクショングレードのサービスチャートを取得するため、ローカルキャッシュに追加する必要があります。
 
-This sub-generator uses the `kubernetes` sub-generator for the app(s) manifests and pulls services like database, elasticsearch, prometheus etc. images being referred in your app(s) from the above repositories.
+このサブジェネレータは、アプリケーションのマニフェストに`kubernetes`サブジェネレータを使用し、アプリケーションで参照されているデータベース、elasticsearch、prometheusなどのサービスイメージを上記のリポジトリから取得します。
 
-## Deployment
+## 導入
 
-You can deploy all your app(s) by running the following command:
+次のコマンドを実行すると、すべてのアプリケーションをデプロイできます。
 
 ```
 bash helm-apply.sh (or) ./helm-apply.sh
 ```
 
-`helm-apply.sh` will always do a clean install. Any of the existing charts with the same identity gets removed first and then it does a clean install.
+`helm-apply.sh`は常にクリーンインストールを実行します。同じIDを持つ既存のグラフが削除されてから、クリーンインストールが実行されます。
 
-You can upgrade all your apps (if you have made any changes to the generated manifests) by running the following command:
+次のコマンドを実行すると、すべてのアプリケーションをアップグレードできます（生成されたマニフェストに変更を加えた場合）。
 
 ```
 bash helm-upgrade.sh (or) ./helm-upgrade.sh
@@ -319,31 +319,31 @@ bash helm-upgrade.sh (or) ./helm-upgrade.sh
 
 # `jhipster kubernetes-knative | knative`
 
-This sub-generator generates manifests that is deployed to [Kubernetes](http://kubernetes.io/) through either `kubectl or helm cli`. It generates manifests for one of the cli's based on the chosen prompt response.
+このサブジェネレータは、では`kubectl or helm cli`を通して[Kubernetes](http://kubernetes.io/)にデプロイされるマニフェストを生成します。選択されたプロンプトの応答に基づいて、いずれかのCLIのマニフェストを生成します。
 
-## Prerequisites
+## 前提条件
 
-This sub-generator depends on Istio. In order to use the manifests generated by this sub-generator, you should have istio and kntaive installed in the cluster. Follow [this link](https://knative.dev/docs/install/) for installation instructions. It requires `knative 0.8.x or later`.
+このサブジェネレータはIstioに依存しています。このサブジェネレータによって生成されたマニフェストを使用するには、クラスタにistioとkntaiveがインストールされている必要があります。インストール手順については、[このリンク](https://knative.dev/docs/install/)に従ってください。`knative 0.8.x以降`が必要です。
 
-## Deployment
+## デプロイ
 
-If you have chosen to deploy using Kubernetes generator, run the below command:
+Kubernetesジェネレータを使用してデプロイすることを選択した場合は、次のコマンドを実行します。
 ```
 bash kubectl-knative-apply.sh (or) ./kubectl-knative-apply.sh
 ```
 
-If you have chosen to deploy using Helm generator, run the below command:
+Helmジェネレータを使用してデプロイすることを選択した場合は、次のコマンドを実行します。
 ```
 bash helm-knative-apply.sh (or) ./helm-knative-apply.sh
 ```
-`helm-knative-apply.sh` will always do a clean install. Any of the existing charts with the same identity gets removed first and then it does a clean install.
+`helm-knative-apply.sh`は、常にクリーンインストールを実行します。同じIDを持つ既存のグラフが削除されてから、クリーンインストールが実行されます。
 
-You can upgrade all your apps (if you have made any changes to the generated manifests) by running the following bash command:
+次のbashコマンドを実行すると、すべてのアプリケーションをアップグレードできます（生成されたマニフェストに変更を加えた場合）。
 
 ```
 bash helm-knative-upgrade.sh (or) ./helm-knative-upgrade.sh
 ```
 
-## More information
+## 詳細情報
 
-*   [Kubernetes documentation](http://kubernetes.io/docs/)
+*   [Kubernetesのドキュメント](http://kubernetes.io/docs/)

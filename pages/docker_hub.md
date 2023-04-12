@@ -11,56 +11,56 @@ sitemap:
 
 # <i class="fa fa-cloud-upload"></i> Docker Hub
 
-## Summary
+## まとめ
 
 [![]({{ site.url }}/images/logo/docker-hub.png)](https://hub.docker.com/u/jhipster/)
 
-JHipster has its own [organization] at Docker Hub and provides different Docker images.
+JHipsterはDocker Hubに独自の[組織]を持ち、さまざまなDockerイメージを提供しています。
 
 
-The [jhipster-docker-hub] project provides all docker-compose files to launch these images.
-To use the docker-compose commands, you have to:
+[jhipster-docker-hub]プロジェクトは、これらのイメージを起動するためのすべてのdocker-composeファイルを提供します。
+docker-composeコマンドを使用するには、次の作業が必要です。
 
-- clone the project: `git clone https://github.com/jhipster/jhipster-docker-hub`
-- go inside project: `cd jhipster-docker-hub`
+- プロジェクトのクローンを作成：`git clone https://github.com/jhipster/jhipster-docker-hub`
+- プロジェクト内に移動：`cd jhipster-docker-hub`
 
 
-<div class="alert alert-warning"><i>Warning: </i>
+<div class="alert alert-warning"><i>警告:</i>
 
-Based on your OS, your <code>DOCKER_HOST</code> will differ. On Linux, it will be <code>localhost</code>.
-For Mac/Windows, you will have to obtain the IP using following command: <code>docker-machine ip default</code>
+OSによって、<code>DOCKER_HOST</code>は異なります。Linuxでは、<code>localhost</code>です。
+Mac/Windowsの場合、次のコマンドを使用してIPを取得する必要があります。<code>docker-machine ip default</code>
 
 </div>
 
 
-## [jhipster/jhipster](https://hub.docker.com/r/jhipster/jhipster) : an alternative installation of JHipster
+## [jhipster/jhipster](https://hub.docker.com/r/jhipster/jhipster) : JHipsterの代替インストール
 
-See the [installation]({{ site.url }}/installation/) page for full instructions.
+詳細な手順については、[インストール]({{ site.url }}/installation/)ページを参照してください。
 
-These following commands can be used in specific use cases.
+次のコマンドは、特定の用途で使用できます。
 
-### Use the latest release of JHipster
+### JHipsterの最新リリースを使用する
 
-Launch `jhipster` in the current folder, with the latest release
+最新のリリースを使用して、現在のフォルダで`jhipster`を起動します。
 
 ```
 docker container run --rm -it -v "$PWD":/home/jhipster/app jhipster/jhipster jhipster
 ```
 
-### Use JHipster v3.0.0
+### JHipster v3.0.0を使用
 
-Launch `jhipster` in the current folder, with an older release:
+古いリリースを使用して、現在のフォルダで`jhipster`を起動します。
 
 ```
 docker container run --rm -it -v "$PWD":/home/jhipster/app jhipster/jhipster:v3.0.0 jhipster
 ```
 
-You can see all tags available [here](https://hub.docker.com/r/jhipster/jhipster/tags/)
+利用可能なすべてのタグは[ここ](https://hub.docker.com/r/jhipster/jhipster/tags/)で見ることができます。
 
 
-## [jhipster/jdl-studio](https://hub.docker.com/r/jhipster/jdl-studio) : JDL-Studio offline
+## [jhipster/jdl-studio](https://hub.docker.com/r/jhipster/jdl-studio) : オフラインのJDL-Studio
 
-You can use JDL-Studio offline and access to it at [http://localhost:18080](http://localhost:18080)
+オフラインJDL-Studioを[http://localhost:18080](http://localhost:18080)へのアクセスで使用できます。
 
 ```
 docker container run -d -p 18080:80 jhipster/jdl-studio
@@ -68,62 +68,62 @@ docker container run -d -p 18080:80 jhipster/jdl-studio
 
 ## [jhipster/jhipster-sample-app](https://hub.docker.com/r/jhipster/jhipster-sample-app)
 
-It is a sample application with H2 or MySQL.
+H2またはMySQLを使用したサンプルアプリケーションです。
 
-### Quick launch
+### クイック起動
 
-Run a jhipster application directly with Docker, in development profile
+開発プロファイルで、jhipsterアプリケーションをDockerで直接実行します。
 
 ```
 docker container run -d -p 8080:8080 -e SPRING_PROFILES_ACTIVE=dev jhipster/jhipster-sample-app
 ```
 
-Then, you can access to the application at [http://localhost:8080](http://localhost:8080)
+その後、[http://localhost:8080](http://localhost:8080)にアクセスできます。
 
-### Development profile
+### 開発プロファイル
 
-Run the application in development profile
+開発プロファイルでのアプリケーションを実行します。
 
 ```
 docker-compose -f jhipster-sample-app/dev.yml up
 ```
 
-### Production profile
+### プロダクションプロファイル
 
-Run the application in production profile, with MySQL database
+MySQLデータベースを使用して、プロダクションプロファイルでアプリケーションを実行します。
 
 ```
 docker-compose -f jhipster-sample-app/prod.yml up
 ```
 
-### Production profile and monitoring with ELK stack
+### ELKスタックを使用したプロダクションプロファイルとモニタリング
 
-Run the application in production profile, with MySQL database and ELK stack
+MySQLデータベースとELKスタックを使用して、プロダクションプロファイルでアプリケーションを実行します。
 
 ```
 docker-compose -f jhipster-sample-app/prod-elk.yml up
 ```
 
-Access to the running application at [http://localhost:8080](http://localhost:8080)
+実行中のアプリケーションへ[http://localhost:8080](http://localhost:8080)でアクセスします。
 
-Access to the Kibana dashboard at [http://localhost:5601](http://localhost:5601)
+Kibanaのダッシュボードへ[http://localhost:5601](http://localhost:5601)でアクセスします。
 
 
 ## [jhipster/jhipster-sample-app-elasticsearch](https://hub.docker.com/r/jhipster/jhipster-sample-app-elasticsearch)
 
-It is a sample application with MySQL and Elasticsearch.
+MySQLとElasticsearchを使用したサンプルアプリケーションです。
 
-### Development profile
+### 開発プロファイル
 
-Run the application in development profile
+開発プロファイルでアプリケーションを実行します。
 
 ```
 docker-compose -f jhipster-sample-app-elasticsearch/dev.yml up
 ```
 
-### Production profile
+### プロダクションプロファイル
 
-Run the application in production profile, with MySQL database and Elasticsearch
+MySQLデータベースとElasticsearchを使用して、プロダクションプロファイルでアプリケーションを実行します。
 
 ```
 docker-compose -f jhipster-sample-app-elasticsearch/prod.yml up
@@ -131,11 +131,11 @@ docker-compose -f jhipster-sample-app-elasticsearch/prod.yml up
 
 ## [jhipster/jhipster-sample-app-mongodb](https://hub.docker.com/r/jhipster/jhipster-sample-app-mongodb)
 
-It is a sample application with MongoDB.
+MongoDBを使ったサンプルアプリケーションです。
 
-### Production profile
+### プロダクションプロファイル
 
-Run the application in production profile, with MongoDB database
+MongoDBデータベースを使用して、プロダクションプロファイルでアプリケーションを実行します。
 
 ```
 docker-compose -f jhipster-sample-app-mongodb/prod.yml up
@@ -144,74 +144,74 @@ docker-compose -f jhipster-sample-app-mongodb/prod.yml up
 
 ## [jhipster/jhipster-sample-app-cassandra](https://hub.docker.com/r/jhipster/jhipster-sample-app-cassandra)
 
-It is a sample application with a Cassandra cluster.
+Cassandraクラスタを使用したサンプルアプリケーションです。
 
-### Production profile
+### プロダクションプロファイル
 
-Run the application in production profile, with Cassandra cluster
+Cassandraクラスタを使用して、プロダクションプロファイルでアプリケーションを実行します。
 
 ```
 docker-compose -f jhipster-sample-app-cassandra/prod.yml up
 ```
 
-Scale a Cassandra node
+Cassandraノードをスケーリングします。
 
 ```
 docker-compose -f jhipster-sample-app-cassandra/prod.yml scale sample-cassandra-node=2
 ```
 
 
-[organization]: https://hub.docker.com/u/jhipster/
+[組織]: https://hub.docker.com/u/jhipster/
 [jhipster-docker-hub]: https://github.com/jhipster/jhipster-docker-hub
 
 
-## Microservices architecture
+## マイクロサービスアーキテクチャ
 
-The images used here are:
+ここでは、次のイメージを使用します。
 
 - [jhipster/jhipster-registry](https://hub.docker.com/r/jhipster/jhipster-registry)
 - [jhipster/jhipster-sample-app-gateway](https://hub.docker.com/r/jhipster/jhipster-sample-app-gateway)
 - [jhipster/jhipster-sample-app-microservice](https://hub.docker.com/r/jhipster/jhipster-sample-app-microservice)
 
-### Production profile
+### プロダクションプロファイル
 
-Run the full stack in production profile
+プロダクションプロファイルでフルスタックを実行します。
 
 ```
 docker-compose -f jhipster-sample-microservices/prod/prod.yml up
 ```
 
-It will start:
+次が起動します。
 
-- the JHipster Registry
-- the gateway
-- a MySQL database
-- the microservice
-- a PostgreSQL database
+- JHipsterレジストリ
+- ゲートウェイ
+- MySQLデータベース
+- マイクロサービス
+- PostgreSQLデータベース
 
 
-Scale the microservice
+マイクロサービスをスケールアップさせます。
 
 ```
 docker-compose -f jhipster-sample-microservices/prod/prod.yml scale jhipstersamplemicroservice-app=2
 ```
 
-### Production profile and monitoring with ELK stack
+### ELKスタックを使用したプロダクションプロファイルと監視
 
-Run the full stack in production profile, with ELK stack
+ELKスタックを使用して、プロダクションプロファイルでフルスタックを実行します。
 
 ```
 docker-compose -f jhipster-sample-microservices/prod-elk/prod-elk.yml up
 ```
 
-Scale the microservice
+マイクロサービスをスケールアップさせます。
 
 ```
 docker-compose -f jhipster-sample-microservices/prod-elk/prod-elk.yml scale jhipstersamplemicroservice-app=2
 ```
 
-Access to the registry at: [http://localhost:8761](http://localhost:8761)
+レジストリへのアクセス：[http://localhost:8761](http://localhost:8761)
 
-Access to the gateway at: [http://localhost:8080](http://localhost:8080)
+ゲートウェイへのアクセス：[http://localhost:8080](http://localhost:8080)
 
-Access to the Kibana dashboard at: [http://localhost:5601](http://localhost:5601)
+Kiabnaのダッシュボードへのアクセス：[http://localhost:5601](http://localhost:5601)

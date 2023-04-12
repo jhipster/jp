@@ -1,114 +1,114 @@
 ---
 layout: default
-title: Deploying to Google Cloud Platform
+title: Google Cloud Platformへのデプロイ
 permalink: /gcp/
 sitemap:
     priority: 0.5
     lastmod: 2018-10-02T00:00:00-00:00
 ---
 
-# <i class="fa fa-cloud-upload"></i> Deploying to Google Cloud Platform
+# <i class="fa fa-cloud-upload"></i> Google Cloud Platformへのデプロイ
 
 [![Google Cloud Platform]({{ site.url }}/images/logo/logo-gcp.png)](https://cloud.google.com)
 
-You can deploy JHipster applications to Google Cloud Platform and run on:
-- Virtual machines with [Google Compute Engine](https://cloud.google.com/compute/)
-- Containers in Kubernetes with [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/)
-- Platform as a Service with [Google App Engine](https://cloud.google.com/appengine/)
+JHipsterアプリケーションをGoogle Cloud Platformにデプロイして、次の環境で実行できます。
+- [Google Compute Engine](https://cloud.google.com/compute/)を搭載した仮想マシン
+- [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/)を使用したKubernetesのコンテナ
+- [Google App Engine](https://cloud.google.com/appengine/)を使ったPlatform as a Service
 
-You can obtain [Google Cloud Platform free trial](https://cloud.google.com/free) to deploy your applications. Please check the [Always Free](https://cloud.google.com/free/) tiers for free usages up to the specified usage limits during and past the free trial.
+アプリケーションをデプロイするには、[Google Cloud Platform無料試用版](https://cloud.google.com/free)を入手できます。無料試用中および無料試用の終了後に、[Always Free](https://cloud.google.com/free/)ティアで指定された使用制限までの無料使用を確認してください。
 
-## Before you start
+## 始める前に
 
-Install and authenticate with the gcloud SDK on your local environment to access `gcloud` CLI. For more information, visit this link:
+`gcloud`にCLIでアクセスするには、ローカル環境にgcloud SDKをインストールして認証します。詳細については、次のリンクを参照してください。
 
-- [Install gcloud SDK](https://cloud.google.com/sdk/install)
+- [gcloud SDKのインストール](https://cloud.google.com/sdk/install)
 
-## Deploy to Google App Engine
+## Google App Engineにデプロイ
 
-Google App Engine is a fully managed Platform as a Service that can automatically scale up application instances under load, and scale down to zero when not used.
+Google App Engineは、完全に管理されたPlatform as a Serviceであり、負荷がかかっているアプリケーションインスタンスを自動的にスケールアップし、使用されていない場合はゼロにスケールダウンできます。
 
-You can use the Google App Engine generator to generate and deploy JHipster application. Google App Engine generator supports monolith and micro-service applications, with Cloud SQL MySQL/PostgreSQL database.
+Google App Engineジェネレータを使用して、JHipsterアプリケーションを生成およびデプロイできます。Google App Engineジェネレータは、Cloud SQL MySQL/PostgreSQLデータベースを使用して、モノリスとマイクロサービスアプリケーションをサポートします。
 
-#### Deploying Monoliths to Google App Engine
+#### Google App Engineへのモノリスのデプロイ
 
-1. Generate a new monolith application: `jhipster`
-1. Run Google App Engine generator: `jhipster gae`
-1. Optionally create a new Cloud SQL instance if creating a brand new application
+1. 新しいモノリスアプリケーションを生成します。：`jhipster`
+1. Google App Engineジェネレータを実行します。：`jhipster gae`
+1. まったく新しいアプリケーションを作成する場合は、オプションで新しいCloud SQLインスタンスを作成します。
 
-This generator will:
-1. Add `src/main/appengine/app.yaml` that describes the App Engine instance and scaling configuration.
-1. Add the App Engine plugin to Maven / Gradle.
+このジェネレータは次のことを行います。
+1. App Engineインスタンスとスケーリング構成を記述する`src/main/appengine/app.yaml`を追加します。
+1. Maven/GradleにApp Engineプラグインを追加します。
 
-To deploy:
-Please note that currently the Google App Engine generator only supports deployments to [App Engine Standard (Java 11)](https://cloud.google.com/appengine/docs/standard/java11/) environment. 
+デプロイするにあたり、
+現在、Google App Engineジェネレータは、[App Engine Standard (Java 11)](https://cloud.google.com/appengine/docs/standard/java11/)環境へのデプロイのみをサポートしていることに注意してください。
 
-- Use the App Engine plugin to deploy: `./mvnw package appengine:deploy -DskipTests -Pgae,prod,prod-gae` or using Gradle `./gradlew appengineDeploy -Pgae -Pprod-gae`
+- App Engineプラグインを使用してデプロイします。：`./mvnw package appengine:deploy -DskipTests -Pgae,prod,prod-gae`またはGradleでは`./gradlew appengineDeploy -Pgae -Pprod-gae`を使用します。
 
-#### Deploying Microservices to Google App Engine
+#### Google App Engineへのマイクロサービスのデプロイ
 
-[Google Cloud supports micro-service architecture on GAE](https://cloud.google.com/appengine/docs/standard/java/microservices-on-app-engine) 
-by isolating each micro-service as a separate service. We use a [`dispatch.yaml` file](https://cloud.google.com/appengine/docs/standard/java11/reference/dispatch-yaml) 
-to route the requests from the gateway to each micro-service. Therefore, in order to deploy microservices to GAE you will 
-need to deploy the gateway and each microservice as separate services.
- 
-Following are the steps that needs to be carried out.
+[Google CloudはGAE上のマイクロサービスアーキテクチャをサポート](https://cloud.google.com/appengine/docs/standard/java/microservices-on-app-engine)しており、
+各マイクロサービスを独立したサービスとして分離させています。[`dispatch.yaml`ファイル](https://cloud.google.com/appengine/docs/standard/java11/reference/dispatch-yaml)を使用して、
+リクエストをゲートウェイから各マイクロサービスにルーティングします。そのため、マイクロサービスをGAEにデプロイするには、
+ゲートウェイと各マイクロサービスを別々のサービスとしてデプロイする必要があります。
 
-1. Run the GAE sub-generator on each micro-service. It is important to run this as the first step as the gateway application setup
-will depend on this. 
+実行する必要がある手順は次のとおりです。
 
-2. Run the GAE sub-generator on the gateway application. This will prompt for some additional questions in order to 
-create the `dispatch.yaml` file. 
+1. 各マイクロサービスでGAEサブジェネレータを実行します。ゲートウェイアプリケーションのセットアップはこれに依存するため、これを最初のステップとして実行することが
+重要です。
 
-3. Deploy each microservice and the gateway application using `./mvnw package appengine:deploy -DskipTests -Pgae,prod,prod-gae` 
-for Maven or `./gradlew appengineDeploy -Pgae -Pprod-gae` for gradle.
-    
-**Note 1:** If you are using Windows, we recommend using [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) 
-or [jhipster-devbox](https://github.com/jhipster/jhipster-devbox) to avoid Windows spedific issues such as, [https://github.com/jhipster/generator-jhipster/issues/11249 
-](https://github.com/jhipster/generator-jhipster/issues/11249) 
+2. ゲートウェイアプリケーションでGAEサブジェネレータを実行します。これにより、
+`dispatch.yaml`ファイルを作成するための追加の質問が表示されます。
 
-**Note 2:** If you are using Cloud SQL, you need to add Cloud SQL Client role to the App Engine service account. Refer, [https://cloud.google.com/sql/docs/mysql/connect-app-engine#setting_up](https://cloud.google.com/sql/docs/mysql/connect-app-engine#setting_up)
+3. Mavenの場合は`./mvnw package appengine:deploy -DskipTests -Pgae,prod,prod-gae` を使用して、各マイクロサービスとゲートウェイアプリケーションをデプロイします。
+Gradleの場合は`./gradlew appengineDeploy -Pgae -Pprod-gae`です。
 
-In addition, Google App Engine provides a full suite of features to manage your application:
-- Traffic Splitting - Deploy multiple versions of your application and split traffic to different versions. This is also great for canary new changes.
-- Stackdriver Logging - Automatically capture and store application logs in centralized logging that can be searched, monitored, and exported.
-- Error Reporting - Automatically extract errors and exceptions for the log and notify you of new errors.
-- Cloud Debugger - Allow you to debug your production application without stopping the world. If you needed more log messages to diagnose the issue, add new log messages without redeploying/restarting your application.
+**注1:** Windowsを使用している場合は、[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)を使用することをお勧めします。
+または[https://github.com/jhipster/generator-jhipster/issues/11249 
+](https://github.com/jhipster/generator-jhipster/issues/11249)のようなWindows固有の問題を回避するため、[jhipster-devbox](https://github.com/jhipster/jhipster-devbox)を使用してください。
 
-You can watch a walk through of features in [2018 JHipster Conf video on the Google App Engine generator](https://www.youtube.com/watch?v=J9_MW3HOj5w) with [Ray Tsang](https://twitter.com/saturnism) and [Ludovic Champenois](https://twitter.com/ludoch).
+**注2:** Cloud SQLを使用している場合は、App EngineサービスアカウントにCloud SQLクライアントロールを追加する必要があります。[https://cloud.google.com/sql/docs/mysql/connect-app-engine#setting_up](https://cloud.google.com/sql/docs/mysql/connect-app-engine#setting_up)を参照してください。
+
+さらに、Google App Engineには、アプリケーションを管理するための一連の機能が用意されています。
+- トラフィック分割 - アプリケーションの複数のバージョンをデプロイし、トラフィックを異なるバージョンに分割します。これは、カナリアの新しい変更にも最適です。
+- Stackdriver Logging - 検索、監視、およびエクスポートが可能な集中型ロギングで、アプリケーションログを自動的にキャプチャおよび保存します。
+- エラーレポート - ログのエラーと例外を自動的に抽出し、新しいエラーを通知します。
+- クラウドデバッガ - 作業を停止することなく、プロダクションアプリケーションをデバッグできます。問題を診断するためにさらにログメッセージが必要な場合は、アプリケーションを再デプロイ/再起動することなく、新しいログメッセージを追加します。
+
+[Ray Tsang](https://twitter.com/saturnism)と[Ludovic Champenois](https://twitter.com/ludoch)による[Google App Engineジェネレータでの2018 JHipster Confビデオ](https://www.youtube.com/watch?v=J9_MW3HOj5w)では、機能のウォークスルーを見ることができます。
    
-## Deploy to Google Kubernetes Engine
+## Google Kubernetes Engineへのデプロイ
 
-Google Kubernetes Engine is a fully managed Kubernetes cluster as a service. Once provisioned, you can deploy your containers and JHipster applications using standard Kubernetes commands.
+Google Kubernetes Engineは、完全に管理されたKubernetesクラスタ・アズ・ア・サービスです。プロビジョニングされたコンテナとJHipsterアプリケーションを、標準のKubernetesコマンドを使用してデプロイできます。
 
-1. Enable API: `gcloud services enable container.googleapis.com containerregistry.googleapis.com`
-1. Install `kubectl` CLI if not already installed: `gcloud components install kubectl`
-1. Create a new Google Kubernetes Engine cluster: `gcloud container clusters create mycluster --zone us-central1-a --machine-type n1-standard-4`
+1. APIの有効化：`gcloud services enable container.googleapis.com containerregistry.googleapis.com`
+1. `kubectl`CLIがまだインストールされていない場合はインストールします：`gcloud components install kubectl`
+1. 新しいGoogle Kubernetes Engineクラスタを作成します：`gcloud container clusters create mycluster --zone us-central1-a --machine-type n1-standard-4`
 
-_See GCP's [zones](https://cloud.google.com/compute/docs/regions-zones/) and [machine-types](https://cloud.google.com/compute/docs/machine-types/) for other options._
+_その他のオプションについては、GCPの[ゾーン](https://cloud.google.com/compute/docs/regions-zones/)および[マシンタイプ](https://cloud.google.com/compute/docs/machine-types/)を参照してください。_
 
-Once the cluster is created, you can use JHipster Kubernetes generator to generate the deployment descriptors.
+クラスタが作成されると、JHipster Kubernetesジェネレータを使用してデプロイメント記述子を生成できます。
 
-1. Generate Kubernetes deployment files: `jhipster kubernetes`
-1. If you want to use Google Container Registry to publish container images in a private registry:
-  1. **What should we use for the base Docker repository name** set to `gcr.io/YOUR_PROJECT_ID`
+1. Kubernetesデプロイメントファイルの生成：`jhipster kubernetes`
+1. Google Container Registryを使用してプライベート・レジストリにコンテナ・イメージを公開する場合：
+  1. **What should we use for the base Docker repository name**（**ベースのDockerリポジトリ名には何を使用すべきか**）には、`gcr.io/YOUR_PROJECT_ID`を設定します。
 
-Build the container image.
+コンテナイメージを構築します。
 
-1. If you use Google Container Registry, you can build directly to the registry without local Docker daemon: `./mvnw package -Pprod jib:build`
-1. Otherwise, build to Docker daemon: `./mvnw package -Pprod jib:dockerBuild`
+1. Google Container Registryを使用する場合は、ローカルのDockerデーモンなしでレジストリに直接ビルドできます：`./mvnw package -Pprod jib:build`
+1. それ以外の場合は、Dockerデーモンにビルドします：`./mvnw package -Pprod jib:dockerBuild`
 
-Deploy to Kubernetes cluster:
+Kubernetesクラスタへデプロイします。
 
-1. Apply the Kubernetes configurations: `./kubectl-apply.sh`
+1. Kubernetes設定を適用します：`./kubectl-apply.sh`
 
-For full Kubernetes generator features, see [Deploying to Kubernetes](/kubernetes).
+Kubernetesジェネレータの全機能については、[Kubernetesへのデプロイ](/kubernetes)を参照してください。
 
-## Enable HTTPS
+## HTTPSを有効にする
 
-To enable HTTPS for your cluster, see Ray Tsang's [External Load Balancing docs](https://spring-gcp.saturnism.me/deployment/kubernetes/load-balancing/external-load-balancing). 
+クラスタでHTTPSを有効にするには、Ray Tsang氏の[外部のロードバランシングのドキュメント](https://spring-gcp.saturnism.me/deployment/kubernetes/load-balancing/external-load-balancing)を参照してください。
 
-You can force the use of HTTPS by adding the following configuration to your `SecurityConfiguration.java`.
+HTTPSの使用を強制するには、次の設定を`SecurityConfiguration.java`に追加します。
 
 ```java
 // Spring MVC
@@ -120,4 +120,4 @@ http.redirectToHttps(redirect -> redirect
     .httpsRedirectWhen(e -> e.getRequest().getHeaders().containsKey("X-Forwarded-Proto")));
 ```
 
-See Spring Security's [Servlet](https://docs.spring.io/spring-security/site/docs/5.5.x/reference/html5/#servlet-http-redirect) and [WebFlux](https://docs.spring.io/spring-security/site/docs/5.5.x/reference/html5/#webflux-http-redirect) documentation for more information.
+詳細については、Spring Securityの[Servlet](https://docs.spring.io/spring-security/site/docs/5.5.x/reference/html5/#servlet-http-redirect)および[WebFlux](https://docs.spring.io/spring-security/site/docs/5.5.x/reference/html5/#webflux-http-redirect)のドキュメントを参照してください。

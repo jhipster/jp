@@ -1,86 +1,86 @@
 ---
 layout: default
-title: Monitoring your JHipster Applications
+title: JHipsterアプリケーションのモニタリング
 permalink: /monitoring/
 sitemap:
     priority: 0.7
     lastmod: 2021-11-05T00:00:00-00:00
 ---
-# <i class="fa fa-line-chart"></i> Monitoring your JHipster Applications
+# <i class="fa fa-line-chart"></i> JHipsterアプリケーションのモニタリング
 
-JHipster provides several options to monitor your applications at runtime.
+JHipsterには、実行時にアプリケーションをモニタリングするためのオプションがいくつか用意されています。
 
-## Summary
+## サマリー
 
-1. [Generated dashboards](#generated-dashboards)
-2. [Security metrics](#security-metrics)
-3. [JHipster Registry](#jhipster-registry)
+1. [生成されたダッシュボード](#generated-dashboards)
+2. [セキュリティメトリック](#security-metrics)
+3. [JHipsterレジストリ](#jhipster-registry)
 4. [ELK](#elk)
-5. [Forwarding metrics to a supported third party monitoring system](#configuring-metrics-forwarding)
+5. [サポートされているサードパーティモニタリングシステムへのメトリックの転送](#configuring-metrics-forwarding)
 6. [Zipkin](#zipkin)
 
-## Generated dashboards
+## 生成されたダッシュボード
 
-For monoliths and gateways, JHipster generates several dashboards to monitor each application. 
-Those dashboards are available at runtime, and are the easiest way to do some monitoring.
+モノリスとゲートウェイの場合、JHipsterは各アプリケーションを監視するための複数のダッシュボードを生成します。
+これらのダッシュボードは実行時に使用可能であり、監視を行うための最も簡単な方法です。
 
 ![JHipster Metrics page][jhipster-metrics-page]
 
-### The metrics dashboard
+### 集計ダッシュボード
 
-The metrics dashboard uses Micrometer to give a detailed view of the application performance.
+メトリクスダッシュボードは、Micrometerを使用して、アプリケーションパフォーマンスの詳細なビューを提供します。
 
-It gives metrics on:
+次のメトリックが表示されます。
 
-- the JVM
-- HTTP requests
-- cache usage
-- database connection pool
+- JVM
+- HTTPリクエスト
+- キャッシュの使用状況
+- データベース接続プール
 
-By clicking on the Expand button next to the JVM thread metrics, you will get a thread dump of the running application, which is very useful to find out blocked threads.
+JVMスレッド・メトリックの横にあるExpandボタンをクリックすると、実行中のアプリケーションのスレッド・ダンプが表示されます。これは、ブロックされているスレッドを見つけるのに非常に役立ちます。
 
-### The health dashboard
+### ヘルスダッシュボード
 
-The health dashboard uses Spring Boot Actuator's health endpoint to give health information on various parts of the application. Many health checks are provided out-of-the-box by Spring Boot Actuator, and you can add application-specific health checks.
+ヘルスダッシュボードは、Spring Boot Actuatorのヘルスエンドポイントを使用して、アプリケーションのさまざまな部分のヘルス情報を提供します。多くのヘルスチェックは、Spring Boot Actuatorによってすぐに提供され、アプリケーション固有のヘルスチェックの追加もできます。
 
-### The logs dashboard
+### ログダッシュボード
 
-The logs dashboard allows to manage at runtime the Logback configuration of the running application. 
-You can change the log level of a Java package by clicking on a button, which is very convenient both in development and in production.
+ログダッシュボードを使用すると、実行中のアプリケーションのLogback設定を実行時に管理できます。
+Javaパッケージのログ・レベルを変更するには、ボタンをクリックします。これは、開発環境とプロダクション番環境の両方で非常に便利です。
 
-## Security Metrics
-JHipster tracks JWT-related security metrics in projects that uses JWT authentication type.
+## セキュリティ・メトリック
+JHipsterは、JWT認証タイプを使用するプロジェクトのJWT関連のセキュリティメトリックを追跡します。
 
-In particular, JHipster tracks token validation errors count (i.e. invalid tokens count) as a custom meter named `security.authentication.invalid-tokens`, and the causes of such validation errors with the following meter tags:
-- `invalid-signature`: the JWT signature verification has failed;
-- `expired`: the JWT has expired;
-- `unsupported`: the JWT format does not match the format expected by the application;
-- `malformed`: the JWT was not correctly constructed.
+特に、JHipsterは、トークン検証エラー数（無効なトークン数）を`security.authentication.invalid-tokens`という名前のカスタムメーターとして追跡し、次のメータータグを使用してそのような検証エラーの原因を追跡します。
+- `invalid-signature`:JWT署名の検証に失敗しました。
+- `expired`:JWTの有効期限が切れています。
+- `unsupported`:JWTフォーマットがアプリケーションで想定されているフォーマットと一致しません。
+- `malformed`:JWTが正しく構築されていません。
 
-These metrics are not available in the generated dashboards, but they are exposed as application metrics and can be [forwarded to a third-party monitoring system](#configuring-metrics-forwarding) for visualization.
+これらのメトリックは生成されたダッシュボードでは使用できませんが、アプリケーションメトリックとして公開され、可視化のために[サードパーティの監視システムに転送](#configuring-metrics-forwarding)できます。
 
-## JHipster Registry
+## JHipsterレジストリ
 
-The JHipster Registry has [its own documentation page here]({{ site.url }}/jhipster-registry/).
+JHipster Registryには[こちらに独自のドキュメントページ]({{ site.url }}/jhipster-registry/)があります。
 
-It mostly provides the same monitoring dashboards as in the previous section, but it works on a separate server. As such, it is a bit more complex to set up, but it is highly recommended to have dashboards running outside of the running application: otherwise, they won't be available when there is an application error.
+ほとんどの場合、前のセクションと同じ監視ダッシュボードが提供されますが、別のサーバで動作します。そのため、設定が少し複雑になりますが、実行中のアプリケーションの外部でダッシュボードを実行することを強くお勧めします。そうしないと、アプリケーションエラーが発生したときにダッシュボードを使用できなくなります。
 
-<h2 id="elk">ELK (Elasticsearch, Logstash, Kibana) Stack</h2>
+<h2 id="elk">ELK (Elasticsearch, Logstash, Kibana)スタック</h2>
 
-The ELK stack is often used for log aggregation and search, it consists of the following components:
-
-
-- [Elasticsearch](https://www.elastic.co/products/elasticsearch) for indexing the data (logs and metrics)
-- [Logstash](https://www.elastic.co/products/logstash) to manage and process the logs received from the applications
-- [Kibana](https://www.elastic.co/products/kibana) to visualize the logs with a nice interface
-
-<div class="alert alert-warning"><i> Warning: </i>
-JHipster supports forwarding logs to Logstash, however as of JHipster version 7, we do not provide any ELK stack docker deployment and ready to use dashboards. This used to be part of the <a href="https://github.com/jhipster/jhipster-console">JHipster Console</a> subproject that is no longer maintained. We advise existing users to migrate to another ELK solution.</div>
+ELKスタックは、ログの集約と検索によく使用され、次のコンポーネントで構成されています。
 
 
-### Forwarding logs to Logstash
+- [Elasticsearch](https://www.elastic.co/products/elasticsearch)：データ（ログとメトリック）のインデックス作成
+- [Logstash](https://www.elastic.co/products/logstash)：アプリケーションから受信したログを管理および処理
+- [Kibana](https://www.elastic.co/products/kibana)：ログを可視化するための優れたインタフェース
 
-To configure a JHipster application to forward their logs to Logstash, enable logstash logging in their `application-dev.yml` or `application-prod.yml`:
+<div class="alert alert-warning"><i>警告:</i>
+JHipsterはLogstashへのログの転送をサポートしていますが、JHipsterバージョン7では、ELKスタックDockerデプロイメントは提供されておらず、ダッシュボードを使用する準備ができていません。これは、現在は保守されていない<a href="https://github.com/jhipster/jhipster-console">JHipsterコンソール</a>サブプロジェクトの一部でした。既存のユーザーには、別のELKソリューションに移行することをお勧めします。</div>
+
+
+### Logstashへのログの転送
+
+ログをLogstashに転送するようにJHipsterアプリケーションを構成するには、`application-dev.yml`または`application-prod.yml`でlogstashロギングを有効にします。
 
     jhipster:
         logging:
@@ -90,7 +90,7 @@ To configure a JHipster application to forward their logs to Logstash, enable lo
                 port: 5000
                 queueSize: 512
 
-To collect those logs, on the Logstash side, a simple `logstash.conf` file can be provided :
+これらのログを収集するには、Logstash側で簡単な`logstash.conf`ファイルを用意します。
 
     input {
         tcp {
@@ -108,15 +108,15 @@ To collect those logs, on the Logstash side, a simple `logstash.conf` file can b
         }
     }
 
-For more information on how to setup the ELK stack, please refer to the [official Elastic documentation](https://www.elastic.co/guide/en/elastic-stack/current/index.html).
+ELKスタックのセットアップ方法の詳細については、[公式Elasticドキュメント](https://www.elastic.co/guide/en/elastic-stack/current/index.html)を参照してください。
 
-<h2 id="configuring-metrics-forwarding">Forwarding metrics to a supported third party monitoring system (JMX, Prometheus)</h2>
+<h2 id="configuring-metrics-forwarding">サポートされているサードパーティ監視システム(JMX、Prometheus)へのメトリックの転送</h2>
 
-JHipster exposes application metrics in the [Prometheus](https://prometheus.io/) format by default.
-It is exposed under `management/prometheus`.
-Forwarding metrics to alternative systems is also supported via [spring boot actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-metrics).
+JHipsterは、デフォルトで[Prometheus](https://prometheus.io/)フォーマットのアプリケーションメトリックを公開します。
+`management/prometheus`の下で公開されます。
+代替システムへのメトリックの転送は、[spring boot actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-metrics)を介してもサポートされています。
 
-If you would like to disable exposing the metrics endpoint you can disable it in `src/main/resources/application.yml`.
+メトリックエンドポイントの公開を無効にしたい場合は、`src/main/resources/application.yml`で無効にできます。
 
     management:
         metrics:
@@ -125,10 +125,9 @@ If you would like to disable exposing the metrics endpoint you can disable it in
                     enabled: false
 
 
-The prometheus endpoint is unprotected by default. If you want to protect it via spring security you can do so by adding basic auth to the prometheus endpoint
-as prometheus can work with scraping endpoint protected by basic auth.
+prometheusエンドポイントはデフォルトでは保護されていません。Spring Security経由で保護したい場合は、prometheusがベーシック認証で保護されたスクレイピングエンドポイントにおいて動作するように、prometheusエンドポイントにベーシック認証を追加することで保護できます。
 
-Create a new configuration file (e.g. `BasicAuthConfiguration.java`).
+新しい設定ファイル（例：`BasicAuthConfiguration.java`）を作成します。
 
     @Configuration
     @Order(1)
@@ -152,26 +151,26 @@ Create a new configuration file (e.g. `BasicAuthConfiguration.java`).
     }
 
 
-You can log in with the default `admin/admin`. You must add following configuration to you prometheus configuration such that prometheus can still scrape your application.
+デフォルトの`admin/admin`でログインできます。prometheusがアプリケーションをスクレイピングできるように、次の設定をprometheus設定に追加する必要があります。
 
     basic_auth:
         username: "admin"
         password: "admin"
 
-You can start a preconfigured Grafana and Prometheus instance on our local machine via `docker-compose -f src/main/docker/monitoring.yml up -d` to have a look at the
-provisioned [jvm/micrometer dashboard](https://grafana.com/grafana/dashboards/4701).
+`docker-compose -f src/main/docker/monitoring.yml up -d`を使用して、ローカルマシン上で事前設定されたGrafanaとPrometheusのインスタンスを起動し、
+[jvm/micrometer dashboard](https://grafana.com/grafana/dashboards/4701)を参照してください。
 
 ![Grafana Micrometer Dashboard][grafana-micrometer-dashboard]
 
-Note: Unlike in previous JHipster versions, JHipster 5.8 metrics reporting only support JMX and Prometheus out of the box. Please have a look to the Metrics official documentation for instructions on how to setup other reporters like [Graphite](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-metrics-export-graphite).
+注：以前のJHipsterバージョンとは異なり、JHipster 5.8のメトリックレポートは、JMXとPrometheusのみをサポートしています。[Graphite](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-metrics-export-graphite)のような他のレポーターを設定する方法については、Metricsの公式ドキュメントを参照してください。
 
 ## Zipkin
 
-JHipster applications can integrate with [Zipkin](http://zipkin.io/) through [Spring Cloud Sleuth](https://cloud.spring.io/spring-cloud-sleuth/) to provide distributed tracing for your microservice architecture. To enable Zipkin tracing, package your application with the `zipkin` maven/gradle profile and set the `spring.zipkin.enabled` property to true. This will trigger span reporting to the Zipkin server and also add correlation IDs (TraceId, SpanId and ParentId) to request headers and logs.
+JHipsterアプリケーションは、[Spring Cloud Sleuth](https://cloud.spring.io/spring-cloud-sleuth/)を通して[Zipkin](http://zipkin.io/)と統合して、マイクロサービスアーキテクチャに分散トレースを提供できます。Zipkinトレースを有効にするには、`zipkin`のmaven/gradleプロファイルでアプリケーションをパッケージ化し、`spring.zipkin.enabled`プロパティをtrueに設定します。これにより、Zipkinサーバへのスパンレポートがトリガーされ、リクエストヘッダーとログに相関ID（TraceId、SpanId、ParentId）が追加されます。
 
-Zipkin also provide a service dependency graph feature that lets you visualize the dependencies between microservices over time.
+Zipkinは、マイクロサービス間の依存関係を時間の経過とともに視覚化できるサービス依存性グラフ機能も提供します。
 
-For more information on how to setup your application to report tracecs to Zipkin, follow the official [Spring Cloud Sleuth documentation](https://cloud.spring.io/spring-cloud-sleuth/reference/html/#sending-spans-to-zipkin).
+トレース情報をZipkinに報告するようにアプリケーションを設定する方法については、公式の[Spring Cloud Sleuthドキュメント](https://cloud.spring.io/spring-cloud-sleuth/reference/html/#sending-spans-to-zipkin)に従ってください。
 
 [jhipster-metrics-page]: {{ site.url }}/images/jhipster_metrics_page.png "JHipster Metrics page"
 [grafana-micrometer-dashboard]: {{ site.url }}/images/monitoring_grafana_micrometer.png "Grafana Micrometer Dashboard" 
