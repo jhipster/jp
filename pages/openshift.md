@@ -9,153 +9,153 @@ sitemap:
     lastmod: 2017-04-30T00:00:00-00:00
 ---
 
-# [BETA] Deploying to OpenShift
+# [BETA] OpenShiftへのデプロイ
 
-**WARNING!** This is a new sub-generator, of **BETA** quality WIP release! Feedback is highly welcome!! Happy OpenShifting!!!
+**注意!** これは**BETA**品質の開発中リリースである、新しいサブジェネレータです!フィードバックをお待ちしています!ハッピーOpenShifting!!!
 
-This sub-generator allows deployment of JHipster applications to [Openshift Container Platform](https://www.openshift.com/) / [OpenShift Origin](https://www.openshift.org/).
+このサブジェネレータを使用すると、JHipsterアプリケーションを[Openshift Container Platform](https://www.openshift.com/) / [OpenShift Origin](https://www.openshift.org/)にデプロイできます。
 
 [![]({{ site.url }}/images/logo/logo-openshift.png)](https://www.openshift.com/)
 
-## Work-in-progress
+## 開発中
 
-- Mongo and Cassandra replication mode is not yet tested
+- MongoとCassandraのレプリケーションモードはまだテストされていません。
 
-## Install Options
+## インストールオプション
 
-OpenShift offers two options,
+OpenShiftには2つのオプションがあります。
 
-- OpenShift Origin - is the open source upstream project that powers OpenShift
-- OpenShift Container Platform - is the enterprise container application platform supported by Red Hat
+- OpenShift Origin - OpenShiftを支えるオープンソースのアップストリームプロジェクト
+- OpenShift Container Platform - Red Hatがサポートするエンタープライズコンテナアプリケーションプラットフォーム
 
 ## Minishift
 
-[Minishift](https://github.com/minishift/minishift) is a toolkit that helps to run the all in one OpenShift VM locally. Minishift runs a single-node OpenShift cluster inside a VM on a laptop for users to try it out locally.
+[Minishift](https://github.com/minishift/minishift)は、オールインワンのOpenShift VMをローカルで実行するのに役立つツールキットです。Minishiftは、ラップトップ上のVM内でシングルノードのOpenShiftクラスタを実行し、ユーザーがローカルで試すことができるようにします。
 
-Minishift requires a hypervisor to start the virtual machine on which the OpenShift cluster is provisioned. Make sure that the hypervisor of your choice is installed and enabled on your system before you start Minishift.
+Minishiftでは、OpenShiftクラスタがプロビジョニングされている仮想マシンを起動するためのハイパーバイザが必要です。Minishiftを起動する前に、選択したハイパーバイザがシステムにインストールされ、有効になっていることを確認してください。
 
-## Pre-requisites
+## 前提条件
 
-You have to install:
+次をインストールする必要があります。
 
 - [Docker](https://docs.docker.com/installation/#installation)
-- Hypervisor - Depending on your OS, you have the choice of different options
+- Hypervisor - お使いのOSに応じて、さまざまなオプションを選択できます
 
-You must have a Docker registry. If you don’t have one, you can use the official [Docker Hub](https://hub.docker.com/)
+Dockerレジストリが必要です。レジストリがない場合は、公式の[Docker Hub](https://hub.docker.com/)を使用できます。
 
-Minishift allows you to try out both Origin and Container Platform locally,
+Minishiftでは、OriginとContainer Platformの両方をローカルで試すことができます。
 
 - [OpenShift Origin](https://github.com/minishift/minishift)
-- [OpenShift Container Platform](https://developers.redhat.com/products/cdk/overview/) - Red Hat Container Development Kit provides a Minishift packaged pre-built Container Development Environment based on Red Hat Enterprise Linux. Developers can now get Red Hat Container Development Kit via the no-cost Red Hat Enterprise Linux® Developer Suite subscription for development purposes by registering and downloading through [redhat.com](https://developers.redhat.com).
+- [OpenShift Container Platform](https://developers.redhat.com/products/cdk/overview/) - Red Hat Container Development Kitは、Red Hat Enterprise Linuxをベースに構築済みコンテナ開発環境がパッケージ化されたMinishiftを提供します。開発者は、[redhat.com](https://developers.redhat.com)から登録およびダウンロードすることにより、開発目的で無料のRed Hat Enterprise Linux®Developer Suiteサブスクリプションを介してRed Hat Container Development Kitを入手できます。
 
-The sub-generator works fine with both Origin and Container Platform and uses the same image versions as Docker.
+このサブジェネレータは、OriginとContainer Platformの両方で正常に動作し、同じDockerのイメージバージョンを使用します。
 
-## Running the sub-generator
+## サブジェネレータの実行
 
-To generate config files for OpenShift, run this command in the project/root folder:
+OpenShiftの設定ファイルを生成するには、project/rootフォルダで次のコマンドを実行します。
 
 `jhipster openshift`
 
-Then answer all the questions to deploy your application.
+次に、アプリケーションをデプロイするためのすべての質問に答えます。
 
 
-### Which *type* of application would you like to deploy?
+### Which *type* of application would you like to deploy?（どの*種類*のアプリケーションを展開しますか?）
 
-Type of application depends on whether you wish to deploy a microservices or monoliths.
-
-
-### Enter the root directory where your applications are located
-
-Enter the path. All the OpenShift generator files will be persisted in this path
+アプリケーションのタイプは、マイクロサービスとモノリスのどちらをデプロイするかによって異なります。
 
 
-### Which applications do you want to include in your OpenShift configuration?
+### Enter the root directory where your applications are located（アプリケーションが格納されているルートディレクトリを入力してください）
 
-Select your applications.
-
-
-### Enter the admin password used to secure the JHipster Registry admin
-
-This question is only displayed if you choose microservices architecture.
+パスを入力してください。すべてのOpenShiftジェネレータファイルはこのパスに保存されます。
 
 
-### What should we use for the OpenShift namespace?
+### Which applications do you want to include in your OpenShift configuration?（どのアプリケーションをOpenShift構成に含めますか?）
 
-This is the OpenShift project space where all the services get deployed and the generated files are tagged to this template
-
-
-### Which *type* of database storage would you like to use?
-
-This question is only displayed if any of the chosen apps has database type selected. This prompts for ephemeral or persistent storage options. Containers by very nature are ephemeral (data will not be retained between restarts/faults). Persistent storage option allows
-to mount external storage like NFS, EBS etc,. so that data survives between restarts and faults.
+アプリケーションを選択します。
 
 
-### What should we use for the base Docker repository name?
+### Enter the admin password used to secure the JHipster Registry admin（JHipsterレジストリの管理者を保護するために使用する管理者パスワードを入力してください）
 
-If you choose [Docker Hub](https://hub.docker.com/) as main registry, it will be your Docker Hub login.
-
-
-### What command should we use for push Docker image to repository?
-
-The default command to push to Docker Hub is `docker image push`
-For example, if you use the Google Cloud to publish your Docker images, it will be: `gcloud docker push`
+この質問は、マイクロサービスアーキテクチャを選択した場合にのみ表示されます。
 
 
-## Updating your deployed application
+### What should we use for the OpenShift namespace?（OpenShiftネームスペースには何を使用しますか?）
 
-### Preparing a new deployment
+これは、すべてのサービスがデプロイされ、生成されたファイルがこのテンプレートにタグ付けされるOpenShiftプロジェクトスペースです。
 
-When your application is already deployed, you can re-deploy it by building a new Docker image:
+
+### Which *type* of database storage would you like to use?（どの*タイプ*のデータベースストレージを使用しますか?）
+
+この質問は、選択したアプリケーションのいずれかでデータベースタイプが選択されている場合にのみ表示されます。これにより、一時的または永続的なストレージオプションが求められます。コンテナは本質的に一時的です（データは再起動/障害の間は保持されません）。永続ストレージオプションを使用すると、
+NFS、EBSなどの外部ストレージをマウントできるため、データは再起動と障害の間も存続します。
+
+
+### What should we use for the base Docker repository name?（ベースのDockerリポジトリ名には何を使用しますか?）
+
+メインレジストリとして[Docker Hub](https://hub.docker.com/)を選択すると、Docker Hubログインになります。
+
+
+### What command should we use for push Docker image to repository?（Dockerイメージをリポジトリにプッシュするために、どのコマンドを使用しますか?）
+
+Docker Hubにプッシュするデフォルトのコマンドは`docker image push`です。
+たとえば、Google Cloudを使用してDockerイメージを公開する場合は、`gcloud docker push`になります。
+
+
+## 展開したアプリケーションを更新
+
+### 新しい展開の準備
+
+アプリケーションがすでにデプロイされている場合は、新しいDockerイメージを構築することで再デプロイできます。
 
 `./mvnw package -Pprod -DskipTests jib:dockerBuild`
 
-Or when using gradle:
+Gradleを使用する場合は次のようにします。
 
 `./gradlew -Pprod bootJar jibDockerBuild -x test`
 
-If you face any issue in running the image built by jib plugin (like `chmod +x entrypoint.sh not permitted`), then you might have to update scc. Do the following change,
-`oc edit scc restricted` and update `runAsUser.Type` strategy to `RunAsAny`
+jibプラグインでビルドされたイメージの実行中に問題が発生した場合（`chmod +x entrypoint.sh が許可されない`など）は、sccを更新する必要があります。以下のように
+`oc edit scc restricted`および`runAsUser.Type`ストラテジを`RunAsAny`に更新します。
 
-### Pushing to Docker Hub
+### Docker Hubへのプッシュ
 
-Tag locally your image:
+イメージにローカルでタグを付けます。
 
 `docker image tag application username/application`
 
-Push your image to Docker Hub:
+イメージをDocker Hubにプッシュします。
 
 `docker image push username/application`
 
-## Deploying application(s)
+## アプリケーションのデプロイ
 
-Deploy application(s):
+アプリケーションをデプロイします。
 
-You can deploy all your apps by either running:
+次のいずれかを実行することで、すべてのアプリケーションをデプロイできます。
   `<directoryPath>/ocp/ocp-apply.sh`
 
-OR
+または、
 
   `oc apply -f <directoryPath>/ocp/registry`
   `oc apply -f <directoryPath>/ocp/app1gw`
-and then install the apps from OpenShift console by choosing the template created in the chosen namespace
+とします。その後、選択した名前空間に作成されたテンプレートを選択して、OpenShiftコンソールからアプリケーションをインストールします。
 
-It will create a OpenShift deployment for your application and its associated dependent services (database, elasticsearch...) as well as OpenShift service for pod to pod communications(inter service) and a route to access the application from outside.
+これにより、アプリケーションとそれに関連する依存サービス（データベース、elasticsearchなど）のためのOpenShiftデプロイメントと、pod間通信（サービス内部）のためのOpenShiftサービス、および外部からアプリケーションにアクセスするためのルートが作成されます。
 
-## Info regarding microservice application(s)
+## マイクロサービスアプリケーションに関する情報
 
-### Deploying a Service Registry
+### サービスレジストリのデプロイ
 
-Although, OpenShift does feature its own internal service discovery with **Kube-DNS**, centralized config management with ConfigMaps and centralized logging through EFK stack, as JHipster relies on Spring Cloud for configuration management, Eureka/Consul for service discovery and jhipster-console(ELK) for log management, OpenShift deployment does support the same as well.
+OpenShiftは、**Kube-DNS**を使用した独自の内部サービスディスカバリ、ConfigMapを使用した一元化された構成管理、EFKスタックを介した一元化されたロギングを特徴としていますが、JHipsterは構成管理にSpring Cloud、サービスディスカバリにEureka/Consul、ログ管理にJHipster-console(ELK)に依存しているため、OpenShiftデプロイメントも同様にサポートしています。
 
-Consequently, for microservices applications, the JHipster OpenShift sub-generator will generate manifest files to deploy the **JHipster-Registry** (based on Eureka) or **Consul**. Moreover, the generated microservices and gateway manifests will contain the appropriate configuration to register themselves to their central registry service.
+その結果、マイクロサービスアプリケーションの場合、JHipster OpenShiftサブジェネレータは、**JHipster-Registry**（Eurekaベース）または**Consul**をデプロイするためのマニフェストファイルを生成します。さらに、生成されたマイクロサービスとゲートウェイマニフェストには、自身を中央レジストリサービスに登録するための適切な設定が含まれます。
 
-### Managing the JHipster Registry or Consul
+### JHipsterレジストリまたはConsulの管理
 
-For the JHipster Registry and Consul, [StatefulSets](https://kubernetes.io/docs/concepts/abstractions/controllers/statefulsets/) configurations are provided. Those are a certain kind of deployment artifact that can handle stateful applications and will let you scale your service registries for high-availability. Kindly note **StatefulSets** are not yet production ready feature in OpenShift. It is in technology preview (BETA) and you need **OpenShift version >=3.5** to use this feature.
+JHipster RegistryとConsulでは、[StatefulSets](https://kubernetes.io/docs/concepts/abstractions/controllers/statefulsets/)設定が提供されています。これらは、ステートフルアプリケーションを処理でき、高可用性のためにサービスレジストリを拡張できる、ある種のデプロイメントアーティファクトです。**StatefulSets**は、OpenShiftではまだプロダクション環境で実用可能な機能ではないことに注意してください。テクノロジープレビュー（ベータ）であり、この機能を使用するには**OpenShiftバージョン3.5以上**が必要です。
 
-### Centralized configuration
+### Kubernetesでの一元的な設定
 
-Centralized configuration is also setup using either **Spring Cloud Config Server** (when using the JHipster-Registry) or the **Consul Key/Value store** (when using Consul). By default, both configuration servers load their configuration from a OpenShift [ConfigMap](https://docs.openshift.org/latest/dev_guide/configmaps.html) which contains property files in this format :
+一元化された構成は、**Spring Cloud Config Server**（JHipster-Registryを使用する場合）または**Consul Key/Valueストア**（Consulを使用する場合）のいずれかを使用して設定できます。デフォルトでは、構成サーバーは両方とも、以下の形式のプロパティファイルが含まれているOpenShift [ConfigMap](https://docs.openshift.org/latest/dev_guide/configmaps.html)から設定をロードします。
 
 ```
 apiVersion: v1
@@ -164,30 +164,30 @@ metadata:
   name: application-config
   namespace: default
 data:
-  application.yml: |- # global properties shared by all applications
-    jhipster:
+  application.yml: |- # すべてのアプリケーションで共有されるグローバルプロパティ
+jhipster氏:
       security:
         authentication:
           jwt:
             secret: secret
-  gateway-prod.yml: |- # gateway application properties for the "prod" profile
+  gateway-prod.yml: |- # "prod"プロファイルのゲートウェイ・アプリケーション・プロパティー
     foo:
       bar: foobar
 ```
 
-## Troubleshooting Tips
+## トラブルシューティングのヒント
 
-- If you are running All-in-one VM, make sure to run the following command before pushing docker images, 
+- All-in-one VMを実行している場合は、Dockerイメージをプッシュする前に必ず次のコマンドを実行してください。
 `eval $(docker-machine env <machine_name>)`
-- If you face issues running StatefulSets or Services with persistent storage, make sure persistent volumes are properly initialized.
-- If you face issues running StatefulSets, check the persistent volume claims. If PVCs' take longer time than usual while initializing, try creating it manually.
-- After running the generators, make sure you are in the chosen namespace **oc project &lt;namespace&gt;** before applying the oc commands.
-- Image pulling for services like elasticsearch, registry, console etc,. for the first time will take some time as it needs to be pulled from public registry to the container registry. If any of the dependent services fail because of this, try deploying it once the services with which it is dependent on are up and running.
-- Please make sure you have the necessary privilege (may require admin) to run scc service that is required to run some of the pods.
+- 永続ストレージでStatefulSetsまたはServicesを実行する際に問題が発生した場合は、永続ボリュームが適切に初期化されていることを確認してください。
+- StatefulSetsの実行中に問題が発生した場合は、永続ボリュームの要求を確認します。PVCの初期化に通常よりも時間がかかる場合は、手動で作成してみてください。
+- ジェネレータを実行した後、ocコマンドを適用する前に、選択した名前空間**oc project &lt;namespace&gt;**にいることを確認してください。
+- elasticsearch、レジストリ、コンソールなどのサービスのイメージプルは、パブリックレジストリからコンテナレジストリにプルする必要があるため、最初は時間がかかります。このために依存サービスのいずれかが失敗した場合は、それが依存するサービスが起動して実行されているときに、それをデプロイしてみてください。
+- いくつかのpodの実行に必要なsccサービスを実行するために必要な特権（管理者が必要な場合があります）を持っていることを確認してください。
 
-## More information
+## 詳細情報
 
-*   [OpenShift Origin documentation](https://docs.openshift.org/latest/welcome/index.html)
+*   [OpenShift Originドキュメント](https://docs.openshift.org/latest/welcome/index.html)
 *   [OpenShift Container Platform](https://access.redhat.com/documentation/en/openshift-container-platform/)
 *   [Minishift](https://github.com/minishift/minishift#documentation)
 *   [OpenShift CLI](https://docs.openshift.org/latest/cli_reference/get_started_cli.html)
