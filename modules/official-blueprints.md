@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Official blueprints
+title: 公式のBlueprint
 permalink: /modules/official-blueprints/
 redirect_from:
   - /official-blueprints.html
@@ -10,100 +10,100 @@ sitemap:
     lastmod: 2019-09-02T11:24:00-00:00
 ---
 
-# <i class="fa fa-star"></i> Officially supported blueprints
+# <i class="fa fa-star"></i> 公式にサポートされるBlueprint
 
-The JHipster team maintains several official blueprints. These blueprints have two main goals:
+JHipsterチームは、いくつかの公式Blueprintを維持しています。これらのBlueprintには、2つの主要な目標があります。
 
-* Enhance JHipster with new features using different languages and/or support
-* Demonstrate how the main generator behavior can be modified to fit anyone's needs
+* 異なる言語やサポートを使用して、JHipsterを新しい機能で強化します。
+* メインジェネレータの動作を任意のニーズに合わせて変更する方法を示します。
 
-The blueprints below are ordered by the number of stars they have on GitHub. 
+以下のBlueprintは、GitHubに登録されているスターの数順に並べられています。
 
 ## Kotlin
 
-The Kotlin blueprint replaces most of Java back-end code with Kotlin. 
+KotlinのBlueprintは、Javaバックエンドコードの大部分をKotlinに置き換えます。
 
-- Code and docs: [jhipster/jhipster-kotlin](https://github.com/jhipster/jhipster-kotlin)
+- コードとドキュメント: [jhipster/jhipster-kotlin](https://github.com/jhipster/jhipster-kotlin)
 - GitHub ⭐️: 411
-- Stream lead: [Sendil Kumar](https://github.com/sendilkumarn)
+- ストリームリード: [Sendil Kumar](https://github.com/sendilkumarn)
 
 ## .NET Core
 
-The .NET Core blueprint is the first attempt to leave the Java environment and join the .NET world. 
+NET CoreのBlueprintは、Java環境を離れて .NETの世界に参加する最初の試みです。
 
-- Code and docs: [jhipster/jhipster-dotnetcore](https://github.com/jhipster/jhipster-dotnetcore)
+- コードとドキュメント: [jhipster/jhipster-dotnetcore](https://github.com/jhipster/jhipster-dotnetcore)
 - GitHub ⭐️: 249
-- Stream lead: [Nicolas Raymond](https://github.com/nicolas63)
+- ストリームリード: [Nicolas Raymond](https://github.com/nicolas63)
 
 ## React Native
 
-The React Native blueprint creates a client application with React Native. 
+React NativeのBlueprintは、React Nativeを使用してクライアントアプリケーションを作成します。 
 
-- Code and docs: [jhipster/generator-jhipster-react-native](https://github.com/jhipster/generator-jhipster-react-native)
+- コードとドキュメント: [jhipster/generator-jhipster-react-native](https://github.com/jhipster/generator-jhipster-react-native)
 - GitHub ⭐️: 235
-- Stream lead: [Jon Ruddell](https://github.com/ruddell)
+- ストリームリード: [Jon Ruddell](https://github.com/ruddell)
 
 ## Node.js
 
-The Node.js blueprint replaces the server java side with the NestJS Node framework. 
+Node.jsのBlueprintは、サーバのjava側をNestJS Nodeフレームワークに置き換えます。
 
-- Code and docs: [jhipster/generator-jhipster-nodejs](https://github.com/jhipster/generator-jhipster-nodejs)
+- コードとドキュメント: [jhipster/generator-jhipster-nodejs](https://github.com/jhipster/generator-jhipster-nodejs)
 - GitHub ⭐️: 223
-- Stream lead: [Angelo Manganiello](https://github.com/amanganiello90)
+- ストリームリード: [Angelo Manganiello](https://github.com/amanganiello90)
 
 ## Ionic
 
-The Ionic blueprint creates a client application with Ionic. 
+IonicのBlueprintは、Ionicを使ってクライアントアプリケーションを作成します。
 
-- Code and docs: [jhipster/generator-jhipster-ionic](https://github.com/jhipster/generator-jhipster-ionic)
+- コードとドキュメント: [jhipster/generator-jhipster-ionic](https://github.com/jhipster/generator-jhipster-ionic)
 - GitHub ⭐️: 171
-- Stream lead: [Matt Raible](https://github.com/mraible)
+- ストリームリード: [Matt Raible](https://github.com/mraible)
 
 ## Quarkus
 
-The Quarkus blueprint is supported, in part by the JHipster sponsor [Entando](https://www.entando.com/), and driven by the JHipster community for a [supersonic, subatomic Java back-end](https://quarkus.io/).
+QuarkusのBlueprintは、JHipsterスポンサー[Entando](https://www.entando.com/)によってサポートされており、[超音速、素粒子 Javaバックエンド](https://quarkus.io/)のためにJHipsterコミュニティによって推進されています。
 
-- Code and docs: [jhipster/generator-jhipster-quarkus](https://github.com/jhipster/generator-jhipster-quarkus)
+- コードとドキュメント: [jhipster/generator-jhipster-quarkus](https://github.com/jhipster/generator-jhipster-quarkus)
 - GitHub ⭐️: 111
-- Stream lead: [Matt Raible](https://github.com/mraible)
+- ストリームリード: [Matt Raible](https://github.com/mraible)
 
 # Entity Audit
 
-The Entity Audit blueprint integrates Javers for entity auditing. 
+Entity AuditのBlueprintは、エンティティ監査のためにJaverを統合します。
 
-- Code and docs: [hipster-labs/generator-jhipster-entity-audit](https://github.com/hipster-labs/generator-jhipster-entity-audit)
+- コードとドキュメント: [hipster-labs/generator-jhipster-entity-audit](https://github.com/hipster-labs/generator-jhipster-entity-audit)
 - GitHub ⭐️: 107
-- Stream lead: [Marcelo Shima](https://github.com/mshima)
+- ストリームリード: [Marcelo Shima](https://github.com/mshima)
 
 ## Micronaut
 
-The Micronaut blueprint is supported and driven by people of the [Micronaut team](https://github.com/jhipster/generator-jhipster-micronaut/graphs/contributors) itself.
-It replaces all server side code with a [Micronaut](https://micronaut.io/) application.
+MicronautのBlueprintは、[Micronautチーム](https://github.com/jhipster/generator-jhipster-micronaut/graphs/contributors)の方々によってサポートされ、推進されています。
+すべてのサーバサイドコードを[Micronaut](https://micronaut.io/)アプリケーションに置き換えます。
 
-- Code and docs: [jhipster/generator-jhipster-micronaut](https://github.com/jhipster/generator-jhipster-micronaut)
+- コードとドキュメント: [jhipster/generator-jhipster-micronaut](https://github.com/jhipster/generator-jhipster-micronaut)
 - GitHub ⭐️: 91
-- Stream lead: [Frederik Hahne](https://github.com/atomfrede)
+- ストリームリード: [Frederik Hahne](https://github.com/atomfrede)
 
 ## Svelte
 
-The Svelte blueprint replaces the client-side code with the SvelteKit framework. 
+SvelteのBlueprintは、クライアントサイドのコードをSvelteKitフレームワークに置き換えます。
 
-- Code and docs: [jhipster/generator-jhipster-svelte](https://github.com/jhipster/generator-jhipster-svelte)
+- コードとドキュメント: [jhipster/generator-jhipster-svelte](https://github.com/jhipster/generator-jhipster-svelte)
 - GitHub ⭐️: 44
-- Stream lead: [Vishal Mahajan](https://github.com/vishal423)
+- ストリームリード: [Vishal Mahajan](https://github.com/vishal423)
 
 ## JHipster Native
 
-The JHipster Native blueprint integrates Spring Native, making it possible to create a native binary with GraalVM. 
+JHipster NativeのBlueprintは、Spring Nativeを統合し、GraalVMでネイティブバイナリを作成できるようにします。
 
-- Code and docs: [jhipster/generator-jhipster-native](https://github.com/jhipster/generator-jhipster-native)
+- コードとドキュメント: [jhipster/generator-jhipster-native](https://github.com/jhipster/generator-jhipster-native)
 - GitHub ⭐️: 28
-- Stream leads: [Marcelo Shima](https://github.com/mshima) and [Matt Raible](https://github.com/mraible)
+- ストリームリード: [Marcelo Shima](https://github.com/mshima) and [Matt Raible](https://github.com/mraible)
 
 # jOOQ
 
-The jOOQ blueprint integrates jOOQ as the persistence layer. 
+jOOQのBlueprintは、jOOQをパーシスタンスレイヤとして統合します。
 
-- Code and Docs: [jhipster/generator-jhipster-jooq](https://github.com/jhipster/generator-jhipster-jooq)
+- コードとドキュメント: [jhipster/generator-jhipster-jooq](https://github.com/jhipster/generator-jhipster-jooq)
 - GitHub ⭐️: 6
-- Stream lead: [Marcelo Shima](https://github.com/mshima)
+- ストリームリード: [Marcelo Shima](https://github.com/mshima)
