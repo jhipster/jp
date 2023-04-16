@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Artwork
+title: アートワーク
 permalink: /artwork/
 redirect_from:
   - /artwork.html
@@ -9,24 +9,24 @@ sitemap:
     lastmod: 2015-07-10T00:00:00-00:00
 ---
 
-# <i class="fa fa-pencil"></i> Artwork
+# <i class="fa fa-pencil"></i> アートワーク
 
-All our artwork can be found in our [artwork repository](https://github.com/jhipster/jhipster-artwork).
+すべてのアートワークは、[アートワークリポジトリ](https://github.com/jhipster/jhipster-artwork)にあります。
 
-## The JHipster Logo
+## JHipsterロゴ
 <img src="/jhipster-artwork/logos/JHipster%20bowtie%20-%20square.png"
       alt="JHipster Logo"
       width="200">
 
-## The JHipster Banner
+## JHipsterバナー
 
 <img src="/jhipster-artwork/logos/JHipster%20banner.png"
       alt="JHipster Banner"
       width="500">
 
-## The JHipster Family
+## JHipsterファミリー
 
-Below are some examples of the JHipster family members.
+以下は、JHipsterファミリーのメンバーの例です。
 
 <div width="500" align="center">
   <img src="/jhipster-artwork/family/jhipster_family_member_0.svg" width="200">
@@ -35,12 +35,12 @@ Below are some examples of the JHipster family members.
   <img src="/jhipster-artwork/family/jhipster_family_member_3.svg" width="200">
 </div>
 
-## Inclusiveness
+## 包括性
 
-As with all JHipster projects, the JHipster Artwork project follows the [JHipster code of conduct](https://github.com/jhipster/generator-jhipster/blob/main/CODE_OF_CONDUCT.md). One of our goals is to have inclusive artwork: at the moment the "JHipster family" has a few members, but the idea is that this family grows, with many different members, as expressed in our code of conduct. If you want to help the project, you can either participate as an artist (the source files from all images are available in the [github repository](https://github.com/jhipster/jhipster-artwork)) or as a sponsor (so we can pay an artist to create those new images).
+すべてのJHipsterプロジェクトと同様に、JHipsterアートワークプロジェクトは[JHipsterの行動規範](https://github.com/jhipster/generator-jhipster/blob/main/CODE_OF_CONDUCT.md)に従っています。私たちの目標の1つは、包括的なアートワークを持つことです。現在、「JHipsterファミリー」には数人のメンバーがいますが、私たちの行動規範に示されているように、このファミリーは多くの異なるメンバーで成長するという考えです。プロジェクトを支援したい場合は、アーティスト（すべての画像のソースファイルは[githubリポジトリ](https://github.com/jhipster/jhipster-artwork)で入手可能）として参加するか、スポンサー（新しい画像を作成するためにアーティストに料金を支払うことができます）として参加できます。
 
-All images are validated by [Audrey Neveu](https://twitter.com/Audrey_Neveu), who is well-known in the Java community for her involvement in [Devoxx4Kids](http://www.devoxx4kids.org/) and [Duchess France](https://www.duchess-france.org/).
+すべてのイメージは、[Devoxx4Kids](http://www.devoxx4kids.org/)と[Duchess France](https://www.duchess-france.org/)に参加したことでJavaコミュニティでよく知られている[Audrey Neveu](https://twitter.com/Audrey_Neveu)によって検証されています。
 
-## Logos and images usage
+## ロゴおよび画像の使用
 
-All logos and images are available under the [Apache 2 license](LICENSE.txt), and belong to the JHipster project.
+すべてのロゴとイメージは[Apache 2 license](LICENSE.txt)の下で利用可能であり、JHipsterプロジェクトに属しています。
