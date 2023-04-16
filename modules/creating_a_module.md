@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Creating a module
+title: Moduleの作成
 permalink: /modules/creating-a-module/
 redirect_from:
   - /creating_a_module.html
@@ -10,28 +10,28 @@ sitemap:
     lastmod: 2015-12-05T18:40:00-00:00
 ---
 
-# <i class="fa fa-cube"></i> Creating a stand alone Blueprint (aka module)
+# <i class="fa fa-cube"></i> スタンドアロンのBlueprint(別名Module)の作成
 
-As of JHipster v7.9.0, module support was merged into blueprint support. So the same rules apply.
+JHipster v7.9.0では、ModuleサポートがBlueprintサポートにマージされました。同じルールが適用されます。
 
-Before creating a Blueprint, make sure you have read [Blueprint Basics](/modules/extending-and-customizing/#-blueprint-basics)
+Blueprintを作成する前に、必ず[Blueprinの基本](/modules/extending-and-customizing/#-blueprint-basics)を読んでください。
 
-## Example
+## 例
 
-[JHipster Ionic](https://github.com/jhipster/generator-jhipster-ionic) was converted from a module to a blueprint.
+[JHipster Ionic](https://github.com/jhipster/generator-jhipster-ionic)はModuleからBlueprintに変換されました。
 
-## Migration
+## 移行
 
-- Rename your module app and entity generators (if they exist) to something else like app-module and entity-module
+- モジュールアプリとエンティティのジェネレータ（存在する場合）の名前をapp-moduleやentity-moduleのような別の名前に変更します。
 
 ```sh
 mv generators/app generators/app-module
 mv generators/entity generators/entity-module
 ```
 
-- Rename every other generator that matches a generator-jhipster generator (otherwise they will be called as a blueprint).
-And update referentes.
-- Add a custom cli (`cli/cli.mjs`)
+- generator-jhipster generatorに一致する他のすべてのジェネレータの名前を変更します（そうでない場合は、Blueprintと呼ばれます）。
+その後、参照を更新します。
+- カスタムCLI(`cli/cli.mjs`)を追加します。
 
 ```javascript
 #!/usr/bin/env node
@@ -41,8 +41,8 @@ import { readFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { dirname, basename } from 'path';
 
-// Get package name to use as namespace.
-// Allows blueprints to be aliased.
+// 名前空間として使用するパッケージ名を取得します。
+// Blueprintのエイリアスを許可します。
 const packagePath = dirname(dirname(fileURLToPath(import.meta.url)));
 const packageFolderName = basename(packagePath);
 
@@ -53,7 +53,7 @@ const packageFolderName = basename(packagePath);
   runJHipster({
     executableName,
     executableVersion: version,
-    defaultCommand: 'app-module', // Generator to be used as entry point to replace `yo` command
+    defaultCommand: 'app-module', // `yo`コマンドを置き換えるためのエントリポイントとして使用されるジェネレータ
     blueprints: {
       [packageFolderName]: version,
     },
@@ -67,7 +67,7 @@ process.on('unhandledRejection', up => {
 });
 ```
 
-- Add the cli to `package.json`
+- `package.json`にcliを追加します。
 
 ```json
 {
@@ -77,13 +77,13 @@ process.on('unhandledRejection', up => {
 }
 ```
 
-### Hooks
+### フック
 
-Hooks support will be removed for JHipster 8. For migration, you can use the following side-by-side blueprints to simulate hooks.
+JHipster 8では、フックのサポートが削除されます。移行の場合は、次のside-by-sideブループリントを使用してフックをシミュレートできます。
 
-- Add the following generators.
+- 次のジェネレータを追加します。
 
-App generator (`generators/app/index.mjs`) for post app hooks:
+以下は、事後のアプリケーションフック用のアプリケーションジェネレータ（`generators/app/index.mjs`）です。
 
 ```javascript
 import chalk from 'chalk';
@@ -115,7 +115,7 @@ export default class extends GeneratorBase {
 }
 ```
 
-Entity generator (`generators/entity/index.mjs`) for post entity hooks:
+以下は、事後のエンティティフック用のエンティティジェネレータ（`generators/entity/index.mjs`）です。
 
 ```javascript
 import chalk from 'chalk';
