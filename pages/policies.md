@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Policies
+title: ポリシー
 permalink: /policies/
 redirect_from:
   - /policies.html
@@ -9,56 +9,56 @@ sitemap:
   lastmod: 2015-07-31T18:40:00-00:00
 ---
 
-# <i class="fa fa-gavel"></i> Policies
+# <i class="fa fa-gavel"></i> ポリシー
 
-The JHipster development team follows some coding policies. You can see them as "best practices" or "guidelines". They are enforced on the project itself, not on the generated code: if you use JHipster to generate your project, you absolutely do not have to follow them!
+JHipster開発チームは、いくつかのコーディングポリシーに従っています。これらは「ベストプラクティス」または「ガイドライン」と見なすことができます。これらは、生成されたコードではなく、プロジェクト自体に適用されます。JHipsterを使用してプロジェクトを生成する場合は、これらに従う必要はありません!
 
-Those policies are followed by the [development team]({{ site.url }}/team/), and you should follow them if you submit a Pull Request.
+これらのポリシーには、[開発チーム]({{ site.url }}/team/)が従います。プルリクエストを送信する場合は、これらのポリシーに従う必要があります。
 
-## Policy 0: Policies are voted by the development team
+## ポリシー0:ポリシーは開発チームによって投票される
 
-Each policy can be discussed or modified by the development team on the [mailing list](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev). Any significant change must be voted (+1 if you agree, -1 if you disagree).
+各ポリシーは、[メーリングリスト](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)で開発チームが議論したり修正したりできます。重要な変更はすべて投票で決定されます（同意する場合は+1、同意しない場合は-1）。
 
-## Policy 1: Technologies used by JHipster have their default configuration and best practices used as much as possible
+## ポリシー1:JHipsterが使用するテクノロジには、デフォルト設定とベストプラクティスを可能な限り使用する
 
-For example, we use JPA, Spring, Angular and React the "usual way", without some heavy configuration options and with their usual naming and coding conventions. We do this as:
+たとえば、JPA、Spring、Angular、Reactを「通常の方法」で使用しており、重い構成オプションはなく、通常の命名規則とコーディング規則を使用しています。これは次のように行います。
 
-- Each technology usually has a very good reason to have those defaults
-- It’s much easier to understand how JHipster works if we don’t re-configure everything
+- 各テクノロジーには通常、これらのデフォルトを設定する十分な理由があります。
+- すべてを再設定し直さない方が、JHipsterがどのように機能するかをはるかに簡単に理解できます。
 
-We might only change a default configuration if it produces some issue with the other technologies used by JHipster. For example, to have Spring Security and Angular working together, we had to change Spring Security’s default configuration or if the default configuration makes our EJS templates extremely complex
+デフォルト設定を変更するのは、JHipsterで使用されている他のテクノロジに問題が発生した場合だけです。たとえば、Spring SecurityとAngularを連携させるためには、Spring Securityのデフォルト設定を変更する必要がありました。そうでないと、デフォルト設定によってEJSテンプレートが非常に複雑になる恐れがありました。
 
-## Policy 2: Only add options/features when there is sufficient added-value in the generated code
+## ポリシー2:生成されたコードに十分な付加価値がある場合にのみ、オプション/機能を追加する
 
-JHipster has many options when generating a project. We only add those options when they are complex and imply configuring or coding several components.
+JHipsterには、プロジェクトを生成するときに多くのオプションがあります。私たちは、それらが複雑で、いくつかのコンポーネントを構成またはコーディングすることを意味する場合にのみ、それらのオプションを追加します。
 
-Adding an option only because it saves a couple of lines to code isn't a good usage of JHipster:
+数行のコードを節約するためだけにオプションを追加するのは、JHipsterの良い使い方ではありません。
 
-- It's easier to code those lines manually than to learn a new JHipster option
-- It will only make our generator more complex without adding any value
+- 新しいJHipsterオプションを学ぶよりも、これらの行を手動でコーディングする方が簡単です。
+- それは、付加価値を付けず、ジェネレータをより複雑にするだけです。
 
-## Policy 3: Use strict versions for third-party libraries on server side and client side
+## ポリシー3:サーバ側およびクライアント側のサードパーティライブラリには、strictバージョンを使用する
 
-Only exception is dependencies on our libraries where relative versions work better. We’ve had many issues with library versions making conflicts. This is mostly a JavaScript issue, so to be clear: we use fixed libraries versions in `package.json` files that are generated.
+唯一の例外は、相対バージョンの方がうまく機能するライブラリへの依存関係です。ライブラリのバージョンが競合するという問題が数多くありました。これは主にJavaScriptの問題であるため、明確にするために、生成される`package.json`ファイルでは固定のライブラリバージョンを使用しています。
 
-## Policy 4: We provide similar user/developer experience across different options provided for the same purpose as much as possible
+## ポリシー4:可能な限り、同じ目的のために提供される異なるオプションにわたって、同じようなのユーザー/開発者エクスペリエンスを提供する
 
-An important aspect of JHipster is our user and developer experience and the ease with which you can swap one technology to another (ex: Client framework, Authentication, Database, etc) and hence it would be easier for developers if they are configured/coded as similar as possible. We can make exceptions when it violates other policies.
+JHipsterの重要な側面は、ユーザと開発者のエクスペリエンスと、ある技術を別の技術（例：クライアントフレームワーク、認証、データベースなど）に簡単に交換できることであり、したがって、開発者にとっては、それらが可能な限り類似した設定/コーディングされている方が簡単です。他のポリシーに違反する場合は、例外を設けることができます。
 
-## Policy 5: Developer experience can take precedence over policy 1, 2, 3 & 4.
+## ポリシー5:開発者エクスペリエンスは、ポリシー1、2、3、および4よりも優先される
 
-This means that we need to make sure developer experience is not affected by below as much as possible
+これは、開発者のエクスペリエンスが可能な限り以下の影響を受けないようにする必要があることを意味します。
 
-- Feature additions
-- Hype driven development
-- Contributor convenience
-- Technology enthusiasm
+- 機能の追加
+- ハイプドリブンな開発
+- 寄稿者の便宜
+- 技術への情熱
 
-Developer experience is subjective hence the below can be a rough guide for the JHipster community. It will be the overall experience of using JHipster as a product and a platform. That includes
+開発者の経験は主観的であるため、以下はJHipsterコミュニティの大まかなガイドとなります。これは、JHipsterを製品およびプラットフォームとして使用する全体的な経験になります。これには以下が含まれます。
 
-- The JHipster CLI experience (ease of use, intuitiveness, speed etc)
-- Generated code (quality, simplicity, readability, maintenance ease, upgradeability, familiarity etc)
-- UX of Tools like JHipster online, JDL studio
-- Docs (Website & generated Readme)
+- JHipster CLIエクスペリエンス（使いやすさ、直感的さ、スピードなど）
+- 生成されたコード（品質、シンプルさ、読みやすさ、メンテナンスの容易さ、アップグレードの容易さ、親しみやすさなど）
+- JHipsterオンライン、JDLスタジオなどのツールのUX
+- ドキュメント（Webサイトおよび生成されたReadme）
 
-When there is a disagreement on enforcement of this policy, there can be a case to case debate and vote on the [mailing list](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev) to resolve it.
+このポリシーの実施に関して意見の相違がある場合は、[メーリングリスト](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)においてケース・ツー・ケースで議論・投票し、それを解決できます。
