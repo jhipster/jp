@@ -11,53 +11,53 @@ sitemap:
 
 # <i class="fa fa-magic"></i> JHipster-UML
 
-Please note that this project is deprecated and shouldn't be used anymore.
+このプロジェクトは非推奨であり、今後使用すべきではないことに注意してください（訳注：そのため訳も「はじめに」までに止めています）。
 
-Instead, we suggest you use the JDL export feature of this project to export your XMI files to a JDL file that you can use and make models of your entities with JDL Studio.
+代わりに、このプロジェクトのJDLエクスポート機能を使用して、XMIファイルをJDLファイルにエクスポートすることをお勧めします。このファイルを使用して、JDL Studioでエンティティのモデルを作成できます。
 
-To learn more about the JDL, head [here]({{ site.url }}/jdl/).
+JDLの詳細については、[ここ]({{ site.url }}/jdl/)を参照してください。
 
 ***
 
-JHipster-UML is a JHipster sub-project that can be used as a replacement to using the [entity sub-generator]({{ site.url }}/creating-an-entity/). The idea is that it is much easier to [manage relationships]({{ site.url }}/managing-relationships/) using a visual tool than with the classical Yeoman questions and answers.
+JHipster-UMLは、[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用する代わりに使用できるJHipsterサブプロジェクトです。[リレーションシップを管理する]({{ site.url }}/managing-relationships/)は、従来のYeomanの質問と回答を使用するよりも、視覚的なツールを使用する方がはるかに簡単です。
 
-The JHipster-UML project is [available on GitHub](https://github.com/jhipster/jhipster-uml/), it is an Open Source project like JHipster (Apache 2.0 licence). If you like this project, don't forget to give us a star on GitHub!
+JHipster-UMLプロジェクトは[GitHubで利用可能](https://github.com/jhipster/jhipster-uml/)であり、JHipster(Apache 2.0ライセンス)のようなオープンソースプロジェクトです。このプロジェクトが気に入った場合は、GitHubで私たちに星を与えることを忘れないでください!
 
-Here's what's covered on this page:
+このページの内容は次のとおりです。
 
-1. [Introduction](#introduction)
-2. [Issues and bugs](#issues)
-3. [Installation](#install)
-4. [How to use JHipster-UML](#howtouse)  
-    4.1. [The UML file](#umlfile)  
-    4.2. [Use JHipster-UML](#usejuml)  
-    4.3. [What's generated](#whatsgenerated)  
-    4.4. [JHipster notes](#jhipsternotes)  
-    4.5. [Reserved words](#reservedwords)  
-5. [Examples](#examples)  
+1. [はじめに](#はじめに)
+2. [問題とバグ](#issues)
+3. [インストール](#install)
+4. [JHipsterの使い方-UML](#howtouse)  
+    4.1. [UMLファイル](#umlfile)  
+    4.2. [JHipster-UMLを使用する](#usejuml)  
+    4.3. [生成されるもの](#whatsgenerated)  
+    4.4. [JHipsterメモ](#jhipsternotes)  
+    4.5. [予約語](#reservedwords)  
+5. [例](#examples)  
     5.1. [Modelio](#modelioexample)  
-    5.2. [UML Designer](#umldesignerexample)  
+    5.2. [UMLデザイナー](#umldesignerexample)  
     5.3. [GenMyModel](#genmymodelexample)  
-    5.4. [Other editors](#othereditors)  
-    5.5. [Enumerations](#enumerationexamples)  
-    5.6. [Table names](#tablenames)  
-    5.7. [Required relationships](#requiredrels)  
-6. [Testing](#testing-juml)
-7. [Contributing: issues and enhancements](#contributing)  
-    7.1. [Parser modifications](#parsermodifications)
-8. [Annexes](#annexes)
+    5.4. [その他の編集者](#othereditors)  
+    5.5. [列挙](#enumerationexamples)  
+    5.6. [テーブル名](#tablenames)  
+    5.7. [必須の関係](#requiredrels)  
+6. [テスト](#testing-juml)
+7. [コントリビューション:課題と機能強化](#contributing)  
+    7.1. [パーサーの変更](#parsermodifications)
+8. [付録](#annexexs)
 
 ***
 
-# Introduction
+# はじめに
 
-JHipster-UML is an alternative to the usual Q&A as it offers you the possibility to use a UML editor to create a diagram that will be parsed by JHipster-UML.
+JHipster-UMLは、通常のQ&Aに代わるもので、UMLエディタを使用してJHipster-UMLで解析される図を作成できます。
 
-Here is a list of the editors we support:
+私たちがサポートしているエディタのリストは以下のとおりです。
 
   - [Modelio](https://www.modeliosoft.com/);
   - [UML Designer](http://www.umldesigner.org/);
-  - [GenMyModel](https://www.genmymodel.com/) (not free, but online).
+  - [GenMyModel](https://www.genmymodel.com/)（無料ではありませんがオンラインです）
 
 ***
 
