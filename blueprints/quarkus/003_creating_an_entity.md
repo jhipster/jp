@@ -1,29 +1,29 @@
 ---
 layout: default
-title: Creating an entity
+title: エンティティの作成
 sitemap:
 priority: 0.5
 lastmod: 2021-01-07T08:40:00-00:00
 ---
 
-# Creating an entity
+# エンティティの作成
 
-## Introduction 
+## はじめに
 
-JHipster Quarkus entity creations permits to generate
+JHipster Quarkusエンティティの作成により以下の生成が可能です。
 
-* A database table
-* A Liquibase change set
-* A JPA Entity
-* A Quarkus Panache Active Record or Repository
-* A Resteasy Controller, which has the basic CRUD operations
-* Data Transfer Objects (DTOs)
-* Pagination
-* Tests 
+* データベーステーブル
+* Liquibaseチェンジセット
+* JPAエンティティ
+* Quarkus Panache Active Recordまたはリポジトリ
+* 基本的なCRUDを操作するResteasyコントローラ
+* データ転送オブジェクト（DTO）
+* ページ区切り
+* テスト
 
-and delegates to JHipster the client side components generation
+クライアント側のコンポーネント生成はJHipsterに委任します。
 
-### Example
+### 例
 
 ```
 $ jhipster-quarkus entity Book
@@ -75,7 +75,7 @@ isbn (String) required
 Everything is configured, generating the entity...
 ```
 
-## JHipster UML and JDL Studio
+## JHipster UMLとJDL Studio
 
-JHipster Quarkus supports JDL imports.
-Refer to the according JHipster UML and JDL Studio section in the *[creating-an-entity](https://www.jhipster.tech/creating-an-entity/)* tutorial.
+JHipster QuarkusはJDLインポートをサポートしています。
+*[エンティティの構築]({{ site.url }}/creating-an-entity/)*のチュートリアルのJHipster UML and JDL Studioセクションを参照してください。

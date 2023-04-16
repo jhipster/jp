@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Quarkus blueprint documentation
+title: Quarkus Blueprintドキュメント
 permalink: /blueprints/quarkus/
 redirect_from:
   - /blueprints/quarkus.html
@@ -11,12 +11,12 @@ sitemap:
 
 # <i class="fa fa-star"></i> Quarkus
 
-[JHipster Quarkus blueprint](https://github.com/jhipster/generator-jhipster-quarkus) to leverage JHipster to create a [Quarkus](https://quarkus.io/) application.
+[JHipster Quarkus blueprint](https://github.com/jhipster/generator-jhipster-quarkus)は、JHipsterを活用して[Quarkus](https://quarkus.io/)アプリケーションを作成します。
 
-_The following documentation will focus only the differences between JHipster Quarkus and the main JHipster generator._
+_次のドキュメントでは、JHipster Quarkusと主要なJHipsterジェネレータの違いにのみ焦点を当てます。_
 
-_For common aspects, please refer to the standard JHipster's documentation._
+一般的な内容については、標準のJHipsterのドキュメントを参照してください。
 
-1. [Installing JHipster Quarkus Blueprint]({{ site.url }}/blueprints/quarkus/001_installing_jhipster_quarkus.html)
-2. [Creating an application]({{ site.url }}/blueprints/quarkus/002_creating_an_application.html)
-3. [Creating an entity]({{ site.url }}/blueprints/quarkus/003_creating_an_entity.html)
+1. [JHipster Quarkus Blueprintのインストール]({{ site.url }}/blueprints/quarkus/001_installing_jhipster_quarkus.html)
+2. [アプリケーションの作成]({{ site.url }}/blueprints/quarkus/002_creating_an_application.html)
+3. [エンティティの作成]({{ site.url }}/blueprints/quarkus/003_creating_an_entity.html)
