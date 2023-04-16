@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Community help
+title: コミュニティへのヘルプ
 permalink: /help/
 redirect_from:
   - /help.html
@@ -9,38 +9,38 @@ sitemap:
     lastmod: 2014-08-27T00:00:00-00:00
 ---
 
-# <i class="fa fa-group"></i> Community help
+# <i class="fa fa-group"></i> コミュニティへのヘルプ
 
-Do you need help? Our awesome community is here!
+助けが必要ですか？　私たちの素晴らしいコミュニティがここにあります！
 
-## #1 rule of community help: everything is public
+## コミュニティへのヘルプの第1のルール：すべてが公開されます
 
-_Please note that we all do this in the spirit of Open Source._
+_私たちは皆、オープンソースの精神でこれを行っていることに注意してください。_
 
-All discussions are public, so that everyone can participate and help each other. If you need help,
-you *should* use the methods listed here.
+すべての議論は公開されているので、誰もが参加してお互いに助け合うことができます。助けが必要な場合は
+ここに記載されている方法を使う*必要があります*。
 
-Those tools will ensure the core team knows what's going on in the project, and that everybody
-can benefit from each other's answers.
+これらのツールにより、コアチームがプロジェクトで何が起こっているかを確実に把握し、すべての人が
+お互いの答えから利益を得ることができます。
 
-## If you have a question on how to use JHipster
+## JHipsterの使用方法について質問がある場合
 
-Go to Stack Overflow with the ["jhipster"](http://stackoverflow.com/tags/jhipster) tag.
+["jhipster"](http://stackoverflow.com/tags/jhipster)タグを使用してStack Overflowに移動します。
 
-## If you have a bug or a feature request
+## バグまたは機能に関する要望がある場合
 
-First read our [contributing guidelines](https://github.com/jhipster/generator-jhipster/blob/main/CONTRIBUTING.md).
+まず、[コントリビューションガイドライン](https://github.com/jhipster/generator-jhipster/blob/main/CONTRIBUTING.md)をお読みください。
 
-Then, fill a ticket on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues/new/choose), we'll be happy to resolve your issue!
+次に、[bug tracker](https://github.com/jhipster/generator-jhipster/issues/new/choose)にチケットを入力すると、問題が解決します。
 
-## If you want to chat with contributors and other users
+## 投稿者や他のユーザーとチャットしたい場合
 
-Join our chat room on [Gitter.im](https://gitter.im/jhipster/generator-jhipster). Please note that this is a public chat room, and that we expect you to respect other people and write in a correct English language!
+[Gitter.im](https://gitter.im/jhipster/generator-jhipster)のチャットルームに参加してください。ここは公開のチャットルームであり、あなたが他の人を尊重し、正しい英語で書くことを期待しています。
 
-## If there is some urgent news you need to share
+## 共有する必要がある緊急のニュースがある場合
 
-Mention [@jhipster](https://twitter.com/jhipster) on Twitter.
+Twitterで[@jhipster](https://twitter.com/jhipster)でメンションしてください。
 
-## If you want to see what the core team is doing
+## コアチームが何をしているかを知りたい場合
 
-As mentioned on our [team page]({{ site.url }}/team/), we have a development mailing list, where only the core developers can participate, which is available [here](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev).
+[チームページ]({{ site.url }}/team/)で述べたように、コア開発者のみが参加できる開発メーリングリストがあります。これは[ここ](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)で利用できます。
