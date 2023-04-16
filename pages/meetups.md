@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Meetups
+title: ミートアップ
 permalink: /meetups/
 redirect_from:
   - /meetups.html
@@ -9,42 +9,42 @@ sitemap:
     lastmod: 2017-05-15T00:00:00-00:00
 ---
 
-# <i class="fa fa-meetup "></i> JHipster meetups
+# <i class="fa fa-meetup "></i> JHipsterミートアップ
 
-We are currently creating JHipster meetups all around the world!
+現在、世界中でJHipsterミートアップを作成しています。
 
-- If you want to create your own meetup do a Pull Request on [this Web page](https://github.com/jhipster/jhipster.github.io/blob/main/pages/meetups.md) to add your meetup directly.
-- There is no rule for meetups: you can schedule them when you want, let it happen where you want, and invite who you want.
-- The JHipster team will do its best to support you: we'll RT you on Twitter, put your event on our main page, etc.
+- 独自のミートアップを作成したい場合は、[このWebページ](https://github.com/jhipster/jhipster.github.io/blob/main/pages/meetups.md)でPull Requestを実行して、直接ミートアップを追加します。
+- ミートアップにはルールはありません：好きな時にスケジュールし、好きな場所でそれを行わせ、好きな人を招待できます。
+- JHipsterチームはあなたをサポートするために最善を尽くします：私たちはTwitterであなたをRTしたり、あなたのイベントを私たちのメインページに掲載したりします。
 
-## Existing meetups
+## 既存のミートアップ
 
-**North America**
+**北米**
 
-- [New York, USA - JHipster meetup](https://www.meetup.com/JHipster-NYC/)
+- [アメリカ・ニューヨーク - JHipsterミートアップ](https://www.meetup.com/JHipster-NYC/)
 
-**Europe**
+**ヨーロッパ**
 
-- [Dublin, Ireland - JHipster meetup](https://www.meetup.com/JHipsterDublin/)
-- [Lyon, France - JHipster meetup](https://www.meetup.com/JHipster-Lyon/)
-- [Paris, France - JHipster meetup](https://www.meetup.com/JHipster-User-Group/)
-- [Zurich, Switzerland - JHipster meetup](https://www.meetup.com/JHipster/)
+- [アイルランド・ダブリン - JHipsterミートアップ](https://www.meetup.com/JHipsterDublin/)
+- [フランス・リヨン - JHipsterミートアップ](https://www.meetup.com/JHipster-Lyon/)
+- [フランス・パリ - JHipsterミートアップ](https://www.meetup.com/JHipster-User-Group/)
+- [スイス・チューリッヒ - JHipsterミートアップ](https://www.meetup.com/JHipster/)
 
-**Oceania**
+**オセアニア**
 
-- [Melbourne, Australia - JHipster meetup](https://www.meetup.com/fr-FR/jHipster-Melbourne/)
+- [オーストラリア・メルボルン - JHipsterミートアップ](https://www.meetup.com/fr-FR/jHipster-Melbourne/)
 
-**Middle East**
+**中東**
 
-- [Dubai, United Arab Emirates - JHipster meetup](https://www.meetup.com/JHipster-Dubai/)
+- [アラブ首長国連邦・ドバイ - JHipsterミートアップ](https://www.meetup.com/JHipster-Dubai/)
 
-**Africa**
+**アフリカ**
 
-- [Lagos, Nigeria - JHipster meetup](https://www.meetup.com/JHipster-Nigeria/)
+- [ナイジェリア・ラゴス - JHipsterミートアップ](https://www.meetup.com/JHipster-Nigeria/)
 
-## Meetups being created
+## 作成中のミートアップ
 
-*Contact the team if you want to help creating one of those meetups*
+*これらのミートアップの作成を支援したい場合は、チームに連絡してください*
 
-- Amsterdam, Netherlands JHipster meetup
-- Brussels, Belgium JHipster meetup
+- オランダ・アムステルダムJHipsterミートアップ
+- ベルギー・ブリュッセルJHipsterミートアップ

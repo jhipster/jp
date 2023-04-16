@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Team
+title: チーム
 permalink: /team/
 redirect_from:
   - /team.html
@@ -9,13 +9,13 @@ sitemap:
     lastmod: 2015-07-30T18:40:00-00:00
 ---
 
-# <i class="fa fa-coffee"></i> Team
+# <i class="fa fa-coffee"></i> チーム
 
-JHipster is developed by a team of people around the world. We have a lot of contributors ([top 100 list here](https://github.com/jhipster/generator-jhipster/graphs/contributors)), but members of the core team are listed here.
+JHipsterは世界中の人々のチームによって開発されています。私たちには多くの貢献者（[トップ100リストはここ](https://github.com/jhipster/generator-jhipster/graphs/contributors)）がいますが、コアチームのメンバーはここにリストされています。
 
-If you want to join the team, or see how we work, our community rules are at the end of this page.
+チームに参加したい場合や、私たちの働き方を見たい場合は、このページの最後にコミュニティルールがあります。
 
-## Project leads
+## プロジェクト・リード
 <div class="row">
     <div class="col-xs-3 team-member">
         <div class="thumbnail no-margin-bottom">
@@ -59,7 +59,7 @@ If you want to join the team, or see how we work, our community rules are at the
     </div>
 </div>
 
-## Board of developers
+## 開発者ボード
 
 <div class="row">
     <div class="col-xs-3 team-member">
@@ -368,13 +368,13 @@ If you want to join the team, or see how we work, our community rules are at the
     </div>
 </div>
 
-## JHipster streams
+## JHipsterストリーム
 
-JHipster supports a wide range of technology choices for your application and as it keeps growing we have come up with technology streams with specific leads to ensure smooth maintenance of the particular technology. Everything else will be lead by project leads.
+JHipsterは、アプリケーションに対して幅広いテクノロジーの選択肢をサポートしており、その成長に合わせて、特定のテクノロジーのスムーズなメンテナンスを保証するために、特定のリードを持つテクノロジーストリームを考案しました。それ以外はすべて、プロジェクト・リードによってリードされます。
 
-The updated spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1fac4Uxv3bKr0rNmgg1WXv67CE_6nfHEPIuCp-_iU-uA/edit?usp=sharing)
+更新されたスプレッドシートは[ここ](https://docs.google.com/spreadsheets/d/1fac4Uxv3bKr0rNmgg1WXv67CE_6nfHEPIuCp-_iU-uA/edit?usp=sharing)にあります。
 
-| Stream                              | Leader             |
+| ストリーム                            | リーダー            |
 |-------------------------------------|--------------------|
 | Angular                             | William Marques    |
 | React                               | Sendil Kumar N     |
@@ -405,7 +405,7 @@ The updated spreadsheet can be found [here](https://docs.google.com/spreadsheets
 
 
 
-## Retired members of the board of developers
+## 開発者ボードの退任メンバー
 
 <div class="row">
     <div class="col-xs-3 team-member">
@@ -446,51 +446,51 @@ The updated spreadsheet can be found [here](https://docs.google.com/spreadsheets
     </div>
 </div>
 
-# Where does the development team work?
+# 開発チームはどこで働いていますか?
 
-We do most of our work on [the project's GitHub page](https://github.com/jhipster/generator-jhipster).
+私たちはほとんどの作業を[プロジェクトのGitHubページ](https://github.com/jhipster/generator-jhipster)で行っています。
 
-Internal team discussions happen in the following channels:
-- The [jhipster-dev mailing list](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)
-- The [jhipster-dev-team Gitter chat](https://gitter.im/jhipster/jhipster-dev-team)
+内部チームディスカッションは、次のチャネルで行われます。
+- [jhipster-devメーリングリスト](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)
+- [jhipster-dev-team Gitterチャット](https://gitter.im/jhipster/jhipster-dev-team)
 
-Those discussion channels are publicly viewable, as everything we do in JHipster is public, but only the board of developers can participate. The mailing list archives can be found on the [Google groups page](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev) and the [chat archives](https://gitter.im/jhipster/jhipster-dev-team/archives/all) are available on Gitter.
+私たちがJHipsterで行うことはすべて公開されているので、これらのディスカッションチャネルは公開されていますが、参加できるのは開発者の委員会だけです。メーリングリストのアーカイブは[Googleグループページ](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)にあり、[チャットアーカイブ](https://gitter.im/jhipster/jhipster-dev-team/archives/all)はGitterで入手できます。
 
-# How to join the board of developers?
+# 開発者のボードに参加する方法は?
 
-- Participate regularly in the project (commits, PRs, etc)
-- Ask someone from the current board, with some bio and background information, and that person will submit a vote on the dev mailing list
-- Everybody on the dev mailing list can vote (+1 if they agree, -1 if they don’t)
-    - One “-1” vote will decline adding the new member, but the person who votes “-1” will need to explain why
+- プロジェクトに定期的に参加します（コミット、PRなど）。
+- 現在のボードの誰かに、経歴と背景情報を聞いて、その人がdevメーリングリストに投票を提出します。
+- devメーリングリストの全員が投票できます（賛成の場合は+1、反対の場合は -1）。
+    - 1つの"-1"票で新しいメンバーの追加を拒否しますが、"-1"票を投じた人は理由を説明する必要があります。
 
-# What do people in the board of developers gain?
+# 開発者委員会のメンバーは何を得ていますか?
 
-- Write access to the main repository, and to most of the projects under the [JHipster organization](https://github.com/jhipster).
-- Costs associated with the project (for example travel costs to come to a JHipster conference) can be paid by [our OpenCollective account](https://opencollective.com/generator-jhipster). This depends on the money available on the account,
-and this is decided and validated by the project leads.
-- Free licenses and free quotas that the project regularly gets from friendly companies.
+- メインリポジトリと、[JHipster組織](https://github.com/jhipster)の下のほとんどのプロジェクトへの書き込みアクセス。
+- プロジェクトに関連する費用（例えば、JHipster会議に来るための旅費）は、[我々のOpenCollectiveアカウント](https://opencollective.com/generator-jhipster)によって支払うことができます。これは、アカウントで利用可能な金額に依存し、
+プロジェクトリーダーによって決定され、検証されます。
+- プロジェクトが友好的な企業から定期的に取得する無料のライセンスと無料の割り当て。
 
-# Who are the "retired members of the board of developers"?
+# 「退任した開発者ボードのメンバー」は誰ですか?
 
-JHipster is an Open Source project, we don't ask anything from our members: they can leave the project or stop contributing at any time. But as members of the board have more rights than other people (including write access to the project), we need them to be active.
+JHipsterはオープンソースプロジェクトであり、私たちはメンバーに何も求めません。彼らはいつでもプロジェクトを離れたり、貢献を停止したりできます。しかし、ボードのメンバーは他の人よりも多くの権利を持っているので（プロジェクトへの書き込みアクセスを含む）、アクティブである必要があります。
 
-Board members will therefore become "retired" if:
+そのような理由で、ボードメンバーは、以下の場合に「退任」となります。
 
-- They tell us they want to leave the project
-- They don't contribute to the project for 2 years
+- プロジェクトを辞めたいと申し出ている
+- 2年間プロジェクトに貢献しない
 
-Contributions are across the entire `jhipter` and `hipster-labs` organizations, and include:
+貢献とは、`jhipter`や`hipster-labs`の組織全体にわたっており、次のようなものが含まれています。
 
-- Commits
-- Comments on issues/PR, responses to mailing list questions, activity on social media (Twitter, Gitter, Stack Overflow, Reddit, etc) related to JHipster
-- Project maintenance (triage, PR reviews & merge, cleanup of issues, releases, project planning)
+- コミット
+- JHipsterに関連する問題/PRへのコメント、メーリングリストの質問への回答、ソーシャルメディア（Twitter、Gitter、Stack Overflow、Redditなど）での活動
+- プロジェクトのメンテナンス（トリアージ、PRレビューとマージ、問題のクリーンアップ、リリース、プロジェクト計画）
 - CI/CD
-- Marketing & advocacy (Promoting a JHipster project on social media, conference talks, blogs, books, trainings, etc)
+- マーケティングおよび提唱（ソーシャルメディア、会議、ブログ、書籍、トレーニングなどに関するJHipsterプロジェクトの推進）
 
-Every year the team leads make a list of "inactive members" and send an official email to ask them if they want to retire. Then 3 cases can happen:
+毎年、チーム・リーダーは「非活動メンバー」のリストを作成し、正式な電子メールを送信して、彼らが退任したいかどうかを尋ねます。その場合、次の3つのケースが発生する可能性があります。
 
-1. The contributor agrees to retire.
-2. The contributor wants to stay in the team and tries to participate in any capacity possible. If the same person comes up in the inactive list twice in a row (inactive for 2 years) then that person is retired.
-3. The contributor doesn't reply for 5 weeks, then this person is retired.
+1. 貢献者は退任することを承諾します。
+2. 貢献者はチームに残りたいと考え、可能な限りの能力で参加しようとします。同じ人が2回連続して非アクティブリストに表示された場合（非アクティブが2年間）、その人は退任します。
+3. 貢献者が5週間返信しない場合、この人物は退任します。
 
-"Retired" member can become active members again, if they contribute back to the project and get elected again. They will have an advantage over other contributors, as they already know the team.
+「退任」メンバーは、プロジェクトに再び貢献し、再び選出された場合、再びアクティブメンバーになることができます。彼らはすでにチームを知っているので、他の貢献者よりも有利です。
