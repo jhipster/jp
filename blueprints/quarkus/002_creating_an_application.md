@@ -1,40 +1,40 @@
 ---
 layout: default
-title: Creating an application
+title: アプリケ～ションの作成
 sitemap:
 priority: 0.5
 lastmod: 2021-01-07T08:40:00-00:00
 ---
 
-# Creating an application
+# アプリケーションの作成
 
-## Quick start
+## クイックスタート
 
-First of all, create an empty directory in which you will create your application:
+最初に、アプリケーションを作成する空のディレクトリを作成します。
 
 `mkdir my-quarkus-application`
 
-Go to that directory:
+次のディレクトリに移動します。
 
 `cd my-quarkus-application`
 
-To generate your JHipster Quarkus application, type:
+JHipster Quarkusアプリケーションを生成するには、次のように入力します。
 
 `jhipster-quarkus`
 
-## Advanced
+## 詳細設定
 
-`jhipster-quarkus` embeds the `jhipster` dependency which means you don't have to install `jhipster` by your own.
-The main benefits of `jhipster-quarkus` is to ensure the compatibility between the JHipster Quarkus blueprint and the underneath JHipster.
+`jhipster-quarkus`は`jhipster`依存関係を組み込みます。これは、`jhipster`を自分でインストールする必要がないことを意味します。
+`jhipster-quarkus`の主な利点は、JHipster Quarkus blueprintのもととなるJHipsterとの互換性を確保することです。
 
-However, if you want to use a custom `jhipster` installation, you can use the `--blueprint` flag as follow:
+ただし、カスタムの`jhipster`インストールを使用する場合は、次のように`--blueprint`フラグを使用できます。
 
 `jhipster --blueprints quarkus`
 
-Please, keep in mind that in this configuration you may face compatibility issues, that's why we do not recommend this usage.
+この設定は、互換性の問題が発生する可能性があるため、この使用方法はお勧めしません。
 
-## Questions asked when generating an application
+## アプリケーションの生成時に尋ねられる質問
 
-The question asked during JHipster Quarkus creation are identical to standard Quarkus.
+JHipster Quarkusの作成中時の質問は、通常のQuarkusと同じです。
 
-Please refer to the according documentation: [Questions asked when generating an application]({{ site.url }}/creating-an-app/#2)
+次のドキュメントを参照してください。[アプリケーションを生成するときの質問]({{ site.url }}/creating-an-app/#2)

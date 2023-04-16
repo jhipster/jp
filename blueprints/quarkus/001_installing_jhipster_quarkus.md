@@ -1,21 +1,21 @@
 ---
 layout: default
-title: Installing JHipster Quarkus
+title: JHipster Quarkusのインストール
 sitemap:
 priority: 0.5
 lastmod: 2021-01-07T08:40:00-00:00
 ---
 
-# Installing JHipster Quarkus
+# JHipster Quarkusのインストール
 
-Before using JHipster Quarkus, you have to prepare your environment (Java, Node) and install JHipster.
+JHipster Quarkusを使用する前に、環境（Java、Node）を準備し、JHipsterをインストールする必要があります。
 
-Please refer to the section *Local installation with NPM (recommended for normal users)* of the documentation https://www.jhipster.tech/installation/.
+https://www.jhipster.tech/installation/ の資料のセクション *「NPMによるローカル・インストール（通常のユーザーに推奨）」* を参照してください。
 
-You can now install the JHipster Quarkus blueprint: 
+これで、JHipster Quarkus blueprintをインストールできるようになりました。
 
 `npm install -g generator-jhipster-quarkus`
 
-You can validate the installation by checking the presence of the `jhipster-quarkus`commmand: `which jhipster-quarkus` (for Mac/Linux).
+インストールを検証するには、`jhipster-quarkus`コマンドの存在をチェックします：`which jhipster-quarkus`（Mac/Linuxの場合）
 
-You're done. You can now start creating Quarkus applications with JHipster.
+これで完了です。JHipsterを使用してQuarkusアプリケーションの作成を開始できます。
