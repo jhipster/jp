@@ -1,179 +1,179 @@
 ---
 layout: default
-title: Release 7.0.0
+title: リリース 7.0.0
 ---
 
-JHipster release v7.0.0
+JHipsterリリース v7.0.0
 ==================
 
-This is our first stable release of JHipster v7!
+これはJHipster v7の最初の安定版リリースです！
 
-Here is a summary of the release notes from our 2 beta releases of JHipster v7.0.0, updated with our latest changes.
+これは、最新の変更で更新されたJHipster v7.0.0の2つのベータリリースのリリースノートの概要です。
 
-It includes a total of 2371 closed tickets and pull requests on the main project:
+これには、合計2371のクローズされたチケットと、メインプロジェクトのプルリクエストが含まれています。
 
-- 825 closed tickets and pull requests: [v7.0.0](https://github.com/jhipster/generator-jhipster/issues?q=is%3Aclosed+milestone%3A7.0.0)
-- 226 closed tickets and pull requests: [v7.0.0-beta.1](https://github.com/jhipster/generator-jhipster/issues?q=is%3Aclosed+milestone%3A7.0.0-beta.1)
-- 1320 closed tickets and pull requests: [v7.0.0-beta.0](https://github.com/jhipster/generator-jhipster/issues?q=is%3Aclosed+milestone%3A7.0.0-beta.0)
+- 825個のクローズされたチケットとプルリクエスト：[v7.0.0](https://github.com/jhipster/generator-jhipster/issues?q=is%3 Aclosed+milestone%3A7.0.0)
+- 226個のクローズされたチケットとプルリクエスト：[v7.0.0-beta.1](https://github.com/jhipster/generator-jhipster/issues?q=is%3 Aclosed+milestone%3A7.0.0-beta.1)
+- 1320個のクローズされたチケットとプルリクエスト：[v7.0.0-beta.0](https://github.com/jhipster/generator-jhipster/issues?q=is%3 Aclosed+milestone%3A7.0.0-beta.0)
 
-Breaking changes
+重大な変更
 ------------
 
-Related to Blueprints and Modules:
-- Remove getAllJhipsterConfig - [#12023](https://github.com/jhipster/generator-jhipster/issues/12023). Use getJhipsterConfig instead of getAllJhipsterConfig.
-- Create jhipsterConfig for synchronised config and move configOptions to generator-base - [#12026](https://github.com/jhipster/generator-jhipster/pull/12026). generators-base-blueprint's jhipsterConfig field is now a proxy instead of a Storage object look at the PR description for migration.
-- Updates to `getXXXAppName()` methods on `base-generator` [#12325](https://github.com/jhipster/generator-jhipster/issues/12325):
-  - added `getFrontendAppName()` and `frontendAppName` attribute
-  - removed `getAngularAppName()` and `angularAppName` attribute
-  - removed `getAngularXName()` and `angularXAppName` attribute
-- Removed `setup*Options()` operations
-  - A replacement may not be required. Use `load(App/Client/Server)Config` if needed.
-- `id` field is added to fields at jhipster 7.
-  - Remove id fields if the blueprint/module doesn't support. `this.fields = this.fields.filter(field => !field.id);`
+ブループリントおよびモジュール関連:
+- getAllJhipsterConfigを削除 - [#12023](https://github.com/jhipster/generator-jhipster/issues/12023). getAllJhipsterConfigの代わりにgetJhipsterConfigを使用します。
+- 同期化された構成のjhipsterConfigを作成し、configOptionsをgenerator-baseに移動 - [#12026](https://github.com/jhipster/generator-jhipster/pull/12026)generators-base-blueprintのjhipsterConfigフィールドは、Storageオブジェクトではなくプロキシになりました。移行のPR説明を参照してください。
+- `base-generator`の`getXXXAppName()`メソッドの更新[#12325](https://github.com/jhipster/generator-jhipster/issues/12325):
+  - `getFrontendAppName()`と`frontendAppName`属性を追加
+  - `getAngularAppName()`と`angularAppName`属性を削除
+  - `getAngularXName()`と`angularXAppName`属性を削除
+- `setup*Options()`操作が削除されました
+  - 交換が必要ない場合があります。必要に応じて`load(App/Client/Server)Config`を使用してください。
+- jhipster 7のフィールドに`id`フィールドが追加されました。
+  - ブループリント/モジュールがサポートしていない場合は、idフィールドを削除してください。`this.fields = this.fields.filter(field => !field.id);`
 
-Related to front:
-- Angular: follow closer Angular Style Guide - [#13125](https://github.com/jhipster/generator-jhipster/issues/13125)
-- React: tests next to the files they are testing [#13425](https://github.com/jhipster/generator-jhipster/issues/13425)
-- Login page refactoring - [#11926](https://github.com/jhipster/generator-jhipster/pull/11926)
-- Replace moment by Day.js - [#12575](https://github.com/jhipster/generator-jhipster/issues/12575)
-- Server common scripts - webpack profile replaced by webapp [#13196](https://github.com/jhipster/generator-jhipster/pull/13196)
+フロントエンド関連:
+- Angular: より最近のAngularスタイルガイドに追従 - [#13125](https://github.com/jhipster/generator-jhipster/issues/13125)
+- React:テストをテストするファイルの横へ [#13425](https://github.com/jhipster/generator-jhipster/issues/13425)
+- ログインページのリファクタリング - [#11926](https://github.com/jhipster/generator-jhipster/pull/11926)
+- momentをDay.jsに置き換え - [#12575](https://github.com/jhipster/generator-jhipster/issues/12575)
+- サーバ共通スクリプト - webpackプロファイルをwebappによって置き換え [#13196](https://github.com/jhipster/generator-jhipster/pull/13196)
 
-Related to backend:
-- Protect user api and create a filtered user api for relationships - [#12374](https://github.com/jhipster/generator-jhipster/issues/12374)
-- Springfox 3 upgrade - [#12133](https://github.com/jhipster/generator-jhipster/pull/12133) and [jhipster/jhipster#764](https://github.com/jhipster/jhipster/pull/764)
-  - `swagger` maven profile becomes `api-docs`
-  - `jhipster.swagger` property becomes `jhipster.api-docs`
-  - `SwaggerCustomizer` becomes `SpringfoxCustomizer`
-  - `swaggerSpringfoxApiDocket` becomes `openapiSpringfoxApiDocket`
-  - `swaggerSpringfoxManagementDocket` becomes `openAPISpringfoxManagementDocket`
-- All generated Gateways are Reactive instead of Spring MVC - [#13855](https://github.com/jhipster/generator-jhipster/issues/13855)
-  - Zuul is replaced by Spring Cloud Gateway
-  - Ribbon is replaced by Spring Cloud Load Balancer
-- Add id to PUT request - [#14139](https://github.com/jhipster/generator-jhipster/issues/14139)
+バックエンド関連:
+- ユーザーAPIを保護し、リレーションのためのフィルター処理されたユーザーAPIを作成 - [#12374](https://github.com/jhipster/generator-jhipster/issues/12374)
+- Springfox 3アップグレード - [#12133](https://github.com/jhipster/generator-jhipster/pull/12133)および[jhipster/jhipster#764](https://github.com/jhipster/jhipster/pull/764)
+  - `swagger`Mavenプロファイルを`api-docs`に
+  - `jhipster.swagger`プロパティを`jhipster.api-docs`に
+  - `SwaggerCustomizer`を`SpringfoxCustomizer` に
+  - `swaggerSpringfoxApiDocket`を`openapiSpringfoxApiDocket`に
+  - `swaggerSpringfoxManagementDocket`を `openAPISpringfoxManagementDocket`に
+- 生成されたすべてのゲートウェイをSpring MVCからリアクティブへ - [#13855](https://github.com/jhipster/generator-jhipster/issues/13855)
+  - ZuulはSpring Cloud Gatewayに置き換え
+  - RibbonはSpring Cloud Load Balancerに置き換え
+- PUTリクエストにidを追加 - [#14139](https://github.com/jhipster/generator-jhipster/issues/14139)
 
-Entities:
-- Change relationship table name - [#11025](https://github.com/jhipster/generator-jhipster/issues/11025)
+エンティティ:
+- リレーションシップテーブル名の変更 - [#11025](https://github.com/jhipster/generator-jhipster/issues/11025)
 
-Most important new features and upgrades
+最も重要な新機能とアップグレード
 -------------
 
-New features
-- Vue.js support - [#12064](https://github.com/jhipster/generator-jhipster/pull/12064)
-- Cypress support - [#12307](https://github.com/jhipster/generator-jhipster/pull/12307)
+新機能
+- Vue.jsのサポート - [#12064](https://github.com/jhipster/generator-jhipster/pull/12064)
+- Cypressのサポート - [#12307](https://github.com/jhipster/generator-jhipster/pull/12307)
 - JDL Studio V2
-- JHipster Control Center - See the [project](https://github.com/jhipster/jhipster-control-center)
+- JHipster Control Center - [プロジェクト](https://github.com/jhipster/jhipster-control-center)を参照
 - Prettier for Java - [#12109](https://github.com/jhipster/generator-jhipster/issues/12109)
-- Angular CLI support - [#10539](https://github.com/jhipster/generator-jhipster/issues/10539)
-- Snyk support - [#12441](https://github.com/jhipster/generator-jhipster/issues/12441)
-- Add support to --pk-type - [#13296](https://github.com/jhipster/generator-jhipster/issues/13296)
-- Add support to @MapstructExpression - [#13195](https://github.com/jhipster/generator-jhipster/pull/13195)
-- Support Neo4j with k8s subgenerator - [#13548](https://github.com/jhipster/generator-jhipster/pull/13548)
+- Angular CLIのサポート - [#10539](https://github.com/jhipster/generator-jhipster/issues/10539)
+- Snykのサポート - [#12441](https://github.com/jhipster/generator-jhipster/issues/12441)
+- --pk-typeのサポートを追加 - [#13296](https://github.com/jhipster/generator-jhipster/issues/13296)
+- @MapstructExpressionのサポートを追加 - [#13195](https://github.com/jhipster/generator-jhipster/pull/13195)
+- Neo4jとk8sサブジェネレータのサポート - [#13548](https://github.com/jhipster/generator-jhipster/pull/13548)
 - NPM 7 - [#13060](https://github.com/jhipster/generator-jhipster/pull/13060)
 
-Entities
-- add support for custom ids - [#13258](https://github.com/jhipster/generator-jhipster/pull/13258)
+エンティティ
+- カスタムIDのサポートを追加 - [#13258](https://github.com/jhipster/generator-jhipster/pull/13258)
 - Incremental Liquibase - [#12178](https://github.com/jhipster/generator-jhipster/issues/12178)
 
-Improvements
+改良点
 - Angular 11 - [#13035](https://github.com/jhipster/generator-jhipster/pull/13035)
-- Blueprint improvement
-- Webflux improvement
+- ブループリントの改善
+- Webfluxの改善
 - Spring Boot 2.4 - [#13551](https://github.com/jhipster/generator-jhipster/pull/13551)
-- Java 11 by default - [#12021](https://github.com/jhipster/generator-jhipster/pull/12021)
-- PostgreSQL as default database - [#11736](https://github.com/jhipster/generator-jhipster/issues/11736)
-- IntegrationTest annotation - [#12460](https://github.com/jhipster/generator-jhipster/issues/12460)
-- Annotation to detect generated files - [#12459](https://github.com/jhipster/generator-jhipster/issues/12459)
-- Remove system and anonymoususer - [#13043](https://github.com/jhipster/generator-jhipster/pull/13043)
+- Java 11をデフォルトに - [#12021](https://github.com/jhipster/generator-jhipster/pull/12021)
+- PostgreSQLをデフォルトのデータベースに - [#11736](https://github.com/jhipster/generator-jhipster/issues/11736)
+- IntegrationTestのアノテーション - [#12460](https://github.com/jhipster/generator-jhipster/issues/12460)
+- 生成されたファイルを検出するためのアノテーション - [#12459](https://github.com/jhipster/generator-jhipster/issues/12459)
+- systemとanonymoususerの削除 - [#13043](https://github.com/jhipster/generator-jhipster/pull/13043)
 - Docker-Compose v3 - [#12428](https://github.com/jhipster/generator-jhipster/issues/12428)
 - Typescript 4 - [#12435](https://github.com/jhipster/generator-jhipster/pull/12435)
-- Webpack 5 for React and Vue - [#13615](https://github.com/jhipster/generator-jhipster/pull/13615)
+- ReactおよびVue用Webpack 5 - [#13615](https://github.com/jhipster/generator-jhipster/pull/13615)
 
-Refactoring
-- JHipster library, with `tech.jhipster` as package name - [#12854](https://github.com/jhipster/generator-jhipster/issues/12854)
-- JHipster Core is merged with generator-jhipster - [#11694](https://github.com/jhipster/generator-jhipster/pull/11694)
-- ng-jhipster is merged with generator-jhipster - [#12909](https://github.com/jhipster/generator-jhipster/issues/12909)
+リファクタリング
+- JHipsterライブラリのパッケージ名として`tech.jhipster`を使用 - [#12854](https://github.com/jhipster/generator-jhipster/issues/12854)
+- JHipster Coreをgenerator-jhipsterとマージ  - [#11694](https://github.com/jhipster/generator-jhipster/pull/11694)
+- ng-jhipsterをgenerator-jhipsterとマージ - [#12909](https://github.com/jhipster/generator-jhipster/issues/12909)
 
-Removed
-- Removed audit page - [#12024](https://github.com/jhipster/generator-jhipster/pull/12024)
-- Yarn support dropped - [#12134](https://github.com/jhipster/generator-jhipster/pull/12134)
-- Remove deprecated JHipster Console (ELK) - [#12414](https://github.com/jhipster/generator-jhipster/pull/12414)
-- UAA support dropped - [#13081](https://github.com/jhipster/generator-jhipster/issues/13081)
-- Traefik support dropped - [#14233](https://github.com/jhipster/generator-jhipster/issues/14233)
+削除
+- 監査ページを削除 - [#12024](https://github.com/jhipster/generator-jhipster/pull/12024)
+- Yarnサポートを終了 - [#12134](https://github.com/jhipster/generator-jhipster/pull/12134)
+- 非推奨のJHipster Console (ELK)を削除 - [#12414](https://github.com/jhipster/generator-jhipster/pull/12414)
+- UAAのサポートを終了 - [#13081](https://github.com/jhipster/generator-jhipster/issues/13081)
+- Traefikサポートを終了 - [#14233](https://github.com/jhipster/generator-jhipster/issues/14233)
 
 
-Closed tickets and merged pull requests
+クローズされたチケットとマージされたプルリクエスト
 ------------
-As always, __[you can check all closed tickets and merged pull requests here](https://github.com/jhipster/generator-jhipster/issues?q=is%3Aclosed+milestone%3A7.0.0)__.
+いつものように、__[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is%3Aclosed+milestone%3A7.0.0)__。
 
-How to upgrade
+アップグレード方法
 ------------
 
-**Automatic upgrade**
+**自動アップグレード**
 
-For an automatic upgrade, use the [JHipster upgrade sub-generator]({{ site.url }}/upgrading-an-application/) on an existing application:
+自動アップグレードの場合は、既存のアプリケーションで[JHipsterアップグレードサブジェネレータ]({{ site.url }}/upgrading-an-application/)を使用します。
 
-Upgrade your version of JHipster:
+JHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-And then run the upgrade sub-generator:
+次に、アップグレードサブジェネレータを実行します。
 
 ```
 jhipster upgrade
 ```
 
-**Manual upgrades**
+**手動アップグレード**
 
-For a manual upgrade, first upgrade your version of JHipster with:
+手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-If you have an existing project, it will still use the JHipster version with which it was generated.
-To upgrade your project, you must first delete its `node_modules` folder and then run:
+既存のプロジェクトがある場合は、そのプロジェクトは生成されたJHipsterのバージョンをそのまま使用します。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、次のコマンドを実行する必要があります。
 
 ```
 jhipster
 ```
 
-You can also update your project and all its entities by running
+次のコマンドを実行して、プロジェクトとすべてのエンティティの更新もできます。
 
 ```
 jhipster --with-entities
 ```
 
-You can also update your entities one-by-one by running again the entity sub-generator, for example if your entity is named _Foo_
+また、エンティティサブジェネレータを再度実行し、エンティティの1つずつの更新もできます。たとえば、エンティティの名前が _Foo_ の場合は以下となります。
 
 ```
 jhipster entity Foo
 ```
 
-**Tips**
+**ヒント**
 
-To generate your project with incremental Liquibase changelogs, you should use:
+インクリメンタルなLiquibase変更ログを使用してプロジェクトを生成するには、次を使用する必要があります。
 
 ```
 jhipster --incremental-changelog
 ```
 
-To generate your project with `@GeneratedByJHipster` annotation in your Java classes, you should use:
+Javaクラスに`@GeneratedByJHipster`アノテーションを付けてプロジェクトを生成するには、次のコードを使用します。
 
 ```
 jhipster --with-generated-flag
 ```
 
 
-Help and bugs
+ヘルプとバグ
 --------------
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- [@jhipster](https://twitter.com/jhipster)のTwitterアカウントに連絡をお願いします。

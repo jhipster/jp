@@ -1,78 +1,78 @@
 ---
 layout: default
-title: Release 7.9.3
+title: リリース 7.9.3
 ---
 
-# JHipster release v7.9.3
+# JHipsterリリース v7.9.3
 
-This is the new patch release of JHipster v7 with [313 closed tickets and merged pull requests](https://github.com/jhipster/generator-jhipster/issues?q=milestone%3A7.9.3+is%3Aclosed).
+これは、JHipster v7の新しいパッチリリースで、[313個のクローズされたチケットとマージされたプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=milestone%3A7.9.3+is%3Aclosed)があります。
 
-## Most important new features and upgrades
+## 最も重要な新機能とアップグレード
 
-- allow jdl search option with no value - [#19485](https://github.com/jhipster/generator-jhipster/pull/19485)
-- Support of Keycloak v19 - [#19540](https://github.com/jhipster/generator-jhipster/pull/19540)
-- Some fixed related to MSSQL - [#19348](https://github.com/jhipster/generator-jhipster/pull/19348) [#19336](https://github.com/jhipster/generator-jhipster/pull/19336) [#19323](https://github.com/jhipster/generator-jhipster/pull/19323)
-- local blueprint support - [#19451](https://github.com/jhipster/generator-jhipster/pull/19451)
-- fix generate-blueprint workflow - [#19594](https://github.com/jhipster/generator-jhipster/pull/19594)
-- upgrade to Spring Boot 2.7.3 - [#19468](https://github.com/jhipster/generator-jhipster/pull/19468)
-- Many libraries upgrades
+- 値のないjdl検索オプションを許可 - [#19485](https://github.com/jhipster/generator-jhipster/pull/19485)
+- Keycloak v19のサポート - [#19540](https://github.com/jhipster/generator-jhipster/pull/19540)
+- MSSQLに関連するいくつかの修正 - [#19348](https://github.com/jhipster/generator-jhipster/pull/19348) [#19336](https://github.com/jhipster/generator-jhipster/pull/19336) [#19323](https://github.com/jhipster/generator-jhipster/pull/19323)
+- Local Blueprintのサポート - [#19451](https://github.com/jhipster/generator-jhipster/pull/19451)
+- generate-blueprintワークフローの修正 - [#19594](https://github.com/jhipster/generator-jhipster/pull/19594)
+- Spring Boot 2.7.3へのアップグレード - [#19468](https://github.com/jhipster/generator-jhipster/pull/19468)
+- 多数のライブラリのアップグレード
 
-## Closed tickets and merged pull requests
+## クローズされたチケットとマージされたプルリクエスト
 
-As always, **[you can check all closed tickets and merged pull requests here](https://github.com/jhipster/generator-jhipster/issues?q=milestone%3A7.9.3+is%3Aclosed)**.
+いつものように、**[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=milestone%3A7.9.3+is%3Aclosed)**。
 
-## How to upgrade
+## アップグレード方法
 
-**Automatic upgrade**
+**自動アップグレード**
 
-For an automatic upgrade, use the [JHipster upgrade sub-generator]({{ site.url }}/upgrading-an-application/) on an existing application:
+自動アップグレードの場合は、既存のアプリケーションで[JHipsterアップグレードサブジェネレータ]({{ site.url }}/upgrading-an-application/)を使用します。
 
-Upgrade your version of JHipster:
+JHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-And then run the upgrade sub-generator:
+次に、アップグレードサブジェネレータを実行します。
 
 ```
 jhipster upgrade
 ```
 
-**Manual upgrades**
+**手動アップグレード**
 
-For a manual upgrade, first upgrade your version of JHipster with:
+手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-If you have an existing project, it will still use the JHipster version with which it was generated.
-To upgrade your project, you must first delete its `node_modules` folder and then run:
+既存のプロジェクトがある場合は、そのプロジェクトは生成されたJHipsterのバージョンをそのまま使用します。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、次のコマンドを実行する必要があります。
 
 ```
 jhipster
 ```
 
-You can also update your project and all its entities by running
+次のコマンドを実行して、プロジェクトとすべてのエンティティの更新もできます。
 
 ```
 jhipster --with-entities
 ```
 
-You can also update your entities one-by-one by running again the entity sub-generator, for example if your entity is named _Foo_
+また、エンティティサブジェネレータを再度実行し、エンティティの1つずつの更新もできます。たとえば、エンティティの名前が _Foo_ の場合は以下となります。
 
 ```
 jhipster entity Foo
 ```
 
-## Help and bugs
+## ヘルプとバグ
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- [@jhipster](https://twitter.com/jhipster)のTwitterアカウントに連絡をお願いします。

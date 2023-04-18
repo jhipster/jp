@@ -1,98 +1,98 @@
 ---
 layout: default
-title: Release 7.1.0
+title: リリース 7.1.0
 ---
 
-JHipster release v7.1.0
+JHipsterリリース v7.1.0
 ==================
 
-This is the first minor release of JHipster v7 with [817 closed tickets and merged pull requests](https://github.com/jhipster/generator-jhipster/issues?q=milestone%3A7.1.0+is%3Aclosed).
+これは、JHipster v7の新しいマイナーリリースで、[947個のクローズされたチケットとマージされたプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=milestone%3A7.1.0+is%3Aclosed)があります。
 
-Breaking changes
-------------
+重大な変更
+-------------
 
-- React: Redux toolkit migration - [#15033](https://github.com/jhipster/generator-jhipster/issues/15033)
-- React: Migrate to react-hook-form from availity-reactstrap-validation - [#15191](https://github.com/jhipster/generator-jhipster/pull/15191)
+- React: Reduxツールキットの移行 - [#15033](https://github.com/jhipster/generator-jhipster/issues/15033)
+- React: availity-reactstrap-validationからreact-hook-formへの移行 - [#15191](https://github.com/jhipster/generator-jhipster/pull/15191)
 
-Most important new features and upgrades
+最も重要な新機能とアップグレード
 -------------
 
 - Angular 12 - [#14980](https://github.com/jhipster/generator-jhipster/pull/14980)
-- Add microfrontend support to angular - [#15286](https://github.com/jhipster/generator-jhipster/pull/15286)
-- Remove AWS Containers Subgenerator - [#14637](https://github.com/jhipster/generator-jhipster/pull/14637)
-- Update spring-boot version to 2.4.7 and other dependencies - [#15283](https://github.com/jhipster/generator-jhipster/pull/15283)
-- Cache frontend application files - [#15126](https://github.com/jhipster/generator-jhipster/issues/15126)
+- Angularにマイクロフロントエンドのサポートを追加 - [#15286](https://github.com/jhipster/generator-jhipster/pull/15286)
+- AWS Containers Subgeneratorの削除 - [#14637](https://github.com/jhipster/generator-jhipster/pull/14637)
+- spring-bootバージョンを2.4.7およびその他の依存関係に更新 - [#15283](https://github.com/jhipster/generator-jhipster/pull/15283)
+- フロントエンドアプリケーションファイルのキャッシュ - [#15126](https://github.com/jhipster/generator-jhipster/issues/15126)
 - Cypress 7.4.0 - [#14983](https://github.com/jhipster/generator-jhipster/pull/14983)
-- JWTRelay allow no authorization header - [#14854](https://github.com/jhipster/generator-jhipster/pull/14854)
-- Use by default Base64-encoded JWT secret - [#14952](https://github.com/jhipster/generator-jhipster/issues/14952)
-- Many libraries upgrades
+- JWTRelayがauthorization header無しを許可 - [#14854](https://github.com/jhipster/generator-jhipster/pull/14854)
+- デフォルトでBase 64エンコードJWTシークレットを使用 - [#14952](https://github.com/jhipster/generator-jhipster/issues/14952)
+- 多数のライブラリのアップグレード
 
-Closed tickets and merged pull requests
+クローズされたチケットとマージされたプルリクエスト
 ------------
-As always, __[you can check all closed tickets and merged pull requests here](https://github.com/jhipster/generator-jhipster/issues?q=milestone%3A7.1.0+is%3Aclosed)__.
+いつものように、__[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=milestone%3A7.1.0+is%3Aclosed)__。
 
-How to upgrade
+アップグレード方法
 ------------
 
-**Automatic upgrade**
+**自動アップグレード**
 
-For an automatic upgrade, use the [JHipster upgrade sub-generator]({{ site.url }}/upgrading-an-application/) on an existing application:
+自動アップグレードの場合は、既存のアプリケーションで[JHipsterアップグレードサブジェネレータ]({{ site.url }}/upgrading-an-application/)を使用します。
 
-Upgrade your version of JHipster:
+JHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-And then run the upgrade sub-generator:
+次に、アップグレードサブジェネレータを実行します。
 
 ```
 jhipster upgrade
 ```
 
-**Manual upgrades**
+**手動アップグレード**
 
-For a manual upgrade, first upgrade your version of JHipster with:
+手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-If you have an existing project, it will still use the JHipster version with which it was generated.
-To upgrade your project, you must first delete its `node_modules` folder and then run:
+既存のプロジェクトがある場合は、そのプロジェクトは生成されたJHipsterのバージョンをそのまま使用します。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、次のコマンドを実行する必要があります。
 
 ```
 jhipster
 ```
 
-You can also update your project and all its entities by running
+次のコマンドを実行して、プロジェクトとすべてのエンティティの更新もできます。
 
 ```
 jhipster --with-entities
 ```
 
-You can also update your entities one-by-one by running again the entity sub-generator, for example if your entity is named _Foo_
+また、エンティティサブジェネレータを再度実行し、エンティティの1つずつの更新もできます。たとえば、エンティティの名前が _Foo_ の場合は以下となります。
 
 ```
 jhipster entity Foo
 ```
 
-**Tips**
+**ヒント**
 
-To generate your project with all Java classes already formatted using [prettier-java](https://github.com/jhipster/prettier-java), you should use:
+[prettier-java](https://github.com/jhipster/prettier-java)を使用してすべてのJavaクラスがすでにフォーマットされているプロジェクトを生成するには、次のコマンドを使用します。
 
 ```
 jhipster --prettier-java
 ```
 
-Help and bugs
+ヘルプとバグ
 --------------
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- [@jhipster](https://twitter.com/jhipster)のTwitterアカウントに連絡をお願いします。
