@@ -1,26 +1,26 @@
 ---
 layout: default
-title: Using Bootswatch themes
+title: Bootswatchのテーマを使用する
 sitemap:
 priority: 0.5
 lastmod: 2015-08-01T22:28:00-00:00
 ---
 
-# Using Bootswatch themes with theme switcher
+# テーマスイッチャでBootswatchのテーマを使用する
 
-__Tip submitted by [@deepu105](https://github.com/deepu105)__
+__このTipは[@deepu105](https://github.com/deepu105)から提出されました__
 
-This is now available as a [JHipster module](https://github.com/deepu105/generator-jhipster-bootswatch) requires JHipster version greater than 2.26.2
+これは現在、[JHipsterモジュール](https://github.com/deepu105/generator-jhipster-bootswatch)として利用できますが、JHipsterバージョン2.26.2以降が必要です。
 
-To have [Bootswatch](https://bootswatch.com/) themes instead of the default theme you just need to override the bootstrap css with the css from bootswatch theme. However if you want a cool theme switcher to switch between Bootswatch themes dynamically then follow this tip.
+デフォルトのテーマの代わりに[Bootswatch](https://bootswatch.com/)テーマを使用するには、ブートストラップcssをbootswatchテーマのcssでオーバーライドする必要があります。ただし、Bootswatchのテーマを動的に切り替えるクールなテーマスイッチャが必要な場合は、このヒントに従ってください。
 
-Make the following changes in the generated app.
+生成されたアプリケーションで次を変更します。
 
-**Note:** replace 'yourApp' with the generated name of your application.
+**注:**'yourApp'は、生成されたアプリケーション名に置き換えてください。
 
-## Add Files
+## ファイルの追加
 
-Add the below service as `bootswatch.service.js` under `webapp/app/components/bootswatch`
+次のサービスを`webapp/app/components/bootswatch`の下に`bootswatch.service.js`として追加します。
 
     'use strict';
 
@@ -35,7 +35,7 @@ Add the below service as `bootswatch.service.js` under `webapp/app/components/bo
             };
         });
 
-Add the below directive as `bootswatch.directive.js` under `webapp/app/components/bootswatch`
+次のディレクティブを`webapp/app/components/bootswatch`の下に`bootswatch.directive.js`として追加します。
 
 
     'use strict';
@@ -63,7 +63,7 @@ Add the below directive as `bootswatch.directive.js` under `webapp/app/component
             };
         });
 
-Add the below controller as `bootswatch.controller.js` under `webapp/app/components/bootswatch`
+次のコントローラを`webapp/app/components/bootswatch`の下に`bootswatch.controller.js`として追加します。
 
     'use strict';
 
@@ -78,14 +78,14 @@ Add the below controller as `bootswatch.controller.js` under `webapp/app/compone
 
 ## index.html
 
-Add the below to the `index.html` file after the CSS vendor.css build task so that these are not minified and compacted by build task
+CSS vendor.css構築タスクの後の`index.html`ファイルに以下を追加して、これらが構築タスクによってminifyおよび圧縮されないようにします。
 
     <!-- build:css content/css/vendor.css -->
 
     ...
 
     <!-- endbuild -->
-    <!-- placeholder link to load bootswatch themes, title holds the current applied theme name-->
+    <!-- bootswatchテーマを読み込むためのプレースホルダリンク。タイトルには、現在適用されているテーマ名が表示されます。-->
     <link rel="stylesheet" href="" id="bootswatch-css" title="Default">
     <!-- build:css assets/styles/main.css -->
 
@@ -114,7 +114,7 @@ Add the below in footer
         </div>
     </div>
 
-Add script tags in your index.html file manually if 'gulp inject' fails and you receive angular errors
+'gulp inject'が失敗し、Angularエラーが発生した場合は、index.htmlファイルにスクリプトタグを手動で追加します。
 
     <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
 
@@ -124,16 +124,16 @@ Add script tags in your index.html file manually if 'gulp inject' fails and you 
     <script src="scripts/components/util/bootswatch.directive.js"></script>
     <script src="scripts/components/util/bootswatch.service.js"></script>
 
-# app.js (only for oAuth/xAuth)
+# app.js (oAuth/xAuthのみ)
 
-Add exclusion to the bootswatch url in authInterceptor in `app/blocks/interceptor/auth.interceptor.js` if you are using OAuth or XAuth
+OAuthまたはxAuthを使用している場合は、`app/blocks/interceptor/auth.interceptor.js`のauthInterceptorのbootswatch URLに除外を追加します。
 
     .factory('authInterceptor', function ($rootScope, $q, $location, localStorageService) {
         return {
-            // Add authorization token to headers
+            // ヘッダーに許可トークンを追加する
             request: function (config) {
                 config.headers = config.headers || {};
-                // exclude bootswatch url
+                // bootswatchのURLを除外する
                 if(config.url.indexOf('api.bootswatch.com') === -1){
                     var token = localStorageService.get('token');
                     ....
