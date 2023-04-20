@@ -22,7 +22,7 @@ _貢献したい場合は、[GitHubリポジトリ](https://github.com/jhipster/
 1. [LDAP認証]({{ site.url }}/tips/016_tip_ldap_authentication.html)
 1. [リモートシェルを使用したREPL]({{ site.url }}/tips/017_tip_repl_with_the_remote_shell.html)（非推奨）
 1. [KubernetesとGoogle Cloud SQL]({{ site.url }}/tips/018_tip_kubernetes_and_google_cloud_sql.html)
-1. [スライスを使用した無限スクロールによるページ区切りのパフォーマンスの向上]({{ site.url }}/tips/019_tip_infinite_scroll_with_slice.html)
+1. [Sliceを使用した無限スクロールによるページ区切りのパフォーマンスの向上]({{ site.url }}/tips/019_tip_infinite_scroll_with_slice.html)
 1. [Mac/WindowsでDockerコンテナをlocalhostとして使用する]({{ site.url }}/tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.html)
 1. [QueryDSLを使用する]({{ site.url }}/tips/003_tip_add_QueryDSL_support.html)
 1. [Apache（基本認証）でKibanaを保護する]({{ site.url }}/tips/023_tip_protecting_kibana_with_apache_basic_authent.html)
