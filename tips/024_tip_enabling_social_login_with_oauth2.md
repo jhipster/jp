@@ -1,22 +1,22 @@
 ---
 layout: default
-title: Enabling Social Login with OAuth2
+title: OAuth2でソーシャルログインを有効にする
 sitemap:
 priority: 0.1
 lastmod: 2018-03-18T18:20:00-00:00
 ---
-# Enabling Social Login with OAuth2
+# OAuth2でソーシャルログインを有効にする
 
-When using the OAuth2 authentication type, your app connects to an OpenID Connect server such as Okta or Keycloak.  It's possible to enable social login by adding external identity providers within the admininistration console.
+OAuth2認証タイプを使用する場合、アプリはOktaやKeycloakなどのOpenID Connectサーバに接続します。管理コンソール内に外部IDプロバイダを追加することで、ソーシャルログインを有効にできます。
 
-## Adding an Identity Provider with Okta
+## Oktaを使用したIDプロバイダの追加
 
-Okta supports Facebook, Microsoft, Google, LinkedIn, and Custom SAML providers.
+Oktaは、Facebook、Microsoft、Google、LinkedIn、Custom SAMLプロバイダーをサポートしています。
 
-Log into the Okta console and navigate via the menu to "Users" -> "Social & Identity Providers".  Choose "Add Identity Provider" and add the provider of your choice.  Make sure to completely follow the [Okta Social Login documentation](https://developer.okta.com/authentication-guide/social-login/) which guides you in obtaining the client ID and secret for each provider.
+Oktaコンソールにログインし、メニューから"Users" -> "Social & Identity Providers"に移動します。"Add Identity Provider"を選択し、選択したプロバイダを追加します。各プロバイダのクライアントIDとシークレットを取得する際のガイドとなる[Oktaソーシャルログインのドキュメント](https://developer.okta.com/authentication-guide/social-login/)に完全に従ってください。
 
-## Adding an Identity Provider with Keycloak
+## Keycloakを使用したアイデンティティ・プロバイダの追加
 
-Keycloak supports GitHub, Twitter, Facebook, Openshift, Google, Gitlab, LinkedIn, Microsoft, BitBucket, StackOverflow, and Custom SAML providers.
+Keycloakは、GitHub、Twitter、Facebook、Openshift、Google、Gitlab、LinkedIn、Microsoft、BitBucket、StackOverflow、Custom SAMLプロバイダーをサポートしています。
 
-Log into the Keycloak administration console and choose "Identity Providers" from the left menu.  Follow the instructions found in the [Keycloak Social Login documenation](https://www.keycloak.org/docs/latest/server_admin/index.html#social-identity-providers) to configure the provider and obtain the client ID and secret.
+Keycloak管理コンソールにログインし、左側のメニューから"Identity Providers"を選択します。[Keycloakソーシャルログインのドキュメント](https://www.keycloak.org/docs/latest/server_admin/index.html#social-identity-providers)の指示に従って、プロバイダを設定し、クライアントIDとシークレットを取得します。
