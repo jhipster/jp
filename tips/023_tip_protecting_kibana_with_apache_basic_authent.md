@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Protecting Kibana with Apache (Basic Authentication)
+title: Apache（ベーシック認証）でKibanaを保護する
 sitemap:
 priority: 0.5
 lastmod: 2018-01-31T14:10:00-00:00
 ---
 
-# Protecting Kibana with Apache (Basic Authentication)
+# Apache（ベーシック認証）でKibanaを保護する
 
-Tip submitted by [@raiden0610](https://github.com/raiden0610)
+このTipは[@raiden0610](https://github.com/raiden0610)によって提出されました。
 
-## mod_proxy activation
+## mod_proxyをアクティブにする
 
     a2enmod proxy
     a2enmod proxy_http
@@ -18,22 +18,22 @@ Tip submitted by [@raiden0610](https://github.com/raiden0610)
 
     service apache2 restart
 
-## Vitualhost configuration
-Find where your virtualhost 443 or 80 config is, depending on your distros.
+## Vitualhost構成
+使用しているディストリビューションに応じて、virtualhost 443または80の設定がどこにあるかを確認します。
 
-For example in Ubuntu 16.04: the config is on the file **000-default-le-ssl.conf** in **/etc/apache2/sites-availables** directory.
+たとえば、Ubuntu 16.04では、設定は **/etc/apache2/sites-availables** ディレクトリの **000-default-le-ssl.conf** ファイルにあります。
 
-If you don’t want SSL, here is the file **000-default.conf**
+SSLを使用しない場合は、ファイル**000-default.conf**を参照してください。
 
-Edit the file and in the virtualhost 443 or 80 section paste this :
+ファイルを編集し、virtualhost 443または80のセクションに次のように貼り付けます。
 
-    # Proxying kibana listenning on the port 5601 
+    # ポート5601でのKibanaリスニングのプロキシ化
     ProxyPreserveHost On
     ProxyRequests On
     ProxyPass / http://localhost:5601/
     ProxyPassReverse / http://localhost:5601/
     
-    # Protecting with basic authentication
+    # ベーシック認証による保護
     <Location />
             AuthType Basic
             AuthName "Restricted Content"
@@ -41,21 +41,21 @@ Edit the file and in the virtualhost 443 or 80 section paste this :
             Require valid-user
        </Location>
 
-Reload apache config :
+Apacheの設定を再ロードします。
 
     service apache2 reload
     
-## Generation of username / password
+## ユーザー名/パスワードの生成
 
     htpasswd /etc/apache2/.htpasswd your_user
     
-## Activating SSL
-Follow the tutorial (you can select the ditros) :  [Let's encrypt - Certbot](https://certbot.eff.org/)
+## SSLのアクティブ化
+次のチュートリアルに従います（ディストリビューションを選択できます）。[Let's encrypt - Certbot](https://certbot.eff.org/)（訳注：ditros→distros）
 
-Certbot will take care of the SSL configuration in Apache automatically for you 
+Certbotは、ApacheのSSL設定を自動的に処理します。
 
-<div class="alert alert-warning"><i> Warning: </i>
-<b>Don't forget to close the port 5601 in your firewall ! </b> because if you don't kibana will still be accessible without basic authentication on the port 5601
+<div class="alert alert-warning"><i>警告:</i>
+<b>ファイアウォールでポート5601を閉じることを忘れないでください。</b>そうしないと、ポート5601で基本認証なしでKibanaにアクセスできてしまいます。
 </div>
 
-And voila you can now access kibana in a secure way at https://mydomain.com or http://mydomain.com
+これで、https://mydomain.com や http://mydomain.com でKibanaに安全にアクセスできるようになりました。

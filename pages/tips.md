@@ -25,7 +25,7 @@ _貢献したい場合は、[GitHubリポジトリ](https://github.com/jhipster/
 1. [Sliceを使用した無限スクロールによるページ区切りのパフォーマンスの向上]({{ site.url }}/tips/019_tip_infinite_scroll_with_slice.html)
 1. [Mac/WindowsでDockerコンテナをlocalhostとして使用する]({{ site.url }}/tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.html)
 1. [QueryDSLを使用する]({{ site.url }}/tips/003_tip_add_QueryDSL_support.html)
-1. [Apache（基本認証）でKibanaを保護する]({{ site.url }}/tips/023_tip_protecting_kibana_with_apache_basic_authent.html)
+1. [Apache（ベーシック認証）でKibanaを保護する]({{ site.url }}/tips/023_tip_protecting_kibana_with_apache_basic_authent.html)
 1. [OAuth2でソーシャルログインを有効にする]({{ site.url }}/tips/024_tip_enabling_social_login_with_OAuth2.html)
 1. [新しい権限を作成する方法]({{ site.url }}/tips/025_tip_create_new_authority.html)
 1. [@MapsIdとの@OneToOneの問題とその回避方法]({{ site.url }}/tips/026_tip_issue_of_OneToOne_with_MapsId_how_to_avoid_it.html)
