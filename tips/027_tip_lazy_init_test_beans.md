@@ -1,20 +1,20 @@
 ---
 layout: default
-title: Increase integration test performance by lazy bean initialization
+title: 遅延Bean初期化による統合テストのパフォーマンスの向上
 sitemap:
 priority: 0.1
 lastmod: 2019-10-01T18:20:00-00:00
 ---
 
-# Increase integration test performance by lazy bean initialization
+# 遅延Bean初期化による統合テストのパフォーマンスの向上
 
-__Tip submitted by [@atomfrede](https://github.com/atomfrede)__
+__このTipは[@atomfrede](https://github.com/atomfrede)により提出されました__
 
-In many spring integration tests you don't need all beans, therefore initialization 
-of all beans in the context for e.g. a repository test is not required and consumes precious time.
+多くのSpring Integrationテストでは、すべてのBeanを必要としないため、リポジトリテストなどのコンテキストで
+すべてのBeanを初期化する必要がなく、貴重な時間を消費します。
 
-You can configure your tests to initialize beans lazy, such that only required beans are create by creating
-a class `TestLazyBeanInitConfiguration` in `src/test/java/YOUR-PACKAGE/config` with the following content:
+`src/test/java/YOUR-PACKAGE/config`に次の内容のクラス
+`TestLazyBeanInitConfiguration`を作成することで、必要なBeanのみが作成されるように、Beanを遅延初期化するようにテストを構成できます。
 
 ```java
 import org.springframework.beans.BeansException;
@@ -39,12 +39,12 @@ public class TestLazyBeanInitConfiguration implements BeanFactoryPostProcessor {
 }
 ```
 
-If you want/need a test to initialize all beans eagerly you need to annotate this test with `@ActiveProfiles(TestLazyBeanInitConfiguration.EAGER_BEAN_INIT)`.
+すべてのBeanを積極的に初期化するテストが必要な場合は、このテストに`@ActiveProfiles(TestLazyBeanInitConfiguration.EAGER_BEAN_INIT)`というアノテーションを付ける必要があります。
 
-For reference look at [spring boot blog](https://spring.io/blog/2019/03/14/lazy-initialization-in-spring-boot-2-2) and the
-[related pull request](https://github.com/jhipster/generator-jhipster/pull/10241).
+[Spring Bootのブログ](https://spring.io/blog/2019/03/14/lazy-initialization-in-spring-boot-2-2)と
+[関連するプルリクエスト](https://github.com/jhipster/generator-jhipster/pull/10241)を参照してください。
 
-Thanks to [@rabiori](https://github.com/rabiori) for the implementation.
+実装してくれた[@rabiori](https://github.com/rabiori)に感謝します。
 
 
 
