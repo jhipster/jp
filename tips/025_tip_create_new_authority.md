@@ -1,20 +1,20 @@
 ---
 layout: default
-title: How to create a new Authority
+title: 新しい権限を作成する方法
 sitemap:
 priority: 0.1
 lastmod: 2018-10-05T18:20:00-00:00
 ---
-# How to create a new Authority
+# 新しい権限を作成する方法
 
-__Tip submitted by [@Tonterias](https://github.com/Tonterias)__
+__このTipは[@Tonterias](https://github.com/Tonterias)により提出されました__
 
-Let's say that you need a new authority besides the given ones of ADMIN and USER. Let the new authority be called `ROLE_EXAMPLE_AUTHORITY`.
+ADMINとUSERの指定された権限に加えて、新しい権限が必要だとします。新しい権限を`ROLE_EXAMPLE_AUTHORITY`とします。
 
-Modify AuthoritiesConstants.java file to include your new authority/authorities:
+AuthoritiesConstants.javaファイルを変更して、新しい権限を追加します。
 
 	/**
-	 * Constants for Spring Security authorities.
+	 * Springの定数セキュリティ権限
 	 */
 	public final class AuthoritiesConstants {
 	
@@ -30,7 +30,7 @@ Modify AuthoritiesConstants.java file to include your new authority/authorities:
 	    }
 	}
 
-Do not forget to include your new role in your `authority.csv`:
+新しいロールを`authority.csv`に含めることを忘れないでください。
 
 	name
 	ROLE_ADMIN
@@ -39,7 +39,7 @@ Do not forget to include your new role in your `authority.csv`:
 	ROLE_EXAMPLE_AUTHORITY
 
 
-With that, you will be able to use it in your SecurityConfiguration.java:
+これで、SecurityConfiguration.javaで使用できるようになります。
 
 ```
 @Override
@@ -56,7 +56,7 @@ With that, you will be able to use it in your SecurityConfiguration.java:
             .antMatchers("/newresource/**").hasAuthority(AuthoritiesConstants.ROLE_EXAMPLE_AUTHORITY)
 ```
 
-And in your Controller layer (e.g. `FrontPageConfigResource.java`):
+コントローラレイヤ（例：`FrontPageConfigResource.java`）では、次のようになります。
 	
 	@DeleteMapping("/order-items/{id}")
 	@Timed
@@ -65,7 +65,7 @@ And in your Controller layer (e.g. `FrontPageConfigResource.java`):
 	    ...
 	}
 
-And in your Angular html files: `jhiHasAnyAuthority=[‘ROLE_ADMIN’, ‘ROLE_EXAMPLE_AUTHORITY’ ...]` 
+Angular htmlファイルでは、次のようになります。`jhiHasAnyAuthority=[‘ROLE_ADMIN’, ‘ROLE_EXAMPLE_AUTHORITY’ ...]` 
 
 And in your Angular routes:
 
@@ -81,4 +81,4 @@ And in your Angular routes:
 	    }
 	];
 	
-The open-source example is at JhipsterPress: https://github.com/Tonterias/JhipsterPress
+オープンソースの例はJhipsterPress: https://github.com/Tonterias/JhipsterPress にあります。

@@ -1,40 +1,40 @@
 ---
 layout: default
-title: Provide Internet Explorer support
+title: Internet Explorerをサポートする
 sitemap:
 priority: 0.1
 lastmod: 2019-03-05T18:20:00-00:00
 ---
 
-# Provide Internet Explorer support
+# Internet Explorerをサポートする
 
-**Tip submitted by [@wmarques](https://github.com/wmarques)** & [@anthony-o](https://github.com/anthony-o)
+**このTipは[@wmarques](https://github.com/wmarques)** と[@anthony-o](https://github.com/anthony-o) により提出されました。
 
-JHipster supports only evergreen browsers.
-However you can still easily support some older browsers like Internet Explorer.
+JHipsterは、エバーグリーンブラウザのみをサポートします。
+ただし、Internet Explorerなどの一部の古いブラウザは簡単にサポートできます。
 
-In order to do that you have to:
+そのためには、次のことを行う必要があります。
 
-1. Set target to `es5` in your `tsconfig`
-2. Then you have two options:
-   1. Add the correct polyfills from 'core-js', if you don't know which one you should use, check the Angular CLI project and their polyfills.
-   2. Or use babel + [Babel preset-env](https://babeljs.io/docs/en/babel-preset-env#usebuiltins) to automatically import the correct core-js polyfills based on a browserslist file.
+1. `tsconfig`でターゲットを`es5`に設定します。
+2. 次に、2つの選択があります。
+  1. 'core-js'から正しいポリフィルを追加します。使用すべきポリフィルがわからない場合は、Angular CLIプロジェクトとそのポリフィルを確認してください。
+  2. または、babel + [Babel preset-env](https://babeljs.io/docs/en/babel-preset-env#usebuiltins)を使用して、browserslistファイルに基づいて正しいcore-jsポリフィルを自動的にインポートします。
 
-## Full tip using Babel
+## Babelを使用したヒント集
 
-First, add those `package.json` dependencies: `@babel/core`, `@babel/preset-env` and `babel-loader`. Example with `yarn`:
+まず、`package.json`の依存関係に`@babel/core`、`@babel/preset-env`、`babel-loader`を追加します。`yarn`の例です。
 ```bash
 yarn add @babel/core @babel/preset-env babel-loader --exact --dev
 ```
-(tested with the following versions for a working IE11 version on a JHipster v6.3.1 generated application:
+（JHipster v6.3.1で生成されたアプリケーションでIE11が動作するように、次のバージョンでテストしました
 ```json
     "@babel/core": "7.6.4",
     "@babel/preset-env": "7.6.3",
     "babel-loader": "8.0.6",
 ```
-)
+）
 
-Now add the following lines at the top of `src/main/webapp/app/polyfills.ts`:
+次に、`src/main/webapp/app/polyfills.ts`の先頭に次の行を追加します。
 ```ts
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -50,7 +50,7 @@ In `webpack/webpack.common.js`, after
                 }
             },
 ```
-add the following lines:
+次の行を追加します。
 ```js
             {
                 test: /\.js/,
@@ -76,6 +76,6 @@ add the following lines:
               },
 ```
 
-And finally, change `target` to `es5` in `tsconfig.json` & `tsconfig-aot.json`.
+最後に、`tsconfig.json`と`tsconfig-aot.json`で`target`を`es5`に変更します。
 
-See this [GitHub issue](https://github.com/jhipster/generator-jhipster/issues/10184#issuecomment-541650501) & [this SO answer](https://stackoverflow.com/a/58377002/535203) for more details.
+詳細については、この[GitHub issue](https://GitHub.com/jhipster/generator-jhipster/issues/10184#issuecomment-541650501)と[このStackOverflowの回答](https://stackoverflow.com/a/58377002/535203)を参照してください。

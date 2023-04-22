@@ -1,76 +1,76 @@
 ---
 layout: default
-title: Speed up the generator-jhipster
+title: generator-jhipsterの速度を上げる
 sitemap:
 priority: 0.5
 lastmod: 2016-05-15T22:22:00-00:00
 ---
 
-# Speed up the generator-jhipster
+# generator-jhipsterの速度を上げる
 
-__Tip submitted by [@pascalgrimaud](https://github.com/pascalgrimaud)__
+__このTipは[@pascalgrimaud](https://github.com/pascalgrimaud)から提出されました__
 
-**Warning!** Those tips don't work for npm 3+ because it uses symlink.
+**警告!** npm 3+はsymlinkを使用しているため、これらのヒントは機能しません。
 
-When using the generator-jhipster, the command `npm install` may take several minutes, depending on your connection speed.
+generator-jhipsterを使用する場合、接続速度によっては、コマンド`npm install`に数分かかることがあります。
 
-This tip can be used in many cases:
+このヒントは、多くの場合に使用できます。
 
-- for demo of JHipster, to improve your experience
-- for dev team, to regenerate faster a project with `.yo-rc.json`
-- for continuous integration
+- JHipsterのデモのエクスペリエンスを向上させるため
+- 開発チームの場合、`.yo-rc.json`を使用してプロジェクトをより迅速に再生成します
+- 継続的インテグレーション
 
-## Create a new project for node_modules
+## node_modulesの新しいプロジェクトを作成する
 
-Create a directory which will contain all `node_modules` libraries, and go into it:
+すべての`node_modules`ライブラリを含むディレクトリを作成し、その中に移動します。
 
 ```
 mkdir jhipster-speedup
 cd jhipster-speedup
 ```
 
-Create the directory `node_modules`:
+ディレクトリ`node_modules`を作成します。
 
 ```
 mkdir -p node_modules
 ```
 
-The project structure is :
+プロジェクト構造は次のとおりです。
 
     jhipster-speedup
     ├── node_modules
 
 
-**Warning!** Use this next command only if your are a developer on JHipster. It will link to your fork project of generator-jhipster:
+**警告!** この次のコマンドは、あなたがJHipsterの開発者である場合にのみ使用してください。これはgenerator-jhipsterをあなたのフォークプロジェクトにリンクします。
 
 ```
 npm link generator-jhipster
 ```
 
-## Generating projects
+## プロジェクトの生成
 
-Create a directory which will contain your new JHipster project, and go into it:
+新しいJHipsterプロジェクトを格納するディレクトリを作成し、そのディレクトリに移動します。
 
 ```
 mkdir jhipster
 cd jhipster
 ```
 
-Create a link to the directory `node_modules`:
+ディレクトリ`node_modules`へのリンクを作成します。
 
 ```
 ln -s <your path>/jhipster-speedup/node_modules
 ```
 
-Generate a new project, and answer to all questions:
+新しいプロジェクトを生成して、すべての質問に回答します。
 
 ```
 jhipster
 ```
 
-The first time, it will take several minutes.
+1回目は数分かかります。
 
-The next times, it will use the existing `node_modules` directory, so npm won't download all libraries.
+次回は既存の`node_modules`ディレクトリを使用するので、npmはすべてのライブラリをダウンロードするわけではありません。
 
-**Warning!** If you use specific libraries and modify your package.json, you should copy the `node_modules`
-from jhipster-speedup to your folder project, instead of using a link.
+**警告!**特定のライブラリを使用してpackage.jsonを変更する場合は、リンクを使用するのではなく、
+jhipster-speedupからフォルダプロジェクトに`node_modules`をコピーする必要があります。

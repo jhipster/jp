@@ -1,61 +1,61 @@
 ---
 layout: default
-title: Using Docker containers as localhost on Mac/Windows
+title: Mac/WindowsでDockerコンテナをlocalhostとして使用する
 sitemap:
 priority: 0.5
 lastmod: 2016-11-15T16:00:00-00:00
 ---
 
-# Using Docker containers as localhost on Mac/Windows
+# Mac/WindowsでDockerコンテナをlocalhostとして使用する
 
-__Tip submitted by [@Akuka](https://github.com/Akuka)__
+__このTipは[@Akuka](https://github.com/Akuka)により提出されました__
 
-## Difference between Docker on Linux and Docker on Mac/Windows environments
+## Linux環境のDockerとMac/Windows環境のDockerの違い
 
-Based on your OS, your <code>DOCKER_HOST</code> is different.
-On Linux, it will simply be your localhost.
-For Mac/Windows, you should obtain the appropriate IP using the following command:
+OSによって、<code>DOCKER_HOST</code>は異なります。
+Linuxでは、単純にlocalhostになります。
+Mac/Windowsの場合は、次のコマンドを使用して適切なIPを取得する必要があります。
 
 ```
 docker-machine ip default
 ```
 
-## Motivation
+## 動機
 
-When you generate a new JHipster application, the host address of all the connections configurations (for example: database connection string) is localhost by default.
-This means that if you are using Docker to run services (such as a database / elastic search / SMTP server / etc...), you will need to edit your application configuration file and replace the database IP address from localhost to your <code>DOCKER_HOST</code>.
+新しいJHipsterアプリケーションを生成する場合、すべての接続構成のホスト・アドレス（例：データベース接続文字列）はデフォルトでlocalhostです。
+つまり、Dockerを使用してサービス（データベース/Elastic Search/SMTPサーバなど）を実行している場合は、アプリケーション構成ファイルを編集して、データベースのIPアドレスをlocalhostから<code>DOCKER_HOST</code>に置き換える必要があります。
 
-## Port Forwarding
+## ポートフォワーディング
 
-A Docker Machine is a virtual machine running under VirtualBox in your host machine.
-We can use the Port Forwarding feature of VirtualBox in order to access the Docker VM as localhost.
+Dockerマシンは、ホストマシンのVirtualBoxの下で動作する仮想マシンです。
+localhostとしてDocker VMにアクセスするために、VirtualBoxのポート転送機能を使用できます。
 
-To achieve this do the following:
+これを実現するには、次の手順を実行します。
 
 
-First of all, make sure your Docker Machine is stopped by executing the following:
+まず、次のコマンドを実行して、Dockerマシンが停止していることを確認します。
 
 ```
-docker-machine stop default     # Your Docker machine name may not be default, in this case change the name accordingly
+docker-machine stop default     # Dockerマシン名がデフォルトではない場合があります。この場合は、名前を適宜変更してください。
 ```
 
-Then:
+その後以下を行います。
 
-* Open VirtualBox Manager
-* Select your Docker Machine VirtualBox image (e.g.: default)
-* Open Settings -> Network -> Advanced -> Port Forwarding
-* Add your app name, the desired host port and your guest port
+* VirtualBox Managerを開きます。
+* DockerマシンのVirtualBoxイメージ（例：default）を選択します。
+* 設定 → ネットワーク → 高度 → ポートフォワーディングを開きます。
+* アプリケーション名、目的のホスト・ポート、ゲスト・ポートを追加します。
 
-The following is a screenshot with a MySQL Port Forwarding example:
+次のスクリーンショットは、MySQLポートフォワーディングの例を示しています。
 
-![MySQL Port Forwarding Example](../images/020_tip_using_docker_containers_as_localhost_on_mac_and_windows_01.png)
+![MySQLポートフォワーディングの例](../images/020_tip_using_docker_containers_as_localhost_on_mac_and_windows_01.png)
 
 
-Now you're ready to start your Docker Machine by executing the following:
+これで、次のコマンドを実行してDockerマシンを起動する準備ができました。
 
 ```
 docker-machine start default
 eval $(docker-machine env default)
 ```
 
-Then just start your Docker container and you will be able to access it via localhost.
+次に、Dockerコンテナを起動すると、localhost経由でアクセスできるようになります。

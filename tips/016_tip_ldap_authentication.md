@@ -1,32 +1,32 @@
 ---
 layout: default
-title: LDAP Authentication
+title: LDAP認証
 sitemap:
 priority: 0.5
 lastmod: 2019-11-11T22:22:00-00:00
 ---
 
-# LDAP Authentication
+# LDAP認証
 
-__Tip submitted by [@mleneveut](https://github.com/mleneveut)__ updated by [@patrickjp93](https://github.com/patrickjp93)__
+__このTipは[@mleneveut](https://github.com/mleneveut)により提出され__  [@patrickjp93](https://github.com/patrickjp93)により更新されました。
 
-To add an LDAP authentication to your JHipster application, follow these steps :
+JHipsterアプリケーションにLDAP認証を追加するには、次の手順に従います。
 
-  * Add the dependencies spring-ldap-core and spring-security-ldap. Example for gradle in build.gradle :
+  * spring-ldap-coreとspring-security-ldapの依存関係を追加します。gradleでのbuild.gradleの例です。
 
 ```
     compile group: 'org.springframework.security', name: 'spring-security-ldap', version: spring_security_version
 ```
-  * Modify the SecurityConfiguration.java, add method configureGlobal(AuthenticationManagerBuilder auth) and getContextSource()
-  * The following query strings should ideally be [encapsulated in environment variables](https://github.com/eugenp/tutorials/blob/master/spring-ldap/src/main/java/com/baeldung/ldap/javaconfig/AppConfig.java), or at the very least properties/yml files 
+  * SecurityConfiguration.javaを変更し、メソッドconfigureGlobal(AuthenticationManagerBuilder auth)とgetContextSource()を追加します。
+  * 次のクエリ文字列は、理想的には[環境変数にカプセル化する](https://github.com/eugenp/tutorials/blob/master/spring-ldap/src/main/java/com/baeldung/ldap/javaconfig/AppConfig.java)か、少なくともproperties/ymlファイルにカプセル化する必要があります。 
 
 ```
     @Inject
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.ldapAuthentication()
-        	.userSearchBase("o=myO,ou=myOu") //don't add the base
+        	.userSearchBase("o=myO,ou=myOu") //ベースを追加しない
         	.userSearchFilter("(uid={0})")
-        	.groupSearchBase("ou=Groups") //don't add the base
+        	.groupSearchBase("ou=Groups") //ベースを追加しない
         	.groupSearchFilter("member={0}")
         	.contextSource(getContextSource());
     }
@@ -37,13 +37,13 @@ To add an LDAP authentication to your JHipster application, follow these steps :
         contextSource.setBase("dc=mycompany,dc=com");
         contextSource.setUserDn("cn=aUserUid,dc=mycompany,dc=com");
         contextSource.setPassword("hisPassword");
-        contextSource.afterPropertiesSet(); //needed otherwise you will have a NullPointerException in spring
+        contextSource.afterPropertiesSet(); //必要です。さもなければSpringでNullPointerExceptionが発生します。
 
         return contextSource;
     }
 
 ```
-  * Modify the SecurityUtils.java, method getCurrentUserLogin()
+  * SecurityUtils.javaのメソッドgetCurrentUserLogin()を変更します。
 
 ```
     } else if (authentication.getPrincipal() instanceof LdapUserDetails) {
@@ -51,7 +51,7 @@ To add an LDAP authentication to your JHipster application, follow these steps :
     	return ldapUser.getUsername();
     }
 ```
-  * Add a new CustomAuthenticationManager class which implements the AuthenticationManager interface and override the authentication method in order to force the authentication process to authenticate the user through LDAP.
+  * 新しいCustomAuthenticationManagerクラスを追加します。AuthenticationManagerインタフェースを実装し、認証方式をオーバーライドして、認証プロセスがLDAPを介してユーザーを認証を強制するようにします。
 
 ```
 
@@ -114,8 +114,8 @@ public class CustomAuthenticationManager implements AuthenticationManager {
 
 ```
 
-  * For some LDAP servers, the below authenticate implementation has been more successful, but requires more effort to map user authenticated users into the Users table and set authorities based on AD Groups
-  * Credit to [@eugenp](https://github.com/eugenp/tutorials/tree/master/spring-ldap) and [Michael Kostewicz](http://code-addict.pl/active-directory-spring-security/) for their stable reference implementations
+  * 一部のLDAPサーバでは、次の認証実装の方が成功していますが、ユーザ認証されたユーザをユーザテーブルにマッピングし、ADグループに基づいて権限を設定するには、より多くの作業が必要です。
+  * [@eugenp](https://github.com/eugenp/tutorials/tree/master/spring-ldap)と[Michael Kostewicz](http://code-addict.pl/active-directory-spring-security/)の安定したリファレンス実装に感謝します。
 ```  
   public Authentication authenticate(Authentication authentication) {
         log.info("Authorizing active directory ldap ....");

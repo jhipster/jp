@@ -1,23 +1,23 @@
 ---
 layout: default
-title: Configure Redis leader follower(master-slave) replication
+title: Redisリーダーフォロワー（マスタ/スレーブ）レプリケーションの設定
 sitemap:
 priority: 0.1
 lastmod: 2020-03-23T12:30:00-00:00
 ---
 
-# Configure Redis leader follower(master-slave) replication
+# Redisリーダーフォロワー（マスタ/スレーブ）レプリケーションの設定
 
-**Tip submitted by [@zhx828](https://github.com/zhx828)**
+**このTipは[@zhx828](https://github.com/zhx828)によって提出されました**
 
-In the latest JHipster generator, it provides a redis cluster setting for production deployment. But oftentimes, that might be overkill for small projects. This document provides a solution to configure Redis leader follower (master-slave) replication. For more information about Redis Replication, please see [**here**](https://redis.io/topics/replication).
+最新のJHipsterジェネレータでは、プロダクションデプロイメントのためのRedisクラスタ設定を提供しています。しかし、多くの場合、小規模なプロジェクトではそれが過剰になる可能性があります。このドキュメントでは、Redisリーダーフォロワー（マスタ/スレーブ）レプリケーションを設定するためのソリューションを提供します。Redisレプリケーションの詳細については、[**ここ**](https://redis.io/topics/replication)を参照してください。
 
-The following changes are based on my own project set up. I assume you have modified your application properties to setup Redis password, so you can adjust your own accordingly.
+以下の変更は、私自身のプロジェクト設定に基づいています。Redisパスワードを設定するためにアプリケーションプロパティを変更したので、それに応じて独自のパスワードを調整してください。
 
 
-## Step 1
+## ステップ1
 
-Add file `RedisProperties.java`:
+ファイル`RedisProperties.java`を追加します。
 ```
 public class RedisProperties {
     String type;
@@ -59,8 +59,8 @@ public class RedisProperties {
 }
 ```
 
-## Step 2
-Add RedisProperties to `ApplicationProperties.java`
+## ステップ2
+RedisPropertiesを`ApplicationProperties.java`に追加します。
 ```
 public class ApplicationProperties {
     ...
@@ -78,8 +78,8 @@ public class ApplicationProperties {
 }
 ```
 
-## Step 3
-Update the file `CacheConfiguration.java`, method `jcacheConfiguration`. These changes have to be combined with the current cluster setup.
+## ステップ3
+ファイル`CacheConfiguration.java`、メソッド`jcacheConfiguration`を更新します。これらの変更は、現在のクラスタ設定と組み合わせて行う必要があります。
 
 ```
 if (applicationProperties.getRedis().getType().equals(RedisType.SINGLE.getType())) {
@@ -96,8 +96,8 @@ if (applicationProperties.getRedis().getType().equals(RedisType.SINGLE.getType()
 }
 ```
 
-## Step 4
-Update `application-dev.yml` to use single server
+## ステップ4
+単一サーバーを使用するように`application-dev.yml`を更新します。
 ```
 application:
   profile: dev
@@ -109,8 +109,8 @@ application:
 
 ```
 
-## Step 5
-Update `application-prod.yml` to use master-slave servers
+## ステップ5
+マスタ/スレーブサーバーを使用するように`application-prod.yml`を更新します。
 ```
 application:
   profile: prod

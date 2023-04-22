@@ -1,111 +1,111 @@
 ---
 layout: default
-title: Kubernetes and Google Cloud SQL
+title: KubernetesとGoogle Cloud SQL
 sitemap:
 priority: 0.5
 lastmod: 2016-11-13T19:00:00-00:00
 ---
 
-# Kubernetes and Google Cloud SQL
+# KubernetesとGoogle Cloud SQL
 
-__Tip submitted by [@bourdux](https://github.com/bourdux)__
+__このTipは[@bourdux](https://github.com/bourdux)により提出されました__
 
-While it is already easy to deploy a JHipster application to [Google Container Engine](https://cloud.google.com/container-engine/)
-using the [Kubernetes sub-generator]({{ site.url }}/kubernetes), the default behaviour is to create a Google Compute
-Engine VM for the database.
+Kubernetesサブジェネレータを使用してJHipsterアプリケーションを[Google Container Engine](https://cloud.google.com/container-engine/)
+にデプロイすることはすでに簡単ですが、デフォルトの動作はデータベース用のGoogle Compute 
+Engine VMを作成します。
 
-If you want to take it one step further and use a fully-managed MySQL instance, you can use [Google Cloud SQL](https://cloud.google.com/sql/).
-It allows automated backups, maintenance, replication for high availability and nice scalability features.
+さらに一歩進んで、フルマネージドのMySQLインスタンスを使用したい場合は、[Google Cloud SQL](https://cloud.google.com/sql/)があります。
+自動化されたバックアップ、メンテナンス、レプリケーションにより、高可用性と優れた拡張性を実現します。
 
-In this tip/tutorial, I will show you how you can deploy a JHipster application on Google Cloud that will use a Google
-Cloud SQL database as a MySQL backend. In order to simplify the process, we will use a monolithic application. We will
-also use a Maven build since it is my favourite one :p
+このヒント/チュートリアルでは、Google Cloud SQLデータベースをMySQLバックエンドとして使用するJHipsterアプリケーションをGoogle 
+Cloudにデプロイする方法を示します。プロセスを簡素化するために、モノリシックアプリケーションを使用します。また、
+私のお気に入りのビルドであるMavenビルドも使用します。 :p
 
-## Prerequisites
+## 前提条件
 
-For this tutorial, you will need:
+このチュートリアルでは、次のものが必要です。
 
-* A Google Cloud Platform account. You can use a [60 day free trial](https://cloud.google.com/free-trial/) with $300 worth of free credit
-* [Google Cloud SDK](https://cloud.google.com/sdk/) since we will perform most of the operations from a terminal. I found the [interactive installer](https://cloud.google.com/sdk/downloads#interactive) quite convenient
+* Google Cloud Platformアカウント。300ドル相当の無料クレジットで[60日間無料トライアル](https://cloud.google.com/free-トライアル/)を利用できます。
+* [Google Cloud SDK](https://cloud.google.com/sdk/)。ほとんどの操作をターミナルから実行します。[対話型インストーラ](https://cloud.google.com/sdk/downloads#interactive)は非常に便利です。
 * [Docker](https://www.docker.com/products/overview)
-* A JHipster application using MySQL as production database
+* プロダクションデータベースとしてMySQLを使用するJHipsterアプリケーション
 
-## Initialize gcloud and kubectl
+## gcloudとkubectlを初期化する
 
-First of all, if you never used `gcloud`, you need to initialize it with the following command:
+まず、`gcloud`を使ったことがない場合は、次のコマンドで初期化する必要があります。
 
     gcloud init
 
-`gcloud` allows you to perform most the operations you could do from the Google Cloud Web console from the comfort of
-your terminal. First of all, let's install `kubectl`
+`gcloud`を使用すると、Google Cloud Webコンソールから実行できるほとんどの操作を、
+ターミナルから快適に実行できます。まず、`kubectl`をインストールしましょう。
 
     gcloud components install kubectl
 
-`kubectl` is a command line interface for running commands against Kubernetes clusters. You can also install it directly
-from the [Kubernetes website](http://kubernetes.io/docs/user-guide/prereqs/) but overall I found the gcloud installation
-more convenient.
+`kubectl`は、Kubernetesクラスタに対してコマンドを実行するためのコマンドラインインタフェースです。
+[KubernetesのWebサイト](http://kubernetes.io/docs/user-guide/prereqs/)から直接インストールもできますが、全体的に見て、gcloudのインストールの方が
+便利だと思いました。
 
-Now you need to create a google cloud project. For this purpose you will need to go through the web console, as gcloud
-does not allow you to create projects from CLI (not yet as it is an alpha feature). Alternatively you can use the [Resource
-Manager API](https://cloud.google.com/resource-manager/docs/creating-project).
+次に、Google Cloudプロジェクトを作成する必要があります。この目的のためには、Webコンソールを使用する必要があります。gcloudではCLIからプロジェクトを
+作成できないためです（アルファ版のためまだありません）。または、[Resource
+Manager API](https://cloud.google.com/resource-manager/docs/creating-project)を使用できます。
 
-* Go to [Google Cloud Platform Console](https://console.cloud.google.com)
-* Click **Create Project**
-* Pick a project name, click **Create** and note the project ID, and/or customize as you feel.
+* [Google Cloud Platform Console](https://console.cloud.google.com)に行き
+* **Create Project**をクリックします。
+* プロジェクト名を選択し、**Create**をクリックしてプロジェクトIDをメモし、必要に応じてカスタマイズします。
 
-For this tutorial, purpose I picked the name `jhipster-kubernetes-cloud-sql`.
+このチュートリアルのために、`jhipster-kubernetes-cloud-sql`という名前を選択しました。
 
-Then you need to:
+次に、以下の操作が必要です。
 
-* Enable [billing](https://console.cloud.google.com/billing) on the project
-* Enable [Container Engine API](https://console.cloud.google.com/projectselector/kubernetes/list) on the project
-* Enable [API Manager](https://console.cloud.google.com/apis/dashboard) for Compute Engine, Cloud SQL and Container Engine
-* Enable [Google Cloud SQL API](https://console.developers.google.com/apis/api/sqladmin/overview)
+* プロジェクトの[billing](https://console.cloud.google.com/billing)を有効にします。
+* プロジェクトの[Container Engine API](https://console.cloud.google.com/projectselector/kubernetes/list)を有効にします。
+* Compute Engine、Cloud SQL、Container Engineの[API Manager](https://console.cloud.google.com/apis/dashboard)を有効にします。
+* [Google Cloud SQL API](https://console.developers.google.com/apis/api/sqladmin/overview)を有効にします。
 
-Finally you need to tell `gcloud` on which project you are currently working:
+最後に、現在作業しているプロジェクトを`gcloud`に指示する必要があります。
 
     gcloud config set project jhipster-kubernetes-cloud-sql
 
-You can also tell it where you want your instances to be created by default. I chose `europe-west1-b` since I am a cheap
-European :)
+また、デフォルトでインスタンスを作成する場所も指定できます。私は`europe-west1-b`を選びました。
+ケチなヨーロッパ人なので :)
 
     gcloud config set compute/zone europe-west1-b
 
-## Create a Cloud SQL instance
+## Cloud SQLインスタンスの作成
 
-Then you need to create a Google Cloud SQL instance. You can do this via the web console, which is nice to get a good
-understanding on the available options or once again you can use `gcloud`.
+次に、Google Cloud SQLインスタンスを作成する必要があります。これはWebコンソールから行うことができ、利用可能なオプションをよく
+理解するのに役立ちます。また、繰り返しますが、`gcloud`の使用もできます。
 
     gcloud beta sql instances create jhipster-sqlcloud-db --region=europe-west1 --tier=db-f1-micro\
      --authorized-networks=`curl -s ifconfig.co` --backup-start-time=01:00 --enable-bin-log \
      --activation-policy=ALWAYS --storage-type=HDD --storage-size=10GB
 
 
-With this command we create a SQL Cloud instance called `jhipster-sql-cloud-db` in the `europe-west1` region. We choose
-the smallest machine type available. To see the full list of available tiers you can use `gcloud sql tiers list`. Then we
-whitelist our own ip for access with `mysql` CLI, setup a backup time window starting from 1AM UTC, enable binary logging
-so we can go back in time if something goes wrong with the application. Finally we set the machine to be always activated
-(necessary as second generation machines are billed per use), set up a HDD storage (SSD is more performant but more
-expensive) and set the storage size to the minimum size. Note: we need to use the beta gcloud client to create second
-generation SQL instances.
+このコマンドを使用して、`europe-west1`リージョンに`jhipster-sql-cloud-db`という名前のSQL Cloudインスタンスを作成します。
+使用可能な最小のマシンタイプを選択します。使用可能な階層の完全なリストを表示するには、`gcloud sql tiers list`を使用できます。
+次に、`mysql`CLIを使用してアクセス用の独自のIPをホワイトリストにし、午前1時UTCから始まるバックアップ時間ウィンドウを設定し、バイナリロギングを有効にして、
+アプリケーションに問題が発生した場合に時間を遡ることができるようにします。最後に、マシンを常にアクティブにするように設定し
+（第2世代のマシンは使用ごとに課金されるため必要）、HDDストレージ（SSDの方がパフォーマンスは高いが
+高価）を設定し、ストレージサイズを最小サイズに設定します。注意：第2世代のSQLインスタンスを作成するには、
+ベータ版のgcloudクライアントを使用する必要があります。
 
-You can check that your instance started with the following command
+インスタンスが開始されたことを確認するには、次のコマンドを使用します。
 
     gcloud sql instances list
     NAME                   REGION        TIER         ADDRESS         STATUS
     jhipster-sqlcloud-db  europe-west1  db-f1-micro  146.148.21.155  RUNNABLE
 
-Since we whitelisted our IP address, we should be able to access to the DB instance with `mysql`
+IPアドレスをホワイトリストに登録したので、`mysql`を使用してDBインスタンスにアクセスできるはずです。
 
     mysql --host=146.148.21.155 --user=root --password
     ...
     mysql>
 
-Since we're connected to the database let us create the application database and user. Since we will be using the
-[Cloud SQL proxy](https://cloud.google.com/sql/docs/sql-proxy) to connect the SQL instance from our application container,
-the user hostname can be set to `cloudsqlproxy~%` if you want to only allow connections through the proxy. The application
-name for this tutorial is `jhipsterGoogleCloudSql` so the database name should have the same name if we want to use the
-configuration generated by JHipster.
+データベースに接続しているので、アプリケーションのデータベースとユーザーを作成します。
+[Cloud SQLプロキシ](https://cloud.google.com/sql/docs/sql-proxy)を使用してアプリケーションコンテナからSQLインスタンスに接続するため、
+プロキシ経由の接続のみを許可する場合は、ユーザーのホスト名を`cloudsqlproxy~%`に設定します。
+このチュートリアルのアプリケーション名は`jhipsterGoogleCloudSql`なので、JHipsterによって生成された構成を使用する場合は、
+データベース名も同じ名前にする必要があります。
 
     mysql> CREATE DATABASE jhipstergooglecloudsql;
     Query OK, 1 row affected (0,03 sec)
@@ -119,90 +119,90 @@ configuration generated by JHipster.
     mysql> FLUSH PRIVILEGES;
     Query OK, 0 rows affected (0,02 sec)
 
-Do not forget to change the database user to jhipster in `application-prod.yml`
+`application-prod.yml`でデータベースユーザーをjhipsterに変更するのを忘れないでください。
 
-## Create a container cluster
+## コンテナクラスタを作成する
 
-Let us create a container cluster using [GKE](https://cloud.google.com/container-engine/docs/)
+[GKE](https://cloud.google.com/container-engine/docs/)を使ってコンテナクラスタを作成しましょう。
 
     gcloud container clusters create jhipster-sqlcloud-cluster --zone=europe-west1-b --machine-type=g1-small --num-nodes=1
 
-For this tutorial, we will use only 1 small node. In production, you will want at least 3 nodes :)
+このチュートリアルでは、1つの小さなノードのみを使用します。本番環境では、少なくとも3つのノードが必要です。:)
 
-Let us then get kubectl get proper credentials for this cluster
+次に、kubectlにこのクラスタの適切な資格情報を取得させます。
 
     gcloud container clusters get-credentials jhipster-sqlcloud-cluster
 
     Fetching cluster endpoint and auth data.
     kubeconfig entry generated for jhipster-sqlcloud-cluster.
 
-## Building and pushing the docker image
+## Dockerイメージのビルドとプッシュ
 
-First of all run the [Kubernetes sub-generator]({{ site.url }}/kubernetes). Reply to the questions as usual but let us
-use Container engine by pushing our docker image on Google Cloud. To the question "What should we use for the base Docker
-repository name?", reply by `gcr.io/jhipster-kubernetes-cloud-sql`. Replace with your project ID. For the docker image push
-command let us use `gcloud docker -- push` in order to push to the project container repository.
+まず、[Kubernetesサブジェネレータ]({{ site.url }}/kubernetes)を実行します。質問には通常どおり回答しますが、
+DockerイメージをGoogle Cloudにプッシュしてコンテナエンジンを使用しましょう。"What should we use for the base Docker 
+repository name?"（ベースのDockerリポジトリ名には何を使用すべきですか？）という質問には、`gcr.io/jhipster-kubernetes-cloud-sql`で回答します。自身のプロジェクトIDで置き換えてください。dockerイメージプッシュコマンドでは、
+プロジェクトコンテナリポジトリにプッシュするために`gcloud docker -- push`を使用します。
 
-Build your image
+イメージを構築します。
 
     mvn package -Pprod jibDockerBuild
 
-Tag the image (replace with your jhipster application name). We use v1 as a tag to be able to easily deploy new versions
-of the application or rollback if something goes horribly wrong.
+イメージにタグを付けます（自身のjhipsterアプリケーション名で置き換えてください）。v1をタグとして使用することで、アプリケーションの新しいバージョンを
+簡単にデプロイしたり、何かがひどくおかしくなった場合にロールバックしたりできます。
 
     docker image tag jhipstergooglecloudsql gcr.io/jhipster-kubernetes-cloud-sql/jhipstergooglecloudsql:v1
 
-You can then push the image to Google Container engine as follows:
+次に、次のようにしてイメージをGoogle Containerエンジンにプッシュできます。
 
     gcloud docker -- push gcr.io/jhipster-kubernetes-cloud-sql/jhipstergooglecloudsql:v1
 
-## Get the credentials and register them with Kubernetes
+## 資格情報を取得してKubernetesに登録する
 
-In order to use the Cloud SQL proxy, we will have to create credentials for our application and to register them to
-Kubernetes. The full process is available in the [Cloud SQL container engine connection documentation](https://cloud.google.com/sql/docs/container-engine-connect)
-but let me summarize the commands here.
+Cloud SQLプロキシを使用するには、アプリケーションの認証情報を作成し、それらを
+Kubernetesに登録する必要があります。完全なプロセスは[Cloud SQLコンテナエンジン接続ドキュメント](https://cloud.google.com/sql/docs/container-engine-connect)で入手できますが、
+ここではコマンドを要約します。
 
-Create a service account for your JHipster application
+JHipsterアプリケーションのサービスアカウントを作成します。
 
     gcloud iam service-accounts create jhipster-application --display-name="JHipster application"
 
-Get the full iam account name (email used to generate key)
+iamアカウントの完全な名前（キーの生成に使用された電子メール）を取得します。
 
     gcloud iam service-accounts list
     NAME                                    EMAIL
     JHipster application                    jhipster-application@jhipster-kubernetes-cloud-sql.iam.gserviceaccount.com
 
-Give editor access to the project to the service account
+サービスアカウントにプロジェクトのエディター権限を付与します。
 
     gcloud projects add-iam-policy-binding jhipster-kubernetes-cloud-sql \
      --member serviceAccount:jhipster-application@jhipster-kubernetes-cloud-sql.iam.gserviceaccount.com \
      --role roles/editor
 
-Create the key and store it in `jhipster-credentials.json`
+キーを作成し、それを`jhipster-credentials.json`に格納します。
 
     gcloud iam service-accounts keys create \
     --iam-account jhipster-application@jhipster-kubernetes-cloud-sql.iam.gserviceaccount.com jhipster-credentials.json
 
-We will use this key later when
+このキーは後ほど使います。
 
-Register the key with `kubectl`
+`kubectl`で鍵を登録します。
 
     kubectl create secret generic cloudsql-oauth-credentials --from-file=credentials.json=jhipster-credentials.json
 
-## Modify the Kubernetes deployment config
+## Kubernetesデプロイメント設定を変更する
 
-First of all you can delete the generated mysql deployment file since we are going with a Cloud SQL instance.
+まず最初に、Cloud SQLインスタンスを使用するため、生成されたmysqlデプロイメントファイルを削除します。
 
-Then we need to change a few things in `jhipstergooglecloudsql-deployment.yml`. First of all the Spring data source URL
-should be changed to localhost since we will be using a Cloud SQL proxy:
+次に、`jhipstergooglecloudsql-deployment.yml`をいくつか変更する必要があります。Cloud SQLプロキシを使用するので、
+最初にSpringデータソースのURLをlocalhostに変更する必要があります。
 
     jdbc:mysql://localhost:3306/jhipstergooglecloudsql?useUnicode=true&characterEncoding=utf8&useSSL=false
 
-Then you can add the version number to the container image:
+次に、バージョン番号をコンテナイメージに追加します。
 
     image: gcr.io/jhipster-kubernetes-cloud-sql/jhipstergooglecloudsql:v1
 
-Then we need to add an entry to deploy the cloud sql proxy with the sidecar pattern:
+次に、サイドカーパターンでクラウドSQLプロキシをデプロイするためのエントリを追加する必要があります。
 
     - image: b.gcr.io/cloudsql-docker/gce-proxy:1.05
       name: cloudsql-proxy
@@ -216,10 +216,10 @@ Then we need to add an entry to deploy the cloud sql proxy with the sidecar patt
         - name: ssl-certs
           mountPath: /etc/ssl/certs
 
-As we may have noted, we also need to provide SSL certificates to communicate with Google API so we can connect to our
-Cloud SQL instance.
+すでに指摘したように、Cloud SQLインスタンスに接続できるように、
+Google APIと通信するためのSSL証明書も提供する必要があります。
 
-And finally add the appropriate volumes:
+最後に、適切なボリュームを追加します。
 
     volumes:
       - name: cloudsql-oauth-credentials
@@ -229,7 +229,7 @@ And finally add the appropriate volumes:
         hostPath:
           path: /etc/ssl/certs
 
-The full deployment file should now look like this:
+完全なデプロイメントファイルは次のようになります。
 
     apiVersion: extensions/v1beta1
     kind: Deployment
@@ -272,7 +272,7 @@ The full deployment file should now look like this:
                 path: /etc/ssl/certs
 
 
-You can then deploy the cluster with `kubectl apply`
+その後、`kubectl apply`を使用してクラスタをデプロイできます。
 
     kubectl apply -f jhipstergooglecloudsql
 
@@ -280,7 +280,7 @@ You can then deploy the cluster with `kubectl apply`
     service "jhipstergooglecloudsql" created
 
 
-Then you can get the external IP through `kubectl get services` and test your application
+次に、`kubectl get services`を使用して外部IPを取得し、アプリケーションをテストできます。
 
     kubectl get services jhipstergooglecloudsql
     NAME                     CLUSTER-IP     EXTERNAL-IP     PORT(S)    AGE

@@ -33,7 +33,7 @@ _私たちは皆、オープンソースの精神でこれを行っているこ�
 
 次に、[bug tracker](https://github.com/jhipster/generator-jhipster/issues/new/choose)にチケットを入力すると、問題が解決します。
 
-## 投稿者や他のユーザーとチャットしたい場合
+## コントリビューターや他のユーザーとチャットしたい場合
 
 [Gitter.im](https://gitter.im/jhipster/generator-jhipster)のチャットルームに参加してください。ここは公開のチャットルームであり、あなたが他の人を尊重し、正しい英語で書くことを期待しています。
 

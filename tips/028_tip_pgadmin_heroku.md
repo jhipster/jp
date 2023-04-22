@@ -1,25 +1,25 @@
 ---
 layout: default
-title: How to connect PGAdmin (PostgreSQL) to Heroku
+title: PGAdmin(PostgreSQL)をHerokuに接続する方法
 sitemap:
 priority: 0.1
 lastmod: 2018-10-15T18:20:00-00:00
 ---
-# How to connect PGAdmin (PostgreSQL) to Heroku
+# PGAdmin(PostgreSQL)をHerokuに接続する方法
 
-__Tip submitted by [@Tonterias](https://github.com/Tonterias)__
+__このTipは[@Tonterias](https://github.com/Tonterias)により提出されました__
 
-May be you need to use PGAdmin to load your Heroku database with test data.
+PGAdminを使用してHerokuデータベースにテストデータをロードする必要があるかもしれません。
 
-Follow the steps:
+次の手順に従います。
 
-First, use the data from your Database Credentials at your Heroku Account to fill the Create a New Server PGAdmin's form:
+まず、HerokuアカウントのDatabase Credentialsのデータを使用して、Create a New Server PGAdminのフォームに入力します。
 
 ![Example documentation](../images/028_tip_pgadmin_heroku_01.png)
 
 ![Example documentation](../images/028_tip_pgadmin_heroku_02.png)
 
-Then, you will have to configure that information in your application-prod.yml:
+次に、application-prod.ymlでその情報を設定する必要があります。
 
 /src/main/resources/config/application-prod.yml
 
@@ -37,7 +37,7 @@ Then, you will have to configure that information in your application-prod.yml:
             hikari:
                 auto-commit: false
 
-You will get the data from the Database Credentials of your Heroku Account (as in this other example):
+（この他の例のように）HerokuアカウントのDatabase Credentialsからデータを取得します。
 
     Host : ec2-50-17-250-38.compute-1.amazonaws.com
     Database : d5u8osf3cgtlg
@@ -48,6 +48,6 @@ You will get the data from the Database Credentials of your Heroku Account (as i
     @ec2-50-17-250-38.compute-1.amazonaws.com:5432/d5u8osf3cgtlg
     Heroku CLI : heroku pg:psql postgresql-trapezoidal-20780 --app jhipster-press-08
 
-You just have to connect to your database and test it with a sql command at the PGAdmin query window.
+データベースに接続し、PGAdminクエリウィンドウでsqlコマンドを使用してテストするだけです。
 
-NOTE: Here is a video that shows this process: https://www.youtube.com/watch?v=GAHsl0AfK-0
+メモ：このプロセスを示すビデオを次に示します。 https://www.youtube.com/watch?v=GAHsl0AfK-0

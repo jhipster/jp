@@ -1,99 +1,99 @@
 ---
 layout: default
-title: Combining generation and custom code
+title: 生成コードとカスタム・コードの結合
 sitemap:
 priority: 0.1
 lastmod: 2021-09-09T21:22:00-00:00
 ---
 
-__Tip submitted by [@tcharl](https://github.com/tcharl)__
+__このTipは[@tcharl](https://github.com/tcharl)によって提出されました__
 
-# Combining generation and custom code
+# 生成コードとカスタム・コードの結合
 
 
-_Goal:_ Jhipster is very good for managing your model entities, thanks to its powerful Domain Specific language.
-But getting the best both custom code and generative world is  always a hard task.
-Here are the different pattern you can adopt in order to make it real. 
+_目標:_ Jhipsterは、その強力なドメイン固有言語のおかげで、モデルエンティティの管理に非常に適しています。
+しかし、カスタムコードとジェネレーティブな世界の両方で最高のものを得ることは、常に困難な作業です。
+ここでは、それを実現するために採用できるさまざまなパターンを紹介します。
 
-## Pattern 1 - Generate once
+## パターン1 - 初回のみ生成
 
-This approach is the simplest one, and used in most of the use case.
-It consists in modeling your entities once, generate the first model, then override what you want after this first shot.
-If one day you want to resync, you can always regen in another branch, the compare both codes through your IDE.
-However, that later process is always painful and you can spend days for a major upgrade.
+このアプローチは最も単純であり、ほとんどのユース・ケースで使用されます。
+これは、エンティティを一度モデリングし、最初のモデルを生成し、この最初のショットの後に必要なものをオーバーライドすることで構成されます。
+ある日再同期したい場合は、いつでも別のブランチで再生成でき、IDEで両方のコードを比較できます。
+しかし、その後のプロセスは常に苦痛であり、大規模なアップグレードには何日もかかる可能性があります。
 
-### Pro
+### 長所
 
- - Do what you want
+ - 好きなようにできます。
 
-### Con
+### 短所
  
- - You'll tend do not benefit from JHipster new features
+ - JHipsterの新機能の恩恵を受けられないことになります。
 
-## Pattern 2 - Split generated code and custom code
+## パターン2 - 生成コードとカスタムコードの分割
 
-With this one, you'll try to avoid modifying generated class and to host your custom code in dedicated ones.
-Here, you can use the --with-generated-flag jhipster cli option in order to easily differentiate the generated classes from your custom ones.
-Finally, you'll only modify the main router on frontend part in order to route to your custom home page instead of the generated one.
+これは、生成されたクラスを変更するのを避け、カスタム・コードを専用のものとして立てるようにします。
+ここでは、--with-generated-flagのjhipster cliオプションを使用して、生成されたクラスとカスタムクラスを簡単に区別できます。
+最後に、生成されたホームページではなくカスタムホームページにルーティングするために、フロントエンド部分のメインルーターを変更するだけです。
 
-In order to avoid your router file being overriden at each generation, you can create a `.yo-resolve` file at the root of your project and tell to yeoman the expected behavior.
+ルータファイルが世代ごとに上書きされるのを避けるために、プロジェクトのルートに`.yo-resolve`ファイルを作成して、yeomanに期待される動作を伝えることができます。
 
-Example:
+例：
 ```
 src/main/resources/swagger/api.yml skip
 src/main/webapp/app/modules/home/home.tsx skip
 ```
 
-### Pro
+### 長所
 
-- Can combine generation and custom code without so much hassle
+- 生成とカスタムコードを簡単に組み合わせることができます。
 
-### Con
+### 短所
 
-- Dead code
-- Custom classes that have different names or package than your model (can be considered as a DDD best practice but still).
+- デッドコードが存在します。
+- モデルとは異なる名前やパッケージを持つカスタムクラスが存在することになります（DDDのベストプラクティスと考えることができますが、それでも）。
 
-## Pattern 3 - Side by side
+## パターン3 - サイド・バイ・サイド
 
-Here, the goal is to use classes extensions and beans precedence in order to inject your custom code instead of the generated one.
+ここでの目標は、クラス拡張とBeanの優先順位を使用して、生成されたコードの代わりにカスタム・コードを注入することです。
 
-Let's take an example with a `Customer` jhipster entity.
+`Customer`jhipsterエンティティの例を見てみましょう。
 
-### Repository
+### リポジトリ
 
-At the repository level, you'll annotate jhipster generated repository using `NoRepositoryBean` annotation in order to disable discovery.
-You can then create your custom repository class
+リポジトリレベルでは、jhipsterが生成したリポジトリに`NoRepositoryBean`アノテーションを使用してアノテーションを付け、検出を無効にします。
+次に、カスタムリポジトリクラスを作成します。
 ```
 @Repository
 @Primary
 MemberRepositoryPrimary extends MemberRepository
 ```
 
-### Service
+### サービス
 
-Here, you'll use the `serviceImpl` option in order to be able to inject your custom Bean in your Controller.
-Then, you can simply extends the generated service and annotate your bean with `@Primary` in order to get precedence.
+ここでは、ControllerにカスタムBeanを注入できるように、`serviceImpl`オプションを使用します。
+次に、生成されたサービスを単純に拡張し、優先順位を得るためにBeanに`@Primary`というアノテーションを付けることができます。
 
-### Controller
+### コントローラ
 
-You'll use another API prefix for your custom endpoints (for example `/api/v2`).
+カスタム・エンドポイントには別のAPIプレフィックスを使用します（例えば`/api/v2`）。
 
 ### Angular
 
-Same extension applies on the frontend side, you can then configure your beans precedence in the `app.module.ts` file:
+同じ拡張機能をフロントエンド側にも適用します。その後、`app.module.ts`ファイルでBeanの優先順位を設定します。
 ```
 providers: [
-// keep other entries
+// 別のエントリをキープする
 { provide: MemberDomainService, useExisting: MemberDomainServicePrimary },
 ]
 ```
 
-### Pro
+### 長所
 
-- Can override generated code behavior
-- Easy to find custom code
-- Keep the Jhipster best layout even for custom code
+- 生成されたコードの動作をオーバーライドできます。
+- カスタムコードの検索が容易です。
+- カスタムコードに対してもJhipsterのベストレイアウトを維持できます。
 
-### Con
+### 短所
 
-- File duplication
+- ファイルの重複が発生します。
