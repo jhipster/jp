@@ -1,0 +1,59 @@
+name: Sync Upstream
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Runs every Monday at 00:00 UTC
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Set up Git
+      run: |
+        git config --global user.name 'GitHub Actions Bot'
+        git config --global user.email 'actions@users.noreply.github.com'
+
+    - name: Add upstream remote
+      run: git remote add upstream https://github.com/jhipster/jhipster.github.io.git || true
+
+    - name: Fetch upstream
+      run: git fetch upstream
+
+    - name: Create new branch
+      run: |
+        SHORT_COMMIT_HASH=$(git rev-parse --short origin/main)
+        git checkout -b sync-$SHORT_COMMIT_HASH origin/main
+
+    - name: Merge upstream/main
+      run: git merge upstream/main --allow-unrelated-histories --no-edit || true
+
+    - name: Commit merge conflicts
+      run: git commit -a --no-edit || true
+
+    - name: Find conflict files
+      id: find-conflict-files
+      run: |
+        CONFLICT_FILES=$(git diff HEAD^ HEAD --name-only --diff-filter=M)
+        CHECKBOX_CONFLICT_FILES=$(echo "$CONFLICT_FILES" | sed 's/^/- [ ] /')
+        echo "checkbox_conflict_files=${CHECKBOX_CONFLICT_FILES}" >> $GITHUB_ENV
+
+    - name: Push new branch
+      run: |
+        git push origin HEAD
+
+    - name: Create pull request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        title: "Sync with upstream"
+        base: main
+        body: |
+          以下のコンフリクトが解決される必要があります：
+          ${{ env.checkbox_conflict_files }}
+
