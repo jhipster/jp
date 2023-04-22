@@ -1,38 +1,38 @@
 ---
 layout: default
-title: Improve developer experience if opening only front end in the IDE
+title: IDEでフロントエンドのみを開く場合に開発者エクスペリエンスを向上させる
 sitemap:
 priority: 0.1
 lastmod: 2019-10-14T12:35:00-00:00
 ---
 
-# Improve developer experience if opening only front end in the IDE
+# IDEでフロントエンドのみを開く場合に開発者エクスペリエンスを向上させる
 
-**Tip submitted by [@kaidohallik](https://github.com/kaidohallik)**
+**このTipは[@kaidohallik](https://github.com/kaidohallik)により提出されました**
 
-The following behaviour occurs at least in Visual Studio Code.
+少なくともVisual Studio Codeでは、次の動作が発生します。
 
-If generating a full stack app (not skipping server nor client) and front end developer wants to see as few files as possible and opens only folder `src/main/webapp/app` in the IDE then IDE doesn't recognize imports starting with `app`. These imports are red and developer can't see these imported classes content and can't jump with one click into these imported classes. Path `app` is defined in the `tsconfig.json` file which is located in the root folder of the generated app and therefore this information is missing if opening some subfolder.
+フルスタックアプリケーション（サーバーやクライアントをスキップしない）を生成し、フロントエンド開発者ができるだけ少ないファイルを表示し、IDEでフォルダ`src/main/webapp/app`のみを開く場合、IDEは`app`で始まるインポートを認識しません。これらのインポートは赤で表示され、開発者はインポートされたクラスの内容を見ることができず、ワンクリックでこれらのインポートされたクラスにジャンプできません。パス`app`は、生成されたアプリケーションのルートフォルダにある`tsconfig.json`ファイルに定義されているため、一部のサブフォルダを開くと、この情報が失われます。
 
-## Possible solution 1
+## 可能な解決策1
 
-Add file `src/main/webapp/app/tsconfig.json` with the following content:
+次の内容のファイル`src/main/webapp/app/tsconfig.json`を追加します。
 ```
 {
     "extends": "../../../../tsconfig.json"
 }
 ```
-And for tests add file `src/test/javascript/spec/tsconfig.json` with the same content:
+テストの場合は、同じ内容のファイル`src/test/javascript/spec/tsconfig.json`を追加します。
 ```
 {
     "extends": "../../../../tsconfig.json"
 }
 ```
-After that Visual Studio Code resolves path `app` if opening only folder `src/main/webapp/app` or `src/test/javascript/spec`.
+その後、Visual Studio Codeでフォルダ`src/main/webapp/app`または`src/test/javascript/spec`のみを開く場合、パス`app`を解決できます。
 
-## Possible solution 2
+## 可能な解決策2
 
-* add node script `remove-import-alias.js` to app root folder which replaces import aliases with relative paths:
+* インポートエイリアスを相対パスに置き換えるノードスクリプト`remove-import-alias.js`をアプリケーションルートフォルダに追加します。
 
 ```
 const fs = require('fs');
@@ -69,8 +69,8 @@ removeImportAlias(`./src/main/webapp/app/`, 0);
 removeImportAlias(`./src/test/javascript/spec/`, 0, '../../../main/webapp/app/');
 ```
 
-* add `remove-import-alias.js` to `.eslintignore`
+* `remove-import-alias.js`を`.eslintignore`に追加します。
 
-* run added script: `node remove-import-alias.js`
+* 追加されたスクリプト`node remove-import-alias.js`を実行します。
 
-* delete `app/*` from the file `tsconfig.json` from the section `compilerOptions.paths`
+* `tsconfig.json`ファイルの`compilerOptions.paths`セクションから`app/*`を削除してください。
