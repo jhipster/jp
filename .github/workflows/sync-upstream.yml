@@ -40,9 +40,8 @@ jobs:
     - name: Find conflict files
       id: find-conflict-files
       run: |
-        CONFLICT_FILES=$(git diff HEAD^ HEAD --name-only --diff-filter=M)
-        CHECKBOX_CONFLICT_FILES=$(echo "$CONFLICT_FILES" | sed 's/^/- [ ] /')
-        echo "checkbox_conflict_files=${CHECKBOX_CONFLICT_FILES}" >> $GITHUB_ENV
+        CONFLICT_FILES=$(git diff HEAD^ HEAD --name-only --diff-filter=M | while read file; do if grep -q '<<<<<<< HEAD' "$file"; then echo -n "- [ ] $file\\n"; fi; done)
+        echo "checkbox_conflict_files=${CONFLICT_FILES}" >> $GITHUB_ENV
 
     - name: Push new branch
       run: |
