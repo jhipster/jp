@@ -31,7 +31,7 @@ _貢献したい場合は、[GitHubリポジトリ](https://github.com/jhipster/
 1. [@MapsIdとの@OneToOneの問題とその回避方法]({{ site.url }}/tips/026_tip_issue_of_OneToOne_with_MapsId_how_to_avoid_it.html)
 1. [遅延Bean初期化による統合テストのパフォーマンスの向上]({{ site.url }}/tips/027_tip_lazy_init_test_beans.html)
 1. [PGAdmin(PostgreSQL)をHerokuに接続する方法]({{ site.url }}/tips/028_tip_PGAdmin_heroku.html)
-1. [Internet Explorerのサポートを提供する]({{ site.url }}/tips/028_tip_ie_support.html)
+1. [Internet Explorerをサポートする]({{ site.url }}/tips/028_tip_ie_support.html)
 1. [IDEでフロントエンドのみを開く場合に開発者エクスペリエンスを向上させる]({{ site.url }}/tips/029_tip_frontend_only.html)
 1. [Redisリーダーフォロワー（マスタ/スレーブ）レプリケーションの設定]({{ site.url }}/tips/030_tip_redis_replication.html)
 1. [Intellij IDEA内でのProtractor e2eテストの実行]({{ site.url }}/tips/031_tip_e2e_intellij.html)
