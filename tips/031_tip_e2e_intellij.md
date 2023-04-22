@@ -1,17 +1,16 @@
 ---
 layout: default
-title: Running Protractor e2e tests within IntelliJ IDEA
+title: Intellij IDEA内でのProtractor e2eテストの実行
 sitemap:
 priority: 0.1
 lastmod: 2018-04-14T03:57:00-00:00
 ---
 
-# Running Protractor e2e tests within IntelliJ IDEA
+# Intellij IDEA内でのProtractor e2eテストの実行
 
-**Tip submitted by [@SudharakaP](https://github.com/SudharakaP) and [@yelhouti](https://github.com/yelhouti)**
+**このTipは[@SudharakaP](https://github.com/SudharakaP)と[@yelhouti](https://github.com/yelhouti)によって提出されました**
 
-This tip applies for JHipster v6.8.0 or above. By default, a JHipster project will have the following `beforeLanuch` 
-function within the Protractor configuration file (`src/test/javascript/protractor.conf.js`). 
+このヒントは、JHipster v6.8.0以上に適用されます。デフォルトでは、JHipsterプロジェクトには、Protractor構成ファイル（`src/test/javascript/protractor.conf.js`）内に次の`beforeLanuch`関数があります。
 
 ```js
 beforeLaunch: function() {
@@ -21,10 +20,10 @@ beforeLaunch: function() {
 }
 ``` 
 
-This will work well if Protractor tests are executed by running `npm run e2e` in the root folder of the project.
+これは、プロジェクトのルートフォルダで`npm run e2e`を実行することによってProtractorテストが実行される場合にうまく機能します。
 
-However, IntelliJ Ultimate also supports [running Protractor tests within the IDE](https://www.jetbrains.com/help/idea/protractor.html#ws_protractor_running). 
-If you want to use this method you will have to alter the `beforeLanuch` function as shown below; 
+ただし、IntelliJ Ultimateは[IDE内でのProtractorテストの実行](https://www.jetbrains.com/help/idea/protractor.html#ws_protractor_running)もサポートしています。
+この方法を使用する場合は、以下のように`beforeLanuch`関数を変更する必要があります。
 
 ```js
 beforeLaunch: function() {
@@ -33,7 +32,6 @@ beforeLaunch: function() {
     });
 }
 ``` 
-so that IntelliJ will know where to find the `tsconfig.e2e.json` file. 
+これにより、IntelliJは`tsconfig.e2e.json`ファイルの場所を知ることができます。
 
-Note that after altering the `protractor.conf.js` file as above, `npm run e2e` will not work anymore so you'll have to 
-rollback if you plan on using e2e tests using npm again. 
+なお、上記のように`protractor.conf.js`ファイルを変更すると、`npm run e2e`は動作しなくなるため、再度npmを使用してe2eテストを使用する予定がある場合は、ロールバックする必要があることに注意してください。
