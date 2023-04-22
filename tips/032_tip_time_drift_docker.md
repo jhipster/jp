@@ -1,19 +1,19 @@
 ---
 layout: default
-title: Time Drift in Docker
+title: Dockerのタイムドリフト
 sitemap:
 priority: 0.1
 lastmod: 2020-05-02T06:14:00-00:00
 ---
 
-# Time Drift in Docker
+# Dockerのタイムドリフト
 
-**Tip submitted by [@SudharakaP](https://github.com/SudharakaP)**
+**このTipは[@SudharakaP](https://github.com/SudharakaP)によって提出されました**
 
-One of the things that should be taken into account when running Docker for extended periods of time (with sleep cycles in between), is that there are instances were a 
-time drift between the Docker container(s) and OS clock can occur.
+Dockerを長時間（スリープサイクルを挟んで）実行する場合に考慮すべきことの1つは、
+DockerコンテナとOSクロックの間にタイムドリフトが発生する場合があることです。
 
-This results in hard to find bugs such as [https://github.com/jhipster/generator-jhipster/issues/11659](https://github.com/jhipster/generator-jhipster/issues/11659). 
+その結果、[https://github.com/jhipster/generator-jhipster/issues/11659](https://github.com/jhipster/generator-jhipster/issues/11659)のようなバグを見つけるのが難しくなります。
 
-Docker time drift has been reported for both [Macs](https://github.com/docker/for-mac/issues/2076) and [Windows](https://github.com/docker/for-win/issues/4526) 
-and the simplest solution is to restart the Docker container(s) after extended periods of sleep cycles. 
+Dockerのタイムドリフトは、[Mac](https://github.com/docker/for-mac/issues/2076)と[Windows](https://github.com/docker/for-win/issues/4526)の両方で報告されており、
+最も簡単な解決策は、長時間のスリープサイクルの後にDockerコンテナを再起動することです。
