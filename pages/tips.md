@@ -38,4 +38,4 @@ _貢献したい場合は、[GitHubリポジトリ](https://github.com/jhipster/
 1. [Dockerのタイムドリフト]({{ site.url }}/tips/032_tip_time_drift_docker.html)
 1. [ユーザーエンティティ管理]({{ site.url }}/user-entity/)
 1. [アカウント登録サービスを削除する]({{ site.url }}/tips/034_tip_remove_register_account_service.html)
-1. [生成とカスタムコードの組み合わせ]({{ site.url }}/tips/035_tip_combine_generation_and_custom_code.html)
+1. [生成コードとカスタム・コードの結合]({{ site.url }}/tips/035_tip_combine_generation_and_custom_code.html)
