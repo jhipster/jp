@@ -51,3 +51,8 @@ JDLがまだわからない場合は、まず[JHipsterドメイン言語(JDL) - 
 
 また、公式の[JDLサンプルリポジトリ](https://github.com/jhipster/jdl-samples)でも内容チェックできますし、
 あなた方よりサンプルをご提案いただくこともできます！
+
+---
+
+すでに既存のデータベースがあり、JDL表現を作成したい場合は、
+このプロジェクト[SQL to JDL](https://github.com/Blackdread/sql-to-jdl)を使用すると、すぐに開始できます。
