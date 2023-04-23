@@ -62,6 +62,6 @@ jobs:
 
     - name: Create pull request
       run: |
-        gh pr create --title "Merge ${{ env.branch_name }} into main" --base main --head ${{ env.branch_name }} --repo ${{ github.repository }} --body ${{ checkbox_conflict_files }}
+        gh pr create --title "Merge ${{ env.branch_name }} into main" --base main --head ${{ env.branch_name }} --repo ${{ github.repository }} --body $'フォーク元が更新されましたのでマージしてください。\n\n以下はコンフリクトがあります。\n\n${{ env.checkbox_conflict_files }}\n\n修正をPushしてコンフリクトを解消してください。'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
