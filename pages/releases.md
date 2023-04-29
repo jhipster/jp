@@ -14,7 +14,7 @@ sitemap:
 JHipsterの最新ニュースは、Twitterをフォローしてください。: [@jhipster](https://twitter.com/jhipster)
 
 {% for post in site.posts %}
-  {% assign split_post_title = post.title | split: "Release " %}
+  {% assign split_post_title = post.title | split: "リリース " %}
   {% assign split_post_version = split_post_title[1] | split: "." %}
   {% assign post_minor_version = split_post_version[1] %}
   {% assign post_patch_version = split_post_version[2] %}
