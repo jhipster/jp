@@ -64,7 +64,7 @@
         var currentModule;
         return {
             getModulesConfig: function () {
-                return $http.get('/jhipster.github.io/modules/marketplace/data/modules-config.json').success(function (resp) {
+                return $http.get('/modules/marketplace/data/modules-config.json').success(function (resp) {
                     return resp;
                 });
             },

@@ -23,6 +23,6 @@ JHipsterの最新ニュースは、Twitterをフォローしてください。: 
   {% if post_minor_version == '0' and post_patch_version == '0' %}
   *   **[{{ post.title }}]({{ post.url }}) ({{ post_date }})** :rocket:
   {% else %}
-  *   [{{ post.title }}](/jhipster.github.io/{{ post.url }}) ({{ post_date }})
+  *   [{{ post.title }}]({{ post.url }}) ({{ post_date }})
   {% endif %}
 {% endfor %}
