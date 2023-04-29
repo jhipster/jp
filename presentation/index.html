@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>JHipsterプレゼンテーションスライド</title>
+
+        <meta name="description" content="Hipster stack for Java developers. Spring Boot + Angular/React in one handy generator.">
+        <meta name="author" content="Julien Dubois">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section>
+                    <h2>ようこそJava Hipster</h2>
+                    <img src="images/logo-jhipster-drink-coffee.png" class="jhipster-logo"/>
+                    <h3>Spring Boot + Angular/React を1つにまとめた便利なジェネレーター</h3>
+                    <p>
+                        <a href="https://www.jhipster.tech">https://www.jhipster.tech</a>
+                    </p>
+                    <p>
+                        右矢印を押して続ける &gt;
+                    </p>
+                </section>
+
+                <section data-background="#4d7e65" data-background-transition="slide">
+                    <h1>このプレゼンは</h1>
+                    <ul>
+                        <li>左右の矢印を押すと、主要なセクションを閲覧できます</li>
+                        <li>上下の矢印を押すと、各セクションのスライドを見ることができます</li>
+                        <li>すべてのスライドを見るには「escape」キーを押してください</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <section data-background="#4d7e65" data-background-transition="slide">
+                        <h1>どんな内容？</h1>
+                        <h3>最新のWebアプリケーションの開発についての話です</h3>
+                    </section>
+                    <section>
+                        <h2>モダンなWebアプリケーション</h2>
+                        <p>エンドユーザーの要求は進化しています。人々は、遅く、反応しない Web サイトにうんざりしています。彼らが求めているのは、</p>
+                        <ul>
+                            <li>美しいデザイン</li>
+                            <li>ページが読み込まれるまでの待ち時間を短縮</li>
+                            <li>ページの一部の動的な更新</li>
+                        </ul>
+                        <hr/>
+                        <h3><i>最新のHTML5/CSS3/JavaScriptの技術を使用する必要があります</i></h3></i>
+                    </section>
+                    <section>
+                        <h2>デベロッパーの生産性</h2>
+                        <p>そのようなウェブサイトは、<i>速く</i>デリバリされるべきです。
+                        <p>アプリケーションが「デプロイ」されるのを1分も待つのは、もう許されない</p>
+                        <hr/>
+                        <h3><i>正しい道具が必要です！</i></h3>
+                    </section>
+                    <section>
+                        <h2>プロダクションレディソフトウェア</h2>
+                        <p>現代のウェブサイトは、<i>膨大な数の</i>同時ユーザーを処理する必要があります</p>
+                        <p>大規模なRESTfulアプリケーションを使用しており、バックエンドサーバーに<b>大きな負荷</b>がかかります。</p>
+                        <hr/>
+                        <h3><i>堅牢でスケーラブルな高性能のサーバーが必要</i></h3>
+                    </section>
+                    <section>
+                        <h3><i>その課題を解決することが私たちの目標です</i></h3>
+                        <hr/>
+                        <ul>
+                            <li>最新のHTML5/CSS3/JavaScriptフレームワークによる、美しいフロントエンド</li>
+                            <li>最新のJava/キャッシュ/データアクセス技術による堅牢で高品質なバックエンド</li>
+                            <li>セキュリティとパフォーマンスが考慮された状態で自動的に構築される</li>
+                            <li>そして、最大の生産性を実現するための優れた開発者用ツール</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-background="#4d7e65" data-background-transition="slide">
+                        <h1>クライアント技術</h1>
+                        <h3>Yeoman, Webpack, Angular, React, Bootstrap</h3>
+                    </section>
+                    <section>
+                        <h1></h1>
+                        <h3>NPM</h3>
+                        <ul>
+                            <li>高速で信頼性の高い依存関係管理</li>
+                            <li>すべてのクライアントサイドツールのインストールと実行に使用</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>npm install -g generator-jhipster</code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>Yeoman</h1>
+                        <h3>アプリケーション<i>ジェネレータ</i>を提供</i></h3>
+                        <ul>
+                            <li>数百種類のジェネレーターが使用可能</li>
+                            <li>主にJavaScriptのフロントエンドアプリケーションを対象としています</li>
+                            <li>トップクラスのジェネレータが持つ優れた品質</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>jhipster</code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>Webpack</h1>
+                        <h3>クライアント資材のためのモジュールバンドルラー</h3>
+                        <ul>
+                            <li>フロントエンドのコンパイル、最小化、最適化</li>
+                            <li>Angular/React+TypeScriptのコンパイルとホットロードを行うための必須ツール</li>
+                            <li>クライアントサイドでの効率的なプロダクションビルドを可能に</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>BrowserSync</h1>
+                        <h3>アプリケーションの変更をホットリロード</h3>
+                        <ul>
+                            <li>コードが変更されたときに自動的にブラウザをリフレッシュする</li>
+                            <li>複数のブラウザをリアルタイムに同期でき、変更点を即座に確認可能</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>npm start</code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>Jest</h1>
+                        <h3>JavaScriptコードに対してユニットテストを実行</h3>
+                        <ul>
+                            <li>仮想DOM技術である<i>jsdom</i>で動作</li>
+                            <li><i>非常に</i>高速で、バックグラウンドで継続的に実行可能</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>npm test</code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>AngularとReact</h1>
+                        <h3>最も人気のある2つのJavaScriptフレームワーク</h3>
+                        <ul>
+                            <li>JHipsterはAngularとReactの両方をサポート</li>
+                            <li>強力かつ習得しやすい</li>
+                            <li>データバインディング、フォームバリデーション、国際化...すべて即使用可能</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>Bootstrap</h1>
+                        <h3>レスポンシブWebアプリケーションのための優れたCSS/JavaScriptフレームワーク</h3></h3>
+                        <ul>
+                            <li>一般的な使い方のCSSとHTML要素</li>
+                            <li>メニュー、ナビバー、ドロップダウンボックス、アラートなど、豊富なJavaScriptコンポーネントを搭載</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>
+<div class="alert alert-success">
+    <strong>Hello, world!</strong>
+</div>
+                            </code>
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-background="#4d7e65" data-background-transition="slide">
+                        <h1>サーバー技術</h1>
+                        <h3>Maven, Spring, Spring MVC REST, Spring Data JPA, Netflix OSS</h3>
+                    </section>
+                    <section>
+                        <h1>Maven | Gradle</h1>
+                        <h3>最も人気のあるJavaビルドツール</h3>
+                        <ul>
+                            <li>よく知られている定義されたディレクトリとゴール</li>
+                            <li>主要なIDEとの統合</li>
+                            <li>SpringBootやYeomanを含む、優れたプラグインエコシステム</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>
+./mvnw spring-boot:run
+                            </code>
+                            <code data-trim contenteditable>
+./gradlew bootRun
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>Spring Boot</h1>
+                        <h3>SpringはJavaアプリのデファクトスタンダード</h3>
+                        <ul>
+                            <li>アプリケーションのコーディングを容易にするIoC, AOPと抽象化</li>
+                            <li>高速かつ軽量、<i>必要に応じて</i>極めて強力に作用</li>
+                            <li>Spring Bootによるすぐに使える設定</li>
+                            <li>アプリケーションのライブリロード</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>
+@Service
+@Transactional
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+}
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>Netflix OSS</h1>
+                        <h3>Netflix OSS - マイクロサービスのための素晴らしいツールとフレームワークを提供</h3>
+                        <ul>
+                            <li>Eureka - ロードバランシングとフェイルオーバーのためのサービスレジストリ</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>Liquibase</h1>
+                        <h3>データベースのアップデートを簡単に</h3>
+                        <ul>
+                            <li>データベーススキーマの更新を処理</li>
+                            <li>SpringやJPAとの相性は抜群</li>
+                            <li>データベースとORMの理解が必要</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>JPA</h1>
+                        <h3>Javaの標準的なORMソリューション</h3>
+                        <ul>
+                            <li>内部でHibernateを使用</li>
+                            <li>非常に完成度の高い見応えのある機能セット</li>
+                            <li>初心者にはまだ複雑な内容</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>
+@Entity
+public class User implements Serializable {
+
+    @Id
+    private String login;
+
+}
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>Spring Data JPA</h1>
+                        <h3>JPAに特定のシンタックスシュガーを追加</h3>
+                        <ul>
+                            <li>JPAリポジトリを<i>自動で</i>生成</li>
+                            <li>多くのボイラープレート・コードを削除</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>
+public interface PersistenceAuditEventRepository extends JpaRepository&lt;PersistentAuditEvent, String&gt; {
+
+    List&lt;PersistentAuditEvent&gt;
+        findByPrincipalAndAuditEventDateGreaterThan(String principal, LocalDateTime after);
+
+}
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>MongoDB</h1>
+                        <h3>スケーラビリティのためのNoSQL</h3>
+                        <ul>
+                            <li>SQLデータベースやJPAに代わる選択</li>
+                            <li>Spring Data MongoDBは、Spring Data JPAと同じようなコードで動作</li>
+                            <li>よりスケーラブルに、より使いやすく</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>Couchbase</h1>
+                        <h3>スケーラビリティのためのNoSQL</h3>
+                        <ul>
+                            <li>SQLデータベースとJPAに代わる選択</li>
+                            <li>Spring Data MongoDBは、Spring Data JPAと同じようなコードで動作</li>
+                            <li>よりスケーラブルに、より使いやすく</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>Cassandra</h1>
+                        <h3>スケーラビリティのためのNoSQL</h3>
+                        <ul>
+                            <li>SQLデータベースとJPAに代わる第二の選択</li>
+                            <li>リニアなスケーラビリティと高可用性</li>
+                            <li>ミッションクリティカルなアプリケーションに対し優れたパフォーマンスと低レイテンシーを実現</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>キャッシュ</h1>
+                        <h3>キャッシュはパフォーマンスの王様</h3>
+                        <ul>
+                            <li>Ehcacheは最も広く使われているソリューション</li>
+                            <li>HazelCastはクラスタリングに対応した優れた代替品</li>
+                            <li>Hibernateの2ndレベルキャッシュやSpring Cachingの抽象化</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>
+@Entity
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+public class User implements Serializable {
+
+}
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>Spring Security</h1>
+                        <h3>防弾仕様のセキュリティフレームワーク</h3>
+                        <ul>
+                            <li>あらゆる業界で広く使用されているリーディングツール</li>
+                            <li>URLとJavaコードを保護（Spring Beans）</li>
+                            <li>ステートフル（Cookie）およびステートレス（OAuth2/JWT）の両方のWebアプリケーション・アーキテクチャで動作</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>Spring MVC REST</h1>
+                        <h3>Javaで最高のRESTフレームワーク</h3>
+                        <ul>
+                            <li>完全で高性能なRESTソリューション</li>
+                            <li>優れたSpringのサポート、テストサポート</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>
+@RestController
+public class AccountResource {
+    @PostMapping("/account")
+    public void saveAccount(@RequestBody UserDTO userDTO) {
+        userService.updateUserInformation(userDTO);
+    }
+}
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>Thymeleaf</h1>
+                        <h3>サーバーサイドのテンプレート</h3>
+                        <ul>
+                            <li>Single Web Pageアプリケーションではニーズに合わない場合に使用</li>
+                            <li>旧く非推奨のJSPとJSTLを置き換え</li>
+                            <li>ウェブデザイナーのための優れたテンプレート</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>
+<h1 th:text="#{title}">Hello, world</h1>
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>モニタリング</h1>
+                        <h3>Metricsで本番に備える</h3>
+                        <ul>
+                            <li>JVM, アプリサーバー, Spring Bean, キャッシュなどを監視!</li>
+                            <li>JMXやGraphiteのレポート</li>
+                        </ul>
+                        <pre>
+                            <code data-trim contenteditable>
+@Timed
+public void saveAccount(@RequestBody UserDTO userDTO) {
+    userService.updateUserInformation(userDTO);
+}
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>クラウドデプロイメント</h1>
+                        <h3>クラウドへ、そしてその先へ！</h3>
+                        <ul>
+                            <li>デプロイはオンプレミスでもクラウドでも簡単であるべき</li>
+                            <li>CloudFoundry, Heroku, Amazon Web Servicesといった主要なクラウドプロバイダーは、いずれも特定のツールやデプロイオプションを提供</li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section data-background="#4d7e65" data-background-transition="slide">
+                       <h1>JHipsterの紹介</h1>
+                        <h3>なぜこのように騒がれるか</h3>
+                    </section>
+                    <section>
+                        <h3><i>大げさすぎ？</i></h3>
+                        <hr/>
+                        <p>本記事執筆時点（2018年3月）でJHipsterは</p>
+                        <ul>
+                            <li>21人のコアメンバーを含む417人のコントリビューター</li>
+                            <li>9,891のGitHubスターと2,180のフォーク</li>
+                            <li>100万台以上の導入実績</li>
+                            <li>そしてこれらは急速に成長している</li>
+                        </ul>
+                        <hr/>
+                        <h3>なぜか？</h3>
+                    </section>
+                    <section>
+                        <h3>クールな技術は多く現れたが</h3>
+                        <ul>
+                            <li>WebpackとMavenを親和性高く連携できるか？</li>
+                            <li>AngularとSpring MVC RESTは？</li>
+                            <li>Netflix OSSとSpringは？</li>
+                            <li>セキュリティ、キャッシュ、モニタリングなど、すべてをスムーズに連携させることは<i>明らかに</i>容易ではない</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>JHipsterは全てを調和</h3>
+                        <ul>
+                            <li>JHipsterはこれらの技術を駆使して完全に動作するアプリケーションを作成</li>
+                            <li>すべての機能がすぐに使える</li>
+                            <li>WebpackのタスクがMavenのゴールとうまく連動</li>
+                            <li>すべてをスムーズに動かすためのDockerの構成あり</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>さらに!</h3>
+                        <ul>
+                            <li><strong>"entity"</strong> サブジェネレータが、データベースからAngularまで、完全なJPAエンティティを生成</li>
+                            <li><strong>"jdl"</strong> サブジェネレーターが、<a href="https://start.jhipster.tech/jdl-studio/" target="_blank" rel="noopener">JDL Studio</a>を使用して複雑なエンティティモデルを生成</li>
+                            <li><strong>"service"</strong> Springのビジネスサービスを生成するサブジェネレータ</li>
+                            <li><strong>"languages"</strong>サブジェネレーターで国際化対応の言語を追加</li>
+                            <li>Spring Securityの優れたサポート。Ajaxエンドポイント、セキュアなRemember-me、監査...</li>
+                            <li>メトリックスによる優れたモニタリング画面</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>まだ終わらない!</h3>
+                        <ul>
+                            <li>マイクロサービスやゲートウェイを作成するための優れたサポート</li>
+                            <li>JHipster Registry (Netflix Eureka + Spring cloud config server) をすぐに提供可能</li>
+                            <li>Dockerの優れたサポート</li>
+                            <li>JHipsterの<a href="https://www.jhipster.tech/modules/marketplace/" target="_blank" rel="noopener">Modules</a> による機能追加</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>プロダクションレディ</h3>
+                        <ul>
+                            <li>GZippingとHTTPキャッシングヘッダを持つ特定のSpringプロファイル</li>
+                            <li>WebpackによるTypeScriptとCSSの最適化と最小化</li>
+                            <li>実行可能または標準的なWARファイル、監視も有効化</li>
+                            <li>CloudFoundry、Heroku、AWSに自動デプロイするためのサブジェネレータ</li>
+                            <li><strong>"docker-compose"</strong> マイクロサービスを本番環境にデプロイするためのDocker設定を生成するサブジェネレータ</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-background="#4d7e65" data-background-transition="slide">
+                        <h1>最初のアプリを作ろう</h1>
+                        <h3>10分間のチュートリアル</h3>
+                    </section>
+                    <section>
+                        <h1>Yeomanをインストール</h1>
+                        <pre>
+                            <code data-trim contenteditable>
+npm install -g yo
+npm install -g generator-jhipster
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>アプリケーションを作成する</h1>
+                        <p>組み込みの Maven ラッパーを使用して実行<br>
+                            <i>（アプリケーションのホットリロードは自動的に実行）</i>
+                        </p>
+                        <pre>
+                            <code data-trim contenteditable>
+jhipster
+./mvnw
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>クライアントサイドのライブリロード</h1>
+                        <p>
+                            WebpackとBrowsersyncによりクライアントサイドのコード（HTML, CSS, TypeScript）のライブリロードが機能。任意のファイルを編集によりブラウザは自動的に更新
+                      </p>
+                        <pre>
+                            <code data-trim contenteditable>
+npm start
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>エンティティを追加</h1>
+                        <pre>
+                            <code data-trim contenteditable>
+jhipster entity Foo
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h1>プロダクションでの実行</h1>
+                        <p><i>（Dockerを使ってデータベースを実行）</i></p>
+                        <pre>
+                            <code data-trim contenteditable>
+./mvnw -Pprod package
+docker-compose -f src/main/docker/mysql.yml up -d
+java -jar target/*.war
+                            </code>
+                        </pre>
+
+                    </section>
+                </section>
+
+                <section>
+                    <h1>ご清聴ありがとうございました</h1>
+                    <p>
+                        <a href="https://www.jhipster.tech">https://www.jhipster.tech</a>
+                    </p>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+            <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46075199-1', 'auto');
+  ga('send', 'pageview');
+
+        </script>
+
+    </body>
+</html>

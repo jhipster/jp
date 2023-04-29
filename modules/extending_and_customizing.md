@@ -1,0 +1,174 @@
+---
+layout: default
+title: Blueprintの基本
+permalink: /modules/extending-and-customizing/
+redirect_from:
+  - /extending_and_customizing.html
+  - /modules/extending_and_customizing.html
+sitemap:
+    priority: 0.7
+    lastmod: 2015-12-05T18:40:00-00:00
+---
+
+# <i class="fa fa-cube"></i>  Blueprintの基本
+
+JHipsterは`プラグイン`をサポートしており、私たちはそれらを`Blueprint`と`Module`と呼んでいます。
+
+JHipster v7.9.0以前の`Module`は、`yo`を使用して実行されるYeomanジェネレータ、拡張された`generators-jhipster`の`generator-base`クラス、およびJHipsterのワークフローに統合するための登録されたフックでした。
+
+JHipster v7.9.0では、`Module`は` Blueprint`であり、スタンドアローンのジェネレータ（Blueprintではない）とカスタムCLIを備えています。
+今後は、これらをスタンドアローンのBlueprint（または単にBlueprint）と呼びます。
+
+## JHipster Blueprintの基本的なルール
+
+JHipster Blueprintとは以下となります。
+
+- NPMパッケージとYeomanジェネレータです。
+- [https://yeoman.io/authoring/index.html](https://yeoman.io/authoring/index.html)に列挙されているYeomanルールの拡張に従います。`generator-`を前に付けるのではなく、`generator-jhipster-`を前に付け、`yeoman-generator`キーワードだけを持つのではなく、`yeoman-generator`と`jhipster-blueprint`の2つのキーワードを持つ必要があります。
+
+## 使用方法
+
+ Blueprintを使用するには、次のコマンドを実行します。
+
+```bash
+jhipster --blueprints <blueprint name>
+```
+
+または、提供されているカスタムCLIを使用します。
+
+```bash
+jhipster-my-blueprint
+```
+
+## 例
+
+JHipsterには多くの公式なBlueprintがあり、いくつかの例があります。
+
+- バックエンド
+  - [JHipster Kotlin](https://github.com/jhipster/jhipster-kotlin)のBlueprintは、サーバサイドのJavaコードのほとんどを同等のKotlinコードに置き換えます。
+  - [JHipster.NET](https://github.com/jhipster/jhipster-dotnetcore)のBlueprintは、サーバ側全体を.NET実装に置き換えます。
+  - [JHipster NodeJS](https://github.com/jhipster/generator-jhipster-nodejs)のBlueprintは、サーバ側全体をNestJS実装に置き換えます。
+- バックエンドのカスタマイズ
+  - [JHipster Native](https://github.com/jhipster/generator-jhipster-native)のBlueprintは、JHipsterアプリケーションをSpring Native互換でカスタマイズします。
+- フロントエンド
+  - [Svelte Hipster](https://github.com/jhipster/generator-jhipster-svelte)のBlueprintは、クライアント側全体をSvelte実装に置き換えます。
+- モバイル
+  - [JHipster Ionic](https://github.com/jhipster/generator-jhipster-ionic)のBlueprintは、Ionicアプリケーションを生成します。
+
+## Side-by-Side Blueprint
+
+各ジェネレータは、side-by-side(SBS) Blueprintにできます。SBS Blueprintでは、元のジェネレータの動作は変更されませんが、動作と結果をカスタマイズできます。
+SBS Blueprintは、複数のJHipsterバージョンをサポートし、新しいJHipsterバージョンに移植することを容易にします。
+
+ジェネレータをside-by-sideにするには、コンストラクタに次のコードを追加します。
+
+```js
+this.sbsBlueprint = true;
+```
+
+例：[Native Blueprintのサーバジェネレータ](https://github.com/jhipster/generator-jhipster-native/blob/bb9c042f6bc70a26ba8037e951c93dc1d1820983/generators/server/generator.mjs#L17)。
+この例では、ジェネレータは[package.jsonのカスタマイズ](https://github.com/jhipster/generator-jhipster-native/blob/bb9c042f6bc70a26ba8037e951c93dc1d1820983/generators/server/generator.mjs#L26-L35)、[ファイルの削除](https://github.com/jhipster/generator-jhipster-native/blob/bb9c042f6bc70a26ba8037e951c93dc1d1820983/generators/server/generator.mjs#L37-L40)、[pom.xmlのカスタマイズ](https://github.com/jhipster/generator-jhipster-native/blob/bb9c042f6bc70a26ba8037e951c93dc1d1820983/generators/server/generator.mjs#L42-L186)、[Javaファイルのカスタマイズ](https://github.com/jhipster/generator-jhipster-native/blob/bb9c042f6bc70a26ba8037e951c93dc1d1820983/generators/server/generator.mjs#L211-L307)、[Cypressのカスタマイズ](https://github.com/jhipster/generator-jhipster-native/blob/bb9c042f6bc70a26ba8037e951c93dc1d1820983/generators/server/generator.mjs#L321-L329)などを行っています。
+
+side-by-side Blueprintは、フックを作成し、既存のモジュールの移行を支援するために使用できます。これについては、[Moduleの作成](/modules/creating-a-module)で説明されています。
+
+## カスタムCLI
+
+スタンドアローンのBlueprintは`yo`を使用して実行できますが、`yo`はジェネレータの検出に積極的で時間がかかる可能性があり、いくつかの改善がされていません。JHipster CLIは、ヘルプとJHipster統合を提供します。
+そのため、`jhipster`CLIを使用するか、`generator-jhipster`に基づいてカスタムCLIを作成することをお勧めします。
+
+`jhipster`コマンドは、グローバルにインストールされた`generator-jhipster`バージョンを実行します。カスタムCLIは、依存する`generator-jhipster`を実行し、サポートされている`generator-jhipster`のバージョンを確実に使用します。
+
+カスタムCLIを使用すると、カスタムジェネレータを実行できます。カスタムCLIについては、[Moduleの作成](/modules/creating-a-module)で説明しています。
+
+## ローカルBlueprint
+
+JHipsterによってカスタマイズされたコード生成がされると、アプリケーションをより簡単に更新し続けることができます。この目的を念頭に置いて、ローカル・Blueprintが実装されます。
+
+Blueprint全体は、アプリケーションの`.blueprint`ディレクトリ内に実装されます。
+
+いくつかの利点があります。
+- 再生成およびアップグレード時の矛盾を回避または削減します。
+- エンティティファイルを一括編集できます。
+- npmリポジトリーに公開する必要はありません。
+- jhipsterワークフローを完全に制御します。
+- 1つのコマンドで簡単に生成できます。
+
+## 開発および公開API
+
+公開されているJSDoc APIドキュメントがまだ不足しているため、ソースコードを参照する必要があります。
+
+## アプリケーション構成
+
+JHipsterの設定は、[Yeoman設定](https://yeoman.io/authoring/storage.html)パターンに従い、Blueprint設定の追加サポートを提供します。
+
+`config`と`jhipsterConfig`プロパティは、共通の設定を保存し、`.yo-rc.json`ファイルの`generator-jhipster`キーに書き込みます。
+`blueprintStorage`と`blueprintConfig`プロパティは、Blueprint固有の設定を保存し、`.yo-rc.json`ファイルの`generator-jhipster-(my-blueprint)`キーに書き込みます。
+
+`config`と`blueprintStorage`は[ストレージインスタンス](https://yeoman.github.io/generator/Storage.html)です。
+一方、`jhipsterConfig`と`blueprintConfig`は、利便性のために`config`と`blueprintStorage`ストレージのための[プロキシオブジェクト](https://yeoman.github.io/generator/Storage.html#createProxy)です。
+
+## 定数
+
+[`generator-constants.js`](https://github.com/jhipster/generator-jhipster/blob/main/generators/generator-constants.js)で定数を使用できます。
+
+```javascript
+const javaDir = `${jhipsterConstants.SERVER_MAIN_SRC_DIR + this.packageFolder}/`;
+const resourceDir = jhipsterConstants.SERVER_MAIN_RES_DIR;
+const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
+```
+
+## 関数
+
+[generator-base.js](https://github.com/jhipster/generator-jhipster/blob/main/generators/generator-base.js)のすべての関数を使用できます。
+
+## 開発用のBlueprintをローカルで実行する
+
+Blueprintを開発する際には、次の手順に注意してください。これらは非常に重要です。
+
+1. Blueprintをグローバルにリンクする
+
+    注：作成中の各プロジェクトにBlueprintをリンク（手順3）しない場合の手順です。
+
+    ```bash
+    cd generator-jhipster-my-blueprint
+    npm link
+    ```
+
+1. JHipsterの開発バージョンをBlueprintにリンクします。注：`main`ブランチや独自のカスタムフォークなど、リリースされていないJHipsterバージョンを使用する場合にのみ必要です。
+
+    ```bash
+    cd generator-jhipster
+    npm link
+
+    cd generator-jhipster-my-blueprint
+    npm link generator-jhipster
+    ```
+
+    または、Gitから`generator-jhipster`をインストールしてください。
+
+    ```bash
+    cd generator-jhipster-my-blueprint
+    npm install jhipster/generator-jhipster
+    ```
+
+1. 生成されるアプリケーション用の新しいフォルダを作成し、JHipsterの依存関係を無視してJHipsterを実行します（そうしないと、`npm install/ci`が呼び出されるたびにリリースバージョンがインストールされます）。
+
+    ```bash
+    mkdir my-app && cd my-app
+
+    jhipster --blueprints my-blueprint --skip-jhipster-dependencies
+    ```
+
+1. blueprint/generator-jhipsterがリリースされたら、再現性のためにJHipster依存関係を再追加します。
+
+    ```bash
+    jhipster --no-skip-jhipster-dependencies
+    ```
+
+## JHipsterマーケットプレイスへのBlueprintの登録
+
+Blueprintを[JHipsterマーケットプレイス]({{ site.url }}/modules/marketplace/)で利用できるようにするには、公開されているnpm`package.json`に2つのキーワード`yeoman-generator`と`jhipster-blueprint`があることを確認する必要があります。
+JHipsterモジュールまたはBlueprintではないエントリをマーケットプレイスで見つけた場合は、[`modules-config.json file`](https://github.com/jhipster/jhipster.github.io/blob/main/modules/marketplace/data/modules-config.json)の`blacklistedModules`セクションに追加し、[jhipster/jhipster.github.ioのプロジェクト](https://github.com/jhipster/jhipster.github.io)にプルリクエストを送ることで、リスト拒否に協力できます。
+
+
+BlueprintをNPMに公開すると、そのBlueprintはマーケットプレイスで入手できるようになります。

@@ -1,0 +1,149 @@
+---
+layout: default
+title: 新しい言語のインストール
+permalink: /installing-new-languages/
+redirect_from:
+  - /installing_new_languages.html
+sitemap:
+    priority: 0.7
+    lastmod: 2014-12-10T00:00:00-00:00
+---
+
+# <i class="fa fa-flag"></i> 国際化
+
+## はじめに
+
+新しいプロジェクトの生成中に、国際化サポートを有効にするかどうかを尋ねられます。
+
+有効にする場合は、アプリケーションのネイティブ言語を選択する必要があります。その後、インストールする追加の言語を選択できます。最初から追加の言語をサポートしたくない場合は、言語サブジェネレータを実行して、必要に応じて後で言語を追加できます。
+
+このアプリケーションを他の言語に翻訳しないことが確実な場合は、国際化を有効にしないでください。
+
+## サポートされる言語
+
+現在サポートされている言語は次のとおりです。
+
+*   Albanian
+*   Arabic (Libya)
+*   Armenian
+*   Belarusian
+*   Bengali
+*   Bulgarian
+*   Catalan
+*   Chinese (Simplified)
+*   Chinese (Traditional)
+*   Czech 
+*   Danish 
+*   Dutch 
+*   English 
+*   Estonian 
+*   Farsi
+*   Finnish 
+*   French 
+*   Galician 
+*   German 
+*   Greek 
+*   Hindi 
+*   Hungarian 
+*   Indonesian
+*   Italian 
+*   Japanese 
+*   Korean 
+*   Marathi 
+*   Myanmar 
+*   Polish 
+*   Portuguese (Brazilian)
+*   Portuguese 
+*   Punjabi
+*   Romanian 
+*   Russian 
+*   Slovak 
+*   Serbian
+*   Sinhala 
+*   Spanish 
+*   Swedish 
+*   Turkish 
+*   Tamil 
+*   Telugu 
+*   Thai 
+*   Ukrainian
+*   Uzbek (Cyrillic)
+*   Uzbek (Latin)
+*   Vietnamese 
+
+_JHipsterにあなたの言語がありませんか？PRでプロジェクトの改善を支援してください。_
+
+## どのようにしてプロジェクトの生成後に言語を追加しますか？
+
+これを行うには、次のようにして言語サブジェネレータを実行します。
+
+`jhipster languages`
+
+![]({{ site.url }}/images/install_new_languages.png)
+
+追加した言語でエンティティを翻訳する場合は、エンティティを再生成する必要があることに気をつけてください。
+
+## サポートされていない新しい言語を追加する方法は?
+
+すべての言語は、フォルダ`src/main/webapp/i18n`（クライアント側）および`src/main/resources/i18n`（サーバ側）に保存されます。
+
+以下に、`new_lang`という新しい言語をインストールする手順を示します。
+
+1.  `src/main/webapp/i18/en`フォルダを`src/main/webapp/i18/new_lang`に複製します（ここにはすべてのフロントエンド翻訳が格納されています）。
+2.  フォルダ`src/main/webapp/i18/new_lang`の下のすべてのファイルを翻訳します。
+3.  `src/main/webapp/app/shared/language/find-language-from-key-pipe.ts`で定義されている`languages`変数に、言語コード`new_lang`を追加します。
+
+        private languages: { [key: string]: { name: string; rtl?: boolean } } = {
+            en: { name: 'English' },
+            new_lang: { name: 'New Language' }
+            // jhipster-needle-i18n-language-key-pipe - JHipster will add/remove languages in this object
+        };
+
+4.  `src/main/resources/i18n`フォルダで、`messages_en.properties`ファイルを`messages_new_lang.properties`にコピーします（これはサーバー側の翻訳が保存されている場所です）。
+5.  `messages_new_lang.properties`ファイル内のすべてのキーを変換します。
+6.  `webpack/webpack.common.js`に新しい言語バンドルを追加します。
+
+        new MergeJsonWebpackPlugin({
+            output: {
+                groupBy: [
+                    { pattern: "./src/main/webapp/i18n/en/*.json", fileName: "./i18n/en.json" },
+                    { pattern: "./src/main/webapp/i18n/new_lang/*.json", fileName: "./i18n/new_lang.json" }
+                    // jhipster-needle-i18n-language-webpack - JHipster will add/remove languages in this array
+                ]
+            }
+        })
+
+
+新しい言語`new_lang`が言語メニューで利用できるようになり、フロントエンドのAngularアプリケーションとバックエンドのSpringアプリケーションの両方で利用できるようになります。
+
+### 言語をgenerator-jhipsterに提供する
+
+ジェネレーターに新しい言語を提供する場合は、次の手順に従います。
+
+- [`generators/generator-constants.js`](https://github.com/jhipster/generator-jhipster/blob/main/generators/generator-constants.js)の`LANGUAGES`定数に言語を追加します。
+
+        { name: 'New Language', dispName: 'New Language', value: 'nl' }
+
+- ファイル[`generators/languages/templates/src/main/resources/i18n/messages_en.properties.ejs`](https://github.com/jhipster/generator-jhipster/blob/main/generators/languages/templates/src/main/resources/i18n/messages_en.properties.ejs)を`generators/languages/templates/src/main/resources/i18n/messages_nl.properties.ejs`に複製し、そのファイルの中のすべての値を翻訳します。
+
+- フォルダ[`generators/languages/templates/src/main/webapp/i18n/en`](https://github.com/jhipster/generator-jhipster/tree/main/generators/languages/templates/src/main/webapp/i18n/en)を`generators/languages/templates/src/main/webapp/i18n/nl`に複製し、その下のすべてのファイルを翻訳します。
+
+- ファイル[`generators/entity-i18n/templates/i18n/entity_en.json.ejs`](https://github.com/jhipster/generator-jhipster/blob/main/generators/entity-i18n/templates/i18n/entity_en.json.ejs)を`generators/entity-i18n/templates/i18n/entity_nl.json.ejs`に複製し、そのファイルの中のすべての値を翻訳します。
+
+- ファイル[`generators/languages/templates/src/test/resources/i18n/messages_en.properties.ejs`](https://github.com/jhipster/generator-jhipster/blob/main/generators/server/templates/src/test/resources/i18n/messages_en.properties.ejs)を`generators/languages/templates/src/test/resources/i18n/messages_nl.properties.ejs`に複製し、そのファイルの中のすべての値を翻訳します。
+
+- [`test/templates/all-languages/.yo-rc.json`](https://github.com/jhipster/generator-jhipster/blob/main/test/templates/all-languages/.yo-rc.json)にある配列`language`に言語値`nl`を追加します。
+
+これらすべての変更を含むPRを送信します。
+
+## 既存の言語を削除するには？
+
+`old_lang`という言語を削除する手順を次に示します。
+
+1.  言語フォルダ`src/main/webapp/i18/old_lang`全体を削除します。
+2.  定数`LANGUAGES`を`src/main/webapp/app/core/language/language.constants.ts`から削除します。
+3.  定数`languages`を`src/main/webapp/app/shared/language/find-language-from-key.pipe.ts`から削除します。
+4.  定数`localesToKeep`を`webpack/webpack.prod.js`から削除します。
+5.  `MergeJsonWebpackPlugin`のパターンを`webpack/webpack.common.js`から削除します。
+6.  `src/main/resources/i18n/messages_old_lang.properties`を削除します。
+7.  `src/test/resources/i18n/messages_old_lang.properties`を削除します。

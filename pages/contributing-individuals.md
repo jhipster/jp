@@ -1,0 +1,28 @@
+---
+layout: default
+title: 個人の貢献
+permalink: /contributing-individuals/
+sitemap:
+    priority: 0.1
+    lastmod: 2017-11-29T00:00:00-00:00
+---
+# <i class="fa fa-keyboard-o"></i>個人の貢献
+
+JHipsterには[多くのコントリビューター](https://github.com/jhipster/generator-jhipster/graphs/contributors)がおり、ベストな貢献ができるよう我々は最善を尽くしています。ぜひ、あなたの参加をお待ちしています。
+
+## 行動規範
+
+ご貢献いただく前に、我々の[行動規範](https://github.com/jhipster/generator-jhipster/blob/main/CODE_OF_CONDUCT.md)をお読みください。
+
+## リーチング・フォー・ヘルプ
+
+[ヘルプページ]({{ site.url }}/help/)  に記載されているように、プロジェクトに参加する誰もが、通常のサポートチャネルを使用してヘルプを求めることができます。
+
+どんなことでも、チームは全力でサポートします。
+
+- チケットにコメントする
+- プルリクエストをレビューする
+
+## 貢献方法
+
+私たちの[貢献ガイド](https://github.com/jhipster/generator-jhipster/blob/main/CONTRIBUTING.md)は、あなたが始めての最初のPull Requestを出すためのすべての情報を提供しています。

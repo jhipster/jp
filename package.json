@@ -1,0 +1,22 @@
+{
+  "name": "jhipster-public-wesite",
+  "devDependencies": {
+    "browser-sync": "2.29.1",
+    "gulp": "4.0.2",
+    "gulp-imagemin": "8.0.0",
+    "gulp-sass": "5.0.0",
+    "sass": "1.54.4",
+    "textlint": "^13.3.2",
+    "textlint-plugin-html": "^1.0.0",
+    "textlint-rule-preset-ja-spacing": "^2.3.0",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0",
+    "textlint-rule-preset-jtf-style": "^2.3.13",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0"
+  },
+  "private": true,
+  "scripts": {
+    "start": "bundle exec jekyll serve",
+    "sass": "gulp sass",
+    "images": "gulp images"
+  }
+}

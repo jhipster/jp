@@ -1,0 +1,52 @@
+---
+layout: default
+title: 遅延Bean初期化による統合テストのパフォーマンスの向上
+sitemap:
+priority: 0.1
+lastmod: 2019-10-01T18:20:00-00:00
+---
+
+# 遅延Bean初期化による統合テストのパフォーマンスの向上
+
+__このTipは[@atomfrede](https://github.com/atomfrede)により提出されました__
+
+多くのSpring Integrationテストでは、すべてのBeanを必要としないため、リポジトリテストなどのコンテキストで
+すべてのBeanを初期化する必要がなく、貴重な時間を消費します。
+
+`src/test/java/YOUR-PACKAGE/config`に次の内容のクラス
+`TestLazyBeanInitConfiguration`を作成することで、必要なBeanのみが作成されるように、Beanを遅延初期化するようにテストを構成できます。
+
+```java
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+
+@Component
+@Profile("!" + TestLazyBeanInitConfiguration.EAGER_BEAN_INIT)
+public class TestLazyBeanInitConfiguration implements BeanFactoryPostProcessor {
+    public static final String EAGER_BEAN_INIT = "eager-bean-init";
+
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+        Arrays.stream(beanFactory.getBeanDefinitionNames())
+            .map(beanFactory::getBeanDefinition)
+            .forEach(beanDefinition -> beanDefinition.setLazyInit(true));
+    }
+}
+```
+
+すべてのBeanを積極的に初期化するテストが必要な場合は、このテストに`@ActiveProfiles(TestLazyBeanInitConfiguration.EAGER_BEAN_INIT)`というアノテーションを付ける必要があります。
+
+[Spring Bootのブログ](https://spring.io/blog/2019/03/14/lazy-initialization-in-spring-boot-2-2)と
+[関連するプルリクエスト](https://github.com/jhipster/generator-jhipster/pull/10241)を参照してください。
+
+実装してくれた[@rabiori](https://github.com/rabiori)に感謝します。
+
+
+
+
+

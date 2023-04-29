@@ -1,0 +1,44 @@
+---
+layout: default
+title: EclipseとGradleの設定
+permalink: /configuring-ide-eclipse-gradle/
+redirect_from:
+  - /configuring-ide-eclipse-gradle.html
+sitemap:
+    priority: 0.7
+    lastmod: 2015-05-22T18:40:00-00:00
+---
+
+# <i class="fa fa-keyboard-o"></i> EclipseとGradleの設定
+
+EclipseでGradleをフルサポートするには、[buildship plugin](https://gradle.org/eclipse/)をインストールする必要があります。
+[JavaScript]({{ site.url }}/configuring-ide-eclipse/) 側の設定は、Mavenの説明に従ってください。
+
+## 1.プロジェクトをGradleプロジェクトとしてインポート
+
+- ``File -> Import``を選択します。
+- ``Gradle Project``を選択します。
+- プロジェクトのルートディレクトリを選択します。
+- ``Next``をクリックし、ウィザードを終了します。
+
+![インポート]({{ site.url }}/images/configuring_ide_eclipse_gradle_1.png)
+
+![選択]({{ site.url }}/images/configuring_ide_eclipse_gradle_2.png)
+
+## 2. aptで生成されたソースフォルダをビルドパスに追加
+
+buildship gradlesを使用する場合、outputfolderがフィルタリングされ、ワークスペースに表示されません。
+そのため、Eclipseのリソースフィルタ設定から削除する必要があります。
+
+- プロジェクトを右クリックし、``Properties``を選択します。
+- ``Resources``を選択します。
+- ``build``エントリを削除します。
+- ``Java Build Path``を選択します。
+- ``Add Folder...``をクリックします。
+- ``build/generated/source/apt/main``をチェックします。
+
+Eclipse経由でJHipsterを実行する場合、新しいソースフォルダに正しく生成されたマッパー実装が含まれていることを確認してください。
+
+![除外]({{ site.url }}/images/configuring_ide_eclipse_gradle_3.png)
+
+![ビルドパス]({{ site.url }}/images/configuring_ide_eclipse_gradle_4.png)

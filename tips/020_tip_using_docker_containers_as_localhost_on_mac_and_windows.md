@@ -1,0 +1,61 @@
+---
+layout: default
+title: Mac/WindowsでDockerコンテナをlocalhostとして使用する
+sitemap:
+priority: 0.5
+lastmod: 2016-11-15T16:00:00-00:00
+---
+
+# Mac/WindowsでDockerコンテナをlocalhostとして使用する
+
+__このTipは[@Akuka](https://github.com/Akuka)により提出されました__
+
+## Linux環境のDockerとMac/Windows環境のDockerの違い
+
+OSによって、<code>DOCKER_HOST</code>は異なります。
+Linuxでは、単純にlocalhostになります。
+Mac/Windowsの場合は、次のコマンドを使用して適切なIPを取得する必要があります。
+
+```
+docker-machine ip default
+```
+
+## 動機
+
+新しいJHipsterアプリケーションを生成する場合、すべての接続構成のホスト・アドレス（例：データベース接続文字列）はデフォルトでlocalhostです。
+つまり、Dockerを使用してサービス（データベース/Elastic Search/SMTPサーバなど）を実行している場合は、アプリケーション構成ファイルを編集して、データベースのIPアドレスをlocalhostから<code>DOCKER_HOST</code>に置き換える必要があります。
+
+## ポートフォワーディング
+
+Dockerマシンは、ホストマシンのVirtualBoxの下で動作する仮想マシンです。
+localhostとしてDocker VMにアクセスするために、VirtualBoxのポート転送機能を使用できます。
+
+これを実現するには、次の手順を実行します。
+
+
+まず、次のコマンドを実行して、Dockerマシンが停止していることを確認します。
+
+```
+docker-machine stop default     # Dockerマシン名がデフォルトではない場合があります。この場合は、名前を適宜変更してください。
+```
+
+その後以下を行います。
+
+* VirtualBox Managerを開きます。
+* DockerマシンのVirtualBoxイメージ（例：default）を選択します。
+* 設定 → ネットワーク → 高度 → ポートフォワーディングを開きます。
+* アプリケーション名、目的のホスト・ポート、ゲスト・ポートを追加します。
+
+次のスクリーンショットは、MySQLポートフォワーディングの例を示しています。
+
+![MySQLポートフォワーディングの例](../images/020_tip_using_docker_containers_as_localhost_on_mac_and_windows_01.png)
+
+
+これで、次のコマンドを実行してDockerマシンを起動する準備ができました。
+
+```
+docker-machine start default
+eval $(docker-machine env default)
+```
+
+次に、Dockerコンテナを起動すると、localhost経由でアクセスできるようになります。

@@ -1,0 +1,50 @@
+---
+layout: default
+title: リモートシェルとのREPL
+sitemap:
+priority: 0.5
+lastmod: 2016-09-22T22:22:00-00:00
+---
+
+# リモートシェルとのREPL
+
+__このTipは[@cbornet](https://github.com/cbornet)によって提出されました__
+
+**Spring BootリモートシェルはSpring Boot 2.0で削除されるので、このヒントは非推奨です**
+
+v3.8以降、JHipsterには、[Spring Bootリモートシェル](http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-remote-shell.html)を含む`shell`Maven/Gradleプロファイルがあります。
+プロジェクトがJHipster < 3.8で生成された場合は、`spring-boot-starter-remote-shell`依存関係を手動で追加する必要があります。
+
+これにより、ライブアプリケーションのデバッグに役立つ便利なコマンドがいくつか提供され、独自のコマンドの作成もできます。
+
+Spring Bootのドキュメントに記載されていないもう1つの優れた機能は、[REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)方式でライブアプリ上でGroovyスクリプトコードを実行できることです。
+そのためには、次の手順を実行します。
+
+  * アプリを起動します。
+
+  * ターミナルでsshセッションを開きます（ここではユーザーadmin、パスワードadmin）。
+
+```
+ssh -p2000 admin@localhost
+```
+
+  * 接続したら、Groovy REPLモードに切り替えます。
+
+```
+> repl groovy
+```
+
+  * BeanFactoryを入手します。
+
+```
+> bf = context.attributes['spring.beanfactory']
+```
+
+  * これで、BeanFactoryを使用してSpring Beanを取得し、そのメソッドを呼び出すことができます。
+
+```
+> bf.getBean('userRepository').findAll().login
+[system, anonymoususer, admin, user]
+> bf.getBean('userService').getUserWithAuthoritiesByLogin('user').get().authorities.name
+[ROLE_USER]
+```

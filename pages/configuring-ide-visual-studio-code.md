@@ -1,0 +1,81 @@
+---
+layout: default
+title: Visual Studio Codeの設定
+permalink: /configuring-ide-visual-studio-code/
+sitemap:
+    priority: 0.7
+    lastmod: 2016-09-15T17:13:00-00:00
+---
+
+# <i class="fa fa-keyboard-o"></i> Visual Studio Codeの設定
+
+Visual Studio Codeは、マイクロソフト社製のオープンソーステキストエディタです。TypeScriptのサポートが充実しているため、Angular 2アプリケーションの開発に使いたい人が多くいます。
+
+![スクリーンショット]({{ site.url }}/images/configuring_ide_visual_studio_code_1.png)
+
+## Yeomanのサポート
+
+**注意：この記事を書いている時点では、この拡張機能は壊れています**
+
+Visual Studio CodeにはYeomaの拡張機能があり、JHipsterコマンドを実行するのに役立つはずです。
+
+Visual Studio Codeのマーケットプレイスを利用することでインストールできます。
+
+![スクリーンショット]({{ site.url }}/images/configuring_ide_visual_studio_code_2.png)
+
+## Javaコードのサポート
+
+Visual Studio Codeには、Red Hatにより開発されたJava拡張機能があり、MavenやGradleを利用したJavaのサポートが充実しています。
+
+Visual Studio Codeのマーケットプレイスを利用することでインストールできます。
+
+![スクリーンショット]({{ site.url }}/images/configuring_ide_visual_studio_code_3.png)
+
+## 共通タスク：コードのコンパイル、実行、パッケージング
+
+Visual Studio CodeのJava拡張機能は、コマンドの実行には使用できません。コンパイル、コードの実行、アプリケーションのパッケージ化はできません。
+
+そのような課題に対して、2つの解決策があります。
+
+- ターミナル（Visual Studio Codeが提供する内部ターミナルなど）を使用して、これらのコマンドを手動で実行します。
+- [JHipster App]({{ site.url }}/jhipster-app) を使用すると、これらのコマンドのグラフィカルなインタフェースを提供できます。**注意：** JHipster Appは非推奨です。
+
+## Spring Bootのdevtoolsを使ったアプリケーションの「ホットリスタート」
+
+[Spring Boot devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html)はJHipsterによって設定され、プロジェクトからのクラスがコンパイルされると、アプリケーションを「ホットリスタート」します。これはアプリケーションがその場で更新されるようになる必須の機能です。
+
+Visual Studio Code内で使用するには、次のことが必要です。
+
+- ターミナルでアプリケーションを実行します。通常、`./mvnw`と入力します。
+- 別の端末で、アプリケーションをコンパイルします。`./mvnw compile`と入力します。
+
+最初の端末においてJHipsterアプリケーションが自動的に再デプロイされ、新しいコードが使用されるはずです。
+
+同様に、JHipster Appを使用する場合、2つのボタン（アプリケーションを実行するボタンとコンパイルするボタン）をクリックするだけで、アプリケーションは自動的に再デプロイされます。
+
+## カスタム設定
+
+プロジェクトの `.vscode` フォルダに以下のように `settings.json` ファイルを作成し、いくつかのフォルダを除外することをお勧めします。
+
+```
+{
+    // ファイルやフォルダを除外するためのglobパターンを設定
+    "files.exclude": {
+        "**/.git": true,
+        "**/.gradle": true,
+        "**/.idea": true,
+        "**/.mvn": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true
+    },
+    // 検索でファイルやフォルダを除外するためのglobパターンを設定。files.excludeの設定からすべてのglobパターンを継承。
+    "search.exclude": {
+        "**/node": true,
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/build": true,
+        "**/target": true
+    }
+}
+```

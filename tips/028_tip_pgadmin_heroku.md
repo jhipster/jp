@@ -1,0 +1,53 @@
+---
+layout: default
+title: PGAdmin(PostgreSQL)をHerokuに接続する方法
+sitemap:
+priority: 0.1
+lastmod: 2018-10-15T18:20:00-00:00
+---
+# PGAdmin(PostgreSQL)をHerokuに接続する方法
+
+__このTipは[@Tonterias](https://github.com/Tonterias)により提出されました__
+
+PGAdminを使用してHerokuデータベースにテストデータをロードする必要があるかもしれません。
+
+次の手順に従います。
+
+まず、HerokuアカウントのDatabase Credentialsのデータを使用して、Create a New Server PGAdminのフォームに入力します。
+
+![Example documentation](../images/028_tip_pgadmin_heroku_01.png)
+
+![Example documentation](../images/028_tip_pgadmin_heroku_02.png)
+
+次に、application-prod.ymlでその情報を設定する必要があります。
+
+/src/main/resources/config/application-prod.yml
+
+    spring:
+        devtools:
+            restart:
+                enabled: false
+            livereload:
+                enabled: false
+        datasource:
+            type: com.zaxxer.hikari.HikariDataSource
+            url: jdbc:postgresql://@ec2-50-17-250-38.compute-1.amazonaws.com:5432/d5u8osf3cgtlg
+            username: seejtnnivrl???
+            password: e9ed17c73da7ec36bf6eead010968106439debe16ed3df9039be0a9aef??????
+            hikari:
+                auto-commit: false
+
+（この他の例のように）HerokuアカウントのDatabase Credentialsからデータを取得します。
+
+    Host : ec2-50-17-250-38.compute-1.amazonaws.com
+    Database : d5u8osf3cgtlg
+    User : seejtnnivrlcdw
+    Port : 5432
+    Password : e9ed17c73da7ec36bf6eead010968106439debe16ed3df9039be?????
+    URI : postgres://seejtnnivrlcdw:e9ed17c73da7ec36bf6eead010968106439debe16ed3df9039b???????
+    @ec2-50-17-250-38.compute-1.amazonaws.com:5432/d5u8osf3cgtlg
+    Heroku CLI : heroku pg:psql postgresql-trapezoidal-20780 --app jhipster-press-08
+
+データベースに接続し、PGAdminクエリウィンドウでsqlコマンドを使用してテストするだけです。
+
+メモ：このプロセスを示すビデオを次に示します。 https://www.youtube.com/watch?v=GAHsl0AfK-0

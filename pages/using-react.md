@@ -1,0 +1,182 @@
+---
+layout: default
+title: Reactの使用
+permalink: /using-react/
+sitemap:
+    priority: 0.7
+    lastmod: 2018-04-02T23:41:00-00:00
+---
+
+# <i class="fa fa-html5"></i> React（とRedux）の使用
+このセクションでは、JavaScriptライブラリ**React**（と**Redux**）について説明します。
+
+## プロジェクト構造
+
+JHipsterのクライアントコードは`src/main/webapp`にあり、[Piotr Witek Reactスタイルガイド](https://github.com/piotrwitek/react-redux-typescript-guide/blob/master/README.md)に厳密に従っています。
+
+私たちのアプリケーション構造、ファイル名、TypeScriptの規則について質問がある場合は、まずこのガイドをお読みください。
+
+Reactルートでは、URLが明確で一貫性のあるものになるように、dash caseの命名規則に従います。
+エンティティを生成すると、この規則に従ってルート名、ルートURL、およびREST APIエンドポイントURLが生成され、必要に応じてエンティティ名が自動的に複数化されます。
+
+プロジェクトの主な構成は次のとおりです。
+
+```
+webapp
+├── app                             - アプリケーション
+│   ├── config                      - 一般的な構成（Reduxストア、ミドルウェアなど）
+│   ├── entities                    - 生成されたエンティティ
+│   ├── modules                     - メインコンポーネントディレクトリ
+│   │   ├── account                 - アカウント関連のコンポーネント
+│   │   ├── administration          - 管理関連のコンポーネント
+│   │   ├── home                    - アプリケーションホームページ
+│   │   └── login                   - ログイン関連コンポーネント
+│   ├── shared                      - ヘッダー、フッター、レデューサ、モデル、utilクラスなどの共有要素
+│   ├── app.scss                    - Sassオプションを選択した場合のグローバルアプリケーションスタイルシート
+│   ├── app.css                     - グローバルアプリケーションスタイルシート
+│   ├── app.tsx                     - アプリケーションのメインクラス
+│   ├── index.tsx                   - インデックススクリプト
+│   ├── routes.tsx                  - アプリケーションのメインルート
+│   └── typings.d.ts                -
+├── i18n                            - 翻訳ファイル
+├── static                          - イメージやフォントなどの静的ファイルを格納
+├── swagger-ui                      - Swagger UIフロントエンド
+├── 404.html                        - 404ページ
+├── favicon.ico                     - お気に入りアイコン
+├── index.html                      - 索引ページ
+├── manifest.webapp                 - アプリケーションマニフェスト
+└── robots.txt                      - ボットおよびWebクローラの設定
+```
+
+[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用して`Foo`という名前の新しいエンティティを作成すると、`src/main/webapp`の下に次のフロントエンドファイルが生成されます。
+
+```
+webapp
+├── app                                        
+│   └── entities
+│       ├── foo                           - FooエンティティのCRUDフロントエンド
+│       │   ├── foo-delete-dialog.tsx     - 削除ダイアログコンポーネント
+│       │   ├── foo-detail.tsx            - 詳細ページコンポーネント
+│       │   ├── foo-dialog.tsx            - 作成ダイアログコンポーネント
+│       │   ├── foo.reducer.ts            - Fooエンティティレデューサ
+│       │   ├── foo.tsx                   - エンティティのメインコンポーネント
+│       │   └── index.tsx                 - エンティティメインルート
+│       └── index.tsx                     - エンティティルート
+└── i18n                                  - 翻訳ファイル
+     ├── en                               - 英訳
+     │   ├── foo.json                     - Foo名、フィールド、...の英語翻訳
+     └── fr                               - フランス語翻訳
+         └── foo.json                     - Foo名、フィールド、...のフランス語翻訳
+```
+
+デフォルトの言語翻訳は、アプリケーションの生成時に選択した内容に基づいて行われることに注意してください。'en'および'fr'は、ここではデモンストレーションのためにのみ示されています。
+
+## Redux
+
+[Redux](https://redux.js.org/)はJavaScriptでの状態管理を容易にするコンテナです。
+Reactと連携して、Reactコンポーネントの状態を管理します。
+
+Reduxは、アプリケーションの状態全体を保存するためのオブジェクト**ストア**を提供します。
+このストアにアクセスして状態コンポーネントを更新する唯一の方法は、
+更新が要求されたという事実を記述する**アクション**をディスパッチすることです。
+その後、**レデューサ**は、これらのアクションに応答して状態を更新する方法を定義します。
+
+レデューサの例を次に示します。
+
+``` typescript
+export const ACTION_TYPES = {
+  FETCH_FOOS: 'foo/FETCH_FOOS',
+};
+
+const initialState = {
+  loading: false,
+  foos: [],
+  updateSuccess: false,
+  updateFailure: false
+};
+
+// Reducer
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case REQUEST(ACTION_TYPES.FETCH_FOOS):
+      return {
+        ...state,
+        updateSuccess: false,
+        updateFailure: false,
+        loading: true
+      };
+    case FAILURE(ACTION_TYPES.FETCH_FOOS):
+      return {
+        ...state,
+        loading: false,
+        updateSuccess: false,
+        updateFailure: true
+      };
+    case SUCCESS(ACTION_TYPES.FETCH_FOOS):
+      return {
+        ...state,
+        loading: false,
+        updateSuccess: true,
+        updateFailure: false,
+        foos: action.payload.data
+      };
+    default:
+      return state;
+  }
+};
+```
+
+ストアにアクセスして現在のアプリケーションの状態を更新するには、
+前述のようにアクションをストアにディスパッチする必要があります。アクションはJavaScriptオブジェクトであり、
+アクションが実行する内容を記述する**タイプ**を持つ必要があります。
+通常、ストアに渡すデータに対応する**ペイロード**もあります。
+
+ストアにアクセスするには、次の操作となります。
+
+``` typescript
+const apiUrl = SERVER_API_URL + '/api/foos';
+
+// Action
+export const getFoos = () => ({
+  type: ACTION_TYPES.FETCH_FOOS,
+  payload: axios.get(apiUrl)
+});
+```
+
+上記のアクションは、GET要求を送信することによってすべてのFooオブジェクトを
+取得することを示しています。アクションタイプは
+**export**キーワードは、接続されたコンポーネントが必要に応じて
+（たとえば、コンポーネントが更新されるたびに）そのアクションを使用するために付与することに注意してください。
+
+## 認証
+
+Jhipsterは、[Reactルータ](https://github.com/ReactTraining/react-router)を使用して、アプリケーションのさまざまな部分を整理します。
+
+認証を必要とするルートの場合は、生成された`PrivateRoute`コンポーネントが使用されます。このコンポーネントにより、認証されていないユーザーがルートにアクセスできなくなります。
+
+PrivateRouteでの使用例を次に示します。
+
+``` typescript
+const Routes = () => (
+  <div className="view-routes">
+    <Route exact path="/" component={Home} />
+    <Route path="/login" component={Login} />
+    <PrivateRoute path="/account" component={Account} />
+  </div>
+);
+```
+
+ご覧のように、非認証ユーザーは`/`および`/login`にアクセスできますが、`/account`にアクセスするにはログインする必要があります。
+
+PrivateRouteは、ユーザーが認証されているかどうかを知るために、`authentication.isAuthenticated`ストア値を使用することに注意してください。
+
+## 通知システム
+
+JHipsterは、通知システムに[react-toastify](https://github.com/fkhadra/react-toastify)アラートを使用します。
+
+デフォルトでは、JHipsterはエンティティが作成/更新/削除されるたびに成功通知を表示します。
+レスポンスからエラーが検出された場合は、エラー通知が表示されます。
+
+## React JHipsterライブラリ
+
+[react-jhipster](https://github.com/jhipster/react-jhipster)ライブラリは、生成されたアプリケーションにユーティリティと汎用サービスを提供します。i18nも処理します。

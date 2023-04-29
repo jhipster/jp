@@ -1,0 +1,84 @@
+---
+layout: default
+title: リリース 7.0.1
+---
+
+JHipsterリリース v7.0.1
+==================
+
+これは、JHipster v7の新しいパッチリリースです。
+- Vue: npm startが正しく更新されない - [#14474](https://github.com/jhipster/generator-jhipster/issues/14474)
+- Reactive: ユーザーとauthority - [#14475](https://github.com/jhipster/generator-jhipster/issues/14475)[14482](https://github.com/jhipster/generator-jhipster/issues/14482)
+- Swagger認証が壊れている - [#14488](https://github.com/jhipster/generator-jhipster/issues/14488)
+- AngularでデフォルトでHMRを使用 - [#14555](https://github.com/jhipster/generator-jhipster/pull/14555)
+- 多数のライブラリのアップグレード
+
+クローズされたチケットとマージされたプルリクエスト
+------------
+いつものように、__[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=milestone%3A7.0.1+is%3Aclosed)__。
+
+アップグレード方法
+------------
+
+**自動アップグレード**
+
+自動アップグレードの場合は、既存のアプリケーションで[JHipsterアップグレードサブジェネレータ]({{ site.url }}/upgrading-an-application/)を使用します。
+
+JHipsterのバージョンをアップグレードします。
+
+```
+npm update -g generator-jhipster
+```
+
+次に、アップグレードサブジェネレータを実行します。
+
+```
+jhipster upgrade
+```
+
+**手動アップグレード**
+
+手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
+
+```
+npm update -g generator-jhipster
+```
+
+既存のプロジェクトがある場合は、そのプロジェクトは生成されたJHipsterのバージョンをそのまま使用します。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、次のコマンドを実行する必要があります。
+
+```
+jhipster
+```
+
+次のコマンドを実行して、プロジェクトとすべてのエンティティの更新もできます。
+
+```
+jhipster --with-entities
+```
+
+また、エンティティサブジェネレータを再度実行し、エンティティの1つずつの更新もできます。たとえば、エンティティの名前が _Foo_ の場合は以下となります。
+
+```
+jhipster entity Foo
+```
+
+**ヒント**
+
+[prettier-java](https://github.com/jhipster/prettier-java)を使用してすべてのJavaクラスがすでにフォーマットされているプロジェクトを生成するには、次のコマンドを使用します。
+
+```
+jhipster --prettier-java
+```
+
+ヘルプとバグ
+--------------
+
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
+
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
+
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
+
+- [@jhipster](https://twitter.com/jhipster)のTwitterアカウントに連絡をお願いします。
