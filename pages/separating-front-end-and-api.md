@@ -47,6 +47,7 @@ JHipsterは、標準のMavenディレクトリ・レイアウトを使用しま�
 - すべてのAPI呼び出しは`/api`プレフィックスを使用します。Angularを使用している場合、`webpack.common.js`設定で定義された特定の`SERVER_API_URL`定数もあり、このプレフィックスを強化できます。例えば、`"http://api.jhipster.tech:8081/"`をバックエンドAPIサーバとして使用できます（これを行う場合は、以下のCORSに関するドキュメントをお読みください）。
 - `/index.html`は、ブラウザまたはサーバによってキャッシュされるべきではありません。
 - （フロントエンドの）静的アセットである`/app`（クライアント側アプリケーションを含む）および`/content`（画像やCSSなどの静的コンテンツを含む）を提供する`/`の呼び出しは、これらのアセットがハッシュ化されるため、プロダクション環境でキャッシュされるべきです。
+- `/i18n`への呼び出しはキャッシュできますが、ファイル自体はハッシュされず、URLクエリ文字列が使用されます。
 - 存在しないルートへのコールは、リクエストを`index.html`に転送する必要があります。これは通常、`ClientForwardController`を介してバックエンドで処理されます。クライアントを個別にデプロイする場合、これを設定する必要があります。いくつかの例については、[Angular](https://angular.io/guide/deployment#server-configuration)または[React](https://facebook.github.io/create-react-app/docs/deployment)のドキュメントを参照してください。
 
 # BrowserSyncの使用

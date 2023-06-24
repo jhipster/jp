@@ -48,7 +48,7 @@ Single Web page Applicationがニーズと合わない場合はどうすれば�
 * データベースに検索機能を持たせたい場合は、[Elasticsearch](https://github.com/elastic/elasticsearch)をサポート
 * JPAの代わりにドキュメント指向のNoSQLデータベースを使いたい場合は、[MongoDB](http://www.mongodb.org)と[Couchbase](https://www.couchbase.com)をサポート
 * JPAの代わりにカラム指向のNoSQLデータベースを使用したい場合は、[Cassandra](http://cassandra.apache.org/)をサポート
-* Pub/Subのメッセージングシステムを使用する場合は、[Kafka](http://kafka.apache.org/)をサポート
+* Pub/Subのメッセージングシステムを使用する場合は、[Kafka](http://kafka.apache.org/)と[Pulsar](http://pulsar.apache.org/)をサポート
 
 ## マイクロサービスのための技術スタック
 
