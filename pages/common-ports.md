@@ -46,7 +46,7 @@ JHipster[ポリシー 1]({{ site.url }}/policies/)に従って、問題が発生
   </tr>
   <tr>
     <td>6650</td>
-    <td>Pulsar - Service port</td>
+    <td>Pulsar - サービスポート</td>
   </tr>
   <tr>
     <td>7742</td>
