@@ -44,19 +44,22 @@ Angularルートの場合は、URLが明確で一貫性のあるものになる�
     ├── app                               - アプリケーション
     │   ├── account                       - ユーザー・アカウント管理UI
     │   ├── admin                         - 管理UI
-    │   ├── blocks                        - 設定やインターセプターなどの共通のビルディング・ブロック
+    │   ├── config                        - 一部のユーティリティファイル
+    │   ├── core                          - 設定やインターセプターなどの共通のビルディング・ブロック
     │   ├── entities                      - 生成されたエンティティ（詳細は以下を参照）
     │   ├── home                          - ホームページ
     │   ├── layouts                       - ナビゲーションバーやエラーページなどの一般的なページレイアウト
+    │       ├── main                      - メインページ
+    │           ├── main.component.ts     - メインアプリケーションクラス
+    │   ├── login                         - Login page
     │   ├── shared                        - 認証や国際化などの一般的なサービス
-    │   ├── app.main.ts                   - メインアプリケーションクラス
     │   ├── app.module.ts                 - アプリケーションモジュールの設定
     │   ├── app-routing.module.ts         - メインアプリケーションルータ
     ├── content                           - 静的コンテンツ
     │   ├── css                           - CSSスタイルシート
     │   ├── images                        - 画像
+    │   ├── scss                          - オプションを選択すると、ここにSassスタイルシートファイルが表示されます
     ├── i18n                              - 翻訳ファイル
-    ├── scss                              - オプションを選択すると、ここにSassスタイルシートファイルが表示されます
     ├── swagger-ui                        - Swagger UIフロントエンド
     ├── 404.html                          - 404ページ
     ├── favicon.ico                       - お気に入りアイコン
@@ -99,14 +102,14 @@ JHipsterは[Angularルータ](https://angular.io/docs/ts/latest/guide/router.htm
 
 権限はサーバー側でもクラス`AuthoritiesConstants.java`で定義されており、論理的にはクライアント側とサーバー側の権限は同じでなければなりません。
 
-次の例では、'sessions'ステートは、`ROLE_USER`権限を持つ認証済みユーザーによってのみアクセスされるように設計されています。
+次の例では、'settings'ステートは、`ROLE_ADMIN`権限を持つ認証済みユーザーによってのみアクセスされるように設計されています。
 
-    export const sessionsRoute: Route = {
+    export const settingsRoute: Route = {
         path: 'sessions',
-        component: SessionsComponent,
+        component: SettingsComponent,
+        title: 'global.menu.account.settings',
         data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'global.menu.account.sessions'
+            authorities: ['ROLE_ADMIN'],
         },
         canActivate: [UserRouteAccessService]
     };

@@ -20,6 +20,7 @@ sitemap:
    1. [注入フィールド](#注入フィールド)
    1. [結合フィールド](#結合フィールド)
    1. [メソッド](#メソッド)
+   1. [オプションの使用](#オプションの使用)
    1. [必須のサイド](#必須のサイド)
    1. [再帰リレーションシップ](#再帰リレーションシップ)
    1. [コメント](#コメント)
@@ -94,11 +95,13 @@ relationship OneToOne {
 リレーションシップの宣言は次のように行われます。
 ```
 relationship (OneToMany | ManyToOne | OneToOne | ManyToMany) {
-  <from entity>[{<relationship name>[(<display field>)]}] to <to entity>[{<relationship name>[(<display field>)]}]+
+  @<option>("<option value>")+ <from entity>[{<relationship name>[(<display field>)]}] to @<option>("<option value>")+ <to entity>[{<relationship name>[(<display field>)]}]+
 }
 ```
 
   - `(OneToMany | ManyToOne| OneToOne | ManyToMany)`はリレーションシップのタイプです。
+  - `<option>`は次の値の1つを指定します: `onDelete | onUpdate`。これをリレーションシップの正しい側に置くようにしてください。
+  - `<option value>` はオプションに適合する値の1つを指定します。 `NO ACTION | RESTRICT | CASCADE | SET NULL | SET DEFAULT`
   - `<from entity>`は、リレーションシップのエンティティの所有者の名前です：いわゆる「元」です。
   - `<to entity>`は、リレーションシップの先となるエンティティの名前です：いわゆる「先」です。
   - `<relationship name>`は、もう一方の端をタイプとするフィールドの名前です。
@@ -159,6 +162,16 @@ relationship ManyToMany {
 ```jdl
 relationship OneToOne {
   A to B with jpaDerivedIdentifier
+}
+```
+
+---
+
+#### オプションの使用
+
+```jdl
+relationship ManyToOne {
+   A to @OnDelete("SET NULL") @OnUpdate("CASCADE") B
 }
 ```
 
