@@ -40,13 +40,6 @@ JHipsterのBlueprintは、依存関係として`generator-jhipster`を持つ必�
 ```javascript
 import chalk from 'chalk';
 import ClientGenerator from 'generator-jhipster/generators/client';
-<<<<<<< HEAD
-import {
-  INITIALIZING_PRIORITY,
-  // その他の優先順位は簡潔にするため省略しています
-} from 'generator-jhipster/priorities';
-=======
->>>>>>> upstream/main
 
 export default class extends ClientGenerator {
   constructor(args, opts, features) {

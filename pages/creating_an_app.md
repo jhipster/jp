@@ -153,15 +153,11 @@ WebSocketは、Spring Websocketを使用して有効にできます。また、�
 
 [Apache Kafka]({{ site.url }}/using-kafka/)をパブリッシュ/サブスクライブ・メッセージ・ブローカーとして使用します。
 
-<<<<<<< HEAD
+#### Apache Pulsarを使った非同期メッセージ（Asynchronous messages using Apache Pulsar）
+
+[Apache Pulsar]({{ site.url }}/using-pulsar/)をパブリッシュ/サブスクライブ・メッセージ・ブローカーとして使用します。
+
 ### クライアントにどの _フレームワーク_ を使用しますか?（Which _Framework_ would you like to use for the client?）
-=======
-#### Asynchronous messages using Apache Pulsar
-
-Use [Apache Pulsar]({{ site.url }}/using-pulsar/) as a publish/subscribe message broker.
-
-### Which _Framework_ would you like to use for the client?
->>>>>>> upstream/main
 
 使用するクライアント側のフレームワークです。
 

@@ -81,17 +81,7 @@ UI統合テストは、[Cypress](https://www.cypress.io/){:target="_blank" rel="
 
 ## パフォーマンステスト
 
-<<<<<<< HEAD
-パフォーマンステストは[Gatling](http://gatling.io/){:target="_blank" rel="noopener"}で行われ、`src/test/gatling`フォルダにあります。これらはエンティティごとに生成され、多くの同時ユーザー要求でそれぞれをテストできます。
-
-Gatlingテストを実行するには、次の手順を実行する必要があります。
-
-1. [Gatlingをダウンロードします](https://gatling.io/open-source/){:target="_blank" rel="noopener"}。
-2. ファイルを抽出し、その場所を`PATH`に追加します。
-3. cdで`src/test/gatling`に移動し、お使いのOSに応じて`gatling.sh`または`gatling.bat`を実行します。
-=======
-Performance tests are done with [Gatling](http://gatling.io/){:target="_blank" rel="noopener"}, and are located in the `src/test/java/gatling/simulations` folder. They are generated for each entity, and allow to test each of them with a lot of concurrent requests.
->>>>>>> upstream/main
+パフォーマンステストは[Gatling](http://gatling.io/){:target="_blank" rel="noopener"}で行われ、`src/test/java/gatling/simulations`フォルダにあります。パフォーマンステストはエンティティごとに生成され、多数の同時リクエストで各エンティティをテストできます。
 
 **警告!** 現時点では、これらのテストではエンティティに適用した検証ルールが考慮されていません。また、別のエンティティと必要な関係を持つエンティティを作成するためのテストは、そのままでは失敗します。いずれにしても、ビジネス・ルールに従ってこれらのテストを変更する必要があるため、テストを改善するためのヒントをいくつか示します。
 
@@ -105,84 +95,10 @@ Performance tests are done with [Gatling](http://gatling.io/){:target="_blank" r
 *   マイクロサービスアプリケーションの実行
 *   その後、Gatlingテストを実行できます
 
-<<<<<<< HEAD
-### Gatlingを実行するためのMaven/Gradleの使用
+### Mavenを使ってGatlingを実行する
 
-Gatlingテストを実行するためのMavenまたはGradleの設定は生成しません。これは、他のプラグインでクラスパスの問題（主にScalaを使用時）が発生する可能性があるためです。
-ただし、公式の[Mavenプラグイン](https://gatling.io/docs/current/extensions/maven_plugin/){:target="_blank" rel="noopener"}または[Gradleプラグイン](https://gatling.io/docs/current/extensions/gradle_plugin/){:target="_blank" rel="noopener"}を利用してGatlingテストの実行は可能です。
-
-#### Mavenの使用
-
-`pom.xml`を変更する必要があります。
-
-1.  `test`スコープのGatling依存関係を追加
-2.  Gatlingプラグインの追加
-3.  プラグイン構成をJHipsterのレイアウトと命名規則に適合
-
-```
-...
-<dependency>
-  <groupId>io.gatling.highcharts</groupId>
-  <artifactId>gatling-charts-highcharts</artifactId>
-  <version>3.5.0</version>
-  <scope>test</scope>
-</dependency>
-<!-- jhipster-needle-maven-add-dependency -->
-...
-<plugin>
-  <groupId>io.gatling</groupId>
-  <artifactId>gatling-maven-plugin</artifactId>
-  <version>3.1.1</version>
-  <configuration>
-    <runMultipleSimulations>true</runMultipleSimulations>
-    <resourcesFolder>${project.basedir}/src/test/gatling/conf</resourcesFolder>
-    <simulationsFolder>${project.basedir}/src/test/gatling/user-files/simulations</simulationsFolder>
-  </configuration>
-</plugin>
-<!-- jhipster-needle-maven-add-plugin -->
-...
-```
-
-すべてのGatlingテストは`./mvnw gatling:test`で実行できます。
-#### Gradleの使用
-
-`build.gradle`を変更する必要があります。
-
-1. Gatlingプラグインをプラグインセクションに追加する
-2. ソースセットをJHipsterレイアウトに適合させる
-3. 含まれているシミュレーションをJHipsterの命名規則に適合させる
-
-リアクティブオプションを使用している場合は、[Spring Bootが管理するNettyバージョンが、Gatlingが必要とするバージョンと干渉しないことを確認する必要があります](https://gatling.io/docs/current/extensions/gradle_plugin/#spring-boot-and-netty-version){:target="_blank" rel="noopener"}。
-
-```
-plugins {
-    ...
-    id "io.spring.nohttp"
-    // Gatlingプラグインを追加するには、https://plugins.gradle.org/plugin/io.gatling.gradle で最新バージョンを確認してください
-    id 'io.gatling.gradle' version "3.5.0" 
-    //jhipster-needle-gradle-plugins - JHipsterはここにgradleプラグインを追加します。
-}
-
-...
-// ソースセットをJHipster固有のレイアウトに適合させます
-sourceSets {
-   gatling {
-    scala.srcDirs = ["src/test/gatling/user-files/simulations"]
-    resources.srcDirs = ["src/test/gatling/conf"]
-  }
-} 
-
-gatling {
-    simulations = { include "**/*Test*.scala" }
-}
-...
-```
-=======
-### Using Maven to run Gatling
-
-You can execute all Gatling tests with `./mvnw gatling:test`.
-### Using Gradle to run Gatling
->>>>>>> upstream/main
+すべてのGatlingのテストは`./mvnw gatling:test`で実行できます。
+### Gradleを使ってGatlingを実行する
 
 すべてのGatlingのテストは`./gradlew gatlingRun`で実行できます。
 ## ビヘイビア駆動開発（BDD）
