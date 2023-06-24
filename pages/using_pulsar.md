@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using Pulsar
+title: Pulsarの使用
 permalink: /using-pulsar/
 redirect_from:
   - /using_pulsar.html
@@ -9,19 +9,19 @@ sitemap:
     lastmod: 2019-10-30T00:00:00-00:00
 ---
 
-# <i class="fa fa-envelope"></i> Using Pulsar
+# <i class="fa fa-envelope"></i> Pulsarの使用
 
-## Features
+## 機能
 
-[Pulsar](http://pulsar.apache.org/) is a popular publish-subscribe messaging system that supports both streaming and queueing use-cases. JHipster has an optional support for Pulsar, that will:
+[Pulsar](http://pulsar.apache.org/)は人気のあるパブリッシュ/サブスクライブメッセージングシステムで、ストリーミングとキューイングの両方のユースケースをサポートしています。JHipsterはPulsarをオプションでサポートしており、次のことを実現します。
 
-- Configure [Pulsar clients](https://pulsar.apache.org/docs/2.11.x/client-libraries-java/) with JHipster.
-- Generate a Docker Compose configuration file, so Pulsar is usable by typing `docker-compose -f src/main/docker/pulsar.yml up -d`.
-- Generate an integration test using the [Spring Cloud Stream](https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/) Pulsar binder and [Testcontainers](https://www.testcontainers.org/).
+- [Pulsarクライアント](https://pulsar.apache.org/docs/2.11.x/client-libraries-java/)をJHipsterで構成します。
+- Docker Compose設定ファイルを生成します。これによりPulsarが`docker-compose -f src/main/docker/pulsar.yml up -d`で使用可能となります。
+- [Spring Cloud Stream](https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/) Pulsarバインダーと[Testcontainers](https://www.testcontainers.org/)を使用して統合テストを生成します。
 
-## Prerequisite
+## 前提条件
 
-Generate a new application and make sure to select `Asynchronous messages using Apache Pulsar` when prompted for technologies you would like to use. A Docker Compose configuration file is generated and you can start Pulsar with the command:
+新しいアプリケーションを生成し、使用したいテクノロジのプロンプトが表示されたら、必ず`Asynchronous messages using Apache Pulsar`を選択してください。Docker Compose設定ファイルが生成され、次のコマンドでPulsarを起動できます。
 
 ```sh
 docker-compose -f src/main/docker/pulsar.yml up -d
@@ -29,8 +29,8 @@ docker-compose -f src/main/docker/pulsar.yml up -d
 
 ## Usage
 
-Check the [Spring for Apache Pulsar documentation](https://docs.spring.io/spring-pulsar/docs/current/reference/html/) (prefer the versioned pulsar documentation link generated in your application's README.md) for how to use Pulsar in JHipster.
-There are several ways to interact with Pulsar from lowest to highest level of abstraction:
-* Generate Producer/Consumer/Reader from respectively PulsarProducerFactory/PulsarConsumerFactory/PulsarReaderFactory
-* Inject PulsarTemplate and create PulsarListener beans
-* Configure Spring Cloud Streams binders in `application.yml` and Supplier/Consumer/Function beans (see the generated test for an example).
+JHipsterでPulsarを使用する方法については、[Spring for Apache Pulsar documentation](https://docs.spring.io/spring-pulsar/docs/current/reference/html/)のドキュメントを確認してください（アプリケーションのREADME.mdに生成されたバージョン管理されたpulsarドキュメントリンクをお勧めします）。
+Pulsarと対話するには、抽象化の最低レベルから最高レベルまで、いくつかの方法があります。
+* Producer/Consumer/ReaderをそれぞれPulsarProducerFactory/PulsarConsumerFactory/PulsarReaderFactoryから生成します。
+* PulsarTemplateを注入してPulsarListener Beanを作ります。
+* `application.yml`およびSupplier/Consumer/Function BeanでSpring Cloud Streamsバインダーを構成します（例については生成されたテストを参照してください）。
