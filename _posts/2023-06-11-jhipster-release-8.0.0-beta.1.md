@@ -1,78 +1,78 @@
 ---
 layout: default
-title: Release 8.0.0-beta.1
+title: リリース 8.0.0-beta.1
 ---
 
-JHipster release v8.0.0-beta.1
+JHipsterリリース v8.0.0-beta.1
 ==================
 
-This is our first beta release for JHipster v8.
+これはJHipster v8の最初のベータリリースです。
 
-It includes more than [2777 closed tickets and pull requests on the main project](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.1).
+これには、[2777以上のクローズされたチケットとメインプロジェクトのプルリクエスト]が含まれています。(https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.1).
 
-_It is not available through the usual channels as this is a beta release, please read below for more information!_
+_これはベータ版のリリースであるため、通常の方法では入手できません。詳細については、以下を参照してください!_
 
 
-What's new?
+何が新しくなりましたか?
 ------------
 
-### :gem: Features & Enhancements
-- Consul as default [#19300](https://github.com/jhipster/generator-jhipster/issues/19300)
-- Rename angularX configuration option to angular [#19361](https://github.com/jhipster/generator-jhipster/issues/19361)
-- Drop upgrade-config generator [#19655](https://github.com/jhipster/generator-jhipster/issues/19655)
-- Bump node dependency to 16 lts [#19648](https://github.com/jhipster/generator-jhipster/pull/19648)
+### :gem: 機能と拡張機能
+- Consulをデフォルトに [#19300](https://github.com/jhipster/generator-jhipster/issues/19300)
+- angularXコンフィギュレーションオプションの名前をangularに変更 [#19361](https://github.com/jhipster/generator-jhipster/issues/19361)
+- upgrade-configジェネレータの削除 [#19655](https://github.com/jhipster/generator-jhipster/issues/19655)
+- ノードの依存関係を18 ltsにバージョンアップ [#22372](https://github.com/jhipster/generator-jhipster/pull/22372)
 
-### :beetle: Bug Fixes
-- Prevent leakage of user information via api [#22373](https://github.com/jhipster/generator-jhipster/pull/22373)
+### :beetle: バグ修正
+- APIを介したユーザー情報の漏洩を防止 [#22373](https://github.com/jhipster/generator-jhipster/pull/22373)
 
 ### :computer: Frontend
-- Upgrade to angular 16 [#22182](https://github.com/jhipster/generator-jhipster/pull/22182)
-- Convert to vue 3 [#22232](https://github.com/jhipster/generator-jhipster/pull/22232)
+- angular 16にアップグレード [#22182](https://github.com/jhipster/generator-jhipster/pull/22182)
+- vue 3にアップグレード [#22232](https://github.com/jhipster/generator-jhipster/pull/22232)
 
-### :unlock: Authentication/Security
-- Prevent leakage of user information via api [#22373](https://github.com/jhipster/generator-jhipster/pull/22373)
+### :unlock: 認証/セキュリティ
+- APIを介したユーザー情報の漏洩を防止 [#22373](https://github.com/jhipster/generator-jhipster/pull/22373)
 
-### :paw_prints: JDL/Internals/Blueprints
-- Add relationshipSideconcept to jdl relationships [#22481](https://github.com/jhipster/generator-jhipster/pull/22481)
+### :paw_prints: JDL/内部/Blueprint
+- jdlのリレーションシップにrelationshipSideconceptを追加 [#22481](https://github.com/jhipster/generator-jhipster/pull/22481)
 
-### :scroll: Others
-- Many improvements
-- Many libraries upgrades
-- Many bug fixes
+### :scroll: その他
+- 多くの改善
+- 多くのライブラリのアップグレード
+- 多くのバグ修正
 
 
-Closed tickets and merged pull requests
+クローズされたチケットとマージされたプルリクエスト
 ------------
-As always, __[you can check all closed tickets and merged pull requests here](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.1)__.
+いつものように、__[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.1)__。
 
 
-How to install
+インストール方法
 ------------
 
-This is a beta release, so it is not available on our usual "stable" release channel.
+これはベータ版リリースなので、通常の「安定版」リリースの方法では入手できません。
 
-To install JHipster v8.0.0-beta.1 using using NPM:
+NPMを使用してJHipster v8.0.0-beta.1をインストールするには、以下のようにします。
 
     npm install -g generator-jhipster@beta
 
-It is also available using the JHipster Docker image, as it is automatically built from our source code.
+また、JHipster Dockerイメージも利用可能です。ソースコードから自動的に構築されます。
 
-However, as this is a BETA release it will not be available using our other usual channels like:
+しかし、これはベータリリースであるため、次のような方法では入手できません。
 
 - [JHipster Online](https://start.jhipster.tech)
 - [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
 
-You also won’t be able to use the `jhipster upgrade` sub-generator, as it won’t “see” the BETA release, which is distributed through a specific beta channel on NPM.
+また、ベータリリースはNPMの特定のベータチャネルを通じても見ることができないことから、`jhipster upgrade`サブジェネレータを使用することもできません。
 
 
-Help and bugs
+ヘルプとバグ
 --------------
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- [@jhipster](https://twitter.com/jhipster)のTwitterアカウントに連絡をお願いします。
