@@ -16,11 +16,19 @@ _これはベータ版のリリースであるため、通常の方法では入�
 何が新しくなりましたか?
 ------------
 
+<<<<<<< HEAD
 ### :gem: 機能と拡張機能
 - Consulをデフォルトに [#19300](https://github.com/jhipster/generator-jhipster/issues/19300)
 - angularXコンフィギュレーションオプションの名前をangularに変更 [#19361](https://github.com/jhipster/generator-jhipster/issues/19361)
 - upgrade-configジェネレータの削除 [#19655](https://github.com/jhipster/generator-jhipster/issues/19655)
 - ノードの依存関係を18 ltsにバージョンアップ [#22372](https://github.com/jhipster/generator-jhipster/pull/22372)
+=======
+### :gem: Features & Enhancements
+- Consul as default [#19300](https://github.com/jhipster/generator-jhipster/issues/19300)
+- Rename angularX configuration option to angular [#19361](https://github.com/jhipster/generator-jhipster/issues/19361)
+- Drop upgrade-config generator [#19655](https://github.com/jhipster/generator-jhipster/issues/19655)
+- Bump node dependency to 18 lts [#22372](https://github.com/jhipster/generator-jhipster/pull/22372)
+>>>>>>> upstream/main
 
 ### :beetle: バグ修正
 - APIを介したユーザー情報の漏洩を防止 [#22373](https://github.com/jhipster/generator-jhipster/pull/22373)
