@@ -4,7 +4,7 @@ title: JHipsterドメイン言語 - トラブルシューティング
 permalink: /jdl/troubleshooting
 sitemap:
     priority: 0.5
-    lastmod: 2019-10-27T12:00:00-00:00
+    lastmod: 2023-07-09T23:00:00-00:00
 ---
 
 # <i class="fa fa-star"></i> JHipsterドメイン言語(JDL)
@@ -18,8 +18,13 @@ sitemap:
   - それらの間のリレーションシップを宣言します。
   - JHipster固有のオプションをいくつか宣言します。
 
+<<<<<<< HEAD
 JDLの文法は
 [こちら](https://github.com/jhipster/jhipster-core/blob/master/lib/dsl/gen/grammar.html)で見ることができます。
+=======
+If you wish to view the JDL's grammar, there is an HTML file available
+[here](https://github.com/jhipster/generator-jhipster/blob/master/jdl/parsing/generated/grammar.html).
+>>>>>>> upstream/main
 
 ---
 
@@ -34,6 +39,7 @@ JDLの文法は
 
 <h2 id="issues">イシューとバグ</h2>
 
+<<<<<<< HEAD
 JDLは[GitHubで利用可能であり](https://github.com/jhipster/jhipster-core)、JHipsterと同じ
 [コントリビューションガイドライン]( https://github.com/jhipster/generator-jhipster/blob/main/CONTRIBUTING.md)に従っています。
 
@@ -41,6 +47,16 @@ JDLは[GitHubで利用可能であり](https://github.com/jhipster/jhipster-core
 
 - [JDLイシュートラッカー](https://github.com/jhipster/jhipster-core/issues)
 - [JDLプルリクエスト](https://github.com/jhipster/jhipster-core/pulls)
+=======
+The JDL is [available on GitHub](https://github.com/jhipster/generator-jhipster/tree/main/jdl), and follows the same
+[contributing guidelines as JHipster]( https://github.com/jhipster/generator-jhipster/blob/main/CONTRIBUTING.md).
+
+Please use the ["JDL"](https://github.com/jhipster/generator-jhipster/labels/theme%3A%20JDL) label for submitting 
+issues and Pull Requests concerning the library itself.
+
+- [JDL issue tracker](https://github.com/jhipster/generator-jhipster/issues?q=is%3Aopen+is%3Aissue+label%3A%22theme%3A+JDL%22)
+- [JDL Pull Requests](https://github.com/jhipster/generator-jhipster/pulls?q=is%3Aopen+is%3Apr+label%3A%22theme%3A+JDL%22)
+>>>>>>> upstream/main
 
 何かを送信するときは、できるだけ正確である必要があります。
   - **1つの投稿されたイシューには、1つの問題**（または1つの要求/質問）のみが含まれている必要があります。
