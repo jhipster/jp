@@ -389,7 +389,7 @@ JPAの場合、これら2つのエンティティのうちの1つが関係を管
     entity Passport
 
     relationship OneToOne {
-      Citizen{passport} to Passport with jpaDerivedIdentifier
+      Citizen{passport} to @Id Passport
     }
 
 これは、前述の双方向1対1の例に対応するJDLです。
@@ -398,7 +398,7 @@ JPAの場合、これら2つのエンティティのうちの1つが関係を管
     entity Car
 
     relationship OneToOne {
-      Car{driver} to Driver{car} with jpaDerivedIdentifier
+      Car{driver} to @Id Driver{car}
     }
 
 ただし、ビジネス要件によっては、次の制約があるため、これを回避する必要があります。

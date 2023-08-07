@@ -317,11 +317,9 @@ spring:
             client-secret: {clientSecret}
             scope: openid,profile,email
 jhipster:
-  ...
   security:
     oauth2:
-      audience:
-        - https://{your-auth0-domain}/api/v2/
+      audience: https://{your-auth0-domain}/api/v2/
 ```
 
 `issuer-uri`の値に疑問がある場合は、**Applications** > **{Your Application}** > **Settings** > **Advanced Settings** > **Endpoints** > **OpenID Configuration**から値を取得できます。`.well-known/openid-configuration`のサフィックスはSpring Securityによって追加されるので削除してください。

@@ -6,7 +6,7 @@ redirect_from:
   - /using_elasticsearch.html
 sitemap:
     priority: 0.7
-    lastmod: 2022-12-13T00:00:00-00:00
+    lastmod: 2023-07-12T00:00:00-00:00
 ---
 
 # <i class="fa fa-search"></i> Elasticsearchの使用
@@ -21,29 +21,43 @@ Elasticsearchは、データベースの上に検索機能を追加するオプ�
 
 Elasticsearchオプションが選択されている場合、以下のふるまいとなります。
 
+<<<<<<< HEAD
 *   Spring Data Elasticsearchは、Spring Bootの自動設定で使用されます。
 *   "repository"パッケージには、すべてのElasticsearchリポジトリを保持する"search"と呼ばれる新しいサブパッケージができます。
 *   "User"エンティティはElasticsearchでインデックス付けされ、`/api/_search/users/:query`RESTエンドポイントを使用してクエリできます。
 *   [エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用すると、生成されたエンティティはElasticsearchによって自動的にインデックス付けされ、RESTエンドポイントで使用されます。UIには検索機能も追加されているため、CRUDのメイン画面でエンティティを検索できます。
+=======
+*   Spring Data Elasticsearch is used with Spring Boot's autoconfiguration. It can be configured using `spring.elasticsearch.*` configuration properties.
+*   The "repository" package has a new subpackage, called "search", that holds all Elasticsearch repositories.
+*   The "User" entity gets indexed in Elasticsearch, and you can query it using the `/api/_search/users/:query` REST endpoint.
+*   When the [entity sub-generator]({{ site.url }}/creating-an-entity/) is used, the generated entity gets automatically indexed by Elasticsearch, and is used in the REST endpoint. Search capabilities are also added to the UI, so you can search your entity in the main CRUD screen.
+>>>>>>> upstream/main
 
 ### 開発環境での使用
 
+<<<<<<< HEAD
 開発環境では、外部のElasticsearchインスタンスを使用する必要があります。外部のElasticsearchインスタンスを実行する最も簡単な方法は、提供されたDocker Compose設定を使用することです。
 
     docker-compose -f src/main/docker/elasticsearch.yml up -d
     
 デフォルトでは、`SPRING_ELASTICSEARCH_URIS`プロパティは`application-dev.yml`および`application-prod.yml`内で、このインスタンスと通信するように設定されています。
+=======
+In development, JHipster runs with an embedded Elasticsearch instance. You can also use an external Elasticsearch instance if you set a `SPRING_DATA_URIS` environment variable (or add a `spring.elasticsearch.uris` property to your `application-dev.yml`).
 
-```yaml
-spring:
-  ...
-  elasticsearch:
-    uris: http://localhost:9200
-```
+The easiest way to run an external Elasticsearch instance is to use the provided Docker Compose configuration:
 
+    docker-compose -f src/main/docker/elasticsearch.yml up -d
+>>>>>>> upstream/main
+
+Then set an environment variable to point to it:
+
+<<<<<<< HEAD
 設定は、これらのファイルを変更するか、環境変数を使用して上書きできます。
 
     export SPRING_ELASTICSEARCH_URIS=https://cloud-instance
+=======
+    export SPRING_DATA_URIS=http://localhost:9200
+>>>>>>> upstream/main
 
 ### 本番環境での使用
 

@@ -6,7 +6,7 @@ redirect_from:
   - /jdl/
 sitemap:
     priority: 0.5
-    lastmod: 2019-10-27T12:00:00-00:00
+    lastmod: 2023-07-09T23:00:00-00:00
 ---
 
 # <i class="fa fa-star"></i> JHipsterドメイン言語(JDL)
@@ -27,6 +27,7 @@ JDLは、[エンティティ・サブジェネレータ]({{ site.url }}/creating
 ビジュアルツールを使用して[関係を管理する]({{ site.url }}/managing-relationships/)方がはるかに簡単です。
 古典的なYeomanの質問と回答でエンティティを作成する方法よりも優れています。
 
+<<<<<<< HEAD
 JDLプロジェクトは[GitHubで利用可能](https://github.com/jhipster/jhipster-core/)であり、
 JHipster（Apache 2.0ライセンス）なオープンソースプロジェクトです。JDL構文をパースするためのnodeライブラリとしても使用できます。
 
@@ -34,6 +35,15 @@ _[JHipsterドメイン言語](https://github.com/jhipster/jhipster-core/)が気�
 [JDL Studio](https://github.com/jhipster/jdl-studio/)または
 [JHipster IDE](https://github.com/jhipster/jhipster-ide/)の
 [GitHub](https://github.com/jhipster/)にスターを付けるのを忘れないでください - よろしくお願いします_！
+=======
+The JDL project is [available on GitHub](https://github.com/jhipster/generator-jhipster/tree/main/jdl), it is an Open Source project like
+JHipster (Apache 2.0 License). It can also be used as a node library to do JDL parsing.
+
+_If you like the [JHipster Domain Language](https://github.com/jhipster/generator-jhipster/tree/main/jdl),
+the [JDL Studio](https://github.com/jhipster/jdl-studio/) or the
+[JHipster IDE](https://github.com/jhipster/jhipster-ide/) don't forget to give them a star on
+[GitHub](https://github.com/jhipster/) - thanks_!
+>>>>>>> upstream/main
 
 ---
 
