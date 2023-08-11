@@ -165,19 +165,11 @@ prometheusエンドポイントはデフォルトでは保護されていませ�
 
 ## Zipkin
 
-<<<<<<< HEAD
-JHipsterアプリケーションは、[Spring Cloud Sleuth](https://cloud.spring.io/spring-cloud-sleuth/)を通して[Zipkin](http://zipkin.io/)と統合して、マイクロサービスアーキテクチャに分散トレースを提供できます。Zipkinトレースを有効にするには、`zipkin`のmaven/gradleプロファイルでアプリケーションをパッケージ化し、`spring.zipkin.enabled`プロパティをtrueに設定します。これにより、Zipkinサーバへのスパンレポートがトリガーされ、リクエストヘッダーとログに相関ID（TraceId、SpanId、ParentId）が追加されます。
-=======
-JHipster applications can integrate with [Zipkin](http://zipkin.io/) through [Spring Boot Actuator Tracing](https://github.com/spring-projects/spring-boot/blob/main/spring-boot-project/spring-boot-docs/src/docs/asciidoc/actuator/tracing.adoc) to provide distributed tracing for your microservice architecture. To enable Zipkin tracing, package your application with the `zipkin` maven/gradle profile. This will trigger span reporting to the Zipkin server and also add correlation IDs (TraceId, SpanId and ParentId) to request headers and logs.
->>>>>>> upstream/main
+JHipsterアプリケーションは、[Spring Boot Actuator Tracing](https://github.com/spring-projects/spring-boot/blob/main/spring-boot-project/spring-boot-docs/src/docs/asciidoc/actuator/tracing.adoc)を通して[Zipkin](http://zipkin.io/)と統合して、マイクロサービスアーキテクチャに分散トレースを提供できます。Zipkinトレースを有効にするには、`zipkin`のmaven/gradleプロファイルでアプリケーションをパッケージ化します。これにより、Zipkinサーバへのスパンレポートがトリガーされ、リクエストヘッダーとログに相関ID（TraceId、SpanId、ParentId）が追加されます。
 
 Zipkinは、マイクロサービス間の依存関係を時間の経過とともに視覚化できるサービス依存性グラフ機能も提供します。
 
-<<<<<<< HEAD
-トレース情報をZipkinに報告するようにアプリケーションを設定する方法については、公式の[Spring Cloud Sleuthドキュメント](https://cloud.spring.io/spring-cloud-sleuth/reference/html/#sending-spans-to-zipkin)に従ってください。
-=======
-For more information on how to setup your application to report traces to Zipkin, refer to [Spring Boot Production-ready Features](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.micrometer-tracing).
->>>>>>> upstream/main
+トレース情報をZipkinに報告するようにアプリケーションを設定する方法については、[Spring Boot Production-ready Features](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.micrometer-tracing)を参照してください。
 
 [jhipster-metrics-page]: {{ site.url }}/images/jhipster_metrics_page.png "JHipster Metrics page"
 [grafana-micrometer-dashboard]: {{ site.url }}/images/monitoring_grafana_micrometer.png "Grafana Micrometer Dashboard" 

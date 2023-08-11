@@ -48,13 +48,8 @@ sitemap:
 
 元のエンティティと先のエンティティの後に記述され、`with`キーワードとともに使用されます。
 
-<<<<<<< HEAD
 サポートされているメソッドは以下です。
-  - `jpaDerivedIdentifier`: `@MapsId`は、関連付けに使用されます。 (**OneToOneにのみ適用可能**)
-=======
-Supported methods:
-  - `builtInEntity`: required when the destination entity is a built in entity like `User` and `Authority`
->>>>>>> upstream/main
+- `Authority`:宛先エンティティが`User`や`builtInEntity`のような組み込みエンティティである場合に必要です
 
 ---
 
@@ -104,31 +99,17 @@ relationship (OneToMany | ManyToOne | OneToOne | ManyToMany) {
 }
 ```
 
-<<<<<<< HEAD
   - `(OneToMany | ManyToOne| OneToOne | ManyToMany)`はリレーションシップのタイプです。
-  - `<option>`は次の値の1つを指定します: `onDelete | onUpdate`。これをリレーションシップの正しい側に置くようにしてください。
+  - `<option>`は次の値の1つを指定します: `Id | OnDelete | OnUpdate`。これをリレーションシップの正しい側に置くようにしてください。最初の文字の大文字と小文字は区別されません（jdlのエクスポート時は大文字が生成されます）。
   - `<option value>` はオプションに適合する値の1つを指定します。 `NO ACTION | RESTRICT | CASCADE | SET NULL | SET DEFAULT`
   - `<from entity>`は、リレーションシップのエンティティの所有者の名前です：いわゆる「元」です。
   - `<to entity>`は、リレーションシップの先となるエンティティの名前です：いわゆる「先」です。
   - `<relationship name>`は、もう一方の端をタイプとするフィールドの名前です。
   - `<display field>`は、選択ボックスに表示されるフィールドの名前です（デフォルト：`id`）。
   - `required`注入されたフィールドが必須かどうか。
-  - `with jpaDerivedIdentifier`は、関連付けに`@MapsId`が使用されているかどうかを示します（1対1の場合のみ適用可能）。
+  - `with builtInEntity`は、関係の宛先が組み込みエンティティーかどうか。
   - 複数のリレーションシップ主体を持つことができます。
     - 詳細については、[複数のリレーションシップのボディ](#複数のリレーションシップのボディ)セクションを参照してください。
-=======
-  - `(OneToMany | ManyToOne| OneToOne | ManyToMany)` is the type of your relationship,
-  - `<option>` is one of the supported values: `Id | OnDelete | OnUpdate`. Make sure to put this on the correct side of the relationship. First character case is not sensitive (jdl export will generate upper).
-  - `<option value>` is one of the fitting optional values for the given option: `NO ACTION | RESTRICT | CASCADE | SET NULL | SET DEFAULT`
-  - `<from entity>` is the name of the entity owner of the relationship: the source,
-  - `<to entity>` is the name of the entity where the relationship goes to: the destination,
-  - `<relationship name>` is the name of the field having the other end as type,
-  - `<display field>` is the name of the field that should show up in select boxes (default: `id`),
-  - `required` whether the injected field is required.
-  - `with builtInEntity` whether the relationship destination is an built in entity
-  - And you can have more than one relationship body
-    - See the [Multiple relationship bodies](#multiple-relationship-bodies) section for more info!
->>>>>>> upstream/main
 
 ---
 

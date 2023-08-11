@@ -1,73 +1,73 @@
 ---
 layout: default
-title: Release 8.0.0-beta.2
+title: リリース 8.0.0-beta.2
 ---
 
-JHipster release v8.0.0-beta.2
+JHipsterリリース v8.0.0-beta.2
 ==================
 
-This is our second beta release for JHipster v8.
+これは、JHipster v8の2番目のベータリリースです。
 
-It includes more than [336 closed tickets and pull requests on the main project](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.2).
+これには、[336以上のクローズされたチケットとメインプロジェクトのプルリクエスト]が含まれています。(https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.2).
 
-_It is not available through the usual channels as this is a beta release, please read below for more information!_
+_これはベータ版のリリースであるため、通常の方法では入手できません。詳細については、以下を参照してください!_
 
 
-What's new?
+何が新しくなりましたか?
 ------------
 
-### :gem: Features & Enhancements
-- Heroku sub-generator improvement [#21892](https://github.com/jhipster/generator-jhipster/pull/21892)
-- Enable CORS when app is a gateway or monolith [#22780](https://github.com/jhipster/generator-jhipster/pull/22780)
-- Add devcontainer for jhipster development [#22814](https://github.com/jhipster/generator-jhipster/pull/22814)
+### :gem: 機能と拡張機能
+- Herokuサブジェネレータの改良 [#21892](https://github.com/jhipster/generator-jhipster/pull/21892)
+- アプリケーションがゲートウェイまたはモノリスの場合にCORSを有効にする [#22780](https://github.com/jhipster/generator-jhipster/pull/22780)
+- jhipster開発用にdevcontainerを追加 [#22814](https://github.com/jhipster/generator-jhipster/pull/22814)
 
 ### :computer: Frontend
-- Fix react pagination translation [#22583](https://github.com/jhipster/generator-jhipster/pull/22583)
-- Update Google Analytics tag (analytics.js) to the Google tag (gtag.js)  [#22697](https://github.com/jhipster/generator-jhipster/pull/22697)
+- 改ページの未翻訳の修正 [#22583](https://github.com/jhipster/generator-jhipster/pull/22583)
+- Google Analyticsタグ(analytics.js)をGoogleタグに変更 (gtag.js)  [#22697](https://github.com/jhipster/generator-jhipster/pull/22697)
 
 ### :paw_prints: JDL/Internals/Blueprints
-- Bump @faker-js/faker to v8 [#22118](https://github.com/jhipster/generator-jhipster/pull/22118)
-- Fix gradle liquibase execution [#22667](https://github.com/jhipster/generator-jhipster/pull/22667)
-- Fix maven liquibase execution [#22737](https://github.com/jhipster/generator-jhipster/pull/22737)
+- Bump@faker-js/fakerをv8にアップグレード [#22118](https://github.com/jhipster/generator-jhipster/pull/22118)
+- Gradle Liquibaseの実行不具合を修正 [#22667](https://github.com/jhipster/generator-jhipster/pull/22667)
+- Maven Liquibaseの実行不具合を修正[#22737](https://github.com/jhipster/generator-jhipster/pull/22737)
 
-### :scroll: Others
-- Many improvements
-- Many libraries upgrades
-- Many bug fixes
+### :scroll: その他
+- 多くの改善
+- 多くのライブラリのアップグレード
+- 多くのバグ修正
 
 
-Closed tickets and merged pull requests
+クローズされたチケットとマージされたプルリクエスト
 ------------
-As always, __[you can check all closed tickets and merged pull requests here](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.2)__.
+いつものように、__[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.2)__。
 
 
-How to install
+インストール方法
 ------------
 
-This is a beta release, so it is not available on our usual "stable" release channel.
+これはベータ版リリースなので、通常の「安定版」リリースの方法では入手できません。
 
-To install JHipster v8.0.0-beta.2 using using NPM:
+NPMを使用してJHipster v8.0.0-beta.1をインストールするには、以下のようにします。
 
     npm install -g generator-jhipster@beta
 
-It is also available using the JHipster Docker image, as it is automatically built from our source code.
+また、JHipster Dockerイメージも利用可能です。ソースコードから自動的に構築されます。
 
-However, as this is a BETA release it will not be available using our other usual channels like:
+しかし、これはベータリリースであるため、次のような方法では入手できません。
 
 - [JHipster Online](https://start.jhipster.tech)
 - [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
 
-You also won’t be able to use the `jhipster upgrade` sub-generator, as it won’t “see” the BETA release, which is distributed through a specific beta channel on NPM.
+また、ベータリリースはNPMの特定のベータチャネルを通じても見ることができないことから、`jhipster upgrade`サブジェネレータを使用することもできません。
 
 
-Help and bugs
+ヘルプとバグ
 --------------
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- [@jhipster](https://twitter.com/jhipster)のTwitterアカウントに連絡をお願いします。
