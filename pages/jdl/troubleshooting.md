@@ -4,7 +4,7 @@ title: JHipsterドメイン言語 - トラブルシューティング
 permalink: /jdl/troubleshooting
 sitemap:
     priority: 0.5
-    lastmod: 2019-10-27T12:00:00-00:00
+    lastmod: 2023-07-09T23:00:00-00:00
 ---
 
 # <i class="fa fa-star"></i> JHipsterドメイン言語(JDL)
@@ -19,7 +19,7 @@ sitemap:
   - JHipster固有のオプションをいくつか宣言します。
 
 JDLの文法は
-[こちら](https://github.com/jhipster/jhipster-core/blob/master/lib/dsl/gen/grammar.html)で見ることができます。
+[こちら](https://github.com/jhipster/generator-jhipster/blob/master/jdl/parsing/generated/grammar.html)で見ることができます。
 
 ---
 
@@ -34,14 +34,13 @@ JDLの文法は
 
 <h2 id="issues">イシューとバグ</h2>
 
-JDLは[GitHubで利用可能であり](https://github.com/jhipster/jhipster-core)、JHipsterと同じ
+JDLは[GitHubで利用可能であり](https://github.com/jhipster/generator-jhipster/tree/main/jdl)、JHipsterと同じ
 [コントリビューションガイドライン]( https://github.com/jhipster/generator-jhipster/blob/main/CONTRIBUTING.md)に従っています。
 
 ライブラリ自体に関するイシューおよびプルリクエストの送信については、プロジェクトを使用してください。
 
-- [JDLイシュートラッカー](https://github.com/jhipster/jhipster-core/issues)
-- [JDLプルリクエスト](https://github.com/jhipster/jhipster-core/pulls)
-
+- [JDLイシュートラッカー](https://github.com/jhipster/generator-jhipster/issues?q=is%3Aopen+is%3Aissue+label%3A%22theme%3A+JDL%22)
+- [JDLプルリクエスト](https://github.com/jhipster/generator-jhipster/pulls?q=is%3Aopen+is%3Apr+label%3A%22theme%3A+JDL%22)
 何かを送信するときは、できるだけ正確である必要があります。
   - **1つの投稿されたイシューには、1つの問題**（または1つの要求/質問）のみが含まれている必要があります。
   - プルリクエストは歓迎されますが、本当に理解できるようにするため、コミットは「アトミック」である必要があります。

@@ -6,7 +6,7 @@ redirect_from:
   - /using_elasticsearch.html
 sitemap:
     priority: 0.7
-    lastmod: 2022-12-13T00:00:00-00:00
+    lastmod: 2023-07-12T00:00:00-00:00
 ---
 
 # <i class="fa fa-search"></i> Elasticsearchの使用
@@ -21,29 +21,23 @@ Elasticsearchは、データベースの上に検索機能を追加するオプ�
 
 Elasticsearchオプションが選択されている場合、以下のふるまいとなります。
 
-*   Spring Data Elasticsearchは、Spring Bootの自動設定で使用されます。
+*   Spring Data Elasticsearchは、Spring Bootの自動設定で使用されます。これは`spring.elasticsearch.*`設定プロパティを使用して設定できます。
 *   "repository"パッケージには、すべてのElasticsearchリポジトリを保持する"search"と呼ばれる新しいサブパッケージができます。
 *   "User"エンティティはElasticsearchでインデックス付けされ、`/api/_search/users/:query`RESTエンドポイントを使用してクエリできます。
 *   [エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用すると、生成されたエンティティはElasticsearchによって自動的にインデックス付けされ、RESTエンドポイントで使用されます。UIには検索機能も追加されているため、CRUDのメイン画面でエンティティを検索できます。
 
 ### 開発環境での使用
 
-開発環境では、外部のElasticsearchインスタンスを使用する必要があります。外部のElasticsearchインスタンスを実行する最も簡単な方法は、提供されたDocker Compose設定を使用することです。
+
+開発環境では、JHipsterは組み込みのElasticsearchインスタンスで実行されます。`SPRING_DATA_URIS`環境変数を設定すれば（または`spring.elasticsearch.uris`プロパティを`application-dev.yml`に追加すれば）、外部のElasticsearchインスタンスを使用することもできます。
 
     docker-compose -f src/main/docker/elasticsearch.yml up -d
     
 デフォルトでは、`SPRING_ELASTICSEARCH_URIS`プロパティは`application-dev.yml`および`application-prod.yml`内で、このインスタンスと通信するように設定されています。
 
-```yaml
-spring:
-  ...
-  elasticsearch:
-    uris: http://localhost:9200
-```
+次に、それを指す環境変数を設定します。
 
-設定は、これらのファイルを変更するか、環境変数を使用して上書きできます。
-
-    export SPRING_ELASTICSEARCH_URIS=https://cloud-instance
+    export SPRING_DATA_URIS=http://localhost:9200
 
 ### 本番環境での使用
 

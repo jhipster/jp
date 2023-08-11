@@ -49,7 +49,7 @@ sitemap:
 元のエンティティと先のエンティティの後に記述され、`with`キーワードとともに使用されます。
 
 サポートされているメソッドは以下です。
-  - `jpaDerivedIdentifier`: `@MapsId`は、関連付けに使用されます。 (**OneToOneにのみ適用可能**)
+- `Authority`:宛先エンティティが`User`や`builtInEntity`のような組み込みエンティティである場合に必要です
 
 ---
 
@@ -100,14 +100,14 @@ relationship (OneToMany | ManyToOne | OneToOne | ManyToMany) {
 ```
 
   - `(OneToMany | ManyToOne| OneToOne | ManyToMany)`はリレーションシップのタイプです。
-  - `<option>`は次の値の1つを指定します: `onDelete | onUpdate`。これをリレーションシップの正しい側に置くようにしてください。
+  - `<option>`は次の値の1つを指定します: `Id | OnDelete | OnUpdate`。これをリレーションシップの正しい側に置くようにしてください。最初の文字の大文字と小文字は区別されません（jdlのエクスポート時は大文字が生成されます）。
   - `<option value>` はオプションに適合する値の1つを指定します。 `NO ACTION | RESTRICT | CASCADE | SET NULL | SET DEFAULT`
   - `<from entity>`は、リレーションシップのエンティティの所有者の名前です：いわゆる「元」です。
   - `<to entity>`は、リレーションシップの先となるエンティティの名前です：いわゆる「先」です。
   - `<relationship name>`は、もう一方の端をタイプとするフィールドの名前です。
   - `<display field>`は、選択ボックスに表示されるフィールドの名前です（デフォルト：`id`）。
   - `required`注入されたフィールドが必須かどうか。
-  - `with jpaDerivedIdentifier`は、関連付けに`@MapsId`が使用されているかどうかを示します（1対1の場合のみ適用可能）。
+  - `with builtInEntity`は、関係の宛先が組み込みエンティティーかどうか。
   - 複数のリレーションシップ主体を持つことができます。
     - 詳細については、[複数のリレーションシップのボディ](#複数のリレーションシップのボディ)セクションを参照してください。
 
@@ -161,7 +161,7 @@ relationship ManyToMany {
 
 ```jdl
 relationship OneToOne {
-  A to B with jpaDerivedIdentifier
+  A to User with builtInEntity
 }
 ```
 
