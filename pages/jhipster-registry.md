@@ -7,7 +7,11 @@ sitemap:
     lastmod: 2019-02-01T00:00:00-00:00
 ---
 
+<<<<<<< HEAD
 # <i class="fa fa-dashboard"></i> JHipsterレジストリ
+=======
+# <i class="fa fa-dashboard"></i> The JHipster Registry (**deprecated** - Use Consul instead)
+>>>>>>> upstream/main
 
 ## 概観
 

@@ -397,7 +397,7 @@ JHipsterのデプロイは、他のすべてのプロパティはデフォルト
 - deploymentType: `docker-compose`
 - appsFolders: `foo, bar`
 - dockerRepositoryName: `yourDockerLoginName`
-- serviceDiscoveryType: `eureka`
+- serviceDiscoveryType: `consul`
 - gatewayType: `SpringCloudGateway`
 - directoryPath: `../`
 - etc.

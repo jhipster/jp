@@ -533,7 +533,7 @@ _あなたが探しているものではありませんか?[通常のオプシ�
   <tr>
     <td>serviceDiscoveryType</td>
     <td>no</td>
-    <td>eureka, consul, no</td>
+    <td>consul, eureka, no</td>
     <td></td>
   </tr>
   <tr>

@@ -42,6 +42,7 @@ JHipsterは、無効なJWTをカスタムアプリケーションメトリクス
 
 ### JWTをセキュアに
 
+<<<<<<< HEAD
 - JHipsterは、`jhipster.security.authentication.jwt.secret`と`jhipster.security.authentication.jwt.base64-secret`という2つのSpring Bootプロパティを使用して設定できる秘密鍵を使用します。
 2番目のオプションは、Base 64でエンコードされた文字列を使用し、より安全であると考えられるため、推奨します。両方のプロパティが設定されている場合は、レガシーな理由により、`secret`プロパティ（セキュリティが低い方）が使用されます。
 Base64プロパティを使用しない場合は、アプリケーションの起動時に警告が表示されます。
@@ -50,6 +51,16 @@ Base64プロパティを使用しない場合は、アプリケーションの�
 通常、Spring Bootプロパティ設定を使用して設定できます。[JHipster Registry](/jhipster-registry/)（推奨オプション）のようなSpring Cloud Configサーバを使用するか、
 環境変数を使用するか、システム管理者によってアプリケーションの実行可能なWARファイルと同じディレクトリにSCPで置かれた特有の`application-prod.yml`ファイルを使用します。
 - デフォルトの"user"および"admin"パスワードは**変更する必要があります**。これを行う最も簡単な方法は、アプリケーションをデプロイし、"user/user"としてログインしてから"admin/admin"としてログインし、それぞれに対して"Account > Password"メニューを使用してパスワードを変更することです。
+=======
+- JHipster uses a secret key, which can be configured using two Spring Boot properties: `jhipster.security.authentication.jwt.secret` and `jhipster.security.authentication.jwt.base64-secret`.
+The second option uses a Base64-encoded string, so it is considered more secured and thus it is recommended. If both properties are configured, the `secret` property (less secured) will be used, for legacy reasons.
+A warning will be shown at application startup if you don't use the Base64 property.
+- Those keys should have a minimum length of 512 bits: if they are not long enough, you will not be able to use them to login. If that happens, there will be a clear warning at the console to explain that issue.
+- The secret keys are configured in the `application-*.yml` files. As those keys must be kept secret, you **should** store them in a secure way for your production profile.
+It can be set up using the usual Spring Boot property configuration: using a Spring Cloud Config server like the [JHipster Registry](/jhipster-registry/),
+using an environment variable, or even a specific `application-prod.yml` file which is SCP'd by a sysadmin into the same directory as your application's executable WAR file.
+- You **should** change the default "user" and "admin" passwords. The easiest way to do this is to deploy your application, login as "user/user" and then "admin/admin", and for each of them use the "Account > Password" menu to change the password.
+>>>>>>> upstream/main
 
 <h2 id="session">セッションベースの認証</h2>
 
@@ -57,8 +68,13 @@ Base64プロパティを使用しない場合は、アプリケーションの�
 
 ### セッションベースの認証をセキュアに
 
+<<<<<<< HEAD
 - Remember-me認証の場合、Remember-meキーは`application-dev.yml`および`application-prod.yml`ファイル内で、`jhipster.security.remember-me.key`プロパティとして設定されます。このキーは秘密にしておく必要があるため、プロダクションのプロファイル用に安全な方法で保存する**必要があります**。通常、Spring Bootプロパティ設定を使用して設定できます。[JHipster Registry](/jhipster-registry/)（推奨オプション）のようなSpring Cloud Configサーバを使用するか、環境変数を使用するか、システム管理者によってアプリケーションの実行可能なWARファイルと同じディレクトリにSCPで置かれた特有の`application-prod.yml`ファイルを使用します。
 - デフォルトの"user"および"admin"パスワードは**変更する必要があります**。これを行う最も簡単な方法は、アプリケーションをデプロイし、"user/user"としてログインしてから"admin/admin"としてログインし、それぞれに対して"Account > Password"メニューを使用してパスワードを変更することです。
+=======
+- For remember-me authentication, the remember-me key is configured in the `application-dev.yml` and `application-prod.yml` files, as the `jhipster.security.remember-me.key` property. As this key must be kept secret, you **should** store it in a secure way for your production profile. It can be set up using the usual Spring Boot property configuration: using a Spring Cloud Config server like the [JHipster Registry](/jhipster-registry/), using an environment variable, or even a specific `application-prod.yml` file which is SCP'd by a sysadmin into the same directory as your application's executable WAR file.
+- You **should** change the default "user" and "admin" passwords. The easiest way to do this is to deploy your application, login as "user/user" and then "admin/admin", and for each of them use the "Account > Password" menu to change the password.
+>>>>>>> upstream/main
 
 ### remember-meメカニズムの改善
 
@@ -278,10 +294,18 @@ Keycloakの代わりに[Auth0](https://auth0.com/)を使用する場合は、次
 - `Regular Web Applications`タイプの新しいアプリケーションを作成します。`Settings` タブに切り替えて、次のようにアプリケーションの設定を構成します。
     - Allowed Callback URLs: `http://localhost:8080/login/oauth2/code/oidc`
     - Allowed Logout URLs: `http://localhost:8080/`
+<<<<<<< HEAD
     - 注意：JHipsterレジストリを使用している場合は、ポート8761のURLも追加します。
 - **User Management** > **Roles**に移動し、`ROLE_ADMIN`および`ROLE_USER`という名前の新しいロールを作成します。
 - **User Management** > **Users**に移動し、新しいユーザーアカウントを作成します。 **Role**タブをクリックして、新しく作成したユーザーアカウントに役割を割り当てます。
 - **Actions** > **Flows**に移動し、**Login**を選択します。`Add Roles`という名前の新しいアクションを作成し、デフォルトのトリガーとランタイムを使用します。`onExecutePostLogin`ハンドラを次のように変更します。
+=======
+    - NOTE: If you're using Consul, add URLs for port 8500 too.
+    - NOTE: If you're using the JHipster Registry, add URLs for port 8761 too.
+- Navigate to **User Management** > **Roles** and create new roles named `ROLE_ADMIN`, and `ROLE_USER`.
+- Navigate to **User Management** > **Users** and create a new user account. Click on the **Role** tab to assign roles to the newly created user account.
+- Navigate to **Actions** > **Flows** and select **Login**. Create a new action named `Add Roles` and use the default trigger and runtime. Change the `onExecutePostLogin` handler to be as follows:
+>>>>>>> upstream/main
 
   ```js
   exports.onExecutePostLogin = async (event, api) => {

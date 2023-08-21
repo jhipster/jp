@@ -27,7 +27,7 @@ JHipsterは、多様な成長するユーザーコミュニティを反映し、
 
 現在のメンバー：
 * Julien Dubois (Microsoft)
-* Deepu K Sasidharan (Adyen)
+* Deepu K Sasidharan (Okta)
 * Matt Raible (Okta)
 * Paul Hinz (Entando)
 * Alina Yurenko (Oracle)
