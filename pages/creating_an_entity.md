@@ -13,7 +13,11 @@ sitemap:
 
 _**新しいJHipsterアプリケーションの作成については、[ビデオチュートリアル]({{ site.url }}/video-tutorial/)を参照してください。**_
 
+<<<<<<< HEAD
 **重要** JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`または`yarn start`を実行する必要があります。詳細については、[開発でのJHipsterの使用]({{ site.url }}/development/)ページにアクセスしてください。
+=======
+**Important** if you want to have "live reload" of your JavaScript/TypeScript code, you will need to run `npm start`. You can go to the [Using JHipster in development]({{ site.url }}/development/) page for more information.
+>>>>>>> upstream/main
 
 ## はじめに
 
@@ -192,7 +196,11 @@ Bean検証は、ドメインオブジェクトが以下の場所で使用され�
 
 これは、1対多のリレーションシップを持つ2つのエンティティとして「著者（Author）と本（Book）」の作成に関する簡単なチュートリアルです。
 
+<<<<<<< HEAD
 **重要** JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`または`yarn start`を実行する必要があります。詳細については、[開発でのJHipsterの使用]({{ site.url }}/development/)ページにアクセスしてください。
+=======
+**Important** if you want to have "live reload" of your JavaScript/TypeScript code, you will need run `npm start`. You can go to the [Using JHipster in development]({{ site.url }}/development/) page for more information.
+>>>>>>> upstream/main
 
 ### 「著者」エンティティの生成
 

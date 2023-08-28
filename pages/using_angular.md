@@ -11,6 +11,7 @@ sitemap:
 
 ## ツール
 
+<<<<<<< HEAD
 AngularはJavaScriptの代わりにTypeScriptを使用しており、その結果、効率的に動作するためには特定のツールが必要になります。Angular 2+アプリケーションの[開発]({{ site.url }}/development/)ワークフローは次のとおりです。`yarn`ではなく`npm`を使用することをお勧めします。
 
 1. アプリケーションを生成すると、ファイルが作成され、生成の最後に`npm install`タスクがトリガーされます。
@@ -20,12 +21,29 @@ AngularはJavaScriptの代わりにTypeScriptを使用しており、その結�
 5. 新しいターミナルで`npm start`または`yarn start`を実行して、BrowserSyncを使ってWebpack dev-serverを起動します。これにより、TypeScriptコードのコンパイルとブラウザの自動リロードが行われます。
 
 `npm start`または`yarn start`を実行せずにクライアント側のコードに変更を加え始めた場合、変更はコンパイルされないので何も反映されません。そのため、変更後に`npm run webapp:build`を手動で実行するか、`npm start`や`yarn start`を実行する必要があります。
+=======
+Angular is using TypeScript instead of JavaScript, and as a result some specific tooling is necessary to work efficiently with it. Our [development]({{ site.url }}/development/) workflow for an Angular 2+ application is as below.
+
+1. When you generate an application the files are created and at the end of generation `npm install` task is triggered.
+2. Once `npm install` is complete it calls the `postInstall` script in `package.json`, this step triggers the `webapp:build` task.
+3. Now you should have all files generated and compiled into the `www` folder inside the `target` or `build` folder based on the build tool (Maven or Gradle) selected.
+4. Now run `./mvnw` or `./gradlew` to launch the application server and it should be available at [localhost:8080](localhost:8080) this also serves the client side code compiled from the above steps.
+5. Now run `npm start` in a new terminal to launch Webpack dev-server with BrowserSync. This will take care of compiling your TypeScript code, and automatically reloading your browser.
+
+If you start making changes to the client side code without having `npm start` running, nothing will be reflected as the changes are not compiled so you need to either run `npm run webapp:build` manually after changes or have `npm start`  running.
+>>>>>>> upstream/main
 
 起動時に`./mvnw -Pdev,webapp`のような`webapp`プロファイルを渡すことで、Mavenに`webapp:dev`タスクを強制的に実行させることもできます。
 
+<<<<<<< HEAD
 **注**フロントエンドが変更された場合、Gradleは自動的に`dev`プロファイルでwebpackコンパイルを実行します（起動時のみ、ライブリロードには`npm start`または`yarn start`を使用してください）。
 
 その他の使用可能なyarn/npmコマンドは、プロジェクトの`package.json`ファイルの`scripts`セクションにあります。
+=======
+**Note** Gradle automatically runs webpack compilation in `dev` profile if front end has changed (only at start up, for live reload use `npm start`).
+
+Other available npm commands can be found in the `scripts` section of your project's `package.json` file.
+>>>>>>> upstream/main
 
 - ブラウザでコードを操作するには、[Angular DevTools](https://angular.io/guide/devtools)を使用することをお勧めします。Angular DevToolsは、Angularアプリケーションのデバッグとプロファイリング機能を提供するブラウザ拡張です（**注**Angular DevToolsはAngular v12以降をサポートしています）。
 

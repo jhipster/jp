@@ -61,11 +61,19 @@ Jhipsterは、Ehcacheと同じCaffeineのデフォルト設定を生成します
 
 [Hazelcast](https://hazelcast.com/)は（Ehcacheのように）ローカルキャッシュとして動作できますが、分散キャッシュとしても動作できます。その結果、次のようになります。
 
+<<<<<<< HEAD
 - マイクロサービスがスケールすることを考慮し、マイクロサービスのデフォルトオプションとなります。
 - ゲートウェイがスケールすることを考慮し、ゲートウェイのデフォルトオプションとなります。Hazelcastは[ゲートウェイのレート制限情報]({{ site.url }}/api-gateway/#rate_limiting)を配信するために使用されます。
 - モノリス内で使用される場合、Hazelcastは、スケールするために[JHipster Registry]({{ site.url }}/jhipster-registry/)オプションを持つ必要があります。
 
 アプリケーションをスケールさせるために、Hazelcastは設定されたサービスディスカバリを使用して新しいノードを見つけ、水平にスケールします。マイクロサービスとゲートウェイでは、これはJHipster RegistryとConsulの両方で動作し、モノリスではJHipster Registryでのみ動作します。
+=======
+- It is the default option for microservices, as we expect microservices to scale
+- It is the default option for gateways, as we expect them to scale, and as Hazelcast is used to distribute the [gateway rate-limiting information]({{ site.url }}/api-gateway/#rate_limiting)
+- When used within a monolith, Hazelcast needs to have the [JHipster Registry]({{ site.url }}/jhipster-registry/) configured manually in order to scale
+
+For scaling applications, Hazelcast will use the configured service discovery in order to find new nodes, and scale horizontally. With microservices and gateways, this will work both with the JHipster Registry and Consul, and for monoliths this will only work when you manually configure the JHipster Registry.
+>>>>>>> upstream/main
 
 新しいノードが追加されると、それ自体がサービスディスカバリに登録され（たとえば、JHipsterレジストリで使用可能になります）、同じタイプの他のノードを検索します。同じタイプの1つまたは複数のノードが検出されると、それらを使用してクラスタ化されたキャッシュが作成されます。各ノードのログには、次の例のようなメッセージが表示されます。
 
