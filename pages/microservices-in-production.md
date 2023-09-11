@@ -13,7 +13,11 @@ sitemap:
 
 <h2 id="elk">マイクロサービスの監視</h2>
 
+<<<<<<< HEAD
 使用可能なランタイムダッシュボードとその使用方法については、[JHipsterレジストリのドキュメント]({{ site.url }}/jhipster-registry)を参照してください。
+=======
+If using JHipster Registry, please refer to our [JHipster Registry documentation]({{ site.url }}/jhipster-registry) for learning which runtime dashboards are available, and how to use them.
+>>>>>>> upstream/main
 
 [モニタリングのドキュメント]({{ site.url }}/monitoring)も非常に重要であり、以下の使用に関する具体的な情報を得ることができます。
 

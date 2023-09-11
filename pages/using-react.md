@@ -69,7 +69,11 @@ webapp
          └── foo.json                     - Foo名、フィールド、...のフランス語翻訳
 ```
 
+<<<<<<< HEAD
 デフォルトの言語翻訳は、アプリケーションの生成時に選択した内容に基づいて行われることに注意してください。'en'および'fr'は、ここではデモンストレーションのためにのみ示されています。
+=======
+Please note that the default language translations would be based on what you have chosen during app generation. 'en' and 'fr' are shown here only for demonstration.
+>>>>>>> upstream/main
 
 ## Redux
 

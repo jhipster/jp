@@ -13,6 +13,7 @@ JHipster IDEは、Eclipse、Visual Studio Code、Atomなどの一般的なIDEお
 
 次の機能を使用できます。
 
+<<<<<<< HEAD
 - 構文の色分け
 - エラーチェック
 - オートコンプリート
@@ -26,6 +27,21 @@ JHipster IDEは、Eclipse、Visual Studio Code、Atomなどの一般的なIDEお
 - 簡易修正案
 - 参照の検索
 - 折りたたみ
+=======
+- Syntax Coloring
+- Error Checking
+- Auto-Completion
+- Formatting
+- Hover Information
+- Mark Occurrences
+- Go To Declaration
+- Rename Refactoring
+- Toggle Comments
+- Outline / Structure View
+- Quick Fix Proposals
+- Find References
+- Folding
+>>>>>>> upstream/main
 
 さらに、JHipster IDEはJDLファイルのUML図を自動的に生成し、JHipsterのYeomanジェネレータを呼び出すためのEclipseターミナルシェルとの統合を提供します。
 

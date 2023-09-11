@@ -27,6 +27,7 @@ JDLは、[エンティティ・サブジェネレータ]({{ site.url }}/creating
 ビジュアルツールを使用して[関係を管理する]({{ site.url }}/managing-relationships/)方がはるかに簡単です。
 古典的なYeomanの質問と回答でエンティティを作成する方法よりも優れています。
 
+<<<<<<< HEAD
 JDLプロジェクトは[GitHubで利用可能](https://github.com/jhipster/generator-jhipster/tree/main/jdl)であり、
 JHipster（Apache 2.0ライセンス）なオープンソースプロジェクトです。JDL構文をパースするためのnodeライブラリとしても使用できます。
 
@@ -34,11 +35,21 @@ _[JHipsterドメイン言語](https://github.com/jhipster/generator-jhipster/tre
 [JDL Studio](https://github.com/jhipster/jdl-studio/)または
 [JHipster IDE](https://github.com/jhipster/jhipster-ide/)の
 [GitHub](https://github.com/jhipster/)にスターを付けるのを忘れないでください - よろしくお願いします_！
+=======
+The JDL project is [available on GitHub](https://github.com/jhipster/generator-jhipster/), it is an Open Source project like
+JHipster (Apache 2.0 License). It can also be used as a node library to do JDL parsing.
+
+_If you like the [JHipster Domain Language](https://github.com/jhipster/generator-jhipster/),
+the [JDL Studio](https://github.com/jhipster/jdl-studio/) or the
+[JHipster IDE](https://github.com/jhipster/jhipster-ide/) don't forget to give them a star on
+[GitHub](https://github.com/jhipster/) - thanks_!
+>>>>>>> upstream/main
 
 ---
 
 JDLがまだわからない場合は、まず[JHipsterドメイン言語(JDL) - 入門](/jdl/getting-started)ページにアクセスすることをお勧めします。
 
+<<<<<<< HEAD
 ただし、すでにJDLに精通していて、JDLを使用して何ができるかを知っている場合は、詳細の参照もできます。
 マニュアルは以下です。
   1. [アプリケーション](/jdl/applications)
@@ -48,6 +59,18 @@ JDLがまだわからない場合は、まず[JHipsterドメイン言語(JDL) - 
   1. [オプション](/jdl/options)
   1. [デプロイメント](/jdl/deployments)
   1. [トラブルシューティング](/jdl/troubleshooting)
+=======
+However, if you're already familiar with the JDL and what you can do with it, you can also browse the detailed
+documentation:
+  1. [Getting Started](/jdl/getting-started)
+  1. [Applications](/jdl/applications)
+  1. [Entities & fields](/jdl/entities-fields)
+  1. [Enums](/jdl/enums)
+  1. [Relationships](/jdl/relationships)
+  1. [Options](/jdl/options)
+  1. [Deployments](/jdl/deployments)
+  1. [Troubleshooting](/jdl/troubleshooting)
+>>>>>>> upstream/main
 
 また、公式の[JDLサンプルリポジトリ](https://github.com/jhipster/jdl-samples)でも内容チェックできますし、
 あなた方よりサンプルをご提案いただくこともできます！

@@ -22,9 +22,13 @@ JHipsterは、エバーグリーンブラウザのみをサポートします。
 
 ## Babelを使用したヒント集
 
+<<<<<<< HEAD
 まず、`package.json`の依存関係に`@babel/core`、`@babel/preset-env`、`babel-loader`を追加します。`yarn`の例です。
+=======
+First, add those `package.json` dependencies: `@babel/core`, `@babel/preset-env` and `babel-loader`. Example with `npm`:
+>>>>>>> upstream/main
 ```bash
-yarn add @babel/core @babel/preset-env babel-loader --exact --dev
+npm install @babel/core @babel/preset-env babel-loader --save-dev
 ```
 （JHipster v6.3.1で生成されたアプリケーションでIE11が動作するように、次のバージョンでテストしました
 ```json

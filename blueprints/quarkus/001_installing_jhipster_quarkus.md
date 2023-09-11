@@ -16,6 +16,10 @@ https://www.jhipster.tech/installation/ の資料のセクション *「NPMに�
 
 `npm install -g generator-jhipster-quarkus`
 
+<<<<<<< HEAD
 インストールを検証するには、`jhipster-quarkus`コマンドの存在をチェックします：`which jhipster-quarkus`（Mac/Linuxの場合）
+=======
+You can validate the installation by checking the presence of the `jhipster-quarkus`command: `which jhipster-quarkus` (for Mac/Linux).
+>>>>>>> upstream/main
 
 これで完了です。JHipsterを使用してQuarkusアプリケーションの作成を開始できます。

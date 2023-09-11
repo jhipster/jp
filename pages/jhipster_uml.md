@@ -88,16 +88,12 @@ To install JHipster UML use the command:
 
  ```
    npm install -g jhipster-uml
-   # or
-   yarn global add jhipster-uml
  ```
 
 If, however, you don't want to install the latest version globally because it doesn't match your version of the generator (see below) or if you want it contained locally, use this command instead:
 
   ```
     npm install jhipster-uml --save-dev
-    # or
-    yarn add jhipster-uml --dev
   ```
 
 If you want the 'bleeding edge' (almost perfectly safe to use) version, you can clone our git repo from [our GitHub project](https://github.com/jhipster/jhipster-uml):
@@ -267,7 +263,7 @@ Finally, if you need help, there's a command for that too:
 <h2 id="jumlfile">JHipster-UML file</h2>
 
 JHipster-UML can be configured by the command line and / or by a JSON based configuration file, the `jumlfile`.
-The options described in the help can be used in the both but the commande line take precedence over the `jumlfile`.
+The options described in the help can be used in the both but the command line take precedence over the `jumlfile`.
 
 ### A concrete example
 

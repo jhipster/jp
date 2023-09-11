@@ -34,10 +34,17 @@ Cassandraが選択されている場合は以下のようになります。
 
 ツールに関する情報は以下のとおりです。
 
+<<<<<<< HEAD
 *   エンティティを生成した後、そのCQLファイルは、JPA用のLiquibase変更ログを生成するのと同じ方法で、`src/main/resources/config/cql/changelog/`に生成されます
 *   テストを実行する場合、`src/main/resources/config/cql/changelog/`ディレクトリ内のすべてのCQLスクリプトが、メモリ内のクラスタに自動的に適用されます。
     *   これは、スクリプトをchangelogディレクトリにドロップしてテストに適用する以外に何もすることがないことを意味します。
 *   このツールは、独自のcassandraテーブル`schema_version`を使用してメタデータ情報を保存します。
+=======
+*   After generating an entity, its CQL file will be generated in `src/main/resources/config/cql/changelog/` in the same way we generate Liquibase changelogs for JPA
+*   For running tests, all the CQL scripts in the `src/main/resources/config/cql/changelog/` directory are automatically applied to the in memory cluster
+    *   Meaning you have nothing to do but to drop your script in the changelog directory to have it applied for the tests
+*   The tool uses its own cassandra table `schema_version` to store the metadata info
+>>>>>>> upstream/main
 
 このツールは、`src/main/resources/config/cql/`からの移行スクリプトを次の順序で適用します。
 

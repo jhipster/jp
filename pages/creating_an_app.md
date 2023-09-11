@@ -41,7 +41,11 @@ _**新しいJHipsterアプリケーションの作成については、[ビデ�
 
 アプリケーションは[http://localhost:8080](http://localhost:8080)にあります。
 
+<<<<<<< HEAD
 **重要** JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`または`yarn start`を実行する必要があります。詳細については、[開発でのJHipsterの使用]({{ site.url }}/development/)ページにアクセスしてください。
+=======
+**Important** if you want to have "live reload" of your JavaScript/TypeScript code, you will need run `npm start`. You can go to the [Using JHipster in development]({{ site.url }}/development/) page for more information.
+>>>>>>> upstream/main
 
 「ライブリロード」を使用している場合は、`./mvnw -P-webapp`または`./gradlew -x webapp`を使用してクライアント側のタスクを除外することで、サーバの起動を高速化できます。特にGradleの速度が向上します。
 
@@ -68,6 +72,7 @@ _いくつかの質問は、以前に行った選択によって変わります�
 Javaアプリケーションはこれをルート・パッケージとして使用します。この値はYeomanによって保存されるため、次にジェネレータを実行するときには、最後の値がデフォルトになります。
 この値は、新しい値を指定することで上書きできます。
 
+<<<<<<< HEAD
 ### JHipsterレジストリを使用して、アプリケーションの構成、監視、拡張を行いますか?（Do you want to use the JHipster Registry to configure, monitor and scale your application?）
 
 [JHipster Registry]({{ site.url }}/jhipster-registry/)は、実行時にアプリケーションを管理するためのオープンソースツールです。
@@ -83,6 +88,15 @@ Javaアプリケーションはこれをルート・パッケージとして使�
 * JWT認証：[JSON Web Token(JWT)](https://jwt.io/)を使用します。これはデフォルトの選択肢であり、ほとんどの人が使用しています。
 * OAuth 2.0/OIDC認証：アプリケーションの外部で認証を処理します。[Keycloak](https://www.keycloak.org/)または[Okta](https://developer.okta.com)などのOpenID Connectサーバを使用します。これはJWTよりも安全ですが、OpenID Connectサーバを設定する必要があるため、少し複雑です。デフォルトでは、JHipsterはOpenID Connectサーバからのユーザデータを同期するため、データベースが必要になることに注意してください。
 * HTTPセッション認証：古典的なセッションベースの認証メカニズムで、[Spring Security](http://docs.spring.io/spring-security/site/index.html)で通常行われるものです。
+=======
+### Which _type_ of authentication would you like to use?
+
+Here are all the possible options:
+
+*   JWT authentication: use a [JSON Web Token (JWT)](https://jwt.io/), which is the default choice and what most people use.
+*   OAuth 2.0 / OIDC Authentication: this uses an OpenID Connect server, like [Keycloak](https://www.keycloak.org/), [Auth0](https://developer.auth0.com), or [Okta](https://developer.okta.com), which handles authentication outside the application. This is more secured than JWT, but it requires to set up an OpenID Connect server, so it's a bit more complex. Please note that by default JHipster will synchronize the user data from the OpenID Connect server, and for this it will need a database.
+*   HTTP Session Authentication: the classical session-based authentication mechanism, which is what people usually do with [Spring Security](http://docs.spring.io/spring-security/site/index.html).
+>>>>>>> upstream/main
 
 詳細については、[アプリケーションのセキュリティ保護]({{ site.url }}/security/)ページを参照してください。
 
@@ -244,6 +258,7 @@ Blueprintに特定のサブジェネレータが実装されていない場合�
 
 渡すことができるオプションは次のとおりです。
 
+<<<<<<< HEAD
 * `--help` - ジェネレータのオプションと使用法を出力します
 * `--blueprint` - 使用するBlueprintを指定します。例：`jhipster --blueprint kotlin`
 * `--skip-cache` - プロンプトの応答を記憶しません（デフォルト：false）
@@ -265,6 +280,28 @@ Blueprintに特定のサブジェネレータが実装されていない場合�
 * `--experimental` - 実験的な機能を有効にします。これらの機能は不安定であり、いつでも重大な変更を受ける可能性があることに注意してください
 * `--skip-fake-data` - 開発用のフェイクデータの生成をスキップします
 * `--creation-timestamp` - 再現可能なビルドのタイムスタンプを設定します。タイムスタンプは解析可能なjs日付である必要があります（例：2019-01-01）。--with-entitiesまたはimport-jdl（generator-jhipster > 6.5.1）とともに使用する必要があります
+=======
+* `--help` - Print the generator's options and usage
+* `--blueprint` - Specify a blueprint to use. For example `jhipster --blueprint kotlin`
+* `--skip-cache` - Do not remember prompt answers (Default: false)
+* `--skip-git` - Do not add the generated project to Git automatically (Default: false)
+* `--skip-install` - Do not automatically install dependencies (Default: false)
+* `--skip-client` - Skip the client-side application generation, so you only have the Spring Boot back-end code generated (Default: false).
+* `--skip-server` - Skip the server-side application generation, so you only have the front-end code generated (Default: false).
+* `--skip-user-management` - Skip the user management generation, both on the back-end and on the front-end (Default: false)
+* `--i18n` - Disable or enable i18n when skipping client side generation, has no effect otherwise (Default: true)
+* `--auth` - Specify the authentication type when skipping server side generation, has no effect otherwise but mandatory when using `skip-server`
+* `--db` - Specify the database when skipping server side generation, has no effect otherwise but mandatory when using `skip-server`
+* `--with-entities` - Regenerate the existing entities if they were already generated (using their configuration in the `.jhipster` folder) (Default: false)
+* `--skip-checks` - Skip the check of the required tools (Default: false)
+* `--jhi-prefix` - Add prefix before services, components and state/route names (Default: jhi)
+* `--entity-suffix` - Add suffix after entities class names (Default: empty string)
+* `--dto-suffix` - Add suffix after DTOs class names (Default: DTO)
+* `--prettier-java` - Use [prettier-java](https://github.com/jhipster/prettier-java) for formatting all Java classes (Default: false)
+* `--experimental` - Enable experimental features. Please note that these features may be unstable and may undergo breaking changes at any time
+* `--skip-fake-data` - Skip generation of fake data for development
+* `--creation-timestamp` - Set a timestamp for reproducible build. Timestamp should be a parsable js date ex: 2019-01-01. Must be used with --with-entities or import-jdl (generator-jhipster > 6.5.1)
+>>>>>>> upstream/main
 
 <h2 id="4">ヒント</h2>
 

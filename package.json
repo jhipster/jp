@@ -15,7 +15,12 @@
   },
   "private": true,
   "scripts": {
+<<<<<<< HEAD
     "start": "bundle exec jekyll serve --baseurl ''",
+=======
+    "clean": "rm Gemfile.lock && bundle install",
+    "start": "bundle exec jekyll serve",
+>>>>>>> upstream/main
     "sass": "gulp sass",
     "images": "gulp images"
   }

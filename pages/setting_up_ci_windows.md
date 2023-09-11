@@ -15,7 +15,11 @@ sitemap:
 
 Jenkins Windowsインストーラを[https://jenkins.io/](https://jenkins.io/)からダウンロードします。
 
+<<<<<<< HEAD
 インストーラは、SYSTEMユーザを使用してサービスとして実行するようにJenkinsを設定しますが、これは危険である可能性があるため、ユーザのサービスを特権のないものに変更する方が安全です。
+=======
+The installer configures Jenkins to run as a service using the SYSTEM user which can be dangerous, it's safer to change the user's service to a non privileged one:
+>>>>>>> upstream/main
 
 [http://antagonisticpleiotropy.blogspot.fr/2012/08/running-jenkins-in-windows-with-regular.html](http://antagonisticpleiotropy.blogspot.fr/2012/08/running-jenkins-in-windows-with-regular.html)
 

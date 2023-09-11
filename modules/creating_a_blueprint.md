@@ -123,7 +123,11 @@ JHipsterから優先順位をカスタマイズする方法はいくつかあり
 
 4) 優先順位を装飾します。これは、JHipsterからの優先順位の前または後に、Blueprintがカスタムステップを実行する場合です。
 
+<<<<<<< HEAD
 これは、派生プロパティを生成するための優先順位付けで使用されるプロパティをカスタマイズするのに便利です。
+=======
+This is useful to customize properties that will be used during the priority to generate derived properties.
+>>>>>>> upstream/main
 
 ```javascript
     // 親ステップの前または後、あるいはその両方でBlueprint・ステップを実行します。

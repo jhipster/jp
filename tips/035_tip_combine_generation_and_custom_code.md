@@ -36,7 +36,11 @@ _目標:_ Jhipsterは、その強力なドメイン固有言語のおかげで�
 ここでは、--with-generated-flagのjhipster cliオプションを使用して、生成されたクラスとカスタムクラスを簡単に区別できます。
 最後に、生成されたホームページではなくカスタムホームページにルーティングするために、フロントエンド部分のメインルーターを変更するだけです。
 
+<<<<<<< HEAD
 ルータファイルが世代ごとに上書きされるのを避けるために、プロジェクトのルートに`.yo-resolve`ファイルを作成して、yeomanに期待される動作を伝えることができます。
+=======
+In order to avoid your router file being overridden at each generation, you can create a `.yo-resolve` file at the root of your project and tell to yeoman the expected behavior.
+>>>>>>> upstream/main
 
 例：
 ```

@@ -7,7 +7,11 @@ sitemap:
     lastmod: 2019-02-01T00:00:00-00:00
 ---
 
+<<<<<<< HEAD
 # <i class="fa fa-dashboard"></i> JHipsterレジストリ
+=======
+# <i class="fa fa-dashboard"></i> The JHipster Registry (**deprecated** - Use Consul instead)
+>>>>>>> upstream/main
 
 ## 概観
 
@@ -67,8 +71,13 @@ JHipster 5.3.0以降、新しい`jhipster.security.authentication.jwt.base64-sec
 
 JHipsterレジストリは、[jhipster/jhipster-registry](https://github.com/jhipster/jhipster-registry)から直接クローン/フォーク/ダウンロードできます。JHipsterレジストリもJHipsterによって生成されたアプリケーションであるため、他のJHipsterアプリケーションと同様に実行できます。
 
+<<<<<<< HEAD
 - （Javaサーバとしては）`./mvnw`を、（フロントエンドの管理には）`yarn start`を使用して開発環境で実行します。デフォルトでは`dev`プロファイルが使用され、[http://127.0.0.1:8761/](http://127.0.0.1:8761/)で使用可能です。
 -`./mvnw -Pprod package`を使用してプロダクション環境でパッケージ化し、通常のJHipster実行可能JARファイルを生成します。その後、`dev`または`prod`Springプロファイルを使用してJARファイルを実行できます。例：`java-jar jhipster-registry-<version>.jar --spring.profiles.active=prod`
+=======
+- run it in development with `./mvnw` (for the Java server) and `npm start` (for managing the front-end), it will use by default the `dev` profile and it will be available at [http://127.0.0.1:8761/](http://127.0.0.1:8761/).
+- use `./mvnw -Pprod package` to package it in production, and generate the usual JHipster executable JAR file. You can then run the JAR file using the `dev` or `prod` Spring profile, for example: `java -jar jhipster-registry-<version>.jar --spring.profiles.active=prod`
+>>>>>>> upstream/main
 
 `dev`および`composite`プロファイルを使用するには、設定に`central-config`ディレクトリが必要なので、`java -jar jhipster-registry-<version>.jar --spring.profiles.active=dev`を実行する場合は、そのディレクトリを設定する必要があることに注意してください。
 
