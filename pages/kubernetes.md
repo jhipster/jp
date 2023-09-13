@@ -69,7 +69,7 @@ Kubernetesの設定ファイルを生成するには、新しいフォルダで�
 
 ### Enter the admin password used to secure the JHipster Registry admin（JHipsterレジストリの管理者を保護するために使用する管理者パスワードを入力してください）
 
-この質問は、マイクロサービスアーキテクチャを選択した場合にのみ表示されます。
+この質問は、JHipsterレジストリを用いたマイクロサービスアーキテクチャを選択した場合にのみ表示されます。
 
 ### What should we use for the Kubernetes namespace?（Kubernetesネームスペースには何を使用しますか?）
 

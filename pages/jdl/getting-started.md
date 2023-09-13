@@ -60,7 +60,6 @@ JDLのインポート中にエンティティを再生成したくない場合�
 JDLをプロジェクトで使用する場合は、次のようにして追加できます。
 
 - NPM: `npm install jhipster-core --save`
-- Yarn: `yarn add jhipster-core`
 
 ローカルにインストールされ、`package.json`に書き込まれます。
 
@@ -397,7 +396,7 @@ JHipsterのデプロイは、他のすべてのプロパティはデフォルト
 - deploymentType: `docker-compose`
 - appsFolders: `foo, bar`
 - dockerRepositoryName: `yourDockerLoginName`
-- serviceDiscoveryType: `eureka`
+- serviceDiscoveryType: `consul`
 - gatewayType: `SpringCloudGateway`
 - directoryPath: `../`
 - etc.

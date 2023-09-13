@@ -55,7 +55,7 @@ Mavenを使用してJavaサーバーを起動できます。JHipsterにはMaven�
 
 このアプリケーションは、[http://localhost:8080](http://localhost:8080)で利用可能です。
 
-`npm start`または`yarn start`でライブリロードを使用する場合は、次の方法でwebpackタスクを除外することで、サーバの起動を高速化できます。
+`npm start`でライブリロードを使用する場合は、次の方法でwebpackタスクを除外することで、サーバの起動を高速化できます。
 
 `./mvnw -P-webapp`
 
@@ -75,7 +75,7 @@ Gradleオプションを選択した場合、JHipsterはGradleラッパーを提
 
 このアプリケーションは、[http://localhost:8080](http://localhost:8080)で利用可能です。
 
-`npm start`または`yarn start`でライブリロードを使用する場合は、次の方法でwebpackタスクを除外することで、サーバの起動を高速化できます。
+`npm start`でライブリロードを使用する場合は、次の方法でwebpackタスクを除外することで、サーバの起動を高速化できます。
 
 `./gradlew -x webapp`
 
@@ -94,8 +94,6 @@ _このステップは、TypeScriptコードの変更を確認し、クライア
 Webpackの実行は`package.json`ファイルのデフォルトタスクなので、実行するにはこれで十分です。
 
 `npm start`
-
-（または、Yarnを使用する場合は、`yarn start`）
 
 これにより、非常に優れた機能が提供されます。
 
@@ -119,9 +117,9 @@ Webpackの実行は`package.json`ファイルのデフォルトタスクなの�
 
 プロジェクトのすべてのチームメンバーがすべての依存関係の同じバージョンを持つように、[`package-lock.json`](https://docs.npmjs.com/files/package-lock.json)をソース管理にチェックインすることをお勧めします。`npm install`を再度実行すると、最新バージョンの推移的な依存関係を持つ`package-lock.json`が再生成されます。
 
-### その他のNPM/Yarnタスク
+### その他のNPMタスク
 
-以下のタスクは、NPMを使用するかYarnを使用するかにかかわらず同じです。ここでは例として`npm`コマンドを使用しますが、`yarn`に置き換えることができます。
+ここではいくつかの`npm`コマンドの例を示します。
 
 - `npm run lint`: TypeScriptコード内のコードスタイルの問題をチェックします。
 - `npm run lint:fix`: TypeScriptのlint問題を自動的に修正します。

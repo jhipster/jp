@@ -22,21 +22,18 @@ JHipsterはAPIゲートウェイを生成できます。ゲートウェイは通
 
 <h2 id="architecture_diagram">アーキテクチャ図</h2>
 
-<img src="{{ site.url }}/images/microservices_architecture_detail.001.png" alt="Diagram" style="width: 800; height: 600" class="img-responsive"/>
+<img src="{{ site.url }}/images/microservices_architecture_detail.003.png" alt="Diagram" style="width: 800; height: 600" class="img-responsive"/>
 
 <h2 id="http_routing">ゲートウェイを使用したHTTPリクエストのルーティング</h2>
 
-ゲートウェイとマイクロサービスが起動されると、（`src/main/resources/config/application.yml`ファイルにある`eureka.client.serviceUrl.defaultZone`キーを使用して）自身をレジストリに登録します。
+ゲートウェイとマイクロサービスが起動されると、自身をConsulサービスレジストリに登録します。
 
 ゲートウェイは、アプリケーション名を使用して、すべてのリクエストをマイクロサービスに自動的にプロキシします。たとえば、マイクロサービス`app1`が登録されている場合、ゲートウェイの`/services/app1`のURLで利用できます。
 
 たとえば、ゲートウェイが`localhost:8080`で実行されている場合、[http://localhost:8080/services/app1/api/foos](http://localhost:8080/services/app1/api/foos)の指定で、
 マイクロサービス`app1`で提供されている`foos`のリソースを取得できます。Webブラウザでこれを行おうとしている場合は、RESTリソースがJHipsterでデフォルトで保護されていることを忘れないでください。したがって、正しいJWTヘッダーを送信するか（以下のセキュリティのポイントを参照）、以降のセキュリティに関するポイントを確認するか、またはマイクロサービスの`MicroserviceSecurityConfiguration`クラスでそれらのURLのセキュリティを削除する必要があります。
 
-同じサービスのインスタンスが複数実行されている場合、ゲートウェイはそれらのインスタンスをJHipsterレジストリから取得し、次の処理を実行します。
-
-- [Spring Coud Load Balancer](https://spring.io/guides/gs/spring-cloud-loadbalancer/)を使用してHTTPリクエストをロードバランスします。
-- [Netflix Hystrix](https://github.com/Netflix/hystrix)を使用してサーキットブレーカを提供することで、利用できないインスタンスを迅速かつ安全に削除します。
+同じサービスのインスタンスが複数実行されている場合、ゲートウェイはそれらのインスタンスをJHipsterレジストリから取得し、[Consul](https://www.consul.io/use-cases/load-balancing)を使用してHTTPリクエストのロードバランシングを行います。
 
 各ゲートウェイには特定の"admin > gateway"メニューがあり、オープンされたHTTPルートとマイクロサービスインスタンスを監視できます。
 
@@ -58,7 +55,7 @@ JHipsterは、Okta社が提供する[JJWTライブラリ](https://github.com/jwt
 
 - 各アプリケーションのデフォルトトークンは固有であり、JHipsterによって生成されます。これは`.yo-rc.json`ファイルに格納されます。
 - トークンは、`src/main/resources/config/application.yml`ファイル内の`jhipster.security.authentication.jwt.secret`キーで構成されます。
-- このキーをすべてのアプリケーション間で共有するには、ゲートウェイからすべてのマイクロサービスにキーをコピーするか、[JHipster Registry]({{ site.url }}/jhipster-registry/)のSpring Config Serverまたは[JHipster固有のConsul K/Vストアの設定]({{ site.url }}/consul/)を使用してキーを共有します。これが、中央構成サーバが使用される主な理由の1つです。
+- このキーをすべてのアプリケーション間で共有するには、ゲートウェイからすべてのマイクロサービスにキーをコピーするか、[JHipster固有のConsul K/Vストアの設定]({{ site.url }}/consul/)を使用してキーを共有します。これが、中央構成サーバが使用される主な理由の1つです。
 - 開発と本番で異なるキーを使用することをお勧めします。
 
 ### OpenID Connect
@@ -110,7 +107,6 @@ JHipsterは、[Bucket4j](https://github.com/vladimir-bukhtoyarov/bucket4j)と[Ha
 データはHazelcastに格納されるため、Hazelcast分散キャッシュが設定されていれば、ゲートウェイの拡張が可能であり、すぐに動作するはずです。
 
 - すべてのゲートウェイには、デフォルトでHazelcastが設定されています。
-- [JHipster Registry]({{ site.url }}/jhipster-registry/)を使用する場合、ゲートウェイのすべてのインスタンスは自動的に自身を分散キャッシュに登録されます。
 
 さらにルールを追加する場合、または既存のルールを変更する場合は、それらを`RateLimitingFilter`クラスでコーディングする必要があります。変更の例は次のとおりです。
 

@@ -79,23 +79,6 @@ Gradleを使用する場合は、次のコマンドを実行してください�
     * `target/jhipster-0.0.1-SNAPSHOT.war`
     * `target/jhipster-0.0.1-SNAPSHOT.war.original` 
 
-**注意** コンテキストパスでJARまたはWARファイルを構築し、**かつ**、**Reactクライアント**または**Vueクライアント**を選択した場合、`webpack.prod.js`または`webpack.common.js`（**Vue**の場合は両方のファイル）を適切な`base`属性値で更新する必要があります。
-`jhipster`をコンテキストパスとして考えると、`base`属性値は次のようになります。
-
-```
-new HtmlWebpackPlugin({
-    ...
-    base: '/jhipster/'
-})
-```
-
-**Angularクライアント**を選択した場合は、`index.html`を適切な`base`タグで更新する必要があります。
-`jhipster`をコンテキストパスとして考えると、`base`タグの値は次のようになります。
-
-```
-<base href="/jhipster/"/>
-```
-
 **注意**`prod`プロファイルでJARまたはWARファイルを構築する場合、生成されるアーカイブには`dev`アセットは含まれません。
 
 
@@ -111,24 +94,6 @@ new HtmlWebpackPlugin({
 
 `./gradlew -Pprod -Pwar clean bootWar`
 
-**注意** コンテキストパスでJARまたはWARファイルを構築し、**かつ**、**Reactクライアント**または**Vueクライアント**を選択した場合、`webpack.prod.js`または`webpack.common.js`（**Vue**の場合は両方のファイル）を適切な`base`属性値で更新する必要があります。
-`jhipster`をコンテキストパスとして考えると、`base`属性値は次のようになります。
-
-```
-new HtmlWebpackPlugin({
-    ...
-    base: '/jhipster/'
-})
-```
-
-**Angularクライアント**を選択した場合は、`index.html`を適切な`base`タグで更新する必要があります。
-`jhipster`をコンテキストパスとして考えると、`base`タグの値は次のようになります。
-
-```
-<base href="/jhipster/"/>
-```
-
-**注意**`prod`プロファイルでJARまたはWARファイルを構築する場合、生成されるアーカイブには`dev`アセットは含まれません。
 
 <h2 id="run">プロダクション環境での実行</h2>
 
@@ -145,11 +110,6 @@ Windowsの場合は、次のコマンドを使用します。
 `java -jar jhipster-0.0.1-SNAPSHOT.jar`
 
 **注意**このJARファイルは、ビルド時に選択したプロファイルを使用します。前のセクションで`prod`ファイルを使用してビルドされたため、`prod`プロファイルで実行されます。
-
-コンテキストパスは、次のように環境変数またはコマンドラインパラメータとして指定できます。
-```bash 
-java -jar jhipster.jar --server.servlet.context-path=/jhipster
-```
 
 ### Dockerコンテナでのアプリケーションの実行
 
@@ -287,6 +247,44 @@ JHipsterアプリケーションの前にフロントエンドHTTPSプロキシ�
 - ApacheとLet's Encryptインストール：`apt-get install-y apache2 python-certbot-apache`
 - Let's Encryptの設定：`certbot --apache -d <your-domain.com> --agree-tos -m <your-email> --redirect`
 - SSL証明書の自動更新を設定：crontablに`10 3 * * * /usr/bin/certbot renew --quiet`を追加
+
+### カスタムコンテキストパス
+
+`server.servlet.context-path`パラメータと値を渡すことで、Spring Bootバックエンドのコンテキストパスを指定できます。
+
+```bash
+java -jar jhipster.jar --server.servlet.context-path=/jhipster/
+```
+
+または、この設定を`application.yml`に追加することもできます。
+
+```
+---
+server:
+  servlet:
+    context-path: /jhipster/
+```
+
+フロントエンドバンドラの場合、コンテキストパスはビルド時の設定となります。
+
+**Angular** フロントエンドは以下を使用して設定できます。
+- `angular.json`: `projects -> * プロジェクト名 -> architect -> build -> options -> baseHref : '/jhipster/'`
+- `ng build --base-href '/jhipster/'`
+- [APP_BASE_HREF](https://angular.io/api/common/APP_BASE_HREF)を使用してください。
+
+**Webpack-based** フロントエンドは以下を使用して設定できます。
+
+- Webpackの設定ファイル
+```
+new HtmlWebpackPlugin({
+    ...
+    base: '/jhipster/'
+})
+```
+
+その他にも、開発サーバーの設定やswagger-uiのようなページでのiframeの調整などの変更が必要になる場合があります。
+
+**注意** `./`のような相対ベースパスを使用することは可能ですが、それと互換性を持つように他の設定を調整する必要があります。
 
 <h2 id="monitoring">モニタリング</h2>
 

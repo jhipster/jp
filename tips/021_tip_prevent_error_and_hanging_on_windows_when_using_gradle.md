@@ -28,7 +28,7 @@ Unable to process incoming event 'ProgressComplete ' (ProgressCompleteEvent)
 
 ## When problem occurs
 
-Problem occurs after some command has outputed some critical symbols and/or amount of symbols to this cmd.exe window.
+Problem occurs after some command has outputted some critical symbols and/or amount of symbols to this cmd.exe window.
 The emergence of the problem depends on the Screen Buffer Size Height. The higher it is the greater is the chance that no error/hanging occurs.
 But the problem is reproduced also with the maximum Screen Buffer Size Height (9999).
 
@@ -50,7 +50,6 @@ In the JHipster applications this problem has reproduced with the following Grad
 * gulpConstantDev
 * gulpBuildWithOpts
 * npmInstall
-* yarn_install
 * webpack
 
 Exists hack which prevents this error/hanging in the JHipster applications. Just put the following code to your `build.gradle`:
@@ -62,11 +61,6 @@ tasks.withType(NodeTask) {
     }
 }
 tasks.withType(com.moowork.gradle.node.npm.NpmTask) {
-    doLast {
-        println()
-    }
-}
-tasks.withType(com.moowork.gradle.node.yarn.YarnTask) {
     doLast {
         println()
     }

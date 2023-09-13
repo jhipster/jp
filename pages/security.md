@@ -47,7 +47,7 @@ JHipsterは、無効なJWTをカスタムアプリケーションメトリクス
 Base64プロパティを使用しない場合は、アプリケーションの起動時に警告が表示されます。
 - これらのキーの最小長は512ビットである必要があります。十分な長さがない場合は、ログインに使用できません。その場合は、コンソールにその問題を説明する明確な警告が表示されます。
 - 秘密鍵は`application-*.yml`ファイルで設定されています。これらの鍵は秘密にしておく必要があるので、プロダクションのプロファイル用に安全な方法で保管する**必要があります**。
-通常、Spring Bootプロパティ設定を使用して設定できます。[JHipster Registry](/jhipster-registry/)（推奨オプション）のようなSpring Cloud Configサーバを使用するか、
+通常、Spring Bootプロパティ設定を使用して設定できます。[JHipster Registry](/jhipster-registry/)のようなSpring Cloud Configサーバを使用するか、
 環境変数を使用するか、システム管理者によってアプリケーションの実行可能なWARファイルと同じディレクトリにSCPで置かれた特有の`application-prod.yml`ファイルを使用します。
 - デフォルトの"user"および"admin"パスワードは**変更する必要があります**。これを行う最も簡単な方法は、アプリケーションをデプロイし、"user/user"としてログインしてから"admin/admin"としてログインし、それぞれに対して"Account > Password"メニューを使用してパスワードを変更することです。
 
@@ -57,7 +57,7 @@ Base64プロパティを使用しない場合は、アプリケーションの�
 
 ### セッションベースの認証をセキュアに
 
-- Remember-me認証の場合、Remember-meキーは`application-dev.yml`および`application-prod.yml`ファイル内で、`jhipster.security.remember-me.key`プロパティとして設定されます。このキーは秘密にしておく必要があるため、プロダクションのプロファイル用に安全な方法で保存する**必要があります**。通常、Spring Bootプロパティ設定を使用して設定できます。[JHipster Registry](/jhipster-registry/)（推奨オプション）のようなSpring Cloud Configサーバを使用するか、環境変数を使用するか、システム管理者によってアプリケーションの実行可能なWARファイルと同じディレクトリにSCPで置かれた特有の`application-prod.yml`ファイルを使用します。
+- Remember-me認証の場合、Remember-meキーは`application-dev.yml`および`application-prod.yml`ファイル内で、`jhipster.security.remember-me.key`プロパティとして設定されます。このキーは秘密にしておく必要があるため、プロダクションのプロファイル用に安全な方法で保存する**必要があります**。通常、Spring Bootプロパティ設定を使用して設定できます。[JHipster Registry](/jhipster-registry/)のようなSpring Cloud Configサーバを使用するか、環境変数を使用するか、システム管理者によってアプリケーションの実行可能なWARファイルと同じディレクトリにSCPで置かれた特有の`application-prod.yml`ファイルを使用します。
 - デフォルトの"user"および"admin"パスワードは**変更する必要があります**。これを行う最も簡単な方法は、アプリケーションをデプロイし、"user/user"としてログインしてから"admin/admin"としてログインし、それぞれに対して"Account > Password"メニューを使用してパスワードを変更することです。
 
 ### remember-meメカニズムの改善
@@ -278,6 +278,7 @@ Keycloakの代わりに[Auth0](https://auth0.com/)を使用する場合は、次
 - `Regular Web Applications`タイプの新しいアプリケーションを作成します。`Settings` タブに切り替えて、次のようにアプリケーションの設定を構成します。
     - Allowed Callback URLs: `http://localhost:8080/login/oauth2/code/oidc`
     - Allowed Logout URLs: `http://localhost:8080/`
+    - 注意：Consulを使用している場合は、ポート8500のURLも追加します。
     - 注意：JHipsterレジストリを使用している場合は、ポート8761のURLも追加します。
 - **User Management** > **Roles**に移動し、`ROLE_ADMIN`および`ROLE_USER`という名前の新しいロールを作成します。
 - **User Management** > **Users**に移動し、新しいユーザーアカウントを作成します。 **Role**タブをクリックして、新しく作成したユーザーアカウントに役割を割り当てます。

@@ -41,7 +41,7 @@ _**新しいJHipsterアプリケーションの作成については、[ビデ�
 
 アプリケーションは[http://localhost:8080](http://localhost:8080)にあります。
 
-**重要** JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`または`yarn start`を実行する必要があります。詳細については、[開発でのJHipsterの使用]({{ site.url }}/development/)ページにアクセスしてください。
+**重要** JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`を実行する必要があります。詳細については、[開発でのJHipsterの使用]({{ site.url }}/development/)ページにアクセスしてください。
 
 「ライブリロード」を使用している場合は、`./mvnw -P-webapp`または`./gradlew -x webapp`を使用してクライアント側のタスクを除外することで、サーバの起動を高速化できます。特にGradleの速度が向上します。
 
@@ -68,20 +68,12 @@ _いくつかの質問は、以前に行った選択によって変わります�
 Javaアプリケーションはこれをルート・パッケージとして使用します。この値はYeomanによって保存されるため、次にジェネレータを実行するときには、最後の値がデフォルトになります。
 この値は、新しい値を指定することで上書きできます。
 
-### JHipsterレジストリを使用して、アプリケーションの構成、監視、拡張を行いますか?（Do you want to use the JHipster Registry to configure, monitor and scale your application?）
-
-[JHipster Registry]({{ site.url }}/jhipster-registry/)は、実行時にアプリケーションを管理するためのオープンソースツールです。
-
-マイクロサービスアーキテクチャを使用する場合に必要です（これが、この質問がモノリスを生成するときにのみ尋ねられる理由です）。
-
 ### どの _種類_ の認証を使用しますか?（Which _type_ of authentication would you like to use?）
-
-この質問に対する回答は、以前の回答によって異なります。たとえば、前述の[JHipster Registry]({{ site.url }}/JHipster-registry/)を選択した場合は、JWT認証のみを使用できます。
 
 可能なすべてのオプションを以下に示します。
 
 * JWT認証：[JSON Web Token(JWT)](https://jwt.io/)を使用します。これはデフォルトの選択肢であり、ほとんどの人が使用しています。
-* OAuth 2.0/OIDC認証：アプリケーションの外部で認証を処理します。[Keycloak](https://www.keycloak.org/)または[Okta](https://developer.okta.com)などのOpenID Connectサーバを使用します。これはJWTよりも安全ですが、OpenID Connectサーバを設定する必要があるため、少し複雑です。デフォルトでは、JHipsterはOpenID Connectサーバからのユーザデータを同期するため、データベースが必要になることに注意してください。
+* OAuth 2.0/OIDC認証：アプリケーションの外部で認証を処理します。[Keycloak](https://www.keycloak.org/)または[Auth0](https://developer.auth0.com)などのOpenID Connectサーバを使用します。これはJWTよりも安全ですが、OpenID Connectサーバを設定する必要があるため、少し複雑です。デフォルトでは、JHipsterはOpenID Connectサーバからのユーザデータを同期するため、データベースが必要になることに注意してください。
 * HTTPセッション認証：古典的なセッションベースの認証メカニズムで、[Spring Security](http://docs.spring.io/spring-security/site/index.html)で通常行われるものです。
 
 詳細については、[アプリケーションのセキュリティ保護]({{ site.url }}/security/)ページを参照してください。
@@ -260,7 +252,6 @@ Blueprintに特定のサブジェネレータが実装されていない場合�
 * `--jhi-prefix` - サービス、コンポーネント、および状態/ルート名の前にプレフィックスを追加します（デフォルト：jhi）
 * `--entity-suffix` - エンティティクラス名の後に接尾辞を追加します（デフォルト：空の文字列）
 * `--dto-suffix` - DTOクラス名の後にサフィックスを追加します（デフォルト：DTO）
-* `--yarn` - NPMの代わりにYarnを使用します（デフォルト：false）
 * `--prettier-java` - すべてのJavaクラスをフォーマットするために[prettier-java](https://github.com/jhipster/prettier-java)を使用します（デフォルト：false）
 * `--experimental` - 実験的な機能を有効にします。これらの機能は不安定であり、いつでも重大な変更を受ける可能性があることに注意してください
 * `--skip-fake-data` - 開発用のフェイクデータの生成をスキップします

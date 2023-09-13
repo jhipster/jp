@@ -115,7 +115,7 @@ jibがキャッシュ内のベースDockerイメージをまだプルしてい�
 
 - `docker-compose -f src/main/docker/app.yml up`
 
-このコマンドによって、アプリケーションとそれに依存するサービス（データベース、検索エンジン、JHipster Registryなど）が起動されます。
+このコマンドによって、アプリケーションとそれに依存するサービス（データベース、検索エンジン、Consul、JHipster Registryなど）が起動されます。
 
 認証にOAuth 2.0を選択した場合は、[このドキュメントのKeycloakセクション](#7)を必ずお読みください。
 
@@ -132,9 +132,9 @@ jibがキャッシュ内のベースDockerイメージをまだプルしてい�
 
 これにより、グローバルなDocker Compose設定が生成され、`docker-compose up`と入力して実行すると、すべてのサービスが一度に実行されます。
 
-マイクロサービスアーキテクチャの場合、この設定によりJHipster RegistryまたはConsulも事前設定され、サービスも自動的に設定されます。
+マイクロサービスアーキテクチャの場合、この設定によりConsulまたはJHipster Registryも事前設定され、サービスも自動的に設定されます。
 
-- これらのサービスは、JHipsterレジストリ（またはConsul）が起動するまで待機します。これは、`spring.cloud[.consul].config.fail-fast`および`spring.cloud[.consul].config.retry`キーを使用して、`bootstrap-prod.yml`ファイルで設定できます。
+- これらのサービスは、Consul（またはJHipsterレジストリ）が起動するまで待機します。これは、`spring.cloud[.consul].config.fail-fast`および`spring.cloud[.consul].config.retry`キーを使用して、`bootstrap-prod.yml`ファイルで設定できます。
 - レジストリーはアプリケーションを構成します。例えば、すべてのサービス間でJWTシークレットトークンを共有します。
 - 各サービスのスケーリングはDocker Composeを使用して行われます。たとえば、`docker-compose scale test-app=4`と入力すると、アプリケーション"test"の4つのインスタンスが実行されます。これらのインスタンスはゲートウェイによって自動的にロードバランシングされ、同じHazelcastクラスタに自動的に参加します（HazelcastがHibernateの第2レベルのキャッシュである場合）。
 

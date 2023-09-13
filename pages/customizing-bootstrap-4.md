@@ -11,7 +11,7 @@ sitemap:
 
 ## 基本的なカスタマイズ
 
-_プロの技:`npm start`または`yarn start`を実行して、変更のフィードバックをすぐに得ることを忘れないでください!_
+_プロの技:`npm start`を実行して、変更のフィードバックをすぐに得ることを忘れないでください!_
 
 JHipsterアプリケーションの外観をカスタマイズする最も簡単な方法は、
 `src/main/webapp/content/css/global.css`のCSSスタイルを上書きします。または、Sassオプションを選択した場合は、`src/main/webapp/content/scss/global.scss`ファイルを上書きします。
