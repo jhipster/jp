@@ -7,7 +7,7 @@ sitemap:
     lastmod: 2019-02-01T00:00:00-00:00
 ---
 
-# <i class="fa fa-dashboard"></i> JHipsterレジストリ
+# <i class="fa fa-dashboard"></i> JHipsterレジストリ（**非推奨**-代わりにConsulを使用してください）
 
 ## 概観
 
@@ -67,7 +67,7 @@ JHipster 5.3.0以降、新しい`jhipster.security.authentication.jwt.base64-sec
 
 JHipsterレジストリは、[jhipster/jhipster-registry](https://github.com/jhipster/jhipster-registry)から直接クローン/フォーク/ダウンロードできます。JHipsterレジストリもJHipsterによって生成されたアプリケーションであるため、他のJHipsterアプリケーションと同様に実行できます。
 
-- （Javaサーバとしては）`./mvnw`を、（フロントエンドの管理には）`yarn start`を使用して開発環境で実行します。デフォルトでは`dev`プロファイルが使用され、[http://127.0.0.1:8761/](http://127.0.0.1:8761/)で使用可能です。
+- （Javaサーバとしては）`./mvnw`を、（フロントエンドの管理には）`npm start`を使用して開発環境で実行します。デフォルトでは`dev`プロファイルが使用され、[http://127.0.0.1:8761/](http://127.0.0.1:8761/)で使用可能です。
 -`./mvnw -Pprod package`を使用してプロダクション環境でパッケージ化し、通常のJHipster実行可能JARファイルを生成します。その後、`dev`または`prod`Springプロファイルを使用してJARファイルを実行できます。例：`java-jar jhipster-registry-<version>.jar --spring.profiles.active=prod`
 
 `dev`および`composite`プロファイルを使用するには、設定に`central-config`ディレクトリが必要なので、`java -jar jhipster-registry-<version>.jar --spring.profiles.active=dev`を実行する場合は、そのディレクトリを設定する必要があることに注意してください。

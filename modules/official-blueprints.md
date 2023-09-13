@@ -21,7 +21,8 @@ JHipsterチームは、いくつかの公式Blueprintを維持しています。
 
 ## Kotlin
 
-KotlinのBlueprintは、Javaバックエンドコードの大部分をKotlinに置き換えます。
+KotlinのBlueprintは、Javaバックエンドコードの大部分をKotlinに置き換えます。ソースコードとドキュメントは、[jhipster-kotlin](https://github.com/jhipster/jhipster-kotlin)リポジトリにあります。
+{⭐️: 411}
 
 - コードとドキュメント: [jhipster/jhipster-kotlin](https://github.com/jhipster/jhipster-kotlin)
 - GitHub ⭐️: 411

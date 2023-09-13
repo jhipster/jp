@@ -47,13 +47,13 @@ https-proxy=http://username:password@host:port
 https_proxy=http://username:password@host:port
 ```
 
-## Yarnの設定
+## Npmの設定
 
 以下のコマンドを使用します。
 
 ```
-yarn config set proxy http://username:password@host:port
-yarn config set https-proxy http://username:password@host:port
+npm config set proxy http://username:password@host:port
+npm config set https-proxy http://username:password@host:port
 ```
 
 ## Gitの設定

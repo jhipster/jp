@@ -37,7 +37,7 @@ Angular 2+とMavenを使用する場合、`dev`プロファイルに対してweb
 
   `./mvnw -Pdev,webapp`
 
-**注** フロントエンドが変更された場合、Gradleは自動的に`dev`プロファイルでwebpackコンパイルを実行します（ライブリロードのために、起動時のみ`npm start`または`yarn start`を使用してください）。
+**注** フロントエンドが変更された場合、Gradleは自動的に`dev`プロファイルでwebpackコンパイルを実行します（ライブリロードのために、起動時のみ`npm start`を使用してください）。
 
 ## 本番環境では、JHipsterは`prod`プロファイルで実行する必要があります
 

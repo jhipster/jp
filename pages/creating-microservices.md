@@ -9,7 +9,7 @@ sitemap:
 
 # <i class="fa fa-bolt"></i> マイクロサービスの構築
 
-マイクロサービスはJHipsterアプリケーションの一種であり、フロントエンドを持たず（Angularフロントエンドは[gateway]({{ site.url }}/api-gateway/)で生成される必要があります）、[JHipsterレジストリ]({{ site.url }}/jhipster-registry/)と連携して設定、検出、管理されます。
+マイクロサービスはJHipsterアプリケーションの一種であり、フロントエンドを持たず（Angularフロントエンドは[gateway]({{ site.url }}/api-gateway/)で生成される必要があります）、[Consul]({{ site.url }}/consul/)と連携して設定、検出、管理されます。
 
 <h2 id="entities">マイクロサービスアーキテクチャにおけるエンティティ</h2>
 
@@ -34,7 +34,7 @@ JWTまたはDTOを使用する場合、Userエンティティはマイクロサ�
 
 Microfrontendサポートは進行中です。実装は変更される可能性があり、フレームワークによって異なります。最新のステータスについては、[マイクロフロントエンドのサポート](https://github.com/jhipster/generator-jhipster/issues/17031)を参照してください。
 
-JHipsterのマイクロフロントエンド実装は、[Webpack Module Federaration](https://webpack.js.org/concepts/module-federation/)を使用し、フロントエンドエンティティの実装をゲートウェイではなくマイクロサービスに配置できるようにします。
+JHipsterのマイクロフロントエンド実装は、[Webpack Module Federation](https://webpack.js.org/concepts/module-federation/)を使用し、フロントエンドエンティティの実装をゲートウェイではなくマイクロサービスに配置できるようにします。
 
 開発段階では、認証プロセスのためにゲートウェイを実行する必要があります。
 
@@ -54,7 +54,7 @@ JHipsterのマイクロフロントエンド実装は、[Webpack Module Federara
 
 マイクロサービスでHazelcastを使用すると、特定の構成となります。
 
-- 起動時に、アプリケーションはJHipsterレジストリに接続して、同じサービスの他のインスタンスが実行されているかどうかを確認します。
+- 起動時に、アプリケーションはサービスレジストリに接続して、同じサービスの他のインスタンスが実行されているかどうかを確認します。
 - `dev`プロファイルを使用すると、JHipsterはインスタンスごとに異なるポートを使用して、localhost(`127.0.0.1`)にこれらのインスタンスのクラスタを作成します。デフォルトでは、Hazelcastポートは`アプリケーションのポート+5701`です（したがって、アプリケーションのポートが`8081`の場合、Hazelcastはポート`13782`を使用します）。
 - `prod`プロファイルを使用すると、JHipsterはデフォルトのHazelcastポート（`5701`）を使用して、検出した他のすべてのノードとともにクラスタを作成します。
 

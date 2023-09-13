@@ -11,21 +11,21 @@ sitemap:
 
 ## ツール
 
-AngularはJavaScriptの代わりにTypeScriptを使用しており、その結果、効率的に動作するためには特定のツールが必要になります。Angular 2+アプリケーションの[開発]({{ site.url }}/development/)ワークフローは次のとおりです。`yarn`ではなく`npm`を使用することをお勧めします。
+AngularはJavaScriptの代わりにTypeScriptを使用しており、その結果、効率的に動作するためには特定のツールが必要になります。Angular 2+アプリケーションの[開発]({{ site.url }}/development/)ワークフローは次のとおりです。
 
 1. アプリケーションを生成すると、ファイルが作成され、生成の最後に`npm install`タスクがトリガーされます。
 2. `npm install`が完了すると、`package.json`の`postInstall`スクリプトが呼び出され、このステップによって`webapp:build`タスクがトリガーされます。
 3. これで、選択されたビルドツール（MavenまたはGradle）に基づいて、すべてのファイルが生成され、`target`または`build`フォルダ内の`www`フォルダにコンパイルされたはずです。
 4. 次に、`./mvnw`または`./gradlew`を実行してアプリケーションサーバーを起動すると、[localhost:8080](localhost:8080)で使用可能となるはずです。これは、上記の手順でコンパイルされたクライアント側のコードも提供します。
-5. 新しいターミナルで`npm start`または`yarn start`を実行して、BrowserSyncを使ってWebpack dev-serverを起動します。これにより、TypeScriptコードのコンパイルとブラウザの自動リロードが行われます。
+5. 新しいターミナルで`npm start`を実行して、BrowserSyncを使ってWebpack dev-serverを起動します。これにより、TypeScriptコードのコンパイルとブラウザの自動リロードが行われます。
 
-`npm start`または`yarn start`を実行せずにクライアント側のコードに変更を加え始めた場合、変更はコンパイルされないので何も反映されません。そのため、変更後に`npm run webapp:build`を手動で実行するか、`npm start`や`yarn start`を実行する必要があります。
+`npm start`を実行せずにクライアント側のコードに変更を加え始めた場合、変更はコンパイルされないので何も反映されません。そのため、変更後に`npm run webapp:build`を手動で実行するか、`npm start`を実行する必要があります。
 
 起動時に`./mvnw -Pdev,webapp`のような`webapp`プロファイルを渡すことで、Mavenに`webapp:dev`タスクを強制的に実行させることもできます。
 
-**注**フロントエンドが変更された場合、Gradleは自動的に`dev`プロファイルでwebpackコンパイルを実行します（起動時のみ、ライブリロードには`npm start`または`yarn start`を使用してください）。
+**注**フロントエンドが変更された場合、Gradleは自動的に`dev`プロファイルでwebpackコンパイルを実行します（起動時のみ、ライブリロードには`npm start`を使用してください）。
 
-その他の使用可能なyarn/npmコマンドは、プロジェクトの`package.json`ファイルの`scripts`セクションにあります。
+その他の使用可能なnpmコマンドは、プロジェクトの`package.json`ファイルの`scripts`セクションにあります。
 
 - ブラウザでコードを操作するには、[Angular DevTools](https://angular.io/guide/devtools)を使用することをお勧めします。Angular DevToolsは、Angularアプリケーションのデバッグとプロファイリング機能を提供するブラウザ拡張です（**注**Angular DevToolsはAngular v12以降をサポートしています）。
 

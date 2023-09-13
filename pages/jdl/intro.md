@@ -27,10 +27,10 @@ JDLは、[エンティティ・サブジェネレータ]({{ site.url }}/creating
 ビジュアルツールを使用して[関係を管理する]({{ site.url }}/managing-relationships/)方がはるかに簡単です。
 古典的なYeomanの質問と回答でエンティティを作成する方法よりも優れています。
 
-JDLプロジェクトは[GitHubで利用可能](https://github.com/jhipster/generator-jhipster/tree/main/jdl)であり、
+JDLプロジェクトは[GitHubで利用可能](https://github.com/jhipster/generator-jhipster/)であり、
 JHipster（Apache 2.0ライセンス）なオープンソースプロジェクトです。JDL構文をパースするためのnodeライブラリとしても使用できます。
 
-_[JHipsterドメイン言語](https://github.com/jhipster/generator-jhipster/tree/main/jdl)が気に入ったら、
+_[JHipsterドメイン言語](https://github.com/jhipster/generator-jhipster/)が気に入ったら、
 [JDL Studio](https://github.com/jhipster/jdl-studio/)または
 [JHipster IDE](https://github.com/jhipster/jhipster-ide/)の
 [GitHub](https://github.com/jhipster/)にスターを付けるのを忘れないでください - よろしくお願いします_！
@@ -41,6 +41,7 @@ JDLがまだわからない場合は、まず[JHipsterドメイン言語(JDL) - 
 
 ただし、すでにJDLに精通していて、JDLを使用して何ができるかを知っている場合は、詳細の参照もできます。
 マニュアルは以下です。
+  1. [入門](/jdl/getting-started)
   1. [アプリケーション](/jdl/applications)
   1. [エンティティとフィールド](/jdl/entities-fields)
   1. [列挙型](/jdl/enums)
