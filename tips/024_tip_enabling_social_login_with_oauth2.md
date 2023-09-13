@@ -7,11 +7,7 @@ lastmod: 2018-03-18T18:20:00-00:00
 ---
 # OAuth2でソーシャルログインを有効にする
 
-<<<<<<< HEAD
 OAuth2認証タイプを使用する場合、アプリはOktaやKeycloakなどのOpenID Connectサーバに接続します。管理コンソール内に外部IDプロバイダを追加することで、ソーシャルログインを有効にできます。
-=======
-When using the OAuth2 authentication type, your app connects to an OpenID Connect server such as Okta or Keycloak.  It's possible to enable social login by adding external identity providers within the administration console.
->>>>>>> upstream/main
 
 ## Oktaを使用したIDプロバイダの追加
 
@@ -23,8 +19,4 @@ Oktaコンソールにログインし、メニューから"Users" -> "Social & I
 
 Keycloakは、GitHub、Twitter、Facebook、Openshift、Google、Gitlab、LinkedIn、Microsoft、BitBucket、StackOverflow、Custom SAMLプロバイダーをサポートしています。
 
-<<<<<<< HEAD
 Keycloak管理コンソールにログインし、左側のメニューから"Identity Providers"を選択します。[Keycloakソーシャルログインのドキュメント](https://www.keycloak.org/docs/latest/server_admin/index.html#social-identity-providers)の指示に従って、プロバイダを設定し、クライアントIDとシークレットを取得します。
-=======
-Log into the Keycloak administration console and choose "Identity Providers" from the left menu.  Follow the instructions found in the [Keycloak Social Login documentation](https://www.keycloak.org/docs/latest/server_admin/index.html#social-identity-providers) to configure the provider and obtain the client ID and secret.
->>>>>>> upstream/main

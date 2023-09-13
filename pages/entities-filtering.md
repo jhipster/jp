@@ -11,16 +11,9 @@ sitemap:
 
 ## 導入
 
-<<<<<<< HEAD
 基本的なCRUD機能がエンティティに実装された後、エンティティの属性に対してさまざまなフィルタを作成したいという、非常に一般的な要求があります。
 これにより、サーバをより効果的に使用できるようになります。これらのフィルタは、すべてのクライアント（およびすべてのブラウザ）がそれを使用できるように、リクエストパラメータとして送信される必要があります。
 さらに、これらのフィルタは、合理的で簡潔なパターンに従う必要があり、自由に組み合わせることができなければなりません。
-=======
-After the basic CRUD functionalities are implemented for an entity, there is a very common request to create various filters for the attributes of the entity,
-so the server could be used more effectively. These filters should be sent as the request parameters, so any client - and any browser - could use it.
-Additionally, these filters should follow a reasonable, and concise pattern, and they must be allowed combining them freely.
->>>>>>> upstream/main
-
 ## アクティブにする方法
 
 _注意_：`filter`は`reactive`と互換性がありません。

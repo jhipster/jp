@@ -13,15 +13,9 @@ sitemap:
 
 JHipsterアプリケーションおよび関連サービスは、次の方法でデプロイできます。
 
-<<<<<<< HEAD
 - 標準kubectl/kustomize/skaffoldサブジェネレータ`jhipster kubernetes|k8s`
 - Helmサブジェネレータ`jhipster kubernetes-helm|helm-k8s`
 - Knativeサブジェネレータ`jhipster kubernetes-knative|knative`
-=======
-- Standard kubectl/kustomize/skaffold sub-generator `jhipster kubernetes|k8s`
-- Helm sub-generator `jhipster kubernetes-helm|helm-k8s`
-- Knative sub-generator `jhipster kubernetes-knative|knative`
->>>>>>> upstream/main
 
 # `jhipster kubernetes | k8s`
 
@@ -75,11 +69,7 @@ Kubernetesの設定ファイルを生成するには、新しいフォルダで�
 
 ### Enter the admin password used to secure the JHipster Registry admin（JHipsterレジストリの管理者を保護するために使用する管理者パスワードを入力してください）
 
-<<<<<<< HEAD
-この質問は、マイクロサービスアーキテクチャを選択した場合にのみ表示されます。
-=======
-This question is only displayed if you choose microservices architecture with JHipster Registry.
->>>>>>> upstream/main
+この質問は、JHipsterレジストリを用いたマイクロサービスアーキテクチャを選択した場合にのみ表示されます。
 
 ### What should we use for the Kubernetes namespace?（Kubernetesネームスペースには何を使用しますか?）
 

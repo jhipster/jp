@@ -1,17 +1,17 @@
 ---
 layout: default
-title: Allowing Common Web Fonts in Security Configuration
+title: セキュリティ設定による共通Webフォントの許可
 sitemap:
 priority: 0.1
 lastmod: 2023-08-17T00:00:00-00:00
 ---
-# Allowing Common Web Fonts in Security Configuration
+# セキュリティ設定による共通Webフォントの許可
 
-__Tip submitted by [@dinu0000](https://github.com/dinu0000)__
+__このTipは[@dinu0000](https://github.com/dinu0000)により提出されました__
 
-When developing a JHipster web application, you might encounter issues with web fonts not loading properly due to security configurations. To allow common web fonts to load seamlessly, follow these steps:
+JHipster Webアプリケーションを開発する場合、セキュリティ構成のためにWebフォントが正しくロードされないという問題が発生することがあります。一般的なWebフォントをシームレスにロードできるようにするには、次の手順に従います。
 
-In your `SecurityConfiguration.java` file, update the `filterChain` method to permit requests for web fonts:
+`SecurityConfiguration.java`ファイルの`filterChain`メソッドを更新して、Webフォントの要求を許可します。
 
 ```java
 @Bean
@@ -29,4 +29,4 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 }
 ```
 
-With these adjustments, your JHipster app's security configuration will allow the loading of common web fonts without encountering security restrictions.
+これらの設定により、あなたのJHipsterアプリのセキュリティ設定は、セキュリティ制限に遭遇することなく、通常のウェブフォントのロードを可能にします。

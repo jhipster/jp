@@ -183,19 +183,11 @@ docker-compose -f jhipster-sample-microservices/prod/prod.yml up
 
 次が起動します。
 
-<<<<<<< HEAD
-- JHipsterレジストリ
+- ConsulまたはJHipsterレジストリ
 - ゲートウェイ
 - MySQLデータベース
 - マイクロサービス
 - PostgreSQLデータベース
-=======
-- Consul or the JHipster Registry
-- the gateway
-- a MySQL database
-- the microservice
-- a PostgreSQL database
->>>>>>> upstream/main
 
 
 マイクロサービスをスケールアップさせます。

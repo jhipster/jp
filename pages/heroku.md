@@ -253,11 +253,7 @@ Docker化されたJHipsterアプリを[securityheaders.com](https://securityhead
 
 ## マイクロサービスのデプロイ
 
-<<<<<<< HEAD
-JHipsterマイクロサービスには、[JHipsterでマイクロサービスを実行する](/microservices-architecture/)ドキュメントで説明されているように、JHipsterレジストリが必要です。次のボタンをクリックすると、レジストリをHerokuにデプロイできます。
-=======
-JHipster microservices require Consul or JHipster Registry as described in the [Doing microservices with JHipster](/microservices-architecture/) documentation. You can deploy a JHipster registry to Heroku by clicking this button:
->>>>>>> upstream/main
+JHipsterマイクロサービスには、[JHipsterでマイクロサービスを実行する](/microservices-architecture/)ドキュメントで説明されているように、ConsulまたはJHipsterレジストリが必要です。次のボタンをクリックすると、JHipsterレジストリをHerokuにデプロイできます。
 
 [![Herokuにデプロイ](https://camo.githubusercontent.com/c0824806f5221ebb7d25e559568582dd39dd1170/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e706e67)](https://dashboard.heroku.com/new?&template=https%3A%2F%2Fgithub.com%2Fjhipster%2Fjhipster-registry)
 

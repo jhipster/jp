@@ -1,83 +1,83 @@
 ---
 layout: default
-title: Release 8.0.0-beta.3
+title: リリース 8.0.0-beta.3
 ---
 
-# JHipster release v8.0.0-beta.3
+JHipsterリリース v8.0.0-beta.3
 
-This is our third beta release for JHipster v8.
+これは、JHipster v8の3番目のベータリリースです。
 
-It includes more than [336 closed tickets and pull requests on the main project](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.3).
+これには、[336以上のクローズされたチケットとメインプロジェクトのプルリクエスト]が含まれています。(https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.3).
 
-_It is not available through the usual channels as this is a beta release, please read below for more information!_
+_これはベータ版のリリースであるため、通常の方法では入手できません。詳細については、以下を参照してください!_
 
-## What's new?
+## 何が新しくなりましたか?
 
-### :gem: Features & Enhancements
+### :gem: 機能と拡張機能
 
-- Cleanup JDL [#23402](https://github.com/jhipster/generator-jhipster/pull/23402)
-- Expose dev blueprint to blueprints and improvements to argument parsing. [#23395](https://github.com/jhipster/generator-jhipster/pull/23395)
-- Fix compilation errors in reactive app [#23234](https://github.com/jhipster/generator-jhipster/pull/23234)
-- Fix H2 console [#23150](https://github.com/jhipster/generator-jhipster/pull/23150)
-- Fix time zone issue with hibernate 6.2.x [#22946](https://github.com/jhipster/generator-jhipster/pull/22946)
-- fix compilation failure for openapi and gradle [#23151](https://github.com/jhipster/generator-jhipster/pull/23151)
-- add a development blueprint [#23087](https://github.com/jhipster/generator-jhipster/pull/23087)
-- Add support for JDK 20 and 21 [#23344](https://github.com/jhipster/generator-jhipster/pull/23344)
-- Update spring-boot version to 3.1.3 [#23277](https://github.com/jhipster/generator-jhipster/pull/23277)
-- Switch to hibernate 6.2.x [#23107](https://github.com/jhipster/generator-jhipster/pull/23107)
-- Update maven version to 3.9.4 [#23280](https://github.com/jhipster/generator-jhipster/pull/23280)
-- Upgrade to Gradle 8.3 [#23200](https://github.com/jhipster/generator-jhipster/pull/23200)
-- Upgrade keycloak 22.0.1 [#23098](https://github.com/jhipster/generator-jhipster/pull/23098)
-- Update Node version to 18.17.1 [#23278](https://github.com/jhipster/generator-jhipster/pull/23278)
-- Update openapi-generator-maven-plugin version to 7.0.0 [#23303](https://github.com/jhipster/generator-jhipster/pull/23303)
-- allow upgrade to use node 16. [#22863](https://github.com/jhipster/generator-jhipster/pull/22863)
-- Fixes deploying with context-path [#23166](https://github.com/jhipster/generator-jhipster/pull/23166)
+- JDLのクリーンアップ [#23402](https://github.com/jhipster/generator-jhipster/pull/23402)
+- 開発用のBlueprint公開、引数の解析を改善 [#23395](https://github.com/jhipster/generator-jhipster/pull/23395)
+- リアクティブアプリのコンパイルエラーを修正 [#23234](https://github.com/jhipster/generator-jhipster/pull/23234)
+- H2コンソールの修正 [#23150](https://github.com/jhipster/generator-jhipster/pull/23150)
+- hibernate 6.2.xのタイムゾーンの問題を修正 [#22946](https://github.com/jhipster/generator-jhipster/pull/22946)
+- openapiとgradleのコンパイルエラーを修正 [#23151](https://github.com/jhipster/generator-jhipster/pull/23151)
+- dev用のBlueprintを追加 [#23087](https://github.com/jhipster/generator-jhipster/pull/23087)
+- JDK 20および21のサポートを追加 [#23344](https://github.com/jhipster/generator-jhipster/pull/23344)
+- spring-bootのバージョンを3.1.3に更新 [#23277](https://github.com/jhipster/generator-jhipster/pull/23277)
+- hibernate 6.2.xに切り替え [#23107](https://github.com/jhipster/generator-jhipster/pull/23107)
+- mavenのバージョンを3.9.4に更新 [#23280](https://github.com/jhipster/generator-jhipster/pull/23280)
+- Gradle 8.3にアップグレード [#23200](https://github.com/jhipster/generator-jhipster/pull/23200)
+- keycloak 22.0.1にアップグレード [#23098](https://github.com/jhipster/generator-jhipster/pull/23098)
+- Nodeのバージョンを18.17.1に更新 [#23278](https://github.com/jhipster/generator-jhipster/pull/23278)
+- openapi-generator-maven-pluginのバージョンを7.0.0に更新 [#23303](https://github.com/jhipster/generator-jhipster/pull/23303)
+- アップグレードでNode16を使用できるようになった [#22863](https://github.com/jhipster/generator-jhipster/pull/22863)
+- context-pathを使用したデプロイを修正 [#23166](https://github.com/jhipster/generator-jhipster/pull/23166)
 
 ### :computer: Frontend
 
-- Moved test files from test folder to main for vue [#23188](https://github.com/jhipster/generator-jhipster/pull/23188)
-- Fix error related to importing Buffer with Angular [#23216](https://github.com/jhipster/generator-jhipster/pull/23216)
-- Update to prettier 3 [#22875](https://github.com/jhipster/generator-jhipster/pull/22875)
+- vueのテストファイルをテストフォルダからメインフォルダに移動 [#23188](https://github.com/jhipster/generator-jhipster/pull/23188)
+- Angularでのバッファのインポートに関連するエラーを修正 [#23216](https://github.com/jhipster/generator-jhipster/pull/23216)
+- prettier 3に更新 [#22875](https://github.com/jhipster/generator-jhipster/pull/22875)
 
 ### :paw_prints: JDL/Internals/Blueprints
 
-- fix composing with entities [#23304](https://github.com/jhipster/generator-jhipster/pull/23304)
-- integrate eslint [#22893](https://github.com/jhipster/generator-jhipster/pull/22893)
+- エンティティ合成を修正[#23304](https://github.com/jhipster/generator-jhipster/pull/23304)
+- eslintの統合 [#22893](https://github.com/jhipster/generator-jhipster/pull/22893)
 
-### :scroll: Others
+### :scroll: その他
 
-- Many improvements
-- Many libraries upgrades
-- Many bug fixes
+- 多くの改善
+- 多くのライブラリのアップグレード
+- 多くのバグ修正
 
-## Closed tickets and merged pull requests
+## クローズされたチケットとマージされたプルリクエスト
 
-As always, **[you can check all closed tickets and merged pull requests here](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.3)**.
+いつものように、__[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-beta.3)__。
 
-## How to install
+## インストール方法
 
-This is a beta release, so it is not available on our usual "stable" release channel.
+これはベータ版リリースなので、通常の「安定版」リリースの方法では入手できません。
 
-To install JHipster v8.0.0-beta.3 using using NPM:
+NPMを使用してJHipster v8.0.0-beta.3をインストールするには、以下のようにします。
 
     npm install -g generator-jhipster@beta
 
-It is also available using the JHipster Docker image, as it is automatically built from our source code.
+また、JHipster Dockerイメージも利用可能です。ソースコードから自動的に構築されます。
 
-However, as this is a BETA release it will not be available using our other usual channels like:
+しかし、これはベータリリースであるため、次のような方法では入手できません。
 
 - [JHipster Online](https://start.jhipster.tech)
 - [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
 
-You also won’t be able to use the `jhipster upgrade` sub-generator, as it won’t “see” the BETA release, which is distributed through a specific beta channel on NPM.
+また、ベータリリースはNPMの特定のベータチャネルを通じても見ることができないことから、`jhipster upgrade`サブジェネレータを使用することもできません。
 
-## Help and bugs
+## ヘルプとバグ
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- [@jhipster](https://twitter.com/jhipster)のTwitterアカウントに連絡をお願いします。

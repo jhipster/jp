@@ -115,11 +115,7 @@ jibがキャッシュ内のベースDockerイメージをまだプルしてい�
 
 - `docker-compose -f src/main/docker/app.yml up`
 
-<<<<<<< HEAD
-このコマンドによって、アプリケーションとそれに依存するサービス（データベース、検索エンジン、JHipster Registryなど）が起動されます。
-=======
-This command will start up your application and the services it relies on (database, search engine, Consul, JHipster Registry...).
->>>>>>> upstream/main
+このコマンドによって、アプリケーションとそれに依存するサービス（データベース、検索エンジン、Consul、JHipster Registryなど）が起動されます。
 
 認証にOAuth 2.0を選択した場合は、[このドキュメントのKeycloakセクション](#7)を必ずお読みください。
 
@@ -136,19 +132,11 @@ This command will start up your application and the services it relies on (datab
 
 これにより、グローバルなDocker Compose設定が生成され、`docker-compose up`と入力して実行すると、すべてのサービスが一度に実行されます。
 
-<<<<<<< HEAD
-マイクロサービスアーキテクチャの場合、この設定によりJHipster RegistryまたはConsulも事前設定され、サービスも自動的に設定されます。
+マイクロサービスアーキテクチャの場合、この設定によりConsulまたはJHipster Registryも事前設定され、サービスも自動的に設定されます。
 
-- これらのサービスは、JHipsterレジストリ（またはConsul）が起動するまで待機します。これは、`spring.cloud[.consul].config.fail-fast`および`spring.cloud[.consul].config.retry`キーを使用して、`bootstrap-prod.yml`ファイルで設定できます。
+- これらのサービスは、Consul（またはJHipsterレジストリ）が起動するまで待機します。これは、`spring.cloud[.consul].config.fail-fast`および`spring.cloud[.consul].config.retry`キーを使用して、`bootstrap-prod.yml`ファイルで設定できます。
 - レジストリーはアプリケーションを構成します。例えば、すべてのサービス間でJWTシークレットトークンを共有します。
 - 各サービスのスケーリングはDocker Composeを使用して行われます。たとえば、`docker-compose scale test-app=4`と入力すると、アプリケーション"test"の4つのインスタンスが実行されます。これらのインスタンスはゲートウェイによって自動的にロードバランシングされ、同じHazelcastクラスタに自動的に参加します（HazelcastがHibernateの第2レベルのキャッシュである場合）。
-=======
-In the case of a microservice architecture, this configuration will also pre-configure Consul or JHipster Registry, that will configure your services automatically:
-
-- Those services will wait until the Consul (or JHipster Registry) is running to start. This can be configured in your `bootstrap-prod.yml` file using the `spring.cloud[.consul].config.fail-fast` and `spring.cloud[.consul].config.retry` keys.
-- The registry will configure your applications, for example it will share the JWT secret token between all services.
-- Scaling each service is done using Docker Compose, for example type `docker-compose scale test-app=4` to have 4 instances of application "test" running. Those instances will be automatically load-balanced by the gateway(s), and will automatically join the same Hazelcast cluster (if Hazelcast is your Hibernate 2nd-level cache).
->>>>>>> upstream/main
 
 
 <h2 id="4">データベースの操作</h2>

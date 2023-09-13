@@ -55,11 +55,7 @@ Mavenを使用してJavaサーバーを起動できます。JHipsterにはMaven�
 
 このアプリケーションは、[http://localhost:8080](http://localhost:8080)で利用可能です。
 
-<<<<<<< HEAD
-`npm start`または`yarn start`でライブリロードを使用する場合は、次の方法でwebpackタスクを除外することで、サーバの起動を高速化できます。
-=======
-If you will use live reload with `npm start` then you can speed up server start up by excluding webpack tasks by:
->>>>>>> upstream/main
+`npm start`でライブリロードを使用する場合は、次の方法でwebpackタスクを除外することで、サーバの起動を高速化できます。
 
 `./mvnw -P-webapp`
 
@@ -79,11 +75,7 @@ Gradleオプションを選択した場合、JHipsterはGradleラッパーを提
 
 このアプリケーションは、[http://localhost:8080](http://localhost:8080)で利用可能です。
 
-<<<<<<< HEAD
-`npm start`または`yarn start`でライブリロードを使用する場合は、次の方法でwebpackタスクを除外することで、サーバの起動を高速化できます。
-=======
-If you will use live reload with `npm start` then you can speed up server start up by excluding webpack tasks by:
->>>>>>> upstream/main
+`npm start`でライブリロードを使用する場合は、次の方法でwebpackタスクを除外することで、サーバの起動を高速化できます。
 
 `./gradlew -x webapp`
 
@@ -103,13 +95,7 @@ Webpackの実行は`package.json`ファイルのデフォルトタスクなの�
 
 `npm start`
 
-<<<<<<< HEAD
-（または、Yarnを使用する場合は、`yarn start`）
-
 これにより、非常に優れた機能が提供されます。
-=======
-This provides very impressive features:
->>>>>>> upstream/main
 
 *   HTML/CSS/TypeScriptファイルのいずれかを変更すると、ブラウザが自動的に更新されます。
 *   複数の異なるブラウザまたはデバイスでアプリケーションをテストする場合、すべてのクリック/スクロール/入力が、すべての画面で自動的に同期されることになります。
@@ -131,15 +117,9 @@ This provides very impressive features:
 
 プロジェクトのすべてのチームメンバーがすべての依存関係の同じバージョンを持つように、[`package-lock.json`](https://docs.npmjs.com/files/package-lock.json)をソース管理にチェックインすることをお勧めします。`npm install`を再度実行すると、最新バージョンの推移的な依存関係を持つ`package-lock.json`が再生成されます。
 
-<<<<<<< HEAD
-### その他のNPM/Yarnタスク
+### その他のNPMタスク
 
-以下のタスクは、NPMを使用するかYarnを使用するかにかかわらず同じです。ここでは例として`npm`コマンドを使用しますが、`yarn`に置き換えることができます。
-=======
-### Other NPM tasks
-
-Some `npm` commands used as an example.
->>>>>>> upstream/main
+ここではいくつかの`npm`コマンドの例を示します。
 
 - `npm run lint`: TypeScriptコード内のコードスタイルの問題をチェックします。
 - `npm run lint:fix`: TypeScriptのlint問題を自動的に修正します。

@@ -15,16 +15,9 @@ sitemap:
 
 JHipsterでは、4つの方法を用意しています。迷ったら、2番目の「NPMによるローカルインストール」を選んでください。
 
-<<<<<<< HEAD
 * [JHipster Online](https://start.jhipster.tech/)は、JHipsterをインストールせずにアプリケーションを生成するための方法です。
-* 「NPMによるローカルインストール」は、JHipsterで作業する本格的な方法です。すべてはあなたのマシンにインストールされ、セットアップが少し複雑になりますが、ほとんどの人は通常この方法で作業します。迷ったらこのインストールを選択してください。
-* 「Yarnによるローカルインストール」は、本格的な「NPMによるローカルインストール」と同じですが、NPMの代わりに [Yarn](https://yarnpkg.com/) を使用します。Yarnは私たちのコミュニティではNPMに比べてあまり使われておらず、初心者にはお勧めできない選択であることに注意してください。
+* 「NPMによるローカルインストール」は、JHipsterで作業する本格的な方法です。すべてはあなたのマシンにインストールされ、セットアップが少し複雑になりますが、ほとんどの人は通常この方法で作業します。
 * 「[Docker](https://www.docker.io/)」コンテナは、JHipsterがインストールされた軽量コンテナを提供する方法です。
-=======
-*   [JHipster Online](https://start.jhipster.tech/) is a way to generate an application without installing JHipster in the first place.
-*   "Local installation with NPM" is the classical way of working with JHipster. Everything is installed on your machine, which can be a little complex to set up, but that's how most people usually work.
-*   The "[Docker](https://www.docker.io/)" container, which brings you a lightweight container with JHipster installed.
->>>>>>> upstream/main
 
 ## JHipster Online (JHipsterを簡単に実行したいユーザー向け)
 
@@ -63,26 +56,7 @@ JHipsterは、コード生成に[Yeoman](http://yeoman.io/)を使用していま
 
 設定は生成された `.yo-rc.json` ファイルに保存します。そのため、HOMEディレクトリにJHipsterプロジェクトを生成しないことを **強く** 推奨します。もしそうしてしまうと、サブディレクトリに別のプロジェクトを生成できなくなります。これを解決するには、`.yo-rc.json`ファイルを削除してください。
 
-<<<<<<< HEAD
-## Yarnによるローカルインストール (NPM の代替)
-
-### クイックセットアップ
-
-これは、NPMを使うのと同じ手順ですが、2つの違いがあります。
-
-1. [Yarnのウェブサイト](https://yarnpkg.com/en/docs/install)からYarnをインストールします。
-2. `yarn global add generator-jhipster`でJHipsterをインストールします。 
-
-### トラブルシューティング
-
-Yarnをグローバルに使用する際、問題がある場合は、`$HOME/.config/yarn/global/node_modules/.bin`がパスに入っていることを確認してください。
-
-MacまたはLinuxの場合```export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"```を実施します。
-
 ## Dockerのインストール（上級者向けのみ）
-=======
-## Docker installation (for advanced users only)
->>>>>>> upstream/main
 
 _このDockerイメージは、JHipsterジェネレータをコンテナ内で動作させるためのものであることに注意してください。JHipsterが生成する[DockerとDocker Composeの設定]({{ site.url }}/docker-compose/) とは全く異なります。これは生成したアプリケーションをコンテナ内で実行することが目的です。_
 
@@ -199,17 +173,7 @@ Ubuntu Xenialでは`sudo`コマンドが使えないので、"root"でログイ�
 
 `jhipster`
 
-<<<<<<< HEAD
-<div class="alert alert-info"><i>ヒント:</i>
-
-Yarnを使用したい場合は、<code>jhipster --yarn</code> により、NPMの代わりにYarnを使用できます。
-
-</div>
-
 アプリケーションが作成されたら、以下のように、通常のgulp/bower/mavenのコマンドをすべて実行できます。
-=======
-Once your application is created, you can run all the normal gulp/bower/maven commands, for example:
->>>>>>> upstream/main
 
 `./mvnw`
 

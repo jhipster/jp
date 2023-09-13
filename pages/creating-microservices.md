@@ -9,11 +9,7 @@ sitemap:
 
 # <i class="fa fa-bolt"></i> マイクロサービスの構築
 
-<<<<<<< HEAD
-マイクロサービスはJHipsterアプリケーションの一種であり、フロントエンドを持たず（Angularフロントエンドは[gateway]({{ site.url }}/api-gateway/)で生成される必要があります）、[JHipsterレジストリ]({{ site.url }}/jhipster-registry/)と連携して設定、検出、管理されます。
-=======
-Microservices are a type of JHipster application, that have no front-end (the Angular front-end must be generated on a [gateway]({{ site.url }}/api-gateway/)), and which work with the [Consul]({{ site.url }}/consul/) to be configured, discovered, and managed.
->>>>>>> upstream/main
+マイクロサービスはJHipsterアプリケーションの一種であり、フロントエンドを持たず（Angularフロントエンドは[gateway]({{ site.url }}/api-gateway/)で生成される必要があります）、[Consul]({{ site.url }}/consul/)と連携して設定、検出、管理されます。
 
 <h2 id="entities">マイクロサービスアーキテクチャにおけるエンティティ</h2>
 
@@ -38,11 +34,7 @@ JWTまたはDTOを使用する場合、Userエンティティはマイクロサ�
 
 Microfrontendサポートは進行中です。実装は変更される可能性があり、フレームワークによって異なります。最新のステータスについては、[マイクロフロントエンドのサポート](https://github.com/jhipster/generator-jhipster/issues/17031)を参照してください。
 
-<<<<<<< HEAD
-JHipsterのマイクロフロントエンド実装は、[Webpack Module Federaration](https://webpack.js.org/concepts/module-federation/)を使用し、フロントエンドエンティティの実装をゲートウェイではなくマイクロサービスに配置できるようにします。
-=======
-JHipster's microfrontends implementation uses [Webpack Module Federation](https://webpack.js.org/concepts/module-federation/) and allows frontend entities implementation to be located in the microservice instead of in the gateway.
->>>>>>> upstream/main
+JHipsterのマイクロフロントエンド実装は、[Webpack Module Federation](https://webpack.js.org/concepts/module-federation/)を使用し、フロントエンドエンティティの実装をゲートウェイではなくマイクロサービスに配置できるようにします。
 
 開発段階では、認証プロセスのためにゲートウェイを実行する必要があります。
 
@@ -62,15 +54,9 @@ JHipster's microfrontends implementation uses [Webpack Module Federation](https:
 
 マイクロサービスでHazelcastを使用すると、特定の構成となります。
 
-<<<<<<< HEAD
-- 起動時に、アプリケーションはJHipsterレジストリに接続して、同じサービスの他のインスタンスが実行されているかどうかを確認します。
+- 起動時に、アプリケーションはサービスレジストリに接続して、同じサービスの他のインスタンスが実行されているかどうかを確認します。
 - `dev`プロファイルを使用すると、JHipsterはインスタンスごとに異なるポートを使用して、localhost(`127.0.0.1`)にこれらのインスタンスのクラスタを作成します。デフォルトでは、Hazelcastポートは`アプリケーションのポート+5701`です（したがって、アプリケーションのポートが`8081`の場合、Hazelcastはポート`13782`を使用します）。
 - `prod`プロファイルを使用すると、JHipsterはデフォルトのHazelcastポート（`5701`）を使用して、検出した他のすべてのノードとともにクラスタを作成します。
-=======
-- At start-up, your application will connect to the Service Registry to find if other instances of the same service are running
-- With the `dev` profile, JHipster will create a cluster of those instances on localhost (`127.0.0.1`),  using a different port per instance. By default, the Hazelcast port is `your application's port + 5701` (so if your application's port is `8081`, Hazelcast will use port `13782`)
-- With the `prod` profile, JHipster will create a cluster with all the other nodes it finds, using the default Hazelcast port (`5701`)
->>>>>>> upstream/main
 
 <h2 id="no_database">データベースを持たないマイクロサービス</h2>
 

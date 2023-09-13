@@ -79,28 +79,7 @@ Gradleを使用する場合は、次のコマンドを実行してください�
     * `target/jhipster-0.0.1-SNAPSHOT.war`
     * `target/jhipster-0.0.1-SNAPSHOT.war.original` 
 
-<<<<<<< HEAD
-**注意** コンテキストパスでJARまたはWARファイルを構築し、**かつ**、**Reactクライアント**または**Vueクライアント**を選択した場合、`webpack.prod.js`または`webpack.common.js`（**Vue**の場合は両方のファイル）を適切な`base`属性値で更新する必要があります。
-`jhipster`をコンテキストパスとして考えると、`base`属性値は次のようになります。
-
-```
-new HtmlWebpackPlugin({
-    ...
-    base: '/jhipster/'
-})
-```
-
-**Angularクライアント**を選択した場合は、`index.html`を適切な`base`タグで更新する必要があります。
-`jhipster`をコンテキストパスとして考えると、`base`タグの値は次のようになります。
-
-```
-<base href="/jhipster/"/>
-```
-
 **注意**`prod`プロファイルでJARまたはWARファイルを構築する場合、生成されるアーカイブには`dev`アセットは含まれません。
-=======
-**Please note** that when building a JAR or WAR file with the `prod` profile, the generated archive will not include the `dev` assets.
->>>>>>> upstream/main
 
 
 #### Gradleを使用
@@ -115,29 +94,8 @@ new HtmlWebpackPlugin({
 
 `./gradlew -Pprod -Pwar clean bootWar`
 
-<<<<<<< HEAD
-**注意** コンテキストパスでJARまたはWARファイルを構築し、**かつ**、**Reactクライアント**または**Vueクライアント**を選択した場合、`webpack.prod.js`または`webpack.common.js`（**Vue**の場合は両方のファイル）を適切な`base`属性値で更新する必要があります。
-`jhipster`をコンテキストパスとして考えると、`base`属性値は次のようになります。
-
-```
-new HtmlWebpackPlugin({
-    ...
-    base: '/jhipster/'
-})
-```
-
-**Angularクライアント**を選択した場合は、`index.html`を適切な`base`タグで更新する必要があります。
-`jhipster`をコンテキストパスとして考えると、`base`タグの値は次のようになります。
-
-```
-<base href="/jhipster/"/>
-```
-
-**注意**`prod`プロファイルでJARまたはWARファイルを構築する場合、生成されるアーカイブには`dev`アセットは含まれません。
 
 <h2 id="run">プロダクション環境での実行</h2>
-=======
->>>>>>> upstream/main
 
 ### アプリケーションサーバーを使用しないJARファイルの実行
 
@@ -153,16 +111,7 @@ Windowsの場合は、次のコマンドを使用します。
 
 **注意**このJARファイルは、ビルド時に選択したプロファイルを使用します。前のセクションで`prod`ファイルを使用してビルドされたため、`prod`プロファイルで実行されます。
 
-<<<<<<< HEAD
-コンテキストパスは、次のように環境変数またはコマンドラインパラメータとして指定できます。
-```bash 
-java -jar jhipster.jar --server.servlet.context-path=/jhipster
-```
-
 ### Dockerコンテナでのアプリケーションの実行
-=======
-### Running the application in a Docker container
->>>>>>> upstream/main
 
 JHipsterは、Dockerに対する第一級のサポートを提供しています。実行可能なJARファイルをDockerイメージにバンドルして、Docker内で実行します。
 
@@ -299,18 +248,15 @@ JHipsterアプリケーションの前にフロントエンドHTTPSプロキシ�
 - Let's Encryptの設定：`certbot --apache -d <your-domain.com> --agree-tos -m <your-email> --redirect`
 - SSL証明書の自動更新を設定：crontablに`10 3 * * * /usr/bin/certbot renew --quiet`を追加
 
-<<<<<<< HEAD
-<h2 id="monitoring">モニタリング</h2>
-=======
-### Custom Context Path
+### カスタムコンテキストパス
 
-You can specify a context path for your Spring Boot backend by passing in a `server.servlet.context-path` parameter and value:
+`server.servlet.context-path`パラメータと値を渡すことで、Spring Bootバックエンドのコンテキストパスを指定できます。
 
 ```bash
 java -jar jhipster.jar --server.servlet.context-path=/jhipster/
 ```
 
-Or, you can add this configuration to `application.yml`:
+または、この設定を`application.yml`に追加することもできます。
 
 ```
 ---
@@ -319,16 +265,16 @@ server:
     context-path: /jhipster/
 ```
 
-For frontend bundlers, the context path is a build-time configuration.
+フロントエンドバンドラの場合、コンテキストパスはビルド時の設定となります。
 
-**Angular** frontends can be configured using:
-- `angular.json`: `projects -> * your project name -> architect -> build -> options -> baseHref : '/jhipster/'`
+**Angular** フロントエンドは以下を使用して設定できます。
+- `angular.json`: `projects -> * プロジェクト名 -> architect -> build -> options -> baseHref : '/jhipster/'`
 - `ng build --base-href '/jhipster/'`
-- Use [APP_BASE_HREF](https://angular.io/api/common/APP_BASE_HREF)
+- [APP_BASE_HREF](https://angular.io/api/common/APP_BASE_HREF)を使用してください。
 
-For **Webpack-based** frontends, you can configure using:
+**Webpack-based** フロントエンドは以下を使用して設定できます。
 
-- Webpack configuration file:
+- Webpackの設定ファイル
 ```
 new HtmlWebpackPlugin({
     ...
@@ -336,12 +282,11 @@ new HtmlWebpackPlugin({
 })
 ```
 
-Others modifications may be necessary, like configuring your development server and adjusting iframes in pages like swagger-ui.
+その他にも、開発サーバーの設定やswagger-uiのようなページでのiframeの調整などの変更が必要になる場合があります。
 
-**Please note** that using a relative base path like `./` is possible, but you must adjust other configurations to be compatible with it.
+**注意** `./`のような相対ベースパスを使用することは可能ですが、それと互換性を持つように他の設定を調整する必要があります。
 
-<h2 id="monitoring">Monitoring</h2>
->>>>>>> upstream/main
+<h2 id="monitoring">モニタリング</h2>
 
 JHipsterは、[Micrometer](https://micrometer.io/)による完全なモニタリングサポートを備えています。
 

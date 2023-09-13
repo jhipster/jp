@@ -54,13 +54,8 @@ Single Web page Applicationがニーズと合わない場合はどうすれば�
 
 マイクロサービスはオプションで、完全にサポートされています。
 
-<<<<<<< HEAD
 * [Spring Cloud Gateway](https://github.com/spring-cloud/spring-cloud-gateway)を利用したHTTPルーティング
-* [Netflix Eureka](https://github.com/Netflix/eureka)、[HashiCorp Consul](https://www.consul.io/)を利用したサービスディスカバリ
-=======
-* HTTP routing using [Spring Cloud Gateway](https://github.com/spring-cloud/spring-cloud-gateway)
-* Service discovery using [HashiCorp Consul](https://www.consul.io/) or [Netflix Eureka](https://github.com/Netflix/eureka)
->>>>>>> upstream/main
+* [HashiCorp Consul](https://www.consul.io/)、[Netflix Eureka](https://github.com/Netflix/eureka)を利用したサービスディスカバリ
 
 ## プロダクションへ進む準備
 

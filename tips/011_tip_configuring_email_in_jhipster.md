@@ -170,10 +170,6 @@ _application-dev.yml_
 
 *同様に、他の電子メールサービスも設定できます。電子メールサービスのSMTPメールサーバとサーバポートを確認し、それに応じて上記のフィールドを変更してください*
 
-<<<<<<< HEAD
 ___アプリケーションを実行しましょう！登録ページに移動し、有効な電子メールアドレスを指定してフォームを送信すると、上記で設定した電子メールアドレスからアクティベーション電子メールが送信されます。___
-=======
-___Now run your application! Go to Register Page, submit the form with a valid Email address and you should receive an Activation Email from the above configured Email Address.___
->>>>>>> upstream/main
 
 __注__:[これらの例](https://github.com/RawSanj/java-mail-clients)を使用すると、資格情報を使用してテスト電子メールを送信できます。

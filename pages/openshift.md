@@ -76,11 +76,7 @@ OpenShiftの設定ファイルを生成するには、project/rootフォルダ�
 
 ### Enter the admin password used to secure the JHipster Registry admin（JHipsterレジストリの管理者を保護するために使用する管理者パスワードを入力してください）
 
-<<<<<<< HEAD
-この質問は、マイクロサービスアーキテクチャを選択した場合にのみ表示されます。
-=======
-This question is only displayed if you choose microservices architecture with JHipster Registry.
->>>>>>> upstream/main
+この質問は、JHipsterレジストリを用いたマイクロサービスアーキテクチャを選択した場合にのみ表示されます。
 
 
 ### What should we use for the OpenShift namespace?（OpenShiftネームスペースには何を使用しますか?）

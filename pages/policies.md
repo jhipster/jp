@@ -56,16 +56,9 @@ JHipsterの重要な側面は、ユーザと開発者のエクスペリエンス
 
 開発者の経験は主観的であるため、以下はJHipsterコミュニティの大まかなガイドとなります。これは、JHipsterを製品およびプラットフォームとして使用する全体的な経験になります。これには以下が含まれます。
 
-<<<<<<< HEAD
 - JHipster CLIエクスペリエンス（使いやすさ、直感的さ、スピードなど）
 - 生成されたコード（品質、シンプルさ、読みやすさ、メンテナンスの容易さ、アップグレードの容易さ、親しみやすさなど）
 - JHipsterオンライン、JDLスタジオなどのツールのUX
 - ドキュメント（Webサイトおよび生成されたReadme）
-=======
-- The JHipster CLI experience (ease of use, intuitiveness, speed etc)
-- Generated code (quality, simplicity, readability, maintenance ease, upgradability, familiarity etc)
-- UX of Tools like JHipster online, JDL studio
-- Docs (Website & generated Readme)
->>>>>>> upstream/main
 
 このポリシーの実施に関して意見の相違がある場合は、[メーリングリスト](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)においてケース・ツー・ケースで議論・投票し、それを解決できます。

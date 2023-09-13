@@ -47,11 +47,7 @@ https-proxy=http://username:password@host:port
 https_proxy=http://username:password@host:port
 ```
 
-<<<<<<< HEAD
-## Yarnの設定
-=======
-## Npm configuration
->>>>>>> upstream/main
+## Npmの設定
 
 以下のコマンドを使用します。
 
