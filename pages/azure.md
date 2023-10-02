@@ -11,10 +11,17 @@ sitemap:
 
 [Microsoft Azure](https://azure.microsoft.com/overview/?WT.mc_id=online-jhipster-judubois)は、クラウドでJHipsterアプリケーションを実行するための優れたソリューションです。
 
+<<<<<<< HEAD
 - 最も簡単な方法は、[Azure App Service](https://azure.microsoft.com/services/app-service/?WT.mc_id=online-jhipster-judubois)を使用してモノリスをデプロイすることです。
 - Spring Bootマイクロサービスを使用している場合、
  [Azure Spring Apps](https://azure.microsoft.com/services/spring-apps/?WT.mc_id=online-jhipster-judubois)は、JHipsterアプリケーションを完全にサポートします。
 - 他のDockerおよびKubernetesクラウドプロバイダと同様に、JHipster DockerおよびKubernetesサポートを使用して、DockerイメージをMicrosoft Azureにデプロイできます。これらのオプションの詳細については、[Docker Composeドキュメント]({{ site.url }}/docker-compose/)および[Kubernetesドキュメント]({{ site.url }}/kubernetes/)に従ってください。
+=======
+- The easiest way is to use [JHipster Azure Spring Apps](https://github.com/Azure/generator-jhipster-azure-spring-apps) to create and deploy your project from end to end. Jhipster Azure Spring Apps is designed to streamline your full-stack Spring application development, leveraging the robust infrastructure of Azure Spring Apps to bring your projects to life with unprecedented ease and efficiency.
+- If you are using Spring Boot microservices, [Azure Spring Apps](https://azure.microsoft.com/services/spring-apps/?WT.mc_id=online-jhipster-judubois) fully supports JHipster applications. You can read more on the [Quickstart](https://learn.microsoft.com/azure/spring-apps/quickstart-deploy-microservice-apps)
+- You can also try [Azure App Service](https://azure.microsoft.com/services/app-service/?WT.mc_id=online-jhipster-judubois) to deploy your monoliths.
+- As with any Docker and Kubernetes cloud provider, you can use the JHipster Docker and Kubernetes support to deploy your Docker images to Microsoft Azure. Follow our [Docker Compose documentation]({{ site.url }}/docker-compose/) and our [Kubernetes documentation]({{ site.url }}/kubernetes/) for more information on these options.
+>>>>>>> upstream/main
 
 [![Microsoft Azure]({{ site.url }}/images/logo/logo-azure.png)](https://azure.microsoft.com/overview/?WT.mc_id=online-jhipster-judubois)
 
