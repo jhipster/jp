@@ -83,7 +83,7 @@ JHipsterアップグレードサブジェネレータによって処理される
 5. `jhipster_upgrade`ブランチをチェックアウトします。
 6. JHipsterを利用可能な最新バージョンにグローバルにアップグレードします。
 7. 現在のプロジェクトフォルダをクリーンアップします。
-8. `jhipster --force --with-entities`コマンドを使用してアプリケーションを再生成します。
+8. `jhipster --force`コマンドを使用してアプリケーションを再生成します。
 9. 生成されたコードを`jhipster_upgrade`ブランチにコミットします。
 10. `npx jhipster_upgrade`コマンドが起動された元のブランチに`jhipster_upgrade`ブランチをマージして戻します。
 11. ここで、マージ競合がある場合は、それを解決する必要があります。
@@ -123,7 +123,7 @@ jhipster
 次のコマンドの実行で、プロジェクトとそのすべてのエンティティの更新もできます。
 
 ```
-jhipster --with-entities
+jhipster --force
 ```
 
 また、エンティティサブジェネレータを再度実行して、エンティティの1つずつの更新もできます。たとえば、エンティティの名前が _Foo_ の場合は次のとおりです。
@@ -159,7 +159,7 @@ npm install -g generator-jhipster@前回使用したJHipsterのバージョン
 プロジェクトを再生成します。
 
 ```
-jhipster --force --with-entities --skip-install
+jhipster --force --skip-install
 ```
 
 `git diff`を使用すると、すべての変更が打ち消し（revert）された状態として確認できます。すべての変更を追加（add）された状態として確認したい場合は、すべてをGitにコミットしてから、前回のコミットを打ち消しします。
@@ -173,12 +173,12 @@ JHipsterによる変更を確認したい場合は、以下の手順に従って
 * プロジェクト`.yo-rc.json`ファイルと`.jhipster`フォルダをこの新しいフォルダにコピーします。
 * 前回プロジェクトを生成したときに使用したJHipsterのバージョンを調べます。`.yo-rc.json`を見て、`jhipsterVersion`の値を調べます。
 * 前回プロジェクトの生成に使用したJHipsterのバージョンをインストールします：`npm install-g generator-jhipster@前回使用したJHipsterのバージョン`
-* 作成したフォルダで、次のコマンドを実行します：`jhipster --with-entities --skip-install`
+* 作成したフォルダで、次のコマンドを実行します：`jhipster --skip-install`
 
 最新のJHipsterでプロジェクトを生成します。
 * 新しいフォルダを作成します。
 * プロジェクト`.yo-rc.json`ファイルと`.jhipster`フォルダをこの新しいフォルダにコピーします。
 * 最新のJHipsterバージョンをインストールします：`npm install -g generator-jhipster`
-* 作成したフォルダで、次のコマンドを実行します：`jhipster --with-entities --skip-install`
+* 作成したフォルダで、次のコマンドを実行します：`jhipster --skip-install`
 
 これらの2つのフォルダをお好きなファイルおよびフォルダ比較ツールと比較して、JHipsterによって行われた変更を確認します。
