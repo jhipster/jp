@@ -1,83 +1,83 @@
 ---
 layout: default
-title: Release 8.0.0-rc.1
+title: リリース 8.0.0-rc.1
 ---
 
-# JHipster release v8.0.0-c.1
+JHipsterリリース v8.0.0-rc.1
 
-This is our first release candidate for JHipster v8.
+これは、JHipster v8の最初の候補リリースです。
 
-It includes [452 closed tickets and pull requests on the main project](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-rc.1).
+これには、[452 のクローズされたチケットとメインプロジェクトのプルリクエスト]が含まれています。(https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-rc.1).
 
-_It is not available through the usual channels as this is a beta release, please read below for more information!_
+_これはベータ版のリリースであるため、通常の方法では入手できません。詳細については、以下を参照してください!_
 
-## What's new?
+## 何が新しくなりましたか?
 
-### :warning: Breaking changes/Deprecations/Removals
+### :warning: 重大な変更/非推奨/削除
 
-- Drop unmaintained deployment sub-generators ([#23422](https://github.com/jhipster/generator-jhipster/pull/23422))
+- メンテナンスされていない構築サブジェネレータを削除 ([#23422](https://github.com/jhipster/generator-jhipster/pull/23422))
   - aws
   - azure-app-service
   - azure-spring-cloud
   - cloudfoundry
   - gae
   - openshift
-- drop openapi-client sub-generator ([#23632](https://github.com/jhipster/generator-jhipster/pull/23632))
-- drop page sub-generator ([#23615](https://github.com/jhipster/generator-jhipster/pull/23615))
-- drop upgrade-config sub-generator ([ab46e40](https://github.com/jhipster/generator-jhipster/commit/ab46e40d7013e68a1d82d3578d62a7c29f5b466e))
-- drop spring-controller and spring-service sub-generators ([#23502](https://github.com/jhipster/generator-jhipster/pull/23502))
+- openapi-client サブジェネレータを削除 ([#23632](https://github.com/jhipster/generator-jhipster/pull/23632))
+- page サブジェネレータを削除 ([#23615](https://github.com/jhipster/generator-jhipster/pull/23615))
+- upgrade-config サブジェネレータを削除 ([ab46e40](https://github.com/jhipster/generator-jhipster/commit/ab46e40d7013e68a1d82d3578d62a7c29f5b466e))
+- spring-controllerとspring-serviceサブジェネレータを削除 ([#23502](https://github.com/jhipster/generator-jhipster/pull/23502))
 
-### :gem: Features & Enhancements
+### :gem: 機能・拡張機能
 
-- Update spring-boot version to 3.1.4 ([#23613](https://github.com/jhipster/generator-jhipster/pull/23613))
-- Update maven version to 3.9.5 ([#23843](https://github.com/jhipster/generator-jhipster/pull/23843))
-- Upgrade to Gradle 8.4 ([#23787](https://github.com/jhipster/generator-jhipster/pull/23787))
+- spring-bootのバージョンを3.1.4に更新 ([#23613](https://github.com/jhipster/generator-jhipster/pull/23613))
+- mavenのバージョンを3.9.5に更新 ([#23843](https://github.com/jhipster/generator-jhipster/pull/23843))
+- Gradleのバージョンを8.4に更新 ([#23787](https://github.com/jhipster/generator-jhipster/pull/23787))
 
-### :computer: Frontend
+### :computer: フロントエンド
 
 - Migrate vue to vite. ([#23532](https://github.com/jhipster/generator-jhipster/pull/23532))
 - fix swagger for gateway/microservices ([#23499](https://github.com/jhipster/generator-jhipster/pull/23499))
 - Rework translation process ([#23488](https://github.com/jhipster/generator-jhipster/pull/23488))
 
-### :paw_prints: JDL/Internals/Blueprints
+### :paw_prints: JDL/内部/Blueprints
 
-- Improve blueprint support
-- Lots of internal improvements and refactoring
+- ブループリント・サポートの向上
+- 多くの内部改善とリファクタリング
 
-### :scroll: Others
+### :scroll: その他
 
-- Many improvements
-- Many libraries upgrades
-- Many bug fixes
+- 多くの改善
+- 多くのライブラリのアップグレード
+- 多くのバグ修正
 
-## Closed tickets and merged pull requests
+## クローズされたチケットとマージされたプルリクエスト
 
-As always, **[you can check all closed tickets and merged pull requests here](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-rc.1)**.
+いつものように、__[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-rc.1)**.
 
-## How to install
+## インストール方法
 
-This is a release candidate, so it is not available on our usual "stable" release channel.
+これはベータ版リリースなので、通常の「安定版」リリースの方法では入手できません。
 
-To install JHipster v8.0.0-rc.1 using using NPM:
+NPMを使用してJHipster v8.0.0-rc.1をインストールするには、以下のようにします。
 
-    npm install -g generator-jhipster@rc
+    npm install -g generator-jhipster@beta
 
-It is also available using the JHipster Docker image, as it is automatically built from our source code.
+また、JHipster Dockerイメージも利用可能です。ソースコードから自動的に構築されます。
 
-However, as this is a release candidate it will not be available using our other usual channels like:
+しかし、これはベータリリースであるため、次のような方法では入手できません。
 
 - [JHipster Online](https://start.jhipster.tech)
 - [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
 
-You also won’t be able to use the `jhipster upgrade` sub-generator, as it won’t “see” the release candidates, which is distributed through a specific beta channel on NPM.
+また、ベータリリースはNPMの特定のベータチャネルを通じても見ることができないことから、`jhipster upgrade`サブジェネレータを使用することもできません。
 
-## Help and bugs
+## ヘルプとバグ
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- [@jhipster](https://twitter.com/jhipster)のTwitterアカウントに連絡をお願いします。

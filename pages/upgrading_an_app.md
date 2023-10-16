@@ -76,7 +76,6 @@ _アップグレードを行う前にこのページをよく読んで、アッ�
 
 JHipsterアップグレードサブジェネレータによって処理される手順は以下のとおりです。
 
-<<<<<<< HEAD
 1. 新しいバージョンのJHipsterが利用可能かどうかをチェックします（`--force`を使用している場合は適用されません）。
 2. アプリケーションがすでに`git`リポジトリとして初期化されているかどうかをチェックします。そうでない場合は、JHipsterがリポジトリを初期化し、現在のコードベースをmasterブランチにコミットします。
 3. リポジトリにコミットされていないローカル変更がないことを確認します。コミットされていない変更が見つかった場合、プロセスは終了します。
@@ -84,23 +83,10 @@ JHipsterアップグレードサブジェネレータによって処理される
 5. `jhipster_upgrade`ブランチをチェックアウトします。
 6. JHipsterを利用可能な最新バージョンにグローバルにアップグレードします。
 7. 現在のプロジェクトフォルダをクリーンアップします。
-8. `jhipster --force --with-entities`コマンドを使用してアプリケーションを再生成します。
+8. `jhipster --force`コマンドを使用してアプリケーションを再生成します。
 9. 生成されたコードを`jhipster_upgrade`ブランチにコミットします。
 10. `npx jhipster_upgrade`コマンドが起動された元のブランチに`jhipster_upgrade`ブランチをマージして戻します。
 11. ここで、マージ競合がある場合は、それを解決する必要があります。
-=======
-1. Check if there is a new version of JHipster available (not applicable if you are using `--force`).
-2. Check if the application is already initialized as a `git` repository, or else JHipster will initialize one for you and commit the current codebase to the master branch.
-3. Check to ensure that there are no un-committed local changes in the repository. The process will exit if there are un-committed changes found.
-4. Check if a `jhipster_upgrade` branch exists. If not, a branch is created: details about this step is provided in the "Specific steps on first upgrade" section.
-5. Checkout the `jhipster_upgrade` branch.
-6. Upgrade JHipster to the latest available version globally.
-7. Clean the current project directory.
-8. Re-generate the application using the `jhipster --force` command.
-9. Commit the generated code to the `jhipster_upgrade` branch.
-10. Merge the `jhipster_upgrade` branch back to the original branch from where the `npx jhipster upgrade` command was launched.
-11. Now you need to proceed with resolving merge conflicts if there are any.
->>>>>>> upstream/main
 
 おめでとうございます。アプリケーションが最新バージョンのJHipsterにアップグレードされました。
 
@@ -182,32 +168,17 @@ jhipster --force --skip-install
 
 JHipsterによる変更を確認したい場合は、以下の手順に従ってください。
 
-<<<<<<< HEAD
 前回プロジェクトの生成に使用したJHipsterバージョンでプロジェクトを生成します。
 * 新しいフォルダを作成します。
 * プロジェクト`.yo-rc.json`ファイルと`.jhipster`フォルダをこの新しいフォルダにコピーします。
 * 前回プロジェクトを生成したときに使用したJHipsterのバージョンを調べます。`.yo-rc.json`を見て、`jhipsterVersion`の値を調べます。
 * 前回プロジェクトの生成に使用したJHipsterのバージョンをインストールします：`npm install-g generator-jhipster@前回使用したJHipsterのバージョン`
-* 作成したフォルダで、次のコマンドを実行します：`jhipster --with-entities --skip-install`
+* 作成したフォルダで、次のコマンドを実行します：`jhipster --skip-install`
 
 最新のJHipsterでプロジェクトを生成します。
 * 新しいフォルダを作成します。
 * プロジェクト`.yo-rc.json`ファイルと`.jhipster`フォルダをこの新しいフォルダにコピーします。
 * 最新のJHipsterバージョンをインストールします：`npm install -g generator-jhipster`
-* 作成したフォルダで、次のコマンドを実行します：`jhipster --with-entities --skip-install`
-=======
-Generate project with JHipster version you used last time to generate your project:
-* create a new folder
-* copy your project `.yo-rc.json` file and `.jhipster` folder into this new folder
-* find out what JHipster version you used last time to generate your project: look at the `.yo-rc.json`, find out the value of the `jhipsterVersion`
-* install JHipster version you used last time to generate your project: `npm install -g generator-jhipster@jhipsterVersionYouUsedLastTime`
-* in the created folder run: `jhipster --skip-install`
-
-Generate project with the latest JHipster:
-* create a new folder
-* copy your project `.yo-rc.json` file and `.jhipster` folder into this new folder
-* install the latest JHipster version: `npm install -g generator-jhipster`
-* in the created folder run: `jhipster --skip-install`
->>>>>>> upstream/main
+* 作成したフォルダで、次のコマンドを実行します：`jhipster --skip-install`
 
 これらの2つのフォルダをお好きなファイルおよびフォルダ比較ツールと比較して、JHipsterによって行われた変更を確認します。
