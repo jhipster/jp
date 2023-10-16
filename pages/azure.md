@@ -11,9 +11,10 @@ sitemap:
 
 [Microsoft Azure](https://azure.microsoft.com/overview/?WT.mc_id=online-jhipster-judubois)は、クラウドでJHipsterアプリケーションを実行するための優れたソリューションです。
 
-- 最も簡単な方法は、[Azure App Service](https://azure.microsoft.com/services/app-service/?WT.mc_id=online-jhipster-judubois)を使用してモノリスをデプロイすることです。
-- Spring Bootマイクロサービスを使用している場合、
- [Azure Spring Apps](https://azure.microsoft.com/services/spring-apps/?WT.mc_id=online-jhipster-judubois)は、JHipsterアプリケーションを完全にサポートします。
+- 最も簡単な方法は、[JHipster Azure Spring Apps](https://github.com/Azure/generator-jhipster-azure-spring-apps)を使用して、プロジェクトをエンドツーエンドで作成してデプロイすることです。 JHipster Azure Spring Appsは、フルスタックのSpringアプリケーション開発を合理化するように設計されており、Azure Spring Appsの堅牢なインフラストラクチャを活用して、これまでにない容易さと効率性でプロジェクトを実現します。
+(https://azure.microsoft.com/services/spring-apps/?WT.mc_id=online-jhipster-judubois)
+- Spring Bootマイクロサービスを使用している場合、[Azure Spring Apps]はJHipsterアプリケーションを完全にサポートします。[Quickstart](https://learn.microsoft.com/azure/spring-apps/quickstart-deploy-microservice-apps)で詳細を読むことができます。
+- また、[Azure App Service](https://azure.microsoft.com/services/app-service/?WT.mc_id=online-jhipster-judubois)を使ってモノリスをデプロイすることもできます。
 - 他のDockerおよびKubernetesクラウドプロバイダと同様に、JHipster DockerおよびKubernetesサポートを使用して、DockerイメージをMicrosoft Azureにデプロイできます。これらのオプションの詳細については、[Docker Composeドキュメント]({{ site.url }}/docker-compose/)および[Kubernetesドキュメント]({{ site.url }}/kubernetes/)に従ってください。
 
 [![Microsoft Azure]({{ site.url }}/images/logo/logo-azure.png)](https://azure.microsoft.com/overview/?WT.mc_id=online-jhipster-judubois)

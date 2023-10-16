@@ -100,8 +100,6 @@ Docker ComposeでKeycloakを使用したい場合は、[Docker Composeドキュ�
 > docker build -t jboss/keycloak:16.1.0 .
 > ```
 
-Docker ComposeでKeycloakを使用したい場合は、[Docker Composeドキュメント](/docker-compose/)を必ず読み、Keycloak用に`/etc/hosts`を正しく設定してください。（訳注：上述の文章と重複してますが原文そのままにしています）
-
 このイメージには、`src/main/resources/config/application.yml`のセキュリティ設定が構成されています。上記の`/etc/hosts`に関する注意を参照し、`issuer-uri`を変更する必要がある場合があることに注意してください。
 
 ```yaml
