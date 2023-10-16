@@ -236,6 +236,7 @@ Blueprintに特定のサブジェネレータが実装されていない場合�
 
 渡すことができるオプションは次のとおりです。
 
+<<<<<<< HEAD
 * `--help` - ジェネレータのオプションと使用法を出力します
 * `--blueprint` - 使用するBlueprintを指定します。例：`jhipster --blueprint kotlin`
 * `--skip-cache` - プロンプトの応答を記憶しません（デフォルト：false）
@@ -256,7 +257,32 @@ Blueprintに特定のサブジェネレータが実装されていない場合�
 * `--experimental` - 実験的な機能を有効にします。これらの機能は不安定であり、いつでも重大な変更を受ける可能性があることに注意してください
 * `--skip-fake-data` - 開発用のフェイクデータの生成をスキップします
 * `--creation-timestamp` - 再現可能なビルドのタイムスタンプを設定します。タイムスタンプは解析可能なjs日付である必要があります（例：2019-01-01）。--with-entitiesまたはimport-jdl（generator-jhipster > 6.5.1）とともに使用する必要があります
+=======
+* `--help` - Print the generator's options and usage
+* `--blueprint` - Specify a blueprint to use. For example `jhipster --blueprint kotlin`
+* `--skip-cache` - Do not remember prompt answers (Default: false)
+* `--skip-git` - Do not add the generated project to Git automatically (Default: false)
+* `--skip-install` - Do not automatically install dependencies (Default: false)
+* `--skip-client` - Skip the client-side application generation, so you only have the Spring Boot back-end code generated (Default: false).
+* `--skip-server` - Skip the server-side application generation, so you only have the front-end code generated (Default: false).
+* `--skip-user-management` - Skip the user management generation, both on the back-end and on the front-end (Default: false)
+* `--i18n` - Disable or enable i18n when skipping client side generation, has no effect otherwise (Default: true)
+* `--auth` - Specify the authentication type when skipping server side generation, has no effect otherwise but mandatory when using `skip-server`
+* `--db` - Specify the database when skipping server side generation, has no effect otherwise but mandatory when using `skip-server`
+* `--skip-checks` - Skip the check of the required tools (Default: false)
+* `--jhi-prefix` - Add prefix before services, components and state/route names (Default: jhi)
+* `--entity-suffix` - Add suffix after entities class names (Default: empty string)
+* `--dto-suffix` - Add suffix after DTOs class names (Default: DTO)
+* `--prettier-java` - Use [prettier-java](https://github.com/jhipster/prettier-java) for formatting all Java classes (Default: false)
+* `--experimental` - Enable experimental features. Please note that these features may be unstable and may undergo breaking changes at any time
+* `--skip-fake-data` - Skip generation of fake data for development
+* `--creation-timestamp` - Set a timestamp for reproducible build. Timestamp should be a parsable js date ex: 2019-01-01. Must be used with --with-entities or import-jdl (generator-jhipster > 6.5.1)
+>>>>>>> upstream/main
 
 <h2 id="4">ヒント</h2>
 
+<<<<<<< HEAD
 また、`--force`のようなYeomanコマンドラインオプションを使用して、既存のファイルを自動的に上書きもできます。そのため、エンティティを含むアプリケーション全体を再生成したい場合は、`jhipster--force--with-entities`を実行できます。
+=======
+You can also use the Yeoman command-line options, like `--force` to automatically overwrite existing files. So if you want to regenerate your whole application, including its entities, you can run `jhipster --force`.
+>>>>>>> upstream/main
