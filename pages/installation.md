@@ -33,10 +33,17 @@ JHipsterでは、4つの方法を用意しています。迷ったら、2番目�
 
 ### クイックセットアップ
 
+<<<<<<< HEAD
 1. Java 11をインストールします。オープンソースで無償のため、[Eclipse Temurin builds](https://adoptium.net/temurin/releases/?version=11)を使用することをお勧めします。
 2. [Node.jsのウェブサイト](http://nodejs.org/)からNode.jsをインストールします（LTSの64ビット版を使用してください、LTS以外のバージョンはサポートされていません）。
 3. `npm install -g generator-jhipster`でJHipsterをインストールします。
 4. （オプション）モジュールやブループリントを使用したい場合（例えば[JHipster Marketplace]({{ site.url }}/modules/marketplace/#/list)から取得）`npm install -g yo`で[Yeoman](https://yeoman.io/) をインストールします。
+=======
+1.  Install Java 17 or 21 LTS. We recommend you use [Eclipse Temurin builds](https://adoptium.net/temurin/releases/?version=21), as they are open source and free.
+2.  Install Node.js from [the Node.js website](http://nodejs.org/) (please use an LTS 64-bit version, non-LTS versions are not supported)
+3.  Install JHipster: `npm install -g generator-jhipster`
+4.  (optional) If you want to use a module or a blueprint (for instance from the [JHipster Marketplace]({{ site.url }}/modules/marketplace/#/list)), install [Yeoman](https://yeoman.io/): `npm install -g yo`
+>>>>>>> upstream/main
 
 JHipsterがインストールされました。次のステップは[アプリケーションの作成]({{ site.url }}/creating-an-app/)です。
 
