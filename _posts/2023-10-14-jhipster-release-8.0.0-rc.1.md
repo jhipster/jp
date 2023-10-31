@@ -7,7 +7,7 @@ JHipsterリリース v8.0.0-rc.1
 
 これは、JHipster v8の最初の候補リリースです。
 
-これには、[452 のクローズされたチケットとメインプロジェクトのプルリクエスト]が含まれています。(https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-rc.1).
+これには、[452 のクローズされたチケットとメインプロジェクトのプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0-rc.1)が含まれています。
 
 _これはベータ版のリリースであるため、通常の方法では入手できません。詳細については、以下を参照してください!_
 

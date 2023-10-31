@@ -7,7 +7,7 @@ redirect_from:
   - /modules/official-blueprints.html
 sitemap:
     priority: 0.7
-    lastmod: 2019-09-02T11:24:00-00:00
+    lastmod: 2023-10-23T20:15:00-00:00
 ---
 
 # <i class="fa fa-star"></i> 公式にサポートされるBlueprint
@@ -25,7 +25,7 @@ KotlinのBlueprintは、Javaバックエンドコードの大部分をKotlinに�
 {⭐️: 411}
 
 - コードとドキュメント: [jhipster/jhipster-kotlin](https://github.com/jhipster/jhipster-kotlin)
-- GitHub ⭐️: 411
+- GitHub ⭐️: 444
 - ストリームリード: [Sendil Kumar](https://github.com/sendilkumarn)
 
 ## .NET Core
@@ -33,7 +33,7 @@ KotlinのBlueprintは、Javaバックエンドコードの大部分をKotlinに�
 NET CoreのBlueprintは、Java環境を離れて .NETの世界に参加する最初の試みです。
 
 - コードとドキュメント: [jhipster/jhipster-dotnetcore](https://github.com/jhipster/jhipster-dotnetcore)
-- GitHub ⭐️: 249
+- GitHub ⭐️: 293
 - ストリームリード: [Nicolas Raymond](https://github.com/nicolas63)
 
 ## React Native
@@ -41,7 +41,7 @@ NET CoreのBlueprintは、Java環境を離れて .NETの世界に参加する最
 React NativeのBlueprintは、React Nativeを使用してクライアントアプリケーションを作成します。 
 
 - コードとドキュメント: [jhipster/generator-jhipster-react-native](https://github.com/jhipster/generator-jhipster-react-native)
-- GitHub ⭐️: 235
+- GitHub ⭐️: 257
 - ストリームリード: [Jon Ruddell](https://github.com/ruddell)
 
 ## Node.js
@@ -49,7 +49,7 @@ React NativeのBlueprintは、React Nativeを使用してクライアントア�
 Node.jsのBlueprintは、サーバのjava側をNestJS Nodeフレームワークに置き換えます。
 
 - コードとドキュメント: [jhipster/generator-jhipster-nodejs](https://github.com/jhipster/generator-jhipster-nodejs)
-- GitHub ⭐️: 223
+- GitHub ⭐️: 242
 - ストリームリード: [Angelo Manganiello](https://github.com/amanganiello90)
 
 ## Ionic
@@ -57,7 +57,7 @@ Node.jsのBlueprintは、サーバのjava側をNestJS Nodeフレームワーク�
 IonicのBlueprintは、Ionicを使ってクライアントアプリケーションを作成します。
 
 - コードとドキュメント: [jhipster/generator-jhipster-ionic](https://github.com/jhipster/generator-jhipster-ionic)
-- GitHub ⭐️: 171
+- GitHub ⭐️: 182
 - ストリームリード: [Matt Raible](https://github.com/mraible)
 
 ## Quarkus
@@ -65,7 +65,7 @@ IonicのBlueprintは、Ionicを使ってクライアントアプリケーショ�
 QuarkusのBlueprintは、JHipsterスポンサー[Entando](https://www.entando.com/)によってサポートされており、[超音速、素粒子 Javaバックエンド](https://quarkus.io/)のためにJHipsterコミュニティによって推進されています。
 
 - コードとドキュメント: [jhipster/generator-jhipster-quarkus](https://github.com/jhipster/generator-jhipster-quarkus)
-- GitHub ⭐️: 111
+- GitHub ⭐️: 130
 - ストリームリード: [Matt Raible](https://github.com/mraible)
 
 # Entity Audit
@@ -73,7 +73,7 @@ QuarkusのBlueprintは、JHipsterスポンサー[Entando](https://www.entando.co
 Entity AuditのBlueprintは、エンティティ監査のためにJaverを統合します。
 
 - コードとドキュメント: [hipster-labs/generator-jhipster-entity-audit](https://github.com/hipster-labs/generator-jhipster-entity-audit)
-- GitHub ⭐️: 107
+- GitHub ⭐️: 119
 - ストリームリード: [Marcelo Shima](https://github.com/mshima)
 
 ## Micronaut
@@ -82,7 +82,7 @@ MicronautのBlueprintは、[Micronautチーム](https://github.com/jhipster/gene
 すべてのサーバサイドコードを[Micronaut](https://micronaut.io/)アプリケーションに置き換えます。
 
 - コードとドキュメント: [jhipster/generator-jhipster-micronaut](https://github.com/jhipster/generator-jhipster-micronaut)
-- GitHub ⭐️: 91
+- GitHub ⭐️: 94
 - ストリームリード: [Frederik Hahne](https://github.com/atomfrede)
 
 ## Svelte
@@ -90,7 +90,7 @@ MicronautのBlueprintは、[Micronautチーム](https://github.com/jhipster/gene
 SvelteのBlueprintは、クライアントサイドのコードをSvelteKitフレームワークに置き換えます。
 
 - コードとドキュメント: [jhipster/generator-jhipster-svelte](https://github.com/jhipster/generator-jhipster-svelte)
-- GitHub ⭐️: 44
+- GitHub ⭐️: 57
 - ストリームリード: [Vishal Mahajan](https://github.com/vishal423)
 
 ## JHipster Native
@@ -98,7 +98,7 @@ SvelteのBlueprintは、クライアントサイドのコードをSvelteKitフ�
 JHipster NativeのBlueprintは、Spring Nativeを統合し、GraalVMでネイティブバイナリを作成できるようにします。
 
 - コードとドキュメント: [jhipster/generator-jhipster-native](https://github.com/jhipster/generator-jhipster-native)
-- GitHub ⭐️: 28
+- GitHub ⭐️: 35
 - ストリームリード: [Marcelo Shima](https://github.com/mshima) and [Matt Raible](https://github.com/mraible)
 
 # jOOQ
