@@ -233,7 +233,7 @@ Liquibaseの使い方の詳細については、[http://www.liquibase.org](http:
 - Angularでは、[NG2 translate](https://github.com/ocombe/ng2-translate)と専用のJHipsterコンポーネントにより、翻訳にJSONファイルを使用して翻訳を実現できます。
 - Reactでは、専用のJHipsterコンポーネントにより、Angularコンポーネントと同じように動作し、同じファイルを使用できます。
 
-例えば、"first name"フィールドに翻訳を追加するには、`<label jhiTranslate="settings.form.firstname">First Name</label>`というキーを持つ"translate"属性を追加します。
+例えば、"First Name"フィールドに翻訳を追加するには、`<label jhiTranslate="settings.form.firstname">First Name</label>`というキーを持つ"translate"属性を追加します。
 
 このキーは、翻訳されたStringを返すJSONドキュメントを参照します。Angular/Reactは、"First Name"の文字列を翻訳されたバージョンに置き換えます。
 
