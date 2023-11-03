@@ -201,21 +201,12 @@ Liquibaseを使用するには、次の3つの方法があります。
 
 開発ワークフローは次のとおりです。
 
-<<<<<<< HEAD
 1.   JPAエンティティーを変更します（フィールドやリレーションシップの追加など）。
 2.   そのエンティティに対して再生成されたliquibaseファイル`config/liquibase/changelog/DATE_added_entity_ENTITY_NAME.xml`の変更をスキップして、次に示す間もなく生成されるchangelogファイルとの競合を回避します。
 3.   アプリケーションをコンパイルします（コンパイルされたJavaコードで動作しますので、コンパイルを忘れないようにしてください）。
 4.   `./mvnw liquibase:diff`を実行します（または事前にコンパイルするには`./mvnw compile liquibase:diff`を実行します）。
 5.   新しい「変更ログ」が`src/main/resources/config/liquibase/changelog`ディレクトリに作成されます。
 6.   この変更ログを確認し、次にアプリケーションを実行するときに適用されるように、それを`src/main/resources/config/liquibase/master.xml`ファイルに追加します。
-=======
-1.   Modify your JPA entity (add a field, a relationship, etc.)
-2.   Skip changes in the regenerated liquibase file for that entity `config/liquibase/changelog/DATE_added_entity_ENTITY_NAME.xml` to avoid conflict with the soon to be generated changelog file bellow
-3.   Compile your application (this works on the compiled Java code, so don't forget to compile!)
-4.   Run `./mvnw liquibase:diff` (or `./mvnw compile liquibase:diff` to compile before)
-5.   A new "change log" is created in your `src/main/resources/config/liquibase/changelog` directory
-6.   Review this change log and add it to your `src/main/resources/config/liquibase/master.xml` file, so it is applied the next time you run your application
->>>>>>> upstream/main
 
 #### Gradle
 
@@ -242,14 +233,8 @@ Liquibaseの使い方の詳細については、[http://www.liquibase.org](http:
 - Angularでは、[NG2 translate](https://github.com/ocombe/ng2-translate)と専用のJHipsterコンポーネントにより、翻訳にJSONファイルを使用して翻訳を実現できます。
 - Reactでは、専用のJHipsterコンポーネントにより、Angularコンポーネントと同じように動作し、同じファイルを使用できます。
 
-<<<<<<< HEAD
-例えば、"first name"フィールドに翻訳を追加するには、`<label jhiTranslate="settings.form.firstname">First Name</label>`というキーを持つ"translate"属性を追加します。
+例えば、"First Name"フィールドに翻訳を追加するには、`<label jhiTranslate="settings.form.firstname">First Name</label>`というキーを持つ"translate"属性を追加します。
 
 このキーは、翻訳されたStringを返すJSONドキュメントを参照します。Angular/Reactは、"First Name"の文字列を翻訳されたバージョンに置き換えます。
-=======
-For example, to add a translation to the "First Name" field, add a "translate" attribute with a key: `<label jhiTranslate="settings.form.firstname">First Name</label>`
-
-This key references a JSON document, which will return the translated string. Angular/React will then replace the "First Name" string with the translated version.
->>>>>>> upstream/main
 
 言語の使用方法の詳細については、[新しい言語のインストールに関するドキュメント]({{ site.url }}/installing-new-languages/)を参照してください。

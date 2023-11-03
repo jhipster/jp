@@ -1,134 +1,134 @@
 ---
 layout: default
-title: Release 8.0.0
+title: リリース 8.0.0
 ---
 
-# JHipster release v8.0.0
+# JHipster v8.0.0 リリース
 
-This is our major release for JHipster v8.
+これは、JHipster v8のメジャーリリースです！
 
-It includes [242 closed tickets and pull requests on the main project](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0) after the 8.0.0-rc.1 release.
+これには、8.0.0-rc.1 リリース後の[242 のクローズされたチケットとメインプロジェクトのプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0)が含まれています。
 
-## What's new?
+## 何が新しくなりましたか?
 
-### :computer: Frontend
+### :computer: フロントエンド
 
-- Upgrade to Angular 16 [#22182](https://github.com/jhipster/generator-jhipster/pull/22182)
-- Upgrade to Vue 3 [#22232](https://github.com/jhipster/generator-jhipster/pull/22232)
-- Moved test files from test folder to main for Vue [#23188](https://github.com/jhipster/generator-jhipster/pull/23188)
-- Update to Prettier 3 [#22875](https://github.com/jhipster/generator-jhipster/pull/22875)
-- Migrate Vue to Vite. ([#23532](https://github.com/jhipster/generator-jhipster/pull/23532))
-- Fix Swagger for gateway/microservices ([#23499](https://github.com/jhipster/generator-jhipster/pull/23499))
-- Rework translation process ([#23488](https://github.com/jhipster/generator-jhipster/pull/23488))
+- Angular 16にアップグレード [#22182](https://github.com/jhipster/generator-jhipster/pull/22182)
+- Vue 3にアップグレード [#22232](https://github.com/jhipster/generator-jhipster/pull/22232)
+- Vueのテストファイルをテストフォルダからメインフォルダに移動 [#23188](https://github.com/jhipster/generator-jhipster/pull/23188)
+- Prettier 3に更新 [#22875](https://github.com/jhipster/generator-jhipster/pull/22875)
+- VueにてViteへの移行 ([#23532](https://github.com/jhipster/generator-jhipster/pull/23532))
+- gateway/microservicesのSwaggerの修正 ([#23499](https://github.com/jhipster/generator-jhipster/pull/23499))
+- 翻訳プロセスの見直し ([#23488](https://github.com/jhipster/generator-jhipster/pull/23488))
 
-### :gem: Features & Enhancements
+### :gem: 機能追加・拡張
 
-- Bump Node dependency to 18 LTS [#22372](https://github.com/jhipster/generator-jhipster/pull/22372)
-- Enable CORS when app is a gateway or monolith [#22780](https://github.com/jhipster/generator-jhipster/pull/22780)
-- Add devcontainer for JHipster development [#22814](https://github.com/jhipster/generator-jhipster/pull/22814)
-- Add support for JDK 20 and 21 [#23344](https://github.com/jhipster/generator-jhipster/pull/23344)
-- Update spring-boot version to 3.1.5 ([#23930](https://github.com/jhipster/generator-jhipster/pull/23930))
-- Switch to Hibernate 6.2.x [#23107](https://github.com/jhipster/generator-jhipster/pull/23107)
-- Update Maven version to 3.9.5 ([#23843](https://github.com/jhipster/generator-jhipster/pull/23843))
-- Upgrade to Gradle 8.4 ([#23787](https://github.com/jhipster/generator-jhipster/pull/23787))
-- Upgrade Keycloak to 22.0.1 [#23098](https://github.com/jhipster/generator-jhipster/pull/23098)
-- Update Node version to 18.17.1 [#23278](https://github.com/jhipster/generator-jhipster/pull/23278)
-- Update openapi-generator-maven-plugin version to 7.0.0 [#23303](https://github.com/jhipster/generator-jhipster/pull/23303)
+- Node 18 LTSのサポート [#22372](https://github.com/jhipster/generator-jhipster/pull/22372)
+- アプリケーションがゲートウェイまたはモノリスの場合にCORSを有効にする [#22780](https://github.com/jhipster/generator-jhipster/pull/22780)
+- JHipster開発用にdevcontainerを追加 [#22814](https://github.com/jhipster/generator-jhipster/pull/22814)
+- JDK 20 と 21 のサポート [#23344](https://github.com/jhipster/generator-jhipster/pull/23344)
+- Spring Boot 3.1.5 対応 ([#23930](https://github.com/jhipster/generator-jhipster/pull/23930))
+- Hibernate 6.2.x の移行 [#23107](https://github.com/jhipster/generator-jhipster/pull/23107)
+- Maven 3.9.5 へのアップグレード ([#23843](https://github.com/jhipster/generator-jhipster/pull/23843))
+- Gradle 8.4 へのアップグレード ([#23787](https://github.com/jhipster/generator-jhipster/pull/23787))
+- Keycloak to 22.0.1 へのアップグレード [#23098](https://github.com/jhipster/generator-jhipster/pull/23098)
+- Node 18.17.1 対応 [#23278](https://github.com/jhipster/generator-jhipster/pull/23278)
+- openapi-generator-maven-plugin 7.0.0へのアップデート [#23303](https://github.com/jhipster/generator-jhipster/pull/23303)
 
 ### :warning: Breaking changes/Deprecations/Removals
 
-- Drop unmaintained deployment sub-generators ([#23422](https://github.com/jhipster/generator-jhipster/pull/23422))
+- メンテナンスされていない構築サブジェネレータを削除 ([#23422](https://github.com/jhipster/generator-jhipster/pull/23422))
   - aws
   - azure-app-service
   - azure-spring-cloud
   - cloudfoundry
   - gae
   - openshift
-- Drop openapi-client sub-generator ([#23632](https://github.com/jhipster/generator-jhipster/pull/23632))
-- Drop page sub-generator ([#23615](https://github.com/jhipster/generator-jhipster/pull/23615))
-- Drop upgrade-config sub-generator ([ab46e40](https://github.com/jhipster/generator-jhipster/commit/ab46e40d7013e68a1d82d3578d62a7c29f5b466e))
-- Drop spring-controller and spring-service sub-generators ([#23502](https://github.com/jhipster/generator-jhipster/pull/23502))
-- Consul as default [#19300](https://github.com/jhipster/generator-jhipster/issues/19300)
+- openapi-client サブジェネレータを削除 ([#23632](https://github.com/jhipster/generator-jhipster/pull/23632))
+- page サブジェネレータを削除 ([#23615](https://github.com/jhipster/generator-jhipster/pull/23615))
+- upgrade-config サブジェネレータを削除 ([ab46e40](https://github.com/jhipster/generator-jhipster/commit/ab46e40d7013e68a1d82d3578d62a7c29f5b466e))
+- spring-controllerとspring-serviceサブジェネレータを削除 ([#23502](https://github.com/jhipster/generator-jhipster/pull/23502))
+- Consulをデフォルトに [#19300](https://github.com/jhipster/generator-jhipster/issues/19300)
 
-### :paw_prints: JDL/Internals/Blueprints
+### :paw_prints: JDL/内部/Blueprint
 
-- Improve blueprint support
-- Heroku sub-generator improvement [#21892](https://github.com/jhipster/generator-jhipster/pull/21892)
-- Lots of internal improvements and refactoring
+- Blueprintのサポートを向上
+- Herokuサブジェネレータの改良 [#21892](https://github.com/jhipster/generator-jhipster/pull/21892)
+- 多くの内部改善とリファクタリング
 
-### :scroll: Others
+### :scroll: その他
 
-- Many improvements
-- Many libraries upgrades
-- Many bug fixes
+- 多くの改善
+- 多くのライブラリのアップグレード
+- 多くのバグ修正
 
-## Closed tickets and merged pull requests
+## クローズされたチケットとマージされたプルリクエスト
 
-As always, **[you can check all closed tickets and merged pull requests here](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0)**.
+いつものように、**[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.0.0)**。
 
-## How to install
+## インストール方法
 
-To install JHipster v8.0.0 using using NPM:
+NPMを使用してJHipster v8.0.0をインストールするには:
 
     npm install -g generator-jhipster
 
-It is also available using the JHipster Docker image, as it is automatically built from our source code.
+JHipster Dockerイメージを使用しても利用できます。この方法ではソースコードから自動的にビルドされます。
 
 - [JHipster Online](https://start.jhipster.tech)
 - [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
 
-## How to upgrade
+## アップグレード方法
 
-**Automatic upgrade**
+**自動アップグレード**
 
-For an automatic upgrade, use the [JHipster upgrade sub-generator]({{ site.url }}/upgrading-an-application/) on an existing application:
+自動アップグレードの場合は、既存のアプリケーションで [JHipster upgrade サブジェネレーター]({{ site.url }}/upgrading-an-application/) を使用します。
 
-Upgrade your version of JHipster:
+使用しているバージョンのJHipsterをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-And then run the upgrade sub-generator:
+次に、アップグレードサブジェネレータを実行します。
 
 ```
 jhipster upgrade
 ```
 
-**Manual upgrades**
+**手動アップグレード**
 
-For a manual upgrade, first upgrade your version of JHipster with:
+手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-If you have an existing project, it will still use the JHipster version with which it was generated.
-To upgrade your project, you must first delete its `node_modules` folder and then run:
+既存のプロジェクトがある場合は、生成されたJHipsterバージョンが引き続き使用されます。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、次のコマンドを実行します。
 
 ```
 jhipster
 ```
 
-You can also update your project and all its entities by running
+プロジェクトとそのすべてのエンティティを更新するには、以下を実行します。
 
 ```
 jhipster --with-entities
 ```
 
-You can also update your entities one-by-one by running again the entity sub-generator, for example if your entity is named _Foo_
+エンティティサブジェネレータをもう一度実行して、エンティティを1つずつ更新することもできます。たとえば、エンティティの名前が _Foo_ の場合、以下となります。
 
 ```
 jhipster entity Foo
 ```
 
-## Help and bugs
+## ヘルプとバグ
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- [@jhipster](https://twitter.com/jhipster)の X (旧Twitter)アカウントに連絡をお願いします。
