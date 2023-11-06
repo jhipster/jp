@@ -123,10 +123,17 @@ entity A {
 }
 ```
 
+<<<<<<< HEAD
 内訳を見てみましょう。
   - `pattern`は正規表現の検証を宣言するためのキーワードです（通常の括弧付き）。
   - `/.../` パターンは2つのスラッシュの内側で宣言されます。
   - `\` アンチスラッシュはエスケープする必要はありません。
+=======
+Let's break it down:
+  - `pattern` is the keyword to declare a regex validation (with the normal parentheses)
+  - `/.../` the pattern is declared inside two slashes
+  - `\` anti-slashes needn't be escaped
+>>>>>>> upstream/main
 
 ---
 
