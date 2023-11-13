@@ -29,7 +29,7 @@ JHipsterは、多様な成長するユーザーコミュニティを反映し、
 * Julien Dubois (Microsoft)
 * Deepu K Sasidharan (Okta)
 * Matt Raible (Okta)
-* Paul Hinz (Entando)
+* Paul Hinz
 * Alina Yurenko (Oracle)
 
 メンバーは、プロジェクトリーダーによって選ばれ、以下のようなメンバーである必要があります。
