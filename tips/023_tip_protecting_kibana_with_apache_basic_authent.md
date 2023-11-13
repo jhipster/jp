@@ -18,13 +18,8 @@ lastmod: 2018-01-31T14:10:00-00:00
 
     service apache2 restart
 
-<<<<<<< HEAD
 ## Vitualhost構成
 使用しているディストリビューションに応じて、virtualhost 443または80の設定がどこにあるかを確認します。
-=======
-## Virtualhost configuration
-Find where your virtualhost 443 or 80 config is, depending on your distros.
->>>>>>> upstream/main
 
 たとえば、Ubuntu 16.04では、設定は **/etc/apache2/sites-availables** ディレクトリの **000-default-le-ssl.conf** ファイルにあります。
 

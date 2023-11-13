@@ -101,13 +101,8 @@ entity <エンティティ名>
 @<オプション名>(<オプション値>)
 ```
 
-<<<<<<< HEAD
   - Javaと同様に、アノテーションは括弧内の値を取ることができます。
     - オプションに応じて、値はオプションになる場合とならない場合があります。
-=======
-  - Similar to Java, annotations may take values in parentheses
-    - depending on the option, values may or may not be optional
->>>>>>> upstream/main
 
 ---
 
