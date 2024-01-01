@@ -6,7 +6,7 @@ redirect_from:
   - /heroku.html
 sitemap:
     priority: 0.7
-    lastmod: 2020-06-06T00:00:00-00:00
+    lastmod: 2023-12-19T00:00:00-00:00
 ---
 
 # Herokuへのデプロイ
@@ -15,10 +15,13 @@ sitemap:
 
 [![]({{ site.url }}/images/logo/logo-heroku.png)](https://www.heroku.com/){:target="_blank" rel="noopener"}
 
+<<<<<<< HEAD
 Herokuは2つの方法でJHipsterを支援しています。
 
 - HerokuのJoe Kutner氏は現在、このサブジェネレータをメンテナンスしています。
 - Herokuは私たちに無料のクレジットを提供し、私たちが複雑でハイエンドなセットアップで生成されたアプリケーションをテストできるようにしてくださっています。その結果、一般的なユーザーに対してすべてがうまく機能することを保証できます。
+=======
+>>>>>>> upstream/main
 
 ## サブジェネレータの実行
 
@@ -33,9 +36,16 @@ Password (typing will be hidden): YOUR_PASSWORD
 Authentication successful.
 </pre>
 
+<<<<<<< HEAD
 <div class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i>
 Herokuサブジェネレータは、常にフリーティア/オプションを使用します。
 それにもかかわらず、アドオンをインストールするには、適切に<a href="https://devcenter.heroku.com/articles/account-verification" target="_blank" rel="noopener">検証されたHerokuアカウント</a>が必要です。したがって、予期しないビルドエラーを回避するため、このサブジェネレータを起動する前にHerokuアカウントを検証することをお勧めします。
+=======
+<div class="alert alert-warning"><i class="fa fa-money" aria-hidden="true"></i>
+As of <a href="https://blog.heroku.com/next-chapter" target="_blank" rel="noopener">>November 2022 Heroku does not offer a completly free tier</a> anymore.
+This means you will need a properly <a href="https://devcenter.heroku.com/articles/account-verification" target="_blank" rel="noopener">verified Heroku account</a>
+and deploying an application using the smallest dyno options and the smallest Postgres size will cost you around <b>$12 per month</b>.
+>>>>>>> upstream/main
 </div>
 
 Herokuサブジェネレータは、選択した構成に一致するアドオンを使用した[free dynos](https://devcenter.heroku.com/articles/dyno-types){:target="_blank" rel="noopener"}を使用してアプリケーションを作成します。
@@ -292,6 +302,7 @@ JHipsterは、Herokuにデプロイするとき、[bonsaiと互換性のあるEl
 <b>有料</b>のアドオンを使用する場合は、<a href="https://devcenter.heroku.com/articles/foundelasticsearch" target="_blank" rel="noopener">公式のElastic Cloud統合</a>を使用して、最新のElasticsearchバージョンと機能にアクセスできます。
 </div>
 
+<<<<<<< HEAD
 ### Oktaの使用
 
 [Okta](https://elements.heroku.com/addons/okta){:target="_blank" rel="noopener"}を選択すると、サブジェネレータは、JHipsterに必要なすべてのグループとロールを作成するbashスクリプトを作成します。
@@ -318,6 +329,9 @@ Heroku管理UIから直接dyno設定をアップグレードできます。
 たとえば、データベース計画が小さすぎることに気付いた場合は、管理UIから新しい計画を選択できます。
 
 ## 詳細情報
+=======
+## More information
+>>>>>>> upstream/main
 
 *   [適用例](https://github.com/kissaten/jhipster-example){:target="_blank" rel="noopener"}
 *   [Spring Boot Herokuドキュメント](https://docs.spring.io/spring-boot/docs/current/reference/html/deployment.html#cloud-deployment-heroku){:target="_blank" rel="noopener"}

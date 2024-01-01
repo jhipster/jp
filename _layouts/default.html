@@ -143,8 +143,13 @@
                 <nav class="navbar navbar-default" role="navigation">
                     <div class="side-menu-container">
                         <div class="navbar-header">
+<<<<<<< HEAD
                             <a class="navbar-brand" href="{{ site.url }}">
                                 <div class="icon"><img src="{{ site.url }}/images/logo/logo-jhipster.svg" height="19px"></div>
+=======
+                            <a class="navbar-brand" href="/">
+                                <div class="icon"><img src="{{ site.url }}/images/logo/logo-jhipster.svg" alt="JHipster" height="19px"></div>
+>>>>>>> upstream/main
                                 <div class="title brand">JHipster </div>
                             </a>
                             <button type="button" class="navbar-expand-toggle pull-right visible-xs">
@@ -223,6 +228,7 @@
                                 <div id="dropdown-4" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
+<<<<<<< HEAD
                                             <li {% if '/creating-an-app/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/creating-an-app/"><i class="fa fa-fw fa-rocket"></i> アプリケーションの構築</a></li>
                                             <li {% if '/creating-an-entity/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/creating-an-entity/"><i class="fa fa-fw fa-bolt"></i> エンティティの構築</a></li>
                                             <li {% if '/creating-a-spring-controller/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/creating-a-spring-controller/"><i class="fa fa-fw fa-bolt"></i> Spring controllerの構築</a></li>
@@ -231,6 +237,14 @@
                                             <li {% if '/managing-relationships/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/managing-relationships/"><i class="fa fa-fw fa-sitemap"></i> リレーションシップの管理</a></li>
                                             <li {% if '/installing-new-languages/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/installing-new-languages/"><i class="fa fa-fw fa-flag"></i> 国際化</a></li>
                                             <li {% if '/upgrading-an-application/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/upgrading-an-application/"><i class="fa fa-fw fa-refresh"></i> アップグレード</a></li>
+=======
+                                            <li {% if '/creating-an-app/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/creating-an-app/"><i class="fa fa-fw fa-rocket"></i> Creating an application</a></li>
+                                            <li {% if '/creating-an-entity/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/creating-an-entity/"><i class="fa fa-fw fa-bolt"></i> Creating an entity</a></li>
+                                            <li {% if '/using-dtos/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/using-dtos/"><i class="fa fa-fw fa-briefcase"></i> Creating DTOs</a></li>
+                                            <li {% if '/managing-relationships/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/managing-relationships/"><i class="fa fa-fw fa-sitemap"></i> Managing relationships</a></li>
+                                            <li {% if '/installing-new-languages/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/installing-new-languages/"><i class="fa fa-fw fa-flag"></i> Internationalization</a></li>
+                                            <li {% if '/upgrading-an-application/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/upgrading-an-application/"><i class="fa fa-fw fa-refresh"></i> Upgrading an application</a></li>
+>>>>>>> upstream/main
                                         </ul>
                                     </div>
                                 </div>
@@ -332,6 +346,7 @@
                                             <li {% if '/production/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/production/"><i class="fa fa-fw fa-play-circle"></i> プロダクション環境での使用</a></li>
                                             <li {% if '/monitoring/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/monitoring/"><i class="fa fa-fw fa-line-chart"></i> モニタリング</a></li>
                                             <li {% if '/docker-hub/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/docker-hub/"><i class="fa fa-fw fa-cloud"></i> Docker Hub</a></li>
+<<<<<<< HEAD
                                             <li {% if '/aws/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/aws/"><i class="fa fa-fw fa-cloud-upload"></i> AWSへのデプロイ</a></li>
                                             <li {% if '/azure/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/azure/"><i class="fa fa-fw fa-cloud-upload"></i> Azureへのデプロイ</a></li>
                                             <li {% if '/cloudcaptain/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/cloudcaptain/"><i class="fa fa-fw fa-cloud-upload"></i> CloudCaptainを使用したデプロイ</a></li>
@@ -341,6 +356,13 @@
                                             <li {% if '/heroku/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/heroku/"><i class="fa fa-fw fa-cloud-upload"></i> Herokuへのデプロイ</a></li>
                                             <li {% if '/kubernetes/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/kubernetes/"><i class="fa fa-fw fa-cloud-upload"></i> Kubernetesへのデプロイ</a></li>
                                             <li {% if '/openshift/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/openshift/"><i class="fa fa-fw fa-cloud-upload"></i> OpenShiftへのデプロイ</a></li>
+=======
+                                            <li {% if '/azure/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/azure/"><i class="fa fa-fw fa-cloud-upload"></i> Deploying to Azure</a></li>
+                                            <li {% if '/cloudcaptain/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/cloudcaptain/"><i class="fa fa-fw fa-cloud-upload"></i> Deploying with CloudCaptain</a></li>
+                                            <li {% if '/clever-cloud/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/clever-cloud/"><i class="fa fa-fw fa-cloud-upload"></i> Deploying to Clever Cloud</a></li>
+                                            <li {% if '/heroku/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/heroku/"><i class="fa fa-fw fa-cloud-upload"></i> Deploying to Heroku</a></li>
+                                            <li {% if '/kubernetes/' == page.url %}class="active" {% endif %}><a href="{{ site.url }}/kubernetes/"><i class="fa fa-fw fa-cloud-upload"></i> Deploying to Kubernetes</a></li>
+>>>>>>> upstream/main
                                         </ul>
                                     </div>
                                 </div>
