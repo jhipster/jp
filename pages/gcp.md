@@ -4,7 +4,7 @@ title: Google Cloud Platformへのデプロイ
 permalink: /gcp/
 sitemap:
     priority: 0.5
-    lastmod: 2018-10-02T00:00:00-00:00
+    lastmod: 2023-12-19T00:00:00-00:00
 ---
 
 # <i class="fa fa-cloud-upload"></i> Google Cloud Platformへのデプロイ
@@ -24,6 +24,7 @@ JHipsterアプリケーションをGoogle Cloud Platformにデプロイして、
 
 - [gcloud SDKのインストール](https://cloud.google.com/sdk/install)
 
+<<<<<<< HEAD
 ## Google App Engineにデプロイ
 
 Google App Engineは、完全に管理されたPlatform as a Serviceであり、負荷がかかっているアプリケーションインスタンスを自動的にスケールアップし、使用されていない場合はゼロにスケールダウンできます。
@@ -78,6 +79,9 @@ Gradleの場合は`./gradlew appengineDeploy -Pgae -Pprod-gae`です。
 [Ray Tsang](https://twitter.com/saturnism)と[Ludovic Champenois](https://twitter.com/ludoch)による[Google App Engineジェネレータでの2018 JHipster Confビデオ](https://www.youtube.com/watch?v=J9_MW3HOj5w)では、機能のウォークスルーを見ることができます。
    
 ## Google Kubernetes Engineへのデプロイ
+=======
+## Deploy to Google Kubernetes Engine
+>>>>>>> upstream/main
 
 Google Kubernetes Engineは、完全に管理されたKubernetesクラスタ・アズ・ア・サービスです。プロビジョニングされたコンテナとJHipsterアプリケーションを、標準のKubernetesコマンドを使用してデプロイできます。
 
