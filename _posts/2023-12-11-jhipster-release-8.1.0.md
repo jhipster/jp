@@ -1,0 +1,110 @@
+---
+layout: default
+title: リリース 8.1.0
+---
+
+# JHipster v8.1.0 リリース
+
+これは、JHipster v8のマイナーリリースです！
+
+これには、8.0.0 リリース後の[447 のクローズされたチケットとメインプロジェクトのプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.1.0)が含まれています。
+
+## 何が新しくなりましたか?
+
+### :computer: フロントエンド
+
+- Angular 17にアップグレード
+- Angular 17 - 新しい制御フロー構文を使用するように変更([#24316](https://github.com/jhipster/generator-jhipster/pull/24316),[#24363](https://github.com/jhipster/generator-jhipster/pull/24363))
+
+### :gem: 機能追加・拡張
+
+- Spring Boot 3.2およびSpring Cloud 2023へのアップグレード ([#1460](https://github.com/jhipster/jhipster-bom/pull/1460))
+- Keycloak 23へのアップグレード ([#24403](https://github.com/jhipster/generator-jhipster/pull/24403))
+- cassandra 4へのアップデート ([#24359](https://github.com/jhipster/generator-jhipster/pull/24359))
+- Gradle 8.5へのアップグレード ([#24399](https://github.com/jhipster/generator-jhipster/pull/24399))
+- oauthログアウト用のセッション・エンドポイント・メタデータの使用 ([#24430](https://github.com/jhipster/generator-jhipster/pull/24430))
+- CustomClaimConverterでの認可ヘッダーのリファクタリング ([#24413](https://github.com/jhipster/generator-jhipster/pull/24413))
+- ドキュメントの更新 ([#23305](https://github.com/jhipster/generator-jhipster/pull/23305))
+- エンティティのみの生成でも変換ファイルを書き込む ([#24259](https://github.com/jhipster/generator-jhipster/pull/24259))
+
+### :paw_prints: JDL/内部/Blueprint
+
+- ローカルBlueprintのカスタムコマンド対応 ([#24133](https://github.com/jhipster/generator-jhipster/pull/24133))
+- 構成をJDLファイルに格納できるようにした ([#24261](https://github.com/jhipster/generator-jhipster/pull/24261))
+
+### :scroll: その他
+
+- 多くの改善
+- 多くのライブラリのアップグレード
+- 多くのバグ修正
+
+## クローズされたチケットとマージされたプルリクエスト
+
+いつものように、**[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.1.0)**。
+
+## インストール方法
+
+NPMを使用してJHipster v8.1.0をインストールするには:
+
+    npm install -g generator-jhipster
+
+JHipster Dockerイメージを使用しても利用できます。この方法ではソースコードから自動的にビルドされます。
+
+- [JHipster Online](https://start.jhipster.tech)
+- [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
+
+## アップグレード方法
+
+**自動アップグレード**
+
+自動アップグレードの場合は、既存のアプリケーションで [JHipster upgrade サブジェネレーター]({{ site.url }}/upgrading-an-application/) を使用します。
+
+使用しているバージョンのJHipsterをアップグレードします。
+
+```
+npm update -g generator-jhipster
+```
+
+次に、アップグレードサブジェネレータを実行します。
+
+```
+jhipster upgrade
+```
+
+**手動アップグレード**
+
+手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
+
+```
+npm update -g generator-jhipster
+```
+
+既存のプロジェクトがある場合は、生成されたJHipsterバージョンが引き続き使用されます。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、次のコマンドを実行します。
+
+```
+jhipster
+```
+
+プロジェクトとそのすべてのエンティティを更新するには、以下を実行します。
+
+```
+jhipster --with-entities
+```
+
+エンティティサブジェネレータをもう一度実行して、エンティティを1つずつ更新することもできます。たとえば、エンティティの名前が _Foo_ の場合、以下となります。
+
+```
+jhipster entity Foo
+```
+
+## ヘルプとバグ
+
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
+
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
+
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
+
+- [@jhipster](https://twitter.com/jhipster)の X (旧Twitter)アカウントに連絡をお願いします。

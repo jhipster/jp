@@ -4,7 +4,7 @@ title: Google Cloud Platformへのデプロイ
 permalink: /gcp/
 sitemap:
     priority: 0.5
-    lastmod: 2018-10-02T00:00:00-00:00
+    lastmod: 2023-12-19T00:00:00-00:00
 ---
 
 # <i class="fa fa-cloud-upload"></i> Google Cloud Platformへのデプロイ
@@ -24,59 +24,6 @@ JHipsterアプリケーションをGoogle Cloud Platformにデプロイして、
 
 - [gcloud SDKのインストール](https://cloud.google.com/sdk/install)
 
-## Google App Engineにデプロイ
-
-Google App Engineは、完全に管理されたPlatform as a Serviceであり、負荷がかかっているアプリケーションインスタンスを自動的にスケールアップし、使用されていない場合はゼロにスケールダウンできます。
-
-Google App Engineジェネレータを使用して、JHipsterアプリケーションを生成およびデプロイできます。Google App Engineジェネレータは、Cloud SQL MySQL/PostgreSQLデータベースを使用して、モノリスとマイクロサービスアプリケーションをサポートします。
-
-#### Google App Engineへのモノリスのデプロイ
-
-1. 新しいモノリスアプリケーションを生成します。：`jhipster`
-1. Google App Engineジェネレータを実行します。：`jhipster gae`
-1. まったく新しいアプリケーションを作成する場合は、オプションで新しいCloud SQLインスタンスを作成します。
-
-このジェネレータは次のことを行います。
-1. App Engineインスタンスとスケーリング構成を記述する`src/main/appengine/app.yaml`を追加します。
-1. Maven/GradleにApp Engineプラグインを追加します。
-
-デプロイするにあたり、
-現在、Google App Engineジェネレータは、[App Engine Standard (Java 11)](https://cloud.google.com/appengine/docs/standard/java11/)環境へのデプロイのみをサポートしていることに注意してください。
-
-- App Engineプラグインを使用してデプロイします。：`./mvnw package appengine:deploy -DskipTests -Pgae,prod,prod-gae`またはGradleでは`./gradlew appengineDeploy -Pgae -Pprod-gae`を使用します。
-
-#### Google App Engineへのマイクロサービスのデプロイ
-
-[Google CloudはGAE上のマイクロサービスアーキテクチャをサポート](https://cloud.google.com/appengine/docs/standard/java/microservices-on-app-engine)しており、
-各マイクロサービスを独立したサービスとして分離させています。[`dispatch.yaml`ファイル](https://cloud.google.com/appengine/docs/standard/java11/reference/dispatch-yaml)を使用して、
-リクエストをゲートウェイから各マイクロサービスにルーティングします。そのため、マイクロサービスをGAEにデプロイするには、
-ゲートウェイと各マイクロサービスを別々のサービスとしてデプロイする必要があります。
-
-実行する必要がある手順は次のとおりです。
-
-1. 各マイクロサービスでGAEサブジェネレータを実行します。ゲートウェイアプリケーションのセットアップはこれに依存するため、これを最初のステップとして実行することが
-重要です。
-
-2. ゲートウェイアプリケーションでGAEサブジェネレータを実行します。これにより、
-`dispatch.yaml`ファイルを作成するための追加の質問が表示されます。
-
-3. Mavenの場合は`./mvnw package appengine:deploy -DskipTests -Pgae,prod,prod-gae` を使用して、各マイクロサービスとゲートウェイアプリケーションをデプロイします。
-Gradleの場合は`./gradlew appengineDeploy -Pgae -Pprod-gae`です。
-
-**注1:** Windowsを使用している場合は、[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)を使用することをお勧めします。
-または[https://github.com/jhipster/generator-jhipster/issues/11249 
-](https://github.com/jhipster/generator-jhipster/issues/11249)のようなWindows固有の問題を回避するため、[jhipster-devbox](https://github.com/jhipster/jhipster-devbox)を使用してください。
-
-**注2:** Cloud SQLを使用している場合は、App EngineサービスアカウントにCloud SQLクライアントロールを追加する必要があります。[https://cloud.google.com/sql/docs/mysql/connect-app-engine#setting_up](https://cloud.google.com/sql/docs/mysql/connect-app-engine#setting_up)を参照してください。
-
-さらに、Google App Engineには、アプリケーションを管理するための一連の機能が用意されています。
-- トラフィック分割 - アプリケーションの複数のバージョンをデプロイし、トラフィックを異なるバージョンに分割します。これは、カナリアの新しい変更にも最適です。
-- Stackdriver Logging - 検索、監視、およびエクスポートが可能な集中型ロギングで、アプリケーションログを自動的にキャプチャおよび保存します。
-- エラーレポート - ログのエラーと例外を自動的に抽出し、新しいエラーを通知します。
-- クラウドデバッガ - 作業を停止することなく、プロダクションアプリケーションをデバッグできます。問題を診断するためにさらにログメッセージが必要な場合は、アプリケーションを再デプロイ/再起動することなく、新しいログメッセージを追加します。
-
-[Ray Tsang](https://twitter.com/saturnism)と[Ludovic Champenois](https://twitter.com/ludoch)による[Google App Engineジェネレータでの2018 JHipster Confビデオ](https://www.youtube.com/watch?v=J9_MW3HOj5w)では、機能のウォークスルーを見ることができます。
-   
 ## Google Kubernetes Engineへのデプロイ
 
 Google Kubernetes Engineは、完全に管理されたKubernetesクラスタ・アズ・ア・サービスです。プロビジョニングされたコンテナとJHipsterアプリケーションを、標準のKubernetesコマンドを使用してデプロイできます。

@@ -6,12 +6,12 @@ redirect_from:
   - /security.html
 sitemap:
     priority: 0.7
-    lastmod: 2018-03-18T18:20:00-00:00
+    lastmod: 2023-12-01T18:00:00-00:00
 ---
 
 # <i class="fa fa-lock"></i> アプリケーションをセキュアに
 
-JHipsterによって生成されたもののように、単一のWebページアプリケーションでSpring Securityを使用するには、Ajaxによるログイン/ログアウト/エラービューが必要です。これらのビューを正しく使用するためにSpring Securityを設定し、すべてのJavaScriptとHTMLコードを生成します。
+JHipsterによって生成されたもののように、単一のWebページアプリケーションでSpring Securityを使用するには、XHRによるログイン/ログアウト/エラービューが必要です。これらのビューを正しく使用するためにSpring Securityを設定し、すべてのJavaScriptとHTMLコードを生成します。
 
 デフォルトでは、JHipsterには2つの異なるユーザがいます。
 
@@ -27,6 +27,9 @@ JHipsterは、3つの主要なセキュリティメカニズムを提供しま�
 1. [JSON Web Tokens (JWT)](#jwt)
 2. [セッションベースの認証](#session)
 3. [OAuth 2.0とOpenID Connect](#oauth2)
+   - [Keycloak](#keycloak)
+   - [Auth0](#auth0)
+   - [Okta](#okta)
 
 <h2 id="jwt">JSON Web Tokens (JWT)</h2>
 
@@ -128,143 +131,6 @@ Keycloakはデフォルトで組み込みH2データベースを使用してい�
 - マイグレーション方法を`OVERWRITE_EXISTING`から`IGNORE_EXISTING`に変更します（コマンドセクション内）
 
 本番環境では、HTTPSを使用することがKeycloakによって要求されます。これを実現するには、HTTPSを管理するリバース・プロキシまたはロード・バランサを使用するなど、いくつかの方法があります。このトピックの詳細を知るには、[Keycloak HTTPSドキュメント](https://www.keycloak.org/docs/latest/server_installation/index.html#setting-up-https-ssl)を読むことをお薦めします。
-
-### Okta
-
-Keycloakの代わりにOktaを使用したい場合は、[Okta CLI](https://cli.okta.com/)を使用するとかなり早いです。インストールしたら、次のコマンドを実行します。
-
-```shell
-okta register
-```
-
-次に、JHipsterアプリのディレクトリで`okta apps create jhipster`を実行します。これにより、Oktaアプリが設定され、`ROLE_ADMIN`グループと`ROLE_USER`グループが作成され、Okta設定を含む`.okta.env`ファイルが作成され、IDトークンに`groups`クレームが設定されます。
-
-`source .okta.env`を実行し、MavenまたはGradleでアプリを起動します。登録した資格情報を使用してサインインできるはずです。
-
-Windowsの場合は、`source`コマンドが動作するように、[WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)をインストールする必要があります。
-
-Okta Admin Consoleから手動で設定する場合は、次の手順を参照してください。
-
-#### Okta管理コンソールを使用したOIDCアプリケーションの作成
-
-まず、<https://developer.okta.com/signup>で無料の開発者アカウントを作成する必要があります。その後、`https://dev-123456.okta.com`のような名前の独自のOktaドメインを取得します。
-
-Oktaの設定を使うために`src/main/resources/config/application.yml`を変更します。ヒント：`{yourOktaDomain}`をあなたの組織の名前に置き換えてください（例：`dev-123456.okta.com`）。
-
-```yaml
-security:
-  oauth2:
-    client:
-      provider:
-        oidc:
-          issuer-uri: https://{yourOktaDomain}/oauth2/default
-      registration:
-        oidc:
-          client-id: {client-id}
-          client-secret: {client-secret}
-          scope: openid,profile,email
-```
-
-OktaでOIDCアプリを作成し、`{client-id}`と`{client-secret}`を取得します。これを行うには、Okta Developerアカウントにログインし、**Applications** > **Applications** > **Add Application** > **Create New App**に移動します。**Web**, **OpenID Connect**を選択し、**Create**をクリックします。アプリに覚えやすい名前を付け、ログインリダイレクトURIとして`http://localhost:8080/login/oauth2/code/oidc`を指定します。ログアウトリダイレクトURIとして`http://localhost:8080`を追加し、**Save**をクリックします。クライアントIDとシークレットを`application.yml`ファイルにコピーします。
-
-`ROLE_ADMIN`および`ROLE_USER`グループを作成し（**Directory** > **Groups** > **Add Group**）、それらにユーザーを追加します。サインアップしたアカウントを使用するか、新しいユーザーを作成します（**Directory** > **People** > **Add Person**）。**Security** > **API** > **Authorization Servers**に移動し、`default`サーバーをクリックします。**Claims**タブをクリックし、**Add Claim**をクリックします。`groups`という名前を付けて、IDトークンに含めます。値のタイプを`Groups`に設定し、フィルタを`.*`の正規表現に設定します。**Create**をクリックします。
-
-<img src="/images/security-add-claim.png" alt="Add Claim" width="600" style="margin: 10px"> 
-
-これらを変更した後、問題なく使用できるはずです！　もし問題があれば[Stack Overflow](https://stackoverflow.com/questions/tagged/jhipster)に投稿してください。質問には必ず"jhipster"と"okta"のタグを付けてください。
-
-e2eテストの実行時にOktaを使用するには、環境変数を設定できます。
-
-```shell
-export CYPRESS_E2E_USERNAME=<your-username>
-export CYPRESS_E2E_PASSWORD=<your-password>
-```
-
-Protractorを使用している場合は、`CYPRESS_`プレフィックスを削除してください。
-
-#### 環境変数の使用
-
-環境変数を使用してデフォルトの上書もできます。次に例を示します。
-
-```bash
-export SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI="https://{yourOktaDomain}/oauth2/default"
-export SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID="{client-id}"
-export SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET="{client-secret}"
-```
-
-これを`~/.okta.env`ファイルに入れて`source ~/.okta.env`を実行すると、KeycloakをOktaでオーバーライドできます。
-
-次に、Herokuにデプロイするときにこれらのプロパティを設定できます。
-
-```bash
-heroku config:set \
-  SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI="$SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI" \
-  SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID="$SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID" \
-  SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET="$SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET"
-```
-
-<a name="create-native-app-okta"></a>
-#### Oktaでモバイル用のネイティブアプリを作成する
-
-JHipsterの[Ionic](https://github.com/jhipster/generator-jhipster-ionic)または[React Native](https://github.com/jhipster/generator-jhipster-react-native)のBlueprintを使用してモバイルアプリを開発している場合、OIDCを使用しているなら、Oktaでネイティブアプリを作成することになる可能性があります。
-
-[Okta CLI](https://cli.okta.com)を使用して`okta apps create`を実行します。デフォルトのアプリ名を選択するか、必要に応じて変更します。**Native**を選択して**Enter**を押します。
-
-- **Ionic**：リダイレクトURIを`[http://localhost:8100/callback,dev.localhost.ionic:/callback]`に変更し、ログアウトリダイレクトURIを`[http://localhost:8100/logout,dev.localhost.ionic:/logout]`に変更します。
-- **React Native**：リダイレクトURIには`[http://localhost:19006/,https://auth.expo.io/@<username>/<appname>]`を使用してください。
-
-**注意:** `dev.localhost.ionic`はデフォルトのスキームですが、`com.okta.dev-133337`（ここで`dev-133337.okta.com`はあなたのOkta OrgのURLです）のような、よりトラディショナルなものも使用できます。これを変更する場合は、Ionicアプリの`src/environments/environment.ts`の`scheme`を必ず更新してください。
-
-Okta CLIは、Okta OrgにOIDC Appを作成します。指定したリダイレクトURIを追加し、Everyoneグループへのアクセスを許可します。
-
-```shell
-Okta application configuration:
-Issuer:    https://dev-133337.okta.com/oauth2/default
-Client ID: 0oab8eb55Kb9jdMIr5d6
-```
-
-**注意**：Okta管理コンソールを使用してもアプリを作成できます。詳細については、[ネイティブアプリの作成](https://developer.okta.com/docs/guides/sign-into-mobile-app/create-okta-application/)を参照してください。
-
-#### Ionicアプリをアップデートする
-
-`ionic/src/environments/environment.ts`を開き、NativeアプリからクライアントIDを追加します。`server_host`の値はJHipsterアプリ（`/api/auth-info`）から検索されますが、フォールバック（代替）値として定義できます。以下は例です。
-
-```ts
-oidcConfig: {
-  client_id: '<native-client-id>',
-  server_host: 'https://<your-okta-domain>/oauth2/default',
-  ...
-}
-```
-
-また、`http://localhost:8100`用にトラステッド・オリジンを追加する必要があります。Okta Admin Consoleで、**Security** > **API** > **Trusted Origins** > **Add Origin**に移動します。次の値を使用します。
-
-- Name: `http://localhost:8100`
-- Origin URL: `http://localhost:8100`
-- Type: CORS and Redirectの**両方を**チェック
-
-**Save**をクリックします。
-
-Ionicアプリを再起動して、Oktaでログインします!
-
-#### Reactネイティブアプリのアップデート
-
-クライアントIDを`app/config/app-config.js`にコピーします。
-
-Ionicアプリを再起動して、Oktaでログインします!
-
-#### OpenID Connectチュートリアル
-
-JHipster 5とOIDC with Oktaの詳細については、[JHipsterでOpenID Connectサポートを使用する](https://developer.okta.com/blog/2017/10/20/oidc-with-jhipster)を参照してください。
-
-JHipster 6を使用している場合は、[Java 12とJHipster 6によるJavaの改善、高速化、軽量化](https://developer.okta.com/blog/2019/04/04/java-11-java-12-jhipster-oidc)を参照してください。JHipster 6でマイクロサービスを使用している場合は、[Spring Cloud ConfigとJHipsterを使ったJavaマイクロサービス](https://developer.okta.com/blog/2019/05/23/java-microservices-spring-cloud-config)を参照してください。
-
-JHipster 7については、[Spring BootとJHipsterを使ったリアクティブJavaマイクロサービス](https://developer.okta.com/blog/2021/01/20/reactive-java-microservices)を参照してください。
-
-Okta開発者ブログには、MicronautとQuarkusへの ❤️ も掲載されています。
-
-- [JHipsterでセキュアなMicronautとAngularアプリを構築する](https://developer.okta.com/blog/2020/08/17/micronaut-jhipster-heroku)
-- [QuarkusとJHipsterで高速Java簡単に](https://developer.okta.com/blog/2021/03/08/jhipster-quarkus-oidc)
 
 ### Auth0
 
@@ -403,11 +269,142 @@ audience: 'https://<your-auth0-domain>/api/v2/',
 
 React Nativeアプリを再起動し、Auth0でログインします！
 
-<!--
-#### OpenID Connect Tutorials
+### Okta
 
-// coming soon!
--->
+Keycloakの代わりにOktaを使用したい場合は、[Okta CLI](https://cli.okta.com/)を使用するとかなり早いです。インストールしたら、次のコマンドを実行します。
+
+```shell
+okta register
+```
+
+次に、JHipsterアプリのディレクトリで`okta apps create jhipster`を実行します。これにより、Oktaアプリが設定され、`ROLE_ADMIN`グループと`ROLE_USER`グループが作成され、Okta設定を含む`.okta.env`ファイルが作成され、IDトークンに`groups`クレームが設定されます。
+
+`source .okta.env`を実行し、MavenまたはGradleでアプリを起動します。登録した資格情報を使用してサインインできるはずです。
+
+Windowsの場合は、`source`コマンドが動作するように、[WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)をインストールする必要があります。
+
+Okta Admin Consoleから手動で設定する場合は、次の手順を参照してください。
+
+#### Okta管理コンソールを使用したOIDCアプリケーションの作成
+
+まず、<https://developer.okta.com/signup>で無料の開発者アカウントを作成する必要があります。その後、`https://dev-123456.okta.com`のような名前の独自のOktaドメインを取得します。
+
+Oktaの設定を使うために`src/main/resources/config/application.yml`を変更します。ヒント：`{yourOktaDomain}`をあなたの組織の名前に置き換えてください（例：`dev-123456.okta.com`）。
+
+```yaml
+security:
+  oauth2:
+    client:
+      provider:
+        oidc:
+          issuer-uri: https://{yourOktaDomain}/oauth2/default
+      registration:
+        oidc:
+          client-id: {client-id}
+          client-secret: {client-secret}
+          scope: openid,profile,email
+```
+
+OktaでOIDCアプリを作成し、`{client-id}`と`{client-secret}`を取得します。これを行うには、Okta Developerアカウントにログインし、**Applications** > **Applications** > **Add Application** > **Create New App**に移動します。**Web**, **OpenID Connect**を選択し、**Create**をクリックします。アプリに覚えやすい名前を付け、ログインリダイレクトURIとして`http://localhost:8080/login/oauth2/code/oidc`を指定します。ログアウトリダイレクトURIとして`http://localhost:8080`を追加し、**Save**をクリックします。クライアントIDとシークレットを`application.yml`ファイルにコピーします。
+
+`ROLE_ADMIN`および`ROLE_USER`グループを作成し（**Directory** > **Groups** > **Add Group**）、それらにユーザーを追加します。サインアップしたアカウントを使用するか、新しいユーザーを作成します（**Directory** > **People** > **Add Person**）。**Security** > **API** > **Authorization Servers**に移動し、`default`サーバーをクリックします。**Claims**タブをクリックし、**Add Claim**をクリックします。`groups`という名前を付けて、IDトークンに含めます。値のタイプを`Groups`に設定し、フィルタを`.*`の正規表現に設定します。**Create**をクリックします。
+
+<img src="/images/security-add-claim.png" alt="Add Claim" width="600" style="margin: 10px"> 
+
+これらを変更した後、問題なく使用できるはずです！　もし問題があれば[Stack Overflow](https://stackoverflow.com/questions/tagged/jhipster)に投稿してください。質問には必ず"jhipster"と"okta"のタグを付けてください。
+
+e2eテストの実行時にOktaを使用するには、環境変数を設定できます。
+
+```shell
+export CYPRESS_E2E_USERNAME=<your-username>
+export CYPRESS_E2E_PASSWORD=<your-password>
+```
+
+Protractorを使用している場合は、`CYPRESS_`プレフィックスを削除してください。
+
+#### 環境変数の使用
+
+環境変数を使用してデフォルトの上書もできます。次に例を示します。
+
+```bash
+export SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI="https://{yourOktaDomain}/oauth2/default"
+export SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID="{client-id}"
+export SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET="{client-secret}"
+```
+
+これを`~/.okta.env`ファイルに入れて`source ~/.okta.env`を実行すると、KeycloakをOktaでオーバーライドできます。
+
+次に、Herokuにデプロイするときにこれらのプロパティを設定できます。
+
+```bash
+heroku config:set \
+  SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI="$SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI" \
+  SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID="$SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID" \
+  SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET="$SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET"
+```
+
+<a name="create-native-app-okta"></a>
+#### Oktaでモバイル用のネイティブアプリを作成する
+
+JHipsterの[Ionic](https://github.com/jhipster/generator-jhipster-ionic)または[React Native](https://github.com/jhipster/generator-jhipster-react-native)のBlueprintを使用してモバイルアプリを開発している場合、OIDCを使用しているなら、Oktaでネイティブアプリを作成することになる可能性があります。
+
+[Okta CLI](https://cli.okta.com)を使用して`okta apps create`を実行します。デフォルトのアプリ名を選択するか、必要に応じて変更します。**Native**を選択して**Enter**を押します。
+
+- **Ionic**：リダイレクトURIを`[http://localhost:8100/callback,dev.localhost.ionic:/callback]`に変更し、ログアウトリダイレクトURIを`[http://localhost:8100/logout,dev.localhost.ionic:/logout]`に変更します。
+- **React Native**：リダイレクトURIには`[http://localhost:19006/,https://auth.expo.io/@<username>/<appname>]`を使用してください。
+
+**注意:** `dev.localhost.ionic`はデフォルトのスキームですが、`com.okta.dev-133337`（ここで`dev-133337.okta.com`はあなたのOkta OrgのURLです）のような、よりトラディショナルなものも使用できます。これを変更する場合は、Ionicアプリの`src/environments/environment.ts`の`scheme`を必ず更新してください。
+
+Okta CLIは、Okta OrgにOIDC Appを作成します。指定したリダイレクトURIを追加し、Everyoneグループへのアクセスを許可します。
+
+```shell
+Okta application configuration:
+Issuer:    https://dev-133337.okta.com/oauth2/default
+Client ID: 0oab8eb55Kb9jdMIr5d6
+```
+
+**注意**：Okta管理コンソールを使用してもアプリを作成できます。詳細については、[ネイティブアプリの作成](https://developer.okta.com/docs/guides/sign-into-mobile-app/create-okta-application/)を参照してください。
+
+#### Ionicアプリをアップデートする
+
+`ionic/src/environments/environment.ts`を開き、NativeアプリからクライアントIDを追加します。`server_host`の値はJHipsterアプリ（`/api/auth-info`）から検索されますが、フォールバック（代替）値として定義できます。以下は例です。
+
+```ts
+oidcConfig: {
+  client_id: '<native-client-id>',
+  server_host: 'https://<your-okta-domain>/oauth2/default',
+  ...
+}
+```
+
+また、`http://localhost:8100`用にトラステッド・オリジンを追加する必要があります。Okta Admin Consoleで、**Security** > **API** > **Trusted Origins** > **Add Origin**に移動します。次の値を使用します。
+
+- Name: `http://localhost:8100`
+- Origin URL: `http://localhost:8100`
+- Type: CORS and Redirectの**両方を**チェック
+
+**Save**をクリックします。
+
+Ionicアプリを再起動して、Oktaでログインします!
+
+#### Reactネイティブアプリのアップデート
+
+クライアントIDを`app/config/app-config.js`にコピーします。
+
+Ionicアプリを再起動して、Oktaでログインします!
+
+#### OpenID Connectチュートリアル
+
+JHipster 5とOIDC with Oktaの詳細については、[JHipsterでOpenID Connectサポートを使用する](https://developer.okta.com/blog/2017/10/20/oidc-with-jhipster)を参照してください。
+
+JHipster 6を使用している場合は、[Java 12とJHipster 6によるJavaの改善、高速化、軽量化](https://developer.okta.com/blog/2019/04/04/java-11-java-12-jhipster-oidc)を参照してください。JHipster 6でマイクロサービスを使用している場合は、[Spring Cloud ConfigとJHipsterを使ったJavaマイクロサービス](https://developer.okta.com/blog/2019/05/23/java-microservices-spring-cloud-config)を参照してください。
+
+JHipster 7については、[Spring BootとJHipsterを使ったリアクティブJavaマイクロサービス](https://developer.okta.com/blog/2021/01/20/reactive-java-microservices)を参照してください。
+
+Okta開発者ブログには、MicronautとQuarkusへの ❤️ も掲載されています。
+
+- [JHipsterでセキュアなMicronautとAngularアプリを構築する](https://developer.okta.com/blog/2020/08/17/micronaut-jhipster-heroku)
+- [QuarkusとJHipsterで高速Java簡単に](https://developer.okta.com/blog/2021/03/08/jhipster-quarkus-oidc)
 
 <h2 id="https">HTTPS</h2>
 
