@@ -15,13 +15,6 @@ sitemap:
 
 [![]({{ site.url }}/images/logo/logo-heroku.png)](https://www.heroku.com/){:target="_blank" rel="noopener"}
 
-<<<<<<< HEAD
-Herokuは2つの方法でJHipsterを支援しています。
-
-- HerokuのJoe Kutner氏は現在、このサブジェネレータをメンテナンスしています。
-- Herokuは私たちに無料のクレジットを提供し、私たちが複雑でハイエンドなセットアップで生成されたアプリケーションをテストできるようにしてくださっています。その結果、一般的なユーザーに対してすべてがうまく機能することを保証できます。
-=======
->>>>>>> upstream/main
 
 ## サブジェネレータの実行
 
@@ -36,16 +29,10 @@ Password (typing will be hidden): YOUR_PASSWORD
 Authentication successful.
 </pre>
 
-<<<<<<< HEAD
-<div class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i>
-Herokuサブジェネレータは、常にフリーティア/オプションを使用します。
-それにもかかわらず、アドオンをインストールするには、適切に<a href="https://devcenter.heroku.com/articles/account-verification" target="_blank" rel="noopener">検証されたHerokuアカウント</a>が必要です。したがって、予期しないビルドエラーを回避するため、このサブジェネレータを起動する前にHerokuアカウントを検証することをお勧めします。
-=======
 <div class="alert alert-warning"><i class="fa fa-money" aria-hidden="true"></i>
-As of <a href="https://blog.heroku.com/next-chapter" target="_blank" rel="noopener">>November 2022 Heroku does not offer a completly free tier</a> anymore.
-This means you will need a properly <a href="https://devcenter.heroku.com/articles/account-verification" target="_blank" rel="noopener">verified Heroku account</a>
-and deploying an application using the smallest dyno options and the smallest Postgres size will cost you around <b>$12 per month</b>.
->>>>>>> upstream/main
+2022年11月より、<a href="https://blog.heroku.com/next-chapter" target="_blank" rel="noopener">Herokuは完全に無料のプランを提供しなくなりました</a>。
+これは、<a href="https://devcenter.heroku.com/articles/account-verification" target="_blank" rel="noopener">適切に認証されたHerokuアカウント</a>が必要であることを意味します。
+そして、最小限のdynoオプションと最小サイズのPostgresを使用してアプリケーションをデプロイする場合、費用は<b>月額約12ドル</b>になります。
 </div>
 
 Herokuサブジェネレータは、選択した構成に一致するアドオンを使用した[free dynos](https://devcenter.heroku.com/articles/dyno-types){:target="_blank" rel="noopener"}を使用してアプリケーションを作成します。
@@ -302,36 +289,7 @@ JHipsterは、Herokuにデプロイするとき、[bonsaiと互換性のあるEl
 <b>有料</b>のアドオンを使用する場合は、<a href="https://devcenter.heroku.com/articles/foundelasticsearch" target="_blank" rel="noopener">公式のElastic Cloud統合</a>を使用して、最新のElasticsearchバージョンと機能にアクセスできます。
 </div>
 
-<<<<<<< HEAD
-### Oktaの使用
-
-[Okta](https://elements.heroku.com/addons/okta){:target="_blank" rel="noopener"}を選択すると、サブジェネレータは、JHipsterに必要なすべてのグループとロールを作成するbashスクリプトを作成します。
-作成時に指定されたユーザーおよび認証情報を使用してログインする場合は、新しいパスワードを選択する必要があります。これは、スクリプトが`.yo-rc.json`に格納されているパスワードを
-直接期限切れにするためです。
-
-<div class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i>
-Oktaアドオンをプロビジョニングするスクリプトには、次のものが必要です。
-<ul>
-  <li><a href="https://curl.haxx.se/" target="_blank" rel="noopener">cURL</a>：<a href="https://developer.okta.com/docs/reference/" target="_blank" rel="noopener">Okta API</a>へのWebリクエスト</li>
-  <li><a href="https://stedolan.github.io/jq/" target="_blank" rel="noopener">jq</a>：JSONデータの解析/操作</li>
-</ul>
-これらのツールが見つからない場合は、サブジェネレータから警告が表示されるので、<code class="highlighter-rouge">./provision-okta-addon.sh</code>を手動で実行する必要があります。
-</div>
-
-### フリーのdyno
-
-フリーのdynoには制限があるため、実動デプロイメントには使用すべきではありません。以下に理由を示します。
-
-* [30分間のアイドル期間](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping){:target="_blank" rel="noopener"}後に停止します。
-* [月にdynoが動く時間に制限があります](https://devcenter.heroku.com/articles/free-dyno-hours#usage){:target="_blank" rel="noopener"}。これらが消費されると、あなたのdynosは来月まで実行されません！
-
-Heroku管理UIから直接dyno設定をアップグレードできます。
-たとえば、データベース計画が小さすぎることに気付いた場合は、管理UIから新しい計画を選択できます。
-
 ## 詳細情報
-=======
-## More information
->>>>>>> upstream/main
 
 *   [適用例](https://github.com/kissaten/jhipster-example){:target="_blank" rel="noopener"}
 *   [Spring Boot Herokuドキュメント](https://docs.spring.io/spring-boot/docs/current/reference/html/deployment.html#cloud-deployment-heroku){:target="_blank" rel="noopener"}

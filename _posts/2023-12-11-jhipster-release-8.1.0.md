@@ -1,110 +1,110 @@
 ---
 layout: default
-title: Release 8.1.0
+title: リリース 8.1.0
 ---
 
-# JHipster release v8.1.0
+# JHipster v8.1.0 リリース
 
-This is our minor release for JHipster v8.
+これは、JHipster v8のマイナーリリースです！
 
-It includes [447 closed tickets and pull requests on the main project](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.1.0) after the 8.0.0 release.
+これには、8.0.0 リリース後の[447 のクローズされたチケットとメインプロジェクトのプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.1.0)が含まれています。
 
-## What's new?
+## 何が新しくなりましたか?
 
-### :computer: Frontend
+### :computer: フロントエンド
 
-- Upgrade to Angular 17
-- Angular 17 - Change to use new control flow syntax ([#24316](https://github.com/jhipster/generator-jhipster/pull/24316),[#24363](https://github.com/jhipster/generator-jhipster/pull/24363))
+- Angular 17にアップグレード
+- Angular 17 - 新しい制御フロー構文を使用するように変更([#24316](https://github.com/jhipster/generator-jhipster/pull/24316),[#24363](https://github.com/jhipster/generator-jhipster/pull/24363))
 
-### :gem: Features & Enhancements
+### :gem: 機能追加・拡張
 
-- Upgrade to Spring Boot 3.2 and Spring Cloud 2023 ([#1460](https://github.com/jhipster/jhipster-bom/pull/1460))
-- Upgrade to Keycloak 23 ([#24403](https://github.com/jhipster/generator-jhipster/pull/24403))
-- Update to cassandra 4 ([#24359](https://github.com/jhipster/generator-jhipster/pull/24359))
-- Upgrade to Gradle 8.5 ([#24399](https://github.com/jhipster/generator-jhipster/pull/24399))
-- use session endpoint metadata for oauth logout ([#24430](https://github.com/jhipster/generator-jhipster/pull/24430))
-- Refactor authorization header in CustomClaimConverter ([#24413](https://github.com/jhipster/generator-jhipster/pull/24413))
-- Rewrite documentation. ([#23305](https://github.com/jhipster/generator-jhipster/pull/23305))
-- write translation files even for entity only generation ([#24259](https://github.com/jhipster/generator-jhipster/pull/24259))
+- Spring Boot 3.2およびSpring Cloud 2023へのアップグレード ([#1460](https://github.com/jhipster/jhipster-bom/pull/1460))
+- Keycloak 23へのアップグレード ([#24403](https://github.com/jhipster/generator-jhipster/pull/24403))
+- cassandra 4へのアップデート ([#24359](https://github.com/jhipster/generator-jhipster/pull/24359))
+- Gradle 8.5へのアップグレード ([#24399](https://github.com/jhipster/generator-jhipster/pull/24399))
+- oauthログアウト用のセッション・エンドポイント・メタデータの使用 ([#24430](https://github.com/jhipster/generator-jhipster/pull/24430))
+- CustomClaimConverterでの認可ヘッダーのリファクタリング ([#24413](https://github.com/jhipster/generator-jhipster/pull/24413))
+- ドキュメントの更新 ([#23305](https://github.com/jhipster/generator-jhipster/pull/23305))
+- エンティティのみの生成でも変換ファイルを書き込む ([#24259](https://github.com/jhipster/generator-jhipster/pull/24259))
 
-### :paw_prints: JDL/Internals/Blueprints
+### :paw_prints: JDL/内部/Blueprint
 
-- allow local blueprints to have custom commands ([#24133](https://github.com/jhipster/generator-jhipster/pull/24133))
-- Allow to store configuration in a JDL file. ([#24261](https://github.com/jhipster/generator-jhipster/pull/24261))
+- ローカルBlueprintのカスタムコマンド対応 ([#24133](https://github.com/jhipster/generator-jhipster/pull/24133))
+- 構成をJDLファイルに格納できるようにした ([#24261](https://github.com/jhipster/generator-jhipster/pull/24261))
 
-### :scroll: Others
+### :scroll: その他
 
-- Many improvements
-- Many libraries upgrades
-- Many bug fixes
+- 多くの改善
+- 多くのライブラリのアップグレード
+- 多くのバグ修正
 
-## Closed tickets and merged pull requests
+## クローズされたチケットとマージされたプルリクエスト
 
-As always, **[you can check all closed tickets and merged pull requests here](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.1.0)**.
+いつものように、**[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.1.0)**。
 
-## How to install
+## インストール方法
 
-To install JHipster v8.1.0 using using NPM:
+NPMを使用してJHipster v8.1.0をインストールするには:
 
     npm install -g generator-jhipster
 
-It is also available using the JHipster Docker image, as it is automatically built from our source code.
+JHipster Dockerイメージを使用しても利用できます。この方法ではソースコードから自動的にビルドされます。
 
 - [JHipster Online](https://start.jhipster.tech)
 - [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
 
-## How to upgrade
+## アップグレード方法
 
-**Automatic upgrade**
+**自動アップグレード**
 
-For an automatic upgrade, use the [JHipster upgrade sub-generator]({{ site.url }}/upgrading-an-application/) on an existing application:
+自動アップグレードの場合は、既存のアプリケーションで [JHipster upgrade サブジェネレーター]({{ site.url }}/upgrading-an-application/) を使用します。
 
-Upgrade your version of JHipster:
+使用しているバージョンのJHipsterをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-And then run the upgrade sub-generator:
+次に、アップグレードサブジェネレータを実行します。
 
 ```
 jhipster upgrade
 ```
 
-**Manual upgrades**
+**手動アップグレード**
 
-For a manual upgrade, first upgrade your version of JHipster with:
+手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-If you have an existing project, it will still use the JHipster version with which it was generated.
-To upgrade your project, you must first delete its `node_modules` folder and then run:
+既存のプロジェクトがある場合は、生成されたJHipsterバージョンが引き続き使用されます。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、次のコマンドを実行します。
 
 ```
 jhipster
 ```
 
-You can also update your project and all its entities by running
+プロジェクトとそのすべてのエンティティを更新するには、以下を実行します。
 
 ```
 jhipster --with-entities
 ```
 
-You can also update your entities one-by-one by running again the entity sub-generator, for example if your entity is named _Foo_
+エンティティサブジェネレータをもう一度実行して、エンティティを1つずつ更新することもできます。たとえば、エンティティの名前が _Foo_ の場合、以下となります。
 
 ```
 jhipster entity Foo
 ```
 
-## Help and bugs
+## ヘルプとバグ
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- [@jhipster](https://twitter.com/jhipster)の X (旧Twitter)アカウントに連絡をお願いします。
