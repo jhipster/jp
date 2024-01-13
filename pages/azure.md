@@ -4,7 +4,7 @@ title: Microsoft Azureへのデプロイ
 permalink: /azure/
 sitemap:
     priority: 0.7
-    lastmod: 2018-08-24T00:00:00-00:00
+    lastmod: 2023-12-19T00:00:00-00:00
 ---
 
 # <i class="fa fa-cloud-upload"></i> Microsoft Azureへのデプロイ
@@ -45,7 +45,3 @@ NubesGenを使用してJHipsterアプリケーションをデプロイするに�
         <p>2023年9月26日 公開</p>
     </div>
 </div>
-
-## [非推奨] "azure"サブジェネレータを使用したデプロイ
-
-JHipsterには、以前のバージョンで文書化されている"azure"サブジェネレータがまだありますが、非推奨になりました。
