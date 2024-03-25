@@ -30,9 +30,15 @@ Authentication successful.
 </pre>
 
 <div class="alert alert-warning"><i class="fa fa-money" aria-hidden="true"></i>
+<<<<<<< HEAD
 2022年11月より、<a href="https://blog.heroku.com/next-chapter" target="_blank" rel="noopener">Herokuは完全に無料のプランを提供しなくなりました</a>。
 これは、<a href="https://devcenter.heroku.com/articles/account-verification" target="_blank" rel="noopener">適切に認証されたHerokuアカウント</a>が必要であることを意味します。
 そして、最小限のdynoオプションと最小サイズのPostgresを使用してアプリケーションをデプロイする場合、費用は<b>月額約12ドル</b>になります。
+=======
+As of <a href="https://blog.heroku.com/next-chapter" target="_blank" rel="noopener">>November 2022 Heroku does not offer a completely free tier</a> anymore.
+This means you will need a properly <a href="https://devcenter.heroku.com/articles/account-verification" target="_blank" rel="noopener">verified Heroku account</a>
+and deploying an application using the smallest dyno options and the smallest Postgres size will cost you around <b>$12 per month</b>.
+>>>>>>> upstream/main
 </div>
 
 Herokuサブジェネレータは、選択した構成に一致するアドオンを使用した[free dynos](https://devcenter.heroku.com/articles/dyno-types){:target="_blank" rel="noopener"}を使用してアプリケーションを作成します。
