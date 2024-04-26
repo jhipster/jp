@@ -4,7 +4,7 @@ title: アプリケーションのアップグレード
 permalink: /upgrading-an-application/
 sitemap:
     priority: 0.7
-    lastmod: 2014-06-02T00:00:00-00:00
+    lastmod: 2024-04-08T00:00:00-00:00
 gitgraph: http://jsfiddle.net/lordlothar99/tqp9gyu3
 ---
 
@@ -17,7 +17,11 @@ gitgraph: http://jsfiddle.net/lordlothar99/tqp9gyu3
 
 <h2 id="automatic_upgrade">選択1 - 自動アップグレード</h2>
 
+<<<<<<< HEAD
 JHipsterの新しいバージョンがリリースされると、JHipsterアップグレードサブジェネレータは、変更を消去することなく、既存のアプリケーションを新しいバージョンにアップグレードするのを手助けします。
+=======
+When a new version of JHipster is released, the JHipster upgrade sub-generator helps upgrade an existing application to this new version, without erasing your changes.
+>>>>>>> upstream/main
 
 これは、以下の場合に役立ちます。
 
@@ -62,7 +66,22 @@ _アップグレードを行う前にこのページをよく読んで、アッ�
 
 上記の手順を実行すると、jhipster_upgradeツリーが最新の変更内容でアップグレードされるため、JHipsterはアップグレード中にそのツリーを利用できます。たとえば、モデルを変更した場合などです。
 
+<<<<<<< HEAD
 ### アップグレードプロセスをグラフィカルに表示
+=======
+### Upgrading from JHipster 7 and previous versions
+
+The [migrate blueprint](https://github.com/jhipster/generator-jhipster-migrate) is an advanced version of the upgrade sub-generator. If you need to upgrade a JHipster 7 app, it's recommended you use the migrate blueprint. For example, let's assume you have a 7.9.3 app.
+
+Run `jhipster-migrate` to upgrade to the latest version. Resolve conflicts, commit, and celebrate!
+
+For a working example, see the following pull requests from the 21-Points Health project.
+
+- [Upgrade to JHipster 7.9.4](https://github.com/mraible/21-points/pull/248)
+- [Upgrade to JHipster 8.2.1](https://github.com/mraible/21-points/pull/249)
+
+### Graphical view of the upgrade process
+>>>>>>> upstream/main
 
 以下にアップグレードプロセスの動作を図で示します（テキストによる説明については、次のセクションを参照してください）。
 

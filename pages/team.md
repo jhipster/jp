@@ -5,8 +5,8 @@ permalink: /team/
 redirect_from:
   - /team.html
 sitemap:
-    priority: 0.7
-    lastmod: 2023-12-19T17:10:00-00:00
+  priority: 0.7
+  lastmod: 2023-12-19T17:10:00-00:00
 ---
 
 # <i class="fa fa-coffee"></i> チーム
@@ -15,14 +15,28 @@ JHipsterは世界中の人々のチームによって開発されています。
 
 チームに参加したい場合や、私たちの働き方を見たい場合は、このページの最後にコミュニティルールがあります。
 
+<<<<<<< HEAD
 ## プロジェクト・リード
+=======
+## JHipster Governance Structure
+
+JHipster is an open-source project, and we have a governance structure to ensure that the project is well maintained and that the community is well served. The governance structure is as follows:
+
+- **[JHipster Developer Association](https://www.jhipster.tech/association/#-jhipster-developers-association)**: A French non-profit association (“Association loi 1901”) which serves as a legal entity for JHipster events and services.
+- **Governing Body**: Advisory body overseeing all projects under the JHipster organizations and JHipster Developer Association. The Governing Body is responsible for the overall direction of the project.
+- **Project Leads**: Leads are responsible for the day-to-day management of the project. Leads have admin rights and are responsible for releases.
+- **Board of Developers**: The core team of developers who have write access to the main repository and have voting rights when it comes to project decisions.
+
+## Governing Body
+
+>>>>>>> upstream/main
 <div class="row">
     <div class="col-xs-3 team-member">
         <div class="thumbnail no-margin-bottom">
             <img src="https://avatars.githubusercontent.com/u/316835?v=3" class="img-responsive">
             <div class="caption">
                 <h3>Julien Dubois</h3>
-                <p>Project lead</p>
+                <p>Founder and Chair, President of JHipster Developer Association</p>
                 <p><a href="https://twitter.com/juliendubois"><i>@juliendubois</i></a></p>
             </div>
         </div>
@@ -32,7 +46,7 @@ JHipsterは世界中の人々のチームによって開発されています。
             <img src="https://avatars.githubusercontent.com/u/1107223?v=3" class="img-responsive">
             <div class="caption">
                 <h3>Deepu K Sasidharan</h3>
-                <p>Project co-lead</p>
+                <p>Co-Chair, Vice President of JHipster Developer Association</p>
                 <p><a href="https://twitter.com/deepu105"><i>@deepu105</i></a></p>
             </div>
         </div>
@@ -42,18 +56,43 @@ JHipsterは世界中の人々のチームによって開発されています。
             <img src="https://avatars.githubusercontent.com/u/9156882?v=3" class="img-responsive">
             <div class="caption">
                 <h3>Pascal Grimaud</h3>
-                <p>Project co-lead</p>
+                <p>Co-Chair, Vice President of JHipster Developer Association</p>
                 <p><a href="https://twitter.com/pascalgrimaud"><i>@pascalgrimaud</i></a></p>
             </div>
         </div>
     </div>
+</div>
+
+## Project leads
+
+<div class="row">
     <div class="col-xs-3 team-member">
         <div class="thumbnail no-margin-bottom">
             <img src="https://avatars.githubusercontent.com/u/3706415?v=3" class="img-responsive">
             <div class="caption">
                 <h3>Daniel Franco</h3>
-                <p>Project co-lead</p>
+                <p>JHipster co-lead</p>
                 <p><a href="https://twitter.com/dandrfranco"><i>@dandrfranco</i></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 team-member">
+        <div class="thumbnail no-margin-bottom">
+            <img src="https://avatars.githubusercontent.com/u/17892?v=3" class="img-responsive">
+            <div class="caption">
+                <h3>Matt Raible</h3>
+                <p>JHipster co-lead</p>
+                <p><a href="https://twitter.com/mraible"><i>@mraible</i></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 team-member">
+        <div class="thumbnail no-margin-bottom">
+            <img src="https://avatars.githubusercontent.com/u/9156882?v=3" class="img-responsive">
+            <div class="caption">
+                <h3>Pascal Grimaud</h3>
+                <p>JHipster Lite Lead</p>
+                <p><a href="https://twitter.com/pascalgrimaud"><i>@pascalgrimaud</i></a></p>
             </div>
         </div>
     </div>
@@ -314,8 +353,13 @@ JHipsterは、アプリケーションに対して幅広いテクノロジーの
 
 更新されたスプレッドシートは[ここ](https://docs.google.com/spreadsheets/d/1fac4Uxv3bKr0rNmgg1WXv67CE_6nfHEPIuCp-_iU-uA/edit?usp=sharing)にあります。
 
+<<<<<<< HEAD
 | ストリーム                            | リーダー            |
 |-------------------------------------|--------------------|
+=======
+| Stream                              | Leader             |
+| ----------------------------------- | ------------------ |
+>>>>>>> upstream/main
 | Angular                             | William Marques    |
 | React                               | Sendil Kumar N     |
 | VueJS                               |                    |
@@ -343,9 +387,13 @@ JHipsterは、アプリケーションに対して幅広いテクノロジーの
 | Cassandra                           | Cedrick Lunven     |
 | OpenAPI                             | Christophe Bornet  |
 
+<<<<<<< HEAD
 
 
 ## 開発者ボードの退任メンバー
+=======
+## Retired members of the board of developers
+>>>>>>> upstream/main
 
 <div class="row">
     <div class="col-xs-3 team-member">
@@ -462,25 +510,46 @@ JHipsterは、アプリケーションに対して幅広いテクノロジーの
 
 私たちはほとんどの作業を[プロジェクトのGitHubページ](https://github.com/jhipster/generator-jhipster)で行っています。
 
+<<<<<<< HEAD
 内部チームディスカッションは、次のチャネルで行われます。
 - [jhipster-devメーリングリスト](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)
 - [jhipster-dev-team Gitterチャット](https://gitter.im/jhipster/jhipster-dev-team)
+=======
+Internal team discussions happen in the following channels:
+
+- The [jhipster-dev mailing list](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)
+- The [jhipster-dev-team Gitter chat](https://gitter.im/jhipster/jhipster-dev-team)
+>>>>>>> upstream/main
 
 私たちがJHipsterで行うことはすべて公開されているので、これらのディスカッションチャネルは公開されていますが、参加できるのは開発者の委員会だけです。メーリングリストのアーカイブは[Googleグループページ](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)にあり、[チャットアーカイブ](https://gitter.im/jhipster/jhipster-dev-team/archives/all)はGitterで入手できます。
 
 # 開発者のボードに参加する方法は?
 
+<<<<<<< HEAD
 - プロジェクトに定期的に参加します（コミット、PRなど）。
 - 現在のボードの誰かに、経歴と背景情報を聞いて、その人がdevメーリングリストに投票を提出します。
 - devメーリングリストの全員が投票できます（賛成の場合は+1、反対の場合は -1）。
     - 1つの"-1"票で新しいメンバーの追加を拒否しますが、"-1"票を投じた人は理由を説明する必要があります。
+=======
+- Participate regularly in the project (commits, PRs, etc)
+- Ask someone from the current board, with some bio and background information, and that person will submit a vote on the dev mailing list
+- Everybody on the dev mailing list can vote (+1 if they agree, -1 if they don’t)
+  - One “-1” vote will decline adding the new member, but the person who votes “-1” will need to explain why
+>>>>>>> upstream/main
 
 # 開発者委員会のメンバーは何を得ていますか?
 
+<<<<<<< HEAD
 - メインリポジトリと、[JHipster組織](https://github.com/jhipster)の下のほとんどのプロジェクトへの書き込みアクセス。
 - プロジェクトに関連する費用（例えば、JHipster会議に来るための旅費）は、[我々のOpenCollectiveアカウント](https://opencollective.com/generator-jhipster)によって支払うことができます。これは、アカウントで利用可能な金額に依存し、
 プロジェクトリーダーによって決定され、検証されます。
 - プロジェクトが友好的な企業から定期的に取得する無料のライセンスと無料の割り当て。
+=======
+- Write access to the main repository, and to most of the projects under the [JHipster organization](https://github.com/jhipster).
+- Costs associated with the project (for example travel costs to come to a JHipster conference) can be paid by [our OpenCollective account](https://opencollective.com/generator-jhipster). This depends on the money available on the account,
+  and this is decided and validated by the project leads.
+- Free licenses and free quotas that the project regularly gets from friendly companies.
+>>>>>>> upstream/main
 
 # 「退任した開発者ボードのメンバー」は誰ですか?
 
