@@ -131,7 +131,7 @@ _application-dev.yml_
         profiles:
             active: dev
         mail:
-            host: smtp.zoho.com
+            host: smtp.zoho.eu
             port: 587
             username: zohouserid@zoho.com   #このフィールドをZohoのユーザー名に置き換えます。
             password: ************          #このフィールドをZohoのパスワードに置き換えます。
@@ -140,7 +140,7 @@ _application-dev.yml_
             properties.mail.smtp:
                 auth: true
                 starttls.enable: true
-                ssl.trust: smtp.zoho.com
+                ssl.trust: smtp.zoho.eu
             [...]
 
 

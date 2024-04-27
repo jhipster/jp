@@ -1,0 +1,102 @@
+---
+layout: default
+title: リリース 8.2.1
+---
+
+# JHipster v8.2.1 リリース
+
+これはJHipster v8のマイナーリリースです。8.2.0はコンパイルエラーのバグのためリリースが取り消されたので、8.2.1はそのパッチリリースであることにご注意ください。
+
+これには、8.1.0リリース後の[メインプロジェクトの1104のクローズされたチケットとプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.2.1)が含まれています。
+
+## 何が新しくなりましたか?
+
+### :computer: フロントエンド
+
+- Prettier 3.2.4へのアップグレード
+- [Angular] Angular 17.1.0へのアップグレード
+- [Angular] シグナルの使用 [#24875](https://github.com/jhipster/generator-jhipster/pull/24875)
+- [Vue] ViteをESMビルドに切り替え [#24759](https://github.com/jhipster/generator-jhipster/pull/24759)
+- [Vue] Vue 3.4へのアップグレード [#24728](https://github.com/jhipster/generator-jhipster/pull/24728)
+
+### :gem: 機能追加・拡張
+
+- Liquibaseヘッダーの部分テンプレートの追加 [#25125](https://github.com/jhipster/generator-jhipster/pull/25125) 
+- UserManagementエンティティの追加 [#25069](https://github.com/jhipster/generator-jhipster/pull/25069)
+
+### :scroll: その他
+
+- 多くの改善
+- 多くのライブラリのアップグレード
+- 多くのバグ修正
+
+## クローズされたチケットとマージされたプルリクエスト
+
+いつも通り、**[クローズされたすべてのチケットとマージされたプルリクエストはこちらから確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.2.1)**。
+
+## インストール方法
+
+NPMを使用してJHipster v8.2.1をインストールするには:
+
+    npm install -g generator-jhipster
+
+JHipster Dockerイメージを使用しても利用できます。この方法ではソースコードから自動的にビルドされます。
+
+- [JHipster Online](https://start.jhipster.tech)
+- [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
+
+## アップグレード方法
+
+**自動アップグレード**
+
+自動アップグレードの場合は、既存のアプリケーションで [JHipster upgradeサブジェネレーター]({{ site.url }}/upgrading-an-application/) を使用します。
+
+使用しているバージョンのJHipsterをアップグレードします。
+
+```
+npm update -g generator-jhipster
+```
+
+次に、アップグレードサブジェネレータを実行します。
+
+```
+jhipster upgrade
+```
+
+**手動アップグレード**
+
+手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
+
+```
+npm update -g generator-jhipster
+```
+
+既存のプロジェクトがある場合は、生成されたJHipsterバージョンが引き続き使用されます。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、次のコマンドを実行します。
+
+```
+jhipster
+```
+
+プロジェクトとそのすべてのエンティティを更新するには、以下を実行します。
+
+```
+jhipster --with-entities
+```
+
+エンティティサブジェネレータをもう一度実行して、エンティティを1つずつ更新することもできます。たとえば、エンティティの名前が _Foo_ の場合は以下のようにします。
+    
+```
+jhipster entity Foo
+```
+
+## ヘルプとバグ
+
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
+
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
+
+問題が緊急のバグまたはセキュリティの問題である場合は、以下を行ってください。
+
+- X (旧Twitter)の[@jhipster](https://twitter.com/jhipster)アカウントにご連絡ください。
