@@ -5,8 +5,8 @@ permalink: /team/
 redirect_from:
   - /team.html
 sitemap:
-    priority: 0.7
-    lastmod: 2023-12-19T17:10:00-00:00
+  priority: 0.7
+  lastmod: 2023-12-19T17:10:00-00:00
 ---
 
 # <i class="fa fa-coffee"></i> チーム
@@ -15,14 +15,24 @@ JHipsterは世界中の人々のチームによって開発されています。
 
 チームに参加したい場合や、私たちの働き方を見たい場合は、このページの最後にコミュニティルールがあります。
 
-## プロジェクト・リード
+## JHipsterのガバナンス構造
+
+JHipsterはオープンソースプロジェクトであり、プロジェクトが適切に維持管理され、コミュニティが十分にサポートされるようにガバナンス構造を設けています。ガバナンス構造は以下の通りです。
+
+- **[JHipster開発者協会](https://www.jhipster.tech/association/#-jhipster-developers-association)**: JHipsterのイベントやサービスの法人格として機能するフランスの非営利団体（「Association loi 1901」）です。
+- **運営委員会**: JHipster組織およびJHipster開発者協会の下にあるすべてのプロジェクトを監督する諮問機関です。運営委員会はプロジェクトの全体的な方向性に責任を負います。
+- **プロジェクトリーダー**: プロジェクトの日々の管理に責任を負います。リーダーは管理者権限を持ち、リリースに責任を負います。
+- **開発者委員会**: メインリポジトリへの書き込み権限を持ち、プロジェクトの決定に関して投票権を持つコア開発者チームです。
+
+## 運営委員会
+
 <div class="row">
     <div class="col-xs-3 team-member">
         <div class="thumbnail no-margin-bottom">
             <img src="https://avatars.githubusercontent.com/u/316835?v=3" class="img-responsive">
             <div class="caption">
                 <h3>Julien Dubois</h3>
-                <p>Project lead</p>
+                <p>Founder and Chair, President of JHipster Developer Association</p>
                 <p><a href="https://twitter.com/juliendubois"><i>@juliendubois</i></a></p>
             </div>
         </div>
@@ -32,7 +42,7 @@ JHipsterは世界中の人々のチームによって開発されています。
             <img src="https://avatars.githubusercontent.com/u/1107223?v=3" class="img-responsive">
             <div class="caption">
                 <h3>Deepu K Sasidharan</h3>
-                <p>Project co-lead</p>
+                <p>Co-Chair, Vice President of JHipster Developer Association</p>
                 <p><a href="https://twitter.com/deepu105"><i>@deepu105</i></a></p>
             </div>
         </div>
@@ -42,18 +52,43 @@ JHipsterは世界中の人々のチームによって開発されています。
             <img src="https://avatars.githubusercontent.com/u/9156882?v=3" class="img-responsive">
             <div class="caption">
                 <h3>Pascal Grimaud</h3>
-                <p>Project co-lead</p>
+                <p>Co-Chair, Vice President of JHipster Developer Association</p>
                 <p><a href="https://twitter.com/pascalgrimaud"><i>@pascalgrimaud</i></a></p>
             </div>
         </div>
     </div>
+</div>
+
+## Project leads
+
+<div class="row">
     <div class="col-xs-3 team-member">
         <div class="thumbnail no-margin-bottom">
             <img src="https://avatars.githubusercontent.com/u/3706415?v=3" class="img-responsive">
             <div class="caption">
                 <h3>Daniel Franco</h3>
-                <p>Project co-lead</p>
+                <p>JHipster co-lead</p>
                 <p><a href="https://twitter.com/dandrfranco"><i>@dandrfranco</i></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 team-member">
+        <div class="thumbnail no-margin-bottom">
+            <img src="https://avatars.githubusercontent.com/u/17892?v=3" class="img-responsive">
+            <div class="caption">
+                <h3>Matt Raible</h3>
+                <p>JHipster co-lead</p>
+                <p><a href="https://twitter.com/mraible"><i>@mraible</i></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 team-member">
+        <div class="thumbnail no-margin-bottom">
+            <img src="https://avatars.githubusercontent.com/u/9156882?v=3" class="img-responsive">
+            <div class="caption">
+                <h3>Pascal Grimaud</h3>
+                <p>JHipster Lite Lead</p>
+                <p><a href="https://twitter.com/pascalgrimaud"><i>@pascalgrimaud</i></a></p>
             </div>
         </div>
     </div>
@@ -315,7 +350,7 @@ JHipsterは、アプリケーションに対して幅広いテクノロジーの
 更新されたスプレッドシートは[ここ](https://docs.google.com/spreadsheets/d/1fac4Uxv3bKr0rNmgg1WXv67CE_6nfHEPIuCp-_iU-uA/edit?usp=sharing)にあります。
 
 | ストリーム                            | リーダー            |
-|-------------------------------------|--------------------|
+| ----------------------------------- | ------------------ |
 | Angular                             | William Marques    |
 | React                               | Sendil Kumar N     |
 | VueJS                               |                    |
@@ -342,8 +377,6 @@ JHipsterは、アプリケーションに対して幅広いテクノロジーの
 | Docker                              | Pascal Grimaud     |
 | Cassandra                           | Cedrick Lunven     |
 | OpenAPI                             | Christophe Bornet  |
-
-
 
 ## 開発者ボードの退任メンバー
 
@@ -463,6 +496,7 @@ JHipsterは、アプリケーションに対して幅広いテクノロジーの
 私たちはほとんどの作業を[プロジェクトのGitHubページ](https://github.com/jhipster/generator-jhipster)で行っています。
 
 内部チームディスカッションは、次のチャネルで行われます。
+
 - [jhipster-devメーリングリスト](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)
 - [jhipster-dev-team Gitterチャット](https://gitter.im/jhipster/jhipster-dev-team)
 

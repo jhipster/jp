@@ -15,7 +15,7 @@ sitemap:
 ## バグ報奨金は誰が作れますか?
 
 - [シルバー、ゴールド、プラチナスポンサー]({{ site.url }}/sponsors/)
-- 3人の[コアチームプロジェクトリーダー]({{ site.url }}/team/)、[@jdubois](https://github.com/jdubois)、[@deepu105](https://github.com/deepu105)、[@pascalgrimaud](https://github.com/pascalgrimaud)
+- [プロジェクトリーダー]({{ site.url }}/team/#project-leads)と[運営委員会]({{ site.url }}/team/#governing-body)
 
 ## バグ報奨金はいくらですか?
 
@@ -35,15 +35,15 @@ sitemap:
 
 チケットが作成されると、次の2つのアクションによってバグ報奨金ラベルを取得できます。
 
-- シルバーまたはゴールドのスポンサーが、バグ報奨金ラベルの追加を求めるコメントを追加し、[@jdubois](https://github.com/jdubois)、[@deepu105](https://github.com/deepu105)または[@pascalgrimaud](https://github.com/pascalgrimaud)にメンションします。
-- [@jdubois](https://github.com/jdubois)、[@deepu105](https://github.com/deepu105)または[@pascalgrimaud](https://github.com/pascalgrimaud)がバグ報奨金ラベルを直接追加します。これは、重要な新機能、重大なバグ、長期にわたる問題、あるいは時間のかかるタスクであると考えられるためです。問題に取り組んでいて、それが報奨金に値すると考える場合は、プロジェクトリーダーの1人に尋ねることをためらわないでください。
+- シルバーまたはゴールドのスポンサーが、バグ報奨金ラベルの追加を求めるコメントを追加し、[プロジェクトリーダー]({{ site.url }}/team/#project-leads)の一人にメンションします。
+- [プロジェクトリーダー]({{ site.url }}/team/#project-leads)や[運営委員会]({{ site.url }}/team/#governing-body)がバグ報奨金ラベルを直接追加します。これは、重要な新機能、重大なバグ、長期にわたる問題、あるいは時間のかかるタスクであると考えられるためです。問題に取り組んでいて、それが報奨金に値すると考える場合は、プロジェクトリーダーの1人に尋ねることをためらわないでください。
 
 バグ報奨金を有効にするには、
-[@jdubois](https://github.com/jdubois)、[@deepu105](https://github.com/deepu105)または[@pascalgrimaud](https://github.com/pascalgrimaud)のいずれかが[\$\$ bug-bounty \$\$](https://github.com/jhipster/generator-jhipster/labels/%24%24%20bug-bounty%20%24%24)ラベルを追加する必要があります。また、"$100"、"$200"、"$300"、または"$500"のラベルを付けて、そのタグの価値を示す必要がありますが、そのタグを忘れた場合は、デフォルトで"$100"の価値があります。
+[プロジェクトリーダー]({{ site.url }}/team/#project-leads)または[運営委員会]({{ site.url }}/team/#governing-body)のいずれかが[\$\$ bug-bounty \$\$](https://github.com/jhipster/generator-jhipster/labels/%24%24%20bug-bounty%20%24%24)ラベルを追加する必要があります。また、"$100"、"$200"、"$300"、または"$500"のラベルを付けて、そのタグの価値を示す必要がありますが、そのタグを忘れた場合は、デフォルトで"$100"の価値があります。
 
 ## 報奨金を得る方法
 
-バグ報奨金が作られれば、誰でも修正を提案できます（[@jdubois](https://github.com/jdubois)、[@deepu105](https://github.com/deepu105)や[@pascalgrimaud](https://github.com/pascalgrimaud)でさえも!）。私たちの目標は、そのお金を使って、何かができるだけ早く修正されるようにすることです。
+バグ報奨金が作られれば、誰でも修正を提案できます（[プロジェクトリーダー]({{ site.url }}/team/#project-leads)や[運営委員会]({{ site.url }}/team/#governing-body)でさえも!）。私たちの目標は、そのお金を使って、何かができるだけ早く修正されるようにすることです。
 
 金銭を請求するには、次の条件を満たす必要があります。
 
@@ -52,4 +52,4 @@ sitemap:
 - そのプルリクエストは、コアチームの誰かによってマージされる必要があります。複数のプルリクエストがある場合、コアチームメンバーは最新のプルリクエストまたは最適なプルリクエストを選択します。これは、チームメンバーがプロジェクトに最適なプルリクエストを決定するためです。
 - その後、[JHipster OpenCollectiveに100ドル、200ドル、300ドル、または500ドルの費用を追加](https://opencollective.com/generator-jhipster/expenses/new)できます。説明にプルリクエストへのリンクを追加する必要があります（例：`$100 bug bounty claim for https://github.com/jhipster/generator-jhipster/pull/1234`）。
 - 次に、Pull Requestにコメントを追加する必要があります。このコメントには、OpenCollective費用へのリンクとともに、お金を請求したことを示します。これにより、問題を修正してお金を請求したのが同じ人物であることが確認されます。
-- その費用は[@jdubois](https://github.com/jdubois)、[@deepu105](https://github.com/deepu105)または[@pascalgrimaud](https://github.com/pascalgrimaud)によって検証され、あなたのペイパルアカウントでお金を受け取ることになります。
+- [プロジェクトリーダー]({{ site.url }}/team/#project-leads)または[運営委員会]({{ site.url }}/team/#governing-body)によって検証され、あなたのペイパルアカウントでお金を受け取ることになります。

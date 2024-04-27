@@ -4,7 +4,7 @@ title: アプリケーションのアップグレード
 permalink: /upgrading-an-application/
 sitemap:
     priority: 0.7
-    lastmod: 2014-06-02T00:00:00-00:00
+    lastmod: 2024-04-08T00:00:00-00:00
 gitgraph: http://jsfiddle.net/lordlothar99/tqp9gyu3
 ---
 
@@ -61,6 +61,17 @@ _アップグレードを行う前にこのページをよく読んで、アッ�
 	git checkout master
 
 上記の手順を実行すると、jhipster_upgradeツリーが最新の変更内容でアップグレードされるため、JHipsterはアップグレード中にそのツリーを利用できます。たとえば、モデルを変更した場合などです。
+
+### JHipster 7以前のバージョンからのアップグレード
+
+[マイグレートブループリント](https://github.com/jhipster/generator-jhipster-migrate)は、アップグレードサブジェネレータの高度なバージョンです。JHipster 7アプリをアップグレードする必要がある場合は、マイグレートブループリントを使用することをお勧めします。たとえば、7.9.3のアプリがあるとします。
+
+最新バージョンにアップグレードするには、`jhipster-migrate`を実行します。競合を解決し、コミットして、祝杯を上げましょう！
+
+実際の例については、21-Points Healthプロジェクトの以下のプルリクエストを参照してください。
+
+- [JHipster 7.9.4へのアップグレード](https://github.com/mraible/21-points/pull/248)
+- [JHipster 8.2.1へのアップグレード](https://github.com/mraible/21-points/pull/249)
 
 ### アップグレードプロセスをグラフィカルに表示
 
