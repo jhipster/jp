@@ -33,11 +33,7 @@ JHipsterと同じく、**JHipster Lite ⚡**はプロジェクトの開始を支
 
 オンラインバージョンは、[lite.jhipster.tech][Online version]で入手できます。最初のプロジェクトを生成してください!
 
-<<<<<<< HEAD
 [GitHub][GitHubリポジトリ]に参加してください! JHipster liteインスタンスをローカルで実行できるようになります。
-=======
-Join us on [GitHub][GitHub repository]! You will be able to run your JHipster Lite instance locally.
->>>>>>> upstream/main
 
 [Hexagonal Architecture]: https://github.com/jhipster/jhipster-lite/blob/main/documentation/hexagonal-architecture.md
 [Online version]: https://lite.jhipster.tech

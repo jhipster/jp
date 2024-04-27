@@ -1,98 +1,98 @@
 ---
 layout: default
-title: Release 8.3.0
+title: リリース 8.3.0
 ---
 
-# JHipster release v8.3.0
+# JHipster v8.3.0 リリース
 
-This is a minor release for JHipster v8. 
+これはJHipster v8のマイナーリリースです。
 
-It includes [210 closed issues and pull requests on the main branch](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.3.0) after the 8.2.1 release.
+8.2.1リリース以降、[メインブランチで210のクローズされた課題とプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.3.0)が含まれています。
 
-## What's new?
+## 新機能
 
-- Upgrade to Spring Boot 3.2.4 ([#25593](https://github.com/jhipster/generator-jhipster/pull/25593))
-- Drop `jhipster-dependencies` in favor of Spring Boot's dependency management ([#25602](https://github.com/jhipster/generator-jhipster/pull/25602))
-- Add `--experimental` support for Spring Cloud Gateway MVC ([#25768](https://github.com/jhipster/generator-jhipster/pull/25768)). 
-- Improve Spring context caching during tests ([#25642](https://github.com/jhipster/generator-jhipster/pull/25642))
-- Upgrade to Gradle 8.7 ([#25681](https://github.com/jhipster/generator-jhipster/pull/25681))
-- Keycloak fixes so user registration works ([#25680](https://github.com/jhipster/generator-jhipster/pull/25680), [#25679](https://github.com/jhipster/generator-jhipster/pull/25679))
+- Spring Boot 3.2.4へのアップグレード ([#25593](https://github.com/jhipster/generator-jhipster/pull/25593))
+- Spring Bootの依存関係管理を支持するために`jhipster-dependencies`を削除 ([#25602](https://github.com/jhipster/generator-jhipster/pull/25602))
+- Spring Cloud Gateway MVCの`--experimental`サポートを追加 ([#25768](https://github.com/jhipster/generator-jhipster/pull/25768))
+- テスト中のSpringコンテキストのキャッシュを改善 ([#25642](https://github.com/jhipster/generator-jhipster/pull/25642)) 
+- Gradle 8.7へのアップグレード ([#25681](https://github.com/jhipster/generator-jhipster/pull/25681))
+- ユーザー登録が機能するようにKeycloakを修正 ([#25680](https://github.com/jhipster/generator-jhipster/pull/25680), [#25679](https://github.com/jhipster/generator-jhipster/pull/25679))
 
-### :computer: Frontend
+### :computer: フロントエンド
 
-- [Vue] Fixed Vue with WebSocket ([#25566](https://github.com/jhipster/generator-jhipster/pull/25566))
-- [Angular] Migrate Input to Signal Input [#25690](https://github.com/jhipster/generator-jhipster/pull/25690) and [#25691](https://github.com/jhipster/generator-jhipster/pull/25691)
-- [Node] Upgrade to Node 20.12.0 ([#25632](https://github.com/jhipster/generator-jhipster/pull/25632))
+- [Vue] WebSocketでVueを修正 ([#25566](https://github.com/jhipster/generator-jhipster/pull/25566))
+- [Angular] InputをSignal Inputに移行 [#25690](https://github.com/jhipster/generator-jhipster/pull/25690) と [#25691](https://github.com/jhipster/generator-jhipster/pull/25691)
+- [Node] Node 20.12.0へのアップグレード ([#25632](https://github.com/jhipster/generator-jhipster/pull/25632))
 
-### :scroll: Others
+### :scroll: その他
 
-- Several improvements, library upgrades, and bug fixes
+- いくつかの改善、ライブラリのアップグレード、バグ修正
 
-## Closed tickets and merged pull requests
+## クローズされたチケットとマージされたプルリクエスト
 
-As always, **[you can check all closed tickets and merged pull requests here](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.3.0)**.
+いつも通り、**[クローズされたすべてのチケットとマージされたプルリクエストはこちらから確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.3.0)**。
 
-## How to install
+## インストール方法
 
-To install JHipster v8.3.0:
+JHipster v8.3.0をインストールするには:
 
     npm install -g generator-jhipster
 
-It is also available using the JHipster Docker image, as it is automatically built from our source code.
+JHipster Dockerイメージでも利用可能です。ソースコードから自動的にビルドされます。
 
 - [JHipster Online](https://start.jhipster.tech)
 - [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
 
-## How to upgrade
+## アップグレード方法
 
-**Automatic upgrade**
+**自動アップグレード**
 
-For an automatic upgrade, use the [JHipster upgrade sub-generator]({{ site.url }}/upgrading-an-application/) on an existing application:
+自動アップグレードには、既存のアプリケーションで[JHipster upgradeサブジェネレーター]({{ site.url }}/upgrading-an-application/)を使用します。
 
-Upgrade your version of JHipster:
+JHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-And then run the upgrade sub-generator:
+その後、アップグレードサブジェネレーターを実行します。
 
 ```
 jhipster upgrade
 ```
 
-You can also use the [migrate blueprint](https://github.com/jhipster/generator-jhipster-migrate) for more advanced upgrade features. 
+より高度なアップグレード機能には、[migrate blueprint](https://github.com/jhipster/generator-jhipster-migrate)も使用できます。
 
-**Manual upgrades**
+**手動アップグレード**
 
-For a manual upgrade, first upgrade your version of JHipster with:
+手動アップグレードの場合、まずJHipsterのバージョンを以下のようにアップグレードします。
+
 
 ```
 npm update -g generator-jhipster
 ```
 
-If you have an existing project, it will still use the JHipster version with which it was generated.
-To upgrade your project, you must first delete its `node_modules` folder and then run:
+既存のプロジェクトがある場合は、生成されたJHipsterバージョンが引き続き使用されます。プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、以下を実行します。
 
 ```
 jhipster
 ```
 
-Since JHipster 8.0, this command will update your project and all its entities. 
+JHipster 8.0以降、このコマンドはプロジェクトとそのすべてのエンティティを更新します。
 
-You can also update your entities one-by-one by running again the entity sub-generator, for example if your entity is named _Foo_, use:
+エンティティサブジェネレーターを再度実行することで、エンティティを個別に更新することもできます。たとえば、エンティティの名前が _Foo_ の場合は、以下を使用します。
 
 ```
 jhipster entity Foo
 ```
 
-## Help and bugs
+## ヘルプとバグ
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が見つかった場合は、ためらわずに以下を行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
+- [バグトラッカー](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加する
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿する
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグやセキュリティ問題である場合は、以下を行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- X (旧Twitter)で[@jhipster](https://twitter.com/jhipster)に連絡する

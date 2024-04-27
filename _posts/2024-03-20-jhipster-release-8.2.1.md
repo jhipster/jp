@@ -1,102 +1,102 @@
 ---
 layout: default
-title: Release 8.2.1
+title: リリース 8.2.1
 ---
 
-# JHipster release v8.2.1
+# JHipster v8.2.1 リリース
 
-This is our minor release for JHipster v8. Please note that 8.2.1 is a patch release for 8.2.0, as 8.2.0 is deprecated due to a compilation error bug.
+これはJHipster v8のマイナーリリースです。8.2.0はコンパイルエラーのバグのためリリースが取り消されたので、8.2.1はそのパッチリリースであることにご注意ください。
 
-It includes [1104 closed issues and pull requests on the main project](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.2.1) after the 8.1.0 release.
+これには、8.1.0リリース後の[メインプロジェクトの1104のクローズされたチケットとプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.2.1)が含まれています。
 
-## What's new?
+## 何が新しくなりましたか?
 
-### :computer: Frontend
+### :computer: フロントエンド
 
-- Upgrade to Prettier 3.2.4
-- [Angular] Upgrade to Angular 17.1.0
-- [Angular] Use Signals [#24875](https://github.com/jhipster/generator-jhipster/pull/24875)
-- [Vue] Switch Vite to ESM build [#24759](https://github.com/jhipster/generator-jhipster/pull/24759)
-- [Vue] Upgrade to Vue 3.4 [#24728](https://github.com/jhipster/generator-jhipster/pull/24728)
+- Prettier 3.2.4へのアップグレード
+- [Angular] Angular 17.1.0へのアップグレード
+- [Angular] シグナルの使用 [#24875](https://github.com/jhipster/generator-jhipster/pull/24875)
+- [Vue] ViteをESMビルドに切り替え [#24759](https://github.com/jhipster/generator-jhipster/pull/24759)
+- [Vue] Vue 3.4へのアップグレード [#24728](https://github.com/jhipster/generator-jhipster/pull/24728)
 
-### :gem: Features & Enhancements
+### :gem: 機能追加・拡張
 
-- Add Liquibase header partial template [#25125](https://github.com/jhipster/generator-jhipster/pull/25125)
-- Add UserManagement entity [#25069](https://github.com/jhipster/generator-jhipster/pull/25069)
+- Liquibaseヘッダーの部分テンプレートの追加 [#25125](https://github.com/jhipster/generator-jhipster/pull/25125) 
+- UserManagementエンティティの追加 [#25069](https://github.com/jhipster/generator-jhipster/pull/25069)
 
-### :scroll: Others
+### :scroll: その他
 
-- Many improvements
-- Many libraries upgrades
-- Many bug fixes
+- 多くの改善
+- 多くのライブラリのアップグレード
+- 多くのバグ修正
 
-## Closed tickets and merged pull requests
+## クローズされたチケットとマージされたプルリクエスト
 
-As always, **[you can check all closed tickets and merged pull requests here](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.2.1)**.
+いつも通り、**[クローズされたすべてのチケットとマージされたプルリクエストはこちらから確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.2.1)**。
 
-## How to install
+## インストール方法
 
-To install JHipster v8.2.1 using using NPM:
+NPMを使用してJHipster v8.2.1をインストールするには:
 
     npm install -g generator-jhipster
 
-It is also available using the JHipster Docker image, as it is automatically built from our source code.
+JHipster Dockerイメージを使用しても利用できます。この方法ではソースコードから自動的にビルドされます。
 
 - [JHipster Online](https://start.jhipster.tech)
 - [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
 
-## How to upgrade
+## アップグレード方法
 
-**Automatic upgrade**
+**自動アップグレード**
 
-For an automatic upgrade, use the [JHipster upgrade sub-generator]({{ site.url }}/upgrading-an-application/) on an existing application:
+自動アップグレードの場合は、既存のアプリケーションで [JHipster upgradeサブジェネレーター]({{ site.url }}/upgrading-an-application/) を使用します。
 
-Upgrade your version of JHipster:
+使用しているバージョンのJHipsterをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-And then run the upgrade sub-generator:
+次に、アップグレードサブジェネレータを実行します。
 
 ```
 jhipster upgrade
 ```
 
-**Manual upgrades**
+**手動アップグレード**
 
-For a manual upgrade, first upgrade your version of JHipster with:
+手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-If you have an existing project, it will still use the JHipster version with which it was generated.
-To upgrade your project, you must first delete its `node_modules` folder and then run:
+既存のプロジェクトがある場合は、生成されたJHipsterバージョンが引き続き使用されます。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、次のコマンドを実行します。
 
 ```
 jhipster
 ```
 
-You can also update your project and all its entities by running
+プロジェクトとそのすべてのエンティティを更新するには、以下を実行します。
 
 ```
 jhipster --with-entities
 ```
 
-You can also update your entities one-by-one by running again the entity sub-generator, for example if your entity is named _Foo_
-
+エンティティサブジェネレータをもう一度実行して、エンティティを1つずつ更新することもできます。たとえば、エンティティの名前が _Foo_ の場合は以下のようにします。
+    
 ```
 jhipster entity Foo
 ```
 
-## Help and bugs
+## ヘルプとバグ
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグまたはセキュリティの問題である場合は、以下を行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- X (旧Twitter)の[@jhipster](https://twitter.com/jhipster)アカウントにご連絡ください。
