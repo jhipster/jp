@@ -37,6 +37,7 @@ entity <entity name> [(<table name>)] {
 }
 ```
 
+<<<<<<< HEAD
   - `<entity name>` エンティティの名前
   - `<field name>` エンティティのフィールドの名前
   - `<field type>` JHipsterがサポートするフィールドの型
@@ -48,6 +49,18 @@ entity <entity name> [(<table name>)] {
     - `<field annotation>` フィールドのオプション
     - `<validation>` フィールドの検証
 
+=======
+  - `<entity name>` the name of the entity,
+  - `<field name>` the name of one field of the entity,
+  - `<field type>` the JHipster supported type of the field,
+  - and as an option:
+    - `<entity javadoc>` the documentation of the entity,
+    - `<entity annotation>` the options for the entity (see [OptionsEntity][] for a complete list of available options),
+    - `<table name>` the database table name (if you want to specify something different that the name automatically computed from the entity name),
+    - `<field javadoc>` the documentation of the field,
+    - `<field annotation>` the options for the field (see [OptionsField][] for a complete list of available options),
+    - `<validation>` the validations for the field.
+>>>>>>> upstream/main
 
 ---
 
@@ -259,4 +272,9 @@ Aのnameにはコメントが付きません。countの方にコメントが付�
   </tr>
 </table>
 
+<<<<<<< HEAD
 [オプション]: options#使用可能なオプション "Options"
+=======
+[OptionsEntity]: options#entity-options "Options"
+[OptionsField]: options#field-options "Options"
+>>>>>>> upstream/main
