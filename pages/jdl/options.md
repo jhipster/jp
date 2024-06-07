@@ -402,33 +402,19 @@ entity A
 
 ### 使用可能なオプション
 
-<<<<<<< HEAD
-JDLでサポートされているエンティティオプションは次のとおりです。
-
 _あなたが探しているものではありませんか?[アプリケーションのオプション](/jdl/applications#available-application-configuration-options)をチェックしてください。_
-=======
-_Not what you're looking for? Check the [application options](/jdl/applications#available-application-configuration-options)._
->>>>>>> upstream/main
 
-#### Entity options
+#### エンティティオプション
 
-Here are the entity options supported in the JDL:
+JDLでサポートされているエンティティオプションは次のとおりです。
 
 <table class="table table-striped table-responsive">
   <tr>
-<<<<<<< HEAD
-    <th>JDLオプション名</th>
+    <th>JDLオプション名（エンティティ）</th>
     <th>オプションタイプ</th>
     <th>デフォルト値</th>
     <th>指定可能な値</th>
     <th>コメント</th>
-=======
-    <th>JDL option name (entity)</th>
-    <th>Option type</th>
-    <th>Default value</th>
-    <th>Possible values</th>
-    <th>Comment</th>
->>>>>>> upstream/main
   </tr>
   <tr>
     <td>skipClient</td>
@@ -526,28 +512,28 @@ Here are the entity options supported in the JDL:
   </tr>
 </table>
 
-#### Field options
+#### フィールドオプション
 
-Here are the field options supported in the JDL:
+JDLでサポートされているフィールドオプションは以下の通りです。
 
 <table class="table table-striped table-responsive">
   <tr>
-    <th>JDL option name (field)</th>
-    <th>Default value</th>
-    <th>Possible values</th>
-    <th>Comment</th>
+    <th>JDLオプション名（フィールド）</th>
+    <th>デフォルト値</th>
+    <th>指定可能な値</th>
+    <th>コメント</th>
   </tr>
   <tr>
     <td>defaultValue</td>
-    <td>undefined</td>
-    <td>any value fitting to the datatype of the field, e.g. "myDefaultValue" or 42 or true</td>
-    <td>Will define a fixed default value on database schema side on the column, as well as adjust the clients passing in the option as default from input forms (only Angular for now)</td>
+    <td>未定義</td>
+    <td>フィールドのデータ型に適合する任意の値、例えば "myDefaultValue" や 42 や true</td>
+    <td>データベーススキーマのカラムに固定のデフォルト値を定義し、クライアント側ではデフォルトの入力フォームとしてオプションを渡します（現在はAngularのみ）</td>
   </tr>
   <tr>
     <td>defaultValueComputed</td>
-    <td>undefined</td>
-    <td>database functions to generate default values for a column, e.g. "NOW(6)"</td>
-    <td>This will generate a default value on database level using the given function</td>
+    <td>未定義</td>
+    <td>データベースの関数を使用してカラムのデフォルト値を生成する、例えば "NOW(6)"</td>
+    <td>指定された関数を使用してデータベースレベルでデフォルト値を生成します</td>
   </tr>
 </table>
 ---

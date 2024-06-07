@@ -41,7 +41,7 @@ _アップグレードを行う前にこのページをよく読んで、アッ�
 
 `npx generator-jhipster@latest upgrade`
 
-An alternative is to use global installation:
+代わりに、グローバルインストールを使用することもできます。
 
 ```
 npm install -g generator-jhipster@latest
@@ -50,33 +50,10 @@ jhipster upgrade
 
 渡すことができるオプションは以下のとおりです。
 
-<<<<<<< HEAD
-* `--verbose` - アップグレードプロセスの各ステップを詳細に記録します。
-* `--target-version 6.6.0` - 最新リリースではなく、ターゲットバージョンのJHipsterにアップグレードします。プロジェクトが数個のバージョン分遅れている場合に便利です。
-* `--target-blueprint-versions kotlin@1.4.0,vuejs@1.3.0` - 各Blueprintの最新リリースではなく、ターゲットのBlueprintのバージョンにアップグレードします。ただし、Blueprintのターゲットバージョンは、ターゲットのJHipsterバージョンと互換性がある必要があります。
-* `--force` - 新しいJHipsterバージョンが利用できない場合でも、アップグレードサブジェネレータを実行します。
 * `--skip-checks` - プロジェクトの再生成時のチェックを無効にします。
 * `--skip-install` - アップグレードプロセス中の依存関係のインストールをスキップします。
-* `--silent` - 生成プロセスの出力を非表示にします。
-
-複数回アップグレードする場合は、最初に次のようにJHipsterツリーをアップグレードすることを検討できます。
-	
-    git checkout jhipster_upgrade
-	git checkout --patch master .yo-rc.json
-	git checkout --patch master .jhipster
-	git commit -a
-	git push --set-upstream origin jhipster_upgrade
-	git checkout master
-
-上記の手順を実行すると、jhipster_upgradeツリーが最新の変更内容でアップグレードされるため、JHipsterはアップグレード中にそのツリーを利用できます。たとえば、モデルを変更した場合などです。
 
 ### JHipster 7以前のバージョンからのアップグレード
-=======
-* `--skip-checks` - Disable checks during project regeneration
-* `--silent` - Hides output of the generation process
-
-### Upgrading from JHipster 7 and previous versions
->>>>>>> upstream/main
 
 [マイグレートブループリント](https://github.com/jhipster/generator-jhipster-migrate)は、アップグレードサブジェネレータの高度なバージョンです。JHipster 7アプリをアップグレードする必要がある場合は、マイグレートブループリントを使用することをお勧めします。たとえば、7.9.3のアプリがあるとします。
 
