@@ -1,0 +1,102 @@
+---
+layout: default
+title: リリース 8.4.0
+---
+
+# JHipster v8.4.0 リリース
+
+これはJHipster v8のマイナーリリースです。
+
+8.3.0リリース以降、[メインブランチで224のクローズされた課題とプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.4.0)が含まれています。
+
+## 新機能
+
+- Spring Boot 3.2.5へのアップグレード ([#25902](https://github.com/jhipster/generator-jhipster/pull/25902))
+- RedisのCodecをアップデートして`LazyInitializationException`を修正 ([#25988](https://github.com/jhipster/generator-jhipster/pull/25988))
+- カスタムCSRFハンドラを使用してBREACH保護を提供 ([#25907](https://github.com/jhipster/generator-jhipster/pull/25907))
+- Spring Bootのプロファイルを修正して、Spring Bootの親から継承 ([#25980](https://github.com/jhipster/generator-jhipster/pull/25980))
+- ブループリントでホームページのカスタマイズをサポート ([#25943](https://github.com/jhipster/generator-jhipster/pull/25943))
+
+### :computer: フロントエンド
+
+- [Angular] もはや必要のない`LocaleConfiguration`を削除 ([#23818](https://github.com/jhipster/generator-jhipster/pull/23818))
+- [Node] Node 20.12.2へのアップグレード ([#25801](https://github.com/jhipster/generator-jhipster/pull/25801))
+
+### :scroll: その他
+
+- いくつかの改善、ライブラリのアップグレード、バグ修正
+
+## クローズされたチケットとマージされたプルリクエスト
+
+いつも通り、**[クローズされたすべてのチケットとマージされたプルリクエストはこちらから確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.4.0)**。
+
+## インストール方法
+
+JHipster v8.4.0をインストールするには:
+
+    npm install -g generator-jhipster
+
+JHipster Dockerイメージでも利用可能です。ソースコードから自動的にビルドされます。
+
+- [JHipster Online](https://start.jhipster.tech)
+- [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
+
+## アップグレード方法
+
+**自動アップグレード**
+
+自動アップグレードには、既存のアプリケーションで[JHipster upgradeサブジェネレーター]({{ site.url }}/upgrading-an-application/)を使用します。
+
+JHipsterのバージョンをアップグレードします。
+
+```
+npm update -g generator-jhipster
+```
+
+その後、アップグレードサブジェネレーターを実行します。
+
+```
+jhipster upgrade
+```
+
+より高度なアップグレード機能には、[migrate blueprint](https://github.com/jhipster/generator-jhipster-migrate)も使用できます。
+
+```
+npm i -g generator-jhipster-migrate
+jhipster-migrate
+```
+
+**手動アップグレード**
+
+手動アップグレードの場合、まずJHipsterのバージョンを以下のようにアップグレードします。
+
+```
+npm update -g generator-jhipster
+```
+
+既存のプロジェクトがある場合は、生成されたJHipsterバージョンが引き続き使用されます。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、以下を実行します。
+
+```
+jhipster
+```
+
+JHipster 8.0以降、このコマンドはプロジェクトとそのすべてのエンティティを更新します。
+
+エンティティサブジェネレーターを再度実行することで、エンティティを個別に更新することもできます。たとえば、エンティティの名前が _Foo_ の場合は、以下を使用します。
+
+```
+jhipster entity Foo
+```
+
+## ヘルプとバグ
+
+このリリースで問題が見つかった場合は、ためらわずに以下を行ってください。
+
+- [バグトラッカー](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加する
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿する
+- [GitHub](https://gitub.com/jhipster/generator-jhipster/discussions)に新しいディスカッションを作成する
+
+問題が緊急のバグやセキュリティ問題である場合は、以下を行ってください。
+
+- X (旧Twitter)で[@jhipster](https://twitter.com/jhipster)に連絡する
