@@ -42,10 +42,10 @@ entity <entity name> [(<table name>)] {
   - `<field type>` JHipsterがサポートするフィールドの型
   - オプションとして以下があります。
     - `<entity javadoc>` エンティティのドキュメント
-    - `<entity annotation>` エンティティのオプション（使用可能なオプションの完全なリストについては、[オプション][]を参照）
+    - `<entity annotation>` エンティティのオプション（使用可能なオプションの完全なリストについては、[オプションエンティティ][]を参照）
     - `<table name>` データベーステーブル名（エンティティ名から自動的に計算された名前とは別のものを指定する場合）
     - `<field javadoc>` フィールドのドキュメント
-    - `<field annotation>` フィールドのオプション
+    - `<field annotation>` フィールドのオプション（使用可能なオプションの完全なリストについては、[オプションフィールド][]を参照）
     - `<validation>` フィールドの検証
 
 
@@ -259,4 +259,5 @@ Aのnameにはコメントが付きません。countの方にコメントが付�
   </tr>
 </table>
 
-[オプション]: options#使用可能なオプション "Options"
+[オプションエンティティ]: options#エンティティオプション "Options"
+[オプションフィールド]: options#フィールドオプション "Options"

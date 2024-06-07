@@ -402,13 +402,15 @@ entity A
 
 ### 使用可能なオプション
 
-JDLでサポートされているエンティティオプションは次のとおりです。
-
 _あなたが探しているものではありませんか?[アプリケーションのオプション](/jdl/applications#available-application-configuration-options)をチェックしてください。_
+
+#### エンティティオプション
+
+JDLでサポートされているエンティティオプションは次のとおりです。
 
 <table class="table table-striped table-responsive">
   <tr>
-    <th>JDLオプション名</th>
+    <th>JDLオプション名（エンティティ）</th>
     <th>オプションタイプ</th>
     <th>デフォルト値</th>
     <th>指定可能な値</th>
@@ -510,6 +512,30 @@ _あなたが探しているものではありませんか?[アプリケーシ�
   </tr>
 </table>
 
+#### フィールドオプション
+
+JDLでサポートされているフィールドオプションは以下の通りです。
+
+<table class="table table-striped table-responsive">
+  <tr>
+    <th>JDLオプション名（フィールド）</th>
+    <th>デフォルト値</th>
+    <th>指定可能な値</th>
+    <th>コメント</th>
+  </tr>
+  <tr>
+    <td>defaultValue</td>
+    <td>未定義</td>
+    <td>フィールドのデータ型に適合する任意の値、例えば "myDefaultValue" や 42 や true</td>
+    <td>データベーススキーマのカラムに固定のデフォルト値を定義し、クライアント側ではデフォルトの入力フォームとしてオプションを渡します（現在はAngularのみ）</td>
+  </tr>
+  <tr>
+    <td>defaultValueComputed</td>
+    <td>未定義</td>
+    <td>データベースの関数を使用してカラムのデフォルト値を生成する、例えば "NOW(6)"</td>
+    <td>指定された関数を使用してデータベースレベルでデフォルト値を生成します</td>
+  </tr>
+</table>
 ---
 
 ### 関連項目
