@@ -60,12 +60,6 @@ JHipsterのマイクロフロントエンド実装は、[Webpack Module Federati
 
 <h2 id="no_database">データベースを持たないマイクロサービス</h2>
 
-<<<<<<< HEAD
-データベースなしで作成できるのはマイクロサービスアプリケーションだけです。これは、マイクロサービスが小さく、ユーザ管理コードがないためです。
+マイクロサービスのアプリケーションはデータベースなしで作成することができます。これは、マイクロサービスが小さく、ユーザ管理コードがないためです。
 
-データベースのないマイクロサービスは非常に小さく、レガシーシステムのような特定のバックエンドに接続するために使用されます。
-=======
-Microservices applications can be created without a database. This is because microservices are small and do not have user-management code. 
-
-A microservice without a database is very small and could be used to connect to a specific back-end like a legacy system or serve as a proxy to other services outside of your realm. 
->>>>>>> upstream/main
+データベースのないマイクロサービスは非常に小さく、レガシーシステムのような特定のバックエンドに接続するためや、領域外にある他のサービスへのプロキシとして利用できます。

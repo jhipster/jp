@@ -30,17 +30,10 @@ JHipsterはAPIゲートウェイを生成できます。ゲートウェイは通
 
 ゲートウェイは、アプリケーション名を使用して、すべてのリクエストをマイクロサービスに自動的にプロキシします。たとえば、マイクロサービス`app1`が登録されている場合、ゲートウェイの`/services/app1`のURLで利用できます。
 
-<<<<<<< HEAD
 たとえば、ゲートウェイが`localhost:8080`で実行されている場合、[http://localhost:8080/services/app1/api/foos](http://localhost:8080/services/app1/api/foos)の指定で、
-マイクロサービス`app1`で提供されている`foos`のリソースを取得できます。Webブラウザでこれを行おうとしている場合は、RESTリソースがJHipsterでデフォルトで保護されていることを忘れないでください。したがって、正しいJWTヘッダーを送信するか（以下のセキュリティのポイントを参照）、以降のセキュリティに関するポイントを確認するか、またはマイクロサービスの`MicroserviceSecurityConfiguration`クラスでそれらのURLのセキュリティを削除する必要があります。
+マイクロサービス`app1`で提供されている`foos`のリソースを取得できます。Webブラウザでこれを行おうとしている場合は、RESTリソースがJHipsterでデフォルトで保護されていることを忘れないでください。したがって、正しいJWTヘッダーを送信するか（以下のセキュリティのポイントを参照）、以降のセキュリティに関するポイントを確認するか、またはマイクロサービスの`SecurityConfiguration`クラスでそれらのURLのセキュリティを削除する必要があります。
 
-同じサービスのインスタンスが複数実行されている場合、ゲートウェイはそれらのインスタンスをJHipsterレジストリから取得し、[Consul](https://www.consul.io/use-cases/load-balancing)を使用してHTTPリクエストのロードバランシングを行います。
-=======
-For example, if your gateway is running on `localhost:8080`, you could point to [http://localhost:8080/services/app1/api/foos](http://localhost:8080/services/app1/api/foos) to
-get the `foos` resource served by microservice `app1`. If you're trying to do this with your Web browser, don't forget REST resources are secured by default in JHipster, so you need to send the correct JWT header (see the point on security below), or remove the security on those URLs in the microservice's `SecurityConfiguration` class.
-
-If several instances of the same service are running, the gateway will get those instances from the Service Registry and load balance HTTP requests using [Consul](https://www.consul.io/use-cases/load-balancing). You can access a detailed list of running microservices, including their IP addresses, Git version, status, and more, at [http://localhost:8080/api/gateway/routes](http://localhost:8080/api/gateway/routes). This endpoint is secured for protection.
->>>>>>> upstream/main
+同じサービスの複数のインスタンスが実行されている場合、ゲートウェイはそれらのインスタンスをサービスレジストリから取得し、[Consul](https://www.consul.io/use-cases/load-balancing) を使用してHTTPリクエストをロードバランスします。IPアドレス、Gitのバージョン、ステータスなどを含む実行中のマイクロサービスの詳細なリストにアクセスするには、[http://localhost:8080/api/gateway/routes](http://localhost:8080/api/gateway/routes) にアクセスしてください。このエンドポイントは保護されています。
 
 各ゲートウェイには特定の"admin > gateway"メニューがあり、オープンされたHTTPルートとマイクロサービスインスタンスを監視できます。
 
@@ -136,8 +129,8 @@ JHipsterは、[Bucket4j](https://github.com/vladimir-bukhtoyarov/bucket4j)と[Ha
         gateway:
             authorized-microservices-endpoints:
                 bar: /api/foo
-<h2 id="acl">Enabling TLS for Gateway Security </h2>
-By default, the gateway operates over unsecured HTTP. For production environments, it's recommended to enable TLS for enhanced security. To do this, uncomment the provided code snippet, under `application-prod.yml`. This will utilize a self-signed TLS certificate located in `config/tls` with the filename `keystore.p12`, or you can specify your own keystore with a predefined password.
+<h2 id="acl">ゲートウェイのセキュリティを強化するためのTLSの有効化</h2>
+デフォルトでは、ゲートウェイは非セキュアなHTTPで動作します。プロダクション環境では、セキュリティを強化するためにTLSを有効にすることを推奨します。これを行うには、`application-prod.yml`にある提供されたコードスニペットのコメントを解除してください。これにより、`config/tls`にある自己署名TLS証明書（ファイル名は`keystore.p12`）を使用するか、あらかじめ定義されたパスワードで独自のキーストアを指定することができます。
 
 	server:
 	   port: 443
@@ -146,7 +139,7 @@ By default, the gateway operates over unsecured HTTP. For production environment
 	       key-store-password: password
    		   key-store-type: PKCS12
            key-alias: selfsigned
-          # The ciphers suite enforce the security by deactivating some old and deprecated SSL cipher, this list was tested against SSL Labs (https://www.ssllabs.com/ssltest/)
+          # この暗号スイートは、古くて非推奨のSSL暗号を無効にすることでセキュリティを強化します。このリストはSSL Labs（https://www.ssllabs.com/ssltest/）でテストされています。
 	       ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 ,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
 
-Keep in mind that enabling TLS on the server might introduce some performance overhead. If possible, consider using a load balancer outside the gateway with SSL termination to handle encryption, which can help mitigate this performance impact.
+サーバーでTLSを有効にすると、パフォーマンスのオーバーヘッドが発生する可能性があることを念頭に置いてください。可能であれば、ゲートウェイの外部にSSL終端を持つロードバランサーを使用して暗号化を処理することを検討してください。これにより、このパフォーマンスの影響を軽減することができます。

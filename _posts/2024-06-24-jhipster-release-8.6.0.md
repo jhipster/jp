@@ -1,129 +1,129 @@
 ---
 layout: default
-title: Release 8.6.0
+title: リリース 8.6.0
 ---
 
-# JHipster release v8.6.0
+# JHipster v8.6.0 リリース
 
-This is a minor release for JHipster v8. 
+これはJHipster v8のマイナーリリースです。
 
-It includes [216 closed issues and pull requests on the main branch](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.6.0) after the 8.5.0 release.
+8.5.0リリース以降、[メインブランチで216のクローズされた課題とプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.6.0)が含まれています。
 
-## What's new?
+## 新機能
 
-* Upgrade to Spring Boot 3.3.1 ([#26490](https://github.com/jhipster/generator-jhipster/pull/26490))
-* Upgrade to Angular 18 ([#26213](https://github.com/jhipster/generator-jhipster/pull/26213))
-* Add Java 22 support ([#25645](https://github.com/jhipster/generator-jhipster/pull/25645) and [#26495]((https://github.com/jhipster/generator-jhipster/pull/26495)))
-* Upgrade to Maven v3.9.8 ([#26452](https://github.com/jhipster/generator-jhipster/pull/26452))
-* Upgrade to Gradle v8.8 ([#26329](https://github.com/jhipster/generator-jhipster/pull/26329))
-* Upgrade to Node v20.15.0 ([#26494](https://github.com/jhipster/generator-jhipster/pull/26494))
-* Upgrade to Keycloak 25.0.0 ([#26420](https://github.com/jhipster/generator-jhipster/pull/26420))
-* Fix Gatling: remove deprecated plugin configuration option ([#26493](https://github.com/jhipster/generator-jhipster/pull/26493))
-* Unnecessary `npmw` variables ([#26436](https://github.com/jhipster/generator-jhipster/pull/26436))
-* Docker Compose version is obsolete ([#26438](https://github.com/jhipster/generator-jhipster/pull/26438))
-* Always add `ci:server:await` script ([#26393](https://github.com/jhipster/generator-jhipster/pull/26393))
-* Fix MySQL 8.4.0 so it starts in Docker ([#26359](https://github.com/jhipster/generator-jhipster/pull/26359))
-* Don't add annotations to inner classes ([#26345](https://github.com/jhipster/generator-jhipster/pull/26345))
-* Upgrade to MariaDB 11.4.2 ([#26346](https://github.com/jhipster/generator-jhipster/pull/26346))
-* Sonar: UserDTO overrides `equals()` and should therefore also override `hashCode()` ([#26325](https://github.com/jhipster/generator-jhipster/pull/26325))
-* Loggers should be 'private static final' ([#26532](https://github.com/jhipster/generator-jhipster/pull/26532))
+* Spring Boot 3.3.1へのアップグレード ([#26490](https://github.com/jhipster/generator-jhipster/pull/26490))
+* Angular 18へのアップグレード ([#26213](https://github.com/jhipster/generator-jhipster/pull/26213))
+* Java 22のサポート追加 ([#25645](https://github.com/jhipster/generator-jhipster/pull/25645) と [#26495](https://github.com/jhipster/generator-jhipster/pull/26495))
+* Maven v3.9.8へのアップグレード ([#26452](https://github.com/jhipster/generator-jhipster/pull/26452))
+* Gradle v8.8へのアップグレード ([#26329](https://github.com/jhipster/generator-jhipster/pull/26329))
+* Node v20.15.0へのアップグレード ([#26494](https://github.com/jhipster/generator-jhipster/pull/26494))
+* Keycloak 25.0.0へのアップグレード ([#26420](https://github.com/jhipster/generator-jhipster/pull/26420))
+* Gatlingの修正: 非推奨のプラグイン設定オプションの削除 ([#26493](https://github.com/jhipster/generator-jhipster/pull/26493))
+* 不要な`npmw`変数の削除 ([#26436](https://github.com/jhipster/generator-jhipster/pull/26436))
+* Docker Composeのバージョンが古い ([#26438](https://github.com/jhipster/generator-jhipster/pull/26438))
+* `ci:server:await`スクリプトの常時追加 ([#26393](https://github.com/jhipster/generator-jhipster/pull/26393))
+* MySQL 8.4.0がDockerで起動するよう修正 ([#26359](https://github.com/jhipster/generator-jhipster/pull/26359))
+* 内部クラスに注釈を追加しないよう修正 ([#26345](https://github.com/jhipster/generator-jhipster/pull/26345))
+* MariaDB 11.4.2へのアップグレード ([#26346](https://github.com/jhipster/generator-jhipster/pull/26346))
+* Sonar: UserDTOが`equals()`をオーバーライドしているため、`hashCode()`もオーバーライドする必要がある ([#26325](https://github.com/jhipster/generator-jhipster/pull/26325))
+* ロガーを'private static final'にするべき ([#26532](https://github.com/jhipster/generator-jhipster/pull/26532))
 
-### :computer: Frontend
+### :computer: フロントエンド
 
-* [Angular] Fix deprecated signature for `tableRow.injector.get` ([#26516](https://github.com/jhipster/generator-jhipster/pull/26516) and [#26529](https://github.com/jhipster/generator-jhipster/pull/26529))
-* [Angular] Sonar: Fields that are only assigned in the constructor should be readonly ([#26514](https://github.com/jhipster/generator-jhipster/pull/26514))
-* [Angular] `throwError()` function is deprecated ([#26515](https://github.com/jhipster/generator-jhipster/pull/26515))
-* [Angular] Rename Jhipster to JHipster ([#26512](https://github.com/jhipster/generator-jhipster/pull/26512))
-* [Angular] HttpClientTestingModule is deprecated ([#26511](https://github.com/jhipster/generator-jhipster/pull/26511))
-* [Angular] Fix input fields style on Bootswatch Quartz theme ([#26507](https://github.com/jhipster/generator-jhipster/pull/26507))
-* [Angular] Sonar: InfiniteScrollModule is deprecated ([#26465](https://github.com/jhipster/generator-jhipster/pull/26465))
-* [Angular] Sonar: HttpClientModule is deprecated ([#26464](https://github.com/jhipster/generator-jhipster/pull/26464))
-* [Angular] Fix deprecated RxJS method (throwError) ([#26336](https://github.com/jhipster/generator-jhipster/pull/26336))
-* [Angular] Fix deprecated method (angular/core/testing) ([#26335](https://github.com/jhipster/generator-jhipster/pull/26335))
-* [Angular] Use signal contentChild ([#26334](https://github.com/jhipster/generator-jhipster/pull/26334))
-* [React] Fix OAuth2 login and logout issues ([#26384](https://github.com/jhipster/generator-jhipster/pull/26384))
-* The documentation should recommend using `./npmw` instead of requiring Node be installed ([#26437](https://github.com/jhipster/generator-jhipster/pull/26437))
-* Fix initial text direction setting ([#26406](https://github.com/jhipster/generator-jhipster/pull/26406))
-* Avoid filtering out relationships where entities support filtering ([#26357](https://github.com/jhipster/generator-jhipster/pull/26357))
-* Cleanup `.eslintignore` ([#26453](https://github.com/jhipster/generator-jhipster/pull/26453))
+* [Angular] `tableRow.injector.get`の非推奨シグネチャの修正 ([#26516](https://github.com/jhipster/generator-jhipster/pull/26516) と [#26529](https://github.com/jhipster/generator-jhipster/pull/26529))
+* [Angular] Sonar: コンストラクタでのみ割り当てられるフィールドはreadonlyにするべき ([#26514](https://github.com/jhipster/generator-jhipster/pull/26514))
+* [Angular] `throwError()`関数の非推奨対応 ([#26515](https://github.com/jhipster/generator-jhipster/pull/26515))
+* [Angular] JhipsterをJHipsterにリネーム ([#26512](https://github.com/jhipster/generator-jhipster/pull/26512))
+* [Angular] `HttpClientTestingModule`が非推奨 ([#26511](https://github.com/jhipster/generator-jhipster/pull/26511))
+* [Angular] Bootswatch Quartzテーマの入力フィールドスタイル修正 ([#26507](https://github.com/jhipster/generator-jhipster/pull/26507))
+* [Angular] Sonar: `InfiniteScrollModule`が非推奨 ([#26465](https://github.com/jhipster/generator-jhipster/pull/26465))
+* [Angular] Sonar: `HttpClientModule`が非推奨 ([#26464](https://github.com/jhipster/generator-jhipster/pull/26464))
+* [Angular] 非推奨のRxJSメソッド（throwError）の修正 ([#26336](https://github.com/jhipster/generator-jhipster/pull/26336))
+* [Angular] 非推奨メソッド（angular/core/testing）の修正 ([#26335](https://github.com/jhipster/generator-jhipster/pull/26335))
+* [Angular] `signal contentChild`の使用 ([#26334](https://github.com/jhipster/generator-jhipster/pull/26334))
+* [React] OAuth2ログインとログアウトの問題修正 ([#26384](https://github.com/jhipster/generator-jhipster/pull/26384))
+* ドキュメントでNodeのインストールを要求する代わりに`./npmw`の使用を推奨 ([#26437](https://github.com/jhipster/generator-jhipster/pull/26437))
+* 初期テキスト方向設定の修正 ([#26406](https://github.com/jhipster/generator-jhipster/pull/26406))
+* エンティティがフィルタリングをサポートしている場合、関連付けをフィルタリングしないよう修正 ([#26357](https://github.com/jhipster/generator-jhipster/pull/26357))
+* `.eslintignore`のクリーンアップ ([#26453](https://github.com/jhipster/generator-jhipster/pull/26453))
 
-### :scroll: Others
+### :scroll: その他
 
-- Several internal improvements and blueprint optimizations
+- いくつかの内部改善とブループリントの最適化
 
-## Closed tickets and merged pull requests
+## クローズされたチケットとマージされたプルリクエスト
 
-See the [GitHub 8.6.0 release notes](https://github.com/jhipster/generator-jhipster/releases/tag/v8.6.0) for more details.
+詳細は[GitHub 8.6.0のリリースノート](https://github.com/jhipster/generator-jhipster/releases/tag/v8.6.0)をご覧ください。
 
-As always, **[you can view all closed tickets and merged pull requests](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.6.0)**.
+いつも通り、**[クローズされたすべてのチケットとマージされたプルリクエストはこちらから確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.6.0)**。
 
-## How to install
+## インストール方法
 
-To install JHipster v8.6.0:
+JHipster v8.6.0をインストールするには:
 
     npm install -g generator-jhipster
 
-It is also available using the JHipster Docker image, as it is automatically built from our source code.
+JHipster Dockerイメージでも利用可能です。ソースコードから自動的にビルドされます。
 
 - [JHipster Online](https://start.jhipster.tech)
 - [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
 
-## How to upgrade
+## アップグレード方法
 
-**Automatic upgrade**
+**自動アップグレード**
 
-For an automatic upgrade, use the [JHipster upgrade sub-generator]({{ site.url }}/upgrading-an-application/) on an existing application:
+自動アップグレードには、既存のアプリケーションで[JHipster upgradeサブジェネーター]({{ site.url }}/upgrading-an-application/)を使用します。
 
-Upgrade your version of JHipster:
+JHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-And then run the upgrade sub-generator:
+その後、アップグレードサブジェネレーターを実行します。
 
 ```
 jhipster upgrade
 ```
 
-You can also use the [migrate blueprint](https://github.com/jhipster/generator-jhipster-migrate) for more advanced upgrade features. 
+より高度なアップグレード機能には、[migrate blueprint](https://github.com/jhipster/generator-jhipster-migrate)も使用できます。
 
 ```
 npm i -g generator-jhipster-migrate
 jhipster-migrate
 ```
 
-**Manual upgrades**
+**手動アップグレード**
 
-For a manual upgrade, first upgrade your version of JHipster with:
+手動アップグレードの場合、まずJHipsterのバージョンを以下のようにアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-If you have an existing project, it will still use the JHipster version with which it was generated.
-To upgrade your project, you must first delete its `node_modules` folder and then run:
+既存のプロジェクトがある場合は、生成されたJHipsterバージョンが引き続き使用されます。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、以下を実行します。
 
 ```
 jhipster
 ```
 
-Since JHipster 8.0, this command will update your project and all its entities. 
+JHipster 8.0以降、このコマンドはプロジェクトとそのすべてのエンティティを更新します。
 
-You can also update your entities one-by-one by running again the entity sub-generator, for example if your entity is named _Foo_, use:
+エンティティサブジェネレーターを再度実行することで、エンティティを個別に更新することもできます。たとえば、エンティティの名前が _Foo_ の場合は、以下を使用します。
 
 ```
 jhipster entity Foo
 ```
 
-## Help and bugs
+## ヘルプとバグ
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が見つかった場合は、ためらわずに以下を行ってください。
 
-- Add a bug on our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
-- Create a new discussion on [GitHub](https://github.com/jhipster/generator-jhipster/discussions)
+- [バグトラッカー](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加する
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿する
+- [GitHub](https://github.com/jhipster/generator-jhipster/discussions)で新しいディスカッションを開始する
 
-If the issue you have is an urgent bug or security issue, please:
+問題が緊急のバグやセキュリティ問題である場合は、以下を行ってください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- X (旧Twitter)で[@jhipster](https://twitter.com/jhipster)に連絡する
