@@ -4,7 +4,7 @@ title: APIゲートウェイ
 permalink: /api-gateway/
 sitemap:
     priority: 0.7
-    lastmod: 2017-05-03T00:00:00-00:00
+    lastmod: 2024-06-03T00:00:00-00:00
 ---
 
 # <i class="fa fa-exchange"></i> JHipster APIゲートウェイ
@@ -22,7 +22,7 @@ JHipsterはAPIゲートウェイを生成できます。ゲートウェイは通
 
 <h2 id="architecture_diagram">アーキテクチャ図</h2>
 
-<img src="{{ site.url }}/images/microservices_architecture_detail.003.png" alt="Diagram" style="width: 800; height: 600" class="img-responsive"/>
+<img src="{{ site.url }}/images/microservices_architecture_detail.006.png" alt="Diagram" style="width: 800; height: 600" class="img-responsive"/>
 
 <h2 id="http_routing">ゲートウェイを使用したHTTPリクエストのルーティング</h2>
 
@@ -31,9 +31,9 @@ JHipsterはAPIゲートウェイを生成できます。ゲートウェイは通
 ゲートウェイは、アプリケーション名を使用して、すべてのリクエストをマイクロサービスに自動的にプロキシします。たとえば、マイクロサービス`app1`が登録されている場合、ゲートウェイの`/services/app1`のURLで利用できます。
 
 たとえば、ゲートウェイが`localhost:8080`で実行されている場合、[http://localhost:8080/services/app1/api/foos](http://localhost:8080/services/app1/api/foos)の指定で、
-マイクロサービス`app1`で提供されている`foos`のリソースを取得できます。Webブラウザでこれを行おうとしている場合は、RESTリソースがJHipsterでデフォルトで保護されていることを忘れないでください。したがって、正しいJWTヘッダーを送信するか（以下のセキュリティのポイントを参照）、以降のセキュリティに関するポイントを確認するか、またはマイクロサービスの`MicroserviceSecurityConfiguration`クラスでそれらのURLのセキュリティを削除する必要があります。
+マイクロサービス`app1`で提供されている`foos`のリソースを取得できます。Webブラウザでこれを行おうとしている場合は、RESTリソースがJHipsterでデフォルトで保護されていることを忘れないでください。したがって、正しいJWTヘッダーを送信するか（以下のセキュリティのポイントを参照）、以降のセキュリティに関するポイントを確認するか、またはマイクロサービスの`SecurityConfiguration`クラスでそれらのURLのセキュリティを削除する必要があります。
 
-同じサービスのインスタンスが複数実行されている場合、ゲートウェイはそれらのインスタンスをJHipsterレジストリから取得し、[Consul](https://www.consul.io/use-cases/load-balancing)を使用してHTTPリクエストのロードバランシングを行います。
+同じサービスの複数のインスタンスが実行されている場合、ゲートウェイはそれらのインスタンスをサービスレジストリから取得し、[Consul](https://www.consul.io/use-cases/load-balancing) を使用してHTTPリクエストをロードバランスします。IPアドレス、Gitのバージョン、ステータスなどを含む実行中のマイクロサービスの詳細なリストにアクセスするには、[http://localhost:8080/api/gateway/routes](http://localhost:8080/api/gateway/routes) にアクセスしてください。このエンドポイントは保護されています。
 
 各ゲートウェイには特定の"admin > gateway"メニューがあり、オープンされたHTTPルートとマイクロサービスインスタンスを監視できます。
 
@@ -129,3 +129,17 @@ JHipsterは、[Bucket4j](https://github.com/vladimir-bukhtoyarov/bucket4j)と[Ha
         gateway:
             authorized-microservices-endpoints:
                 bar: /api/foo
+<h2 id="acl">ゲートウェイのセキュリティを強化するためのTLSの有効化</h2>
+デフォルトでは、ゲートウェイは非セキュアなHTTPで動作します。プロダクション環境では、セキュリティを強化するためにTLSを有効にすることを推奨します。これを行うには、`application-prod.yml`にある提供されたコードスニペットのコメントを解除してください。これにより、`config/tls`にある自己署名TLS証明書（ファイル名は`keystore.p12`）を使用するか、あらかじめ定義されたパスワードで独自のキーストアを指定することができます。
+
+	server:
+	   port: 443
+   		ssl:
+		   key-store: classpath:config/tls/keystore.p12
+	       key-store-password: password
+   		   key-store-type: PKCS12
+           key-alias: selfsigned
+          # この暗号スイートは、古くて非推奨のSSL暗号を無効にすることでセキュリティを強化します。このリストはSSL Labs（https://www.ssllabs.com/ssltest/）でテストされています。
+	       ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 ,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 ,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_RSA_WITH_AES_128_CBC_SHA,TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
+
+サーバーでTLSを有効にすると、パフォーマンスのオーバーヘッドが発生する可能性があることを念頭に置いてください。可能であれば、ゲートウェイの外部にSSL終端を持つロードバランサーを使用して暗号化を処理することを検討してください。これにより、このパフォーマンスの影響を軽減することができます。
