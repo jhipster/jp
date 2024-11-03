@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # JHipsterの公開[Webサイト（日本語）](https://www.jhipster.tech/jp/) のソースです
 
 - 本家のWebサイト： https://www.jhipster.tech/
@@ -51,3 +52,54 @@
 `main`との差分は[こちら](https://github.com/jhipster/jp/compare/main...gh-pages)を見て確認してください。
 `main`に書かない理由は、本家のサイトの構造上、`main`に入れるとローカルのテスト環境で動かないためです。
 結果、本家との差分が`main`と`gh-pages`で散在しまいますが、`gh-pages`の変更箇所は大幅なサイトの変更がない限りほぼ更新することはないので、しばらくこの構造で運用していきます。
+=======
+<p align="center">
+  <br />
+  <a href="https://jhipster.tech">
+    <img src="./static/images/logo/logo-jhipster.svg" height="60px">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://jhipster.tech">JHipster</a> Website built using <a href="https://docusaurus.io/">Docusaurus</a>, a modern static website generator.
+</p>
+<br />
+
+### Installation
+
+```
+npm install
+```
+
+### Local Development
+
+```
+npm start
+```
+
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+### Build
+
+```
+npm run build
+```
+
+This command generates static content into the `build` directory and can be served using any static content hosting service.
+
+### Deployment
+
+Using SSH:
+
+```
+USE_SSH=true npm run deploy
+```
+
+Not using SSH:
+
+```
+GIT_USER=<Your GitHub username> npm run deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2

@@ -1,0 +1,81 @@
+---
+<<<<<<< HEAD:pages/jdl/troubleshooting.md
+layout: default
+title: JHipsterドメイン言語 - トラブルシューティング
+permalink: /jdl/troubleshooting
+sitemap:
+    priority: 0.5
+    lastmod: 2023-07-09T23:00:00-00:00
+---
+
+# <i class="fa fa-star"></i> JHipsterドメイン言語(JDL)
+
+## トラブルシューティング
+
+私たちは、開発者にとって構文をできるだけ使いやすいものにするよう努めました。
+これにより、次のことが可能になります。
+  - オプションとエンティティを使用してアプリケーションを宣言します。
+  - エンティティをその属性とともに宣言します。
+  - それらの間のリレーションシップを宣言します。
+  - JHipster固有のオプションをいくつか宣言します。
+=======
+title: JHipster Domain Language (JDL) - Troubleshooting
+slug: /jdl/troubleshooting
+last_update:
+  date: 2023-07-09T23:00:00-00:00
+---
+
+## Troubleshooting
+
+We tried to keep the syntax as friendly as we can for developers.
+You can do these things with it:
+
+- Declare applications with their options and entities,
+- Declare entities with their attributes,
+- Declare the relationships between them,
+- And declare some JHipster specific options.
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/troubleshooting.mdx
+
+JDLの文法は
+[こちら](https://github.com/jhipster/generator-jhipster/blob/master/jdl/parsing/generated/grammar.html)で見ることができます。
+
+<<<<<<< HEAD:pages/jdl/troubleshooting.md
+---
+
+### マイクロサービスのbaseNameとエンティティ名が一致する場合、JDLインポートで1つのエンティティしか検出されない
+=======
+### The JDL import only finds one entity when matching MS baseName
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/troubleshooting.mdx
+
+これは、構文解析システムに関する既知の問題であり、修正は困難です。
+回避策は、マイクロサービスと内部のエンティティに異なる名前を使用することです。
+
+詳細については、[JHipster Core issue#308](https://github.com/jhipster/jhipster-core/issues/308)を参照してください。
+
+
+<<<<<<< HEAD:pages/jdl/troubleshooting.md
+<h2 id="issues">イシューとバグ</h2>
+=======
+## Issues and bugs
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/troubleshooting.mdx
+
+JDLは[GitHubで利用可能であり](https://github.com/jhipster/generator-jhipster/tree/main/jdl)、JHipsterと同じ
+[コントリビューションガイドライン]( https://github.com/jhipster/generator-jhipster/blob/main/CONTRIBUTING.md)に従っています。
+
+ライブラリ自体に関するイシューおよびプルリクエストの送信については、プロジェクトを使用してください。
+
+<<<<<<< HEAD:pages/jdl/troubleshooting.md
+- [JDLイシュートラッカー](https://github.com/jhipster/generator-jhipster/issues?q=is%3Aopen+is%3Aissue+label%3A%22theme%3A+JDL%22)
+- [JDLプルリクエスト](https://github.com/jhipster/generator-jhipster/pulls?q=is%3Aopen+is%3Apr+label%3A%22theme%3A+JDL%22)
+何かを送信するときは、できるだけ正確である必要があります。
+  - **1つの投稿されたイシューには、1つの問題**（または1つの要求/質問）のみが含まれている必要があります。
+  - プルリクエストは歓迎されますが、本当に理解できるようにするため、コミットは「アトミック」である必要があります。
+=======
+- [JDL issue tracker](https://github.com/jhipster/generator-jhipster/issues?q=is%3Aopen+is%3Aissue+label%3A%22theme%3A+JDL%22)
+- [JDL Pull Requests](https://github.com/jhipster/generator-jhipster/pulls?q=is%3Aopen+is%3Apr+label%3A%22theme%3A+JDL%22)
+
+When submitting anything, you must be as precise as possible:
+
+- **One posted issue must only have one problem** (or one demand/question);  
+- Pull requests are welcome, but the commits must be 'atomic' to really be understandable.  
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/troubleshooting.mdx

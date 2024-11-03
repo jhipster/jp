@@ -1,0 +1,43 @@
+---
+<<<<<<< HEAD:pages/using_websockets.md
+layout: default
+title: Websocketの使用
+permalink: /using-websockets/
+redirect_from:
+  - /using_websockets.html
+sitemap:
+    priority: 0.7
+    lastmod: 2015-08-31T18:40:00-00:00
+---
+
+# <i class="fa fa-envelope"></i> WebSocketsの使用
+
+WebSocketは、サーバーとそのクライアントの間でデータがほぼリアルタイムで共有される、非常に動的なアプリケーションを持つ場合に便利です。
+=======
+title: Using WebSockets
+slug: /using-websockets/
+last_update:
+  date: 2015-08-31T18:40:00-00:00
+---
+
+WebSockets are useful for having a very dynamic application, where data is shared in near real-time between the server and its clients.
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-websockets.mdx
+
+JHipsterは現在、その実装としてSpring WebSocketsを使用しているので、[Spring WebSocketsウェブサイト](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/websocket.html)でこの機能に関するより多くの情報を見つけることができます。
+
+このオプションには、いくつかの制限があります。
+
+- デフォルトでは、Spring Websocketsが提供するディスパッチャを使用します。これはインメモリ実装です。複数のサーバを使用する場合は拡張できません。拡張する場合は、外部ブローカの設定方法を説明している[Spring WebSocketsドキュメント](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/websocket.html)を参照してください。
+
+<<<<<<< HEAD:pages/using_websockets.md
+## 「トラッカー」の例
+=======
+
+## The "Tracker" example
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-websockets.mdx
+
+JHipsterは、すぐに利用できる「トラッカー」の例を提供しています。`admin`メニューにあり、他のユーザーの行動を追跡します。ログインとIP、および現在どのページを表示しているかがわかります。
+
+- これは、WebSocketsの使用を開始できるようにするための例として提供されています。「本番対応」のユーザー・トラッカーとしてではありませんが、非常にうまく機能します。
+- WebSocketsをSpring Securityと統合する方法を示しますが、これは非常に複雑なトピックです。
+- これは、JHipsterがシングルページWebアプリケーションであるため、WebSockets接続が各ページ間で再初期化されないために機能します。これは、JHipsterのアーキテクチャの大きな利点の1つを得る場所です。

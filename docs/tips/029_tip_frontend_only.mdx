@@ -1,0 +1,116 @@
+---
+<<<<<<< HEAD:tips/029_tip_frontend_only.md
+layout: default
+title: IDEでフロントエンドのみを開く場合に開発者エクスペリエンスを向上させる
+sitemap:
+priority: 0.1
+lastmod: 2019-10-14T12:35:00-00:00
+---
+
+# IDEでフロントエンドのみを開く場合に開発者エクスペリエンスを向上させる
+
+**このTipは[@kaidohallik](https://github.com/kaidohallik)により提出されました**
+=======
+title: Improve developer experience if opening only front end in the IDE
+slug: /tips/029_tip_frontend_only.html
+last_update:
+  date: 2019-10-14T12:35:00-00:00
+---
+
+**Tip submitted by [@kaidohallik](https://github.com/kaidohallik)**
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/029_tip_frontend_only.mdx
+
+少なくともVisual Studio Codeでは、次の動作が発生します。
+
+フルスタックアプリケーション（サーバーやクライアントをスキップしない）を生成し、フロントエンド開発者ができるだけ少ないファイルを表示し、IDEでフォルダ`src/main/webapp/app`のみを開く場合、IDEは`app`で始まるインポートを認識しません。これらのインポートは赤で表示され、開発者はインポートされたクラスの内容を見ることができず、ワンクリックでこれらのインポートされたクラスにジャンプできません。パス`app`は、生成されたアプリケーションのルートフォルダにある`tsconfig.json`ファイルに定義されているため、一部のサブフォルダを開くと、この情報が失われます。
+
+<<<<<<< HEAD:tips/029_tip_frontend_only.md
+## 可能な解決策1
+
+次の内容のファイル`src/main/webapp/app/tsconfig.json`を追加します。
+```
+=======
+
+## Possible solution 1
+
+Add file `src/main/webapp/app/tsconfig.json` with the following content:
+
+```json
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/029_tip_frontend_only.mdx
+{
+    "extends": "../../../../tsconfig.json"
+}
+```
+<<<<<<< HEAD:tips/029_tip_frontend_only.md
+テストの場合は、同じ内容のファイル`src/test/javascript/spec/tsconfig.json`を追加します。
+```
+=======
+
+And for tests add file `src/test/javascript/spec/tsconfig.json` with the same content:
+
+```json
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/029_tip_frontend_only.mdx
+{
+    "extends": "../../../../tsconfig.json"
+}
+```
+<<<<<<< HEAD:tips/029_tip_frontend_only.md
+その後、Visual Studio Codeでフォルダ`src/main/webapp/app`または`src/test/javascript/spec`のみを開く場合、パス`app`を解決できます。
+
+## 可能な解決策2
+=======
+
+After that Visual Studio Code resolves path `app` if opening only folder `src/main/webapp/app` or `src/test/javascript/spec`.
+
+
+## Possible solution 2
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/029_tip_frontend_only.mdx
+
+* インポートエイリアスを相対パスに置き換えるノードスクリプト`remove-import-alias.js`をアプリケーションルートフォルダに追加します。
+
+```js
+const fs = require('fs');
+
+removeImportAlias = function(dir, level, additionalPath) {
+  fs.readdirSync(dir).forEach(function(file) {
+    if (fs.statSync(dir + file).isDirectory()) {
+      removeImportAlias(dir + file + '/', level + 1, additionalPath);
+    } else if (file.endsWith('.ts')) {
+      fs.readFile(dir + file, 'utf8', function (err, content) {
+        if (err) {
+          console.log(err);
+        } else {
+          let path = '../'.repeat(level);
+          if (additionalPath) {
+            path += additionalPath;
+          }
+          if (!path) {
+            path = './';
+          }
+          const newContent = content.replace(/import \{ (.*) \} from 'app\/(.*)';/g, `import { $1 } from '${path}$2';`);
+          fs.writeFile(dir + file, newContent, 'utf8', function (err) {
+            if (err) {
+              console.log(err);
+            }
+          });
+        }
+      });
+    }
+  });
+};
+
+removeImportAlias(`./src/main/webapp/app/`, 0);
+removeImportAlias(`./src/test/javascript/spec/`, 0, '../../../main/webapp/app/');
+```
+
+<<<<<<< HEAD:tips/029_tip_frontend_only.md
+* `remove-import-alias.js`を`.eslintignore`に追加します。
+
+* 追加されたスクリプト`node remove-import-alias.js`を実行します。
+
+* `tsconfig.json`ファイルの`compilerOptions.paths`セクションから`app/*`を削除してください。
+=======
+* add `remove-import-alias.js` to `.eslintignore`
+* run added script: `node remove-import-alias.js`
+* delete `app/*` from the file `tsconfig.json` from the section `compilerOptions.paths`
+>>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/029_tip_frontend_only.mdx
