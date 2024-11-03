@@ -1,0 +1,52 @@
+---
+<<<<<<< HEAD:pages/using_pulsar.md
+layout: default
+title: Pulsarの使用
+permalink: /using-pulsar/
+redirect_from:
+  - /using_pulsar.html
+sitemap:
+    priority: 0.7
+    lastmod: 2019-10-30T00:00:00-00:00
+---
+
+# <i class="fa fa-envelope"></i> Pulsarの使用
+
+## 機能
+=======
+title: Using Pulsar
+slug: /using-pulsar/
+last_update:
+  date: 2019-10-30T00:00:00-00:00
+---
+
+## Features
+>>>>>>> upstream/main:docs/options/using-pulsar.mdx
+
+[Pulsar](http://pulsar.apache.org/)は人気のあるパブリッシュ/サブスクライブメッセージングシステムで、ストリーミングとキューイングの両方のユースケースをサポートしています。JHipsterはPulsarをオプションでサポートしており、次のことを実現します。
+
+- [Pulsarクライアント](https://pulsar.apache.org/docs/2.11.x/client-libraries-java/)をJHipsterで構成します。
+- Docker Compose設定ファイルを生成します。これによりPulsarが`docker-compose -f src/main/docker/pulsar.yml up -d`で使用可能となります。
+- [Spring Cloud Stream](https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/) Pulsarバインダーと[Testcontainers](https://www.testcontainers.org/)を使用して統合テストを生成します。
+
+<<<<<<< HEAD:pages/using_pulsar.md
+## 前提条件
+=======
+
+## Prerequisite
+>>>>>>> upstream/main:docs/options/using-pulsar.mdx
+
+新しいアプリケーションを生成し、使用したいテクノロジのプロンプトが表示されたら、必ず`Asynchronous messages using Apache Pulsar`を選択してください。Docker Compose設定ファイルが生成され、次のコマンドでPulsarを起動できます。
+
+```shell
+docker-compose -f src/main/docker/pulsar.yml up -d
+```
+
+
+## Usage
+
+JHipsterでPulsarを使用する方法については、[Spring for Apache Pulsar documentation](https://docs.spring.io/spring-pulsar/docs/current/reference/html/)のドキュメントを確認してください（アプリケーションのREADME.mdに生成されたバージョン管理されたpulsarドキュメントリンクをお勧めします）。
+Pulsarと対話するには、抽象化の最低レベルから最高レベルまで、いくつかの方法があります。
+* Producer/Consumer/ReaderをそれぞれPulsarProducerFactory/PulsarConsumerFactory/PulsarReaderFactoryから生成します。
+* PulsarTemplateを注入してPulsarListener Beanを作ります。
+* `application.yml`およびSupplier/Consumer/Function BeanでSpring Cloud Streamsバインダーを構成します（例については生成されたテストを参照してください）。

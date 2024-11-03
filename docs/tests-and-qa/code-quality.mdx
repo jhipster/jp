@@ -1,0 +1,174 @@
+---
+<<<<<<< HEAD:pages/code-quality.md
+layout: default
+title: コード品質
+permalink: /code-quality/
+sitemap:
+    priority: 0.7
+    lastmod: 2018-08-18T12:40:00-00:00
+---
+
+# <i class="fa fa-diamond"></i> コード品質
+
+コードの品質は、[SonarCloud](https://sonarcloud.io)を使用して分析でき、これはJHipsterによって自動的に設定されます。
+
+## JHipsterでのSonarの使用
+
+JHipsterは、Sonar用の特定のDocker Compose設定（[ここにJHipster Docker Composeドキュメントがあります]({{ site.url }}/docker-compose/)）を提供し、すぐに利用できるSonarインスタンスを提供します。プロジェクトのルートで、次のコマンドを実行してください。
+=======
+title: Code Quality
+slug: /code-quality/
+last_update:
+  date: 2018-08-18T12:40:00-00:00
+---
+
+Code quality can be analyzed using [SonarCloud](https://sonarcloud.io), which is automatically configured by JHipster.
+
+
+## Using Sonar with JHipster
+
+JHipster provides a specific Docker Compose configuration for Sonar ([here is the JHipster Docker Compose documentation](/docker-compose)) that provides an out-of-the box Sonar instance. At the root of your project, please run:
+>>>>>>> upstream/main:docs/tests-and-qa/code-quality.mdx
+
+```shell
+docker-compose -f src/main/docker/sonar.yml up -d
+```
+
+Mavenを使用する場合は、自動的に設定されています。
+
+```shell
+./mvnw -Pprod clean verify sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
+```
+
+Sonarフェーズを再実行する必要がある場合は、少なくとも`initialize`フェーズを指定してください。これは、Sonarプロパティがsonar-project.propertiesファイルからロードされるためです。
+
+```shell
+./mvnw initialize sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
+```
+
+Gradleを使用している場合は、自動的に設定されています。
+
+```shell
+./gradlew -Pprod clean check jacocoTestReport sonarqube -Dsonar.login=admin -Dsonar.password=admin
+```
+
+<<<<<<< HEAD:pages/code-quality.md
+どの場合でも、[sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner)が既にインストールされている場合は、それを使って分析できます。
+=======
+You can also run an analysis with [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner), if you have it installed.
+>>>>>>> upstream/main:docs/tests-and-qa/code-quality.mdx
+
+```shell
+sonar-scanner
+```
+
+分析が完了すると、Sonarのダッシュボードで利用できるようになります。デフォルトでは[http://127.0.0.1:9001/](http://127.0.0.1:9001/)です。
+
+<<<<<<< HEAD:pages/code-quality.md
+## Jacoco解析からのファイルの除外
+=======
+
+## Excluding Files from Jacoco Analysis
+>>>>>>> upstream/main:docs/tests-and-qa/code-quality.mdx
+
+カバレッジ分析から特定のクラス（生成されたクラスやアプリケーションクラスなど）を除外し、デフォルトのjacoco htmlレポートに正しい
+カバレッジを含める場合は、クラスを分析およびレポートから除外する必要があります。
+
+### Maven
+
+ユニットテストと統合テストの両方の`prepare-agent`および`report`ゴールに除外を追加する必要があります。
+
+```xml
+<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>${jacoco-maven-plugin.version}</version>
+    <executions>
+        <execution>
+            <id>pre-unit-tests</id>
+            <goals>
+                <goal>prepare-agent</goal>
+            </goals>
+            <configuration>
+                <!-- Applicationという名前のクラスを計測から除外 -->
+                <excludes>**/Application.*</excludes>
+                <destFile>${jacoco.utReportFile}</destFile>
+            </configuration>
+        </execution>
+        <execution>
+            <id>post-unit-test</id>
+            <phase>test</phase>
+            <goals>
+                <goal>report</goal>
+            </goals>
+            <configuration>
+                <!-- Applicationという名前のクラスをレポートから除外 -->
+                <excludes>**/Application.*</excludes>
+                <dataFile>${jacoco.utReportFile}</dataFile>
+                <outputDirectory>${jacoco.reportFolder}</outputDirectory>
+            </configuration>
+        </execution>
+        <execution>
+            <id>pre-integration-tests</id>
+            <goals>
+                <goal>prepare-agent-integration</goal>
+            </goals>
+            <configuration>
+                <!-- Applicationという名前のクラスを計測から除外 -->
+                <excludes>**/Application.*</excludes>
+                <destFile>${jacoco.itReportFile}</destFile>
+            </configuration>
+        </execution>
+        <execution>
+            <id>post-integration-tests</id>
+            <phase>post-integration-test</phase>
+            <goals>
+                <goal>report-integration</goal>
+            </goals>
+            <configuration>
+                <!-- Applicationという名前のクラスをレポートから除外 -->
+                <excludes>**/Application.*</excludes>
+                <dataFile>${jacoco.itReportFile}</dataFile>
+                <outputDirectory>${jacoco.reportFolder}</outputDirectory>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+### Gradle
+
+`sonar.gradle`ファイルに次を追加できます。
+
+```gradle
+test {
+    jacoco {
+        excludes += ['build/generated/**']
+    }
+}
+
+jacocoTestReport {
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    '**/*_.class'
+            ])
+        })
+    }
+}
+```
+
+<<<<<<< HEAD:pages/code-quality.md
+## デフォルトで生成されたプロジェクトの自動分析
+=======
+
+## Automatic analysis of the default generated project
+>>>>>>> upstream/main:docs/tests-and-qa/code-quality.mdx
+
+JHipsterジェネレータプロジェクトは、新しいコミットが"main"ブランチにマージされるたびに分析されるサンプルプロジェクトを公開しています。
+
+[JHipster組織](https://sonarcloud.io/organizations/jhipster)の下の[JHipsterサンプルアプリケーションの分析](https://sonarcloud.io/dashboard?id=jhipster-sample-application)
+
+これにより、JHipsterチームは、可能な限りクリーンなコードでプロジェクトの開発を開始できるようになります。
+
+この分析は、[SonarCloud](https://sonarcloud.io)によって無料で提供されています。

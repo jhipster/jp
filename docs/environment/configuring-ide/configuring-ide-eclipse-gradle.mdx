@@ -1,0 +1,69 @@
+---
+<<<<<<< HEAD:pages/configuring_ide_eclipse_gradle.md
+layout: default
+title: EclipseとGradleの設定
+permalink: /configuring-ide-eclipse-gradle/
+redirect_from:
+  - /configuring-ide-eclipse-gradle.html
+sitemap:
+    priority: 0.7
+    lastmod: 2015-05-22T18:40:00-00:00
+---
+
+# <i class="fa fa-keyboard-o"></i> EclipseとGradleの設定
+
+EclipseでGradleをフルサポートするには、[buildship plugin](https://gradle.org/eclipse/)をインストールする必要があります。
+[JavaScript]({{ site.url }}/configuring-ide-eclipse/) 側の設定は、Mavenの説明に従ってください。
+=======
+title: Configuring Eclipse with Gradle
+slug: /configuring-ide-eclipse-gradle/
+last_update:
+  date: 2015-05-22T18:40:00-00:00
+---
+
+To get full Gradle support in eclipse you should install the [buildship plugin](https://gradle.org/eclipse/).
+For configuring the [JavaScript](/configuring-ide-eclipse) side you can follow the instructions for Maven.
+
+>>>>>>> upstream/main:docs/environment/configuring-ide/configuring-ide-eclipse-gradle.mdx
+
+## 1.プロジェクトをGradleプロジェクトとしてインポート
+
+- ``File -> Import``を選択します。
+- ``Gradle Project``を選択します。
+- プロジェクトのルートディレクトリを選択します。
+- ``Next``をクリックし、ウィザードを終了します。
+
+<<<<<<< HEAD:pages/configuring_ide_eclipse_gradle.md
+![インポート]({{ site.url }}/images/configuring_ide_eclipse_gradle_1.png)
+
+![選択]({{ site.url }}/images/configuring_ide_eclipse_gradle_2.png)
+=======
+![Import](/images/configuring_ide_eclipse_gradle_1.png)
+
+![Select](/images/configuring_ide_eclipse_gradle_2.png)
+
+>>>>>>> upstream/main:docs/environment/configuring-ide/configuring-ide-eclipse-gradle.mdx
+
+## 2. aptで生成されたソースフォルダをビルドパスに追加
+
+buildship gradlesを使用する場合、outputfolderがフィルタリングされ、ワークスペースに表示されません。
+そのため、Eclipseのリソースフィルタ設定から削除する必要があります。
+
+- プロジェクトを右クリックし、``Properties``を選択します。
+- ``Resources``を選択します。
+- ``build``エントリを削除します。
+- ``Java Build Path``を選択します。
+- ``Add Folder...``をクリックします。
+- ``build/generated/source/apt/main``をチェックします。
+
+Eclipse経由でJHipsterを実行する場合、新しいソースフォルダに正しく生成されたマッパー実装が含まれていることを確認してください。
+
+<<<<<<< HEAD:pages/configuring_ide_eclipse_gradle.md
+![除外]({{ site.url }}/images/configuring_ide_eclipse_gradle_3.png)
+
+![ビルドパス]({{ site.url }}/images/configuring_ide_eclipse_gradle_4.png)
+=======
+![Exclude](/images/configuring_ide_eclipse_gradle_3.png)
+
+![Buildpath](/images/configuring_ide_eclipse_gradle_4.png)
+>>>>>>> upstream/main:docs/environment/configuring-ide/configuring-ide-eclipse-gradle.mdx

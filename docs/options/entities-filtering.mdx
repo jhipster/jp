@@ -1,0 +1,125 @@
+---
+<<<<<<< HEAD:pages/entities-filtering.md
+layout: default
+title: フィルタリング
+permalink: /entities-filtering/
+sitemap:
+    priority: 0.7
+    lastmod: 2017-08-22T00:00:00-00:00
+---
+
+# <i class="fa fa-filter"></i> エンティティのフィルタリング
+
+## 導入
+=======
+title: Filtering your entities
+slug: /entities-filtering/
+last_update:
+  date: 2017-08-22T00:00:00-00:00
+---
+
+## Introduction
+>>>>>>> upstream/main:docs/options/entities-filtering.mdx
+
+基本的なCRUD機能がエンティティに実装された後、エンティティの属性に対してさまざまなフィルタを作成したいという、非常に一般的な要求があります。
+これにより、サーバをより効果的に使用できるようになります。これらのフィルタは、すべてのクライアント（およびすべてのブラウザ）がそれを使用できるように、リクエストパラメータとして送信される必要があります。
+さらに、これらのフィルタは、合理的で簡潔なパターンに従う必要があり、自由に組み合わせることができなければなりません。
+## アクティブにする方法
+
+<<<<<<< HEAD:pages/entities-filtering.md
+_注意_：`filter`は`reactive`と互換性がありません。
+`jhipster entity`コマンドを使用してエンティティを生成する際に、サービスまたはサービス実装を選択して、このエンティティのフィルタリングを有効にします。
+=======
+
+## How to activate
+>>>>>>> upstream/main:docs/options/entities-filtering.mdx
+
+既存のエンティティのフィルタを有効にする場合は、プロジェクトの`.jhipster`ディレクトリでエンティティ構成を変更します。変更するには、`service`を`serviceClass`に、または`serviceImpl`を`no`とし、`jpaMetamodelFiltering`を`true`に設定して、`jhipster entity <エンティティ名>`で再生成します。
+
+JDLを使用する場合は、JDLファイルに行`filter <エンティティ名>`を追加し、`jhipster jdl`コマンドを使用して定義を再インポートします。
+
+## パブリック・インタフェース
+
+<<<<<<< HEAD:pages/entities-filtering.md
+エンティティごとに、エンティティジェネレータでフィルタリングを有効にできます。その後、次のパラメータを使用して`/api/my-entity`GETエンドポイントを呼び出すことができます。
+=======
+
+## Public interface
+>>>>>>> upstream/main:docs/options/entities-filtering.mdx
+
+* 各*xyz*フィールド用
+    * *xyz.equals=someValue*
+        - xyzが'someValue'な、すべてのエンティティをリストします。
+    * *xyz.in=someValue,otherValue*
+        - xyzが'someValue'または'otherValue'な、すべてのエンティティをリストします。
+    * *xyz.specified=true*
+        - xyzはNULLではない、すべてのエンティティをリストします。
+    * *xyz.specified=false*
+        - xyzはNULLまたは未指定となる、すべてのエンティティをリストします。
+* *xyz*のタイプが文字列の場合
+    * *xyz.contains=something*
+        - xyzに'something'が含まれる、すべてのエンティティをリストします。
+* *xyz*が数値型または日付型のいずれかである場合
+    * *xyz.greaterThan=someValue*
+        - xyzが'someValue'より大きくなる、すべてのエンティティをリストします。
+    * *xyz.lessThan=someValue*
+        - xyzが'someValue'より小さくなる、すべてのエンティティをリストします。        
+    * *xyz.greaterThanOrEqual=someValue*
+        - xyzが'someValue'以上となる、すべてのエンティティをリストします。
+    * *xyz.lessThanOrEqual=someValue*
+        - xyzが'someValue'以下となる、すべてのエンティティをリストします。
+
+これらは自由に組み合わせられます。
+
+このフィルターAPIの表現力を体験する良い方法は、JHipsterアプリケーションのAPIドキュメント・ページにあるswagger-uiから使用することです。
+
+![](/images/entities_filtering_swagger.png)
+
+
+## 実装
+
+この機能を有効にすると、`EntityQueryService`という名前の新しいサービスと`EntityCriteria`が生成されます。Springはリクエストパラメータを`EntityCriteria`クラスのフィールドに変換します。
+
+`EntityQueryService`では、クライテリアオブジェクトを静的でタイプセーフなJPAクエリオブジェクトに変換します。このためには、ビルドで**静的メタモデル生成が有効になっている**ことが**必要**です。詳細については、[JPA静的メタモデルジェネレータのドキュメント](https://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#tooling-modelgen)を参照してください。
+
+生成されたクライテリアが機能し、Springが適切に構成されていることを証明するために、個々のフィルタごとに1つずつといった多くのテストケースを持つ`EntityResourceIntTest`が作られます。
+
+### Angular
+
+Angularを使用する場合、この便利な機能を利用する適切な方法は、次のようになります。
+
+<<<<<<< HEAD:pages/entities-filtering.md
+* Equals（`contains`と`notEquals`にも当てはまります）
+```javascript
+this.bookService.query({'title.equals':someValue}).subscribe(...);
+```
+* greaterThan（`date`および`number`データ型を使用する場合、`lessThan`、`greaterThanOrEqual`、および`lessThanOrEqual`にも当てはまります）
+```javascript
+this.bookService.query({'id.greaterThan':value}).subscribe(...);
+this.bookService.query({'birthday.lessThanOrEqual':value}).subscribe(...);
+```
+* In（`notIn`にも当てはまります）
+```javascript
+=======
+* Equals (same applies for `contains` and `notEquals`)
+```js
+this.bookService.query({'title.equals':someValue}).subscribe(...);
+```
+* greaterThan (same applies for `lessThan`, `greaterThanOrEqual` and `lessThanOrEqual` when using `date` and `number` data types)
+```js
+this.bookService.query({'id.greaterThan':value}).subscribe(...);
+this.bookService.query({'birthday.lessThanOrEqual':value}).subscribe(...);
+```
+* In (same applies for `notIn`)
+```js
+>>>>>>> upstream/main:docs/options/entities-filtering.mdx
+this.bookService.query({'id.in':[value1, value2]}).subscribe(...);
+```
+* Specified
+```js
+this.bookService.query({'author.specified':true}).subscribe(...);
+```
+
+## 制限事項
+
+現在、SQLデータベース（JPAを使用）のみがサポートされており、個別のサービスまたは個別のサービス実装/インタフェースの組み合わせが提供されます。

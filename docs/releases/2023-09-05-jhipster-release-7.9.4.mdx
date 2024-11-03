@@ -1,0 +1,85 @@
+---
+<<<<<<< HEAD:_posts/2023-09-05-jhipster-release-7.9.4.md
+layout: default
+title: リリース 7.9.4
+redirect_from:
+  - /2022/09/02/jhipster-release-7.9.4.html
+=======
+title: Release 7.9.4
+slug: /2023/09/05/jhipster-release-7.9.4.html
+displayed_sidebar: docsSidebar
+sidebar_class_name: hidden
+>>>>>>> upstream/main:docs/releases/2023-09-05-jhipster-release-7.9.4.mdx
+---
+
+# JHipsterリリース v7.9.4
+
+これは、JHipster v7の新しいパッチリリースで、[3個のクローズされたチケットとマージされたプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=milestone%3A7.9.4+is%3Aclosed)があります。
+
+## 最も重要な新機能とアップグレード
+
+- Node.js 18 のサポート
+
+## クローズされたチケットとマージされたプルリクエスト
+
+いつものように、**[すべてのクローズされたチケットとマージされたプルリクエストをここで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=milestone%3A7.9.4+is%3Aclosed)**。
+
+## アップグレード方法
+
+**自動アップグレード**
+
+<<<<<<< HEAD:_posts/2023-09-05-jhipster-release-7.9.4.md
+自動アップグレードの場合は、既存のアプリケーションで[JHipsterアップグレードサブジェネレータ]({{ site.url }}/upgrading-an-application/)を使用します。
+=======
+For an automatic upgrade, use the [JHipster upgrade sub-generator](/upgrading-an-application/) on an existing application:
+>>>>>>> upstream/main:docs/releases/2023-09-05-jhipster-release-7.9.4.mdx
+
+JHipsterのバージョンをアップグレードします。
+
+```
+npm update -g generator-jhipster
+```
+
+次に、アップグレードサブジェネレータを実行します。
+
+```
+jhipster upgrade
+```
+
+**手動アップグレード**
+
+手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
+
+```
+npm update -g generator-jhipster
+```
+
+既存のプロジェクトがある場合は、そのプロジェクトは生成されたJHipsterのバージョンをそのまま使用します。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、次のコマンドを実行する必要があります。
+
+```
+jhipster
+```
+
+次のコマンドを実行して、プロジェクトとすべてのエンティティの更新もできます。
+
+```
+jhipster --force
+```
+
+また、エンティティサブジェネレータを再度実行し、エンティティの1つずつの更新もできます。たとえば、エンティティの名前が _Foo_ の場合は以下となります。
+
+```
+jhipster entity Foo
+```
+
+## ヘルプとバグ
+
+このリリースで問題が発生した場合は、遠慮なく次のことを行ってください。
+
+- [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加します。
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿します。
+
+問題が緊急のバグまたはセキュリティの問題である場合は次のことを行ってください。
+
+- [@jhipster](https://twitter.com/jhipster)のTwitterアカウントに連絡をお願いします。

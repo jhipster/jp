@@ -1,0 +1,133 @@
+---
+<<<<<<< HEAD:pages/cloudcaptain.md
+layout: default
+title: CloudCaptainを使ったデプロイ
+permalink: /cloudcaptain/
+redirect_from:
+  - /cloudcaptain.html
+  - /boxfuse.html
+  - /boxfuse/
+sitemap:
+    priority: 0.7
+    lastmod: 2022-01-21T00:00:00-00:00
+---
+
+# CloudCaptainを使ったデプロイ
+
+このガイドでは、[CloudCaptain](https://cloudcaptain.sh/)を使用してJHipsterアプリケーションをデプロイする方法を示します。
+=======
+title: Deploying to AWS with CloudCaptain
+slug: /cloudcaptain/
+last_update:
+  date: 2022-01-21T00:00:00-00:00
+---
+
+This guide show how to deploy your JHipster application to AWS using [CloudCaptain](https://cloudcaptain.sh/).
+>>>>>>> upstream/main:docs/production/cloudcaptain.mdx
+
+[![CloudCaptain](/images/logo/logo-cloudcaptain.png)](https://cloudcaptain.sh/)
+
+CloudCaptainは**JHipsterの最高クラスのサポート**を提供しており、アプリケーションに対して最小限の不変マシンイメージを作成することで機能します。
+
+<<<<<<< HEAD:pages/cloudcaptain.md
+<div class="alert alert-info"><i>ヒント:</i>
+
+CloudCaptainの代わりに、<a href="{{ site.url }}/aws/">Elastic Beanstalk</a>を使用してJHipsterアプリケーションをデプロイできます。
+
+</div>
+=======
+>>>>>>> upstream/main:docs/production/cloudcaptain.mdx
+
+## 前提条件
+
+デプロイするには、まず[CloudCaptainのアカウントを作成](https://console.cloudcaptain.sh)し、[CloudCaptainクライアント](https://cloudcaptain.sh/getstarted/download)をインストールする必要があります。
+
+また、[CloudCaptainコンソール](https://console.cloudcaptain.sh)でアカウントに接続する必要があります。
+
+<<<<<<< HEAD:pages/cloudcaptain.md
+## デプロイの準備
+=======
+
+## Preparing a deployment
+>>>>>>> upstream/main:docs/production/cloudcaptain.mdx
+
+アプリケーションの準備ができたら、次のように入力してデプロイの準備をします。
+
+```shell
+./mvnw package -Pprod -DskipTests
+```
+
+gradleを使用する場合は以下です。
+
+```shell
+./gradlew -Pprod bootJar -x test
+```
+
+
+## AWSへのデプロイ
+
+アプリケーションをAWSにデプロイするには、次のように入力します。
+
+```shell
+boxfuse run -env=prod
+```
+
+その後、CloudCaptainはアプリケーションを分析し、そのための最小限のマシンイメージを融合し、必要なすべての
+AWSインフラストラクチャ（インスタンス、セキュリティグループ、Elastic IP、ELB、MySQL、PostgreSQL RDSデータベースなど）のプロビジョニング、設定、セキュリティ保護を自動的に行います。
+
+```
+Creating jhipster ...
+Mapping jhipster-dev-myuser.boxfuse.io to 127.0.0.1 ...
+Created App jhipster (single-instance / postgresql)
+Fusing Image for jhipster-1.0.war (JHipster) ...
+Image fused in 00:05.036s (96301 K) -> myuser/jhipster:1.0
+Pushing myuser/jhipster:1.0 ...
+Verifying myuser/jhipster:1.0 ...
+Creating security group boxsg-db-myuser-prod-jhipster ...
+Creating RDS PostgreSQL database (db.t2.micro / 5 GB / single-az) => boxdb-myuser-prod-jhipster (this one-time action may take up to 10 minutes to complete) ...
+Waiting for AWS to create an AMI for myuser/jhipster:1.0 in eu-central-1 (this may take up to 50 seconds) ...
+AMI created in 00:35.564s in eu-central-1 -> ami-35fa0b5a
+Waiting for AWS to make RDS DB boxdb-myuser-prod-jhipster available ...
+DB boxdb-myuser-prod-jhipster [creating]
+DB boxdb-myuser-prod-jhipster [backing-up]
+DB boxdb-myuser-prod-jhipster [available]
+Creating security group boxsg-myuser-prod-jhipster ...
+Creating Elastic IP ...
+Mapping jhipster-myuser.boxfuse.io to 52.29.78.197 ...
+Creating security group boxsg-myuser-prod-jhipster-1.0 ...
+Launching t2.micro instance of myuser/jhipster:1.0 (ami-35fa0b5a) in prod (eu-central-1) ...
+Instance launched in 00:20.687s -> i-95d15028
+Creating Cloud Watch Alarm for Instance auto-recovery -> i-95d15028-auto-recovery-alarm
+Waiting for AWS to boot Instance i-95d15028 and Payload to start at http://54.93.63.207:8080/ ...
+Payload started in 01:29.685s -> http://54.93.63.207:8080/
+Remapping Elastic IP 52.29.78.197 to i-95d15028 ...
+Waiting 15s for AWS to complete Elastic IP Zero Downtime transition ...
+Deployment completed successfully. myuser/jhipster:1.0 is up and running at http://jhipster-myuser.boxfuse.io:8080/
+```
+
+ポート、ヘルスチェックURL、データベースタイプなどを明示的に指定する必要はないことに注意してください。デフォルトでは、CloudCaptainは
+`application-prod.yml`ファイルと含まれるjarに基づいて、JHipster warからそれらを自動検出します。
+必要に応じて、これらの自動検出設定を上書きできますが、ほとんどの場合、上書きする必要はありません。
+
+<<<<<<< HEAD:pages/cloudcaptain.md
+## アップデートの導入
+=======
+
+## Deploying updates
+>>>>>>> upstream/main:docs/production/cloudcaptain.mdx
+
+既存のアプリケーションに更新をデプロイするには、前述の準備およびデプロイの手順に従います。すべての更新は、
+停止時間ゼロのブルー・デプロイメントとして実行されます。
+
+<<<<<<< HEAD:pages/cloudcaptain.md
+## 詳細情報
+
+*   [CloudCaptainとJHipsterの入門](https://cloudcaptain.sh/getstarted/jhipster)
+*   [JHipster CloudCaptainドキュメント](https://cloudcaptain.sh/docs/payloads/jhipster)
+=======
+
+## More information
+
+* [Get Started with CloudCaptain and JHipster](https://cloudcaptain.sh/getstarted/jhipster)
+* [JHipster CloudCaptain documentation](https://cloudcaptain.sh/docs/payloads/jhipster)
+>>>>>>> upstream/main:docs/production/cloudcaptain.mdx

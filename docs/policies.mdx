@@ -1,0 +1,103 @@
+---
+<<<<<<< HEAD:pages/policies.md
+layout: default
+title: ポリシー
+permalink: /policies/
+redirect_from:
+  - /policies.html
+sitemap:
+  priority: 0.7
+  lastmod: 2015-07-31T18:40:00-00:00
+---
+
+# <i class="fa fa-gavel"></i> ポリシー
+
+JHipster開発チームは、いくつかのコーディングポリシーに従っています。これらは「ベストプラクティス」または「ガイドライン」と見なすことができます。これらは、生成されたコードではなく、プロジェクト自体に適用されます。JHipsterを使用してプロジェクトを生成する場合は、これらに従う必要はありません!
+
+これらのポリシーには、[開発チーム]({{ site.url }}/team/)が従います。プルリクエストを送信する場合は、これらのポリシーに従う必要があります。
+=======
+title: Policies
+displayed_sidebar: docsSidebar
+slug: /policies/
+last_update:
+  date: 2015-07-31T18:40:00-00:00
+---
+
+The JHipster development team follows some coding policies. You can see them as "best practices" or "guidelines". They are enforced on the project itself, not on the generated code: if you use JHipster to generate your project, you absolutely do not have to follow them!
+
+Those policies are followed by the [development team](/team), and you should follow them if you submit a Pull Request.
+
+>>>>>>> upstream/main:docs/policies.mdx
+
+## ポリシー0:ポリシーは開発チームによって投票される
+
+各ポリシーは、[メーリングリスト](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)で開発チームが議論したり修正したりできます。重要な変更はすべて投票で決定されます（同意する場合は+1、同意しない場合は-1）。
+
+<<<<<<< HEAD:pages/policies.md
+## ポリシー1:JHipsterが使用するテクノロジには、デフォルト設定とベストプラクティスを可能な限り使用する
+=======
+
+## Policy 1: Technologies used by JHipster have their default configuration and best practices used as much as possible
+>>>>>>> upstream/main:docs/policies.mdx
+
+たとえば、JPA、Spring、Angular、Reactを「通常の方法」で使用しており、重い構成オプションはなく、通常の命名規則とコーディング規則を使用しています。これは次のように行います。
+
+- 各テクノロジーには通常、これらのデフォルトを設定する十分な理由があります。
+- すべてを再設定し直さない方が、JHipsterがどのように機能するかをはるかに簡単に理解できます。
+
+デフォルト設定を変更するのは、JHipsterで使用されている他のテクノロジに問題が発生した場合だけです。たとえば、Spring SecurityとAngularを連携させるためには、Spring Securityのデフォルト設定を変更する必要がありました。そうでないと、デフォルト設定によってEJSテンプレートが非常に複雑になる恐れがありました。
+
+<<<<<<< HEAD:pages/policies.md
+## ポリシー2:生成されたコードに十分な付加価値がある場合にのみ、オプション/機能を追加する
+=======
+
+## Policy 2: Only add options/features when there is sufficient added-value in the generated code
+>>>>>>> upstream/main:docs/policies.mdx
+
+JHipsterには、プロジェクトを生成するときに多くのオプションがあります。私たちは、それらが複雑で、いくつかのコンポーネントを構成またはコーディングすることを意味する場合にのみ、それらのオプションを追加します。
+
+数行のコードを節約するためだけにオプションを追加するのは、JHipsterの良い使い方ではありません。
+
+- 新しいJHipsterオプションを学ぶよりも、これらの行を手動でコーディングする方が簡単です。
+- それは、付加価値を付けず、ジェネレータをより複雑にするだけです。
+
+<<<<<<< HEAD:pages/policies.md
+## ポリシー3:サーバ側およびクライアント側のサードパーティライブラリには、strictバージョンを使用する
+=======
+
+## Policy 3: Use strict versions for third-party libraries on server side and client side
+>>>>>>> upstream/main:docs/policies.mdx
+
+唯一の例外は、相対バージョンの方がうまく機能するライブラリへの依存関係です。ライブラリのバージョンが競合するという問題が数多くありました。これは主にJavaScriptの問題であるため、明確にするために、生成される`package.json`ファイルでは固定のライブラリバージョンを使用しています。
+
+<<<<<<< HEAD:pages/policies.md
+## ポリシー4:可能な限り、同じ目的のために提供される異なるオプションにわたって、同じようなのユーザー/開発者エクスペリエンスを提供する
+=======
+
+## Policy 4: We provide similar user/developer experience across different options provided for the same purpose as much as possible
+>>>>>>> upstream/main:docs/policies.mdx
+
+JHipsterの重要な側面は、ユーザと開発者のエクスペリエンスと、ある技術を別の技術（例：クライアントフレームワーク、認証、データベースなど）に簡単に交換できることであり、したがって、開発者にとっては、それらが可能な限り類似した設定/コーディングされている方が簡単です。他のポリシーに違反する場合は、例外を設けることができます。
+
+<<<<<<< HEAD:pages/policies.md
+## ポリシー5:開発者エクスペリエンスは、ポリシー1、2、3、および4よりも優先される
+=======
+
+## Policy 5: Developer experience can take precedence over policy 1, 2, 3 & 4
+>>>>>>> upstream/main:docs/policies.mdx
+
+これは、開発者のエクスペリエンスが可能な限り以下の影響を受けないようにする必要があることを意味します。
+
+- 機能の追加
+- ハイプドリブンな開発
+- 寄稿者の便宜
+- 技術への情熱
+
+開発者の経験は主観的であるため、以下はJHipsterコミュニティの大まかなガイドとなります。これは、JHipsterを製品およびプラットフォームとして使用する全体的な経験になります。これには以下が含まれます。
+
+- JHipster CLIエクスペリエンス（使いやすさ、直感的さ、スピードなど）
+- 生成されたコード（品質、シンプルさ、読みやすさ、メンテナンスの容易さ、アップグレードの容易さ、親しみやすさなど）
+- JHipsterオンライン、JDLスタジオなどのツールのUX
+- ドキュメント（Webサイトおよび生成されたReadme）
+
+このポリシーの実施に関して意見の相違がある場合は、[メーリングリスト](https://groups.google.com/forum/?hl=en#!forum/jhipster-dev)においてケース・ツー・ケースで議論・投票し、それを解決できます。

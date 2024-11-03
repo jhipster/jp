@@ -1,0 +1,245 @@
+---
+title: Docker Hub
+slug: /docker-hub/
+last_update:
+  date: 2016-09-25T00:00:00-00:00
+---
+
+<<<<<<< HEAD:pages/docker_hub.md
+# <i class="fa fa-cloud-upload"></i> Docker Hub
+
+## まとめ
+
+[![]({{ site.url }}/images/logo/docker-hub.png)](https://hub.docker.com/u/jhipster/)
+=======
+[![Docker Hub](/images/logo/docker-hub.png)](https://hub.docker.com/u/jhipster/)
+>>>>>>> upstream/main:docs/production/docker-hub.mdx
+
+JHipsterはDocker Hubに独自の[組織]を持ち、さまざまなDockerイメージを提供しています。
+
+<<<<<<< HEAD:pages/docker_hub.md
+
+[jhipster-docker-hub]プロジェクトは、これらのイメージを起動するためのすべてのdocker-composeファイルを提供します。
+docker-composeコマンドを使用するには、次の作業が必要です。
+=======
+The [jhipster-docker-hub] project provides all docker-compose files to launch these images.
+To use the docker-compose commands, you have to:
+>>>>>>> upstream/main:docs/production/docker-hub.mdx
+
+- プロジェクトのクローンを作成：`git clone https://github.com/jhipster/jhipster-docker-hub`
+- プロジェクト内に移動：`cd jhipster-docker-hub`
+
+:::warning
+
+<<<<<<< HEAD:pages/docker_hub.md
+<div class="alert alert-warning"><i>警告:</i>
+
+OSによって、<code>DOCKER_HOST</code>は異なります。Linuxでは、<code>localhost</code>です。
+Mac/Windowsの場合、次のコマンドを使用してIPを取得する必要があります。<code>docker-machine ip default</code>
+
+</div>
+
+
+## [jhipster/jhipster](https://hub.docker.com/r/jhipster/jhipster) : JHipsterの代替インストール
+
+詳細な手順については、[インストール]({{ site.url }}/installation/)ページを参照してください。
+=======
+Based on your OS, your `DOCKER_HOST` will differ. On Linux, it will be `localhost`.
+For Mac/Windows, you will have to obtain the IP using following command: `docker-machine ip default`
+
+:::
+
+
+## [jhipster/jhipster](https://hub.docker.com/r/jhipster/jhipster): an alternative installation of JHipster
+
+See the [installation](/installation/) page for full instructions.
+>>>>>>> upstream/main:docs/production/docker-hub.mdx
+
+次のコマンドは、特定の用途で使用できます。
+
+### JHipsterの最新リリースを使用する
+
+最新のリリースを使用して、現在のフォルダで`jhipster`を起動します。
+
+```shell
+docker container run --rm -it -v "$PWD":/home/jhipster/app jhipster/jhipster jhipster
+```
+
+### JHipster v3.0.0を使用
+
+古いリリースを使用して、現在のフォルダで`jhipster`を起動します。
+
+```shell
+docker container run --rm -it -v "$PWD":/home/jhipster/app jhipster/jhipster:v3.0.0 jhipster
+```
+
+<<<<<<< HEAD:pages/docker_hub.md
+利用可能なすべてのタグは[ここ](https://hub.docker.com/r/jhipster/jhipster/tags/)で見ることができます。
+=======
+You can see [all available tags](https://hub.docker.com/r/jhipster/jhipster/tags/)
+>>>>>>> upstream/main:docs/production/docker-hub.mdx
+
+
+## [jhipster/jdl-studio](https://hub.docker.com/r/jhipster/jdl-studio) : オフラインのJDL-Studio
+
+オフラインJDL-Studioを[http://localhost:18080](http://localhost:18080)へのアクセスで使用できます。
+
+```shell
+docker container run -d -p 18080:80 jhipster/jdl-studio
+```
+
+
+## [jhipster/jhipster-sample-app](https://hub.docker.com/r/jhipster/jhipster-sample-app)
+
+H2またはMySQLを使用したサンプルアプリケーションです。
+
+### クイック起動
+
+開発プロファイルで、jhipsterアプリケーションをDockerで直接実行します。
+
+```shell
+docker container run -d -p 8080:8080 -e SPRING_PROFILES_ACTIVE=dev jhipster/jhipster-sample-app
+```
+
+その後、[http://localhost:8080](http://localhost:8080)にアクセスできます。
+
+### 開発プロファイル
+
+開発プロファイルでのアプリケーションを実行します。
+
+```shell
+docker-compose -f jhipster-sample-app/dev.yml up
+```
+
+### プロダクションプロファイル
+
+MySQLデータベースを使用して、プロダクションプロファイルでアプリケーションを実行します。
+
+```shell
+docker-compose -f jhipster-sample-app/prod.yml up
+```
+
+### ELKスタックを使用したプロダクションプロファイルとモニタリング
+
+MySQLデータベースとELKスタックを使用して、プロダクションプロファイルでアプリケーションを実行します。
+
+```shell
+docker-compose -f jhipster-sample-app/prod-elk.yml up
+```
+
+実行中のアプリケーションへ[http://localhost:8080](http://localhost:8080)でアクセスします。
+
+Kibanaのダッシュボードへ[http://localhost:5601](http://localhost:5601)でアクセスします。
+
+
+## [jhipster/jhipster-sample-app-elasticsearch](https://hub.docker.com/r/jhipster/jhipster-sample-app-elasticsearch)
+
+MySQLとElasticsearchを使用したサンプルアプリケーションです。
+
+### 開発プロファイル
+
+開発プロファイルでアプリケーションを実行します。
+
+```shell
+docker-compose -f jhipster-sample-app-elasticsearch/dev.yml up
+```
+
+### プロダクションプロファイル
+
+MySQLデータベースとElasticsearchを使用して、プロダクションプロファイルでアプリケーションを実行します。
+
+```shell
+docker-compose -f jhipster-sample-app-elasticsearch/prod.yml up
+```
+
+
+## [jhipster/jhipster-sample-app-mongodb](https://hub.docker.com/r/jhipster/jhipster-sample-app-mongodb)
+
+MongoDBを使ったサンプルアプリケーションです。
+
+### プロダクションプロファイル
+
+MongoDBデータベースを使用して、プロダクションプロファイルでアプリケーションを実行します。
+
+```shell
+docker-compose -f jhipster-sample-app-mongodb/prod.yml up
+```
+
+
+## [jhipster/jhipster-sample-app-cassandra](https://hub.docker.com/r/jhipster/jhipster-sample-app-cassandra)
+
+Cassandraクラスタを使用したサンプルアプリケーションです。
+
+### プロダクションプロファイル
+
+Cassandraクラスタを使用して、プロダクションプロファイルでアプリケーションを実行します。
+
+```shell
+docker-compose -f jhipster-sample-app-cassandra/prod.yml up
+```
+
+Cassandraノードをスケーリングします。
+
+```shell
+docker-compose -f jhipster-sample-app-cassandra/prod.yml scale sample-cassandra-node=2
+```
+
+<<<<<<< HEAD:pages/docker_hub.md
+
+[組織]: https://hub.docker.com/u/jhipster/
+=======
+[organization]: https://hub.docker.com/u/jhipster/
+>>>>>>> upstream/main:docs/production/docker-hub.mdx
+[jhipster-docker-hub]: https://github.com/jhipster/jhipster-docker-hub
+
+
+## マイクロサービスアーキテクチャ
+
+ここでは、次のイメージを使用します。
+
+- [jhipster/jhipster-registry](https://hub.docker.com/r/jhipster/jhipster-registry)
+- [jhipster/jhipster-sample-app-gateway](https://hub.docker.com/r/jhipster/jhipster-sample-app-gateway)
+- [jhipster/jhipster-sample-app-microservice](https://hub.docker.com/r/jhipster/jhipster-sample-app-microservice)
+
+### プロダクションプロファイル
+
+プロダクションプロファイルでフルスタックを実行します。
+
+```shell
+docker-compose -f jhipster-sample-microservices/prod/prod.yml up
+```
+
+次が起動します。
+
+- ConsulまたはJHipsterレジストリ
+- ゲートウェイ
+- MySQLデータベース
+- マイクロサービス
+- PostgreSQLデータベース
+
+
+マイクロサービスをスケールアップさせます。
+
+```shell
+docker-compose -f jhipster-sample-microservices/prod/prod.yml scale jhipstersamplemicroservice-app=2
+```
+
+### ELKスタックを使用したプロダクションプロファイルと監視
+
+ELKスタックを使用して、プロダクションプロファイルでフルスタックを実行します。
+
+```shell
+docker-compose -f jhipster-sample-microservices/prod-elk/prod-elk.yml up
+```
+
+マイクロサービスをスケールアップさせます。
+
+```shell
+docker-compose -f jhipster-sample-microservices/prod-elk/prod-elk.yml scale jhipstersamplemicroservice-app=2
+```
+
+レジストリへのアクセス：[http://localhost:8761](http://localhost:8761)
+
+ゲートウェイへのアクセス：[http://localhost:8080](http://localhost:8080)
+
+Kiabnaのダッシュボードへのアクセス：[http://localhost:5601](http://localhost:5601)

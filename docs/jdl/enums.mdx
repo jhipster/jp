@@ -1,0 +1,119 @@
+---
+<<<<<<< HEAD:pages/jdl/enums.md
+layout: default
+title: JHipsterドメイン言語(JDL) -  列挙型型
+permalink: /jdl/enums
+sitemap:
+    priority: 0.5
+    lastmod: 2019-10-27T12:00:00-00:00
+---
+
+# <i class="fa fa-star"></i> JHipsterドメイン言語(JDL) - 列挙型
+
+## 概要
+
+1. [構文](#構文)
+1. [例](#例)
+   1. [基本の例](#基本の例)
+   1. [値](#値)
+   1. [コメント](#コメント)
+
+---
+
+### 構文
+=======
+title: JHipster Domain Language (JDL) - Enums
+slug: /jdl/enums
+last_update:
+  date: 2019-10-27T12:00:00-00:00
+---
+
+## Syntax
+>>>>>>> upstream/main:docs/jdl/enums.mdx
+
+列挙型の宣言は次のように行われます。
+
+```jdl
+enum <enum name> {
+  <ENUM KEY> [(<enum value>)]
+}
+```
+
+  - 列挙型エントリの値は必須です。
+  - 大文字のキーを使用する必要があります。
+  - 列挙型エントリの値はオプションです。丸カッコで囲む必要があります。
+
+---
+
+<<<<<<< HEAD:pages/jdl/enums.md
+### 例
+
+
+#### 基本の例
+=======
+## Examples
+
+### Basic example
+>>>>>>> upstream/main:docs/jdl/enums.mdx
+
+```jdl
+enum Country {
+  BELGIUM,
+  FRANCE,
+  ITALY
+}
+```
+
+使用方法は以下です。
+
+```jdl
+enum Country {}
+
+entity A {
+  country Country
+}
+```
+
+<<<<<<< HEAD:pages/jdl/enums.md
+---
+
+#### 値
+=======
+### With values
+>>>>>>> upstream/main:docs/jdl/enums.mdx
+
+JHipster Core v6以降では、enum値は明示的な値を持つことができます。
+
+```jdl
+enum Country {
+  BELGIUM (Belgium),
+  FRANCE (France),
+  ITALY (Italy),
+  CHINA ("中国")
+}
+```
+
+<<<<<<< HEAD:pages/jdl/enums.md
+---
+
+#### コメント
+=======
+### Commenting
+>>>>>>> upstream/main:docs/jdl/enums.mdx
+
+リレーションシップ、エンティティ、フィールドと同じように、同じルールでenumにコメントを付けることができます。
+
+コメントは、後でJHipsterによってJavadocコメントとして追加されます。JDLには独自のコメントがあります。
+  - // 無視されるコメント
+  - /** 無視されるコメントではありません */
+
+したがって、`//`で始まるものはすべてJDLの内部コメントと見なされ、Javadocとしてカウントされません。
+`#`で始まるJDL Studioディレクティブは、構文解析中に無視されることに注意してください。
+
+```jdl
+/** This comment will be taken into account */
+enum Country {
+  // But not this one!
+  FRANCE
+}
+```

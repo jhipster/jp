@@ -1,0 +1,55 @@
+---
+<<<<<<< HEAD:pages/using_oracle.md
+layout: default
+title: Oracleの使用
+permalink: /using-oracle/
+redirect_from:
+  - /using_oracle.html
+sitemap:
+    priority: 0.7
+    lastmod: 2021-01-08T09:40:00-00:00
+---
+
+# <i class="fa fa-database"></i> Oracleの使用
+
+JPAを使用する場合、Oracleデータベースを使用するオプションがあります。
+=======
+title: Using Oracle
+slug: /using-oracle/
+last_update:
+  date: 2021-01-08T09:40:00-00:00
+---
+
+When using JPA, you have the option to use the Oracle database.
+>>>>>>> upstream/main:docs/options/using-oracle.mdx
+
+_このオプションは、Oracle 12cR1以降（19c、18c、12cR2など）でのみサポートされています。_
+
+JHipsterでOracleを使用する場合、Oracleデータベースのバージョンに応じて、次の制限が適用されます。
+
+バージョン19c、18c、および12cR2の場合は以下のとおりです。
+- エンティティ名は124文字を超えることはできません。これは、オブジェクト名に対するOracleの128文字制限によるもので、生成されたテーブルのプライマリ・キー・シーケンスを生成するために4文字が予約されています。
+- エンティティフィールド名は128文字以内です。
+- リレーションシップを作成する場合、外部キー名は128文字を超えることはできないため、長すぎる場合は切り捨てられます。
+- 多対多の関係を作成する場合、結合テーブル名はJPAの指定に従います（"firstTable_secondTable"の形式）。128文字を超える場合は切り捨てられます。
+
+バージョン12cR1の場合は以下のとおりです。
+- エンティティ名は26文字を超えることはできません。これは、オブジェクト名に対するOracleの30文字制限によるもので、生成されたテーブルのプライマリ・キー・シーケンスを生成するために4文字が予約されています。
+- エンティティフィールド名は30文字以内です。
+- リレーションシップを作成する場合、外部キー名は30文字を超えることはできないため、長すぎる場合は切り捨てられます。
+- 多対多の関係を作成する場合、結合テーブル名はJPA仕様に従います（"firstTable_secondTable"の形式）。長さが30文字を超える場合は切り捨てられます。
+
+- Oracle予約キーワードは、エンティティ名またはフィールド名として使用できません。
+
+- Oracle Database 19c(EE、SE2、シングルインスタンスおよびRAC)Dockerイメージは、 https://container-registry.oracle.com にあります。
+- Oracle database 19cのDockerビルドファイルは、 https://github.com/oracle/docker-images/tree/master/OracleDatabase にあります。
+
+
+<<<<<<< HEAD:pages/using_oracle.md
+バージョン19cは、長期サポート（2027で終了）があるため、強くお勧めします。
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+=======
+Note that version 19c is highly recommended because it has Long Term Support (ending in 2027).
+>>>>>>> upstream/main:docs/options/using-oracle.mdx

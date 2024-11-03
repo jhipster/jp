@@ -1,0 +1,40 @@
+---
+<<<<<<< HEAD:tips/036_tip_allow_common_web_fonts_in_spring_security.md
+layout: default
+title: セキュリティ設定による共通Webフォントの許可
+sitemap:
+priority: 0.1
+lastmod: 2023-08-17T00:00:00-00:00
+---
+# セキュリティ設定による共通Webフォントの許可
+=======
+title: Allowing Common Web Fonts in Security Configuration
+slug: /tips/036_tip_allow_common_web_fonts_in_spring_security.html
+last_update:
+  date: 2023-08-17T00:00:00-00:00
+---
+>>>>>>> upstream/main:docs/tips/036_tip_allow_common_web_fonts_in_spring_security.mdx
+
+__このTipは[@dinu0000](https://github.com/dinu0000)により提出されました__
+
+JHipster Webアプリケーションを開発する場合、セキュリティ構成のためにWebフォントが正しくロードされないという問題が発生することがあります。一般的なWebフォントをシームレスにロードできるようにするには、次の手順に従います。
+
+`SecurityConfiguration.java`ファイルの`filterChain`メソッドを更新して、Webフォントの要求を許可します。
+
+```java
+@Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    // ...
+    http
+        // other configurations
+        .authorizeHttpRequests(authz ->
+            authz
+                .requestMatchers("/", "/index.html", "/*.js", "/*.map", "/*.css").permitAll()
+                .requestMatchers("/*.ico", "/*.png", "/*.svg", "/*.webapp").permitAll()
+                .requestMatchers("/*.ico", "/*.png", "/*.svg", "/*.webapp", "/*.woff", "/*.woff2", "/*.ttf", "/*.otf").permitAll() // add common web font extensions here 
+                .requestMatchers("/app/**").permitAll()
+                // ... other configurations
+}
+```
+
+これらの設定により、あなたのJHipsterアプリのセキュリティ設定は、セキュリティ制限に遭遇することなく、通常のウェブフォントのロードを可能にします。

@@ -1,0 +1,87 @@
+---
+<<<<<<< HEAD:pages/setting_up_ci_jenkins1.md
+layout: default
+title: Jenkins 1のセットアップ
+permalink: /setting-up-ci-jenkins1/
+sitemap:
+    priority: 0.7
+    lastmod: 2016-11-03T12:40:00-00:00
+---
+
+# <i class="fa fa-wrench"></i> Jenkinsサーバの設定
+
+JHipster用にJenkinsサーバを設定するには、次のガイドを参照してください。
+
+- [LinuxでのJenkins 1のセットアップ]({{ site.url }}/setting-up-ci-linux/)
+- [WindowsでのJenkins 1のセットアップ]({{ site.url }}/setting-up-ci-windows/)
+
+#<i class="fa fa-sliders"></i> Jenkinsの設定
+=======
+title: Setting up a Jenkins 1 server
+slug: /setting-up-ci-jenkins1/
+last_update:
+  date: 2016-11-03T12:40:00-00:00
+---
+
+To configure a Jenkins server for JHipster, refer to the following guides:
+
+- [Setting up Jenkins 1 on Linux](/setting-up-ci-linux/)
+- [Setting up Jenkins 1 on Windows](/setting-up-ci-windows/)
+
+## Jenkins Configuration
+>>>>>>> upstream/main:docs/tests-and-qa/setting-up-ci/setting-up-ci-jenkins1.mdx
+
+JenkinsでJHipsterプロジェクトを設定するには、次の設定を使用します。
+
+<<<<<<< HEAD:pages/setting_up_ci_jenkins1.md
+## Mavenの場合:
+=======
+### For Maven:
+>>>>>>> upstream/main:docs/tests-and-qa/setting-up-ci/setting-up-ci-jenkins1.mdx
+
+```
+* Project name: `yourApplicationName`
+* Source Code Management
+    * Git Repository: `git@github.com:xxxx/yourApplicationName.git`
+    * Branches to build: `*/main`
+    * Additional Behaviours: `Wipe out repository & force clone`
+* Build Triggers
+    * Poll SCM / Schedule: `H/5 * * * *`
+* Build<% if (buildTool == 'maven') { %>
+    * Invoke Maven / Tasks: `-Pprod clean package`
+    * Execute Shell / Command:
+        mvn spring-boot:run &
+        bootPid=$!
+        sleep 30s
+        gulp itest
+        kill $bootPid
+* Post-build Actions
+    * Publish JUnit test result report / Test Report XMLs: `build/test-results/*.xml`
+```
+
+<<<<<<< HEAD:pages/setting_up_ci_jenkins1.md
+## Gradleの場合:
+=======
+### For Gradle:
+
+>>>>>>> upstream/main:docs/tests-and-qa/setting-up-ci/setting-up-ci-jenkins1.mdx
+```
+* Project name: `yourApplicationName`
+* Source Code Management
+    * Git Repository: `git@github.com:xxxx/yourApplicationName.git`
+    * Branches to build: `*/main`
+    * Additional Behaviours: `Wipe out repository & force clone`
+* Build Triggers
+    * Poll SCM / Schedule: `H/5 * * * *`
+* Build
+    * Invoke Gradle script / Use Gradle Wrapper / Tasks: `-Pprod clean test bootWar`
+    * Execute Shell / Command:
+        ./gradlew bootRun &
+        bootPid=$!
+        sleep 30s
+        gulp itest
+        kill $bootPid
+* Post-build Actions
+    * Publish JUnit test result report / Test Report XMLs: `build/test-results/*.xml`
+```
+

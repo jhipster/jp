@@ -1,0 +1,110 @@
+---
+<<<<<<< HEAD:pages/setting_up_ci_linux.md
+layout: default
+title: LinuxでのJenkins 1のセットアップ
+permalink: /setting-up-ci-linux/
+redirect_from:
+  - /setting_up_ci_linux.html
+sitemap:
+    priority: 0.7
+    lastmod: 2015-01-09T12:40:00-00:00
+---
+
+# <i class="fa fa-stethoscope"></i> LinuxでのJenkins 1のセットアップ
+
+以下の手順はRed Hat/CentOSサーバ用ですが、他のLinuxディストリビューションにも適用できます。
+
+## Jenkinsのインストール
+=======
+title: Setting up Jenkins 1 on Linux
+slug: /setting-up-ci-linux/
+last_update:
+  date: 2015-01-09T12:40:00-00:00
+---
+
+The instructions below are for a Red Hat/CentOS server but can be adapted for other Linux distributions.
+
+
+## Installing Jenkins
+>>>>>>> upstream/main:docs/tests-and-qa/setting-up-ci/setting-up-ci-linux.mdx
+
+[https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions](https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions)の指示に従ってください。
+
+```shell
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+sudo yum install jenkins
+
+sudo service jenkins start
+```
+
+`jenkins`ユーザーが作成され、ホームディレクトリは`/var/lib/jenkins`となります。
+
+<<<<<<< HEAD:pages/setting_up_ci_linux.md
+## Jenkinsの設定
+=======
+
+## Configuring Jenkins
+>>>>>>> upstream/main:docs/tests-and-qa/setting-up-ci/setting-up-ci-linux.mdx
+
+### JDK 8のインストール
+
+Jenkinsの管理を通じて、JDK 8自動インストーラを追加します。
+
+### Mavenのインストール
+
+Jenkinsの管理を通じて、ApacheのサイトからMaven自動インストーラを追加します。
+
+### NodeJSのインストール
+
+NodeJSのグローバルなインストールもできますが、プロジェクトごとに異なるバージョンのNodeJSが必要になる可能性があります。
+
+次の2つの代替案を提案します。お好みのものを選択してください。
+
+#### Jenkins NodeJSプラグイン
+
+Jenkins NodeJSプラグインをインストールします。
+
+Jenkins管理を通じて、NodeJSインストールを追加します。
+
+- nodejs.orgからの自動インストーラ、最新のLTS（Long Term Support）64ビットバージョンを使用します。
+- インストールするグローバルnpmパッケージは、bower gulpです。
+
+#### ローカルNodeJSインストール
+
+次のスクリプトを使用してNodeJSをローカルにインストールし、それを使用するようにJenkins PATHを更新します。
+
+<<<<<<< HEAD:pages/setting_up_ci_linux.md
+~~~ bash
+# 必要なバージョンを指定
+=======
+```shell
+# specify which version we want
+>>>>>>> upstream/main:docs/tests-and-qa/setting-up-ci/setting-up-ci-linux.mdx
+export NODE_VERSION=4.3.1
+
+# ダウンロード
+cd /tmp
+wget http://nodejs.org/dist/v$NODE_VERSION/node-v4.3.1.tar.gz
+tar xvfz node-v$NODE_VERSION.tar.gz
+
+# ビルドとインストールはローカルでのみ
+cd node-v$NODE_VERSION
+./configure --prefix=/var/lib/jenkins/node-v$NODE_VERSION && make && make install
+
+# nodeおよびnpmのバージョンを検査
+export PATH=/var/lib/jenkins/node-v$NODE_VERSION/bin:$PATH
+node --version
+# v4.3.1
+npm --version
+# 3.7.5
+
+# ツールをインストール
+npm install -g bower gulp
+bower --version
+# 1.7.7
+gulp --version
+# 3.9.1
+```
+
+必ずJenkins PATHを更新してください。
