@@ -1,161 +1,161 @@
 ---
 layout: default
-title: Release 8.7.0
+title: リリース 8.7.0
 ---
 
-# JHipster release v8.7.0
+# JHipster v8.7.0 リリース
 
-This is a minor release for JHipster v8. 
+これはJHipster v8のマイナーリリースです。
 
-It includes [554 closed issues and pull requests on the main branch](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.7.0) after the 8.6.0 release.
+8.6.0リリース以降、[メインブランチで554のクローズされた課題とプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.7.0)が含まれています。
 
-## What's new?
+## 新機能
 
-* Upgrade Node to 20.17.0 ([#27031](https://github.com/jhipster/generator-jhipster/pull/27031))
-* Fix application field not sent to prometheus ([#27065](https://github.com/jhipster/generator-jhipster/pull/27065))
-* Look for applications in `jhipster info` ([#27059](https://github.com/jhipster/generator-jhipster/pull/27059))
-* Add produces to /authenticate endpoint ([#27058](https://github.com/jhipster/generator-jhipster/pull/27058))
-* Improve BUG_REPORT.md ([#27036](https://github.com/jhipster/generator-jhipster/pull/27036))
-* Add SonarQube Analysis for PRs ([#26993](https://github.com/jhipster/generator-jhipster/pull/26993))
-* Fix npm execution with default buildTool ([#27017](https://github.com/jhipster/generator-jhipster/pull/27017))
-* Fix h2 console data ([#27016](https://github.com/jhipster/generator-jhipster/pull/27016))
-* Add addJavaDefinitions api to sources ([#26973](https://github.com/jhipster/generator-jhipster/pull/26973))
-* Fix compilation issue when using elasticsearch ([#26964](https://github.com/jhipster/generator-jhipster/pull/26964))
-* Apply prettier to Java templates ([#26949](https://github.com/jhipster/generator-jhipster/pull/26949))
-* Cypress improvements ([#26938](https://github.com/jhipster/generator-jhipster/pull/26938))
-* Correct issue with invalid contraint being generated for ManyToMany relationships ([#26911](https://github.com/jhipster/generator-jhipster/pull/26911))
-* Fix dependabot for eslint 9 ([#26811](https://github.com/jhipster/generator-jhipster/pull/26811))
-* Correct the ar-ly fron english to ar-ly ([#26772](https://github.com/jhipster/generator-jhipster/pull/26772))
-* Add generate-generator dev blueprint command ([#26726](https://github.com/jhipster/generator-jhipster/pull/))
-* Fix oauth2 microservice roles ([#26717](https://github.com/jhipster/generator-jhipster/pull/26717) and [#26716](https://github.com/jhipster/generator-jhipster/pull/26716))
-* Replace ModifyServersOpenApiFilter with ServerBaseUrlCustomizer ([#26706](https://github.com/jhipster/generator-jhipster/pull/26706))
-* Add prettier to monorepository root ([#26692](https://github.com/jhipster/generator-jhipster/pull/26692))
-* Update `generate-sample` command ([#26697](https://github.com/jhipster/generator-jhipster/pull/26697))
-* Fix deprecated @Cucumber ([#26636](https://github.com/jhipster/generator-jhipster/pull/26636))
-* Unnecessary SuppressWarning annotations in generated code ([#26657](https://github.com/jhipster/generator-jhipster/pull/26657) and [#26630](https://github.com/jhipster/generator-jhipster/pull/26630))
-* Several Sonar improvements 
-* Fix cyclic entities in neo4j sample ([#26539](https://github.com/jhipster/generator-jhipster/pull/26539))
+* Nodeを20.17.0にアップグレード ([#27031](https://github.com/jhipster/generator-jhipster/pull/27031))
+* アプリケーションフィールドがPrometheusに送信されない問題を修正 ([#27065](https://github.com/jhipster/generator-jhipster/pull/27065))
+* `jhipster info`でアプリケーションを検索する機能を追加 ([#27059](https://github.com/jhipster/generator-jhipster/pull/27059))
+* /authenticateエンドポイントにproducesを追加 ([#27058](https://github.com/jhipster/generator-jhipster/pull/27058))
+* BUG_REPORT.mdの改善 ([#27036](https://github.com/jhipster/generator-jhipster/pull/27036))
+* PRのためにSonarQube分析を追加 ([#26993](https://github.com/jhipster/generator-jhipster/pull/26993))
+* デフォルトのビルドツールでnpm実行時の問題を修正 ([#27017](https://github.com/jhipster/generator-jhipster/pull/27017))
+* h2コンソールデータの修正 ([#27016](https://github.com/jhipster/generator-jhipster/pull/27016))
+* ソースにaddJavaDefinitions APIを追加 ([#26973](https://github.com/jhipster/generator-jhipster/pull/26973))
+* Elasticsearch使用時のコンパイル問題を修正 ([#26964](https://github.com/jhipster/generator-jhipster/pull/26964))
+* JavaテンプレートにPrettierを適用 ([#26949](https://github.com/jhipster/generator-jhipster/pull/26949))
+* Cypressの改善 ([#26938](https://github.com/jhipster/generator-jhipster/pull/26938))
+* ManyToManyリレーションシップで生成される無効な制約の問題を修正 ([#26911](https://github.com/jhipster/generator-jhipster/pull/26911))
+* eslint 9に関するDependabotの問題修正 ([#26811](https://github.com/jhipster/generator-jhipster/pull/26811))
+* ar-lyを英語からar-lyに正しく修正 ([#26772](https://github.com/jhipster/generator-jhipster/pull/26772))
+* generate-generator dev blueprintコマンドを追加 ([#26726](https://github.com/jhipster/generator-jhipster/pull/))
+* oauth2マイクロサービスの役割を修正 ([#26717](https://github.com/jhipster/generator-jhipster/pull/26717) と [#26716](https://github.com/jhipster/generator-jhipster/pull/26716))
+* ModifyServersOpenApiFilterをServerBaseUrlCustomizerに置き換え ([#26706](https://github.com/jhipster/generator-jhipster/pull/26706))
+* MonorepositoryルートにPrettierを追加 ([#26692](https://github.com/jhipster/generator-jhipster/pull/26692))
+* `generate-sample`コマンドの更新 ([#26697](https://github.com/jhipster/generator-jhipster/pull/26697))
+* 非推奨の@Cucumberを修正 ([#26636](https://github.com/jhipster/generator-jhipster/pull/26636))
+* 生成されたコードに不要なSuppressWarning注釈 ([#26657](https://github.com/jhipster/generator-jhipster/pull/26657) と [#26630](https://github.com/jhipster/generator-jhipster/pull/26630))
+* 複数のSonarの改善 
+* Neo4jサンプルでの循環エンティティを修正 ([#26539](https://github.com/jhipster/generator-jhipster/pull/26539))
 
-### :computer: Frontend
+### :computer: フロントエンド
 
-* [Angular] let syntax ([#26699](https://github.com/jhipster/generator-jhipster/pull/26699))
+* [Angular] let構文 ([#26699](https://github.com/jhipster/generator-jhipster/pull/26699))
 * [Angular] typescript-eslint 8.2.0 ([#27018](https://github.com/jhipster/generator-jhipster/pull/27018))
-* [Angular] NG8112 @let xxx is declared but its value is never read ([#26991](https://github.com/jhipster/generator-jhipster/pull/26991))
-* Fixes for Vue compat ([#26989](https://github.com/jhipster/generator-jhipster/pull/26989))
-* [Angular] Angular 18.2.0 migrate dependency injection ([#26980](https://github.com/jhipster/generator-jhipster/pull/26980))
-* [Angular] Angular 18.2.0 migrate route-lazy-loading ([#26981](https://github.com/jhipster/generator-jhipster/pull/26981))
-* apply prettier/eslint to vue templates ([#26963](https://github.com/jhipster/generator-jhipster/pull/26963))
-* apply eslint/prettier to react templates ([#26950](https://github.com/jhipster/generator-jhipster/pull/26950))
-* apply eslint/prettier to angular templates ([#26952](https://github.com/jhipster/generator-jhipster/pull/26952))
-* apply prettier/eslint to templates ([#26948](https://github.com/jhipster/generator-jhipster/pull/26948))
-* adjust cypress eslint config ([#26937](https://github.com/jhipster/generator-jhipster/pull/26937))
-* add more eslint rules to base ([#26936](https://github.com/jhipster/generator-jhipster/pull/26936))
-* apply prettier to templates ([#26935](https://github.com/jhipster/generator-jhipster/pull/26935))
-* add sort-imports to eslint base config ([#26932](https://github.com/jhipster/generator-jhipster/pull/26932))
-* Update ESLint to v9 ([#26916](https://github.com/jhipster/generator-jhipster/pull/26916))
-* convert editorconfig to multistep template ([#26828](https://github.com/jhipster/generator-jhipster/pull/26828))
-* update vue eslint to v9 ([#26827](https://github.com/jhipster/generator-jhipster/pull/26827))
-* migrate vue eslint to flat config ([#26794](https://github.com/jhipster/generator-jhipster/pull/26794))
-* react: update eslint to v9 ([#26793](https://github.com/jhipster/generator-jhipster/pull/26793))
-* update husky to v9.1.1 ([#26762](https://github.com/jhipster/generator-jhipster/pull/26762))
-* Update Angular to eslint@9 ([#26504](https://github.com/jhipster/generator-jhipster/pull/26504))
-* ignore js files in docker folder ([#26758](https://github.com/jhipster/generator-jhipster/pull/26758))
-* switch apps to javascript:prettier generator ([#26742](https://github.com/jhipster/generator-jhipster/pull/26742))
-* Migrate React eslint to flat config ([#26725](https://github.com/jhipster/generator-jhipster/pull/26725))
-* Improvements to imperative gateway ([#26718](https://github.com/jhipster/generator-jhipster/pull/26718))
-* Upgrade Prettier 3.3.3 ([#26711](https://github.com/jhipster/generator-jhipster/pull/26711))
-* [Angular] Refactor this code to not nest functions more than 4 levels deep ([#26654](https://github.com/jhipster/generator-jhipster/pull/26654) and [#26642](https://github.com/jhipster/generator-jhipster/pull/26642))
-* [Angular] Referencing the conditional expression's result ([#26676](https://github.com/jhipster/generator-jhipster/pull/26676), [#26658](https://github.com/jhipster/generator-jhipster/pull/26658), [#26640](https://github.com/jhipster/generator-jhipster/pull/26640))
-* [Angular] Unexpected duplicate selector ([#26641](https://github.com/jhipster/generator-jhipster/pull/26641))
-* [Angular] Reorganize imports ([#26638](https://github.com/jhipster/generator-jhipster/pull/26638))
-* Sonar: Rename UserManagementResolve function to match the regular expression ([#26635](https://github.com/jhipster/generator-jhipster/pull/26635))
-* Forward proxy URI from proxy to server to let it pass to oauth2 authentication ([#26544](https://github.com/jhipster/generator-jhipster/pull/26544))
-* add javascript:bootstrap generator ([#26624](https://github.com/jhipster/generator-jhipster/pull/26624))
-* enable queueCommandTasks by default for built in generators ([#26623](https://github.com/jhipster/generator-jhipster/pull/26623))
-* add javascript:prettier and javascript:husky generators ([#26567](https://github.com/jhipster/generator-jhipster/pull/26567))
-* drop airbnb eslint config ([#26555](https://github.com/jhipster/generator-jhipster/pull/26555))
-* apply prettier to vue templates ([#26552](https://github.com/jhipster/generator-jhipster/pull/26552))
-* apply prettier to react templates ([#26551](https://github.com/jhipster/generator-jhipster/pull/26551))
-* apply prettier to templates ([#26550](https://github.com/jhipster/generator-jhipster/pull/26550))
-* Local variables should not be declared and then immediately returned or thrown ([#26546](https://github.com/jhipster/generator-jhipster/pull/26546))
+* [Angular] NG8112 @let xxxは宣言されましたが、値が未読です ([#26991](https://github.com/jhipster/generator-jhipster/pull/26991))
+* Vueの互換性修正 ([#26989](https://github.com/jhipster/generator-jhipster/pull/26989))
+* [Angular] Angular 18.2.0 依存性注入の移行 ([#26980](https://github.com/jhipster/generator-jhipster/pull/26980))
+* [Angular] Angular 18.2.0 ルートの遅延読み込みの移行 ([#26981](https://github.com/jhipster/generator-jhipster/pull/26981))
+* vueテンプレートにPrettier/eslintを適用 ([#26963](https://github.com/jhipster/generator-jhipster/pull/26963))
+* reactテンプレートにeslint/prettierを適用 ([#26950](https://github.com/jhipster/generator-jhipster/pull/26950))
+* angularテンプレートにeslint/prettierを適用 ([#26952](https://github.com/jhipster/generator-jhipster/pull/26952))
+* テンプレートにprettier/eslintを適用 ([#26948](https://github.com/jhipster/generator-jhipster/pull/26948))
+* cypress eslint設定の調整 ([#26937](https://github.com/jhipster/generator-jhipster/pull/26937))
+* ベースにeslintルールを追加 ([#26936](https://github.com/jhipster/generator-jhipster/pull/26936))
+* テンプレートにPrettierを適用 ([#26935](https://github.com/jhipster/generator-jhipster/pull/26935))
+* eslintベース設定にsort-importsを追加 ([#26932](https://github.com/jhipster/generator-jhipster/pull/26932))
+* ESLintをv9にアップデート ([#26916](https://github.com/jhipster/generator-jhipster/pull/26916))
+* editorconfigをマルチステップテンプレートに変換 ([#26828](https://github.com/jhipster/generator-jhipster/pull/26828))
+* vue eslintをv9に更新 ([#26827](https://github.com/jhipster/generator-jhipster/pull/26827))
+* vue eslintをフラット設定に移行 ([#26794](https://github.com/jhipster/generator-jhipster/pull/26794))
+* react: eslintをv9に更新 ([#26793](https://github.com/jhipster/generator-jhipster/pull/26793))
+* huskyをv9.1.1に更新 ([#26762](https://github.com/jhipster/generator-jhipster/pull/26762))
+* Angularをeslint@9にアップデート ([#26504](https://github.com/jhipster/generator-jhipster/pull/26504))
+* dockerフォルダのjsファイルを無視 ([#26758](https://github.com/jhipster/generator-jhipster/pull/26758))
+* アプリをjavascript:prettierジェネレーターに切り替え ([#26742](https://github.com/jhipster/generator-jhipster/pull/26742))
+* React eslintをフラット設定に移行 ([#26725](https://github.com/jhipster/generator-jhipster/pull/26725))
+* 命令型ゲートウェイの改善 ([#26718](https://github.com/jhipster/generator-jhipster/pull/26718))
+* Prettierを3.3.3にアップグレード ([#26711](https://github.com/jhipster/generator-jhipster/pull/26711))
+* [Angular] ネストの深さが4以上にならないようにコードをリファクタリング ([#26654](https://github.com/jhipster/generator-jhipster/pull/26654) と [#26642](https://github.com/jhipster/generator-jhipster/pull/26642))
+* [Angular] 条件式の結果を参照 ([#26676](https://github.com/jhipster/generator-jhipster/pull/26676), [#26658](https://github.com/jhipster/generator-jhipster/pull/26658), [#26640](https://github.com/jhipster/generator-jhipster/pull/26640))
+* [Angular] 重複するセレクタを修正 ([#26641](https://github.com/jhipster/generator-jhipster/pull/26641))
+* [Angular] インポートを再編成 ([#26638](https://github.com/jhipster/generator-jhipster/pull/26638))
+* Sonar: UserManagementResolve関数の正規表現に一致するようにリネーム ([#26635](https://github.com/jhipster/generator-jhipster/pull/26635))
+* プロキシからサーバーにURIを転送し、OAuth2認証が通過するようにする ([#26544](https://github.com/jhipster/generator-jhipster/pull/26544))
+* javascript:bootstrapジェネレーターを追加 ([#26624](https://github.com/jhipster/generator-jhipster/pull/26624))
+* 組み込みのジェネレーターでqueueCommandTasksをデフォルトで有効にする ([#26623](https://github.com/jhipster/generator-jhipster/pull/26623))
+* javascript:prettierとjavascript:huskyジェネレーターを追加 ([#26567](https://github.com/jhipster/generator-jhipster/pull/26567))
+* airbnb eslint設定を削除 ([#26555](https://github.com/jhipster/generator-jhipster/pull/26555))
+* VueテンプレートにPrettierを適用 ([#26552](https://github.com/jhipster/generator-jhipster/pull/26552))
+* ReactテンプレートにPrettierを適用 ([#26551](https://github.com/jhipster/generator-jhipster/pull/26551))
+* テンプレート全体にPrettierを適用 ([#26550](https://github.com/jhipster/generator-jhipster/pull/26550))
+* ローカル変数を宣言後すぐに返却やスローしないように修正 ([#26546](https://github.com/jhipster/generator-jhipster/pull/26546))
 
-### :scroll: Others
+### :scroll: その他
 
-- Several internal improvements and blueprint optimizations
+- いくつかの内部改善やブループリントの最適化
 
-## Closed tickets and merged pull requests
+## クローズされたチケットとマージされたプルリクエスト
 
-See the [GitHub 8.7.0 release notes](https://github.com/jhipster/generator-jhipster/releases/tag/v8.7.0) for more details.
+詳細は[GitHub 8.7.0リリースノート](https://github.com/jhipster/generator-jhipster/releases/tag/v8.7.0)をご覧ください。
 
-As always, **[you can view all closed tickets and merged pull requests](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.7.0)**.
+いつも通り、**[クローズされたすべてのチケットとマージされたプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.7.0)**を確認できます。
 
-## How to install
+## インストール方法
 
-To install JHipster v8.7.0:
+JHipster v8.7.0をインストールするには:
 
     npm install -g generator-jhipster
 
-It is also available using the JHipster Docker image, as it is automatically built from our source code.
+また、JHipster Dockerイメージでも利用可能です。ソースコードから自動的にビルドされます。
 
 - [JHipster Online](https://start.jhipster.tech)
 - [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
 
-## How to upgrade
+## アップグレード方法
 
-**Automatic upgrade**
+**自動アップグレード**
 
-For an automatic upgrade, use the [JHipster upgrade sub-generator]({{ site.url }}/upgrading-an-application/) on an existing application:
+既存のアプリケーションで[JHipster upgradeサブジェネレーター]({{ site.url }}/upgrading-an-application/)を使用して自動アップグレードを行います。
 
-Upgrade your version of JHipster:
+JHipsterのバージョンをアップグレードするには以下のコマンドを使用します：
 
 ```
 npm update -g generator-jhipster
 ```
 
-And then run the upgrade sub-generator:
+その後、アップグレードサブジェネレーターを実行します：
 
 ```
 jhipster upgrade
 ```
 
-You can also use the [migrate blueprint](https://github.com/jhipster/generator-jhipster-migrate) for more advanced upgrade features. 
+高度なアップグレード機能には、[migrate blueprint](https://github.com/jhipster/generator-jhipster-migrate)を使用できます。
 
 ```
 npm i -g generator-jhipster-migrate
 jhipster-migrate
 ```
 
-**Manual upgrades**
+**手動アップグレード**
 
-For a manual upgrade, first upgrade your version of JHipster with:
+手動でアップグレードする場合は、まず以下のコマンドでJHipsterのバージョンをアップグレードします：
 
 ```
 npm update -g generator-jhipster
 ```
 
-If you have an existing project, it will still use the JHipster version with which it was generated.
-To upgrade your project, you must first delete its `node_modules` folder and then run:
+既存のプロジェクトは生成時のJHipsterバージョンを使用します。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから以下を実行します：
 
 ```
 jhipster
 ```
 
-Since JHipster 8.0, this command will update your project and all its entities. 
+JHipster 8.0以降、このコマンドでプロジェクト全体とすべてのエンティティが更新されます。
 
-You can also update your entities one-by-one by running again the entity sub-generator, for example if your entity is named _Foo_, use:
+また、エンティティサブジェネレーターを再度実行することで、エンティティを個別に更新することも可能です。たとえば、エンティティ名が _Foo_ の場合は、以下を使用します：
 
 ```
 jhipster entity Foo
 ```
 
-## Help and bugs
+## ヘルプとバグ
 
-If you find any issue with this release, don't hesitate to:
+このリリースで問題が見つかった場合は、以下の方法でご報告ください：
 
-- Add a bug to our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
-- Create a new discussion on [GitHub](https://github.com/jhipster/generator-jhipster/discussions)
+- [バグトラッカー](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)で質問を投稿
+- [GitHub](https://github.com/jhipster/generator-jhipster/discussions)で新しいディスカッションを開始
 
-If the issue you have is an urgent bug or security issue, please:
+緊急のバグやセキュリティ問題については以下もご利用ください：
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- Twitterで[@jhipster](https://twitter.com/jhipster)に連絡
