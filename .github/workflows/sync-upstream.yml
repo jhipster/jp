@@ -67,6 +67,7 @@ jobs:
       if: ${{ env.branch_exists != 'true' && env.merge_status != 'up_to_date' }}
       run: |
         git rm -r --cached .github/workflows/deploy.yml || true
+        git rm -r --cached .github/workflows/test-deploy.yml || true
         git commit -m "Remove upstream workflow files" || true
         
     - name: Find conflict files
