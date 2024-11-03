@@ -59,6 +59,12 @@ jobs:
           echo "merge_status=up_to_date" >> $GITHUB_ENV
         fi
 
+    - name: Remove workflow files
+      if: ${{ env.branch_exists != 'true' && env.merge_status == 'merged' }}
+      run: |
+        git rm -r --cached .github/workflows/deploy.yml || true
+        git commit -m "Remove upstream workflow files" || true
+        
     - name: Commit merge conflicts
       if: ${{ env.branch_exists != 'true' && env.merge_status != 'up_to_date' }}
       run: git commit -a --no-edit || true
