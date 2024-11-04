@@ -1,0 +1,51 @@
+---
+title: 共通的なポート番号
+slug: /common-ports/
+last_update:
+  date: 2021-03-08T12:00:00-00:00
+---
+
+JHipsterは多くのツールとサービスを構成し、それぞれが1つまたは複数のポートを使用する可能性があります。ここでは、各ポートの機能を理解し、ポートの競合が発生した場合に役立つドキュメントを示します。
+
+JHipster[ポリシー 1](/policies)に従って、問題が発生しない限り（ここで説明する必要があります）、各テクノロジーの標準ポートが使用されることに注意してください。
+
+ここではポートを順に示していますが、最も一般的な質問はポート`8080`、`9000`、`9060`に関するものです。
+
+|ポート|説明                                                                                                                                                                 |
+|-------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|2181 |Zookeeper（Kafkaで使用）                                                                                                                                          |
+|3000 |Grafana                                                                                                                                                            |
+|3306 |MySQLとMariaDB                                                                                                                                                     |
+|5000 |Logstash                                                                                                                                                           |
+|5432 |PostgreSQL                                                                                                                                                         |
+|5701 |Hazelcast                                                                                                                                                          |
+|6650 |Pulsar - サービスポート                                                                                                                                             |
+|7742 |Swagger Editor                                                                                                                                                     |
+|8080 |JHipsterアプリケーションバックエンド開発ポート（Spring Bootサーバ）                                                                                                   |
+|8081 |JHipsterマイクロサービスのデフォルトポート                                                                                                                           |
+|8091 |Couchbase - Web管理ポート                                                                                                                                          |
+|8092 |Couchbase - APIポート                                                                                                                                              |
+|8093 |Couchbase - REST/HTTPトラフィックのクエリサービスで使用                                                                                                             |
+|8180 |Hazelcast管理センター                                                                                                                                              |
+|8300 |Consul - サーバ                                                                                                                                               |
+|8301 |Consul - serflan-tcpとserflan-udp                                                                                                                                |
+|8302 |Consul - serfwan-tcpとserfwan-udp                                                                                                                                |
+|8400 |Consul - RPC                                                                                                                                                      |
+|8500 |Consul - Web UIを持つHTTPポート                                                                                                                                   |
+|8600 |Consul - DNS                                                                                                                                                      |
+|8761 |JHipsterレジストリ(Netflix Eureka)                                                                                                                                  |
+|9000 |BrowserSyncを使用したJHipsterフロントエンド開発ポート                                                                                                              |
+|9001 |SonarQube                                                                                                                                                         |
+|9042 |Cassandra - CQL                                                                                                                                                   |
+|9060 |Webpackホットリロードを使用したJHipsterフロントエンド開発ポート                                                                                                     |
+|9090 |Prometheus                                                                                                                                                        |
+|9092 |Kafka                                                                                                                                                             |
+|9093 |Prometheusアラートマネージャ                                                                                                                                       |
+|9160 |Cassandra - Thrift                                                                                                                                               |
+|9200 |Elasticsearch - HTTP接続（REST API）                                                                                                                               |
+|9300 |Elasticsearch - トランスポート接続（ネイティブAPI）                                                                                                                |
+|9411 |Zipkin                                                                                                                                                            |
+|11210|Couchbase - 内部/外部バケットポート                                                                                                                                |
+|18080|モノリス内で実行されるH2（組み込みデータベース）。デフォルトポートは通常9092ですが、Kafkaとの競合が発生するため、"1" + "Spring Bootポート"に固定されています。          |
+|18081|マイクロサービス内で実行されるH2（組み込みデータベース）。詳細については、上記の行を参照してください。                                                                |
+|27017|MongoDB                                                                                                                                                           |

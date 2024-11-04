@@ -4,28 +4,57 @@
 - 本家のリポジトリ： https://github.com/jhipster/jhipster.github.io 
 - [日本語訳について](#日本語訳について)
 
-**Note**:スタイルを変更する場合は、`css/scss`以下にある`.scss`ファイルを更新し、`npm run sass`を実行してCSSを生成してください。CSSを直接更新しないでください。
+<p align="center">
+  <br />
+  <a href="https://jhipster.tech">
+    <img src="./static/images/logo/logo-jhipster.svg" height="60px">
+  </a>
+</p>
 
-このWebサイトはGitHub Pagesでレンダリングされています。
+<p align="center">
+  <a href="https://jhipster.tech">JHipster</a> ウェブサイトは、最新の静的サイトジェネレーターである <a href="https://docusaurus.io/">Docusaurus</a> を使用して構築されています。
+</p>
+<br />
 
-ローカルで実行する場合は以下のとおりです。
+### インストール
 
-- [ここをForkして](https://github.com/jhipster/jhipster.github.io/fork) リポジトリを作成し、あなたのファイルシステムにクローンします
-- [Jekyllをインストールしてください](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/)
-- 初めての場合は、`npm install && bundle install`を実行します
-- システムディレクトリへのインストールを避けたい場合は、代わりに`bundle install --path vendor/bundle`によってvendorディレクトリにインストールします
-- Mac OSで`nokogiri`のインストールがうまくいかない場合は、`bundle config build.nokogiri  -use-system-libraries=true --with-xml2-include="$(xcrun --show-sdk-path)"/usr/include/libxml2` を試してください
-- リポジトリをクローンしたフォルダで `bundle exec jekyll serve` または `npm start` を実行します
-- http://localhost:4000 からアクセスできるようになります
+```
+npm install
+```
 
-（Windows環境では推奨）DockerとDocker-Composeで実行する場合は以下のとおりです。
+### ローカル開発
 
-- [ここをForkして](https://github.com/jhipster/jhipster.github.io/fork) リポジトリを作成し、あなたのファイルシステムにクローンします
-- `docker-compose up`を実行します
-- http://0.0.0.0:4000 からアクセスできるようになります
+```
+npm start
+```
 
+このコマンドにより、ローカル開発サーバーが起動し、ブラウザウィンドウが開きます。ほとんどの変更は、サーバーの再起動を必要とせずにライブで反映されます。
 
-# 日本語訳について
+### ビルド
+
+```
+npm run build
+```
+
+このコマンドは、`build`ディレクトリに静的コンテンツを生成し、任意の静的コンテンツホスティングサービスで提供できます。
+
+### デプロイ
+
+SSHを使用する場合:
+
+```
+USE_SSH=true npm run deploy
+```
+
+SSHを使用しない場合:
+
+```
+GIT_USER=<あなたのGitHubユーザー名> npm run deploy
+```
+
+GitHub Pagesをホスティングに使用している場合、このコマンドはウェブサイトをビルドして`gh-pages`ブランチにプッシュする便利な方法です。
+
+## 日本語訳について
 本サイトの日本語訳にあたっては、OSS活動へも使用可能な[みんなの自動翻訳＠TexTra®](https://mt-auto-minhon-mlt.ucri.jgn-x.jp/)の翻訳内容を活用させていただきました。この場を借りてお礼を申し上げます。
 
 翻訳の文体は、本家のpackage.jsonにtextlintパッケージを加えての指摘と、TexTraの翻訳内容になるべく従うことで、統一させています。
