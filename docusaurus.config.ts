@@ -12,12 +12,12 @@ const config: Config = {
   url: 'https://www.jhipster.tech',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/jp/',
 
   // GitHub pages deployment config.
   deploymentBranch: 'gh-pages',
   organizationName: 'jhipster',
-  projectName: 'jhipster.github.io',
+  projectName: 'jp',
 
   // onBrokenLinks: 'throw',
   onBrokenLinks: 'ignore',
