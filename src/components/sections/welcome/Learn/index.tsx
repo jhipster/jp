@@ -13,8 +13,13 @@ export default function Learn() {
 
       <SectionDescription>
         <p>
+<<<<<<< HEAD
           Matt Raible氏が、JHipster 8を使ってSpring Boot + Angularアプリケーションを開発する方法を示すスクリーンキャストを作成しています。
           また、Spring BootとJHipsterを使ってリアクティブなJavaマイクロサービスを構築する方法のビデオも公開しています。
+=======
+          Matt Raible created a screencast that shows how to use JHipster 8 to
+          develop a Spring Boot + Angular application.
+>>>>>>> upstream/main
         </p>
       </SectionDescription>
 

@@ -6,14 +6,31 @@ last_update:
   date: 2024-04-08T00:00:00-00:00
 ---
 
+<<<<<<< HEAD
 # <i class="fa fa-refresh"></i> アプリケーションのアップグレード
 
 ## サマリー
+=======
+# <i class="fa fa-level-up"></i> Upgrading an application
+
+## Summary
+
+1. [Option 1 - Automatic Upgrade](#option-1---automatic-upgrade)
+2. [Option 2 - Manual Upgrade](#option-2---manual-upgrade)
+
+## Option 1 - Automatic Upgrade
+>>>>>>> upstream/main
 
 1. [選択1 - 自動アップグレード](#automatic_upgrade)
 2. [選択2 - 手動アップグレード](#manual_upgrade)
 
+<<<<<<< HEAD
 <h2 id="automatic_upgrade">選択1 - 自動アップグレード</h2>
+=======
+* Have the latest JHipster features in an existing application
+* Get the changes when there is an important bug fix or security update
+* Retain your changes in your codebase, and merge them with newly generated code
+>>>>>>> upstream/main
 
 JHipsterの新しいバージョンがリリースされると、JHipsterアップグレードサブジェネレータは、変更を消去することなく、既存のアプリケーションを新しいバージョンにアップグレードするのを手助けします。
 
@@ -33,7 +50,7 @@ _アップグレードを行う前にこのページをよく読んで、アッ�
 
 アプリケーションのルートディレクトリに移動します。
 
-`cd myapplication/`
+`cd myJHipsterProject/`
 
 アプリケーションをアップグレードするには、次のように入力します。
 
@@ -66,9 +83,13 @@ jhipster upgrade
 
 以下にアップグレードプロセスの動作を図で示します（テキストによる説明については、次のセクションを参照してください）。
 
-![GitGraph](/images/upgrade_gitgraph.png)
+![Git graph showing each invocation of 'npx jhipster upgrade' and the commits on jhipster_upgrade branch](/upgrading-an-application/images/upgrade_gitgraph.png)
 
+<<<<<<< HEAD
 （イメージは[JSFiddle](http://jsfiddle.net/lordlothar99/tqp9gyu3/)より（[日本語バージョンはこちら](https://jsfiddle.net/hide212131/gsxmucap/10/)））
+=======
+[Raw .mermaid file](/upgrading-an-application/jhipster_upgrade.mermaid)
+>>>>>>> upstream/main
 
 上のグラフでは正しく表示されていませんが、`jhipster_upgrade`ブランチはプロジェクトで孤立して作成されることに注意してください。
 
@@ -100,6 +121,7 @@ JHipsterアップグレードサブジェネレータの最初の実行では、
 
 ### アドバイス
 
+<<<<<<< HEAD
 - `jhipster_upgrade`ブランチでは何もコミットしないでください。このブランチはJHipsterアップグレードサブジェネレータ専用です。サブジェネレータが実行されるたびに、新しいコミットが作成されます。
 
 - 非常に古いバージョン（5.0.0から最新など）からアップデートする場合は、各マイナー/パッチバージョンの間に徐々にアップデートし、アプリケーションが期待どおりに動作することを確認するためのテストを実行することをお勧めします。
@@ -107,6 +129,15 @@ JHipsterアップグレードサブジェネレータの最初の実行では、
 - 更新プロセスを容易にし、マージ競合の量を減らすような方法でアプリケーションを設計することに関して、JHipsterコミュニティからいくつかの有用なアプローチがあります。[JHipsterのSide-by-Sideアプローチ](https://www.youtube.com/watch?v=Gg5CYoBdpVo)の使用をお勧めします。
 
 <h2 id="manual_upgrade">選択2 - 手動アップグレード</h2>
+=======
+* Don't commit anything on the `jhipster_upgrade` branch. This branch is dedicated to the JHipster upgrade sub-generator: each time the sub-generator is run, a new commit will be created.
+
+* If you are updating from a very old version (example from 5.0.0 to latest) we suggest updating gradually between each minor/patch version and performing tests to make sure the application works as expected. 
+
+* There are some helpful approaches from the JHipster community around designing the application in such a way that makes the update process easier, and reduces the amount of merge conflicts. We recommend using [JHipster Side-by-Side approach](https://www.youtube.com/watch?v=Gg5CYoBdpVo).  
+
+## Option 2 - Manual Upgrade
+>>>>>>> upstream/main
 
 手動アップグレードの場合は、まず次のコマンドを使用してJHipsterのバージョンをアップグレードします。
 
@@ -114,9 +145,14 @@ JHipsterアップグレードサブジェネレータの最初の実行では、
 npm install -g generator-jhipster
 ```
 
+<<<<<<< HEAD
 プロジェクトの`node_modules`フォルダを削除し、次のコマンドを実行します。
+=======
+Delete your project `node_modules` folder and then run `jhipster`:
+>>>>>>> upstream/main
 
 ```shell
+rm -rf node_modules
 jhipster
 ```
 
@@ -126,7 +162,11 @@ jhipster
 jhipster --force
 ```
 
+<<<<<<< HEAD
 また、エンティティサブジェネレータを再度実行して、エンティティの1つずつの更新もできます。たとえば、エンティティの名前が _Foo_ の場合は次のとおりです。
+=======
+You can also update your entities individually by running the `entity` sub-generator, i.e., if your entity is named _Foo_:
+>>>>>>> upstream/main
 
 ```shell
 jhipster entity Foo

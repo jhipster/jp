@@ -18,6 +18,7 @@ const sidebars: SidebarsConfig = {
       id: 'getting-started',
     },
     {
+<<<<<<< HEAD
       type: 'doc',
       label: 'JHipster テックボード',
       id: 'tech-board',
@@ -93,6 +94,10 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: '環境設定',
+=======
+      type: 'category',
+      label: 'Installation and set up',
+>>>>>>> upstream/main
       items: [
         {
           type: 'doc',
@@ -162,7 +167,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+<<<<<<< HEAD
       label: 'コアJHipsterタスク',
+=======
+      label: 'Create application and entities',
+>>>>>>> upstream/main
       items: [
         {
           type: 'doc',
@@ -194,6 +203,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+<<<<<<< HEAD
       label: 'JDL',
       items: [
         { type: 'doc', label: '概要', id: 'jdl/intro' },
@@ -243,6 +253,9 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'オプション',
+=======
+      label: 'Optional Technologies',
+>>>>>>> upstream/main
       items: [
         { type: 'doc', label: 'アプリケーションのセキュリティ', id: 'options/security' },
         {
@@ -285,7 +298,26 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+<<<<<<< HEAD
       label: '開発環境',
+=======
+      label: 'JDL',
+      items: [
+        { type: 'doc', label: 'Overview', id: 'jdl/intro' },
+        { type: 'doc', label: 'Getting Started', id: 'jdl/getting-started' },
+        { type: 'doc', label: 'Applications', id: 'jdl/applications' },
+        { type: 'doc', label: 'Entities & fields', id: 'jdl/entities-fields' },
+        { type: 'doc', label: 'Enums', id: 'jdl/enums' },
+        { type: 'doc', label: 'Relationships', id: 'jdl/relationships' },
+        { type: 'doc', label: 'Options', id: 'jdl/options' },
+        { type: 'doc', label: 'Deployments', id: 'jdl/deployments' },
+        { type: 'doc', label: 'Troubleshooting', id: 'jdl/troubleshooting' },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Development',
+>>>>>>> upstream/main
       items: [
         {
           type: 'doc',
@@ -360,8 +392,13 @@ const sidebars: SidebarsConfig = {
         { type: 'doc', label: 'Vueの使用', id: 'development/using-vue' },
         {
           type: 'doc',
+<<<<<<< HEAD
           label: 'Bootstrap 4のカスタマイズ',
           id: 'development/customizing-bootstrap-4',
+=======
+          label: 'Customizing Bootstrap',
+          id: 'development/customizing-bootstrap',
+>>>>>>> upstream/main
         },
         { type: 'doc', label: 'TLSとHTTP/2の使用', id: 'development/tls' },
       ],
@@ -447,6 +484,39 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Microservices',
+      items: [
+        {
+          type: 'doc',
+          label: 'Overview',
+          id: 'microservices/microservices-architecture',
+        },
+        { type: 'doc', label: 'API Gateway', id: 'microservices/api-gateway' },
+        { type: 'doc', label: 'Consul', id: 'microservices/consul' },
+        {
+          type: 'doc',
+          label: 'JHipster Registry',
+          id: 'microservices/jhipster-registry',
+        },
+        {
+          type: 'doc',
+          label: 'Creating microservices',
+          id: 'microservices/creating-microservices',
+        },
+        {
+          type: 'doc',
+          label: 'Microservices in production',
+          id: 'microservices/microservices-in-production',
+        },
+        {
+          type: 'doc',
+          label: 'JHipster Control Center',
+          id: 'microservices/jhipster-control-center',
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'Blueprints',
       items: [
         {
@@ -512,9 +582,52 @@ const sidebars: SidebarsConfig = {
       id: 'jhipster-lite',
     },
     {
+<<<<<<< HEAD
       type: 'doc',
       label: 'JHipster 開発者協会',
       id: 'association',
+=======
+      type: 'category',
+      label: 'JHipster in a few minutes',
+      items: [
+        { type: 'doc', label: 'Technology stack', id: 'about/tech-stack' },
+        {
+          type: 'doc',
+          label: 'JHipster in 5 screenshots',
+          id: 'about/screenshots',
+        },
+        {
+          type: 'doc',
+          label: 'Video tutorial (15 minutes)',
+          id: 'about/video-tutorial',
+        },
+        {
+          type: 'link',
+          label: 'Online guides',
+          href: 'https://github.com/jhipster/jhipster-guides',
+        },
+        {
+          type: 'doc',
+          label: 'Companies using JHipster',
+          id: 'about/companies-using-jhipster',
+        },
+        {
+          type: 'doc',
+          label: 'Showcase of JHipster apps',
+          id: 'about/showcase',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Release notes',
+      collapsible: false,
+      link: {
+        type: 'doc',
+        id: 'releases/index',
+      },
+      items: [{ type: 'autogenerated', dirName: 'releases' }],
+>>>>>>> upstream/main
     },
     {
       type: 'category',
@@ -525,6 +638,7 @@ const sidebars: SidebarsConfig = {
       ],
     },
     {
+<<<<<<< HEAD
       type: 'doc',
       label: 'アートワーク',
       id: 'artwork',
@@ -532,6 +646,31 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: '開発のヒント',
+=======
+      type: 'category',
+      label: 'Contributing',
+      items: [
+        {
+          type: 'doc',
+          label: 'Financial sponsors',
+          id: 'contributing/sponsors',
+        },
+        {
+          type: 'doc',
+          label: 'Contributing individuals',
+          id: 'contributing/contributing-individuals',
+        },
+        {
+          type: 'doc',
+          label: 'Contributing companies',
+          id: 'contributing/contributing-companies',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Tips and tricks',
+>>>>>>> upstream/main
       link: { type: 'doc', id: 'tips/index' },
       items: [
         {
@@ -656,6 +795,26 @@ const sidebars: SidebarsConfig = {
           id: 'tips/tip_allow_common_web_fonts_in_spring_security',
         },
       ],
+    },
+    {
+      type: 'doc',
+      label: 'JHipster Developers Association',
+      id: 'association',
+    },
+    {
+      type: 'doc',
+      label: 'JHipster Tech Board',
+      id: 'tech-board',
+    },
+    {
+      type: 'doc',
+      label: 'JHipster meetups',
+      id: 'meetups',
+    },
+    {
+      type: 'doc',
+      label: 'Artwork',
+      id: 'artwork',
     },
   ],
 };

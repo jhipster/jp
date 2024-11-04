@@ -346,6 +346,7 @@ _お探しのものが見つからない場合は、[アプリケーションの
 
 JDLでサポートされているエンティティオプション：
 
+<<<<<<< HEAD
 |JDLオプション名（エンティティ）|オプションタイプ|デフォルト値|指定可能な値|コメント                                         |
 |------------------------|-----------|-------------|----------|---------------------------------------------|
 |skipClient              |単項      |false       |なし       |クライアントコード生成がスキップされます       |
@@ -360,6 +361,22 @@ JDLでサポートされているエンティティオプション：
 |microservice            |二項      |-           |カスタム値   |マイクロサービス内で宣言されたエンティティ      |
 |angularSuffix           |二項      |-           |カスタム値   |                                              |
 |clientRootFolder        |二項      |-           |カスタム値   |                                              |
+=======
+|JDL option name (entity)|Option type|Default value|Possible values                 |Comment                                                                                                                                                 |
+|------------------------|-----------|-------------|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|skipClient              |unary      |false        |-                               |This will make the client code generation to be skipped                                                                                                 |
+|skipServer              |unary      |false        |-                               |This will make the server code generation to be skipped                                                                                                 |
+|noFluentMethod          |unary      |false        |-                               |See [this note](/2016/08/17/jhipster-release-3.6.0.html#important-change-fluent-setters) for more information                                           |
+|filter                  |unary      |false        |-                               |See [filtering](/entities-filtering) for more details; if an entity is filtered but doesn't have a service then 'serviceClass' will be used             |
+|readOnly                |unary      |false        |-                               |Adding this option will make an entity readOnly, see [this release note](/2019/10/10/jhipster-release-6.4.0.html) for more details|
+|dto                     |binary     |no           |mapstruct, no                   |Whether to create DTOs for your entities, if an entity has a DTO but no service, then 'serviceClass will be used'                                       |
+|service                 |binary     |no           |serviceClass, serviceImpl, no   |-                                                                                                                                                       |
+|paginate                |binary     |no           |pagination, infinite-scroll, no |Pagination is forbidden when the application uses Cassandra                                                                                             |
+|search                  |binary     |no           |elasticsearch, no               |Requires the application to have the searchEngine option enabled                                                                                        |
+|microservice            |binary     |-            |custom value                    |Will be automatically added for every entity declared inside a microservice application                                                                 |
+|angularSuffix           |binary     |-            |custom value                    |-                                                                                                                                                       |
+|clientRootFolder        |binary     |-            |custom value                    |-                                                                                                                                                       |
+>>>>>>> upstream/main
 
 
 ### フィールドオプション

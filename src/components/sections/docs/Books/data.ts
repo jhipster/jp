@@ -2,7 +2,7 @@ export const books = [
   {
     title: 'JHipsterミニブック 7.0',
     authors: ['Matt Raible'],
-    image: '/images/books/JHipster-Mini-book.webp',
+    image: require('/images/books/JHipster-Mini-book.webp').default,
     description:
       'JHipsterミニブックは、Angular、Bootstrap、Spring Bootといった最新技術の入門ガイドです。これらのフレームワークは、使いやすいプロジェクトであるJHipsterにまとめられています。この版では、WebFluxやReactを用いたマイクロフロントエンドを特徴とするマイクロサービスセクションが更新されています。',
     links: [
@@ -15,7 +15,8 @@ export const books = [
   {
     title: 'JHipsterによるフルスタック開発 - 第2版',
     authors: ['Deepu K Sasidharan', 'Sendil Kumar'],
-    image: '/images/books/Full-Stack-Development-with-JHipster.webp',
+    image: require('/images/books/Full-Stack-Development-with-JHipster.webp')
+      .default,
     description:
       'JHipsterのコア開発チームによって執筆され、JHipster 6、Java 11、Spring Boot 2.1に完全対応したこの書籍は、実践的な例とベストプラクティスを通じて、モダンなウェブアプリケーションの構築方法を紹介します。',
     links: [

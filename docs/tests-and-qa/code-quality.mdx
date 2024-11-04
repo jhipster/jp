@@ -20,22 +20,26 @@ docker-compose -f src/main/docker/sonar.yml up -d
 Mavenを使用する場合は、自動的に設定されています。
 
 ```shell
-./mvnw -Pprod clean verify sonar:sonar -Dsonar.host.url=http://localhost:9001
+./mvnw -Pprod clean verify sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
 ```
 
 Sonarフェーズを再実行する必要がある場合は、少なくとも`initialize`フェーズを指定してください。これは、Sonarプロパティがsonar-project.propertiesファイルからロードされるためです。
 
 ```shell
-./mvnw initialize sonar:sonar -Dsonar.host.url=http://localhost:9001
+./mvnw initialize sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
 ```
 
 Gradleを使用している場合は、自動的に設定されています。
 
 ```shell
-./gradlew -Pprod clean check jacocoTestReport sonarqube -Dsonar.host.url=http://localhost:9001
+./gradlew -Pprod clean check jacocoTestReport sonarqube -Dsonar.login=admin -Dsonar.password=admin
 ```
 
+<<<<<<< HEAD
 どの場合でも、[sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner)が既にインストールされている場合は、それを使って分析できます。
+=======
+You can also run an analysis with [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner), if you have it installed.
+>>>>>>> upstream/main
 
 ```shell
 sonar-scanner
