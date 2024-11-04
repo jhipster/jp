@@ -1,34 +1,17 @@
 ---
-<<<<<<< HEAD:pages/user-entity.md
-layout: default
 title: Userエンティティ
-permalink: /user-entity/
-sitemap:
-    priority: 0.5
-    lastmod: 2020-09-14T00:00:42-00:00
+slug: /user-entity/
+last_update:
+  date: 2020-09-14T00:00:42-00:00
 ---
 
 # <i class="fa fa-user"></i> Userエンティティ
 
 注意：これは、ある種のセキュリティを使用するマイクロサービス用に作成されたものではありません。
 詳細は<a href="/creating-microservices/">ここ</a>を参照してください。
-=======
-title: The User entity
-slug: /user-entity/
-last_update:
-  date: 2020-09-14T00:00:42-00:00
----
-
-:::note
-
-This is not created for microservices using some kinds of security, as detailed [here](/creating-microservices).
-
-:::
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/user-entity.mdx
 
 このエンティティは、JHipsterが内部的に作成および管理する特殊なエンティティです。
 
-<<<<<<< HEAD:pages/user-entity.md
 これには、いくつかの基本的な情報が含まれています。
 - 姓と名
 - ログイン名
@@ -36,19 +19,9 @@ This is not created for microservices using some kinds of security, as detailed 
 - パスワード（クリアテキストではありません）
 - 権限
 - その他
-=======
-It contains some basic information:
-- a first name and a last name,
-- a login,
-- an email address,
-- a password (not in clear text),
-- authorities,
-- etc.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/user-entity.mdx
 
 アプリケーションを最初から作成すると、`admin`や`guest`などのデフォルトのユーザが生成されます。
 
-<<<<<<< HEAD:pages/user-entity.md
 ## リレーションシップが可能なもの
 
 このエンティティとの間に可能なリレーションシップは次のとおりです。
@@ -60,36 +33,15 @@ It contains some basic information:
     （`Team`は`User`と多対多の関係を持つことができますが、チームのみがユーザーを
     追加または削除でき、ユーザーはチームを追加または削除できません）。フロントエンドクライアントUIでは、
     複数選択ボックスで`User`の選択ができます。
-=======
-
-## Possible relationships
-
-Here are the possible relationships from/to this entity:
-- `many-to-one` relationships to this entity (a `Car` can have a many-to-one relationship to a `User`).
-  This will generate a specific query in your new entity repository, so you can filter your entity on the current
-  security user, which is a common requirement. On the generated Angular/React client UI you will have a dropdown in
-  `Car` to select a `User`.
-- `many-to-many` and `one-to-one` relationships to the `User` entity, but the other entity __must__ be the owner
-  of the relationship (a `Team` can have a many-to-many relationship to `User`, but only the team can add/remove users,
-  and a user cannot add/remove a team). On the front-end client UI, you will also be able to select a `User` in
-  a multi-select box.
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/user-entity.mdx
 
 ## Userエンティティの変更
 
 `User`エンティティを変更する必要がある問題が発生した場合は、変更しないことをお勧めします。
 このデフォルトエンティティを変更すると、変更の性質によってはアプリケーションが破損する可能性があります。
 
-<<<<<<< HEAD:pages/user-entity.md
 代わりに、次のような別のソリューションを利用できます。
   - `User`エンティティをコンポジションするエンティティを作成します。
   - `User`エンティティを拡張します。
-=======
-Instead, there are other available solutions like:
-- creating an entity composed of the `User` entity,
-- extending the `User` entity
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/user-entity.mdx
 
 ### コンポジションを使用
 
@@ -106,19 +58,11 @@ relationship OneToOne {
 }
 ```
 
-<<<<<<< HEAD:pages/user-entity.md
 このコードは次のように動作します。
   - フィールドを持つ`ApplicationUser`という名前の新しいエンティティを作成します。
   - このエンティティから標準の`User`エンティティへのリレーションシップを作成します。
     - `OneToOne`関係を使用して、JHipsterによって作成されたエンティティをこの新しいエンティティにリンクします。
     - 内部で管理されている`User`エンティティを変更しないために、単一方向の関係を使用します。
-=======
-Here's what this snippet does:
-- create a new entity named `ApplicationUser` with a field,
-- create a relationship from this entity to the standard `User` entity:
-  - we use a `OneToOne` relationship to link a JHipster-created entity to this new one,
-  - we use a unidirectional relationship in order not to modify the internally-managed `User` entity. 
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/user-entity.mdx
 
 これは、JDLを使用して実行できるため、推奨されるソリューションです。
 このソリューションは、実際に変更することなく`User`エンティティに新しいフィールドと
@@ -126,17 +70,10 @@ Here's what this snippet does:
 
 ### 継承の使用
 
-<<<<<<< HEAD:pages/user-entity.md
 このソリューションは、前のソリューションと同じことを実行しますが、次のことを行う必要があるため、最初のソリューションほど簡単ではありません。
   - 新しいエンティティを手動で作成します。
   - この新しいエンティティを使用するようにコードを調整します。
   - （変更の性質に応じて）この新しいエンティティを保持するために、データベースの移行を管理することになる可能性があります。
-=======
-This solution does the same thing as the previous one, but isn't as straightforward as the first one because you need to:
-- create a new entity by hand,
-- adapt the code to make it use this new entity,
-- potentially manage yourself the database migration to persist this new entity (depending on the nature of the changes).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/user-entity.mdx
 
 ただし、`User`エンティティを手動で変更する必要がないという点で、前の例と同じ利点があります。
 
@@ -145,15 +82,9 @@ This solution does the same thing as the previous one, but isn't as straightforw
 これは実際には推奨されませんが、ユーザ管理スキップオプションを使用することで可能になります
 （JDLの`skipUserManagement`アプリケーションオプション）。
 
-<<<<<<< HEAD:pages/user-entity.md
 JHipsterでは、このオプションを内部的（一部のオプションに対して）使用しており、このオプションを使用すると、次のようになります。
   - ユーザー管理コード（フロントエンドおよびバックエンド）を生成しません。
   - `User`エンティティを更新できるようになります（任意のフィールドを追加または削除できます）。
-=======
-JHipster uses this option internally in some cases (for some options), and using it will:
-- not generate any user management code (front-end & back-end),
-- allow you to update the `User` entity (add/delete any field to it),
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/user-entity.mdx
 
 さらに、エンティティーを作成し、ユーザー管理を自分で処理する必要があります。
 

@@ -4,24 +4,22 @@ export default function Description() {
   return (
     <ul className={styles.section}>
       <li>
-        JHipster is a development platform to quickly generate, develop, and
-        deploy modern web applications and microservice architectures.
+        JHipsterは、モダンなWebアプリケーションやマイクロサービスのアーキテクチャを迅速に生成、
+        開発、デプロイできる開発プラットフォームです。
       </li>
       <li>
-        We support many frontend technologies, including Angular, React, and
-        Vue. We even have mobile app support for Ionic and React Native!
+        Angular, React, Vueなど、多くのフロントエンド技術をサポートしています。
+        IonicやReact Nativeなどのモバイルアプリもサポートしています！
       </li>
       <li>
-        On the backend, we support Spring Boot (with Java or Kotlin), Micronaut,
-        Quarkus, Node.js, and .NET.
+        バックエンドでは、Spring Boot (JavaまたはKotlin), Micronaut, Quarkus, Node.js,
+        .NETをサポートとしています。
       </li>
       <li>
-        For deployment, we embrace cloud native principles with Docker and
-        Kubernetes.
+        デプロイにおいては、DockerやKubernetesによるクラウドネイティブの原則を採用しています。
       </li>
       <li>
-        Deployment support exists for AWS, Azure, Cloud Foundry, Google Cloud
-        Platform, Heroku, and OpenShift.
+        デプロイ支援としてAWS, Azure, Cloud Foundry, Google Cloud Platform, Heroku, and OpenShiftに対応しています。
       </li>
     </ul>
   );

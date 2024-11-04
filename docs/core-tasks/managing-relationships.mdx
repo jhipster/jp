@@ -1,36 +1,17 @@
 ---
-<<<<<<< HEAD:pages/managing_relationships.md
-layout: default
 title: リレーションシップの管理
-permalink: /managing-relationships/
-redirect_from:
-  - /managing_relationships.html
-sitemap:
-    priority: 0.7
-    lastmod: 2020-11-25T09:07:00-00:00
----
-
-# <i class="fa fa-sitemap"></i> リレーションシップ（以下「関係」と記載）の管理
-
-JPAを使用すると、[エンティティ・サブジェネレーター]({{ site.url }}/creating-an-entity/)によってエンティティ間の関係を作成できます。
-=======
-title: Managing relationships
 slug: /managing-relationships/
 last_update:
   date: 2020-11-25T09:07:00-00:00
 ---
 
-When JPA is used, the [entity sub-generator](/creating-an-entity) can create relationships between entities.
+# <i class="fa fa-sitemap"></i> リレーションシップ（以下「関係」と記載）の管理
 
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
+JPAを使用すると、[エンティティ・サブジェネレーター](/creating-an-entity/)によってエンティティ間の関係を作成できます。
 
 ## プレゼンテーション
 
-<<<<<<< HEAD:pages/managing_relationships.md
-関係は、JPAが使用されている場合にのみ機能します。[Cassandra]({{ site.url }}/using-cassandra/)の使用を選択した場合は使用できません。[MongoDB]({{ site.url }}/using-mongodb/)、[Couchbase]({{ site.url }}/using-couchbase/)、または[Neo4j]({{ site.url }}/using-neo4j)の関係を使用する場合、セマンティクスは異なりますが、すべて使用できます。CouchbaseとMongoDBの関係の詳細については、[CouchbaseとMongoDBの組込みエンティティ](#embedded-entities-for-couchbase-and-mongodb)を参照してください。
-=======
-Relationships only work when JPA is used. If you choose to use [Cassandra](/using-cassandra) they won't be available. In case you use [MongoDB](/using-mongodb/), [Couchbase](/using-couchbase/) or [Neo4j](/using-neo4j) relations have a different semantics, but they are all available to be used. For more information about Couchbase and MongoDB relationships please refer to [Embedded Entities for Couchbase and MongoDB](#embedded-entities-for-couchbase-and-mongodb).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
+関係は、JPAが使用されている場合にのみ機能します。[Cassandra](/using-cassandra/)の使用を選択した場合は使用できません。[MongoDB](/using-mongodb/)、[Couchbase](/using-couchbase/)、または[Neo4j](/using-neo4j)の関係を使用する場合、セマンティクスは異なりますが、すべて使用できます。CouchbaseとMongoDBの関係の詳細については、[CouchbaseとMongoDBの組込みエンティティ](#embedded-entities-for-couchbase-and-mongodb)を参照してください。
 
 関係は2つのエンティティ間で機能し、JHipsterは次のコードを生成します。
 
@@ -38,30 +19,18 @@ Relationships only work when JPA is used. If you choose to use [Cassandra](/usin
 - 関係がデータベースに存在するように、正しいLiquibase変更ログを作成します
 - Angular/Reactフロントエンドを生成して、この関係をユーザインタフェースでグラフィカルに管理できるようにします
 
-<<<<<<< HEAD:pages/managing_relationships.md
 ## JHipster UMLとJDL Studio
-=======
-
-## JHipster UML and JDL Studio
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 このページでは、標準のコマンドライン・インタフェースを使用してJHipsterとの関係を作成する方法について説明します。多数のエンティティおよび関係を作成する場合は、グラフィカル・ツールを使用することをお薦めします。
 
 この場合、次の3つのオプションを使用できます。
 
-<<<<<<< HEAD:pages/managing_relationships.md
 - [JDL Studio](https://start.jhipster.tech/jdl-studio/)は、ドメイン固有の言語を使用してエンティティと関係を作成するためのオンライン・ツールです。
-- [JHipster IDE]({{ site.url }}/jhipster-ide/)は、よく使われるIDEのJDLファイルのテキスト編集サポートを提供するプラグインです。
-- 非推奨：_[JHipster UML]({{ site.url }}/jhipster-uml/)では、UMLエディタを使用できます。_
-=======
-- [JDL Studio](https://start.jhipster.tech/jdl-studio/), our online tool to create entities and relationships using our domain-specific language.
-- [JHipster IDE](/jhipster-ide/), a plugin that provides textual editing support of JDL files for popular IDEs.
-- Deprecated: _[JHipster UML](/jhipster-uml/), which allows you to use an UML editor._
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
+- [JHipster IDE](/jhipster-ide/)は、よく使われるIDEのJDLファイルのテキスト編集サポートを提供するプラグインです。
+- 非推奨：_[JHipster UML](/jhipster-uml/)では、UMLエディタを使用できます。_
 
 `jhipster jdl your-jdl-file.jh`を実行することにより、`jdl`サブジェネレータを使用して、JDLファイルから関係を持つエンティティを生成できます。
 
-<<<<<<< HEAD:pages/managing_relationships.md
 ## 使用可能な関係
 
 JPAを使用すると、通常の1対多（one-to-many）、多対1（many-to-one）、多対多（many-to-many）、1対1（one-to-one）の関係が使用可能になります。
@@ -84,38 +53,13 @@ JPAを使用すると、通常の1対多（one-to-many）、多対1（many-to-on
 
 _ヒント: `User`エンティティ_
 
-これについての情報は[ここにあります]({{ site.url }}/user-entity/)。
+これについての情報は[ここにあります](/user-entity/)。
 
 **エンティティと関係の生成に関する小さな警告**：以下の例では、コンパイル時に
 関係先のエンティティが生成されないために失敗することがありますが、これは正常なことです（この警告は無視できます）。
 これを回避するには、次の2つの方法があります。
 - 最初にエンティティを生成し、次に関係を生成します
 - JDLを使用します
-=======
-
-## Available relationships
-
-As we use JPA, the usual one-to-many, many-to-one, many-to-many and one-to-one relationships are available.
-
-:::tip
-
-The `User` entity
-
-:::
-
-Information about it is located [here](/user-entity).
-
-:::warning
-
-**A small warning about entity & relationship generation**: in the following examples, you'll notice that compilation
-_may_ fail in some cases because destination entities aren't generated and that's normal (this warning can be ignored).
-
-:::
-
-There are two ways to avoid that:
-  - Generate the entities first, then the relationships
-  - Use the JDL
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 
 ## 双方向の1対多の関係
@@ -133,7 +77,6 @@ Owner (1) <-----> (*) Car
 
 最初に`Owner`を作成します。`Owner`に関連するJHipsterの質問は次のとおりです。
 
-<<<<<<< HEAD:pages/managing_relationships.md
     jhipster entity Owner
     ...
     Generating relationships to other entities（他のエンティティとの関係の生成）
@@ -142,24 +85,11 @@ Owner (1) <-----> (*) Car
     ? What is the name of the relationship?（関係の名前は何ですか？） car
     ? What is the type of the relationship?（関係のタイプは何ですか） one-to-many
     ? What is the name of this relationship in the other entity?（他のエンティティにおけるこの関係の名前は何ですか） owner
-=======
-```
-jhipster entity Owner
-...
-Generating relationships to other entities
-? Do you want to add a relationship to another entity? Yes
-? What is the name of the other entity? Car
-? What is the name of the relationship? car
-? What is the type of the relationship? one-to-many
-? What is the name of this relationship in the other entity? owner
-```
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 関係の名前に関するデフォルトのオプションを選択したことに注意してください。
 
 これで`Car`を生成できます。
 
-<<<<<<< HEAD:pages/managing_relationships.md
     jhipster entity Car
     ...
     Generating relationships to other entities
@@ -170,23 +100,9 @@ Generating relationships to other entities
     ? When you display this relationship with Angular, which field from 'Owner' do you want to use?（Angularでこの関係を表示する場合'Owner'のどのフィールドを使用しますか？） id
 
 以下のJDLを使用しても同じことができます。
-=======
-```
-jhipster entity Car
-...
-Generating relationships to other entities
-? Do you want to add a relationship to another entity? Yes
-? What is the name of the other entity? Owner
-? What is the name of the relationship? owner
-? What is the type of the relationship? many-to-one
-? When you display this relationship with Angular, which field from 'Owner' do you want to use? id
-```
-
-The same can be achieved using the below JDL as well
 ```
 entity Owner
 entity Car
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 relationship OneToMany {
   Owner{car} to Car{owner}
@@ -195,12 +111,7 @@ relationship OneToMany {
 
 これで、これら2つのエンティティ間に1対多の関係ができました！　生成されたAngular/ReactクライアントUIでは`Car`にドロップダウンが表示され、`Owner`を選択できます。
 
-<<<<<<< HEAD:pages/managing_relationships.md
 ## 双方向の多対1の関係
-=======
-
-## A bidirectional many-to-one relationship
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 これは、JDLファイルの内容を反転した後の双方向の1対多の関係と同じです。
 
@@ -278,26 +189,14 @@ Owner (1) -----> (*) Car
 
 これには2つの解決策があります。
 
-<<<<<<< HEAD:pages/managing_relationships.md
 - 双方向マッピングを行い、それを変更せずに使用します。そても単純であるため推奨されるアプローチです。
 - 双方向マッピングを実行し、それを修正して単方向マッピングに変換します：
     - `@OneToMany`アノテーションの"mappedBy"属性を削除します。
-    - 必要な結合テーブルを生成します。`mvn liquibase:diff`を実行してそのテーブルを生成できます。[Liquibase diffの使用に関するドキュメント]({{ site.url }}/development/)を参照してください。
-=======
-- Do a bidirectional mapping, and use it without modification: this is our recommended approach, as it is much simpler
-- Do a bidirectional mapping, and then modify it to transform it into a unidirectional mapping:
-    - Remove the "mappedBy" attribute on your `@OneToMany` annotation
-    - Generate the required join table: you can do a `mvn liquibase:diff` to generate that table, see the [documentation about using Liquibase diff](/development/)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
+    - 必要な結合テーブルを生成します。`mvn liquibase:diff`を実行してそのテーブルを生成できます。[Liquibase diffの使用に関するドキュメント](/development/)を参照してください。
 
 これはJHipsterではサポートされていないため、JDLでもサポートされていません。
 
-<<<<<<< HEAD:pages/managing_relationships.md
 ## 同じ2つのエンティティ上の2つの1対多の関係
-=======
-
-## Two one-to-many relationships on the same two entities
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 この例では、`Person`は多くの車の所有者になることができ、多くの車の運転手になることもできます。
 
@@ -365,12 +264,7 @@ relationship OneToMany {
 
 `Car`はドライバと所有者を持つことができ、どちらも`Person`エンティティです。生成されたAngular/ReactクライアントUIでは、`Car`にドロップダウンを設け、`owner`フィールドと`driver`フィールドのための`Person`を選択します。
 
-<<<<<<< HEAD:pages/managing_relationships.md
 ## 多対多の関係
-=======
-
-## A many-to-many relationship
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 `Driver`は多くの車を運転できますが、`Car`も多くのドライバーを持つことができます。
 
@@ -401,7 +295,6 @@ Generating relationships to other entities
 
 次に、多対多の関係の所有する側となる`Car`を生成します。
 
-<<<<<<< HEAD:pages/managing_relationships.md
     jhipster entity Car
     ...
     Generating relationships to other entities
@@ -412,20 +305,6 @@ Generating relationships to other entities
     ? Is this entity the owner of the relationship? Yes
     ? What is the name of this relationship in the other entity? car
     ? When you display this relationship on client-side, which field from 'Driver' do you want to use? This field will be displayed as a String, so it cannot be a Blob（この関係をクライアント側で表示する場合`Driver`のどのフィールドを使用しますか？　このフィールドは文字列として表示されるためBlobにはできません） id
-=======
-```
-jhipster entity Car
-...
-Generating relationships to other entities
-? Do you want to add a relationship to another entity? Yes
-? What is the name of the other entity? Driver
-? What is the name of the relationship? driver
-? What is the type of the relationship? many-to-many
-? Is this entity the owner of the relationship? Yes
-? What is the name of this relationship in the other entity? car
-? When you display this relationship on client-side, which field from 'Driver' do you want to use? This field will be displayed as a String, so it cannot be a Blob id
-```
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 以下のJDLを使用しても同じことができます。
 
@@ -440,12 +319,7 @@ relationship ManyToMany {
 
 これで、これら2つのエンティティ間に多対多の関係ができました！　生成されたAngular/ReactクライアントUIでは、`Car`が所有側であるため、複数の`Driver`を選択するための複数選択ドロップダウンが`Car`に表示されます。
 
-<<<<<<< HEAD:pages/managing_relationships.md
 ## 1対1の関係
-=======
-
-## A one-to-one relationship
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 1対1の関係の例として、`Driver`は1つの`Car`のみを運転でき、`Car`は1つの`Driver`のみを持つことができるとします。
 
@@ -469,7 +343,6 @@ Generating relationships to other entities
 
 次に、関係を所有する`Car`を生成します。
 
-<<<<<<< HEAD:pages/managing_relationships.md
     jhipster entity Car
     ...
     Generating relationships to other entities
@@ -481,21 +354,6 @@ Generating relationships to other entities
     ? Do you want to use JPA Derived Identifier - @MapsId?（JPA派生識別子@MapsId?を使用しますか？） No
     ? What is the name of this relationship in the other entity? car
     ? When you display this relationship on client-side, which field from 'Driver' do you want to use? This field will be displayed as a String, so it cannot be a Blob id
-=======
-```
-jhipster entity Car
-...
-Generating relationships to other entities
-? Do you want to add a relationship to another entity? Yes
-? What is the name of the other entity? Driver
-? What is the name of the relationship? driver
-? What is the type of the relationship? one-to-one
-? Is this entity the owner of the relationship? Yes
-? Do you want to use JPA Derived Identifier - @MapsId? No
-? What is the name of this relationship in the other entity? car
-? When you display this relationship on client-side, which field from 'Driver' do you want to use? This field will be displayed as a String, so it cannot be a Blob id
-```
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 以下のJDLを使用しても同じことができます。
 
@@ -512,12 +370,7 @@ relationship OneToOne {
 
 [JPA派生識別子を使用した1対1の使用に関する詳細がこちらにあります](#using-jpa-derived-identifiersmapsid-for-one-to-one-relationship)
 
-<<<<<<< HEAD:pages/managing_relationships.md
 ## 単一方向の1対1の関係
-=======
-
-## A unidirectional one-to-one relationship
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 単一方向の1対1の関係の例として、`citizen`インスタンスはそのパスポートを取得できるが、`passport`インスタンスはその所有者に取得できないものとします。
 
@@ -597,7 +450,6 @@ relationship OneToOne {
 * 依存関係 - 所有する側（子エンティティ）が所有される側（親エンティティ）に強く依存していると思われる場合
 * 関連付けの値が変更されない - 子エンティティのID（主キー）を一度設定したら変更しない場合
 
-<<<<<<< HEAD:pages/managing_relationships.md
     以下に例を示します。
 
     ```
@@ -607,23 +459,11 @@ relationship OneToOne {
     ```
 
     ユーザーのプロファイルまたはプリファレンスが作成されると、別のユーザーを参照するように変更されることはありません。
-=======
-For example:
-
-```
-class User{}
-class Profile{ @OneToOne @MapsId private User user; } // profile is only meant for that user
-class Preferences{ @OneToOne @MapsId private User user; } // preference is only meant for that user
-```
-
-Once a profile or a preference is created for a user, it will never change to refer to another user.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 次の場合には`@MapsId`を使用しないでください。
 * 依存関係ではない - 所有する側（子エンティティ）が所有される側（親エンティティ）に依存していないと思われる場合
 * 関連付けの値が変更される可能性がある - 子エンティティが将来別の親エンティティを参照すると思われる場合
 
-<<<<<<< HEAD:pages/managing_relationships.md
     以下に例を示します。
 
     ```
@@ -633,27 +473,10 @@ Once a profile or a preference is created for a user, it will never change to re
     車とドライバーの両方の関係は、将来変更される可能性があります。
 
 **Note: 注意：[`@MapsId`で`@OneToOne`を使用することと、それを回避する方法に関しては既知の問題があります](https://www.jhipster.tech/tips/026_tip_issue_of_onetoone_with_mapsid_how_to_avoid_it.html)**
-=======
-For example:
-
-```
-class Car{ @OneToOne @JoinColumn(name="current_driver_id") Driver currentDriver} // car can be drived by another driver in future
-class Driver{@OneToOne(mappedBy = "currentDriver") Car drivingCar} // driver drives another car in future
-```
-Both car and driver association value may change in future.
-
-:::note
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 There is [a known issue regarding using `@OneToOne` with `@MapsId` and how to avoid it](/tips/026_tip_issue_of_onetoone_with_mapsid_how_to_avoid_it.html).
 
-<<<<<<< HEAD:pages/managing_relationships.md
 ### フェッチデータストラテジをeagerに設定(FetchType.EAGER)
-=======
-:::
-
-## Setting fetching data strategy to eager (FetchType.EAGER)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 すべての関係は、デフォルトのJPA FetchTypeを使用します。
 - OneToMany: LAZY
@@ -661,7 +484,6 @@ There is [a known issue regarding using `@OneToOne` with `@MapsId` and how to av
 - ManyToMany: LAZY
 - OneToOne: EAGER
 
-<<<<<<< HEAD:pages/managing_relationships.md
 eagerフェッチタイプにおいては[JSONデシリアライズ中のNPEの既知の問題があります](https://github.com/jhipster/generator-jhipster/issues/10981)。`OneToMany`または`ManyToMany`関係を`FetchType.EAGER`に設定する場合は、次のいずれかの解決策を使用できます。
 - 関係に ```@JsonInclude(JsonInclude.Include.NON_EMPTY)``` を使用する
 
@@ -676,23 +498,6 @@ eagerフェッチタイプにおいては[JSONデシリアライズ中のNPEの�
 - DTOを使用し、空のコレクションに特化した処理を行う
 
 ### CouchbaseとMongoDBの組込みエンティティ
-=======
-There is [a known issue of NPE during JSON deserialization](https://github.com/jhipster/generator-jhipster/issues/10981) due to eager fetch type. If you would like to set either `OneToMany` or `ManyToMany` relationship to `FetchType.EAGER`, you can use one of the following solutions:
-- Use `@JsonInclude(JsonInclude.Include.NON_EMPTY)` on the relationship
-
-For example:
-
-```
-@OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-private Set<Child> child = new HashSet<>();
-```
-
-- Return null if the collection is empty when fetching the resource in the backend
-- Using DTO and handle the edge case of empty collection
-
-## Embedded Entities for Couchbase and MongoDB
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/managing-relationships.mdx
 
 CouchbaseとMongoDBは、埋め込みドキュメントを通じた関係をサポートしています。MongoDBの埋め込みドキュメントに関する詳細については、[https://docs.mongodb.com/manual/applications/data-models-relationships/](https://docs.mongodb.com/manual/applications/data-models-relationships/)を参照してください。Couchbaseについては、[https://docs.couchbase.com/server/5.1/data-modeling/modeling-relationships.html](https://docs.couchbase.com/server/5.1/data-modeling/modeling-relationships.html)を参照してください。
 

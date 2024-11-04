@@ -1,12 +1,12 @@
 ---
-title: JHipster Domain Language (JDL) - Options
+title: JHipsterドメイン言語 (JDL) - オプション
 slug: /jdl/options
 last_update:
   date: 2019-11-02T12:00:00-00:00
 ---
 
-In JHipster, you can specify options for your entities such as pagination or DTO.
-You can do the same with the JDL, either with annotations on the entity, or with the following syntax:
+JHipsterでは、エンティティのページングやDTOなどのオプションを指定できます。
+JDLでも、エンティティのアノテーションまたは以下の構文で同様の操作が可能です。
 
 ```jdl
 entity A {
@@ -19,78 +19,78 @@ dto A, B with mapstruct
 
 paginate A with infinite-scroll
 paginate B with pagination
-paginate C with pager  // pager is only available in AngularJS
+paginate C with pager  // pagerはAngularJSでのみ利用可能
 
 service A with serviceClass
 service C with serviceImpl
 ```
 
-The complete list of available options is [here](#available-options).
+使用可能なオプションの完全なリストは[こちら](#available-options)にあります。
 
 
-## How to
+## 操作方法
 
-There are two kinds of options:
+オプションには以下の2種類があります。
 
-- unary (without option value)
-- binary (with value)
+- 単項（オプション値なし）
+- 二項（値付き）
 
-There are three ways to apply options to entities:
+エンティティにオプションを適用する方法は以下の3つです。
 
-- using the option name (`dto`, `readOnly`, etc.), see examples
-- using annotations
-- use the `use XYZ` form
+- オプション名を使う (`dto`, `readOnly` など、例を参照)
+- アノテーションを使う
+- `use XYZ`形式を使用
 
-Mixing them is not recommended as it reduces readability.
+混在させると可読性が低下するため推奨されません。
 
 
-## Syntax
+## 構文
 
-For the regular form:
+通常の形式は以下の通りです。
 ```
 <option name> <option entity list>
 
-or
+または
 
 <option name> <option entity list> with <option value>
 
-or
+または
 
 <option name> <option entity list> with <option value> except <option excluded entity list>
 
-or 
+または 
 
 <option name> <option entity list> except <option excluded entity list>
 ```
 
-- For unary options:
-  - the option name and the list is needed
-  - the excluded entities are optional with the `except` keyword (see below for more details)
-- For binary options:
-  - the entity list precedes the `with` keyword and the option value
-  - again, the excluded entities are in the end with the `except` keyword
+- 単項オプションの場合:
+  - オプション名とリストが必要です
+  - 除外エンティティは`except`キーワードを使用して指定可能です（詳細は下記参照）
+- 二項オプションの場合:
+  - `with`キーワードの前にエンティティリストとオプション値を指定します
+  - 除外エンティティは最後に`except`キーワードで指定します
 
-For annotations:
+アノテーションの場合：
 ```
 @<option name>
 entity <entity name>
 
-or
+または
 
 @<option name>(<option value>)
 ```
 
-- Similar to Java, annotations may take values in parentheses
-  - depending on the option, values may or may not be optional
+- Javaと同様に、アノテーションは括弧内に値を取ることが可能
+  - オプションによって値が必須でない場合もあります
 
 
-## The use XYZ options
+## XYZオプションの使用
 
-With the use-option form, you can specify some options on your entities.
-It was created during JHipster Code 2020, and the reasons behind its creation are to:
+useオプション形式でエンティティにいくつかのオプションを指定できます。
+この形式はJHipster Code 2020で導入され、以下の理由で作成されました。
 
-- Solve the option-disabling issue (there are more than one way to say 'no' in JHipster: `no, false, none`)
-- Propose a way to group options by entities
+- オプション無効化の課題解決（JHipsterでは 'no' に対する複数の表現がある：`no, false, none`）
+- エンティティごとにオプションをグループ化する方法を提案
 
 ```jdl
 entity A
@@ -102,67 +102,67 @@ use mapstruct, serviceImpl, infinite-scroll for A, B
 use pagination for C
 ```
 
-|Use option value |Comment                                                                                                          |
+|Useオプションの値 |コメント                                                                                                            |
 |-----------------|-----------------------------------------------------------------------------------------------------------------|
-|mapstruct        |Whether to create DTOs for your entities, if an entity has a DTO but no service, then 'serviceClass will be used'|
+|mapstruct        |エンティティにDTOを作成するかどうか。エンティティにDTOがありサービスがない場合、'serviceClass'が使用されます |
 |serviceClass     |                                                                                                                 |
 |serviceImpl      |                                                                                                                 |
-|pagination       |Pagination as an option is forbidden when the application uses Cassandra                                         |
-|infinite-scroll  |Pagination as an option is forbidden when the application uses Cassandra                                         |
-|elasticsearch    |Requires the application to have the searchEngine option enabled                                                 |
-|couchbase        |Requires the application to have the searchEngine option enabled                                                 |
+|pagination       |Cassandraを使用するアプリケーションではページングオプションは使用禁止                                              |
+|infinite-scroll  |Cassandraを使用するアプリケーションではページングオプションは使用禁止                                              |
+|elasticsearch    |searchEngineオプションが有効になっているアプリケーションが必要                                                    |
+|couchbase        |searchEngineオプションが有効になっているアプリケーションが必要                                                    |
 
 
-## Examples
+## 例
 
-Each example will have three forms:
+各例には以下の3つの形式があります。
 
-- the regular one
-- the annotation-based one
-- the use form (when applicable)
+- 標準形式
+- アノテーションベースの形式
+- use形式（該当する場合）
 
-### Basic unary example
+### 基本の単項の例
 
-Regular:
+標準形式：
 ```jdl
 entity A
 
 readOnly A
 ```
 
-Annotation-based:
+アノテーション形式：
 ```jdl
 @readOnly
 entity A
 ```
 
-### Basic binary example
+### 基本の二項の例
 
-Regular:
+標準形式：
 ```jdl
 entity A
 
 dto A with mapstruct
 ```
 
-Annotation-based:
+アノテーション形式：
 ```jdl
 @dto(mapstruct)
 entity A
 ```
 
-With the `use` keyword:
+useキーワードの使用：
 ```jdl
 entity A
 
 use mapstruct, serviceImpl, pagination for A
 ```
 
-### all, * example
+### all, * の例
 
-`all` and `*` are aliases.
+`all` と `*` はエイリアスです。
 
-Regular:
+標準形式：
 ```jdl
 entity A
 entity B
@@ -170,7 +170,7 @@ entity B
 dto all with mapstruct
 ```
 
-Annotation-based:
+アノテーション形式：
 ```jdl
 @dto(mapstruct)
 entity A
@@ -179,7 +179,7 @@ entity A
 entity B
 ```
 
-With the `use` keyword:
+useキーワードの使用：
 ```jdl
 entity A
 entity B
@@ -187,9 +187,9 @@ entity B
 use mapstruct, serviceImpl, pagination for *
 ```
 
-### all, * example with exclusions (unary)
+### all, * の除外の例（単項）
 
-Regular:
+標準形式：
 ```jdl
 entity A
 entity B
@@ -197,7 +197,7 @@ entity B
 skipClient * except A
 ```
 
-Annotation-based:
+アノテーション形式：
 ```jdl
 entity A
 
@@ -205,7 +205,7 @@ entity A
 entity B
 ```
 
-With the `use` keyword:
+useキーワードの使用：
 ```jdl
 entity A
 entity B
@@ -213,9 +213,9 @@ entity B
 use mapstruct, serviceImpl, pagination for * except A
 ```
 
-### all, * example with exclusions (binary)
+### all, * の除外の例（二項）
 
-Regular:
+標準形式：
 ```jdl
 entity A
 entity B
@@ -223,7 +223,7 @@ entity B
 dto all with mapstruct except A
 ```
 
-Annotation-based:
+アノテーション形式：
 ```jdl
 entity A
 
@@ -231,7 +231,7 @@ entity A
 entity B
 ```
 
-With the `use` keyword:
+useキーワードの使用：
 ```jdl
 entity A
 entity B
@@ -239,7 +239,7 @@ entity B
 use mapstruct, serviceImpl, pagination for all except A
 ```
 
-### Option with custom values
+### カスタム値を持つオプション
 
 ```jdl
 entity A
@@ -248,9 +248,9 @@ entity B
 microservice all with mySuperMS
 ```
 
-### Mixed example
+### 混在する例
 
-Regular:
+標準形式：
 ```jdl
 entity A
 entity B
@@ -262,10 +262,10 @@ service * with serviceClass except C
 search A with elasticsearch
 ```
 
-Annotation-based:
+アノテーション形式：
 ```jdl
 @dto(mapstruct)
-@search(elastisearch)
+@search(elasticsearch)
 @service(serviceClass)
 entity A
 
@@ -279,37 +279,37 @@ entity C
 ```
 
 
-## About services
+## サービスについて
 
-No services specified will create a resource class which will call the repository interface directly. This is the
-default and simplest option, see A.
+サービスが指定されていない場合、リポジトリインタフェースを直接呼び出すリソースクラスが作成されます。これは
+デフォルトで最も簡単なオプションです（A参照）。
 
-`service with serviceClass` (see B) will make the resource call the service class which will call the repository interface.
-`service with serviceImpl` (see C) will make a service interface which will be used by the resource class.
+`service with serviceClass`（B参照）は、リポジトリインタフェースを呼び出すサービスクラスをリソースが呼び出す形にします。
+`service with serviceImpl`（C参照）は、リソースクラスが使用するサービスインタフェースを作成します。
 
-The interface is implemented by a concrete class which will call the repository interface.
+インタフェースは、リポジトリインタフェースを呼び出す具象クラスによって実装されます。
 
-Using no service unless sure is the simplest option and good for CRUD. Use service with a Class if you will have a lot
-of business logic which will use multiple repositories making it ideal for a service class. JHipsters are not fan of
-unnecessary Interfaces but if you like them go for service with impl.
+複数のリポジトリを使用するビジネスロジックが必要でない限り、サービスは使用せず、CRUDに適した最もシンプルなオプションが推奨されます。
+複数のリポジトリを使用する場合、サービスクラスでの使用が適しています。
+JHipstersは不要なインターフェイスは好きではありませんが、もし好きならimplを使ったサービスを使いましょう。
 
 ```
 entity A
 entity B
 entity C
 
-// no service for A
+// Aにサービスは指定しない
 service B with serviceClass
 service C with serviceImpl
 ```
 
 
-## Microservice-related options
+## マイクロサービス関連のオプション
 
-As of JHipster v3, microservices can be created. You can specify some options to generate your entities in the JDL:
-the microservice's name and the search engine.
+JHipster v3以降、マイクロサービスの作成が可能です。JDLでは、エンティティの生成にいくつかのオプションを指定できます。
+マイクロサービスの名前と検索エンジンを指定します。
 
-Here is how you can specify your microservice's name (the JHipster app's name):
+マイクロサービスの名前を指定する方法：
 
 ```
 entity A
@@ -320,58 +320,58 @@ microservice C with myotherjhipsterapp
 search * with elasticsearch except C
 ```
 
-The first option is used to tell JHipster that you want your microservice to deal with your entities, whereas the second
-specifies how and if you want your entities searched.
+最初のオプションは、エンティティがマイクロサービスで処理されることをJHipsterに伝えるためのもので、2番目はエンティティの検索方法を指定します。
 
 
-## Custom annotations
+## カスタムアノテーション
 
-Custom annotations are possible in the JDL, for instance:
+JDLでは以下のようなカスタムアノテーションが可能です：
 
 ```jdl
 @customAnnotation(customValue)
 entity A
 ```
 
-The main use case for this is for blueprints: sometimes, you need have custom options for entities, or even fields.
-For regular options (`dto`, `pagination`, etc.), these options will be generated in the JSON like in the CLI.
-However, for custom options, they will be generated under and `options` key in the dumped JSON.
+主な用途はBlueprintで、エンティティやフィールドに対してカスタムオプションが必要になることがあります。
+通常のオプション（`dto`, `
+
+pagination`など）はCLIと同様にJSONで生成されますが、カスタムオプションはJSONの`options`キーの下に生成されます。
 
 
-## Available options
+## 使用可能なオプション
 
-_Not what you're looking for? Check the [application options](/jdl/applications#available-application-configuration-options)._
+_お探しのものが見つからない場合は、[アプリケーションのオプション](/jdl/applications#available-application-configuration-options)もご確認ください。_
 
-### Entity options
+### エンティティオプション
 
-Here are the entity options supported in the JDL:
+JDLでサポートされているエンティティオプション：
 
-|JDL option name (entity)|Option type|Default value|Possible values                 |Comment                                                                                                                                                 |
-|------------------------|-----------|-------------|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|skipClient              |unary      |false        |-                               |This will make the client code generation to be skipped                                                                                                 |
-|skipServer              |unary      |false        |-                               |This will make the server code generation to be skipped                                                                                                 |
-|noFluentMethod          |unary      |false        |-                               |See [this note](/2016/08/17/jhipster-release-3.6.0#important-change-fluent-setters) for more information                                           |
-|filter                  |unary      |false        |-                               |See [filtering](/entities-filtering) for more details; if an entity is filtered but doesn't have a service then 'serviceClass' will be used             |
-|readOnly                |unary      |false        |-                               |Adding this option will make an entity readOnly, see [this release note](/2019/10/10/jhipster-release-6.4.0/) for more details|
-|dto                     |binary     |no           |mapstruct, no                   |Whether to create DTOs for your entities, if an entity has a DTO but no service, then 'serviceClass will be used'                                       |
-|service                 |binary     |no           |serviceClass, serviceImpl, no   |-                                                                                                                                                       |
-|paginate                |binary     |no           |pagination, infinite-scroll, no |Pagination is forbidden when the application uses Cassandra                                                                                             |
-|search                  |binary     |no           |elasticsearch, no               |Requires the application to have the searchEngine option enabled                                                                                        |
-|microservice            |binary     |-            |custom value                    |Will be automatically added for every entity declared inside a microservice application                                                                 |
-|angularSuffix           |binary     |-            |custom value                    |-                                                                                                                                                       |
-|clientRootFolder        |binary     |-            |custom value                    |-                                                                                                                                                       |
-
-
-### Field options
-
-Here are the field options supported in the JDL:
-
-|JDL option name (field)|Default value|Possible values                                                                     |Comment                                                                                                                                                                        |
-|-----------------------|-------------|------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|defaultValue           |undefined    |any value fitting to the datatype of the field, e.g. "myDefaultValue" or 42 or true |Will define a fixed default value on database schema side on the column, as well as adjust the clients passing in the option as default from input forms (only Angular for now)|
-|defaultValueComputed   |undefined    |database functions to generate default values for a column, e.g. "NOW(6)"           |This will generate a default value on database level using the given function                                                                                                  |
+|JDLオプション名（エンティティ）|オプションタイプ|デフォルト値|指定可能な値|コメント                                         |
+|------------------------|-----------|-------------|----------|---------------------------------------------|
+|skipClient              |単項      |false       |なし       |クライアントコード生成がスキップされます       |
+|skipServer              |単項      |false       |なし       |サーバーコード生成がスキップされます           |
+|noFluentMethod          |単項      |false       |なし       |詳細は[こちら](/2016/08/17/jhipster-release-3.6.0#important-change-fluent-setters)|
+|filter                  |単項      |false       |なし       |[フィルタリング](/entities-filtering)参照 |
+|readOnly                |単項      |false       |なし       |エンティティが読み取り専用になります            |
+|dto                     |二項      |no          |mapstruct, no |エンティティにDTOを作成します                   |
+|service                 |二項      |no          |serviceClass, serviceImpl, no |-              |
+|paginate                |二項      |no          |pagination, infinite-scroll, no |Cassandraを使用する場合、ページングは禁止 |
+|search                  |二項      |no          |elasticsearch, no |searchEngineオプションが必要                   |
+|microservice            |二項      |-           |カスタム値   |マイクロサービス内で宣言されたエンティティ      |
+|angularSuffix           |二項      |-           |カスタム値   |                                              |
+|clientRootFolder        |二項      |-           |カスタム値   |                                              |
 
 
-## See also
+### フィールドオプション
 
-The application options are available [here](/jdl/applications)
+JDLでサポートされているフィールドオプション：
+
+|JDLオプション名（フィールド）|デフォルト値|指定可能な値 |コメント                                                   |
+|-----------------------|----------|----------|----------------------------------------------------------|
+|defaultValue           |未定義     |データ型に適した任意の値 |データベースのカラムにデフォルト値を定義                   |
+|defaultValueComputed   |未定義     |データベース関数         |データベースレベルでデフォルト値を生成                     |
+
+
+## 関連項目
+
+アプリケーションのオプションは[こちら](/jdl/applications)にあります。

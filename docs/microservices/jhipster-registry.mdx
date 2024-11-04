@@ -1,24 +1,11 @@
 ---
-<<<<<<< HEAD:pages/jhipster-registry.md
-layout: default
 title: JHipsterレジストリ
-permalink: /jhipster-registry/
-sitemap:
-    priority: 0.7
-    lastmod: 2019-02-01T00:00:00-00:00
----
-
-# <i class="fa fa-dashboard"></i> JHipsterレジストリ（**非推奨**-代わりにConsulを使用してください）
-=======
-title: JHipster Registry
 slug: /jhipster-registry/
 last_update:
   date: 2019-02-01T00:00:00-00:00
 ---
 
-**deprecated** - Use Consul instead
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-registry.mdx
+# <i class="fa fa-dashboard"></i> JHipsterレジストリ（**非推奨**-代わりにConsulを使用してください）
 
 ## 概観
 
@@ -34,7 +21,6 @@ JHipsterレジストリの主な目的は次の3つです。
 
 ![](/images/jhipster-registry-animation.gif)
 
-<<<<<<< HEAD:pages/jhipster-registry.md
 ## 概要
 
 1. [導入](#installation)
@@ -44,10 +30,6 @@ JHipsterレジストリの主な目的は次の3つです。
 5. [JHipsterレジストリのセキュリティ保護](#security)
 
 <h2 id="installation">導入</h2>
-=======
-
-## Installation
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-registry.mdx
 
 ### Springプロファイル
 
@@ -72,13 +54,8 @@ java -jar jhipster-registry-<version>.jar --spring.security.user.password=admin 
 
 起動時に、`JHIPSTER_SECURITY_AUTHENTICATION_JWT_SECRET`環境変数を使用するか、上記のような引数を使用して、レジストリにJWTシークレットキーを提供することが重要であることに注意してください。別の方法としてこの値を、（レジストリを含みすべてのアプリケーションによって起動時にロードされる）集中化された構成ソースの`application.yml`ファイルにも設定できます。
 
-<<<<<<< HEAD:pages/jhipster-registry.md
 JHipster 5.3.0以降、新しい`jhipster.security.authentication.jwt.base64-secret`プロパティが追加されました。これはより安全ですが、
-あなたがまだ古いリリースを使用している可能性があるため、このドキュメントでは`jhipster.security.authentication.jwt.secret`を使用しています。これらのプロパティの詳細については、[セキュリティドキュメント]({{ site.url }}/security/)を参照してください。
-=======
-Please note that since JHipster 5.3.0 we have a new `jhipster.security.authentication.jwt.base64-secret` property, which is more secure, but as you might still use older releases
-we use `jhipster.security.authentication.jwt.secret` in this documentation. More information on those properties is available in our [security documentation](/security/).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-registry.mdx
+あなたがまだ古いリリースを使用している可能性があるため、このドキュメントでは`jhipster.security.authentication.jwt.secret`を使用しています。これらのプロパティの詳細については、[セキュリティドキュメント](/security/)を参照してください。
 
 同様に、`prod`プロファイルを使用してレジストリを実行するには、次のように引数を設定に合わせて調整します。
 
@@ -103,24 +80,15 @@ DockerイメージからJHipsterレジストリを実行したい場合は、Doc
 
 - `docker-compose -f src/main/docker/jhipster-registry.yml up`を実行して、JHipsterレジストリを起動します。これはDockerホストのポート`8761`で使用できるので、マシンで実行する場合は[http://127.0.0.1:8761/](http://127.0.0.1:8761/)となります。
 
-<<<<<<< HEAD:pages/jhipster-registry.md
-JHipsterレジストリをDocker Composeで使用する方法の詳細については、[Docker Composeのドキュメント]({{ site.url }}/docker-compose/)を参照してください。
-=======
-Please read our [Docker Compose documentation](/docker-compose/) for more information on using the JHipster Registry with Docker Compose.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-registry.mdx
+JHipsterレジストリをDocker Composeで使用する方法の詳細については、[Docker Composeのドキュメント](/docker-compose/)を参照してください。
 
 ### クラウドでの実行
 
 JHipsterレジストリインスタンスはクラウドで実行できます。これは本番環境では必須ですが開発環境でも役立ちます（ラップトップで実行する必要がなくなります）。
 
-<<<<<<< HEAD:pages/jhipster-registry.md
-JHipsterレジストリをCloud FoundryまたはHerokuにデプロイする方法については、["プロダクション環境下でのマイクロサービス"のドキュメント]({{ site.url }}/microservices-in-production/)を参照してください。
+JHipsterレジストリをCloud FoundryまたはHerokuにデプロイする方法については、["プロダクション環境下でのマイクロサービス"のドキュメント](/microservices-in-production/)を参照してください。
 
 <h2 id="eureka">Eurekaによるサービスディスカバリ</h2>
-=======
-Please read [the "microservices in production" documentation](/microservices-in-production/) to learn how to deploy the JHipster Registry to Cloud Foundry or to Heroku.
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-registry.mdx
 
 ## Service discovery with Eureka
 
@@ -128,16 +96,10 @@ Please read [the "microservices in production" documentation](/microservices-in-
 
 JHipsterレジストリは[Netflix Eurekaサーバ](https://github.com/Netflix/eureka)であり、すべてのアプリケーションにサービスディスカバリを提供します。
 
-<<<<<<< HEAD:pages/jhipster-registry.md
 - これはマイクロサービスアーキテクチャにとって非常に有用です。これにより、ゲートウェイはどのマイクロサービスが利用可能で、どのインスタンスが起動しているかを知ることができます。
-- モノリスを含むすべてのアプリケーションにとっては、Hazelcast分散キャッシュを自動的にスケーリングできる方法となります。[Hazelcastキャッシュドキュメント]({{ site.url }}/using-cache/)を参照してください。
+- モノリスを含むすべてのアプリケーションにとっては、Hazelcast分散キャッシュを自動的にスケーリングできる方法となります。[Hazelcastキャッシュドキュメント](/using-cache/)を参照してください。
 
 <h2 id="spring-cloud-config">Spring Cloud Configを使用したアプリケーション設定</h2>
-=======
-- This is very useful for microservices architectures: this is how the gateways know which microservices are available, and which instances are up
-- For all applications, including monoliths, this is how the Hazelcast distributed cache can automatically scale, see [the Hazelcast cache documentation](/using-cache/)
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-registry.mdx
 
 ## Application configuration with Spring Cloud Config
 
@@ -159,12 +121,7 @@ JHipsterレジストリは[Spring Config Server](http://cloud.spring.io/spring-c
 
 GatewayルートはSpring Bootを使用して設定されるため、Spring Config Serverを使用しての管理もできます。たとえば、アプリケーション`app1-v1`を`v1`ブランチの`/app1`のURLにマップし、アプリケーション`app1-v2`を`v2`ブランチの`/app1`のURLにマップできます。これは、エンドユーザがダウンタイムを発生させることなくマイクロサービスをアップグレードするための良い方法です。
 
-<<<<<<< HEAD:pages/jhipster-registry.md
 <h2 id="encryption">暗号化された構成値の使用</h2>
-=======
-
-## Using encrypted configuration values
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-registry.mdx
 
 JHipsterレジストリには、構成値の暗号化と復号化を可能にする固有の`configuration > encryption`ページがあります。
 
@@ -181,12 +138,7 @@ JHipsterレジストリには、構成値の暗号化と復号化を可能にす
 
 詳細については、Spring Cloud Configの[暗号化と復号化についてのドキュメント](http://cloud.spring.io/spring-cloud-config/spring-cloud-config.html#_encryption_and_decryption)を参照してください。
 
-<<<<<<< HEAD:pages/jhipster-registry.md
 <h2 id="dashboards">管理ダッシュボード</h2>
-=======
-
-## Administration dashboards
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-registry.mdx
 
 JHipsterレジストリは、すべてのアプリケーションタイプに使用される管理ダッシュボードを提供します。アプリケーションがEurekaサーバに登録されるとすぐに、ダッシュボードで使用可能になります。
 
@@ -209,11 +161,7 @@ JVMスレッド・メトリクスの横にある展開ボタンをクリック�
 
 注意：JHipsterレジストリをDropwizardメトリクスではなくMicrometerからのメトリクスを監視するように変更したので、バージョン5.7.2以前で生成されたすべてのJHipsterアプリケーションをMicrometerに移行して、JHipsterレジストリで監視する必要があります。アプリケーションを移行しない場合は、JHipsterレジストリv4.0.6以前を使用してください。
 
-<<<<<<< HEAD:pages/jhipster-registry.md
-アプリケーションを移行するには、[JHipsterアップグレード・サブジェネレーター]({{ site.url }}/upgrading-an-application/)を使用できます。
-=======
-To migrate your applications, you can use the [JHipster upgrade sub-generator](/upgrading-an-application/).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-registry.mdx
+アプリケーションを移行するには、[JHipsterアップグレード・サブジェネレーター](/upgrading-an-application/)を使用できます。
 
 ### ヘルスダッシュボード
 
@@ -235,12 +183,7 @@ To migrate your applications, you can use the [JHipster upgrade sub-generator](/
 ログダッシュボードを使用すると、実行中のアプリケーションのLogback設定を実行時に管理できます。
 Javaパッケージのログ・レベルを変更するには、ボタンをクリックします。これは、開発環境と本番環境の両方で非常に便利です。
 
-<<<<<<< HEAD:pages/jhipster-registry.md
 <h2 id="security">JHipsterレジストリの保護</h2>
-=======
-
-## Securing the JHipster Registry
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-registry.mdx
 
 JHipsterレジストリはデフォルトで保護されています。通常のJHipsterアプリケーションで使用される通常の"admin/admin"ログインおよびパスワードを使用してログインできます。
 
@@ -248,10 +191,5 @@ JHipsterレジストリはデフォルトで保護されています。通常の
 
 JHipsterレジストリを保護するには、次の手順を実行します。
 
-<<<<<<< HEAD:pages/jhipster-registry.md
-- デフォルトの"admin"パスワードを変更する必要があります。このパスワードは標準のSpring Bootプロパティ`spring.security.user.password`を使用して設定されるため、通常のSpring Bootメカニズムを使用して変更できます。プロジェクトの`application-*.yml`ファイルを変更するか、`SPRING_SECURITY_USER_PASSWORD`環境変数を追加できます。[Docker Composeサブジェネレータ]({{ site.url }}/docker-compose/)は環境変数で設定する方法を使用します。
+- デフォルトの"admin"パスワードを変更する必要があります。このパスワードは標準のSpring Bootプロパティ`spring.security.user.password`を使用して設定されるため、通常のSpring Bootメカニズムを使用して変更できます。プロジェクトの`application-*.yml`ファイルを変更するか、`SPRING_SECURITY_USER_PASSWORD`環境変数を追加できます。[Docker Composeサブジェネレータ](/docker-compose/)は環境変数で設定する方法を使用します。
 - あなたのアプリケーションはHTTPを使用してレジストリに接続するので、その接続チャネルを保護することは非常に重要です。それを行う方法はたくさんありますが、おそらく最も簡単なのはHTTPSを使用することです。
-=======
-- You must change the default "admin" password. This password is set using the standard Spring Boot property `spring.security.user.password`, so you can use the usual Spring Boot mechanisms to modify it: you could modify the project's `application-*.yml` files, or add a `SPRING_SECURITY_USER_PASSWORD` environment variable. The [Docker Compose sub-generator](/docker-compose/) uses the environment variable method.
-- As your applications will connect to the registry using HTTP, it is very important to secure that connection channel. There are many ways to do it, and the easiest one is probably to use HTTPS.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-registry.mdx

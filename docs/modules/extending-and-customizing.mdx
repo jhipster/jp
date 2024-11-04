@@ -1,52 +1,27 @@
 ---
-<<<<<<< HEAD:modules/extending_and_customizing.md
-layout: default
 title: Blueprintの基本
-permalink: /modules/extending-and-customizing/
-redirect_from:
-  - /extending_and_customizing.html
-  - /modules/extending_and_customizing.html
-sitemap:
-    priority: 0.7
-    lastmod: 2015-12-05T18:40:00-00:00
----
-
-# <i class="fa fa-cube"></i>  Blueprintの基本
-
-JHipsterは`プラグイン`をサポートしており、私たちはそれらを`Blueprint`と`Module`と呼んでいます。
-=======
-title: Blueprint Basics
 slug: /modules/extending-and-customizing/
 last_update:
   date: 2015-12-05T18:40:00-00:00
 ---
 
-JHipster has support for `plugins`, and we call them `blueprints` and `modules`.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
+# <i class="fa fa-cube"></i>  Blueprintの基本
+
+JHipsterは`プラグイン`をサポートしており、私たちはそれらを`Blueprint`と`Module`と呼んでいます。
 
 JHipster v7.9.0以前の`Module`は、`yo`を使用して実行されるYeomanジェネレータ、拡張された`generators-jhipster`の`generator-base`クラス、およびJHipsterのワークフローに統合するための登録されたフックでした。
 
 JHipster v7.9.0では、`Module`は` Blueprint`であり、スタンドアローンのジェネレータ（Blueprintではない）とカスタムCLIを備えています。
 今後は、これらをスタンドアローンのBlueprint（または単にBlueprint）と呼びます。
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
 ## JHipster Blueprintの基本的なルール
-=======
-
-## Basic rules for a JHipster blueprint
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 JHipster Blueprintとは以下となります。
 
 - NPMパッケージとYeomanジェネレータです。
 - [https://yeoman.io/authoring/index.html](https://yeoman.io/authoring/index.html)に列挙されているYeomanルールの拡張に従います。`generator-`を前に付けるのではなく、`generator-jhipster-`を前に付け、`yeoman-generator`キーワードだけを持つのではなく、`yeoman-generator`と`jhipster-blueprint`の2つのキーワードを持つ必要があります。
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
 ## 使用方法
-=======
-
-## Usage
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
  Blueprintを使用するには、次のコマンドを実行します。
 
@@ -60,12 +35,7 @@ jhipster --blueprints <blueprint name>
 jhipster-my-blueprint
 ```
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
 ## 例
-=======
-
-## Examples
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 JHipsterには多くの公式なBlueprintがあり、いくつかの例があります。
 
@@ -80,12 +50,7 @@ JHipsterには多くの公式なBlueprintがあり、いくつかの例があり
 - モバイル
   - [JHipster Ionic](https://github.com/jhipster/generator-jhipster-ionic)のBlueprintは、Ionicアプリケーションを生成します。
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
 ## Side-by-Side Blueprint
-=======
-
-## Side-by-Side blueprint
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 各ジェネレータは、side-by-side(SBS) Blueprintにできます。SBS Blueprintでは、元のジェネレータの動作は変更されませんが、動作と結果をカスタマイズできます。
 SBS Blueprintは、複数のJHipsterバージョンをサポートし、新しいJHipsterバージョンに移植することを容易にします。
@@ -101,12 +66,7 @@ this.sbsBlueprint = true;
 
 side-by-side Blueprintは、フックを作成し、既存のモジュールの移行を支援するために使用できます。これについては、[Moduleの作成](/modules/creating-a-module)で説明されています。
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
 ## カスタムCLI
-=======
-
-## Custom CLI
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 スタンドアローンのBlueprintは`yo`を使用して実行できますが、`yo`はジェネレータの検出に積極的で時間がかかる可能性があり、いくつかの改善がされていません。JHipster CLIは、ヘルプとJHipster統合を提供します。
 そのため、`jhipster`CLIを使用するか、`generator-jhipster`に基づいてカスタムCLIを作成することをお勧めします。
@@ -115,12 +75,7 @@ side-by-side Blueprintは、フックを作成し、既存のモジュールの�
 
 カスタムCLIを使用すると、カスタムジェネレータを実行できます。カスタムCLIについては、[Moduleの作成](/modules/creating-a-module)で説明しています。
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
 ## ローカルBlueprint
-=======
-
-## Local Blueprint
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 JHipsterによってカスタマイズされたコード生成がされると、アプリケーションをより簡単に更新し続けることができます。この目的を念頭に置いて、ローカル・Blueprintが実装されます。
 
@@ -133,21 +88,11 @@ Blueprint全体は、アプリケーションの`.blueprint`ディレクトリ�
 - jhipsterワークフローを完全に制御します。
 - 1つのコマンドで簡単に生成できます。
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
 ## 開発および公開API
-=======
-
-## Development and public API
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 公開されているJSDoc APIドキュメントがまだ不足しているため、ソースコードを参照する必要があります。
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
 ## アプリケーション構成
-=======
-
-## Application configuration:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 JHipsterの設定は、[Yeoman設定](https://yeoman.io/authoring/storage.html)パターンに従い、Blueprint設定の追加サポートを提供します。
 
@@ -157,12 +102,7 @@ JHipsterの設定は、[Yeoman設定](https://yeoman.io/authoring/storage.html)�
 `config`と`blueprintStorage`は[ストレージインスタンス](https://yeoman.github.io/generator/Storage.html)です。
 一方、`jhipsterConfig`と`blueprintConfig`は、利便性のために`config`と`blueprintStorage`ストレージのための[プロキシオブジェクト](https://yeoman.github.io/generator/Storage.html#createProxy)です。
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
 ## 定数
-=======
-
-## Constants:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 [`generator-constants.js`](https://github.com/jhipster/generator-jhipster/blob/main/generators/generator-constants.js)で定数を使用できます。
 
@@ -172,31 +112,17 @@ const resourceDir = jhipsterConstants.SERVER_MAIN_RES_DIR;
 const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
 ```
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
 ## 関数
-=======
-
-## Functions:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 [generator-base.js](https://github.com/jhipster/generator-jhipster/blob/main/generators/generator-base.js)のすべての関数を使用できます。
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
 ## 開発用のBlueprintをローカルで実行する
-=======
-
-## Running a Blueprint locally for development
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 Blueprintを開発する際には、次の手順に注意してください。これらは非常に重要です。
 
 1. Blueprintをグローバルにリンクする
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
     注：作成中の各プロジェクトにBlueprintをリンク（手順3）しない場合の手順です。
-=======
-Note: If you do not want to link the blueprint (Step 3) to each project being created.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 ```shell
 cd generator-jhipster-my-blueprint
@@ -213,11 +139,7 @@ cd generator-jhipster-my-blueprint
 npm link generator-jhipster
 ```
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
     または、Gitから`generator-jhipster`をインストールしてください。
-=======
-Or install `generator-jhipster` from git:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx
 
 ```shell
 cd generator-jhipster-my-blueprint
@@ -241,15 +163,8 @@ jhipster --no-skip-jhipster-dependencies
 
 ## JHipsterマーケットプレイスへのBlueprintの登録
 
-<<<<<<< HEAD:modules/extending_and_customizing.md
-Blueprintを[JHipsterマーケットプレイス]({{ site.url }}/modules/marketplace/)で利用できるようにするには、公開されているnpm`package.json`に2つのキーワード`yeoman-generator`と`jhipster-blueprint`があることを確認する必要があります。
+Blueprintを[JHipsterマーケットプレイス](/modules/marketplace/)で利用できるようにするには、公開されているnpm`package.json`に2つのキーワード`yeoman-generator`と`jhipster-blueprint`があることを確認する必要があります。
 JHipsterモジュールまたはBlueprintではないエントリをマーケットプレイスで見つけた場合は、[`modules-config.json file`](https://github.com/jhipster/jhipster.github.io/blob/main/modules/marketplace/data/modules-config.json)の`blacklistedModules`セクションに追加し、[jhipster/jhipster.github.ioのプロジェクト](https://github.com/jhipster/jhipster.github.io)にプルリクエストを送ることで、リスト拒否に協力できます。
 
 
 BlueprintをNPMに公開すると、そのBlueprintはマーケットプレイスで入手できるようになります。
-=======
-To make your blueprint available in [the JHipster marketplace](/modules/marketplace), you need to make sure you have the two keywords `yeoman-generator` and `jhipster-blueprint` in your published npm `package.json`.
-If you find any entry in the marketplace that is not a JHipster module or blueprint, you can help to deny list it by adding it to the `blacklistedModules` section of the [`modules-config.json file`](https://github.com/jhipster/jhipster.github.io/blob/main/modules/marketplace/data/modules-config.json) by doing a Pull Request to the [jhipster/jhipster.github.io project](https://github.com/jhipster/jhipster.github.io).
-
-Once you publish your blueprint to NPM, your blueprint will become available in our marketplace.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/modules/extending-and-customizing.mdx

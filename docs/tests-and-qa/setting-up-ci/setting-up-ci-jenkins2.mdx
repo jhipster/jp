@@ -1,27 +1,13 @@
 ---
-<<<<<<< HEAD:pages/setting_up_ci_jenkins2.md
-layout: default
 title: Jenkins 2での継続的インテグレーションのセットアップ
-permalink: /setting-up-ci-jenkins2/
-redirect_from:
-  - /setting_up_ci_jenkins2.html
-sitemap:
-    priority: 0.7
-    lastmod: 2017-01-19T14:15:00-00:00
----
-
-# <i class="fa fa-stethoscope"></i> Jenkins 2での継続的インテグレーションのセットアップ
-
-## Jenkins 2のインストール
-=======
-title: Setting up Continuous Integration on Jenkins 2
 slug: /setting-up-ci-jenkins2/
 last_update:
   date: 2017-01-19T14:15:00-00:00
 ---
 
-## Installing Jenkins 2
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/setting-up-ci/setting-up-ci-jenkins2.mdx
+# <i class="fa fa-stethoscope"></i> Jenkins 2での継続的インテグレーションのセットアップ
+
+## Jenkins 2のインストール
 
 ### 標準
 
@@ -41,20 +27,13 @@ docker container run -d --name jenkins2 -p 18080:8080 -p 50000:50000 jenkins/jen
 ```
 
 その後、Jenkinsのダッシュボードにアクセスできます。
-- http://localhost:18080（MacOSおよびLinuxの場合）
-- http://192.168.99.100:18080（Windowsの場合）
+- http://localhost:18080 （MacOSおよびLinuxの場合）
+- http://192.168.99.100:18080 （Windowsの場合）
   - これがうまくいかない場合は、`192.168.99.100`をあなたのDockerのデフォルトのIPアドレス`docker-machine ip default`に置き換えてください。
 
-<<<<<<< HEAD:pages/setting_up_ci_jenkins2.md
 注：`initialAdminPassword`を入力するよう求められます。パスワードはコンテナの起動時にログに記録されています。
 `docker logs jenkins2`からもアクセスできます。
 例：
-=======
-Note: You'll be asked for an `initialAdminPassword` which you'll find in the logs during your container startup.
-You can also access it via `docker logs jenkins2`
-e.g.
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/setting-up-ci/setting-up-ci-jenkins2.mdx
 ```
 *************************************************************
 *************************************************************
@@ -72,35 +51,19 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 *************************************************************
 ```
 
-<<<<<<< HEAD:pages/setting_up_ci_jenkins2.md
 ## 新しいジョブの作成
 
 - 新しいアイテムの追加
     - 項目名を入力
     - パイプラインを選択
     - OKをクリック
-=======
-
-## Create a new Job
-
-- Add New Item
-  - Enter an item name
-  - Select pipeline
-  - Click OK
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/setting-up-ci/setting-up-ci-jenkins2.mdx
 
 ![Jenkins2 item](/images/jenkins2_add_item.png)
 
 - Definition: Pipeline script from SCM
 - SCM: Git
 - Repositories
-<<<<<<< HEAD:pages/setting_up_ci_jenkins2.md
     - Repository URL: ここでリポジトリを選択します
-=======
-  - Repository URL: select your repository here
-
-![Jenkins2 pipeline](/images/jenkins2_pipeline.png)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/setting-up-ci/setting-up-ci-jenkins2.mdx
 
 
 ## Jenkinsファイル

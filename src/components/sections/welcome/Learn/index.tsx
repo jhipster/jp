@@ -9,14 +9,12 @@ import styles from './styles.module.scss';
 export default function Learn() {
   return (
     <SectionWrapper className={styles.section}>
-      <SectionTitle>Learn JHipster In 15 Minutes</SectionTitle>
+      <SectionTitle>15分で JHipster を学びましょう</SectionTitle>
 
       <SectionDescription>
         <p>
-          Matt Raible created a screencast that shows how to use JHipster 7 to
-          develop a Spring Boot + Angular application. He also published a video
-          on how to build reactive Java microservices with Spring Boot and
-          JHipster.
+          Matt Raible氏が、JHipster 8を使ってSpring Boot + Angularアプリケーションを開発する方法を示すスクリーンキャストを作成しています。
+          また、Spring BootとJHipsterを使ってリアクティブなJavaマイクロサービスを構築する方法のビデオも公開しています。
         </p>
       </SectionDescription>
 

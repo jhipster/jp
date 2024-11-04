@@ -1,50 +1,26 @@
 ---
-<<<<<<< HEAD:pages/tls.md
-layout: default
 title: TLSおよびHTTP/2の使用
-permalink: /tls/
-sitemap:
-    priority: 0.7
-    lastmod: 2018-10-04T00:00:00-00:00
+slug: /tls/
+last_update:
+  date: 2018-10-04T00:00:00-00:00
 ---
 
 # <i class="fa fa-lock"></i> 開発におけるTLSとHTTP/2の使用
 
 ## はじめに
 
-このページは、（主にテスト目的の）開発でTLSおよびHTTP/2を使用するためのものです。本番構成の場合は、[プロダクションのドキュメントのセキュリティセクション]({{ site.url }}/production/#security)をお読みください。
-=======
-title: Using TLS and HTTP/2 in development
-slug: /tls/
-last_update:
-  date: 2018-10-04T00:00:00-00:00
----
-
-## Introduction
-
-This page is for using TLS and HTTP/2 in development (mainly for testing purposes). For production configuration, please read the [security section in the production documentation](/production/#security).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/tls.mdx
+このページは、（主にテスト目的の）開発でTLSおよびHTTP/2を使用するためのものです。本番構成の場合は、[プロダクションのドキュメントのセキュリティセクション](/production/#security)をお読みください。
 
 TLSは、`https://` のURLを持つ場合に使用されるプロトコルであり、最新のブラウザでHTTP/2を使用するために必要です。
 
 主にパフォーマンス上の理由から、アプリケーションをテストするときにこれらのプロトコルを使用すると便利です。
 
-<<<<<<< HEAD:pages/tls.md
 ## Spring BootでのTLSとHTTP/2の使用
 
-JHipsterには、TLSとHTTP/2の両方を設定するための特定の設定があります（[共通アプリケーションプロパティのドキュメント]({{ site.url }}/common-application-properties/)を参照）。さらに簡単にするために、次のように設定します。
+JHipsterには、TLSとHTTP/2の両方を設定するための特定の設定があります（[共通アプリケーションプロパティのドキュメント](/common-application-properties/)を参照）。さらに簡単にするために、次のように設定します。
 
 - JHipsterは、アプリケーションの生成時に自己署名証明書を生成します。
-- 特定の`tls`プロファイルが提供されます（[プロファイルのドキュメント]({{ site.url }}/profiles/)を参照）。
-=======
-
-## Using TLS and HTTP/2 with Spring Boot
-
-JHipster has a specific configuration for configuring both TLS and HTTP/2 (see the [common application properties documentation](/common-application-properties)), and in order to make things even simpler:
-
-- JHipster generates a self-signed certificate at application generation
-- A specific `tls` profile is provided (see the [profiles documentation](/profiles))
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/tls.mdx
+- 特定の`tls`プロファイルが提供されます（[プロファイルのドキュメント](/profiles/)を参照）。
 
 提供された自己署名証明書を使用し、TLSとHTTP/2を有効にしてJHipsterを実行するには、`tls`プロファイルを使用する必要があります。
 
@@ -55,12 +31,7 @@ JHipster has a specific configuration for configuring both TLS and HTTP/2 (see t
 
 証明書は自己署名されているため、ブラウザから警告が表示されます。アプリケーションにアクセスするには、証明書を無視する（またはインポートする）必要があります。
 
-<<<<<<< HEAD:pages/tls.md
 ## Angular、React、またはVue.jsでのTLSとHTTP/2の使用
-=======
-
-## Using TLS and HTTP/2 with Angular or React or Vue.js
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/tls.mdx
 
 （WebpackとBrowserSyncを使用して）フロントエンドを実行するために`npm start`を使用する代わりに、`npm run start-tls`を実行すると、`https://localhost:8080/`で実行されているバックエンドに接続されます。
 

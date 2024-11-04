@@ -11,18 +11,19 @@ export default function Hero() {
       <div className={clsx('container', styles.sectionContent)}>
         <div>
           <h1 className={styles.sectionTitle}>
-            Greetings,
-            <br /> Java <span className="text--primary">Hipster</span>!
+            <br /> Java <span className="text--primary">Hipster</span>の皆さん<br />
+            こんにちは!
           </h1>
 
           <p className={styles.sectionDescription}>
-            JHipster is a development platform to quickly generate, develop,
-            deploy modern web applications & microservice architectures.
+            JHipsterはモダンなWebアプリケーションやマイクロサービスの<br />
+            アーキテクチャを素早く生成、開発、デプロイできる<br />
+            開発プラットフォームです。
           </p>
 
           <div className={styles.sectionButtons}>
             <Link className="button button--primary" to="/getting-started">
-              Getting Started
+              始める
             </Link>
             <GithubButton>GitHub</GithubButton>
           </div>

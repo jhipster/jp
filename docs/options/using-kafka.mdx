@@ -1,43 +1,19 @@
 ---
-<<<<<<< HEAD:pages/using_kafka.md
-layout: default
 title: Kafkaの使用
-permalink: /using-kafka/
-redirect_from:
-  - /using_kafka.html
-sitemap:
-    priority: 0.7
-    lastmod: 2019-10-30T00:00:00-00:00
----
-
-# <i class="fa fa-envelope"></i> Kafkaの使用
-
-## 機能
-=======
-title: Using Kafka
 slug: /using-kafka/
 last_update:
   date: 2019-10-30T00:00:00-00:00
 ---
 
-## Features
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-kafka.mdx
+# <i class="fa fa-envelope"></i> Kafkaの使用
+
+## 機能
 
 [Kafka](http://kafka.apache.org/)は人気のあるパブリッシュ/サブスクライブ型メッセージングシステムです。JHipsterはKafkaをオプションでサポートしており、次のことを実現します。
 
-<<<<<<< HEAD:pages/using_kafka.md
 - [Kafkaクライアント](https://docs.confluent.io/5.3.1/clients/consumer.html#java-client)をJHipsterで構成します。
 - `application-*.yml`に必要な設定を追加します。
 - Docker Compose設定ファイルを生成します。これによりKafkaが `docker-compose -f src/main/docker/kafka.yml up -d`で使用可能となります。
-=======
-- Configure [Kafka clients](https://docs.confluent.io/5.3.1/clients/consumer.html#java-client) with JHipster.
-- Add the necessary configuration in the `application-*.yml`
-- Generate a Docker Compose configuration file, so Kafka is usable by typing 
-  ```shell
-  docker-compose -f src/main/docker/kafka.yml up -d
-  ```
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-kafka.mdx
 
 ## 前提条件
 
@@ -54,12 +30,7 @@ docker-compose -f src/main/docker/kafka.yml up -d
 
 プロデューサ（`<appName>KafkaProducer`クラス）も使用でき、RESTエンドポイント（`<appName>KafkaResource`クラス）を介して呼び出すことができます。
 
-<<<<<<< HEAD:pages/using_kafka.md
 ## アプリケーションの実行
-=======
-
-## Running the app
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-kafka.mdx
 
 `SecurityConfiguration.java`においてエンドポイントへのアクセスを許可します。
 
@@ -67,8 +38,4 @@ docker-compose -f src/main/docker/kafka.yml up -d
 .antMatchers("/api/<appName>-kafka/publish").permitAll()
 ```
 
-<<<<<<< HEAD:pages/using_kafka.md
 エンドポイント`http://localhost:8080/api/<appName>-kafka/publish?message=...`を呼び出すと、コンソールにメッセージが記録されるはずです。
-=======
-If you invoke the endpoint `http://localhost:8080/api/<appName>-kafka/publish?message=...`, you should see the message logged to the console.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-kafka.mdx

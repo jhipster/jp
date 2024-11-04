@@ -22,14 +22,14 @@ export default function WhoUsesWithSearch() {
     <section>
       <SearchInput
         value={query}
-        placeholder="Filter by name or keyword"
+        placeholder="名前またはキーワードによるフィルタリング"
         onInput={handleSearch}
       />
 
       <Tabs className={styles.sectionTabs} lazy>
         <TabItem
           value="featured"
-          label={`Featured ${featuredUsers.length}`}
+          label={`注目 ${featuredUsers.length}`}
           default
         >
           <ul className={styles.sectionFeaturedList}>
@@ -41,7 +41,7 @@ export default function WhoUsesWithSearch() {
           </ul>
         </TabItem>
 
-        <TabItem value="all" label={`All ${allUsers.length}`}>
+        <TabItem value="all" label={`全て ${allUsers.length}`}>
           <ul className={styles.sectionAllList}>
             {allUsers.map((company, idx) => (
               <li key={`all-${idx}`}>

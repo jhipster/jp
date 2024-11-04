@@ -29,8 +29,8 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'ja',
+    locales: ['ja'],
   },
 
   presets: [
@@ -99,21 +99,21 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'docsSidebar',
           position: 'right',
-          label: 'Docs',
+          label: 'ドキュメント',
         },
         {
           to: '/modules/marketplace/',
-          label: 'Marketplace',
+          label: 'マーケットプレイス',
           position: 'right',
         },
         {
           to: '/team/',
-          label: 'Team',
+          label: 'チーム',
           position: 'right',
         },
         {
           to: '/sponsors/',
-          label: 'Sponsors',
+          label: 'スポンサー',
           position: 'right',
         },
         {

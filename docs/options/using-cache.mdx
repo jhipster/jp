@@ -1,25 +1,13 @@
 ---
-<<<<<<< HEAD:pages/using_cache.md
-layout: default
 title: キャッシュの使用
-permalink: /using-cache/
-sitemap:
-    priority: 0.7
-    lastmod: 2017-02-10T18:40:00-00:00
----
-
-# <i class="fa fa-line-chart"></i> キャッシュの使用
-
-JHipsterでは、キャッシュは2つのレベルで使用できます。
-=======
-title: Using a cache
 slug: /using-cache/
 last_update:
   date: 2017-02-10T18:40:00-00:00
 ---
 
-A cache can be used at two levels in JHipster:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
+# <i class="fa fa-line-chart"></i> キャッシュの使用
+
+JHipsterでは、キャッシュは2つのレベルで使用できます。
 
 - Spring Cache抽象化を使用します。これは、アプリケーションが生成されるときの個別の質問にあり、Spring Bootの`@EnableCaching`アノテーションを使用します。これは、特定のビジネスニーズに合わせて調整する必要があり、Hibernateの第2レベルのキャッシュよりも高いレベルで動作します。
 - Hibernateの第2レベルのキャッシュを使用します。アプリケーションのパフォーマンスを大幅に向上させることができるキャッシュソリューションであり、JHipsterで一般的に行われている振る舞いです。このオプションは、SQLデータベースで、Spring Cacheの使用を選択した場合にのみ使用できます。
@@ -39,17 +27,9 @@ JHipsterは、次のキャッシュ実装をサポートしています。
 
 詳細は以下のとおりです。
 
-<<<<<<< HEAD:pages/using_cache.md
 ## 共通の構成
 
-キャッシュは`CacheConfiguration`クラスで構成され、JHipster[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)を使用しての調整もできます。
-=======
-
-## Common configuration
-
-Caches are configured in the `CacheConfiguration` class, and can also be tuned using the JHipster [common application properties](/common-application-properties/).
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
+キャッシュは`CacheConfiguration`クラスで構成され、JHipster[共通アプリケーションプロパティ](/common-application-properties/)を使用しての調整もできます。
 
 ## Ehcacheを使ったキャッシング
 
@@ -57,22 +37,13 @@ Caches are configured in the `CacheConfiguration` class, and can also be tuned u
 
 JHipsterではEhcacheは分散キャッシュとして動作できません。新しいノードをプログラムで追加できるAPIがないためです。
 
-<<<<<<< HEAD:pages/using_cache.md
-Ehcacheは、JHipsterの[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)の2つのプロパティ（`time-to-live-seconds`および`max-entries`）を定義する`CacheConfiguration`Spring configuration beanで構成されます。アプリケーション固有の`ApplicationProperties`Spring configuration beanには、さらにプロパティを追加できます。
-=======
-Ehcache is configured in the `CacheConfiguration` Spring configuration bean, which defines 2 properties (`time-to-live-seconds` and `max-entries`) in the JHipster [common application properties](/common-application-properties/). More properties can be added in your application's specific `ApplicationProperties` Spring configuration bean.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
+Ehcacheは、JHipsterの[共通アプリケーションプロパティ](/common-application-properties/)の2つのプロパティ（`time-to-live-seconds`および`max-entries`）を定義する`CacheConfiguration`Spring configuration beanで構成されます。アプリケーション固有の`ApplicationProperties`Spring configuration beanには、さらにプロパティを追加できます。
 
 デフォルトでは、`time-to-live-seconds`のデフォルト値は、`dev`モードと`prod`モードの両方で3600秒（1時間）です。また、`max-entries`のデフォルト値は、`dev`モードで100エントリ、`prod`モードで1,000エントリです。
 
 これらの値は、特定のビジネス・ニーズに応じてチューニングする必要があります。JHipster監視画面は、アプリケーションでのキャッシュの使用状況をよりよく理解するのに役立ちます。これらの値を調整するには、Ehcacheのドキュメントも参照してください。
 
-<<<<<<< HEAD:pages/using_cache.md
 ## Caffeineによるキャッシング
-=======
-
-## Caching with Caffeine
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
 
 [Caffeine](https://github.com/ben-manes/caffeine)は、[ハイパフォーマンス](https://github.com/ben-manes/caffeine/wiki/Benchmarks)、[準最適](https://github.com/ben-manes/caffeine/wiki/Efficiency)キャッシュライブラリであり、JHipsterのモノリスで使用するためのEhcacheの代替です。
 
@@ -84,24 +55,13 @@ Jhipsterは、Ehcacheと同じCaffeineのデフォルト設定を生成します
 
 - [`TypesafeConfigurator`](https://github.com/ben-manes/caffeine/blob/master/jcache/src/main/java/com/github/benmanes/caffeine/jcache/configuration/TypesafeConfigurator.java)は[`reference.conf`](https://github.com/ben-manes/caffeine/blob/master/jcache/src/main/resources/reference.conf)とともに、サポートされているすべてのCaffeineプロパティへの参照として使用できます。
 
-<<<<<<< HEAD:pages/using_cache.md
 ## Hazelcastを使ったキャッシング
-=======
-
-## Caching with Hazelcast
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
 
 [Hazelcast](https://hazelcast.com/)は（Ehcacheのように）ローカルキャッシュとして動作できますが、分散キャッシュとしても動作できます。その結果、次のようになります。
 
-<<<<<<< HEAD:pages/using_cache.md
 - マイクロサービスがスケールすることを考慮し、マイクロサービスのデフォルトオプションとなります。
-- ゲートウェイがスケールすることを考慮し、ゲートウェイのデフォルトオプションとなります。Hazelcastは[ゲートウェイのレート制限情報]({{ site.url }}/api-gateway/#rate_limiting)を配信するために使用されます。
-- モノリス内で使用される場合、Hazelcastは、スケールするために[JHipster Registry]({{ site.url }}/jhipster-registry/)を手動で設定する必要があります。
-=======
-- It is the default option for microservices, as we expect microservices to scale
-- It is the default option for gateways, as we expect them to scale, and as Hazelcast is used to distribute the [gateway rate-limiting information](/api-gateway/#rate-limiting)
-- When used within a monolith, Hazelcast needs to have the [JHipster Registry](/jhipster-registry/) configured manually in order to scale
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
+- ゲートウェイがスケールすることを考慮し、ゲートウェイのデフォルトオプションとなります。Hazelcastは[ゲートウェイのレート制限情報](/api-gateway/#rate_limiting)を配信するために使用されます。
+- モノリス内で使用される場合、Hazelcastは、スケールするために[JHipster Registry](/jhipster-registry/)を手動で設定する必要があります。
 
 アプリケーションをスケールさせるために、Hazelcastは設定されたサービスディスカバリを使用して新しいノードを見つけ、水平にスケールします。マイクロサービスとゲートウェイでは、これはJHipster RegistryとConsulの両方で動作し、モノリスでは手動で設定したJHipster Registryでのみ動作します。
 
@@ -119,34 +79,18 @@ Member [172.18.0.11]:5701 - 6114ae28-56cd-4840-a575-4d73a6003744
 
 Hazelcastとうまく連携するために、JHipsterにはHazelcast Management Centerのサポートが含まれています。
 
-<<<<<<< HEAD:pages/using_cache.md
 - これは独自の製品であるため、無料で監視できるのは2つのノードのみであることに注意してください。しかし、アプリケーションのテストとしては十分です。
-- これは、JHipster[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)を使用し、キー`jhipster.cache.hazelcast.management-center`を使用して、`application-dev.yml`および`application-prod.yml`ファイルに設定されます。デフォルトではオフになっています。
-- JHipsterは、Hazelcast Management Centerを実行するためのDocker Compose設定を生成します。[Docker Composeドキュメント]({{ site.url }}/docker-compose/)を読み、`docker-compose -f src/main/docker/hazelcast-management-center.yml up -d`を使用してアプリケーションを実行してください。
-=======
-- Please note that you can only monitor 2 nodes for free, as this is a proprietary product. But that's already enough for testing your application.
-- It is configured using JHipster [common application properties](/common-application-properties/), using the key `jhipster.cache.hazelcast.management-center`, in your `application-dev.yml` and `application-prod.yml` files. Please note that it is turned off by default.
-- JHipster generates a Docker Compose configuration to run the Hazelcast Management Center. Please read our [Docker Compose documentation](/docker-compose/), and run the application using `docker-compose -f src/main/docker/hazelcast-management-center.yml up -d`.
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
+- これは、JHipster[共通アプリケーションプロパティ](/common-application-properties/)を使用し、キー`jhipster.cache.hazelcast.management-center`を使用して、`application-dev.yml`および`application-prod.yml`ファイルに設定されます。デフォルトではオフになっています。
+- JHipsterは、Hazelcast Management Centerを実行するためのDocker Compose設定を生成します。[Docker Composeドキュメント](/docker-compose/)を読み、`docker-compose -f src/main/docker/hazelcast-management-center.yml up -d`を使用してアプリケーションを実行してください。
 
 ## Infinispanによるキャッシング
 
-<<<<<<< HEAD:pages/using_cache.md
 [Infinispan](http://infinispan.org/)は、インメモリ・ローカル・キャッシュおよびクラスタ・キャッシュとして機能する、高性能なキャッシュ・ソリューションです。複数のキャッシュ・モードをサポートしています。
   - [ローカル](https://infinispan.org/docs/9.4.x/user_guide/user_guide.html#local_mode)
   - [無効化](http://infinispan.org/docs/9.4.x/user_guide/user_guide.html#invalidation_mode)
   - [分散](http://infinispan.org/docs/9.4.x/user_guide/user_guide.html#replicated_mode)
   - [複製](http://infinispan.org/docs/9.4.x/user_guide/user_guide.html#distribution_mode)
   - [散在](https://infinispan.org/docs/9.4.x/user_guide/user_guide.html#scattered_mode)
-=======
-[Infinispan](https://infinispan.org/) is a highly performant caching solution that can work as an in-memory local cache as well as clustered cache. It offers support for multiple cache modes:
-  - [Local](https://infinispan.org/docs/9.4.x/user_guide/user_guide.html#local_mode)
-  - [Invalidation](https://infinispan.org/docs/9.4.x/user_guide/user_guide.html#invalidation_mode)
-  - [Distributed](https://infinispan.org/docs/9.4.x/user_guide/user_guide.html#replicated_mode)
-  - [Replicated](https://infinispan.org/docs/9.4.x/user_guide/user_guide.html#distribution_mode)
-  - [Scattered](https://infinispan.org/docs/9.4.x/user_guide/user_guide.html#scattered_mode)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
 
 JHipsterでは以下の用途でInfinispanを使用できます。
 
@@ -161,22 +105,13 @@ JHipsterでは以下の用途でInfinispanを使用できます。
   - **dist-app-data**：ノード間（分散レプリカ数によって決定されるコピーの数分）でデータを分散キャッシュする場合
   - **repl-app-data**：ノード間でデータをレプリケートする場合
 
-<<<<<<< HEAD:pages/using_cache.md
-JHipsterの[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)を使用すると、キャッシュ内の個々の操作モードのそれぞれに対する削除、存続可能時間、最大エントリ、および分散モードのレプリカ数を調整できます。アプリケーション固有のキャッシュの場合は`jhipster.cache.infinispan`のプロパティを、Hibernateの第2レベルのキャッシュの場合は`spring.jpa.properties`のプロパティを調整してください。
-=======
-Eviction, time-to-live and max-entries for each of the individual operation mode in the cache and the replica count for the distributed mode can be fine-tuned using the JHipster [common application properties](/common-application-properties/). Fine tune the properties in `jhipster.cache.infinispan` for application-specific caching and `spring.jpa.properties` for Hibernate's 2nd level cache.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
+JHipsterの[共通アプリケーションプロパティ](/common-application-properties/)を使用すると、キャッシュ内の個々の操作モードのそれぞれに対する削除、存続可能時間、最大エントリ、および分散モードのレプリカ数を調整できます。アプリケーション固有のキャッシュの場合は`jhipster.cache.infinispan`のプロパティを、Hibernateの第2レベルのキャッシュの場合は`spring.jpa.properties`のプロパティを調整してください。
 
 JHipsterレジストリが有効になっている場合、ノードリストはレジストリから設定されます。JHipsterレジストリが有効になっていない場合、ノードのディスカバリはInfinispan Jar内にパッケージ化された`config-file`で定義されたデフォルトのトランスポート設定に基づいて行われます。Infinispanは、Kubernets/OpenShift、AWS、Azure、Googleなど、ほとんどのプラットフォームでディスカバリをネイティブにサポートしています。
 
 Infinispan 9.0.0.Final GA以降のリリースでは、ネイティブのKUBE_PINGディスカバリを使用して、KubernetesおよびOpenShiftでInfinispan組み込みキャッシングアプリケーションを実行するためのサポートが追加されましたが、Hibernateの依存関係はまだ9.xリリースに更新されていないため、ネイティブディスカバリはKubernetesおよびOpenShiftではサポートされていません。ただし、インスタンスディスカバリにJHipsterレジストリを使用することで、アプリケーションを実行できます。
 
-<<<<<<< HEAD:pages/using_cache.md
 ## Memcachedを使ったキャッシング
-=======
-
-## Caching with Memcached
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
 
 [Memcached](https://memcached.org/)はオープンソースの分散キャッシュです。これは、JHipsterがサポートする他のキャッシュ実装とは大きく異なります。
 
@@ -184,11 +119,7 @@ Infinispan 9.0.0.Final GA以降のリリースでは、ネイティブのKUBE_PI
 - Memcachedはリモートサーバでのみ動作し、ローカルキャッシュはありません。そのため、オブジェクトは常にシリアライズ/デシリアライズされ、ネットワークを通過します。つまり、メモリに収まる小さいオブジェクト集合の場合は、効率が低くなる可能性があります。
 - スケーラビリティがあり、操作が手軽です。Heroku、GCP、AWSなどのほとんどの大手クラウドプロバイダは、Memcachedをサポートしています。そのため、他のキャッシュ実装を使用するよりも、分散できる（かつ手軽な）Memcachedクラスタを使用する方がはるかに簡単です。
 
-<<<<<<< HEAD:pages/using_cache.md
-JHipsterは、Memcachedで一般的に使われる[Xmemcached](https://github.com/killme2008/xmemcached)のJavaクライアントを使用し、通常のJHipster[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)を使用して最も重要なプロパティを設定します。
-=======
-JHipster uses the popular [Xmemcached](https://github.com/killme2008/xmemcached) Java client for Memcached, and configures its most important properties using the usual JHipster [common application properties](/common-application-properties/).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
+JHipsterは、Memcachedで一般的に使われる[Xmemcached](https://github.com/killme2008/xmemcached)のJavaクライアントを使用し、通常のJHipster[共通アプリケーションプロパティ](/common-application-properties/)を使用して最も重要なプロパティを設定します。
 
 各キャッシュは、`CacheConfiguration`configuration bean内で特定のSpring Beanとして構成する必要があることに注意してください。
 
@@ -196,12 +127,7 @@ Memcachedはクラスローダー内のオブジェクトをシリアライズ/�
 
 JHipsterではいつものように、Docker Compose設定が提供されているので、マシン上でMemcachedサーバを起動できます。これを使用するには、`docker-compose -f src/main/docker/memcached.yml up -d`を実行してください。
 
-<<<<<<< HEAD:pages/using_cache.md
 ## Redisによるキャッシング
-=======
-
-## Caching with Redis
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-cache.mdx
 
 [Redis](https://redis.io/)はオープンソースのインメモリデータ構造ストアであり、パフォーマンスの高いキャッシングソリューションとして使用できます。構成に応じて、Redisを単一のサーバノードとして使用するか、分散キャッシュとして使用するかを選択できます。
 

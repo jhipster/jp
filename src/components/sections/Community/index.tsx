@@ -31,14 +31,14 @@ export default function Community({ color }: Props) {
 
   return (
     <SectionWrapper className={clsx(sectionVariants({ color }))}>
-      <SectionTitle>Community</SectionTitle>
+      <SectionTitle>コミュニティ</SectionTitle>
 
       <SectionDescription>
         <p>
-          JHipster is Open Source, and all development is done on GitHub. If you
-          JHipster consider becoming a sponsor or a backer. If you want to code
-          with us, feel free to join! If you like the project, please give us a
-          ⭐️ on GitHub.
+          JHipsterはオープンソースであり、すべての開発はGitHubで行われています。
+          JHipsterを支援したいとお考えの場合、スポンサーや支援者になることを検討してください。
+          私たちとコーディングしたい場合は、お気軽にご参加ください！
+          プロジェクトが気に入ったら、Githubで ⭐️ をお願いします。
         </p>
       </SectionDescription>
 
@@ -46,22 +46,22 @@ export default function Community({ color }: Props) {
         <li>
           <CommunityCard
             value={`${npmDownloads.downloads}`}
-            text="Downloads in last 30 days"
+            text="最近の30日間のダウンロード数"
           />
         </li>
         <li>
           <CommunityCard
             value={`${githubConfig.stargazers_count}`}
-            text="GitHub Stars"
+            text="GitHub スター数"
           />
         </li>
         <li>
-          <CommunityCard value="600" text="Contributors" postfix="+" />
+          <CommunityCard value="600" text="コントリビューター数" postfix="+" />
         </li>
       </ul>
 
       <div className={styles.sectionButtons}>
-        <GithubButton>Join us on GitHub</GithubButton>
+        <GithubButton>GitHubで参加する</GithubButton>
       </div>
     </SectionWrapper>
   );

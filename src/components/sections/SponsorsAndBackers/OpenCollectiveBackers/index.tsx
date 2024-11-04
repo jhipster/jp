@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 
 export default function OpenCollectiveBackers() {
   return (
-    <OpenCollectiveWrapper title="Thank you to all our backers!">
+    <OpenCollectiveWrapper title="すべての後援者に感謝いたします！">
       <div className={styles.section}>
         {/* shown in large screens only */}
         <object

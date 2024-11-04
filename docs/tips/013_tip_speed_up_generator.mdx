@@ -1,10 +1,7 @@
 ---
-<<<<<<< HEAD:tips/013_tip_speed_up_generator.md
-layout: default
 title: generator-jhipsterの速度を上げる
-sitemap:
-priority: 0.5
-lastmod: 2016-05-15T22:22:00-00:00
+last_update:
+  date: 2016-05-15T22:22:00-00:00
 ---
 
 # generator-jhipsterの速度を上げる
@@ -12,21 +9,6 @@ lastmod: 2016-05-15T22:22:00-00:00
 __このTipは[@pascalgrimaud](https://github.com/pascalgrimaud)から提出されました__
 
 **警告!** npm 3+はsymlinkを使用しているため、これらのヒントは機能しません。
-=======
-title: Speed up the generator-jhipster
-slug: /tips/013_tip_speed_up_generator.html
-last_update:
-  date: 2016-05-15T22:22:00-00:00
----
-
-__Tip submitted by [@pascalgrimaud](https://github.com/pascalgrimaud)__
-
-:::warning
-
-Those tips don't work for npm 3+ because it uses symlink.
-
-:::
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/013_tip_speed_up_generator.mdx
 
 generator-jhipsterを使用する場合、接続速度によっては、コマンド`npm install`に数分かかることがあります。
 
@@ -36,12 +18,7 @@ generator-jhipsterを使用する場合、接続速度によっては、コマ�
 - 開発チームの場合、`.yo-rc.json`を使用してプロジェクトをより迅速に再生成します
 - 継続的インテグレーション
 
-<<<<<<< HEAD:tips/013_tip_speed_up_generator.md
 ## node_modulesの新しいプロジェクトを作成する
-=======
-
-## Create a new project for node_modules
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/013_tip_speed_up_generator.mdx
 
 すべての`node_modules`ライブラリを含むディレクトリを作成し、その中に移動します。
 
@@ -58,15 +35,12 @@ mkdir -p node_modules
 
 プロジェクト構造は次のとおりです。
 
-<<<<<<< HEAD:tips/013_tip_speed_up_generator.md
     jhipster-speedup
     ├── node_modules
 
 
 **警告!** この次のコマンドは、あなたがJHipsterの開発者である場合にのみ使用してください。これはgenerator-jhipsterをあなたのフォークプロジェクトにリンクします。
 
-=======
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/013_tip_speed_up_generator.mdx
 ```
 jhipster-speedup
 ├── node_modules
@@ -82,12 +56,7 @@ Use this next command only if your are a developer on JHipster. It will link to 
 npm link generator-jhipster
 ```
 
-<<<<<<< HEAD:tips/013_tip_speed_up_generator.md
 ## プロジェクトの生成
-=======
-
-## Generating projects
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/013_tip_speed_up_generator.mdx
 
 新しいJHipsterプロジェクトを格納するディレクトリを作成し、そのディレクトリに移動します。
 
@@ -112,14 +81,5 @@ jhipster
 
 次回は既存の`node_modules`ディレクトリを使用するので、npmはすべてのライブラリをダウンロードするわけではありません。
 
-<<<<<<< HEAD:tips/013_tip_speed_up_generator.md
 **警告!**特定のライブラリを使用してpackage.jsonを変更する場合は、リンクを使用するのではなく、
 jhipster-speedupからフォルダプロジェクトに`node_modules`をコピーする必要があります。
-=======
-:::warning
-
-If you use specific libraries and modify your package.json, you should copy the `node_modules`
-from jhipster-speedup to your folder project, instead of using a link.
-
-:::
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/013_tip_speed_up_generator.mdx

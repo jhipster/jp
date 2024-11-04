@@ -1,24 +1,12 @@
 ---
-<<<<<<< HEAD:tips/017_tip_repl_with_the_remote_shell.md
-layout: default
 title: リモートシェルとのREPL
-sitemap:
-priority: 0.5
-lastmod: 2016-09-22T22:22:00-00:00
+last_update:
+  date: 2016-09-22T22:22:00-00:00
 ---
 
 # リモートシェルとのREPL
 
 __このTipは[@cbornet](https://github.com/cbornet)によって提出されました__
-=======
-title: REPL with the remote shell
-slug: /tips/017_tip_repl_with_the_remote_shell.html
-last_update:
-  date: 2016-09-22T22:22:00-00:00
----
-
-__Tip submitted by [@cbornet](https://github.com/cbornet)__
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/017_tip_repl_with_the_remote_shell.mdx
 
 **Spring BootリモートシェルはSpring Boot 2.0で削除されるので、このヒントは非推奨です**
 
@@ -38,31 +26,19 @@ Spring Bootのドキュメントに記載されていないもう1つの優れ�
 ssh -p2000 admin@localhost
 ```
 
-<<<<<<< HEAD:tips/017_tip_repl_with_the_remote_shell.md
   * 接続したら、Groovy REPLモードに切り替えます。
-=======
-* Once connected, switch to Groovy REPL mode:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/017_tip_repl_with_the_remote_shell.mdx
 
 ```shell
 > repl groovy
 ```
 
-<<<<<<< HEAD:tips/017_tip_repl_with_the_remote_shell.md
   * BeanFactoryを入手します。
-=======
-* Get the BeanFactory:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/017_tip_repl_with_the_remote_shell.mdx
 
 ```shell
 > bf = context.attributes['spring.beanfactory']
 ```
 
-<<<<<<< HEAD:tips/017_tip_repl_with_the_remote_shell.md
   * これで、BeanFactoryを使用してSpring Beanを取得し、そのメソッドを呼び出すことができます。
-=======
-* Now you can use the BeanFactory to get Spring beans and call their methods:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/017_tip_repl_with_the_remote_shell.mdx
 
 ```shell
 > bf.getBean('userRepository').findAll().login

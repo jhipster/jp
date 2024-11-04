@@ -1,38 +1,21 @@
 ---
-<<<<<<< HEAD:pages/entities-filtering.md
-layout: default
 title: フィルタリング
-permalink: /entities-filtering/
-sitemap:
-    priority: 0.7
-    lastmod: 2017-08-22T00:00:00-00:00
----
-
-# <i class="fa fa-filter"></i> エンティティのフィルタリング
-
-## 導入
-=======
-title: Filtering your entities
 slug: /entities-filtering/
 last_update:
   date: 2017-08-22T00:00:00-00:00
 ---
 
-## Introduction
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/entities-filtering.mdx
+# <i class="fa fa-filter"></i> エンティティのフィルタリング
+
+## 導入
 
 基本的なCRUD機能がエンティティに実装された後、エンティティの属性に対してさまざまなフィルタを作成したいという、非常に一般的な要求があります。
 これにより、サーバをより効果的に使用できるようになります。これらのフィルタは、すべてのクライアント（およびすべてのブラウザ）がそれを使用できるように、リクエストパラメータとして送信される必要があります。
 さらに、これらのフィルタは、合理的で簡潔なパターンに従う必要があり、自由に組み合わせることができなければなりません。
 ## アクティブにする方法
 
-<<<<<<< HEAD:pages/entities-filtering.md
 _注意_：`filter`は`reactive`と互換性がありません。
 `jhipster entity`コマンドを使用してエンティティを生成する際に、サービスまたはサービス実装を選択して、このエンティティのフィルタリングを有効にします。
-=======
-
-## How to activate
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/entities-filtering.mdx
 
 既存のエンティティのフィルタを有効にする場合は、プロジェクトの`.jhipster`ディレクトリでエンティティ構成を変更します。変更するには、`service`を`serviceClass`に、または`serviceImpl`を`no`とし、`jpaMetamodelFiltering`を`true`に設定して、`jhipster entity <エンティティ名>`で再生成します。
 
@@ -40,12 +23,7 @@ JDLを使用する場合は、JDLファイルに行`filter <エンティティ�
 
 ## パブリック・インタフェース
 
-<<<<<<< HEAD:pages/entities-filtering.md
 エンティティごとに、エンティティジェネレータでフィルタリングを有効にできます。その後、次のパラメータを使用して`/api/my-entity`GETエンドポイントを呼び出すことができます。
-=======
-
-## Public interface
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/entities-filtering.mdx
 
 * 各*xyz*フィールド用
     * *xyz.equals=someValue*
@@ -88,7 +66,6 @@ JDLを使用する場合は、JDLファイルに行`filter <エンティティ�
 
 Angularを使用する場合、この便利な機能を利用する適切な方法は、次のようになります。
 
-<<<<<<< HEAD:pages/entities-filtering.md
 * Equals（`contains`と`notEquals`にも当てはまります）
 ```javascript
 this.bookService.query({'title.equals':someValue}).subscribe(...);
@@ -100,19 +77,6 @@ this.bookService.query({'birthday.lessThanOrEqual':value}).subscribe(...);
 ```
 * In（`notIn`にも当てはまります）
 ```javascript
-=======
-* Equals (same applies for `contains` and `notEquals`)
-```js
-this.bookService.query({'title.equals':someValue}).subscribe(...);
-```
-* greaterThan (same applies for `lessThan`, `greaterThanOrEqual` and `lessThanOrEqual` when using `date` and `number` data types)
-```js
-this.bookService.query({'id.greaterThan':value}).subscribe(...);
-this.bookService.query({'birthday.lessThanOrEqual':value}).subscribe(...);
-```
-* In (same applies for `notIn`)
-```js
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/entities-filtering.mdx
 this.bookService.query({'id.in':[value1, value2]}).subscribe(...);
 ```
 * Specified

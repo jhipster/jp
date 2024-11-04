@@ -1,24 +1,12 @@
 ---
-<<<<<<< HEAD:tips/030_tip_redis_replication.md
-layout: default
 title: Redisリーダーフォロワー（マスタ/スレーブ）レプリケーションの設定
-sitemap:
-priority: 0.1
-lastmod: 2020-03-23T12:30:00-00:00
+last_update:
+  date: 2020-03-23T12:30:00-00:00
 ---
 
 # Redisリーダーフォロワー（マスタ/スレーブ）レプリケーションの設定
 
 **このTipは[@zhx828](https://github.com/zhx828)によって提出されました**
-=======
-title: Configure Redis leader follower(master-slave) replication
-slug: /tips/030_tip_redis_replication.html
-last_update:
-  date: 2020-03-23T12:30:00-00:00
----
-
-**Tip submitted by [@zhx828](https://github.com/zhx828)**
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/030_tip_redis_replication.mdx
 
 最新のJHipsterジェネレータでは、プロダクションデプロイメントのためのRedisクラスタ設定を提供しています。しかし、多くの場合、小規模なプロジェクトではそれが過剰になる可能性があります。このドキュメントでは、Redisリーダーフォロワー（マスタ/スレーブ）レプリケーションを設定するためのソリューションを提供します。Redisレプリケーションの詳細については、[**ここ**](https://redis.io/topics/replication)を参照してください。
 
@@ -27,14 +15,8 @@ last_update:
 
 ## ステップ1
 
-<<<<<<< HEAD:tips/030_tip_redis_replication.md
 ファイル`RedisProperties.java`を追加します。
 ```
-=======
-Add file `RedisProperties.java`:
-
-```java
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/030_tip_redis_replication.mdx
 public class RedisProperties {
     String type;
     String password;
@@ -75,18 +57,9 @@ public class RedisProperties {
 }
 ```
 
-<<<<<<< HEAD:tips/030_tip_redis_replication.md
 ## ステップ2
 RedisPropertiesを`ApplicationProperties.java`に追加します。
 ```
-=======
-
-## Step 2
-
-Add RedisProperties to `ApplicationProperties.java`
-
-```java
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/030_tip_redis_replication.mdx
 public class ApplicationProperties {
     ...
 
@@ -103,14 +76,8 @@ public class ApplicationProperties {
 }
 ```
 
-<<<<<<< HEAD:tips/030_tip_redis_replication.md
 ## ステップ3
 ファイル`CacheConfiguration.java`、メソッド`jcacheConfiguration`を更新します。これらの変更は、現在のクラスタ設定と組み合わせて行う必要があります。
-=======
-## Step 3
-
-Update the file `CacheConfiguration.java`, method `jcacheConfiguration`. These changes have to be combined with the current cluster setup.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/030_tip_redis_replication.mdx
 
 ```java
 if (applicationProperties.getRedis().getType().equals(RedisType.SINGLE.getType())) {
@@ -127,18 +94,9 @@ if (applicationProperties.getRedis().getType().equals(RedisType.SINGLE.getType()
 }
 ```
 
-<<<<<<< HEAD:tips/030_tip_redis_replication.md
 ## ステップ4
 単一サーバーを使用するように`application-dev.yml`を更新します。
 ```
-=======
-
-## Step 4
-
-Update `application-dev.yml` to use single server
-
-```yaml
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/030_tip_redis_replication.mdx
 application:
   profile: dev
   redis:
@@ -149,18 +107,9 @@ application:
 
 ```
 
-<<<<<<< HEAD:tips/030_tip_redis_replication.md
 ## ステップ5
 マスタ/スレーブサーバーを使用するように`application-prod.yml`を更新します。
 ```
-=======
-
-## Step 5
-
-Update `application-prod.yml` to use master-slave servers
-
-```yaml
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/030_tip_redis_replication.mdx
 application:
   profile: prod
   redis:

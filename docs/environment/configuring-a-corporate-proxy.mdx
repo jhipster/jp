@@ -1,38 +1,19 @@
 ---
-<<<<<<< HEAD:pages/configuring_a_corporate_proxy.md
-layout: default
 title: 企業向けプロキシの設定
-permalink: /configuring-a-corporate-proxy/
-redirect_from:
-  - /configuring_a_corporate_proxy.html
-sitemap:
-    priority: 0.7
-    lastmod: 2016-08-18T08:00:00-00:00
----
-
-# <i class="fa fa-exchange"></i> 企業向けプロキシの設定
-
-JHipsterを企業内で使用する場合、企業内プロキシをバイパスするように全てのツールを設定する必要があります。
-=======
-title: Configuring a corporate proxy
 slug: /configuring-a-corporate-proxy/
 last_update:
   date: 2016-08-18T08:00:00-00:00
 ---
 
-When JHipster is used in a company, you probably will need to configure all tools to bypass the corporate proxy.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-a-corporate-proxy.mdx
+# <i class="fa fa-exchange"></i> 企業向けプロキシの設定
+
+JHipsterを企業内で使用する場合、企業内プロキシをバイパスするように全てのツールを設定する必要があります。
 
 `HTTP_PROXY`と`HTTPS_PROXY`の環境変数を設定するか、または[Cntlm](http://cntlm.sourceforge.net/)のようなツールを使う方法があります。
 
 しかし、これだけではおそらく不十分で、JHipsterで使用するすべてのツールを個別に設定する必要があります。
 
-<<<<<<< HEAD:pages/configuring_a_corporate_proxy.md
 ## はじめに
-=======
-
-## Introduction
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-a-corporate-proxy.mdx
 
 以下のようなプロキシが定義されているとします。
 
@@ -45,12 +26,7 @@ When JHipster is used in a company, you probably will need to configure all tool
 
 [Cntlm](http://cntlm.sourceforge.net/)を使う場合は、`127.0.0.1:3128`のような設定になります。それ以外の場合は、次の手順で各ツールを個別に設定してください。
 
-<<<<<<< HEAD:pages/configuring_a_corporate_proxy.md
 ## NPMの設定
-=======
-
-## NPM configuration
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-a-corporate-proxy.mdx
 
 以下のコマンドを使用します。
 
@@ -67,7 +43,6 @@ https-proxy=http://username:password@host:port
 https_proxy=http://username:password@host:port
 ```
 
-<<<<<<< HEAD:pages/configuring_a_corporate_proxy.md
 ## Npmの設定
 
 以下のコマンドを使用します。
@@ -76,8 +51,6 @@ https_proxy=http://username:password@host:port
 npm config set proxy http://username:password@host:port
 npm config set https-proxy http://username:password@host:port
 ```
-=======
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-a-corporate-proxy.mdx
 
 ## Gitの設定
 
@@ -97,12 +70,7 @@ git config --global https.proxy http://username:password@host:port
         proxy = http://username:password@host:port
 ```
 
-<<<<<<< HEAD:pages/configuring_a_corporate_proxy.md
 ## Mavenの設定
-=======
-
-## Maven configuration
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-a-corporate-proxy.mdx
 
 `~/.m2/settings.xml`ファイルの`proxies`セッションを編集します。
 
@@ -134,12 +102,7 @@ git config --global https.proxy http://username:password@host:port
 -Dhttp.proxyPassword=password
 ```
 
-<<<<<<< HEAD:pages/configuring_a_corporate_proxy.md
 ## Gradleの設定
-=======
-
-## Gradle configuration
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-a-corporate-proxy.mdx
 
 プロキシ経由でラッパーをダウンロードしている場合は、`gradle.properties`ファイルと`gradle/wrapper/gradle-wrapper.properties`ファイルに以下を追加します。
 

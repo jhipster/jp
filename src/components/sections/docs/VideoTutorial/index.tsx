@@ -5,130 +5,130 @@ export default function VideoTutorial() {
   return (
     <section>
       <div className={styles.sectionList}>
-        <ContentMediaCard title="JHipster Blog Demo" video="6lf64CctDAQ">
+        <ContentMediaCard title="JHipsterによるブログアプリ開発のデモ" video="6lf64CctDAQ">
           <p>
-            This 15-minute tutorial shows how to create a JHipster 7
-            application, work with the provided tools, use the JDL Studio to
-            create several entities with their relationships, and deploy the end
-            result to the cloud.
+            この15分間のチュートリアルでは、JHipster 7のアプリケーションを作成する方法、
+            提供されているツールの使用方法、JDL Studioを使用して
+            複数のエンティティとその関係を作成し、最終的な成果物を
+            クラウドにデプロイする方法を紹介します。
           </p>
           <p>
-            Presented by Matt Raible (
+            プレゼンター：Matt Raible (
             <a href="https://x.com/mraible">@mraible</a>)
           </p>
-          <p>Published on 30 Apr 2021</p>
+          <p>2021年4月30日公開</p>
         </ContentMediaCard>
       </div>
 
-      <h2 className={styles.sectionTitle}>Other recent JHipster videos</h2>
+      <h2 className={styles.sectionTitle}>その他の最近のJHipsterの動画</h2>
 
       <div className={styles.sectionList}>
         <ContentMediaCard
-          title="Micro Frontends for Java Microservices"
+          title="Javaによるマイクロサービスのためのマイクロフロントエンド"
           video="haTQ1xJKQQ8"
         >
           <p>
-            <a href="https://x.com/mraible">Matt Raible</a> explains what micro
-            frontends are and shows how you can use them with React, Spring
-            Boot, and JHipster microservices.
+            <a href="https://x.com/mraible">Matt Raible</a>がマイクロフロントエンド
+            とは何かを説明し、React、Spring
+            Boot、JHipsterマイクロサービスでの使用方法を紹介します。
           </p>
           <p>
-            Published on Jan 1, 2023 |{' '}
+            2023年1月1日公開 |{' '}
             <a href="https://youtube.com/oktadev">OktaDev YouTube</a>
           </p>
         </ContentMediaCard>
 
         <ContentMediaCard
-          title="What is JHipster Lite and why should you care?"
+          title="JHipster Liteとは？"
           video="RnLGnY-vzLI"
         >
           <p>
-            <a href="https://x.com/juliendubois">Julien Dubois</a> compares
-            JHipster and JHipster Lite and shows how JHipster Lite works.
+            <a href="https://x.com/juliendubois">Julien Dubois</a>が
+            JHipsterとJHipster Liteを比較し、JHipster Liteの動作を紹介します。
           </p>
           <p>
-            Published on Oct 14, 2022 |{' '}
+            2022年10月14日公開 |{' '}
             <a href="https://www.youtube.com/@DevoxxForever">Devoxx YouTube</a>
           </p>
         </ContentMediaCard>
 
         <ContentMediaCard
-          title="Build and deploy cloud native Java microservices on Kubernetes with Istio service mesh"
+          title="Istioのサービスメッシュを用いたKubernetes上でのクラウドネイティブJavaマイクロサービスのビルドとデプロイ"
           video="NucXvPL1z5o"
         >
           <p>
-            <a href="https://x.com/deepu105">Deepu K Sasidharan</a> shows how to
-            build and deploy Java microservices to the cloud using Istio,
-            Kubernetes, JHipster, and Spring Cloud.
+            <a href="https://x.com/deepu105">Deepu K Sasidharan</a>が、
+            Istio、Kubernetes、JHipster、Spring Cloudを使用して
+            Javaマイクロサービスをクラウドにビルドおよびデプロイする方法を紹介します。
           </p>
           <p>
-            Published on Oct 11, 2022 |{' '}
+            2022年10月11日公開 |{' '}
             <a href="https://www.youtube.com/@DevoxxForever">Devoxx YouTube</a>
           </p>
         </ContentMediaCard>
 
         <ContentMediaCard
-          title="Scaling Secure Applications with Spring Session and Redis"
+          title="Spring SessionとRedisによるセキュアなアプリケーションのスケーリング"
           video="3kGrkVUZ_Fo"
         >
           <p>
-            <a href="https://x.com/mraible">Matt Raible</a> shows how to
-            configure a Spring Boot application to store sessions in Redis with
-            Spring Session. The session will be shared among multiple nodes and
-            preserved when a node failure happens.
+            <a href="https://x.com/mraible">Matt Raible</a>が、
+            Spring Sessionを使用してRedisにセッションを保存するSpring
+            Bootアプリケーションの構成方法を紹介します。セッションは複数のノード間で共有され、
+            ノード障害時にも保持されます。
           </p>
           <p>
-            Published on Apr 5, 2022 |{' '}
+            2022年4月5日公開 |{' '}
             <a href="https://youtube.com/oktadev">OktaDev YouTube</a>
           </p>
         </ContentMediaCard>
 
         <ContentMediaCard
-          title="Full Stack Java with React, Spring Boot, and JHipster"
+          title="React、Spring Boot、JHipsterを使ったフルスタックJava"
           video="PECnQs5bVbQ"
         >
           <p>
-            <a href="https://x.com/mraible">Matt Raible</a> shows how to create
-            a slick-looking, full-stack, secure Java application using React,
-            Spring Boot, and JHipster.
+            <a href="https://x.com/mraible">Matt Raible</a>が、
+            React、Spring Boot、JHipsterを使用して、洗練されたフルスタックのセキュアな
+            Javaアプリケーションを作成する方法を紹介します。
           </p>
           <p>
-            Published on Jan 26, 2022 |{' '}
+            2022年1月26日公開 |{' '}
             <a href="https://youtube.com/oktadev">OktaDev YouTube</a>
           </p>
         </ContentMediaCard>
 
         <ContentMediaCard
-          title="Kubernetes to the Cloud with Spring Boot and JHipster"
+          title="Spring BootとJHipsterでKubernetesをクラウドへ"
           video="SQFl7ggNYIE"
         >
           <p>
-            <a href="https://x.com/mraible">Matt Raible</a> shows how to deploy
-            a microservices architecture to Minikube and Google Cloud with
-            Kubernetes. The architecture is developed with Spring Cloud Gateway,
-            Spring Boot, and JHipster.
+            <a href="https://x.com/mraible">Matt Raible</a>が、
+            Spring Cloud Gateway、Spring Boot、
+            JHipsterを使用して開発されたマイクロサービスアーキテクチャをMinikubeと
+            Google CloudにKubernetesでデプロイする方法を紹介します。
           </p>
           <p>
-            Published on Aug 23, 2021 |{' '}
+            2021年8月23日公開 |{' '}
             <a href="https://youtube.com/oktadev">OktaDev YouTube</a>
           </p>
         </ContentMediaCard>
 
         <ContentMediaCard
-          title="Generating Fullstack Springboot & Angular 12 Application with JHipster"
+          title="JHipsterでSpring BootとAngular 12のフルスタックアプリケーションを生成"
           video="V1g0aZtPAkw"
         >
           <p>
-            <a href="https://x.com/bloch_gaetan">Gaëtan Bloch</a> shows how to
-            generate a fullstack application with JHipster and explore the
-            different features: tests (JUnit, Jest, Integration with
-            Testcontainers, e2e with Cypress, performance with Gatling),
-            security (JWT), i18n, API documentation (OAS/Swagger), QA
-            (SonarQube, OWASP vulnerabilities check) and CI/CD pipeline (GitHub
-            Actions) and cloud deployment to Heroku.
+            <a href="https://x.com/bloch_gaetan">Gaëtan Bloch</a>が、
+            JHipsterを使用してフルスタックアプリケーションを生成し、
+            以下の機能を紹介します：テスト（JUnit、Jest、Testcontainersによる統合テスト、
+            Cypressによるエンドツーエンドテスト、Gatlingによるパフォーマンステスト）、
+            セキュリティ（JWT）、国際化、APIドキュメント化（OAS/Swagger）、品質保証
+            （SonarQube、OWASP脆弱性チェック）、CI/CDパイプライン（GitHub
+            Actions）およびHerokuへのクラウドデプロイ。
           </p>
           <p>
-            Streamed live on Aug 04, 2021 |{' '}
+            2021年8月4日にライブ配信 |{' '}
             <a href="https://geekle.us/software_architecture">
               Geekle.us Worldwide Architecture Summit Vol.2
             </a>
@@ -136,76 +136,76 @@ export default function VideoTutorial() {
         </ContentMediaCard>
 
         <ContentMediaCard
-          title="Build Reactive Java Microservices with Spring Boot and JHipster"
+          title="Spring BootとJHipsterによるリアクティブなJavaマイクロサービスの構築"
           video="clkEUHWT9-M"
         >
           <p>
-            <a href="https://x.com/mraible">Matt Raible</a> shows how to create
-            a reactive microservices architecture with Spring Boot and JHipster.
+            <a href="https://x.com/mraible">Matt Raible</a>が、
+            Spring BootとJHipsterを使ってリアクティブなマイクロサービスアーキテクチャを構築する方法を紹介します。
           </p>
           <p>
-            Published on 13 May 2021 |{' '}
+            2021年5月13日公開 |{' '}
             <a href="https://youtube.com/oktadev">OktaDev YouTube</a>
           </p>
         </ContentMediaCard>
 
-        <ContentMediaCard title="Introduction to JHipster" video="hfIIGc5lkME">
+        <ContentMediaCard title="JHipsterの紹介" video="hfIIGc5lkME">
           <p>
-            <a href="https://x.com/juliendubois">Julien Dubois</a> presents
-            about JHipster at{' '}
-            <a href="DawsCon">https://www.dawsoncollege.qc.ca/dawscon/</a>.
+            <a href="https://x.com/juliendubois">Julien Dubois</a>が
+            <a href="https://www.dawsoncollege.qc.ca/dawscon/">DawsCon</a>で
+            JHipsterを紹介しました。
           </p>
-          <p>Streamed live on Jan 15, 2021</p>
+          <p>2021年1月15日にライブ配信</p>
         </ContentMediaCard>
 
         <ContentMediaCard
-          title="Choose Your Own Adventure with JHipster and Kubernetes"
+          title="JHipsterとKubernetesで自分の冒険を選ぼう"
           video="AG4z18qePEw"
         >
           <p>
-            <a href="https://x.com/saturnism">Ray Tsang</a> and{' '}
-            <a href="https://x.com/mraible">Matt Raible</a> show how to build a
-            microservices architecture with JHipster, configure it to use Okta,
-            and deploy it with Kubernetes.
+            <a href="https://x.com/saturnism">Ray Tsang</a>と
+            <a href="https://x.com/mraible">Matt Raible</a>が
+            JHipsterでマイクロサービスアーキテクチャを構築し、Oktaの使用を設定し、
+            Kubernetesでデプロイする方法を示します。
           </p>
           <p>
-            Streamed live on Jan 13, 2021 |{' '}
+            2021年1月13日にライブ配信 |{' '}
             <a href="https://www.youtube.com/channel/UChJ6IHM_uy6dWLBiDAwYkpw">
-              JChampions Conf YouTube
+            JChampions Conf YouTube
             </a>
           </p>
         </ContentMediaCard>
 
         <ContentMediaCard
-          title="Build a Secure Micronaut and Angular App with JHipster"
+          title="JHipsterでセキュアなMicronautとAngularアプリを作る"
           video="zg2UtuD3-RE"
         >
           <p>
-            Learn how to create a secure Micronaut and Angular app with Java +
-            JHipster and deploy it to Heroku. By{' '}
-            <a href="https://x.com/mraible">Matt Raible</a>.
+            <a href="https://x.com/mraible">Matt Raible</a>が、
+            Java + JHipsterを使用してセキュアなMicronautとAngularのアプリを作成し、
+            Herokuにデプロイする方法を紹介します。
           </p>
           <p>
-            Published on Sep 17, 2020 |{' '}
+            2020年9月17日公開 |{' '}
             <a href="https://youtube.com/oktadev">OktaDev YouTube</a>
           </p>
         </ContentMediaCard>
 
         <ContentMediaCard
-          title="Convert JHipster from JWT Authentication to OAuth 2.0 / OIDC Authentication in 10 Minutes"
+          title="JHipsterをJWT認証からOAuth 2.0 / OIDC認証に10分で変更する"
           video="YIRjgd_3sMQ"
         >
           <p>
-            This screencast shows you how to convert a JHipster app from using
-            JWT for authentication to using OAuth 2.0 / OIDC. By{' '}
-            <a href="https://x.com/mraible">@mraible</a>
+          <a href="https://x.com/mraible">@mraible</a>が、このスクリーンキャストで、
+          JHipsterアプリの認証をJWTから
+          OAuth 2.0 / OIDCに変更する方法を紹介しています。
           </p>
           <p>
-            Published on 20 Sep 2019 |{' '}
+            2019年9月20日公開 |{' '}
             <a href="https://youtube.com/oktadev">OktaDev YouTube</a>
           </p>
         </ContentMediaCard>
       </div>
     </section>
   );
-}
+}         

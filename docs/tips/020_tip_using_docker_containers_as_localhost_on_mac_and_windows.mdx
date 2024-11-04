@@ -1,10 +1,7 @@
 ---
-<<<<<<< HEAD:tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.md
-layout: default
 title: Mac/WindowsでDockerコンテナをlocalhostとして使用する
-sitemap:
-priority: 0.5
-lastmod: 2016-11-15T16:00:00-00:00
+last_update:
+  date: 2016-11-15T16:00:00-00:00
 ---
 
 # Mac/WindowsでDockerコンテナをlocalhostとして使用する
@@ -12,18 +9,6 @@ lastmod: 2016-11-15T16:00:00-00:00
 __このTipは[@Akuka](https://github.com/Akuka)により提出されました__
 
 ## Linux環境のDockerとMac/Windows環境のDockerの違い
-=======
-title: Using Docker containers as localhost on Mac/Windows
-slug: /tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.html
-last_update:
-  date: 2016-11-15T16:00:00-00:00
----
-
-__Tip submitted by [@Akuka](https://github.com/Akuka)__
-
-
-## Difference between Docker on Linux and Docker on Mac/Windows environments
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.mdx
 
 OSによって、<code>DOCKER_HOST</code>は異なります。
 Linuxでは、単純にlocalhostになります。
@@ -33,22 +18,12 @@ Mac/Windowsの場合は、次のコマンドを使用して適切なIPを取得�
 docker-machine ip default
 ```
 
-<<<<<<< HEAD:tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.md
 ## 動機
-=======
-
-## Motivation
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.mdx
 
 新しいJHipsterアプリケーションを生成する場合、すべての接続構成のホスト・アドレス（例：データベース接続文字列）はデフォルトでlocalhostです。
 つまり、Dockerを使用してサービス（データベース/Elastic Search/SMTPサーバなど）を実行している場合は、アプリケーション構成ファイルを編集して、データベースのIPアドレスをlocalhostから<code>DOCKER_HOST</code>に置き換える必要があります。
 
-<<<<<<< HEAD:tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.md
 ## ポートフォワーディング
-=======
-
-## Port Forwarding
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.mdx
 
 Dockerマシンは、ホストマシンのVirtualBoxの下で動作する仮想マシンです。
 localhostとしてDocker VMにアクセスするために、VirtualBoxのポート転送機能を使用できます。
@@ -58,13 +33,8 @@ localhostとしてDocker VMにアクセスするために、VirtualBoxのポー�
 
 まず、次のコマンドを実行して、Dockerマシンが停止していることを確認します。
 
-<<<<<<< HEAD:tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.md
 ```
 docker-machine stop default     # Dockerマシン名がデフォルトではない場合があります。この場合は、名前を適宜変更してください。
-=======
-```shell
-docker-machine stop default     # Your Docker machine name may not be default, in this case change the name accordingly
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.mdx
 ```
 
 その後以下を行います。
@@ -76,11 +46,7 @@ docker-machine stop default     # Your Docker machine name may not be default, i
 
 次のスクリーンショットは、MySQLポートフォワーディングの例を示しています。
 
-<<<<<<< HEAD:tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.md
-![MySQLポートフォワーディングの例](../images/020_tip_using_docker_containers_as_localhost_on_mac_and_windows_01.png)
-=======
-![MySQL Port Forwarding Example](/images/020_tip_using_docker_containers_as_localhost_on_mac_and_windows_01.png)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/020_tip_using_docker_containers_as_localhost_on_mac_and_windows.mdx
+![MySQLポートフォワーディングの例](/images/020_tip_using_docker_containers_as_localhost_on_mac_and_windows_01.png)
 
 
 これで、次のコマンドを実行してDockerマシンを起動する準備ができました。

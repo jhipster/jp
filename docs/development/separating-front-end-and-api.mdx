@@ -1,25 +1,13 @@
 ---
-<<<<<<< HEAD:pages/separating-front-end-and-api.md
-layout: default
 title: フロントエンドとAPIサーバの分離
-permalink: /separating-front-end-and-api/
-sitemap:
-    priority: 0.7
-    lastmod: 2021-03-08T12:00:00-00:00
----
-
-# <i class="fa fa-unlink"></i> フロントエンドとAPIサーバの分離
-
-## はじめに
-=======
-title: Separating the front-end and the API server
 slug: /separating-front-end-and-api/
 last_update:
   date: 2021-03-08T12:00:00-00:00
 ---
 
-## Introduction
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/separating-front-end-and-api.mdx
+# <i class="fa fa-unlink"></i> フロントエンドとAPIサーバの分離
+
+## はじめに
 
 JHipsterは「フルスタック」開発ツールであり、その目標はフロントエンドコード（Angular/React）とバックエンドコード（Spring Boot）で効率的に作業できるようにすることです。
 
@@ -27,28 +15,16 @@ JHipsterは「フルスタック」開発ツールであり、その目標はフ
 
 **注意** これはデフォルトのJHipsterの作業方法ではありません。複雑ではなく、うまく機能しますが、高度なトピックです。JHipsterを使い始める場合は、私たちの標準的な作業方法を使用することから始めることをお勧めします。
 
-<<<<<<< HEAD:pages/separating-front-end-and-api.md
 ## フロントエンド・アプリケーションまたはバックエンド・アプリケーションのみを生成
 
-JHipsterバックエンドまたはJHipsterフロントエンドアプリケーションのみを生成するように選択できます。生成時には、[アプリケーション生成ドキュメント]({{ site.url }}/creating-an-app/)に記載されているフラグを選択するだけです。
-=======
-
-## Generating only a front-end or a back-end application
-
-You can choose to generate only a JHipster back-end or JHipster front-end application. At generation time, this is only a matter of choosing flags which are described in our [application generation documentation](/creating-an-app):
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/separating-front-end-and-api.mdx
+JHipsterバックエンドまたはJHipsterフロントエンドアプリケーションのみを生成するように選択できます。生成時には、[アプリケーション生成ドキュメント](/creating-an-app/)に記載されているフラグを選択するだけです。
 
 - `jhipster --skip-client`はバックエンドアプリケーションのみを生成します（これは通常JHipsterマイクロサービスがそうなります）
 - `jhipster --skip-server [options]`はフロントエンドアプリケーションのみを生成します（例：`jhipster --skip-server --db=sql --auth=jwt`）
 
 これは、マイクロサービス（いずれにしてもフロントエンドがない）やゲートウェイ（Spring Cloud Gatewayサービスが有効になっているモノリス）ではあまり意味がないため、モノリスでのみうまく機能するはずです。
 
-<<<<<<< HEAD:pages/separating-front-end-and-api.md
 ## ディレクトリのレイアウト
-=======
-
-## Directory layout
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/separating-front-end-and-api.mdx
 
 JHipsterは、標準のMavenディレクトリ・レイアウトを使用します。バックエンドで作業する場合は、[Maven標準ディレクトリ・レイアウト・ドキュメント](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)を参照できます。
 
@@ -62,12 +38,7 @@ JHipsterは、標準のMavenディレクトリ・レイアウトを使用しま�
 - 両方のチームが同じプロジェクトで作業します。ディレクトリが分離されているので、チーム間の競合はあまりありません。さらにクリーンにするために、両方のチームが別々のブランチで作業もできます。
 - フロントエンドコードを特定のGitプロジェクトに格納し、Gitサブモジュールとしてメインのバックエンドプロジェクトにインポートできます。これには、クライアントサイドのビルドスクリプトを移動する必要があります。
 
-<<<<<<< HEAD:pages/separating-front-end-and-api.md
 ## HTTPリクエストのルーティングとキャッシング
-=======
-
-## HTTP requests routing and caching
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/separating-front-end-and-api.mdx
 
 フロントエンドとバックエンドが分離されると、問題はHTTPリクエストの処理方法になります。
 
@@ -77,23 +48,13 @@ JHipsterは、標準のMavenディレクトリ・レイアウトを使用しま�
 - `/i18n`への呼び出しはキャッシュできますが、ファイル自体はハッシュされず、URLクエリ文字列が使用されます。
 - 存在しないルートへのコールは、リクエストを`index.html`に転送する必要があります。これは通常、`ClientForwardController`を介してバックエンドで処理されます。クライアントを個別にデプロイする場合、これを設定する必要があります。いくつかの例については、[Angular](https://angular.io/guide/deployment#server-configuration)または[React](https://facebook.github.io/create-react-app/docs/deployment)のドキュメントを参照してください。
 
-<<<<<<< HEAD:pages/separating-front-end-and-api.md
 # BrowserSyncの使用
-=======
-
-## Using BrowserSync
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/separating-front-end-and-api.mdx
 
 `dev`モードでは、JHipsterはフロントエンドアプリケーションのホットリロードにBrowserSyncを使用します。BrowserSyncには、`/api`からバックエンドサーバ（デフォルトでは`http://127.0.0.1:8080`）にリクエストをルーティングするプロキシ（[ここにドキュメントがあります](https://www.browsersync.io/docs/options#option-proxy)）があります。
 
 これは`dev`モードでのみ動作しますが、フロントエンドから異なるAPIサーバにアクセスするための非常に強力な方法です。
 
-<<<<<<< HEAD:pages/separating-front-end-and-api.md
 ## CORSの使用
-=======
-
-## Using CORS
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/separating-front-end-and-api.mdx
 
 CORS ([Cross-origin request sharing](https://wikipedia.org/wiki/Cross-origin_resource_sharing))を使用すると、プロキシを設定せずに、同じフロントエンドを使用して異なるバックエンドサーバにアクセスできます。
 
@@ -101,20 +62,11 @@ CORS ([Cross-origin request sharing](https://wikipedia.org/wiki/Cross-origin_res
 
 JHipsterは、すぐに利用できるCORS構成を提供します。
 
-<<<<<<< HEAD:pages/separating-front-end-and-api.md
-- CORSは、[JHipster共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)で定義されているように、`JHipster.cors`プロパティを使用して構成できます。
+- CORSは、[JHipster共通アプリケーションプロパティ](/common-application-properties/)で定義されているように、`JHipster.cors`プロパティを使用して構成できます。
 - モノリスとゲートウェイでは、`dev`モードでデフォルトで有効になっています。マイクロサービスでは、ゲートウェイを介してアクセスすることになっているため、デフォルトでは無効になっています。
 - セキュリティ上の理由から、`prod`モードではデフォルトでオフになっています。
 
 ## NGinxの使用
-=======
-- CORS can be configured using the `jhipster.cors` property, as defined in [the JHipster common application properties](/common-application-properties/)
-- It is enabled by default in `dev` mode for monoliths and gateways. It is turned off by default for microservices as you are supposed to access them through a gateway.
-- It is turned off by default in `prod` mode, for security reasons.
-
-
-## Using NGinx
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/separating-front-end-and-api.mdx
 
 フロントエンドコードとバックエンドコードを分離するもう1つの解決策は、プロキシサーバを使用することです。これは本番環境では非常に一般的であり、一部のチームは開発でもこの手法を使用しています。
 
@@ -136,17 +88,9 @@ services:
 
 このDockerイメージは、`target/static`から静的アセットを読み取るNGinxサーバを設定します。これは、JHipsterフロントエンドアプリケーションがデフォルトで生成される場所です。プロダクション環境では、このための特定のフォルダがあると思われます。
 
-<<<<<<< HEAD:pages/separating-front-end-and-api.md
 また、`./nginx/site.conf`ファイルも読み込みます。これはNGinx固有の設定ファイルです。
 ### lambdaの設定
 以下に`site.conf`の例を示します。
-=======
-It also reads a `./nginx/site.conf` file: this is a NGinx-specific configuration file.
-
-### Configuration lambda
-
-Here is a sample `site.conf`:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/separating-front-end-and-api.mdx
 
 ```
 server {

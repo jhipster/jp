@@ -1,11 +1,8 @@
 ---
-<<<<<<< HEAD:pages/code-quality.md
-layout: default
 title: コード品質
-permalink: /code-quality/
-sitemap:
-    priority: 0.7
-    lastmod: 2018-08-18T12:40:00-00:00
+slug: /code-quality/
+last_update:
+  date: 2018-08-18T12:40:00-00:00
 ---
 
 # <i class="fa fa-diamond"></i> コード品質
@@ -14,21 +11,7 @@ sitemap:
 
 ## JHipsterでのSonarの使用
 
-JHipsterは、Sonar用の特定のDocker Compose設定（[ここにJHipster Docker Composeドキュメントがあります]({{ site.url }}/docker-compose/)）を提供し、すぐに利用できるSonarインスタンスを提供します。プロジェクトのルートで、次のコマンドを実行してください。
-=======
-title: Code Quality
-slug: /code-quality/
-last_update:
-  date: 2018-08-18T12:40:00-00:00
----
-
-Code quality can be analyzed using [SonarCloud](https://sonarcloud.io), which is automatically configured by JHipster.
-
-
-## Using Sonar with JHipster
-
-JHipster provides a specific Docker Compose configuration for Sonar ([here is the JHipster Docker Compose documentation](/docker-compose)) that provides an out-of-the box Sonar instance. At the root of your project, please run:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/code-quality.mdx
+JHipsterは、Sonar用の特定のDocker Compose設定（[ここにJHipster Docker Composeドキュメントがあります](/docker-compose/)）を提供し、すぐに利用できるSonarインスタンスを提供します。プロジェクトのルートで、次のコマンドを実行してください。
 
 ```shell
 docker-compose -f src/main/docker/sonar.yml up -d
@@ -60,12 +43,7 @@ sonar-scanner
 
 分析が完了すると、Sonarのダッシュボードで利用できるようになります。デフォルトでは[http://127.0.0.1:9001/](http://127.0.0.1:9001/)です。
 
-<<<<<<< HEAD:pages/code-quality.md
 ## Jacoco解析からのファイルの除外
-=======
-
-## Excluding Files from Jacoco Analysis
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/code-quality.mdx
 
 カバレッジ分析から特定のクラス（生成されたクラスやアプリケーションクラスなど）を除外し、デフォルトのjacoco htmlレポートに正しい
 カバレッジを含める場合は、クラスを分析およびレポートから除外する必要があります。
@@ -154,12 +132,7 @@ jacocoTestReport {
 }
 ```
 
-<<<<<<< HEAD:pages/code-quality.md
 ## デフォルトで生成されたプロジェクトの自動分析
-=======
-
-## Automatic analysis of the default generated project
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/code-quality.mdx
 
 JHipsterジェネレータプロジェクトは、新しいコミットが"main"ブランチにマージされるたびに分析されるサンプルプロジェクトを公開しています。
 

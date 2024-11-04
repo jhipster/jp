@@ -1,29 +1,14 @@
 ---
-<<<<<<< HEAD:pages/using-vue.md
-layout: default
 title: Vueの使用
-permalink: /using-vue/
-sitemap:
-    priority: 0.7
-    lastmod: 2019-03-27T23:41:00-00:00
+slug: /using-vue/
+last_update:
+  date: 2019-03-27T23:41:00-00:00
 ---
 
 # <i class="fa fa-html5"></i> Vueの使用
 このセクションでは、JavaScriptライブラリ**Vue.js**について説明します。
 
 ## プロジェクト構造
-=======
-title: Using Vue
-slug: /using-vue/
-last_update:
-  date: 2019-03-27T23:41:00-00:00
----
-
-This section refers to the JavaScript library **Vue.js**.
-
-
-## Project Structure
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-vue.mdx
 
 JHipsterクライアントコードは`src/main/webapp`の下にあります。
 
@@ -61,11 +46,7 @@ webapp
 └── robots.txt                      - ボットおよびWebクローラの構成
 ```
 
-<<<<<<< HEAD:pages/using-vue.md
-[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用して`Foo`という名前の新しいエンティティを作成すると、`src/main/webapp`の下に次のフロントエンドファイルが生成されます。
-=======
-Using the [entity sub-generator](/creating-an-entity) to create a new entity called `Foo` generates the following front-end files under `src/main/webapp`:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-vue.mdx
+[エンティティサブジェネレータ](/creating-an-entity/)を使用して`Foo`という名前の新しいエンティティを作成すると、`src/main/webapp`の下に次のフロントエンドファイルが生成されます。
 
 ```
 webapp
@@ -93,12 +74,7 @@ webapp
 
 デフォルトの言語変換は、アプリケーションの生成時に選択した内容に基づいて行われることに注意してください。'en'および'fr'は、ここではデモンストレーションのためにのみ示されています。
 
-<<<<<<< HEAD:pages/using-vue.md
 ## VuexStoreを使用して保存
-=======
-
-## Store using VuexStore
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-vue.mdx
 
 アプリケーションは、ストア[VuexStore](https://vuex.vuejs.org/guide/state.html)を使用して、アプリケーション内の状態を維持します。
 
@@ -111,12 +87,7 @@ webapp
 * 通知およびアラート情報
 * アクティブなプロファイルデータ
 
-<<<<<<< HEAD:pages/using-vue.md
 ## 認証
-=======
-
-## Authorizations
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-vue.mdx
 
 JHipsterは、[Vueルーター](https://router.vuejs.org/)を使用して、アプリケーションのさまざまな部分を整理します。
 
@@ -142,12 +113,7 @@ const Routes = () => [{
 
 インターセプターは、ユーザーが認証されているかどうかを知るために、`$store.getters.authenticated`ストア値を使用することに注意してください。
 
-<<<<<<< HEAD:pages/using-vue.md
 ## 検証システム
-=======
-
-## Validation system
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-vue.mdx
 
 フォームを検証するには、[Vuelidate](https://vuelidate.netlify.com/)ライブラリを使用します。検証制約の追加に加えて、いくつかのフィルタが用意されており、フォームでの完全な検証が可能です。カスタム検証は、次のように追加できます。
 
@@ -169,11 +135,6 @@ export default class FooComponent extends Vue {
 }
 ```
 
-<<<<<<< HEAD:pages/using-vue.md
 ## Bootswatchテーマ
-=======
-
-## Bootswatch theme
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-vue.mdx
 
 Theming Bootstrapは、[Bootswatch](https://bootswatch.com)テーマを使用して直接実行できます。Bootswatchによって提供される多くのテーマの1つを選択するために、生成中に質問を提供するようにしました。

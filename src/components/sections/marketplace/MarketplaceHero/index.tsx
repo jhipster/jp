@@ -22,17 +22,17 @@ export default function MarketplaceHero({
     <header className={styles.section}>
       <div className="container">
         <Heading className={styles.sectionTitle} as="h1">
-          Marketplace
+          マーケットプレイス
         </Heading>
 
         <Heading as="h2">
-          Available modules and blueprints (
+          利用可能なモジュールとブループリント (
           {`${numberFilteredModules}/${numberModules}`})
         </Heading>
 
         <SearchInput
           value={value}
-          placeholder="Filter by name or keyword"
+          placeholder="名前やキーワードでフィルタリング"
           onInput={handleSearch}
         />
 
@@ -41,13 +41,13 @@ export default function MarketplaceHero({
             className="button button--primary"
             to="/modules/creating-a-module"
           >
-            Create your own module
+            独自のモジュールを作成
           </Link>
           <Link
             className="button button--secondary"
             to="/modules/creating-a-blueprint"
           >
-            Create your own blueprint
+            独自のブループリントを作成
           </Link>
         </div>
       </div>

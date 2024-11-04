@@ -22,18 +22,17 @@ export default function WhoUses() {
   return (
     <section className={styles.section}>
       <div className="container">
-        <SectionTitle>Who Uses JHipster?</SectionTitle>
+        <SectionTitle>誰がJHipsterを使用していますか?</SectionTitle>
 
         <SectionDescription>
-          Lots of great companies use JHipster, all over the world!{' '}
+        世界中で多くの優れた企業がJHipsterを使用しています！
           <Link
             className="text-foreground underline"
             href="/companies-using-jhipster"
           >
-            Find the full list here
+            全リストはこちら。 
           </Link>
-          , and don't forget to add your company once you have started using
-          JHipster
+          JHipsterを使用を開始したら忘れずにここに登録をお願いいたします。
         </SectionDescription>
       </div>
 

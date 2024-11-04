@@ -6,12 +6,12 @@ export default function Options() {
   return (
     <div className={styles.section}>
       <div>
-        <OptionsList title="Client Side Options" dataKey="clientSide" />
-        <OptionsList title="Deployment Options" dataKey="deployment" />
-        <OptionsList title="CI/CD Options" dataKey="cicd" />
+        <OptionsList title="クライアント側のオプション" dataKey="clientSide" />
+        <OptionsList title="デプロイメント オプション" dataKey="deployment" />
+        <OptionsList title="CI/CD オプション" dataKey="cicd" />
       </div>
       <div>
-        <OptionsList title="Server Side Options" dataKey="serverSide" />
+        <OptionsList title="サーバ側のオプション" dataKey="serverSide" />
       </div>
     </div>
   );

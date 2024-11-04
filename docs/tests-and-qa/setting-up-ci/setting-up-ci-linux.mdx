@@ -1,13 +1,8 @@
 ---
-<<<<<<< HEAD:pages/setting_up_ci_linux.md
-layout: default
 title: LinuxでのJenkins 1のセットアップ
-permalink: /setting-up-ci-linux/
-redirect_from:
-  - /setting_up_ci_linux.html
-sitemap:
-    priority: 0.7
-    lastmod: 2015-01-09T12:40:00-00:00
+slug: /setting-up-ci-linux/
+last_update:
+  date: 2015-01-09T12:40:00-00:00
 ---
 
 # <i class="fa fa-stethoscope"></i> LinuxでのJenkins 1のセットアップ
@@ -15,18 +10,6 @@ sitemap:
 以下の手順はRed Hat/CentOSサーバ用ですが、他のLinuxディストリビューションにも適用できます。
 
 ## Jenkinsのインストール
-=======
-title: Setting up Jenkins 1 on Linux
-slug: /setting-up-ci-linux/
-last_update:
-  date: 2015-01-09T12:40:00-00:00
----
-
-The instructions below are for a Red Hat/CentOS server but can be adapted for other Linux distributions.
-
-
-## Installing Jenkins
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/setting-up-ci/setting-up-ci-linux.mdx
 
 [https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions](https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions)の指示に従ってください。
 
@@ -40,12 +23,7 @@ sudo service jenkins start
 
 `jenkins`ユーザーが作成され、ホームディレクトリは`/var/lib/jenkins`となります。
 
-<<<<<<< HEAD:pages/setting_up_ci_linux.md
 ## Jenkinsの設定
-=======
-
-## Configuring Jenkins
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/setting-up-ci/setting-up-ci-linux.mdx
 
 ### JDK 8のインストール
 
@@ -74,13 +52,8 @@ Jenkins管理を通じて、NodeJSインストールを追加します。
 
 次のスクリプトを使用してNodeJSをローカルにインストールし、それを使用するようにJenkins PATHを更新します。
 
-<<<<<<< HEAD:pages/setting_up_ci_linux.md
 ~~~ bash
 # 必要なバージョンを指定
-=======
-```shell
-# specify which version we want
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/setting-up-ci/setting-up-ci-linux.mdx
 export NODE_VERSION=4.3.1
 
 # ダウンロード

@@ -1,13 +1,8 @@
 ---
-<<<<<<< HEAD:pages/docker_compose.md
-layout: default
 title: DockerとDocker Compose
-permalink: /docker-compose/
-redirect_from:
-  - /docker_compose.html
-sitemap:
-    priority: 0.7
-    lastmod: 2016-12-01T00:00:00-00:00
+slug: /docker-compose/
+last_update:
+  date: 2016-12-01T00:00:00-00:00
 ---
 
 # <i class="fa fa-music"></i> DockerとDocker Compose
@@ -26,48 +21,21 @@ DockerとDocker Composeの使用は、開発では非常に推奨されており
 7. [Keycloak](#7)
 8. [共通コマンド](#8)
 9. [メモリの調整](#9)
-=======
-title: Docker and Docker Compose
-slug: /docker-compose/
-last_update:
-  date: 2016-12-01T00:00:00-00:00
----
-
-Using Docker and Docker Compose is highly recommended in development, and is also a good solution in production.
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
 
 ## Description
 
-<<<<<<< HEAD:pages/docker_compose.md
-_注意:このDocker設定は、生成されたアプリケーションをコンテナイメージ内で実行するために使用されます。これは、JHipsterが提供する[Docker setup]({{ site.url }}/installation/)とはまったく異なります。これは、コンテナ_内でJHipsterジェネレータを実行するためのものです。_
-=======
-:::note
-
-This Docker configuration is used to run your generated application(s) inside a container image. It's completely different from the [Docker setup](/installation/) that JHipster also provides, which is for running the JHipster generator inside a container
-
-:::
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
+_注意:このDocker設定は、生成されたアプリケーションをコンテナイメージ内で実行するために使用されます。これは、JHipsterが提供する[Docker setup](/installation/)とはまったく異なります。これは、コンテナ_内でJHipsterジェネレータを実行するためのものです。_
 
 JHipsterは、次の目的のために、完全なDockerサポートを提供します。
 
 - 開発が容易になります。複雑なマイクロサービスアーキテクチャを使用している場合でも、1つのコマンドで完全なインフラストラクチャを開始できます。
 - Docker Swarmを使用しているユーザであれば、同じDocker Compose設定を使用するため、プロダクション環境に直接デプロイできます。
 
-<<<<<<< HEAD:pages/docker_compose.md
 Docker Composeの優れた機能の1つは、`docker-compose scale`コマンドを使用してコンテナをスケールできることです。これは、[マイクロサービスアーキテクチャ](#3)でJHipsterを使用する場合に非常に興味深いことです。
-=======
-One great feature of using Docker Compose is that you can scale your containers, using the `docker-compose scale` command. This is very interesting if you use JHipster with [a microservices architecture](#building-and-running-a-docker-image-of-your-application).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
 
 アプリケーションを生成するとき、JHipsterは、データベースなどのサードパーティサービスでアプリケーションを実行するのに役立ついくつかのDocker Compose構成を生成します。これらのファイルは、フォルダ`src/main/docker/`内にあります。
 
-<<<<<<< HEAD:pages/docker_compose.md
 <h2 id="2">前提条件</h2>
-=======
-
-## Prerequisites
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
 
 DockerとDocker Composeをインストールする必要があります。
 
@@ -82,11 +50,7 @@ WindowsとMac OS Xにおいては、KitematicはDocker Toolboxで提供される
 
 :::
 
-<<<<<<< HEAD:pages/docker_compose.md
-<div class="alert alert-warning"><i>注意: </i>
-=======
-:::warning
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
+:::注意
 
 MacまたはWindowsでDocker Machineを使用している場合、DockerデーモンはOS XまたはWindowsファイルシステムへのアクセスが制限されています。Docker Machineは、/Users(OS X)やC:\Users\&lt;username&gt;(Windows)ディレクトリを自動共有しようとします。そのため、問題を回避するには、このディレクトリの下にプロジェクトフォルダを作成する必要があります。
 
@@ -104,12 +68,7 @@ __手順 2__
   - `npm install -g YOUR_PACKAGE`,
   - exitしてから `docker container exec -it jhipster bash` でコンテナにログインします。
 
-<<<<<<< HEAD:pages/docker_compose.md
 <h2 id="3">アプリケーションのDockerイメージの構築と実行</h2>
-=======
-
-## Building and running a Docker image of your application
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
 
 [Jib](https://github.com/GoogleContainerTools/jib)を使用してアプリケーションのDockerイメージを構築するために、ローカルのDockerデーモンに接続します。
 
@@ -127,8 +86,7 @@ Dockerを使用せずにアプリケーションのDockerイメージを構築�
 - [Jib maven plugin documentation](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#configuration)
 - [Jib gradle plugin documentation](https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin#configuration)
 
-<<<<<<< HEAD:pages/docker_compose.md
-<div id="3-warning" class="alert alert-warning"><i>Warning: </i>
+:::warning
 <p>
 Jibの動作原理として、Jibはまず、設定されたDockerレジストリからベースDockerイメージの最新バージョンをプルしようとします。CI環境では、常に最新のパッチが適用されたベースイメージの上に構築する必要があるため、これは意図的な動作です。
 </p>
@@ -146,24 +104,6 @@ jibがキャッシュ内のベースDockerイメージをまだプルしてい�
 例: <pre>docker://imagename:latest</pre>
 このようにして、jibはローカルのdockerデーモンにあるイメージをキャッシュに入れます。
 </p>
-</div>
-=======
-:::warning
-
-Due to the way Jib works, it will first try to pull the latest version of the base Docker image from the configured Docker registry. This is on purpose as in a CI environment you must ensure that you always build on top of the latest patched base image.
-
-However in a local environment, this might fail your build if jib cannot access the Docker registry. A workaround for this is to use the `--offline` flag and will fix the issue as long as jib has already pulled the base Docker image in its cache.
-
-With Maven, type: `./mvnw -Pprod package verify jib:dockerBuild --offline`
-With Gradle, type: `./gradlew -Pprod bootJar jibDockerBuild --offline`
-
-If jib has not already pulled the base Docker image in its cache, to do it, you need to modify the pom.xml (in case of Maven) or the docker.gradle (in case of Gradle) by adding `docker://` as prefix of your base image (at the "image" tag, nested in the "from" tag).
-
-Example: `docker://imagename:latest`
-In this way jib puts the image present in your local docker daemon in its cache.
-
-:::
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
 
 このイメージを実行するには、アプリケーションの`src/main/docker`フォルダにあるDocker Compose設定を使用します。
 
@@ -171,16 +111,9 @@ In this way jib puts the image present in your local docker daemon in its cache.
 
 このコマンドによって、アプリケーションとそれに依存するサービス（データベース、検索エンジン、Consul、JHipster Registryなど）が起動されます。
 
-<<<<<<< HEAD:pages/docker_compose.md
 認証にOAuth 2.0を選択した場合は、[このドキュメントのKeycloakセクション](#7)を必ずお読みください。
 
 <h2 id="docker-compose-subgen">複数のアプリケーション用のカスタムDocker-Compose設定の生成</h2>
-=======
-If you chose OAuth 2.0 for authentication, be sure to read our [Keycloak section on this documentation](#keycloak).
-
-
-## Generating a custom Docker-Compose configuration for multiple applications
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
 
 アーキテクチャが複数のJHipsterアプリケーションで構成されている場合は、`docker-compose`サブジェネレータを使用して、選択したすべてのアプリケーションに対してグローバルなDocker Compose設定を生成できます。これにより、1つのコマンドでアーキテクチャ全体をデプロイし、スケーリングできます。
 `docker-compose`サブジェネレータを使用するには以下のようにします。
@@ -200,11 +133,7 @@ If you chose OAuth 2.0 for authentication, be sure to read our [Keycloak section
 - 各サービスのスケーリングはDocker Composeを使用して行われます。たとえば、`docker-compose scale test-app=4`と入力すると、アプリケーション"test"の4つのインスタンスが実行されます。これらのインスタンスはゲートウェイによって自動的にロードバランシングされ、同じHazelcastクラスタに自動的に参加します（HazelcastがHibernateの第2レベルのキャッシュである場合）。
 
 
-<<<<<<< HEAD:pages/docker_compose.md
 <h2 id="4">データベースの操作</h2>
-=======
-## Working with databases
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
 
 ### MySQL, MariaDB, PostgreSQL, Oracle, MongoDB, Couchbase, Neo4j, Cassandra
 
@@ -252,14 +181,8 @@ Couchbaseを複数のノードで使用したい場合は、Couchbaseイメー�
 
 スキーママイグレーションがアプリケーション自体によって適用される他のデータベースとは異なり、Cassandraのスキーママイグレーションは専用のDockerコンテナによって適用されます。
 
-<<<<<<< HEAD:pages/docker_compose.md
 <h4 id="cassandra-in-development">開発環境のCassandra</h4>
 Cassandraクラスタを起動してアプリケーションをローカルで実行するには、開発用のdocker_composeファイルを使用します。
-=======
-#### Cassandra in development
-
-To start a Cassandra cluster to run your application locally, you can use the docker_compose file for development use:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
 `docker-compose -f src/main/docker/cassandra.yml up -d`
 
 Docker-composeは2つのサービスを開始します。
@@ -267,20 +190,11 @@ Docker-composeは2つのサービスを開始します。
 - `<name_of_your_app>-cassandra`:  Cassandraノードのコンタクト・ポイントを持つコンテナ
 - `<name_of_your_app>-cassandra-migration`: すべてのCQL移行スクリプト（キースペースの作成、テーブルの作成、すべてのデータ移行など）を自動的に適用するコンテナ
 
-<<<<<<< HEAD:pages/docker_compose.md
-ローカルクラスタを再起動せずに新しいCQLスクリプトを追加する方法の詳細については、[Cassandraのページ]({{ site.url }}/using-cassandra/)を参照してください。
+ローカルクラスタを再起動せずに新しいCQLスクリプトを追加する方法の詳細については、[Cassandraのページ](/using-cassandra/)を参照してください。
 
 #### プロダクション環境のCassandra：
 `app.yml`docker-composeファイルは、クラスタの設定に`cassandra-cluster.yml`を使用します。
 アプリケーションは数秒後に起動し（_JHIPSTER_SLEEP_変数を参照）、クラスタが起動して移行が適用されるまでの時間が与えられます。
-=======
-See the [Cassandra page](/using-cassandra/) for more information on how to add new CQL scripts without restarting the local cluster.
-
-#### Cassandra in production:
-
-The `app.yml` docker-compose file uses `cassandra-cluster.yml` to configure the cluster.
-The application starts after few seconds (see _JHIPSTER_SLEEP_ variable) to gives the time to the cluster to start and the migrations to be applied.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
 
 Cassandraと他のデータベースの大きな違いとして、Docker Composeを使用してクラスタをスケールできることがあります。クラスタ内にX+1ノードを配置するには、次のコマンドを実行します。
 
@@ -335,12 +249,7 @@ Keycloakを動作させるには、hostsファイルに次の行を追加する�
 
 - `docker-compose -f src/main/docker/keycloak.yml up`
 
-<<<<<<< HEAD:pages/docker_compose.md
 <h2 id="8">共通コマンド</h2>
-=======
-
-## Common commands
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
 
 ### コンテナの一覧を出力
 
@@ -352,13 +261,8 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 fc35e1090021        mysql               "/entrypoint.sh mysql"   4 seconds ago       Up 4 seconds        0.0.0.0:3306->3306/tcp   sampleApplication-mysql
 ```
 
-<<<<<<< HEAD:pages/docker_compose.md
 ### コンテナのDocker統計情報
-`docker container stats` or {% raw %}`docker container stats $(docker container ps --format={{.Names}})`{% endraw %} により実行中のすべてのコンテナについて、CPU、メモリ、ネットワークI/O、およびブロックI/Oの統計情報とともに一覧表示します。
-=======
-### Docker stats for containers
-`docker container stats` or `docker container stats $(docker container ps --format={{.Names}})` to list all running containers with CPU, Memory, Networking I/O and Block I/O stats.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
+`docker container stats` or `docker container stats $(docker container ps --format={{.Names}})` により実行中のすべてのコンテナについて、CPU、メモリ、ネットワークI/O、およびブロックI/Oの統計情報とともに一覧表示します。
 
 ```shell
 $ docker container stats $(docker container ps --format={{.Names}})
@@ -394,11 +298,7 @@ Dockerへの直接の操作もできます。
 `docker container rm <container_id>`
 
 
-<<<<<<< HEAD:pages/docker_compose.md
 <h2 id="9">メモリの調整</h2>
-=======
-<h2 id="memory-tweaking">Memory Tweaking</h2>
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/docker-compose.mdx
 
 コンテナで実行されるアプリケーションのメモリ使用量を最適化するために、`Dockerfile`または`docker-compose.yml`でJavaメモリパラメータを設定できます。
 

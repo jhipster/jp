@@ -1,24 +1,12 @@
 ---
-<<<<<<< HEAD:tips/031_tip_e2e_intellij.md
-layout: default
 title: Intellij IDEA内でのProtractor e2eテストの実行
-sitemap:
-priority: 0.1
-lastmod: 2018-04-14T03:57:00-00:00
+last_update:
+  date: 2018-04-14T03:57:00-00:00
 ---
 
 # Intellij IDEA内でのProtractor e2eテストの実行
 
 **このTipは[@SudharakaP](https://github.com/SudharakaP)と[@yelhouti](https://github.com/yelhouti)によって提出されました**
-=======
-title: Running Protractor e2e tests within IntelliJ IDEA
-slug: /tips/031_tip_e2e_intellij.html
-last_update:
-  date: 2018-04-14T03:57:00-00:00
----
-
-**Tip submitted by [@SudharakaP](https://github.com/SudharakaP) and [@yelhouti](https://github.com/yelhouti)**
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/031_tip_e2e_intellij.mdx
 
 このヒントは、JHipster v6.8.0以上に適用されます。デフォルトでは、JHipsterプロジェクトには、Protractor構成ファイル（`src/test/javascript/protractor.conf.js`）内に次の`beforeLanuch`関数があります。
 
@@ -42,11 +30,6 @@ beforeLaunch: function() {
   });
 }
 ``` 
-<<<<<<< HEAD:tips/031_tip_e2e_intellij.md
 これにより、IntelliJは`tsconfig.e2e.json`ファイルの場所を知ることができます。
-=======
-
-so that IntelliJ will know where to find the `tsconfig.e2e.json` file. 
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/031_tip_e2e_intellij.mdx
 
 なお、上記のように`protractor.conf.js`ファイルを変更すると、`npm run e2e`は動作しなくなるため、再度npmを使用してe2eテストを使用する予定がある場合は、ロールバックする必要があることに注意してください。

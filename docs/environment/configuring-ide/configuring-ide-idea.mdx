@@ -1,39 +1,20 @@
 ---
-<<<<<<< HEAD:pages/configuring_ide_idea.md
-layout: default
 title: Intellij IDEAの設定
-permalink: /configuring-ide-idea/
-redirect_from:
-  - /configuring_ide_idea.html
-sitemap:
-    priority: 0.7
-    lastmod: 2015-11-28T17:13:00-00:00
----
-
-# <i class="fa fa-keyboard-o"></i> Intellij IDEAの設定
-
-## プロジェクトを開く
-=======
-title: Configuring Intellij IDEA
 slug: /configuring-ide-idea/
 last_update:
   date: 2015-11-28T17:13:00-00:00
 ---
 
-## Open your project
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-ide/configuring-ide-idea.mdx
+# <i class="fa fa-keyboard-o"></i> Intellij IDEAの設定
+
+## プロジェクトを開く
 
 - プロジェクトを通常通り開きます。
 - Mavenが検出され、プロジェクトが自動的にビルドされるはずです。
 
 セットアップをよりコントロールしたい場合は、「プロジェクトのインポート」を選択できます。
 
-<<<<<<< HEAD:pages/configuring_ide_idea.md
 ## 除外するディレクトリ
-=======
-
-## Exclude directories
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-ide/configuring-ide-idea.mdx
 
 Gitを使用している場合、プロジェクトの初期化（`git init && git add . && git commit -m 'Initial commit'`）を行うと、Intellij IDEAはGitが無視するディレクトリを自動的に除外します（つまり、あなたは何もする必要がありません）。
 
@@ -42,29 +23,16 @@ Gitを使用している場合、プロジェクトの初期化（`git init && g
 - `node_modules/`フォルダを右クリックします。
 - "Mark Directory As"を選択し、"Excluded"を選択します。
 
-<<<<<<< HEAD:pages/configuring_ide_idea.md
-![除外]({{ site.url }}/images/configuring_ide_idea_1.png)
-=======
-![Exclude](/images/configuring_ide_idea_1.png)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-ide/configuring-ide-idea.mdx
+![除外](/images/configuring_ide_idea_1.png)
 
 **注意:** Intellij IDEA Ultimateを使用していて、IDEAでフロントエンドをコーディングしたい場合は、`node_modules`フォルダを**除外する必要はありません**。もし除外してしまうと
 フロントエンドのコードのアシストを受けられなくなります。
 
-<<<<<<< HEAD:pages/configuring_ide_idea.md
 ## Spring サポート (Community Edition では利用できません)
-=======
-
-## Spring Support (not available in Community Edition)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-ide/configuring-ide-idea.mdx
 
 新しいプロジェクトでJHipsterの多くのモジュールにSpringサポートを追加するには、まず`File → Project Structure`に進みます。
 
-<<<<<<< HEAD:pages/configuring_ide_idea.md
-![プロジェクト構成]({{ site.url }}/images/configuring_ide_idea_2.png)
-=======
-![Project Structure](/images/configuring_ide_idea_2.png)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-ide/configuring-ide-idea.mdx
+![プロジェクト構成](/images/configuring_ide_idea_2.png)
 
 次にモジュールタブを開き、`+`ボタンをクリックし、"Spring"をクリックして、プロジェクトにSpringコードアシストを追加します。
 
@@ -81,12 +49,7 @@ Hibernateを追加することで、Hibernateベースのコードアシスト�
 
 これで、コードベースのほとんどでSpringがサポートされるようになったはずです。なお、これらの設定はプロジェクト固有のため、新しいプロジェクトを始めるたびにこのステップを繰り返す必要があります。
 
-<<<<<<< HEAD:pages/configuring_ide_idea.md
 ## Spring Bootのdevtoolsを使ったアプリケーションの「ホットリスタート」
-=======
-
-## Application "hot restart" with Spring Boot devtools
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-ide/configuring-ide-idea.mdx
 
 [Spring Boot devtools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html)はJHipsterによって設定され、プロジェクトからのクラスがコンパイルされると、アプリケーションを「ホットリスタート」します。これはアプリケーションがその場で更新されるようになる必須の機能です。
 
@@ -103,12 +66,7 @@ Hibernateを追加することで、Hibernateベースのコードアシスト�
 * `File → Settings → Build, Execution, Deployment → Compiler`に行き、"Build project automatically"を有効にします。
 * `File → Advanced Settings → Compiler`に行き、"Allow auto-make to start even if developed application is currently running"を有効にします。
 
-<<<<<<< HEAD:pages/configuring_ide_idea.md
 ## Maven IDEプロファイル
-=======
-
-## Maven IDE profile
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/environment/configuring-ide/configuring-ide-idea.mdx
 
 Mavenを使用している場合、IntelliJで`IDE`プロファイルを有効にする必要があります。これはIDE固有の調整を適用するために使用されます。
 現在はMapStructアノテーション・プロセッサーを適用することだけが含まれています。

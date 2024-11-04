@@ -1,44 +1,21 @@
 ---
-<<<<<<< HEAD:pages/clever-cloud.md
-layout: default
-title: クラウドへのデプロイ
-permalink: /clever-cloud/
-redirect_from:
-  - /clever-cloud.html
-sitemap:
-    priority: 0.7
-    lastmod: 2020-10-09T00:00:00-00:00
----
-
-# Clever Cloudへのデプロイ
-[Clever cloud](https://www.clever-cloud.com/){:target="_blank" rel="noopener"}はIT自動化プラットフォームです。
-=======
-title: Deploying to Clever Cloud
+title: Clever Cloudへのデプロイ
 slug: /clever-cloud/
 last_update:
   date: 2020-10-09T00:00:00-00:00
 ---
 
-[Clever cloud](https://www.clever-cloud.com/) is an IT Automation platform
+[Clever cloud](https://www.clever-cloud.com/) はIT自動化プラットフォームです。
 
 [<img src="/images/logo/logo_clever_cloud.png" alt="Clever cloud logo" width="300px" />](https://www.clever-cloud.com/)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
 
 
 ## 開始する前に
 
-<<<<<<< HEAD:pages/clever-cloud.md
-[Clever cloud CLI](https://www.clever-cloud.com/doc/clever-tools/getting_started/){:target="_blank" rel="noopener"}をインストールする必要があります。
+[Clever cloud CLI](https://www.clever-cloud.com/doc/clever-tools/getting_started/)をインストールする必要があります。
 
-また、[Clever Cloudアカウントを作成](https://api.clever-cloud.com/v2/sessions/signup){:target="_blank" rel="noopener"}し、次のコマンド`clever login`を実行してCLIでログインする必要があります。
-<pre>
-=======
-You must install the [Clever cloud CLI](https://www.clever-cloud.com/doc/clever-tools/getting_started/).
-
-You must also [create a Clever Cloud account](https://api.clever-cloud.com/v2/sessions/signup) and log in with the CLI by running the following command `clever login`
-
+また、[Clever Cloudアカウントを作成](https://api.clever-cloud.com/v2/sessions/signup)し、次のコマンド`clever login`を実行してCLIでログインする必要があります。
 ```shell
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
 Opening https://console.clever-cloud.com/cli-oauth?cli_version=2.7.1&cli_token=XXX in your browser to log you in…
 Login successful as ...
 ```
@@ -50,13 +27,8 @@ Login successful as ...
 
 2. データベースアドオンをアプリケーションに追加します。`clever addon create [addon provider] [your addon name] --link [your application name]`
 
-<<<<<<< HEAD:pages/clever-cloud.md
     サポートされているアドオンプロバイダの一覧は`clever addon providers`で出力されます。    
-    <pre>
-=======
-    List supported addon providers `clever addon providers`
     ```
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
     cellar-addon      Cellar S3 storage       S3-like online file storage web service
     config-provider   Configuration provider  Expose configuration to your applications  (via environment variables)
     es-addon          Elastic Stack           Elasticsearch with Kibana and APM server as options
@@ -76,25 +48,13 @@ Login successful as ...
     [専用ビルドを参照ください](https://www.clever-cloud.com/doc/admin-console/apps-management/#dedicated-build)
 
 
-<<<<<<< HEAD:pages/clever-cloud.md
 ## JHipsterアプリケーションの設定
 1. プロジェクトに`clevercloud/`フォルダを追加します。
-=======
-## Configure your JHipster application
-
-1. Add a `clevercloud/` folder in your project.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
 
 2. 事前定義されたclever cloud addon環境変数を使用するための`clevercloud/application-clevercloud.yml`を作成します。
 
-<<<<<<< HEAD:pages/clever-cloud.md
     PostgreSQLの場合
-    <pre>
-=======
-    For PostgreSQL
-
     ```yaml
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
     spring:
       datasource:
         type: com.zaxxer.hikari.HikariDataSource        
@@ -105,14 +65,8 @@ Login successful as ...
           maximumPoolSize: 2
     ```
 
-<<<<<<< HEAD:pages/clever-cloud.md
     MySQLの場合
-    <pre>
-=======
-    For MySQL
-
     ```yaml
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
     spring:
       datasource:
         type: com.zaxxer.hikari.HikariDataSource        
@@ -123,14 +77,8 @@ Login successful as ...
           maximumPoolSize: 2
     ```
 
-<<<<<<< HEAD:pages/clever-cloud.md
     MongoDBの場合
-    <pre>
-=======
-    For MongoDB
-
     ```yaml
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
     spring:
       data:
         mongodb:
@@ -142,43 +90,23 @@ Login successful as ...
 
 3. アプリケーションの起動方法を示すゴールフィールドを含むjsonファイルを追加します。
 
-<<<<<<< HEAD:pages/clever-cloud.md
     mavenの場合
     `clevercloud/maven.json`ファイルを作成し、pom.xmlの**artifactId**を使用します。
     
-    <pre>
-    {
-        "build": {
-            "type": "maven",
-            "goal": "-Pprod package -DskipTests"
-        },
-        "deploy": {
-        "jarName": "./target/[REPLACE BY ARTIFACTID]-0.0.1-SNAPSHOT.jar"
-        }
-=======
-  For maven
-  create `clevercloud/maven.json` file and using your pom.xml **artifactId**
-  
   ```json
   {
     "build": {
-      "type": "maven",
-      "goal": "-Pprod package -DskipTests"
+        "type": "maven",
+        "goal": "-Pprod package -DskipTests"
     },
     "deploy": {
     "jarName": "./target/[REPLACE BY ARTIFACTID]-0.0.1-SNAPSHOT.jar"
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
     }
   }
   ```
 
-<<<<<<< HEAD:pages/clever-cloud.md
     gradleの場合
     `clevercloud/gradle.json`ファイルを作成し、gradleを使用します。プロパティは**rootProject.name**を使用します。
-=======
-  For gradle
-  create `clevercloud/gradle.json` file  and using gradle.properties **rootProject.name**
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
 
   ```json
   {
@@ -193,27 +121,15 @@ Login successful as ...
   ```
 
 
-<<<<<<< HEAD:pages/clever-cloud.md
 ## アプリケーションのデプロイ
 ### CLIの使用
 デプロイ前にコミットする必要があります。
-=======
-## Deploy your application
-
-### Using CLI
-
-You must commit before deploy
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
 
 ```shell
 git commit -m "Clever deploy"
 ```
 
-<<<<<<< HEAD:pages/clever-cloud.md
 その後、実行します。
-=======
-then run:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
 
 ```shell
 clever deploy
@@ -223,14 +139,8 @@ clever deploy
 
 gitlab CI/CD環境変数に`$CLEVER_TOKEN`と`CLEVER_SECRET`を定義してください。
 
-<<<<<<< HEAD:pages/clever-cloud.md
 このステージを`.gitlab-ci.yml`に追加してください。
-<pre>
-=======
-add this stage to your `.gitlab-ci.yml`
-
 ```yaml
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
 deploy-to-clever-env:
   stage: deploy
   variables:
@@ -252,14 +162,8 @@ deploy-to-clever-env:
 
 Githubシークレットに`CLEVER_TOKEN`と`CLEVER_SECRET`を定義します（Settings > Secret）。
 
-<<<<<<< HEAD:pages/clever-cloud.md
 このステップを`.github-action.yml`に追加してください。
-<pre>
-=======
-add this step to your `.github-action.yml`
-
 ```yaml
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx
 - uses: actions/checkout@v2
 - name: Deploy on cc
   env:
@@ -277,7 +181,6 @@ add this step to your `.github-action.yml`
 
 ## Javaバージョンの変更
 
-<<<<<<< HEAD:pages/clever-cloud.md
 Javaバージョン（デフォルトではJava 11）を選択できます。
 ```
 clever env set CC_JAVA_VERSION 12
@@ -288,17 +191,3 @@ clever env set CC_JAVA_VERSION 12
 *   [Clever Cloudドキュメント](https://www.clever-cloud.com/doc/)
 *   [Clever Cloud Java mavenによるデプロイ](https://www.clever-cloud.com/doc/java/java-maven/)
 *   [Clever Cloud Java gradleによるデプロイ](https://www.clever-cloud.com/doc/java/java-gradle/)
-=======
-You can select the Java version (Java 11 by default)
-
-```shell
-clever env set CC_JAVA_VERSION 12
-```
-
-
-## More information
-
-* [Clever Cloud documentation](https://www.clever-cloud.com/doc/)
-* [Clever Cloud Java maven deployment](https://www.clever-cloud.com/doc/java/java-maven/)
-* [Clever Cloud Java gradle deployment](https://www.clever-cloud.com/doc/java/java-gradle/)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/clever-cloud.mdx

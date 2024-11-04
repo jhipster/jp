@@ -1,65 +1,34 @@
 ---
-<<<<<<< HEAD:pages/creating-microservices.md
-layout: default
 title: マイクロサービスの構築
-permalink: /creating-microservices/
-sitemap:
-    priority: 0.7
-    lastmod: 2017-05-03T00:00:00-00:00
+slug: /creating-microservices/
+last_update:
+  date: 2017-05-03T00:00:00-00:00
 ---
 
 # <i class="fa fa-bolt"></i> マイクロサービスの構築
 
-マイクロサービスはJHipsterアプリケーションの一種であり、フロントエンドを持たず（Angularフロントエンドは[gateway]({{ site.url }}/api-gateway/)で生成される必要があります）、[Consul]({{ site.url }}/consul/)と連携して設定、検出、管理されます。
+マイクロサービスはJHipsterアプリケーションの一種であり、フロントエンドを持たず（Angularフロントエンドは[gateway](/api-gateway/)で生成される必要があります）、[Consul](/consul/)と連携して設定、検出、管理されます。
 
 <h2 id="entities">マイクロサービスアーキテクチャにおけるエンティティ</h2>
-=======
-title: Creating microservices
-slug: /creating-microservices/
-last_update:
-  date: 2024-06-03T00:00:00-00:00
----
-
-Microservices are a type of JHipster application, that have no front-end (the Angular front-end must be generated on a [gateway](/api-gateway/)), and which work with the [Consul](/consul/) to be configured, discovered, and managed.
-
-
-## Entities in a microservices architecture
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/creating-microservices.mdx
 
 JWTまたはDTOを使用する場合、Userエンティティはマイクロサービスで生成されません。OAuth 2.0が使用される場合、マイクロサービスには、トークンからユーザーデータを抽出し、それをマイクロサービスのデータベースに保存するメカニズムがあります。そのため、JWTおよびDTOの場合、Userエンティティはゲートウェイのデータベースにのみ存在するため、Userエンティティとの関係を使用または定義できません。
 
 異なるマイクロサービスのエンティティ間の関係はサポートされていません。
 
-<<<<<<< HEAD:pages/creating-microservices.md
 <h2 id="generating_entities">エンティティの生成</h2>
-=======
-
-## Generating entities
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/creating-microservices.mdx
 
 マイクロフロントエンドのエンティティについては、[マイクロフロントエンド](#microfrontends)を参照してください。
 
-<<<<<<< HEAD:pages/creating-microservices.md
-[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用すると、フロントエンドとバックエンドのコードが同じアプリケーションに配置されないため、マイクロサービスアーキテクチャでの動作が少し異なります。
+[エンティティサブジェネレータ](/creating-an-entity/)を使用すると、フロントエンドとバックエンドのコードが同じアプリケーションに配置されないため、マイクロサービスアーキテクチャでの動作が少し異なります。
 
-まず、マイクロサービスアプリケーションでエンティティを生成します。これは通常どおりに動作し、[JHipster UML]({{ site.url }}/jhipster-uml/)または[JDL Studio](https://start.jhipster.tech/jdl-studio/)を使用して、複雑なエンティティとリレーションシップも生成できます。マイクロサービスにはフロントエンドがないため、UIコードは生成されません。
-=======
-Using the [entity sub-generator](/creating-an-entity/) works a little bit differently in a microservices architecture, as the front-end and the back-end codes are not located in the same application.
-
-First, generate the entities in the microservice applications: this works as usual, and you can also use [JHipster UML](/jhipster-uml/) or [JDL Studio](https://start.jhipster.tech/jdl-studio/) to help you generate complex entities and relationships. As microservices don't have a front-end, no UI code will be generated.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/creating-microservices.mdx
+まず、マイクロサービスアプリケーションでエンティティを生成します。これは通常どおりに動作し、[JHipster UML](/jhipster-uml/)または[JDL Studio](https://start.jhipster.tech/jdl-studio/)を使用して、複雑なエンティティとリレーションシップも生成できます。マイクロサービスにはフロントエンドがないため、UIコードは生成されません。
 
 次に、ゲートウェイでエンティティサブジェネレータを再度実行します。最初に、ゲートウェイに固有の新しい質問が表示されます。
 
 - 新しいエンティティを通常生成するか（ゲートウェイも標準のJHipsterアプリケーションなので、これはモノリスアプリケーションのように動作します）、マイクロサービスから既存のJHipster構成を使用するかを選択できます。
 - マイクロサービスからエンティティを生成することを選択した場合、ローカルコンピュータ上のこのマイクロサービスへのパスを入力する必要があります。すると、JHipsterがゲートウェイ上にフロントエンドコードを生成します。
 
-<<<<<<< HEAD:pages/creating-microservices.md
 ## マイクロフロントエンド
-=======
-
-## Microfrontends
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/creating-microservices.mdx
 
 Microfrontendサポートは進行中です。実装は変更される可能性があり、フレームワークによって異なります。最新のステータスについては、[マイクロフロントエンドのサポート](https://github.com/jhipster/generator-jhipster/issues/17031)を参照してください。
 
@@ -69,12 +38,7 @@ JHipsterのマイクロフロントエンド実装は、[Webpack Module Federati
 
 ゲートウェイを使用して、または単独でマイクロフロントエンドを起動する方法については、生成されたREADMEを参照してください。
 
-<<<<<<< HEAD:pages/creating-microservices.md
 <h2 id="hazelcast">Hazelcastによる分散キャッシュ</h2>
-=======
-
-## Distributed caching with Hazelcast
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/creating-microservices.mdx
 
 アプリケーションでSQLデータベースを使用している場合、JHipsterはマイクロサービスを使用した異なる第2レベルのキャッシュソリューションを提案しています。
 
@@ -92,17 +56,8 @@ JHipsterのマイクロフロントエンド実装は、[Webpack Module Federati
 - `dev`プロファイルを使用すると、JHipsterはインスタンスごとに異なるポートを使用して、localhost(`127.0.0.1`)にこれらのインスタンスのクラスタを作成します。デフォルトでは、Hazelcastポートは`アプリケーションのポート+5701`です（したがって、アプリケーションのポートが`8081`の場合、Hazelcastはポート`13782`を使用します）。
 - `prod`プロファイルを使用すると、JHipsterはデフォルトのHazelcastポート（`5701`）を使用して、検出した他のすべてのノードとともにクラスタを作成します。
 
-<<<<<<< HEAD:pages/creating-microservices.md
 <h2 id="no_database">データベースを持たないマイクロサービス</h2>
 
 マイクロサービスのアプリケーションはデータベースなしで作成することができます。これは、マイクロサービスが小さく、ユーザ管理コードがないためです。
 
 データベースのないマイクロサービスは非常に小さく、レガシーシステムのような特定のバックエンドに接続するためや、領域外にある他のサービスへのプロキシとして利用できます。
-=======
-
-## Microservices with no database
-
-Microservices applications can be created without a database. This is because microservices are small and do not have user-management code.
-
-A microservice without a database is very small, and could be used to connect to a specific back-end like a legacy system  or serve as a proxy to other services outside of your realm.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/creating-microservices.mdx

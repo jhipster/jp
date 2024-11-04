@@ -1,37 +1,36 @@
 ---
-title: How to remove the register account service
+title: アカウント登録サービスを削除する
 slug: /tips/034_tip_remove_register_account_service.html
 last_update:
   date: 2021-03-19T21:22:00-00:00
 ---
 
-__Tip submitted by [@apuntandoanulo](https://github.com/apuntandoanulo)__
+__このTipは[@apuntandoanulo](https://github.com/apuntandoanulo)により提出されました__
 
-_Goal:_ If you want to eliminate the possibility that users can create accounts and let only a previously registered user do it, remove the following fragments and lines of code that are indicated below:
+_目標:_ ユーザーがアカウントを作成できる可能性を排除し、以前に登録したユーザーのみだけにそれをさせたい場合は、次に示すコードの一部と行を削除します。
 
 
-## 1. On the back-end side
+## 1.バックエンド側
 
 * ___1.1___  `src\main\java\ ... \service\UserService.java`
-  - Remove the entire method `public User registerUser(...)`
+  - メソッド全体を削除します：`public User registerUser(...)`
 * ___1.2___ `src\main\java\ ... \rest\AccountResource.java`
-  - Remove the entire method `@PostMapping("/register")   public void registerAccount(...)`
+  - メソッド全体を削除します：`@PostMapping("/register")   public void registerAccount(...)`
 
-
-## 2. On the front-end side
+## 2.フロントエンド側
 
 * ___2.1___ `src\main\webapp\app\account`
-  - Remove the entire folder `register` that contains: `register.component.html`, `register.component.ts`, `register.route.ts`, `register.service.ts`
+  - 次の内容を含むフォルダ`register`全体を削除します：`register.component.html`、`register.component.ts`、`register.route.ts`、`register.service.ts`
 
-* ___2.2___ Go into `src\main\webapp\app\account\account.module.ts` and remove the following lines:
+* ___2.2___ `src\main\webapp\app\account\account.module.ts`に移動して、次の行を削除します。
   - `import { RegisterComponent } from './register/register.component'; `
   - _declarations_ array -> `RegisterComponent`
 
-* ___2.3___ Go into `src\main\webapp\app\account\account.route.ts` and remove the following lines:
+* ___2.3___ `src\main\webapp\app\account\account.route.ts`に移動して、次の行を削除します。
   - `import { registerRoute } from './register/register.route'; `
   - _ACCOUNT_ROUTES_ array -> `registerRoute `
 
-* ___2.4___ Go into `src\main\webapp\app\home\home.component.html` and remove the following block:
+* ___2.4___ `src\main\webapp\app\home\home.component.html`に移動し、次のブロックを削除します。
 
 ```html
 <div class="alert alert-warning" *ngSwitchCase="false">
@@ -40,7 +39,7 @@ _Goal:_ If you want to eliminate the possibility that users can create accounts 
 </div>
 ```
 
-* ___2.5___ Go into `src\main\webapp\app\layouts\navbar\navbar.component.html` and remove the following block:
+* ___2.5___ `src\main\webapp\app\layouts\navbar\navbar.component.html`に移動して、次のブロックを削除します。
 
 ```html
 <li *ngSwitchCase="false">
@@ -51,8 +50,7 @@ _Goal:_ If you want to eliminate the possibility that users can create accounts 
 </li>
 ```
 
-* ___2.6___ Go into `src\main\webapp\app\shared\login\login.component.html` and remove the following block:
-
+* ___2.6___ `src\main\webapp\app\shared\login\login.component.html`に移動し、次のブロックを削除します。
 ```html
 <div class="alert alert-warning">
   <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
@@ -60,8 +58,7 @@ _Goal:_ If you want to eliminate the possibility that users can create accounts 
 </div>
 ```
 
-* ___2.7___ Go into `src\main\webapp\app\shared\login\login.component.ts` and remove the following block:
-
+* ___2.7___ `src\main\webapp\app\shared\login\login.component.ts`に移動し、次のブロックを削除します。
 ```ts
 register(): void {
   this.activeModal.dismiss('to state register');
@@ -69,7 +66,7 @@ register(): void {
 }
 ```
 
-* ___2.8___ Remove the messages files: `src\main\webapp\i18n\ ... \register.json`
+* ___2.8___ メッセージ・ファイルを削除します：`src\main\webapp\i18n\ ... \register.json`
 
 * ___2.9___ `src\test\javascript\spec\app\account`
-  - Remove the entire folder `register` that contains: `register.component.spec.ts`
+  - 次の内容を含むフォルダ`register`全体を削除します：`register.component.spec.ts`

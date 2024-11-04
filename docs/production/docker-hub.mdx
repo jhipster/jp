@@ -5,55 +5,33 @@ last_update:
   date: 2016-09-25T00:00:00-00:00
 ---
 
-<<<<<<< HEAD:pages/docker_hub.md
 # <i class="fa fa-cloud-upload"></i> Docker Hub
 
 ## まとめ
 
-[![]({{ site.url }}/images/logo/docker-hub.png)](https://hub.docker.com/u/jhipster/)
-=======
-[![Docker Hub](/images/logo/docker-hub.png)](https://hub.docker.com/u/jhipster/)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/docker-hub.mdx
+[![](/images/logo/docker-hub.png)](https://hub.docker.com/u/jhipster/)
 
 JHipsterはDocker Hubに独自の[組織]を持ち、さまざまなDockerイメージを提供しています。
 
-<<<<<<< HEAD:pages/docker_hub.md
 
 [jhipster-docker-hub]プロジェクトは、これらのイメージを起動するためのすべてのdocker-composeファイルを提供します。
 docker-composeコマンドを使用するには、次の作業が必要です。
-=======
-The [jhipster-docker-hub] project provides all docker-compose files to launch these images.
-To use the docker-compose commands, you have to:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/docker-hub.mdx
 
 - プロジェクトのクローンを作成：`git clone https://github.com/jhipster/jhipster-docker-hub`
 - プロジェクト内に移動：`cd jhipster-docker-hub`
 
 :::warning
 
-<<<<<<< HEAD:pages/docker_hub.md
-<div class="alert alert-warning"><i>警告:</i>
 
 OSによって、<code>DOCKER_HOST</code>は異なります。Linuxでは、<code>localhost</code>です。
 Mac/Windowsの場合、次のコマンドを使用してIPを取得する必要があります。<code>docker-machine ip default</code>
 
-</div>
+:::
 
 
 ## [jhipster/jhipster](https://hub.docker.com/r/jhipster/jhipster) : JHipsterの代替インストール
 
-詳細な手順については、[インストール]({{ site.url }}/installation/)ページを参照してください。
-=======
-Based on your OS, your `DOCKER_HOST` will differ. On Linux, it will be `localhost`.
-For Mac/Windows, you will have to obtain the IP using following command: `docker-machine ip default`
-
-:::
-
-
-## [jhipster/jhipster](https://hub.docker.com/r/jhipster/jhipster): an alternative installation of JHipster
-
-See the [installation](/installation/) page for full instructions.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/docker-hub.mdx
+詳細な手順については、[インストール](/installation/)ページを参照してください。
 
 次のコマンドは、特定の用途で使用できます。
 
@@ -73,11 +51,7 @@ docker container run --rm -it -v "$PWD":/home/jhipster/app jhipster/jhipster jhi
 docker container run --rm -it -v "$PWD":/home/jhipster/app jhipster/jhipster:v3.0.0 jhipster
 ```
 
-<<<<<<< HEAD:pages/docker_hub.md
 利用可能なすべてのタグは[ここ](https://hub.docker.com/r/jhipster/jhipster/tags/)で見ることができます。
-=======
-You can see [all available tags](https://hub.docker.com/r/jhipster/jhipster/tags/)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/docker-hub.mdx
 
 
 ## [jhipster/jdl-studio](https://hub.docker.com/r/jhipster/jdl-studio) : オフラインのJDL-Studio
@@ -184,12 +158,8 @@ Cassandraノードをスケーリングします。
 docker-compose -f jhipster-sample-app-cassandra/prod.yml scale sample-cassandra-node=2
 ```
 
-<<<<<<< HEAD:pages/docker_hub.md
 
 [組織]: https://hub.docker.com/u/jhipster/
-=======
-[organization]: https://hub.docker.com/u/jhipster/
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/docker-hub.mdx
 [jhipster-docker-hub]: https://github.com/jhipster/jhipster-docker-hub
 
 

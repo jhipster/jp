@@ -1,18 +1,13 @@
 ---
-<<<<<<< HEAD:pages/development.md
-layout: default
 title: JHipsterを開発環境で使用する
-permalink: /development/
-redirect_from:
-  - /development.html
-sitemap:
-    priority: 0.7
-    lastmod: 2023-01-05T00:00:00-00:00
+slug: /development/
+last_update:
+  date: 2023-01-05T00:00:00-00:00
 ---
 
 # <i class="fa fa-code"></i> JHipsterを開発環境で使用する
 
-_**新しいJHipsterアプリケーションの作成については、[ビデオチュートリアル]({{ site.url }}/video-tutorial/)を参照してください！**_
+_**新しいJHipsterアプリケーションの作成については、[ビデオチュートリアル](/video-tutorial/)を参照してください！**_
 
 ## サマリー
 
@@ -23,45 +18,20 @@ _**新しいJHipsterアプリケーションの作成については、[ビデ�
 5.  [国際化](#internationalization)
 
 <h2 id="general-configuration">一般構成</h2>
-=======
-title: Using JHipster in development
-slug: /development/
-last_update:
-  date: 2023-01-05T00:00:00-00:00
----
-
-_**Please check our [video tutorial](/video-tutorial) on creating a new JHipster application!**_
-
-
-## General configuration
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 ### IDE構成
 
-<<<<<<< HEAD:pages/development.md
-IDEをまだ設定していない場合は、[IDEの設定]({{ site.url }}/configuring-ide/)ページに移動してください。
-=======
-If you haven't configured your IDE yet, please go to the [Configuring your IDE](/configuring-ide) page.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
+IDEをまだ設定していない場合は、[IDEの設定](/configuring-ide/)ページに移動してください。
 
 ### アプリケーション構成
 
 デフォルトでは、JHipsterは「開発」プロファイルを使用するため、何も設定する必要はありません。
 
-<<<<<<< HEAD:pages/development.md
-利用可能なプロファイルの詳細については、「[プロファイル]({{ site.url }}/profiles/)」というタイトルのセクションを参照してください。
+利用可能なプロファイルの詳細については、「[プロファイル](/profiles/)」というタイトルのセクションを参照してください。
 
-特定のJHipsterプロパティを設定する場合は、[共通アプリケーションプロパティ]({{ site.url }}/common-application-properties/)ページを参照してください。
+特定のJHipsterプロパティを設定する場合は、[共通アプリケーションプロパティ](/common-application-properties/)ページを参照してください。
 
 <h2 id="running-java-server">Javaサーバの実行</h2>
-=======
-If you want more information on the available profiles, please go the section titled "[Profiles](/profiles)".
-
-If you want to configure some specific JHipster properties, have a look at the [common application properties](/common-application-properties) page.
-
-
-## Running the Java server
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 ### "main"のJavaクラスとして
 
@@ -75,21 +45,7 @@ IDEで、Javaパッケージ階層のルートにある"Application"クラスを
 
 Mavenを使用してJavaサーバーを起動できます。JHipsterにはMavenラッパーが用意されているため、Mavenをインストールする必要はありません。また、すべてのプロジェクトユーザーが同じバージョンのMavenを使用できることが保証されます。
 
-<<<<<<< HEAD:pages/development.md
 `./mvnw`（Mac OS X/Linuxの場合）または `mvnw`（Windowsの場合）
-=======
-on Mac OS X/Linux:
-
-```shell
-./mvnw
-```
-
-on Windows:
-
-```shell
-mvnw
-```
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 （これにより、デフォルトのMavenタスクである`spring-boot:run`が実行されます）
 
@@ -113,21 +69,7 @@ Mavenの使用方法の詳細については、[http://maven.apache.org](http://
 
 Gradleオプションを選択した場合、JHipsterはGradleラッパーを提供するので、Gradleをインストールする必要はなく、すべてのプロジェクトユーザーが同じGradleバージョンを持っていることが保証されます。
 
-<<<<<<< HEAD:pages/development.md
 `./gradlew`（Mac OS X/Linuxの場合）または`gradlew`（Windowsの場合）
-=======
-on Mac OS X/Linux:
-
-```shell
-./gradlew
-```
-
-on Windows:
-
-```shell
-gradlew
-```
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 （これにより、デフォルトのGradleタスクである`bootRun`が実行されます）
 
@@ -147,12 +89,7 @@ gradle
 
 Gradleの使用方法の詳細については、[https://gradle.org](https://gradle.org)を参照してください。
 
-<<<<<<< HEAD:pages/development.md
 <h2 id="working-with-angular">Angular/Reactの操作</h2>
-=======
-
-## Working with Angular/React
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 ### Webpackの実行
 
@@ -166,13 +103,8 @@ npm start
 
 これにより、非常に優れた機能が提供されます。
 
-<<<<<<< HEAD:pages/development.md
 *   HTML/CSS/TypeScriptファイルのいずれかを変更すると、ブラウザが自動的に更新されます。
 *   複数の異なるブラウザまたはデバイスでアプリケーションをテストする場合、すべてのクリック/スクロール/入力が、すべての画面で自動的に同期されることになります。
-=======
-* As soon as you modify one of your HTML/CSS/TypeScript file, your browser will refresh itself automatically
-* When you test your application on several different browsers or devices, all your clicks/scrolls/inputs should be automatically synchronized on all screens
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 これにより、以下が起動されます。
 
@@ -202,22 +134,13 @@ npm start
 - `npm run test:watch`: コードが変更されたときのライブフィードバックのために、Jestユニットテストを実行したままにします。
 - `npm run e2e`: Protractorを使用して"end to end"テストを実行します（プロジェクトの生成時にProtractorオプションが選択されている場合にのみ機能します）。
 
-<<<<<<< HEAD:pages/development.md
 <h2 id="using-a-database">データベースの使用</h2>
-=======
-
-## Using a database
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 ### データベースの実行
 
 MySQL、MariaDB、PostgreSQL、MSSQL、MongoDB、Cassandra、Couchbaseなどの非組み込みデータベースを使用する場合は、そのデータベースをインストールして設定する必要があります。
 
-<<<<<<< HEAD:pages/development.md
-JHipsterで最も簡単で推奨される方法は、Docker Composeを使用することです。[Docker Composeガイドはこちらです]({{ site.url }}/docker-compose/)。
-=======
-The easiest and recommended way with JHipster is to use Docker Compose. [Follow our Docker Compose guide here.](/docker-compose/)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
+JHipsterで最も簡単で推奨される方法は、Docker Composeを使用することです。[Docker Composeガイドはこちらです](/docker-compose/)。
 
 データベースを手動でインストールして設定したい場合は、スキーマとそのユーザを作成する必要があります。これは、Liquibaseが既存のスキーマ内のオブジェクト（テーブル、インデックス、等）のみを作成するためです。次に、`src/main/resources/config/application-*.yml`ファイル内のSpring Bootプロパティ（たとえば、データベースURL、ログイン、パスワード）を適宜設定することを忘れないでください。
 
@@ -238,29 +161,16 @@ H2データベースを選択すると、メモリー内のデータベースが
 
 このオプションは、H2を使用するよりも少し複雑ですが、いくつかの重要な利点があります。
 
-<<<<<<< HEAD:pages/development.md
 *   アプリケーションを再起動してもデータは保持されます。
 *   アプリケーションの起動が少し速くなります。
 *   優れた`./mvnw liquibase:diff`ゴールを使用できます（以下を参照）。
-=======
-* Your data is kept across application restarts
-* Your application starts a little bit faster
-* You can use the great `./mvnw liquibase:diff` goal (see below)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 **注**:MySQLの場合、次のオプションを使用してデータベースを起動する必要があります。
 
-<<<<<<< HEAD:pages/development.md
 *   `--lower_case_table_names=1`: [MySQLスキーマオブジェクト名のドキュメント](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html)を参照
 *   `--skip-ssl`: [MySQLサーバーオプションのドキュメント](https://dev.mysql.com/doc/refman/8.0/en/server-options.html#option_mysqld_ssl)を参照
 *   `--character_set_server=utf8`: [MySQLサーバシステム変数のドキュメント](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_character_set_server)を参照
 *   `--explicit_defaults_for_timestamp` : [MySQLサーバシステム変数のドキュメント](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_explicit_defaults_for_timestamp)を参照
-=======
-* `--lower_case_table_names=1`: see the [MySQL Schema Object Names documentation](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html)
-* `--skip-ssl`: see the [MySQL Server Options documentation](https://dev.mysql.com/doc/refman/8.0/en/server-options.html#option_mysqld_ssl)
-* `--character_set_server=utf8`: see the [MySQL Server System Variables documentation](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_character_set_server)
-* `--explicit_defaults_for_timestamp` : see the [MySQL Server System Variables documentation](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_explicit_defaults_for_timestamp)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 コマンドは以下のとおりです。
 
@@ -274,33 +184,18 @@ JPAエンティティを追加または変更する場合は、データベー�
 
 JHipsterは[Liquibase](http://www.liquibase.org)を使用してデータベースの更新を管理し、その設定を`/src/main/resources/config/liquibase/`ディレクトリに保存します。
 
-<<<<<<< HEAD:pages/development.md
 Liquibaseを使用するには、次の3つの方法があります。
 *  エンティティサブジェネレータを使用
 *  Liquibaseプラグインを使用
 *  設定ファイルを手動で更新
-=======
-There are 3 ways to work with Liquibase: 
-* use the entity sub-generator
-* use the liquibase plugin 
-* update the configuration files manually
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 ### エンティティサブジェネレータによるデータベースの更新
 
-<<<<<<< HEAD:pages/development.md
-[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用する場合、開発ワークフローは次のようになります。
+[エンティティサブジェネレータ](/creating-an-entity/)を使用する場合、開発ワークフローは次のようになります。
 
-*   [エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を実行します。
+*   [エンティティサブジェネレータ](/creating-an-entity/)を実行します。
 *   新しい「変更ログ」が`src/main/resources/config/liquibase/changelog`ディレクトリに作成され、`src/main/resources/config/liquibase/master.xml`ファイルに自動的に追加されます。
 *   この変更ログを確認してください。このログは、次にアプリケーションを実行したときに適用されます。
-=======
-If you use the [entity sub-generator](/creating-an-entity/), here is the development workflow:
-
-* Run the [entity sub-generator](/creating-an-entity/)
-* A new "change log" is created in your `src/main/resources/config/liquibase/changelog` directory, and has been automatically added to your `src/main/resources/config/liquibase/master.xml` file
-* Review this change log, it will be applied the next time you run your application
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 ### Liquibaseプラグインによるデータベースの更新
 
@@ -314,21 +209,12 @@ If you use the [entity sub-generator](/creating-an-entity/), here is the develop
 
 開発ワークフローは次のとおりです。
 
-<<<<<<< HEAD:pages/development.md
 1.   JPAエンティティーを変更します（フィールドやリレーションシップの追加など）。
 2.   そのエンティティに対して再生成されたliquibaseファイル`config/liquibase/changelog/DATE_added_entity_ENTITY_NAME.xml`の変更をスキップして、次に示す間もなく生成されるchangelogファイルとの競合を回避します。
 3.   アプリケーションをコンパイルします（コンパイルされたJavaコードで動作しますので、コンパイルを忘れないようにしてください）。
 4.   `./mvnw liquibase:diff`を実行します（または事前にコンパイルするには`./mvnw compile liquibase:diff`を実行します）。
 5.   新しい「変更ログ」が`src/main/resources/config/liquibase/changelog`ディレクトリに作成されます。
 6.   この変更ログを確認し、次にアプリケーションを実行するときに適用されるように、それを`src/main/resources/config/liquibase/master.xml`ファイルに追加します。
-=======
-1. Modify your JPA entity (add a field, a relationship, etc.)
-2. Skip changes in the regenerated liquibase file for that entity `config/liquibase/changelog/DATE_added_entity_ENTITY_NAME.xml` to avoid conflict with the soon to be generated changelog file bellow
-3. Compile your application (this works on the compiled Java code, so don't forget to compile!)
-4. Run `./mvnw liquibase:diff` (or `./mvnw compile liquibase:diff` to compile before)
-5. A new "change log" is created in your `src/main/resources/config/liquibase/changelog` directory
-6. Review this change log and add it to your `src/main/resources/config/liquibase/master.xml` file, so it is applied the next time you run your application
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 #### Gradle
 
@@ -340,24 +226,13 @@ Mavenと同じワークフローを使用できますが、4番目のステッ�
 
 データベースの更新を手動で行いたい（または行う必要がある）場合の開発ワークフローを次に示します。
 
-<<<<<<< HEAD:pages/development.md
 *   JPAエンティティを変更します（フィールドやリレーションシップの追加など）。
 *   `src/main/resources/config/liquibase/changelog`ディレクトリに新しい「変更ログ」を作成します。そのディレクトリ内のファイルには、作成日（yyyyMMddHHmmss形式）の接頭辞を付け、その後、それらの動作を説明するタイトルを付けます。たとえば、`20141006152300_added_price_to_product.xml`は良い名前です。
 *   この「変更ログ」ファイルを`src/main/resources/config/liquibase/master.xml`ファイルに追加して、次にアプリケーションを実行したときに適用されるようにします。
-=======
-* Modify your JPA entity (add a field, a relationship, etc.)
-* Create a new "change log" in your `src/main/resources/config/liquibase/changelog` directory. The files in that directory are prefixed by their creation date (in yyyyMMddHHmmss format), and then have a title describing what they do. For example, `20141006152300_added_price_to_product.xml` is a good name.
-* Add this "change log" file in your `src/main/resources/config/liquibase/master.xml` file, so it is applied the next time you run your application
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 Liquibaseの使い方の詳細については、[http://www.liquibase.org](http://www.liquibase.org)にアクセスしてください。
 
-<<<<<<< HEAD:pages/development.md
 <h2 id="internationalization">国際化</h2>
-=======
-
-## Internationalization
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
 
 国際化（またはi18n）はJHipsterの第一級市民であり、プロジェクトの最初に（後付けではなく）設定する必要があると考えています。
 
@@ -370,8 +245,4 @@ Liquibaseの使い方の詳細については、[http://www.liquibase.org](http:
 
 このキーは、翻訳されたStringを返すJSONドキュメントを参照します。Angular/Reactは、"First Name"の文字列を翻訳されたバージョンに置き換えます。
 
-<<<<<<< HEAD:pages/development.md
-言語の使用方法の詳細については、[新しい言語のインストールに関するドキュメント]({{ site.url }}/installing-new-languages/)を参照してください。
-=======
-If you want more information on using languages, read our [Installing new languages documentation](/installing-new-languages).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/development.mdx
+言語の使用方法の詳細については、[新しい言語のインストールに関するドキュメント](/installing-new-languages/)を参照してください。

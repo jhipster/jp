@@ -1,71 +1,35 @@
 ---
-<<<<<<< HEAD:pages/using_elasticsearch.md
-layout: default
 title: Elasticsearchの使用
-permalink: /using-elasticsearch/
-redirect_from:
-  - /using_elasticsearch.html
-sitemap:
-    priority: 0.7
-    lastmod: 2023-07-12T00:00:00-00:00
----
-
-# <i class="fa fa-search"></i> Elasticsearchの使用
-
-Elasticsearchは、データベースの上に検索機能を追加するオプションです。
-=======
-title: Using Elasticsearch
 slug: /using-elasticsearch/
 last_update:
   date: 2023-07-12T00:00:00-00:00
 ---
 
-Elasticsearch is an option that adds search capabilities on top of your database.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-elasticsearch.mdx
+# <i class="fa fa-search"></i> Elasticsearchの使用
+
+Elasticsearchは、データベースの上に検索機能を追加するオプションです。
 
 このオプションにはいくつかの制限があります。
 
-<<<<<<< HEAD:pages/using_elasticsearch.md
 * SQLデータベースとMongoDBでのみ動作します。CassandraとCouchbaseのサポートは将来追加される予定です（ヘルプは歓迎です！）。
 * データベースとElasticsearchの間には自動レプリケーションメカニズムがないため、データが同期していない可能性があります。その結果、データを同期するための特定のコードを記述する必要があります。たとえば、Springの`@Scheduled`アノテーションを使用して、毎晩実行する必要があります。
     * これはまた、データベースがアプリケーションの外部で変更された場合、検索インデックスが同期しなくなることを意味します。[Elasticsearch Reindexer](https://www.jhipster.tech/modules/marketplace/#/details/generator-jhipster-elasticsearch-reindexer)JHipsterモジュールは、このような状況で役立ちます。
-=======
-* It only works with SQL databases and MongoDB. Cassandra and Couchbase support will be added in the future (help is welcome!).
-* There is no automatic replication mechanism between your database and Elasticsearch, so you might have out-of-sync data. As a result, you will probably need to write some specific code to synchronize your data, for example using the Spring `@Scheduled` annotation, to run every evening.
-  * This also means if your database is changed outside of your application, your search indexes will be out-of-sync. The [Elasticsearch Reindexer](https://www.jhipster.tech/modules/marketplace/#/details/generator-jhipster-elasticsearch-reindexer) JHipster module can help in these situations.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-elasticsearch.mdx
 
 Elasticsearchオプションが選択されている場合、以下のふるまいとなります。
 
-<<<<<<< HEAD:pages/using_elasticsearch.md
 *   Spring Data Elasticsearchは、Spring Bootの自動設定で使用されます。これは`spring.elasticsearch.*`設定プロパティを使用して設定できます。
 *   "repository"パッケージには、すべてのElasticsearchリポジトリを保持する"search"と呼ばれる新しいサブパッケージができます。
 *   "User"エンティティはElasticsearchでインデックス付けされ、`/api/_search/users/:query`RESTエンドポイントを使用してクエリできます。
-*   [エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用すると、生成されたエンティティはElasticsearchによって自動的にインデックス付けされ、RESTエンドポイントで使用されます。UIには検索機能も追加されているため、CRUDのメイン画面でエンティティを検索できます。
+*   [エンティティサブジェネレータ](/creating-an-entity/)を使用すると、生成されたエンティティはElasticsearchによって自動的にインデックス付けされ、RESTエンドポイントで使用されます。UIには検索機能も追加されているため、CRUDのメイン画面でエンティティを検索できます。
 
 ### 開発環境での使用
-=======
-* Spring Data Elasticsearch is used with Spring Boot's autoconfiguration. It can be configured using `spring.elasticsearch.*` configuration properties.
-* The "repository" package has a new subpackage, called "search", that holds all Elasticsearch repositories.
-* The "User" entity gets indexed in Elasticsearch, and you can query it using the `/api/_search/users/:query` REST endpoint.
-* When the [entity sub-generator](/creating-an-entity) is used, the generated entity gets automatically indexed by Elasticsearch, and is used in the REST endpoint. Search capabilities are also added to the UI, so you can search your entity in the main CRUD screen.
-
-
-## Using in Development
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-elasticsearch.mdx
 
 
 開発環境では、JHipsterは組み込みのElasticsearchインスタンスで実行されます。`SPRING_DATA_URIS`環境変数を設定すれば（または`spring.elasticsearch.uris`プロパティを`application-dev.yml`に追加すれば）、外部のElasticsearchインスタンスを使用することもできます。
 
-<<<<<<< HEAD:pages/using_elasticsearch.md
     docker-compose -f src/main/docker/elasticsearch.yml up -d
     
 デフォルトでは、`SPRING_ELASTICSEARCH_URIS`プロパティは`application-dev.yml`および`application-prod.yml`内で、このインスタンスと通信するように設定されています。
-=======
-```shell
-docker-compose -f src/main/docker/elasticsearch.yml up -d
-```
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-elasticsearch.mdx
 
 次に、それを指す環境変数を設定します。
 
@@ -73,31 +37,17 @@ docker-compose -f src/main/docker/elasticsearch.yml up -d
 export SPRING_DATA_URIS=http://localhost:9200
 ```
 
-<<<<<<< HEAD:pages/using_elasticsearch.md
 ### 本番環境での使用
-=======
-## Using in Production
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-elasticsearch.mdx
 
 本番環境では、JHipsterは外部Elasticsearchインスタンスを想定しています。デフォルトでは、アプリケーションはlocalhostで実行されているElasticsearchインスタンスを検索します。これは、`application-prod.yml`ファイルの標準のSpring Bootプロパティを使用して設定できます。
 
-<<<<<<< HEAD:pages/using_elasticsearch.md
 ### Herokuでの使用
-=======
-
-## Using on Heroku
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-elasticsearch.mdx
 
 Herokuでは、[Bonsai Elasticsearch](https://elements.heroku.com/addons/bonsai)はアドオンとして設定されています。JHipsterは自動的にそれと通信するように設定されます。
 
 残念ながら、JHipster 7.9.3の時点で、Elasticsearchは[Herokuではそのままでは動作しません](https://github.com/jhipster/generator-jhipster/issues/20315)。これを解決するには、ElasticsearchでDockerイメージを作成して、それを実行できる場所にデプロイするか、Elastic Cloudを使用することになります。[Elasticsearch Add-on](https://elements.heroku.com/addons/foundelasticsearch)は、最も安いプランが月67米ドルで少し高いように思われるため、自動的な設定は行いません。
 
-<<<<<<< HEAD:pages/using_elasticsearch.md
 ### Elastic Cloudの使用
-=======
-
-## Using Elastic Cloud
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/options/using-elasticsearch.mdx
 
 Elastic Cloudで[フリートライアルを始める](https://cloud.elastic.co/registration) ことが可能です。ログインしたらデプロイメントを作成します。デフォルト設定を使用して、バージョンとして**7.17.7**を選択し、**Create deployment**を押します。
 

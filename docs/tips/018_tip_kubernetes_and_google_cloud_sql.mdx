@@ -1,10 +1,7 @@
 ---
-<<<<<<< HEAD:tips/018_tip_kubernetes_and_google_cloud_sql.md
-layout: default
 title: KubernetesとGoogle Cloud SQL
-sitemap:
-priority: 0.5
-lastmod: 2016-11-13T19:00:00-00:00
+last_update:
+  date: 2016-11-13T19:00:00-00:00
 ---
 
 # KubernetesとGoogle Cloud SQL
@@ -14,19 +11,6 @@ __このTipは[@bourdux](https://github.com/bourdux)により提出されまし�
 Kubernetesサブジェネレータを使用してJHipsterアプリケーションを[Google Container Engine](https://cloud.google.com/container-engine/)
 にデプロイすることはすでに簡単ですが、デフォルトの動作はデータベース用のGoogle Compute 
 Engine VMを作成します。
-=======
-title: Kubernetes and Google Cloud SQL
-slug: /tips/018_tip_kubernetes_and_google_cloud_sql.html
-last_update:
-  date: 2016-11-13T19:00:00-00:00
----
-
-__Tip submitted by [@bourdux](https://github.com/bourdux)__
-
-While it is already easy to deploy a JHipster application to [Google Container Engine](https://cloud.google.com/container-engine/)
-using the [Kubernetes sub-generator](/kubernetes), the default behaviour is to create a Google Compute
-Engine VM for the database.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/018_tip_kubernetes_and_google_cloud_sql.mdx
 
 さらに一歩進んで、フルマネージドのMySQLインスタンスを使用したい場合は、[Google Cloud SQL](https://cloud.google.com/sql/)があります。
 自動化されたバックアップ、メンテナンス、レプリケーションにより、高可用性と優れた拡張性を実現します。
@@ -35,12 +19,7 @@ Engine VM for the database.
 Cloudにデプロイする方法を示します。プロセスを簡素化するために、モノリシックアプリケーションを使用します。また、
 私のお気に入りのビルドであるMavenビルドも使用します。 :p
 
-<<<<<<< HEAD:tips/018_tip_kubernetes_and_google_cloud_sql.md
 ## 前提条件
-=======
-
-## Prerequisites
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/018_tip_kubernetes_and_google_cloud_sql.mdx
 
 このチュートリアルでは、次のものが必要です。
 
@@ -49,12 +28,7 @@ Cloudにデプロイする方法を示します。プロセスを簡素化する
 * [Docker](https://www.docker.com/products/overview)
 * プロダクションデータベースとしてMySQLを使用するJHipsterアプリケーション
 
-<<<<<<< HEAD:tips/018_tip_kubernetes_and_google_cloud_sql.md
 ## gcloudとkubectlを初期化する
-=======
-
-## Initialize gcloud and kubectl
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/018_tip_kubernetes_and_google_cloud_sql.mdx
 
 まず、`gcloud`を使ったことがない場合は、次のコマンドで初期化する必要があります。
 
@@ -161,12 +135,7 @@ Query OK, 0 rows affected (0,02 sec)
 
 `application-prod.yml`でデータベースユーザーをjhipsterに変更するのを忘れないでください。
 
-<<<<<<< HEAD:tips/018_tip_kubernetes_and_google_cloud_sql.md
 ## コンテナクラスタを作成する
-=======
-
-## Create a container cluster
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/018_tip_kubernetes_and_google_cloud_sql.mdx
 
 [GKE](https://cloud.google.com/container-engine/docs/)を使ってコンテナクラスタを作成しましょう。
 
@@ -188,17 +157,10 @@ kubeconfig entry generated for jhipster-sqlcloud-cluster.
 
 ## Dockerイメージのビルドとプッシュ
 
-<<<<<<< HEAD:tips/018_tip_kubernetes_and_google_cloud_sql.md
-まず、[Kubernetesサブジェネレータ]({{ site.url }}/kubernetes)を実行します。質問には通常どおり回答しますが、
+まず、[Kubernetesサブジェネレータ](/kubernetes)を実行します。質問には通常どおり回答しますが、
 DockerイメージをGoogle Cloudにプッシュしてコンテナエンジンを使用しましょう。"What should we use for the base Docker 
 repository name?"（ベースのDockerリポジトリ名には何を使用すべきですか？）という質問には、`gcr.io/jhipster-kubernetes-cloud-sql`で回答します。自身のプロジェクトIDで置き換えてください。dockerイメージプッシュコマンドでは、
 プロジェクトコンテナリポジトリにプッシュするために`gcloud docker -- push`を使用します。
-=======
-First of all run the [Kubernetes sub-generator](/kubernetes). Reply to the questions as usual but let us
-use Container engine by pushing our docker image on Google Cloud. To the question "What should we use for the base Docker
-repository name?", reply by `gcr.io/jhipster-kubernetes-cloud-sql`. Replace with your project ID. For the docker image push
-command let us use `gcloud docker -- push` in order to push to the project container repository.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/018_tip_kubernetes_and_google_cloud_sql.mdx
 
 イメージを構築します。
 

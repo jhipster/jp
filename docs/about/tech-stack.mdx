@@ -1,66 +1,63 @@
 ---
-title: Technology stack
+title: 技術スタック
 slug: /tech-stack/
 last_update:
   date: 2021-03-08T12:00:00-00:00
 ---
 
-## Technology stack on the client side
+## クライアント側の技術スタック
 
-Single Web page application:
+Single Web Page Applicationです。
 
-* [Angular](https://angular.io/) or [React](https://reactjs.org/) or [Vue](https://vuejs.org/)
-* Responsive Web Design with [Twitter Bootstrap](http://getbootstrap.com/)
-* [HTML5 Boilerplate](http://html5boilerplate.com/)
-* Compatible with modern browsers (Chrome, FireFox, Microsoft Edge...)
-* Full internationalization support
-* Optional [Sass](https://www.npmjs.com/package/node-sass) support for CSS design
-* Optional WebSocket support with Spring Websocket
+* [Angular](https://angular.io/)または[React](https://reactjs.org/)または[Vue](https://vuejs.org/)
+* [Twitter Bootstrap](http://getbootstrap.com/)によるレスポンシブWebデザイン
+* [HTML5 ボイラープレート](http://html5boilerplate.com/)
+* モダンなブラウザ（Chrome、Firefox、Microsoft Edge...）に対応
+* 完全な国際化対応
+* CSSデザインのための[Sass](https://www.npmjs.com/package/node-sass) サポート（オプション）
+* Spring WebsocketによるWebSocketのサポート（オプション）
 
-With the great development workflow:
+これらを以下の素晴らしい開発ワークフローで行えます。
 
-* Installation of new JavaScript libraries with [NPM](https://www.npmjs.com/get-npm)
-* Build, optimization and live reload with [Webpack](https://webpack.js.org/)
-* Testing with [Jest](https://facebook.github.io/jest/) and [Protractor](http://www.protractortest.org)
+* [NPM](https://www.npmjs.com/get-npm)による新しいJavaScriptライブラリのインストール
+* [Webpack](https://webpack.js.org/)によるビルド、最適化、ライブリロード
+* [Jest](https://facebook.github.io/jest/)、[Protractor](http://www.protractortest.org)を用いたテスト
 
-And what if a single Web page application isn't enough for your needs?
+Single Web page Applicationがニーズと合わない場合はどうすればいいのでしょうか。
 
-* Support for the [Thymeleaf](http://www.thymeleaf.org/) template engine, to generate Web pages on the server side
+* サーバーサイドでWebページを生成するテンプレートエンジン[Thymeleaf](http://www.thymeleaf.org/)をサポート
 
+## サーバー側の技術スタック
 
-## Technology stack on the server side
+完全な[Springアプリケーション](http://spring.io/)です。
 
-A complete [Spring application](http://spring.io/):
-
-* [Spring Boot](http://projects.spring.io/spring-boot/) for application configuration
-* [Maven](http://maven.apache.org/) or [Gradle](http://www.gradle.org/) configuration for building, testing and running the application
-* ["development" and "production" profiles](/profiles) (both for Maven and Gradle)
+* アプリケーションの構成は、[Spring Boot](http://projects.spring.io/spring-boot/)を使用
+* アプリケーションのビルド、テスト、実行のための [Maven](http://maven.apache.org/) または [Gradle](http://www.gradle.org/) の構成
+* [「開発」と「プロダクション」のプロファイル](/profiles/)（Maven用とGradle用の両方）
 * [Spring Security](http://docs.spring.io/spring-security/site/index.html)
 * [Spring MVC REST](http://spring.io/guides/gs/rest-service/) + [Jackson](https://github.com/FasterXML/jackson)
-* Optional WebSocket support with Spring Websocket
-* [Spring Data JPA](http://projects.spring.io/spring-data-jpa/) + Bean Validation
-* Database updates with [Liquibase](http://www.liquibase.org/)
-* [Elasticsearch](https://github.com/elastic/elasticsearch) support if you want to have search capabilities on top of your database
-* [MongoDB](http://www.mongodb.org) and [Couchbase](https://www.couchbase.com) support if you'd rather use a document-oriented NoSQL database instead of JPA
-* [Cassandra](http://cassandra.apache.org/) support if you'd rather use a column-oriented NoSQL database instead of JPA
-* [Kafka](http://kafka.apache.org/) and [Pulsar](http://pulsar.apache.org/) support if you want to use a publish-subscribe messaging system
+* Spring WebsocketによるWebSocketのサポート（オプション）
+* [Spring Data JPA](http://projects.spring.io/spring-data-jpa/) + Beanバリデーション
+* [Liquibase](http://www.liquibase.org/)によるデータベースの更新
+* データベースに検索機能を持たせたい場合は、[Elasticsearch](https://github.com/elastic/elasticsearch)をサポート
+* JPAの代わりにドキュメント指向のNoSQLデータベースを使いたい場合は、[MongoDB](http://www.mongodb.org)と[Couchbase](https://www.couchbase.com)をサポート
+* JPAの代わりにカラム指向のNoSQLデータベースを使用したい場合は、[Cassandra](http://cassandra.apache.org/)をサポート
+* Pub/Subのメッセージングシステムを使用する場合は、[Kafka](http://kafka.apache.org/)と[Pulsar](http://pulsar.apache.org/)をサポート
 
+## マイクロサービスのための技術スタック
 
-## Technology stack for microservices
+マイクロサービスはオプションで、完全にサポートされています。
 
-Microservices are optional, and fully supported:
+* [Spring Cloud Gateway](https://github.com/spring-cloud/spring-cloud-gateway)を利用したHTTPルーティング
+* [HashiCorp Consul](https://www.consul.io/)、[Netflix Eureka](https://github.com/Netflix/eureka)を利用したサービスディスカバリ
 
-* HTTP routing using [Spring Cloud Gateway](https://github.com/spring-cloud/spring-cloud-gateway)
-* Service discovery using [HashiCorp Consul](https://www.consul.io/) or [Netflix Eureka](https://github.com/Netflix/eureka)
+## プロダクションへ進む準備
 
-
-## Ready to go into production:
-
-* Monitoring with [Metrics](http://metrics.dropwizard.io/) and [the ELK Stack](https://www.elastic.co/products)
-* Caching with [ehcache](http://ehcache.org/) (local cache), [Caffeine](https://github.com/ben-manes/caffeine) (local cache), [Hazelcast](http://www.hazelcast.com/), [Infinispan](http://infinispan.org/), [Memcached](https://memcached.org/) or [Redis](https://redis.io/)
-* Optimized static resources (gzip filter, HTTP cache headers)
-* Log management with [Logback](http://logback.qos.ch/), configurable at runtime
-* Connection pooling with [HikariCP](https://github.com/brettwooldridge/HikariCP) for optimum performance
-* Builds a standard WAR file or an executable JAR file
-* Full Docker and Docker Compose support
-* Support for all major cloud providers: AWS, Cloud Foundry, GCP, Heroku, Kubernetes, OpenShift, Azure, Docker...
+* [Metrics](http://metrics.dropwizard.io/)と[ELKスタック](https://www.elastic.co/products)によるモニタリング
+* [ehcache](http://ehcache.org/)（ローカルキャッシュ）、 [Caffeine](https://github.com/ben-manes/caffeine)（ローカルキャッシュ）、 [Hazelcast](http://www.hazelcast.com/), [Infinispan](http://infinispan.org/), [Memcached](https://memcached.org/) または [Redis](https://redis.io/) によるキャッシング
+* 静的リソースの最適化（gzipフィルタ、HTTPキャッシュヘッダ）
+* [Logback](http://logback.qos.ch/)による実行時にも設定可能なログ管理
+* [HikariCP](https://github.com/brettwooldridge/HikariCP)によるコネクションプーリングで最適なパフォーマンスを実現
+* 標準的なWARファイル、または実行可能なJARファイルをビルド
+* DockerおよびDocker Composeの完全サポート
+* AWS、Cloud Foundry、GCP、Heroku、Kubernetes、OpenShift、Azure、Dockerなど、すべての主要なクラウドプロバイダーをサポート

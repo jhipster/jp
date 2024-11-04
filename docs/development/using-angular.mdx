@@ -1,29 +1,15 @@
 ---
-<<<<<<< HEAD:pages/using_angular.md
-layout: default
 title: Angularの使用
-permalink: /using-angular/
-sitemap:
-    priority: 0.7
-    lastmod: 2015-01-29T23:41:00-00:00
+slug: /using-angular/
+last_update:
+  date: 2015-01-29T23:41:00-00:00
 ---
 
 # <i class="fa fa-html5"></i> Angularの使用
 
 ## ツール
 
-AngularはJavaScriptの代わりにTypeScriptを使用しており、その結果、効率的に動作するためには特定のツールが必要になります。Angular 2+アプリケーションの[開発]({{ site.url }}/development/)ワークフローは次のとおりです。
-=======
-title: Using Angular
-slug: /using-angular/
-last_update:
-  date: 2015-01-29T23:41:00-00:00
----
-
-## Tooling
-
-Angular is using TypeScript instead of JavaScript, and as a result some specific tooling is necessary to work efficiently with it. Our [development](/development) workflow for an Angular 2+ application is as below.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-angular.mdx
+AngularはJavaScriptの代わりにTypeScriptを使用しており、その結果、効率的に動作するためには特定のツールが必要になります。Angular 2+アプリケーションの[開発](/development/)ワークフローは次のとおりです。
 
 1. アプリケーションを生成すると、ファイルが作成され、生成の最後に`npm install`タスクがトリガーされます。
 2. `npm install`が完了すると、`package.json`の`postInstall`スクリプトが呼び出され、このステップによって`webapp:build`タスクがトリガーされます。
@@ -41,12 +27,7 @@ Angular is using TypeScript instead of JavaScript, and as a result some specific
 
 - ブラウザでコードを操作するには、[Angular DevTools](https://angular.io/guide/devtools)を使用することをお勧めします。Angular DevToolsは、Angularアプリケーションのデバッグとプロファイリング機能を提供するブラウザ拡張です（**注**Angular DevToolsはAngular v12以降をサポートしています）。
 
-<<<<<<< HEAD:pages/using_angular.md
 ## プロジェクト構造
-=======
-
-## Project Structure
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-angular.mdx
 
 JHipsterのクライアントコードは`src/main/webapp`にあり、[Angularスタイルガイド](https://angular.io/guide/styleguide)に厳密に従っています。私たちのアプリケーション構造、ファイル名、TypeScriptの規則について質問がある場合は、まずこのガイドを読んでください。
 
@@ -57,7 +38,6 @@ Angularルートの場合は、URLが明確で一貫性のあるものになる�
 
 プロジェクトの主な構成は次のとおりです。
 
-<<<<<<< HEAD:pages/using_angular.md
     webapp
     ├── app                               - アプリケーション
     │   ├── account                       - ユーザー・アカウント管理UI
@@ -84,7 +64,7 @@ Angularルートの場合は、URLが明確で一貫性のあるものになる�
     ├── index.html                        - 索引ページ
     ├── robots.txt                        - ボットおよびWebクローラの構成
 
-[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用して`Foo`という名前の新しいエンティティを作成すると、`src/main/webapp`の下に次のフロントエンドファイルが生成されます。
+[エンティティサブジェネレータ](/creating-an-entity/)を使用して`Foo`という名前の新しいエンティティを作成すると、`src/main/webapp`の下に次のフロントエンドファイルが生成されます。
 
     webapp
     ├── app
@@ -109,72 +89,10 @@ Angularルートの場合は、URLが明確で一貫性のあるものになる�
     │   │   ├── foo.json                               - Foo名、フィールド、...の英語翻訳
     │   ├── fr                                         - フランス語翻訳
     │   │   ├── foo.json                               - Foo名、フィールド、...のフランス語翻訳
-=======
-```
-webapp
-├── app                               - Your application
-│   ├── account                       - User account management UI
-│   ├── admin                         - Administration UI
-│   ├── config                        - Some utilities files
-│   ├── core                          - Common building blocks like configuration and interceptors
-│   ├── entities                      - Generated entities (more information below)
-│   ├── home                          - Home page
-│   ├── layouts                       - Common page layouts like navigation bar and error pages
-│       ├── main                      - Main page
-│           ├── main.component.ts     - Main application class
-│   ├── login                         - Login page
-│   ├── shared                        - Common services like authentication and internationalization
-│   ├── app.module.ts                 - Application modules configuration
-│   ├── app-routing.module.ts         - Main application router
-├── content                           - Static content
-│   ├── css                           - CSS stylesheets
-│   ├── images                        - Images
-│   ├── scss                          - Sass style sheet files will be here if you choose the option
-├── i18n                              - Translation files
-├── swagger-ui                        - Swagger UI front-end
-├── 404.html                          - 404 page
-├── favicon.ico                       - Fav icon
-├── index.html                        - Index page
-├── robots.txt                        - Configuration for bots and Web crawlers
-```
-
-Using the [entity sub-generator](/creating-an-entity/) to create a new entity called `Foo` generates the following front-end files under `src/main/webapp`:
-
-```
-webapp
-├── app
-│   ├── entities
-│       ├── foo                                    - CRUD front-end for the Foo entity
-│           ├── foo.component.html                 - HTML view for the list page
-│           ├── foo.component.ts                   - Controller for the list page
-│           ├── foo.model.ts                       - Model representing the Foo entity
-│           ├── foo.module.ts                      - Angular module for the Foo entity
-│           ├── foo.route.ts                       - Angular Router configuration
-│           ├── foo.service.ts                     - Service which access the Foo REST resource
-│           ├── foo-delete-dialog.component.html   - HTML view for deleting a Foo
-│           ├── foo-delete-dialog.component.ts     - Controller for deleting a Foo
-│           ├── foo-detail.component.html          - HTML view for displaying a Foo
-│           ├── foo-detail.component.ts            - Controller or displaying a Foo
-│           ├── foo-dialog.component.html          - HTML view for editing a Foo
-│           ├── foo-dialog.component.ts            - Controller for editing a Foo
-│           ├── foo-popup.service.ts               - Service for handling the create/update dialog pop-up
-│           ├── index.ts                           - Barrel for exporting everything
-├── i18n                                           - Translation files
-│   ├── en                                         - English translations
-│   │   ├── foo.json                               - English translation of Foo name, fields, ...
-│   ├── fr                                         - French translations
-│   │   ├── foo.json                               - French translation of Foo name, fields, ...
-```
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-angular.mdx
 
 デフォルトの言語変換は、アプリケーションの生成時に選択した内容に基づいて行われることに注意してください。'en'および'fr'は、ここではデモンストレーションのためにのみ示されています。
 
-<<<<<<< HEAD:pages/using_angular.md
 ## 認証
-=======
-
-## Authorizations
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-angular.mdx
 
 JHipsterは[Angularルータ](https://angular.io/docs/ts/latest/guide/router.html)を使用して、クライアントアプリケーションのさまざまな部分を整理します。
 
@@ -215,12 +133,7 @@ export const settingsRoute: Route = {
 
 *注意* これらのディレクティブは、クライアント側のHTMLコンポーネントを表示または非表示にするだけであり、サーバー側でもコードを保護する必要があります！
 
-<<<<<<< HEAD:pages/using_angular.md
 ## ng-jhipsterライブラリ
-=======
-
-## The ng-jhipster library
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-angular.mdx
 
 ng-jhipsterライブラリはフリーでOSSであり、[https://github.com/jhipster/ng-jhipster](https://github.com/jhipster/ng-jhipster)から入手できます。
 
@@ -242,26 +155,12 @@ JHipsterは、サーバー側からクライアント側にイベントを送信
 
 短縮メソッドである`success`、`info`、`warning`、`error`のデフォルトのタイムアウトは5秒で、設定は可能です。
 
-<<<<<<< HEAD:pages/using_angular.md
-    this.alerts.push(
-        this.alertService.addAlert(
-            {
-                type: 'danger',
-                msg: 'このボタンを押すべきではありません。',
-                timeout: 5000,
-                toast: false,
-                scoped: true
-            },
-            this.alerts
-        )
-    );
-=======
 ```ts
 this.alerts.push(
     this.alertService.addAlert(
         {
             type: 'danger',
-            msg: 'you should not have pressed this button!',
+            msg: 'このボタンを押すべきではありません。',
             timeout: 5000,
             toast: false,
             scoped: true
@@ -270,8 +169,6 @@ this.alerts.push(
     )
 );
 ```
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-angular.mdx
 
 ## Angular CLIの使用
 
@@ -292,11 +189,7 @@ ng help
 
 ### ビルド
 
-<<<<<<< HEAD:pages/using_angular.md
-フロントエンドの構築には`ng build`を使用できますが、`npm start`、`npm run build`などの提供されているNPMスクリプトを使用することをお勧めします。[開発での使用のドキュメント]({{ site.url }}/development/)および[プロダクション環境での使用のドキュメント]({{ site.url }}/production/)を確認してください。
-=======
-You can use `ng build` to build your front-end, but we still recommend to use the provided NPM scripts such as `npm start`, `npm run build`, etc. Check our ["using in development" documentation](/development/) and our ["using in production" documentation](/production/).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-angular.mdx
+フロントエンドの構築には`ng build`を使用できますが、`npm start`、`npm run build`などの提供されているNPMスクリプトを使用することをお勧めします。[開発での使用のドキュメント](/development/)および[プロダクション環境での使用のドキュメント](/production/)を確認してください。
 
 ### コンポーネント、ディレクティブ、パイプ、およびサービスの生成
 

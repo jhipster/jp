@@ -1,25 +1,13 @@
 ---
-<<<<<<< HEAD:pages/jhipster-control-center.md
-layout: default
 title: JHipsterコントロールセンター
-permalink: /jhipster-control-center/
-sitemap:
-    priority: 0.7
-    lastmod: 2020-10-20T00:00:00-00:00
----
-
-# <i class="fa fa-codepen"></i> JHipsterコントロールセンター
-
-## 概観
-=======
-title: JHipster Control Center
 slug: /jhipster-control-center/
 last_update:
   date: 2020-10-20T00:00:00-00:00
 ---
 
-## Overview
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-control-center.mdx
+# <i class="fa fa-codepen"></i> JHipsterコントロールセンター
+
+## 概観
 
 JHipsterコントロールセンターの主な目的は、アプリケーションの監視と管理です。
 
@@ -27,7 +15,6 @@ JHipsterコントロールセンターの主な目的は、アプリケーショ
 
 ![](/images/jhipster-control-center-animation.gif)
 
-<<<<<<< HEAD:pages/jhipster-control-center.md
 ## 概要
 
 1. [特有のSpringプロファイル](#profiles)
@@ -37,10 +24,6 @@ JHipsterコントロールセンターの主な目的は、アプリケーショ
 5. [機能](#features)
 
 <h2 id="profiles"> 特有のSpringプロファイル</h2>
-=======
-
-## Specific Spring profiles
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-control-center.mdx
 
 **コントロールセンターは、通常のJHipsterの`dev`および`prod`Springプロファイルを使用します。しかし、正しく動作するためには、Spring Cloud Discoveryバックエンドに対応するSpring Profileから開始する必要があります。**
 
@@ -51,26 +34,15 @@ JHipsterコントロールセンターの主な目的は、アプリケーショ
 
 これはマイクロサービスアーキテクチャにとって非常に有用です。これにより、コントロールセンターはどのマイクロサービスが利用可能で、どのインスタンスが起動しているかを知ることができます。
 
-<<<<<<< HEAD:pages/jhipster-control-center.md
-モノリスを含むすべてのアプリケーションにとっては、Hazelcast分散キャッシュを自動的にスケーリングできる方法となります。[Hazelcastキャッシュドキュメント]({{ site.url }}/using-cache/)を参照してください。
+モノリスを含むすべてのアプリケーションにとっては、Hazelcast分散キャッシュを自動的にスケーリングできる方法となります。[Hazelcastキャッシュドキュメント](/using-cache/)を参照してください。
 
 <h2 id="installation">インストール</h2>
-=======
-For all applications, including monoliths, this is how the Hazelcast distributed cache can automatically scale, see [the Hazelcast cache documentation](/using-cache/)
-
-
-## Installation
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-control-center.mdx
 
 ### ローカルでの実行
 
 * ### ステップ1：Spring Cloudディスカバリバックエンドで使用されるサーバを実行する
 
-<<<<<<< HEAD:pages/jhipster-control-center.md
     EurekaとConsulのdocker-composeファイルはsrc/main/dockerの下にあり、プロジェクトのテストが容易に可能です（[特有のSpringプロファイル](#profiles)を参照）。
-=======
-    Eureka and Consul docker-compose files exist under src/main/docker to ease testing the project (see [specific spring profiles](#specific-spring-profiles)).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-control-center.mdx
 
     - Consulの実行：`docker-compose -f src/main/docker/consul.yml up -d`
     - Eurekaの実行：`docker-compose -f src/main/docker/jhipster-registry.yml up -d`
@@ -79,11 +51,7 @@ For all applications, including monoliths, this is how the Hazelcast distributed
 
 * ### ステップ2：認証プロファイルを選択する
 
-<<<<<<< HEAD:pages/jhipster-control-center.md
     認証には2つのタイプがあります（[認証メカニズム](#authentication)を参照）。
-=======
-    There is 2 types of authentication (see [authentication mechanism](#authentication-mechanism)):
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-control-center.mdx
 
     - JWT：デフォルトの認証で、これを選択した場合は何もする必要はありません。
     - OAuth2：OAuth2認証を使用するには、Keycloakを起動する必要があります。`docker-compose -f src/main/docker/keycloak.yml up -d`を実行してください。
@@ -107,12 +75,7 @@ For all applications, including monoliths, this is how the Hazelcast distributed
 - `docker pull jhipster/jhipster-control-center`
 - `docker run -d --name jhcc -p 7419:7419 jhipster/jhipster-control-center:latest`
 
-<<<<<<< HEAD:pages/jhipster-control-center.md
 <h2 id="architecture">アーキテクチャ</h2>
-=======
-
-## Architecture
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-control-center.mdx
 
 これは、管理APIエンドポイントを介して1つまたは複数のJHipsterアプリケーションに接続する標準のWebアプリケーションです。これらの管理エンドポイントは、標準のAPIポート（通常は8080, 8081, ...）や専用の管理ポート（通常は9999）で公開されることにより、外部から隔離されます。
 
@@ -120,12 +83,7 @@ For all applications, including monoliths, this is how the Hazelcast distributed
 
 ![](/images/jhipster-control-center-architecture.png)
 
-<<<<<<< HEAD:pages/jhipster-control-center.md
 <h2 id="authentication">認証メカニズム</h2>
-=======
-
-## Authentication mechanism
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-control-center.mdx
 
 アプリケーションにアクセスするために、JHipster Control Centerはプロファイルに応じた特有のセキュリティメカニズムを使用します。
 
@@ -137,12 +95,7 @@ For all applications, including monoliths, this is how the Hazelcast distributed
 
 次に、Oauth2SecurityConfiguration.javaのセキュリティ設定では、Spring Securityのフィルタチェインを使用してKeycloakから認可情報を取得し、`http.oauth2Login()`を使用してSpringのプリンシパル（現在のユーザー）を生成します。その後、Spring Securityのフィルタチェインは、`http.oauth2ResourceServer().jwt().jwtAuthenticationConverter(jwtAuthenticationConverter())`を適用して、彼のロールで認証を取得します。これにより、プロバイダ（Keycloak、Oktaなど）を簡単に変更できます。
 
-<<<<<<< HEAD:pages/jhipster-control-center.md
 <h2 id="features">機能</h2>
-=======
-
-## Features
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/microservices/jhipster-control-center.mdx
 
 ### ***インスタンス***
 

@@ -1,18 +1,13 @@
 ---
-<<<<<<< HEAD:pages/creating_an_app.md
-layout: default
 title: アプリケーションの構築
-permalink: /creating-an-app/
-redirect_from:
-  - /creating_an_app.html
-sitemap:
-    priority: 0.7
-    lastmod: 2018-03-18T18:20:00-00:00
+slug: /creating-an-app/
+last_update:
+  date: 2018-03-18T18:20:00-00:00
 ---
 
 # <i class="fa fa-rocket"></i> アプリケーションの構築
 
-_**新しいJHipsterアプリケーションの作成については、[ビデオチュートリアル]({{ site.url }}/video-tutorial/)を参照してください。**_
+_**新しいJHipsterアプリケーションの作成については、[ビデオチュートリアル](/video-tutorial/)を参照してください。**_
 
 1. [クイックスタート](#1)
 2. [アプリケーション生成時の質問](#2)
@@ -21,18 +16,6 @@ _**新しいJHipsterアプリケーションの作成については、[ビデ�
 5. [ヒント](#4)
 
 <h2 id="1">クイックスタート</h2>
-=======
-title: Creating an application
-slug: /creating-an-app/
-last_update:
-  date: 2018-03-18T18:20:00-00:00
----
-
-_**Please check our [video tutorial](/video-tutorial/) on creating a new JHipster application!**_
-
-
-## Quick start
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
 
 最初に、アプリケーションを作成する空のディレクトリを作成します。
 
@@ -46,54 +29,25 @@ _**Please check our [video tutorial](/video-tutorial/) on creating a new JHipste
 
 `jhipster`
 
-<<<<<<< HEAD:pages/creating_an_app.md
 ジェネレータからの質問に答えて、ニーズに合ったアプリケーションを作成します。これらのオプションについては、[次のセクション](#2)で説明します。
-=======
-Answer the questions asked by the generator to create an application tailored to your needs. Those options are described in [the next section](#questions-asked-when-generating-an-application).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
 
 アプリケーションが生成されると、Maven(Linux/Mac OS/Windows PowerShellの場合は`./mvnw`、Windows Cmdの場合は`mvnw`)またはGradle(Linux/Mac OS/Windows PowerShellの場合は`./gradlew`、Windows Cmdの場合は`gradlew`)を使用して起動できます。
 
-<<<<<<< HEAD:pages/creating_an_app.md
 **注意** Mavenを使用していて、`./mvnw`コマンドを最初に実行した後フロントエンドファイルを変更した場合は、`./mvnw -Pwebapp`を実行して最新のフロントエンドバージョンを表示する必要があります（Gradleはフロントエンドの変更を自動的に検出し、必要に応じてフロントエンドを再コンパイルします）。
-=======
-:::note
-
-If you are using Maven and changed front end files after first run of the `./mvnw` command then you must run `./mvnw -Pwebapp` to see the latest front end version (Gradle detects front end changes automatically and recompiles front end if needed).
-
-:::
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
 
 アプリケーションは[http://localhost:8080](http://localhost:8080)にあります。
 
-<<<<<<< HEAD:pages/creating_an_app.md
-**重要** JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`を実行する必要があります。詳細については、[開発でのJHipsterの使用]({{ site.url }}/development/)ページにアクセスしてください。
-=======
-:::warning
-
-If you want to have "live reload" of your JavaScript/TypeScript code, you will need run `npm start`. You can go to the [Using JHipster in development](/development/) page for more information.
-
-:::
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
+**重要** JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`を実行する必要があります。詳細については、[開発でのJHipsterの使用](/development/)ページにアクセスしてください。
 
 「ライブリロード」を使用している場合は、`./mvnw -P-webapp`または`./gradlew -x webapp`を使用してクライアント側のタスクを除外することで、サーバの起動を高速化できます。特にGradleの速度が向上します。
 
-<<<<<<< HEAD:pages/creating_an_app.md
 <h2 id="2">アプリケーション生成時の質問</h2>
-=======
-
-## Questions asked when generating an application
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
 
 _いくつかの質問は、以前に行った選択によって変わります。たとえば、SQLデータベースを選択しなかった場合は、Hibernateキャッシュを構成する必要はありません。_
 
 ### どの種類のアプリケーションを作成したいですか？（Which _type_ of application would you like to create?）
 
-<<<<<<< HEAD:pages/creating_an_app.md
-アプリケーションのタイプは、マイクロサービスアーキテクチャを使用するかどうかによって異なります。マイクロサービスの詳細な説明は[ここにあります]({{ site.url }}/microservices-architecture/)。不明な場合は、デフォルトの"Monolithic application"を使用してください。
-=======
-Your type of application depends on whether you wish to use a microservices architecture or not. A full explanation on microservices is [available here](/microservices-architecture/), if unsure use the default "Monolithic application".
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
+アプリケーションのタイプは、マイクロサービスアーキテクチャを使用するかどうかによって異なります。マイクロサービスの詳細な説明は[ここにあります](/microservices-architecture/)。不明な場合は、デフォルトの"Monolithic application"を使用してください。
 
 次のいずれかを使用できます。
 
@@ -118,55 +72,32 @@ Javaアプリケーションはこれをルート・パッケージとして使�
 * OAuth 2.0/OIDC認証：アプリケーションの外部で認証を処理します。[Keycloak](https://www.keycloak.org/)または[Auth0](https://developer.auth0.com)などのOpenID Connectサーバを使用します。これはJWTよりも安全ですが、OpenID Connectサーバを設定する必要があるため、少し複雑です。デフォルトでは、JHipsterはOpenID Connectサーバからのユーザデータを同期するため、データベースが必要になることに注意してください。
 * HTTPセッション認証：古典的なセッションベースの認証メカニズムで、[Spring Security](http://docs.spring.io/spring-security/site/index.html)で通常行われるものです。
 
-<<<<<<< HEAD:pages/creating_an_app.md
-詳細については、[アプリケーションのセキュリティ保護]({{ site.url }}/security/)ページを参照してください。
-=======
-You can find more information on our [securing your application](/security/) page.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
+詳細については、[アプリケーションのセキュリティ保護](/security/)ページを参照してください。
 
 ### どの _種類_ のデータベースを使用しますか？（Which _type_ of database would you like to use?）
 
 次のいずれかを選択できます。
 
-<<<<<<< HEAD:pages/creating_an_app.md
 - SQLデータベース（H2, MySQL, MariaDB, PostgreSQL, MSSQL, Oracle）。Spring Data JPAでアクセスします。
-- [MongoDB]({{ site.url }}/using-mongodb/)
-- [Cassandra]({{ site.url }}/using-cassandra/)
-- [Couchbase]({{ site.url }}/using-couchbase/)
-- [Neo4j]({{ site.url }}/using-neo4j/)
-- データベースなし（JWT認証で[マイクロサービス・アプリケーション]({{ site.url }}/microservices-architecture/)を使用する場合にのみ使用可能）
-=======
-- An SQL database (H2, MySQL, MariaDB, PostgreSQL, MSSQL, Oracle), which you will access with Spring Data JPA
 - [MongoDB](/using-mongodb/)
 - [Cassandra](/using-cassandra/)
 - [Couchbase](/using-couchbase/)
 - [Neo4j](/using-neo4j/)
-- No database (only available when using a [microservice application](/microservices-architecture/) with JWT authentication)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
+- データベースなし（JWT認証で[マイクロサービス・アプリケーション](/microservices-architecture/)を使用する場合にのみ使用可能）
 
 ### どの _プロダクション_ データベースを使用しますか?（Which _production_ database would you like to use?）
 
 これは、「プロダクション」のプロファイルで使用するデータベースです。構成するには、`src/main/resources/config/application-prod.yml`ファイルを変更してください。
 
-<<<<<<< HEAD:pages/creating_an_app.md
-Oracleを使用する場合は、[Oracleデータベースの使用]({{ site.url }}/using-oracle/)時の現在の制限に注意する必要があります。
-=======
-If you want to use Oracle, you might need to be aware of current limitations when [using Oracle database](/using-oracle/).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
+Oracleを使用する場合は、[Oracleデータベースの使用](/using-oracle/)時の現在の制限に注意する必要があります。
 
 ### どの _開発_ データベースを使用しますか?（Which _development_ database would you like to use?）
 
 これは、「開発」プロファイルで使用するデータベースです。次のいずれかを使用できます。
 
-<<<<<<< HEAD:pages/creating_an_app.md
 *   インメモリで実行するH2：これはJHipsterを使用する最も簡単な方法ですが、サーバーを再起動するとデータが失われます。
 *   データをディスクに保存するH2：これは、アプリケーションの再起動時にデータが失われないため、インメモリで実行するよりも優れたオプションです。
-*   プロダクション用に選択したのと同じデータベース：セットアップは少し複雑ですが、最終的にはプロダクションで使用するデータベースと同じデータベースで作業する方がよいでしょう。これは、[開発ガイド]({{ site.url }}/development/)で説明されているように、liquibase-hibernateを使用する最善の方法でもあります。
-=======
-*   H2, running in-memory. This is the easiest way to use JHipster, but your data will be lost when you restart your server.
-*   H2, with its data stored on disk. This is a better option than running in-memory, as you won't lose your data upon application restart.
-*   The same database as the one you chose for production: it's a bit more complex to set up, but it should be better in the end to work on the same database as the one you will use in production. This is also the best way to use liquibase-hibernate as described in [the development guide](/development/).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
+*   プロダクション用に選択したのと同じデータベース：セットアップは少し複雑ですが、最終的にはプロダクションで使用するデータベースと同じデータベースで作業する方がよいでしょう。これは、[開発ガイド](/development/)で説明されているように、liquibase-hibernateを使用する最善の方法でもあります。
 
 構成するには、`src/main/resources/config/application-dev.yml`ファイルを変更してください。
 
@@ -190,19 +121,11 @@ Springのキャッシュ抽象化では、さまざまなキャッシュ実装�
 
 #### swagger-codegenを使用したAPIファーストな開発（API first development using swagger-codegen）
 
-<<<<<<< HEAD:pages/creating_an_app.md
-このオプションを使用すると、[Swagger-Codegen](https://github.com/swagger-api/swagger-codegen)をビルドに統合することによって、アプリケーションに対して[APIファーストな開発]({{ site.url }}/doing-api-first-development)を実施できます。
-=======
-This option lets you do [API-first development](/doing-api-first-development) for your application by integrating the [Swagger-Codegen](https://github.com/swagger-api/swagger-codegen) into the build.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
+このオプションを使用すると、[Swagger-Codegen](https://github.com/swagger-api/swagger-codegen)をビルドに統合することによって、アプリケーションに対して[APIファーストな開発](/doing-api-first-development)を実施できます。
 
 #### ElasticSearchを使用した検索エンジン（Search engine using ElasticSearch）
 
-<<<<<<< HEAD:pages/creating_an_app.md
-[Elasticsearch](https://github.com/elastic/elasticsearch)は、Spring Data Elasticsearchを使用して構成されます。詳細については[Elasticsearchガイド]({{ site.url }}/using-elasticsearch/)を参照してください。
-=======
-[Elasticsearch](https://github.com/elastic/elasticsearch) will be configured using Spring Data Elasticsearch. You can find more information on our [Elasticsearch guide](/using-elasticsearch/).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
+[Elasticsearch](https://github.com/elastic/elasticsearch)は、Spring Data Elasticsearchを使用して構成されます。詳細については[Elasticsearchガイド](/using-elasticsearch/)を参照してください。
 
 #### Hazelcastを使ったクラスタ化されたHTTPセッション（Clustered HTTP sessions using Hazelcast）
 
@@ -216,19 +139,11 @@ WebSocketは、Spring Websocketを使用して有効にできます。また、�
 
 #### Apache Kafkaを使用した非同期メッセージ（Asynchronous messages using Apache Kafka）
 
-<<<<<<< HEAD:pages/creating_an_app.md
-[Apache Kafka]({{ site.url }}/using-kafka/)をパブリッシュ/サブスクライブ・メッセージ・ブローカーとして使用します。
-=======
-Use [Apache Kafka](/using-kafka/) as a publish/subscribe message broker.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
+[Apache Kafka](/using-kafka/)をパブリッシュ/サブスクライブ・メッセージ・ブローカーとして使用します。
 
 #### Apache Pulsarを使った非同期メッセージ（Asynchronous messages using Apache Pulsar）
 
-<<<<<<< HEAD:pages/creating_an_app.md
-[Apache Pulsar]({{ site.url }}/using-pulsar/)をパブリッシュ/サブスクライブ・メッセージ・ブローカーとして使用します。
-=======
-Use [Apache Pulsar](/using-pulsar/) as a publish/subscribe message broker.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
+[Apache Pulsar](/using-pulsar/)をパブリッシュ/サブスクライブ・メッセージ・ブローカーとして使用します。
 
 ### クライアントにどの _フレームワーク_ を使用しますか?（Which _Framework_ would you like to use for the client?）
 
@@ -264,11 +179,7 @@ JHipsterはUIの国際化のみをカバーしていることに注意してく�
 *   Cucumberを使用した受け入れテスト
 *   Protractorを使用したAngularとの統合テスト
 
-<<<<<<< HEAD:pages/creating_an_app.md
-詳細については、[「テストの実行」ガイド]({{ site.url }}/running-tests/)を参照してください。
-=======
-You can find more information on our ["Running tests" guide](/running-tests/).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
+詳細については、[「テストの実行」ガイド](/running-tests/)を参照してください。
 
 ### Liquibaseの増分変更ログを使用しますか?（Would you like to use incremental Liquibase changelogs?）
 
@@ -297,16 +208,9 @@ JHipsterを実行する場合、エンティティには次の2つの状態が�
 
 ### JHipster Marketplaceから他のジェネレータをインストールしますか?（Would you like to install other generators from the JHipster Marketplace?）
 
-<<<<<<< HEAD:pages/creating_an_app.md
-[JHipster Marketplace]({{ site.url }}/modules/marketplace/)では、サードパーティの開発者によって作成された追加モジュールをインストールして、プロジェクトに非公式機能を追加できます。
+[JHipster Marketplace](/modules/marketplace/)では、サードパーティの開発者によって作成された追加モジュールをインストールして、プロジェクトに非公式機能を追加できます。
 
 <h2 id="5">Blueprintの使用</h2>
-=======
-The [JHipster Marketplace](/modules/marketplace/) is where you can install additional modules, written by third-party developers, to add non-official features to your project.
-
-
-## Using a blueprint
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
 
 JHipster 5は、Blueprintの概念を導入しています。Blueprintは、JHipsterからのテンプレートをオーバーライドするカスタムのクライアント／サーバ側テンプレートを提供できるJHipsterモジュールです。例えば、[KotlinのBlueprint](https://github.com/jhipster/jhipster-kotlin)は、Javaサーバ側コードの大部分をKotlinに置き換えます。
 
@@ -322,12 +226,7 @@ Blueprintに特定のサブジェネレータが実装されていない場合�
 
 **注意：**アプリケーションは1つのBlueprintのみを使用できます。複数のBlueprintはまだサポートされていません。
 
-<<<<<<< HEAD:pages/creating_an_app.md
 <h2 id="3">コマンドラインオプション</h2>
-=======
-
-## Command-line options
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
 
 オプションのコマンドラインオプションを使用してのJHipsterの実行もできます。これらのオプションのリファレンスは、`JHipster app--help`と入力することで見つけることができます。
 
@@ -353,11 +252,6 @@ Blueprintに特定のサブジェネレータが実装されていない場合�
 * `--skip-fake-data` - 開発用のフェイクデータの生成をスキップします
 * `--creation-timestamp` - 再現可能なビルドのタイムスタンプを設定します。タイムスタンプは解析可能なjs日付である必要があります（例：2019-01-01）。--with-entitiesまたはimport-jdl（generator-jhipster > 6.5.1）とともに使用する必要があります
 
-<<<<<<< HEAD:pages/creating_an_app.md
 <h2 id="4">ヒント</h2>
-=======
-
-## Tips
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/core-tasks/creating-an-app.mdx
 
 また、`--force`のようなYeomanコマンドラインオプションを使用して、既存のファイルを自動的に上書きもできます。そのため、エンティティを含むアプリケーション全体を再生成したい場合は、`jhipster --force`を実行できます。

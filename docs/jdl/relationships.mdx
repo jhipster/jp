@@ -1,11 +1,8 @@
 ---
-<<<<<<< HEAD:pages/jdl/relationships.md
-layout: default
 title: JHipsterドメイン言語 - リレーションシップ
-permalink: /jdl/relationships
-sitemap:
-    priority: 0.5
-    lastmod: 2019-11-03T12:00:00-00:00
+slug: /jdl/relationships
+last_update:
+  date: 2019-11-03T12:00:00-00:00
 ---
 
 # <i class="fa fa-star"></i> JHipsterドメイン言語(JDL) - リレーションシップ
@@ -29,15 +26,6 @@ sitemap:
 ---
 
 ### リレーションシップの種類
-=======
-title: JHipster Domain Language (JDL) - Relationships
-slug: /jdl/relationships
-last_update:
-  date: 2019-11-03T12:00:00-00:00
----
-
-## Relationship types
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 キーワード`relationship`の後に記述されます。
 
@@ -53,38 +41,20 @@ last_update:
 名前を複数形にすることに関する注意：JHipsterはそれらを処理するので、リレーションシップの中で処理する必要はありません。
 
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 ### リレーションシップのメソッド
-=======
-## Relationship methods
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 元のエンティティと先のエンティティの後に記述され、`with`キーワードとともに使用されます。
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 サポートされているメソッドは以下です。
 - `Authority`:宛先エンティティが`User`や`builtInEntity`のような組み込みエンティティである場合に必要です
-=======
-Supported methods:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 - `builtInEntity`: required when the destination entity is a built in entity like `User` and `Authority`
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 ### 複数のリレーションシップのボディ
-=======
-
-## Multiple relationship bodies
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 JDLファイルに同じタイプの _n_ 個のリレーションシップがあることにうんざりしている場合でも、心配する必要はありません。解決策はあります。
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 例えば、次のJDLサンプルを見てください。
-=======
-Take this JDL sample for instance:
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 ```jdl
 relationship OneToOne {
   A to B
@@ -100,12 +70,7 @@ relationship OneToOne {
 }
 ```
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 解決策として、次のように、リレーションシップ宣言内にすべてのリレーションシップ本体を含めることができます。
-=======
-The solution consists in having every relationship body inside on relationship declaration, like this:
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 ```jdl
 relationship OneToOne {
   A to B,
@@ -115,38 +80,24 @@ relationship OneToOne {
 }
 ```
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 この構文は、次の場合に非常に役立ちます。
   - 同じタイプのリレーションシップをたくさん持っている場合
   - どのようなリレーションシップがあるかを知りたい場合
   - JDLファイルでそれらを探すために時間を無駄にしたくない場合
-=======
-This syntax is really useful when:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 - You have lots of relationships of the same type,
 - You want to know what the relationships are,
 - You don't want to waste time looking for them in your JDL file(s)
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 ### 構文
 
 リレーションシップの宣言は次のように行われます。
 ```
-=======
-
-## Syntax
-
-Relationship declaration is done as follows:
-
-```jdl
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 relationship (OneToMany | ManyToOne | OneToOne | ManyToMany) {
   @<option>("<option value>")+ <from entity>[{<relationship name>[(<display field>)]}] to @<option>("<option value>")+ <to entity>[{<relationship name>[(<display field>)]}]+
 }
 ```
 
-<<<<<<< HEAD:pages/jdl/relationships.md
   - `(OneToMany | ManyToOne| OneToOne | ManyToMany)`はリレーションシップのタイプです。
   - `<option>`は次の値の1つを指定します: `Id | OnDelete | OnUpdate`。これをリレーションシップの正しい側に置くようにしてください。最初の文字の大文字と小文字は区別されません（jdlのエクスポート時は大文字が生成されます）。
   - `<option value>` はオプションに適合する値の1つを指定します。 `NO ACTION | RESTRICT | CASCADE | SET NULL | SET DEFAULT`
@@ -158,30 +109,11 @@ relationship (OneToMany | ManyToOne | OneToOne | ManyToMany) {
   - `with builtInEntity`は、関係の宛先が組み込みエンティティーかどうか。
   - 複数のリレーションシップ主体を持つことができます。
     - 詳細については、[複数のリレーションシップのボディ](#複数のリレーションシップのボディ)セクションを参照してください。
-=======
-- `(OneToMany | ManyToOne| OneToOne | ManyToMany)` is the type of your relationship,
-- `<option>` is one of the supported values: `Id | OnDelete | OnUpdate`. Make sure to put this on the correct side of the relationship. First character case is not sensitive (jdl export will generate upper).
-- `<option value>` is one of the fitting optional values for the given option: `NO ACTION | RESTRICT | CASCADE | SET NULL | SET DEFAULT`
-- `<from entity>` is the name of the entity owner of the relationship: the source,
-- `<to entity>` is the name of the entity where the relationship goes to: the destination,
-- `<relationship name>` is the name of the field having the other end as type,
-- `<display field>` is the name of the field that should show up in select boxes (default: `id`),
-- `required` whether the injected field is required.
-- `with builtInEntity` whether the relationship destination is an built in entity
-- And you can have more than one relationship body
-  - See the [Multiple relationship bodies](#multiple-relationship-bodies) section for more info!
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 ### 例
 
 #### 基本の例
-=======
-## Examples
-
-### Basic example
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 ```jdl
 relationship OneToOne {
@@ -205,14 +137,10 @@ relationship OneToOne {
 ```
 これにより、単一方向のリレーションシップが生成されます。エンティティBはエンティティAを介してのみ探索できますが、エンティティAはエンティティBを介して探索できません。
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 
 ---
 
 #### 注入フィールド
-=======
-### With injected fields
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 ```jdl
 relationship ManyToMany {
@@ -223,15 +151,11 @@ relationship ManyToMany {
 これは双方向のリレーションシップです。つまり、両方のエンティティがもう一方のエンティティの「インスタンス」を持って
 生成されます。
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 ---
 
 ---
 
 #### メソッド
-=======
-### With methods
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 ```jdl
 relationship OneToOne {
@@ -239,13 +163,9 @@ relationship OneToOne {
 }
 ```
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 ---
 
 #### オプションの使用
-=======
-### With options
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 ```jdl
 relationship ManyToOne {
@@ -268,11 +188,7 @@ Use cascading delete with caution as it can lead to unintended data loss.
 
 Alternative for Preventing Delete Error: Use the @OnDelete annotation in JDL which will configure the database schema for cascading delete or add cascade = CascadeType.REMOVE to the generated Java code (if applicable).
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 #### 必須のサイド
-=======
-### With required sides
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 少なくとも1つのリレーションシップサイドを必須にするために使用します。
 
@@ -294,13 +210,9 @@ relationship ManyToMany {
 }
 ```
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 ---
 
 #### 再帰リレーションシップ
-=======
-### Reflexive relationships
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 再帰リレーションシップは、元と先のエンティティが同じリレーションシップです。
 
@@ -310,25 +222,17 @@ relationship ManyToMany {
 }
 ```
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 ---
 
 #### 必須な再帰リレーションシップに関する注意
-=======
-#### A note on required reflexive relationships
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 [ここ](https://github.com/jhipster/generator-jhipster/issues/11495)で指摘されているように、同じエンティティとの必須なリレーションシップ
 はサポートされていません。必須とは、子は**常に**親を持たなければならず、親も常に親を持たなければならない、といったことです。
 可能な回避策は、明示的なルートおよび子エンティティを持つことです。
 
-<<<<<<< HEAD:pages/jdl/relationships.md
 ----
 
 #### コメント
-=======
-### Commenting
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/jdl/relationships.mdx
 
 リレーションシップにコメントを追加できます。
 

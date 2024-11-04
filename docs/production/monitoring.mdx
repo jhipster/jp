@@ -1,24 +1,13 @@
 ---
-<<<<<<< HEAD:pages/monitoring.md
-layout: default
 title: JHipsterアプリケーションのモニタリング
-permalink: /monitoring/
-sitemap:
-    priority: 0.7
-    lastmod: 2023-07-12T00:00:00-00:00
----
-# <i class="fa fa-line-chart"></i> JHipsterアプリケーションのモニタリング
-=======
-title: Monitoring your JHipster Applications
 slug: /monitoring/
 last_update:
   date: 2023-07-12T00:00:00-00:00
 ---
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/monitoring.mdx
+# <i class="fa fa-line-chart"></i> JHipsterアプリケーションのモニタリング
 
 JHipsterには、実行時にアプリケーションをモニタリングするためのオプションがいくつか用意されています。
 
-<<<<<<< HEAD:pages/monitoring.md
 ## サマリー
 
 1. [生成されたダッシュボード](#generated-dashboards)
@@ -27,8 +16,6 @@ JHipsterには、実行時にアプリケーションをモニタリングする
 4. [ELK](#elk)
 5. [サポートされているサードパーティモニタリングシステムへのメトリックの転送](#configuring-metrics-forwarding)
 6. [Zipkin](#zipkin)
-=======
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/monitoring.mdx
 
 ## 生成されたダッシュボード
 
@@ -59,15 +46,8 @@ JVMスレッド・メトリックの横にあるExpandボタンをクリック�
 ログダッシュボードを使用すると、実行中のアプリケーションのLogback設定を実行時に管理できます。
 Javaパッケージのログ・レベルを変更するには、ボタンをクリックします。これは、開発環境とプロダクション番環境の両方で非常に便利です。
 
-<<<<<<< HEAD:pages/monitoring.md
 ## セキュリティ・メトリック
 JHipsterは、JWT認証タイプを使用するプロジェクトのJWT関連のセキュリティメトリックを追跡します。
-=======
-
-## Security Metrics
-
-JHipster tracks JWT-related security metrics in projects that uses JWT authentication type.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/monitoring.mdx
 
 特に、JHipsterは、トークン検証エラー数（無効なトークン数）を`security.authentication.invalid-tokens`という名前のカスタムメーターとして追跡し、次のメータータグを使用してそのような検証エラーの原因を追跡します。
 - `invalid-signature`:JWT署名の検証に失敗しました。
@@ -75,49 +55,26 @@ JHipster tracks JWT-related security metrics in projects that uses JWT authentic
 - `unsupported`:JWTフォーマットがアプリケーションで想定されているフォーマットと一致しません。
 - `malformed`:JWTが正しく構築されていません。
 
-<<<<<<< HEAD:pages/monitoring.md
 これらのメトリックは生成されたダッシュボードでは使用できませんが、アプリケーションメトリックとして公開され、可視化のために[サードパーティの監視システムに転送](#configuring-metrics-forwarding)できます。
-=======
-These metrics are not available in the generated dashboards, but they are exposed as application metrics and can be [forwarded to a third-party monitoring system](#forwarding-metrics-to-a-supported-third-party-monitoring-system-jmx-prometheus) for visualization.
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/monitoring.mdx
 
 ## JHipsterレジストリ
 
-<<<<<<< HEAD:pages/monitoring.md
-JHipster Registryには[こちらに独自のドキュメントページ]({{ site.url }}/jhipster-registry/)があります。
-=======
-The JHipster Registry has [its own documentation page here](/jhipster-registry).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/monitoring.mdx
+JHipster Registryには[こちらに独自のドキュメントページ](/jhipster-registry/)があります。
 
 ほとんどの場合、前のセクションと同じ監視ダッシュボードが提供されますが、別のサーバで動作します。そのため、設定が少し複雑になりますが、実行中のアプリケーションの外部でダッシュボードを実行することを強くお勧めします。そうしないと、アプリケーションエラーが発生したときにダッシュボードを使用できなくなります。
 
-<<<<<<< HEAD:pages/monitoring.md
 <h2 id="elk">ELK (Elasticsearch, Logstash, Kibana)スタック</h2>
-=======
-
-## ELK (Elasticsearch, Logstash, Kibana) Stack
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/monitoring.mdx
 
 ELKスタックは、ログの集約と検索によく使用され、次のコンポーネントで構成されています。
 
-<<<<<<< HEAD:pages/monitoring.md
 
 - [Elasticsearch](https://www.elastic.co/products/elasticsearch)：データ（ログとメトリック）のインデックス作成
 - [Logstash](https://www.elastic.co/products/logstash)：アプリケーションから受信したログを管理および処理
 - [Kibana](https://www.elastic.co/products/kibana)：ログを可視化するための優れたインタフェース
 
-<div class="alert alert-warning"><i>警告:</i>
-JHipsterはLogstashへのログの転送をサポートしていますが、JHipsterバージョン7では、ELKスタックDockerデプロイメントは提供されておらず、ダッシュボードを使用する準備ができていません。これは、現在は保守されていない<a href="https://github.com/jhipster/jhipster-console">JHipsterコンソール</a>サブプロジェクトの一部でした。既存のユーザーには、別のELKソリューションに移行することをお勧めします。</div>
-=======
-- [Elasticsearch](https://www.elastic.co/products/elasticsearch) for indexing the data (logs and metrics)
-- [Logstash](https://www.elastic.co/products/logstash) to manage and process the logs received from the applications
-- [Kibana](https://www.elastic.co/products/kibana) to visualize the logs with a nice interface
-
 :::warning
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/monitoring.mdx
 
-JHipster supports forwarding logs to Logstash, however as of JHipster version 7, we do not provide any ELK stack docker deployment and ready to use dashboards. This used to be part of the [JHipster Console](https://github.com/jhipster/jhipster-console) subproject that is no longer maintained. We advise existing users to migrate to another ELK solution.
+JHipsterはLogstashへのログの転送をサポートしていますが、JHipsterバージョン7では、ELKスタックDockerデプロイメントは提供されておらず、ダッシュボードを使用する準備ができていません。これは、現在は保守されていない [JHipsterコンソール](https://github.com/jhipster/jhipster-console) サブプロジェクトの一部でした。既存のユーザーには、別のELKソリューションに移行することをお勧めします。
 
 :::
 
@@ -156,12 +113,7 @@ output {
 
 ELKスタックのセットアップ方法の詳細については、[公式Elasticドキュメント](https://www.elastic.co/guide/en/elastic-stack/current/index.html)を参照してください。
 
-<<<<<<< HEAD:pages/monitoring.md
 <h2 id="configuring-metrics-forwarding">サポートされているサードパーティ監視システム(JMX、Prometheus)へのメトリックの転送</h2>
-=======
-
-## Forwarding metrics to a supported third party monitoring system (JMX, Prometheus)
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/monitoring.mdx
 
 JHipsterは、デフォルトで[Prometheus](https://prometheus.io/)フォーマットのアプリケーションメトリックを公開します。
 `management/prometheus`の下で公開されます。
@@ -222,10 +174,7 @@ Unlike in previous JHipster versions, JHipster 5.8 metrics reporting only suppor
 
 :::
 
-<<<<<<< HEAD:pages/monitoring.md
 注：以前のJHipsterバージョンとは異なり、JHipster 5.8のメトリックレポートは、JMXとPrometheusのみをサポートしています。[Graphite](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-metrics-export-graphite)のような他のレポーターを設定する方法については、Metricsの公式ドキュメントを参照してください。
-=======
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/monitoring.mdx
 
 ## Zipkin
 
@@ -233,11 +182,7 @@ JHipsterアプリケーションは、[Spring Boot Actuator Tracing](https://git
 
 Zipkinは、マイクロサービス間の依存関係を時間の経過とともに視覚化できるサービス依存性グラフ機能も提供します。
 
-<<<<<<< HEAD:pages/monitoring.md
 トレース情報をZipkinに報告するようにアプリケーションを設定する方法については、[Spring Boot Production-ready Features](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.micrometer-tracing)を参照してください。
 
-[jhipster-metrics-page]: {{ site.url }}/images/jhipster_metrics_page.png "JHipster Metrics page"
-[grafana-micrometer-dashboard]: {{ site.url }}/images/monitoring_grafana_micrometer.png "Grafana Micrometer Dashboard" 
-=======
-For more information on how to setup your application to report traces to Zipkin, refer to [Spring Boot Production-ready Features](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.micrometer-tracing).
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/production/monitoring.mdx
+[jhipster-metrics-page]: /images/jhipster_metrics_page.png "JHipster Metrics page"
+[grafana-micrometer-dashboard]: /images/monitoring_grafana_micrometer.png "Grafana Micrometer Dashboard" 

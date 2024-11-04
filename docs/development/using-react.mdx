@@ -1,29 +1,14 @@
 ---
-<<<<<<< HEAD:pages/using-react.md
-layout: default
 title: Reactの使用
-permalink: /using-react/
-sitemap:
-    priority: 0.7
-    lastmod: 2018-04-02T23:41:00-00:00
+slug: /using-react/
+last_update:
+  date: 2018-04-02T23:41:00-00:00
 ---
 
 # <i class="fa fa-html5"></i> React（とRedux）の使用
 このセクションでは、JavaScriptライブラリ**React**（と**Redux**）について説明します。
 
 ## プロジェクト構造
-=======
-title: Using React (with Redux)
-slug: /using-react/
-last_update:
-  date: 2018-04-02T23:41:00-00:00
----
-
-This section refers to the JavaScript library **React** used with **Redux**.
-
-
-## Project Structure
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-react.mdx
 
 JHipsterのクライアントコードは`src/main/webapp`にあり、[Piotr Witek Reactスタイルガイド](https://github.com/piotrwitek/react-redux-typescript-guide/blob/master/README.md)に厳密に従っています。
 
@@ -61,11 +46,7 @@ webapp
 └── robots.txt                      - ボットおよびWebクローラの設定
 ```
 
-<<<<<<< HEAD:pages/using-react.md
-[エンティティサブジェネレータ]({{ site.url }}/creating-an-entity/)を使用して`Foo`という名前の新しいエンティティを作成すると、`src/main/webapp`の下に次のフロントエンドファイルが生成されます。
-=======
-Using the [entity sub-generator](/creating-an-entity) to create a new entity called `Foo` generates the following front-end files under `src/main/webapp`:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-react.mdx
+[エンティティサブジェネレータ](/creating-an-entity/)を使用して`Foo`という名前の新しいエンティティを作成すると、`src/main/webapp`の下に次のフロントエンドファイルが生成されます。
 
 ```
 webapp
@@ -166,12 +147,7 @@ export const getFoos = () => ({
 **export**キーワードは、接続されたコンポーネントが必要に応じて
 （たとえば、コンポーネントが更新されるたびに）そのアクションを使用するために付与することに注意してください。
 
-<<<<<<< HEAD:pages/using-react.md
 ## 認証
-=======
-
-## Authorizations
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-react.mdx
 
 Jhipsterは、[Reactルータ](https://github.com/ReactTraining/react-router)を使用して、アプリケーションのさまざまな部分を整理します。
 
@@ -193,25 +169,13 @@ const Routes = () => (
 
 PrivateRouteは、ユーザーが認証されているかどうかを知るために、`authentication.isAuthenticated`ストア値を使用することに注意してください。
 
-<<<<<<< HEAD:pages/using-react.md
 ## 通知システム
-=======
-
-## Notification System
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-react.mdx
 
 JHipsterは、通知システムに[react-toastify](https://github.com/fkhadra/react-toastify)アラートを使用します。
 
 デフォルトでは、JHipsterはエンティティが作成/更新/削除されるたびに成功通知を表示します。
 レスポンスからエラーが検出された場合は、エラー通知が表示されます。
 
-<<<<<<< HEAD:pages/using-react.md
 ## React JHipsterライブラリ
 
 [react-jhipster](https://github.com/jhipster/react-jhipster)ライブラリは、生成されたアプリケーションにユーティリティと汎用サービスを提供します。i18nも処理します。
-=======
-
-## React JHipster library
-
-The [react-jhipster](https://github.com/jhipster/react-jhipster) lib provides utilities and generic services for a generated application. It handles i18n as well.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/development/using-react.mdx

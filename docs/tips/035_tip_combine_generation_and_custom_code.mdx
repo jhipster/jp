@@ -1,21 +1,11 @@
 ---
-<<<<<<< HEAD:tips/035_tip_combine_generation_and_custom_code.md
-layout: default
 title: 生成コードとカスタム・コードの結合
-sitemap:
-priority: 0.1
-lastmod: 2021-09-09T21:22:00-00:00
-=======
-title: Combining generation and custom code
-slug: /tips/035_tip_combine_generation_and_custom_code.html
 last_update:
   date: 2021-09-09T21:22:00-00:00
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/035_tip_combine_generation_and_custom_code.mdx
 ---
 
 __このTipは[@tcharl](https://github.com/tcharl)によって提出されました__
 
-<<<<<<< HEAD:tips/035_tip_combine_generation_and_custom_code.md
 # 生成コードとカスタム・コードの結合
 
 
@@ -24,14 +14,6 @@ _目標:_ Jhipsterは、その強力なドメイン固有言語のおかげで�
 ここでは、それを実現するために採用できるさまざまなパターンを紹介します。
 
 ## パターン1 - 初回のみ生成
-=======
-_Goal:_ Jhipster is very good for managing your model entities, thanks to its powerful Domain Specific language.
-But getting the best both custom code and generative world is  always a hard task.
-Here are the different pattern you can adopt in order to make it real. 
-
-
-## Pattern 1 - Generate once
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/035_tip_combine_generation_and_custom_code.mdx
 
 このアプローチは最も単純であり、ほとんどのユース・ケースで使用されます。
 これは、エンティティを一度モデリングし、最初のモデルを生成し、この最初のショットの後に必要なものをオーバーライドすることで構成されます。
@@ -40,20 +22,11 @@ Here are the different pattern you can adopt in order to make it real.
 
 ### 長所
 
-<<<<<<< HEAD:tips/035_tip_combine_generation_and_custom_code.md
  - 好きなようにできます。
-=======
-- Do what you want
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/035_tip_combine_generation_and_custom_code.mdx
 
 ### 短所
  
-<<<<<<< HEAD:tips/035_tip_combine_generation_and_custom_code.md
  - JHipsterの新機能の恩恵を受けられないことになります。
-=======
-- You'll tend do not benefit from JHipster new features
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/035_tip_combine_generation_and_custom_code.mdx
 
 ## パターン2 - 生成コードとカスタムコードの分割
 
@@ -63,12 +36,7 @@ Here are the different pattern you can adopt in order to make it real.
 
 ルータファイルが世代ごとに上書きされるのを避けるために、プロジェクトのルートに`.yo-resolve`ファイルを作成して、yeomanに期待される動作を伝えることができます。
 
-<<<<<<< HEAD:tips/035_tip_combine_generation_and_custom_code.md
 例：
-=======
-Example:
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/035_tip_combine_generation_and_custom_code.mdx
 ```
 src/main/resources/swagger/api.yml skip
 src/main/webapp/app/modules/home/home.tsx skip
@@ -83,12 +51,7 @@ src/main/webapp/app/modules/home/home.tsx skip
 - デッドコードが存在します。
 - モデルとは異なる名前やパッケージを持つカスタムクラスが存在することになります（DDDのベストプラクティスと考えることができますが、それでも）。
 
-<<<<<<< HEAD:tips/035_tip_combine_generation_and_custom_code.md
 ## パターン3 - サイド・バイ・サイド
-=======
-
-## Pattern 3 - Side by side
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/035_tip_combine_generation_and_custom_code.mdx
 
 ここでの目標は、クラス拡張とBeanの優先順位を使用して、生成されたコードの代わりにカスタム・コードを注入することです。
 
@@ -96,14 +59,8 @@ src/main/webapp/app/modules/home/home.tsx skip
 
 ### リポジトリ
 
-<<<<<<< HEAD:tips/035_tip_combine_generation_and_custom_code.md
 リポジトリレベルでは、jhipsterが生成したリポジトリに`NoRepositoryBean`アノテーションを使用してアノテーションを付け、検出を無効にします。
 次に、カスタムリポジトリクラスを作成します。
-=======
-At the repository level, you'll annotate jhipster generated repository using `NoRepositoryBean` annotation in order to disable discovery.
-You can then create your custom repository class
-
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tips/035_tip_combine_generation_and_custom_code.mdx
 ```
 @Repository
 @Primary

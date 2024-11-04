@@ -1,27 +1,13 @@
 ---
-<<<<<<< HEAD:pages/setting_up_ci.md
-layout: default
 title: 継続的インテグレーションの設定
-permalink: /setting-up-ci/
-redirect_from:
-  - /setting_up_ci.html
-sitemap:
-    priority: 0.7
-    lastmod: 2018-08-03T14:40:00-00:00
----
-
-# <i class="fa fa-stethoscope"></i> 継続的インテグレーションの設定
-
-JHipsterアプリケーションの継続的インテグレーション（CI）のセットアップは、2つのソフトウェアスタックで構成されるビルドのメンテナンスに関連する複雑さのため、従来の一般的なSpring MVCアプリケーションよりも複雑です。
-=======
-title: Setting up Continuous Integration
 slug: /setting-up-ci/
 last_update:
   date: 2018-08-03T14:40:00-00:00
 ---
 
-Setting up Continuous Integration (CI) for a JHipster application is more complex than for a classic typical Spring MVC application because of the complexity associated with maintaining a build composed of 2 software stacks:
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/setting-up-ci/index.mdx
+# <i class="fa fa-stethoscope"></i> 継続的インテグレーションの設定
+
+JHipsterアプリケーションの継続的インテグレーション（CI）のセットアップは、2つのソフトウェアスタックで構成されるビルドのメンテナンスに関連する複雑さのため、従来の一般的なSpring MVCアプリケーションよりも複雑です。
 
 - MavenまたはGradleを使用したJavaバックエンドコード
 - NodeJS、NPMを使用したJavaScriptフロントエンド
@@ -30,10 +16,9 @@ Setting up Continuous Integration (CI) for a JHipster application is more comple
 
 JHipsterは、次のCIシステムをサポートします。
 
-<<<<<<< HEAD:pages/setting_up_ci.md
 - Jenkins
-    - [Jenkinsのセットアップ1]({{ site.url }}/setting-up-ci-jenkins1/)
-    - [Jenkinsのセットアップ2]({{ site.url }}/setting-up-ci-jenkins2/) （推奨）
+    - [Jenkinsのセットアップ1](/setting-up-ci-jenkins1/)
+    - [Jenkinsのセットアップ2](/setting-up-ci-jenkins2/) （推奨）
 - Travis:[Travisドキュメント](https://docs.travis-ci.com/user/getting-started/)を参照してください
 - GitLab CI:[GitLab CIドキュメント](https://about.gitlab.com/gitlab-ci/)を参照してください
 - Azure Pipelines:[Azure Pipelinesドキュメント](https://docs.microsoft.com/fr-fr/azure/devops/pipelines/?view=vsts)を参照してください
@@ -41,19 +26,6 @@ JHipsterは、次のCIシステムをサポートします。
 - CircleCI:[CircleCIドキュメント](https://circleci.com/docs/)
 
 ## サブジェネレータの実行
-=======
-- Jenkins:
-  - [Setting up Jenkins 1](/setting-up-ci-jenkins1/)
-  - [Setting up Jenkins 2](/setting-up-ci-jenkins2/) (recommended)
-- Travis: refer to the [Travis Documentation](https://docs.travis-ci.com/user/getting-started/)
-- GitLab CI: refer to the [GitLab CI Documentation](https://about.gitlab.com/gitlab-ci/)
-- Azure Pipelines: refer to the [Azure Pipelines Documentation](https://docs.microsoft.com/fr-fr/azure/devops/pipelines/?view=vsts)
-- GitHub Actions: refer to [GitHub Actions Documentation](https://github.com/features/actions)
-- CircleCI: refer to [CircleCI Documentation](https://circleci.com/docs/)
-
-
-## Running the sub-generator
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/setting-up-ci/index.mdx
 
 これらの構成ファイルを生成するには、プロジェクトフォルダで次のコマンドを実行します。
 
@@ -63,12 +35,8 @@ jhipster ci-cd
 
 次に、すべての質問に答えます。
 
-<<<<<<< HEAD:pages/setting_up_ci.md
 
 ### どのCI/CDパイプラインを生成しますか?
-=======
-### What CI/CD pipeline do you want to generate ?
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/setting-up-ci/index.mdx
 
 生成できるCI/CDパイプラインは以下です。
 
@@ -160,13 +128,8 @@ Jenkins Configurationで定義されているSonarサーバの名前を選択し
 
 `HEROKU_API_KEY`環境変数を追加する必要があります。
 
-<<<<<<< HEAD:pages/setting_up_ci.md
-注：Herokuへのデプロイメントを使用する前に、[Herokuサブジェネレータ]({{ site.url }}/heroku)をローカルで使用する必要があります。
+注：Herokuへのデプロイメントを使用する前に、[Herokuサブジェネレータ](/heroku)をローカルで使用する必要があります。
 継続的インテグレーション・ツールに必要なすべてのファイルが作成されます。
-=======
-Note: before using the deployment to Heroku, you need to use the [Heroku sub-generator](/heroku) locally.
-It will create all files needed by your Continuous Integration Tool.
->>>>>>> be9dc09c024a35e21e9637afdb55a6d53991f8d2:docs/tests-and-qa/setting-up-ci/index.mdx
 
 
 ## 追加情報

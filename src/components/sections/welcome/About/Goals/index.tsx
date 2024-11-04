@@ -13,12 +13,11 @@ import styles from './styles.module.scss';
 export default function Goals() {
   return (
     <div className={styles.section}>
-      <SectionTitle align="start">Goal</SectionTitle>
+      <SectionTitle align="start">ゴール</SectionTitle>
 
       <SectionDescription align="start">
         <p>
-          Our goal is to generate a complete and modern web app or microservice
-          architecture, unifying:
+          私たちのゴールは、完成されたモダンなWebアプリケーションやマイクロサービスのアーキテクチャを構成し、以下を統合することです：
         </p>
       </SectionDescription>
 
@@ -28,10 +27,9 @@ export default function Goals() {
             <div className={styles.cardIcon}>
               <RxStack className="h-6 w-6" />
             </div>
-            <h3 className={styles.cardTitle}>Robust server-side stack</h3>
+            <h3 className={styles.cardTitle}>堅牢なサーバサイドのスタック</h3>
             <p className={styles.cardDescription}>
-              A high-performance and robust server-side stack with excellent
-              test coverage
+              優れたテストカバレッジがなされた、高性能で堅牢なサーバサイドのスタック
             </p>
           </div>
         </li>
@@ -41,10 +39,9 @@ export default function Goals() {
             <div className={styles.cardIcon}>
               <MdOutlineStyle className="h-6 w-6" />
             </div>
-            <h3 className={styles.cardTitle}>Modern Sleek</h3>
+            <h3 className={styles.cardTitle}>モダンで洗練されたUI</h3>
             <p className={styles.cardDescription}>
-              A sleek, modern, mobile-first UI with Angular, React or Vue +
-              Bootstrap for CSS
+              Angular、React、Vueと、CSSにBootstrapを用いた、モバイルファーストな洗練されたモダンUI
             </p>
           </div>
         </li>
@@ -54,10 +51,9 @@ export default function Goals() {
             <div className={styles.cardIcon}>
               <GoWorkflow className="h-6 w-6" />
             </div>
-            <h3 className={styles.cardTitle}>Powerful workflow</h3>
+            <h3 className={styles.cardTitle}>パワフルなワークフロー</h3>
             <p className={styles.cardDescription}>
-              A powerful workflow to build your application with Webpack and
-              Maven or Gradle
+              WebpackやMaven/Gradleを用いてアプリケーションをビルドするパワフルなワークフロー
             </p>
           </div>
         </li>
@@ -67,10 +63,9 @@ export default function Goals() {
             <div className={styles.cardIcon}>
               <TbCloudDataConnection className="h-6 w-6" />
             </div>
-            <h3 className={styles.cardTitle}>Resilient architecture</h3>
+            <h3 className={styles.cardTitle}>弾性（Resilient）のあるアーキテクチャ</h3>
             <p className={styles.cardDescription}>
-              A resilient microservice architecture with cloud native principles
-              in mind
+              クラウドネイティブの原則を意識した、弾性のあるマイクロサービスアーキテクチャ
             </p>
           </div>
         </li>
@@ -80,9 +75,9 @@ export default function Goals() {
             <div className={styles.cardIcon}>
               <GrDeploy className="h-6 w-6" />
             </div>
-            <h3 className={styles.cardTitle}>Quickly deploy</h3>
+            <h3 className={styles.cardTitle}>迅速なデプロイ</h3>
             <p className={styles.cardDescription}>
-              Infrastructure as code so you can quickly deploy to the ☁️
+              Infrastructure as Codeにより迅速にクラウド☁️にデプロイ可能
             </p>
           </div>
         </li>

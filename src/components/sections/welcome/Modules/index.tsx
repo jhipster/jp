@@ -17,12 +17,11 @@ export default function Modules() {
 
   return (
     <SectionWrapper className={styles.section}>
-      <SectionTitle>Top trending modules and blueprints</SectionTitle>
+      <SectionTitle>人気のモジュールとブループリント</SectionTitle>
 
       <SectionDescription>
         <p>
-          You can get started and see all top trending modules and blueprints in
-          the documentation
+          ドキュメントで、トップトレンドのモジュールとブループリントをすべて確認して始めましょう
         </p>
       </SectionDescription>
 
@@ -64,13 +63,13 @@ export default function Modules() {
 
       <div className={styles.sectionButtons}>
         <Link className="button button--primary" to="/modules/marketplace">
-          See all Modules and Blueprints
+          すべてのモジュールとブループリントを見る
         </Link>
         <Link
           className="button button--secondary"
           to="/modules/creating-a-module"
         >
-          Getting Started
+          始める
         </Link>
       </div>
     </SectionWrapper>
