@@ -1,0 +1,377 @@
+---
+title: JHipsterドメイン言語 (JDL) - オプション
+slug: /jdl/options
+last_update:
+  date: 2019-11-02T12:00:00-00:00
+---
+
+JHipsterでは、エンティティのページングやDTOなどのオプションを指定できます。
+JDLでも、エンティティのアノテーションまたは以下の構文で同様の操作が可能です。
+
+```jdl
+entity A {
+  name String required
+}
+entity B
+entity C
+
+dto A, B with mapstruct
+
+paginate A with infinite-scroll
+paginate B with pagination
+paginate C with pager  // pagerはAngularJSでのみ利用可能
+
+service A with serviceClass
+service C with serviceImpl
+```
+
+使用可能なオプションの完全なリストは[こちら](#available-options)にあります。
+
+
+## 操作方法
+
+オプションには以下の2種類があります。
+
+- 単項（オプション値なし）
+- 二項（値付き）
+
+エンティティにオプションを適用する方法は以下の3つです。
+
+- オプション名を使う (`dto`, `readOnly` など、例を参照)
+- アノテーションを使う
+- `use XYZ`形式を使用
+
+混在させると可読性が低下するため推奨されません。
+
+
+## 構文
+
+通常の形式は以下の通りです。
+```
+<option name> <option entity list>
+
+または
+
+<option name> <option entity list> with <option value>
+
+または
+
+<option name> <option entity list> with <option value> except <option excluded entity list>
+
+または 
+
+<option name> <option entity list> except <option excluded entity list>
+```
+
+- 単項オプションの場合:
+  - オプション名とリストが必要です
+  - 除外エンティティは`except`キーワードを使用して指定可能です（詳細は下記参照）
+- 二項オプションの場合:
+  - `with`キーワードの前にエンティティリストとオプション値を指定します
+  - 除外エンティティは最後に`except`キーワードで指定します
+
+アノテーションの場合：
+```
+@<option name>
+entity <entity name>
+
+または
+
+@<option name>(<option value>)
+```
+
+- Javaと同様に、アノテーションは括弧内に値を取ることが可能
+  - オプションによって値が必須でない場合もあります
+
+
+## XYZオプションの使用
+
+useオプション形式でエンティティにいくつかのオプションを指定できます。
+この形式はJHipster Code 2020で導入され、以下の理由で作成されました。
+
+- オプション無効化の課題解決（JHipsterでは 'no' に対する複数の表現がある：`no, false, none`）
+- エンティティごとにオプションをグループ化する方法を提案
+
+```jdl
+entity A
+entity B
+entity C
+
+use serviceClass for * except C
+use mapstruct, serviceImpl, infinite-scroll for A, B
+use pagination for C
+```
+
+|Useオプションの値 |コメント                                                                                                            |
+|-----------------|-----------------------------------------------------------------------------------------------------------------|
+|mapstruct        |エンティティにDTOを作成するかどうか。エンティティにDTOがありサービスがない場合、'serviceClass'が使用されます |
+|serviceClass     |                                                                                                                 |
+|serviceImpl      |                                                                                                                 |
+|pagination       |Cassandraを使用するアプリケーションではページングオプションは使用禁止                                              |
+|infinite-scroll  |Cassandraを使用するアプリケーションではページングオプションは使用禁止                                              |
+|elasticsearch    |searchEngineオプションが有効になっているアプリケーションが必要                                                    |
+|couchbase        |searchEngineオプションが有効になっているアプリケーションが必要                                                    |
+
+
+## 例
+
+各例には以下の3つの形式があります。
+
+- 標準形式
+- アノテーションベースの形式
+- use形式（該当する場合）
+
+### 基本の単項の例
+
+標準形式：
+```jdl
+entity A
+
+readOnly A
+```
+
+アノテーション形式：
+```jdl
+@readOnly
+entity A
+```
+
+### 基本の二項の例
+
+標準形式：
+```jdl
+entity A
+
+dto A with mapstruct
+```
+
+アノテーション形式：
+```jdl
+@dto(mapstruct)
+entity A
+```
+
+useキーワードの使用：
+```jdl
+entity A
+
+use mapstruct, serviceImpl, pagination for A
+```
+
+### all, * の例
+
+`all` と `*` はエイリアスです。
+
+標準形式：
+```jdl
+entity A
+entity B
+
+dto all with mapstruct
+```
+
+アノテーション形式：
+```jdl
+@dto(mapstruct)
+entity A
+
+@dto(mapstruct)
+entity B
+```
+
+useキーワードの使用：
+```jdl
+entity A
+entity B
+
+use mapstruct, serviceImpl, pagination for *
+```
+
+### all, * の除外の例（単項）
+
+標準形式：
+```jdl
+entity A
+entity B
+
+skipClient * except A
+```
+
+アノテーション形式：
+```jdl
+entity A
+
+@skipClient
+entity B
+```
+
+useキーワードの使用：
+```jdl
+entity A
+entity B
+
+use mapstruct, serviceImpl, pagination for * except A
+```
+
+### all, * の除外の例（二項）
+
+標準形式：
+```jdl
+entity A
+entity B
+
+dto all with mapstruct except A
+```
+
+アノテーション形式：
+```jdl
+entity A
+
+@dto(mapstruct)
+entity B
+```
+
+useキーワードの使用：
+```jdl
+entity A
+entity B
+
+use mapstruct, serviceImpl, pagination for all except A
+```
+
+### カスタム値を持つオプション
+
+```jdl
+entity A
+entity B
+
+microservice all with mySuperMS
+```
+
+### 混在する例
+
+標準形式：
+```jdl
+entity A
+entity B
+entity C
+
+readOnly B, C
+dto * with mapstruct except C
+service * with serviceClass except C
+search A with elasticsearch
+```
+
+アノテーション形式：
+```jdl
+@dto(mapstruct)
+@search(elasticsearch)
+@service(serviceClass)
+entity A
+
+@readOnly
+@dto(mapstruct)
+@service(serviceClass)
+entity B
+
+@readOnly
+entity C
+```
+
+
+## サービスについて
+
+サービスが指定されていない場合、リポジトリインタフェースを直接呼び出すリソースクラスが作成されます。これは
+デフォルトで最も簡単なオプションです（A参照）。
+
+`service with serviceClass`（B参照）は、リポジトリインタフェースを呼び出すサービスクラスをリソースが呼び出す形にします。
+`service with serviceImpl`（C参照）は、リソースクラスが使用するサービスインタフェースを作成します。
+
+インタフェースは、リポジトリインタフェースを呼び出す具象クラスによって実装されます。
+
+複数のリポジトリを使用するビジネスロジックが必要でない限り、サービスは使用せず、CRUDに適した最もシンプルなオプションが推奨されます。
+複数のリポジトリを使用する場合、サービスクラスでの使用が適しています。
+JHipstersは不要なインターフェイスは好きではありませんが、もし好きならimplを使ったサービスを使いましょう。
+
+```
+entity A
+entity B
+entity C
+
+// Aにサービスは指定しない
+service B with serviceClass
+service C with serviceImpl
+```
+
+
+## マイクロサービス関連のオプション
+
+JHipster v3以降、マイクロサービスの作成が可能です。JDLでは、エンティティの生成にいくつかのオプションを指定できます。
+マイクロサービスの名前と検索エンジンを指定します。
+
+マイクロサービスの名前を指定する方法：
+
+```
+entity A
+entity B
+entity C
+microservice * with mysuperjhipsterapp except C
+microservice C with myotherjhipsterapp
+search * with elasticsearch except C
+```
+
+最初のオプションは、エンティティがマイクロサービスで処理されることをJHipsterに伝えるためのもので、2番目はエンティティの検索方法を指定します。
+
+
+## カスタムアノテーション
+
+JDLでは以下のようなカスタムアノテーションが可能です：
+
+```jdl
+@customAnnotation(customValue)
+entity A
+```
+
+主な用途はBlueprintで、エンティティやフィールドに対してカスタムオプションが必要になることがあります。
+通常のオプション（`dto`, `
+
+pagination`など）はCLIと同様にJSONで生成されますが、カスタムオプションはJSONの`options`キーの下に生成されます。
+
+
+## 使用可能なオプション
+
+_お探しのものが見つからない場合は、[アプリケーションのオプション](/jdl/applications#available-application-configuration-options)もご確認ください。_
+
+### エンティティオプション
+
+JDLでサポートされているエンティティオプション：
+
+|JDLオプション名（エンティティ）|オプションタイプ|デフォルト値|指定可能な値|コメント                                         |
+|------------------------|-----------|-------------|----------|---------------------------------------------|
+|skipClient              |単項      |false       |なし       |クライアントコード生成がスキップされます       |
+|skipServer              |単項      |false       |なし       |サーバーコード生成がスキップされます           |
+|noFluentMethod          |単項      |false       |なし       |詳細は[こちら](/2016/08/17/jhipster-release-3.6.0#important-change-fluent-setters)|
+|filter                  |単項      |false       |なし       |[フィルタリング](/entities-filtering)参照 |
+|readOnly                |単項      |false       |なし       |エンティティが読み取り専用になります            |
+|dto                     |二項      |no          |mapstruct, no |エンティティにDTOを作成します                   |
+|service                 |二項      |no          |serviceClass, serviceImpl, no |-              |
+|paginate                |二項      |no          |pagination, infinite-scroll, no |Cassandraを使用する場合、ページングは禁止 |
+|search                  |二項      |no          |elasticsearch, no |searchEngineオプションが必要                   |
+|microservice            |二項      |-           |カスタム値   |マイクロサービス内で宣言されたエンティティ      |
+|angularSuffix           |二項      |-           |カスタム値   |                                              |
+|clientRootFolder        |二項      |-           |カスタム値   |                                              |
+
+
+### フィールドオプション
+
+JDLでサポートされているフィールドオプション：
+
+|JDLオプション名（フィールド）|デフォルト値|指定可能な値 |コメント                                                   |
+|-----------------------|----------|----------|----------------------------------------------------------|
+|defaultValue           |未定義     |データ型に適した任意の値 |データベースのカラムにデフォルト値を定義                   |
+|defaultValueComputed   |未定義     |データベース関数         |データベースレベルでデフォルト値を生成                     |
+
+
+## 関連項目
+
+アプリケーションのオプションは[こちら](/jdl/applications)にあります。

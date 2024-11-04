@@ -1,0 +1,93 @@
+---
+title: JHipsterドメイン言語 (JDL) - デプロイメント
+slug: /jdl/deployments
+last_update:
+  date: 2021-07-08T12:00:00-00:00
+---
+
+## 構文
+
+デプロイメントの宣言は以下のように行います:
+
+```jdl
+deployment {
+  <デプロイメントオプション名> <デプロイメントオプション値>
+}
+```
+
+- アプリケーションと同様に、オプションのキーと値を指定することでデプロイメントの宣言が機能します
+
+
+## 例
+
+### 基本の例
+
+```jdl
+deployment {
+  deploymentType docker-compose
+  appsFolders [foo, bar]
+  dockerRepositoryName "yourDockerLoginName"
+}
+```
+
+### 複数のデプロイメント
+
+複数のデプロイメントを行いたい場合は、以下のように記述します:
+
+```jdl
+// 'docker-compose'フォルダに作成されます
+deployment {
+  deploymentType docker-compose
+  appsFolders [foo, bar]
+  dockerRepositoryName "yourDockerLoginName"
+}
+
+// 'kubernetes'フォルダに作成されます
+deployment {
+  deploymentType kubernetes
+  appsFolders [foo, bar]
+  dockerRepositoryName "yourDockerLoginName"
+}
+```
+
+`deploymentType`ごとに1つのデプロイメントを設定できます。`appsFolders`に指定されたアプリケーションは、デプロイメントを作成するフォルダまたは`directoryPath`で定義されたフォルダに配置する必要があります。
+
+上記の場合、次のようなフォルダ構造が必要です:
+
+```
+.
+├── yourJdlFile.jdl
+├── foo
+├── bar
+├── kubernetes // JDLによって作成されます
+└── docker-compose // JDLによって作成されます
+```
+
+
+## 使用可能なデプロイメントオプション
+
+JDLでサポートされているデプロイメントオプションは以下の通りです:
+
+| JDLオプション名             | デフォルト値      | 指定可能な値                       | コメント                                                                                                                                    |
+|----------------------------|-------------------|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| deploymentType             | docker-compose    | docker-compose, kubernetes, openshift |-                                                                                                                                          |
+| directoryPath              | `../`             |-                                     | 相対パス。二重引用符で囲む必要があります                                                                                                    |
+| appsFolders                | []                |-                                     | アプリケーションのディレクトリ名をカンマで区切る必要があります。例: [foo, bar]                                                               |
+| clusteredDbApps            | []                |-                                     | クラスタ化されたDBを持つアプリケーションのディレクトリ名。カンマで区切る必要があります。例: [foo, bar]                                     |
+| gatewayType                | SpringCloudGateway|-                                     | serviceDiscoveryTypeが`no`の場合、値は無視されます                                                                                        |
+| monitoring                 | no                | no, prometheus                       |-                                                                                                                                          |
+| serviceDiscoveryType       | consul            | consul, eureka, no                   |-                                                                                                                                          |
+| dockerRepositoryName       | -                 |-                                     | Dockerリポジトリの名前またはURL。二重引用符で囲む必要があります                                                                             |
+| dockerPushCommand          | `docker push`     |-                                     | 使用するdocker pushコマンド。二重引用符で囲む必要があります                                                                                |
+| kubernetesNamespace        | default           |-                                     | deploymentTypeがkubernetesの場合にのみ適用                                                                                                 |
+| kubernetesUseDynamicStorage| false             | true, false                          | deploymentTypeがkubernetesの場合にのみ適用され、kubernetesStorageClassNameオプションが有効になります                                        |
+| kubernetesStorageClassName | -                 |-                                     | deploymentTypeがkubernetesの場合にのみ適用。空のままにすることが可能(二重引用符2つ)                                                         |
+| kubernetesServiceType      | LoadBalancer      | LoadBalancer, NodePort, Ingress      | deploymentTypeがkubernetesの場合にのみ適用                                                                                                 |
+| ingressDomain              | -                 |-                                     | kubernetesServiceTypeが`Ingress`の場合のIngressのドメイン。二重引用符で囲む必要があります。deploymentTypeがkubernetesの場合にのみ適用されます|
+| ingressType                | nginx             | nginx, gke                           | kubernetesのIngressタイプ。`kubernetesServiceType`がIngressに設定されている場合にのみ設定されます                                           |
+| istio                      | false             | true, false                          | deploymentTypeがkubernetesの場合にのみ適用                                                                                                 |
+| openshiftNamespace         | default           |-                                     | deploymentTypeがopenshiftの場合にのみ適用                                                                                                  |
+| storageType                | ephemeral         | ephemeral, persistent                | deploymentTypeがopenshiftの場合にのみ適用                                                                                                  |
+| registryReplicas           | 2                 |-                                     | レプリカの数。openshiftデプロイメントタイプの場合                                                                                           |
+```
+```
