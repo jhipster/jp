@@ -41,7 +41,15 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'ja',
-    locales: ['ja'],
+    locales: ['ja', 'en'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+      },
+      ja: {
+        label: '日本語',        
+      },
+    },
   },
 
   presets: [
@@ -136,6 +144,10 @@ const config: Config = {
           label: 'JDL Studio',
           position: 'right',
         },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },        
       ],
     },
     prism: {
@@ -176,6 +188,13 @@ const config: Config = {
           'https://github.com/jhipster/generator-jhipster',
         ],
       }),
+    },
+  ],
+
+  scripts: [
+    {
+      src: '/redirect.js',
+      async: true,
     },
   ],
 };

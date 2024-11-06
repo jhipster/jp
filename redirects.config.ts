@@ -201,7 +201,7 @@ const redirectsPlugin = [
       {
         from: '/tips.html',
         to: '/tips/',
-      },
+      },    
     ],
   },
 ];

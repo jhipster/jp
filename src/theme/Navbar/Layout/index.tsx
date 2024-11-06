@@ -10,6 +10,7 @@ import NavbarMobileSidebar from '@theme/Navbar/MobileSidebar';
 import type { Props } from '@theme/Navbar/Layout';
 
 import styles from './styles.module.scss';
+import onRouteUpdate from '../../../redirect';
 
 function NavbarBackdrop(props: ComponentProps<'div'>) {
   return (
@@ -22,6 +23,11 @@ function NavbarBackdrop(props: ComponentProps<'div'>) {
 }
 
 export default function NavbarLayout({ children }: Props): JSX.Element {
+
+  React.useEffect(() => {
+    onRouteUpdate({ location: window.location });
+  }, []);
+
   const {
     navbar: { hideOnScroll, style },
   } = useThemeConfig();
