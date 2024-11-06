@@ -2,102 +2,337 @@
 title: APIファーストな開発を行う
 slug: /doing-api-first-development/
 last_update:
-  date: 2018-06-11T00:00:00-00:00
+  date: 2024-08-29T00:00:00-00:00
 ---
 
 # <i class="fa fa-search"></i> APIファーストな開発を行う
 
-JHipsterアプリケーションを生成するときに、追加のテクノロジのプロンプトが表示されたら、`API first development using OpenAPI-generator`オプションを選択できます。
-このオプションは、[OpenAPI-generator](https://github.com/OpenAPITools/openapi-generator)を使用してOpenAPI(Swagger)定義ファイルからAPIコードを生成するようにビルドツールを設定します。
-Swagger v2とOpenAPI v3の両方のフォーマットがサポートされています。
+JHipsterアプリケーションを生成する際、「他に使用したい技術はありますか？」と尋ねられたら、`API first development using OpenAPI-generator`オプションを選択して、[OpenAPI-generator](https://github.com/OpenAPITools/openapi-generator)を活用します。以下のように設定します：
 
-### APIファーストな開発が合理的である理由
+```shell
+# ... 他のプロンプトへの回答 ...
+? Which other technologies would you like to use? (Press <space> to select, <a> to toggle all, <i> to invert selection,
+and <enter> to proceed)
+ ◯ Apache Kafka as asynchronous messages broker
+ ◯ Apache Pulsar as asynchronous messages broker
+❯◉ API first development using OpenAPI-generator
+```
 
-APIファースト開発では、コードからドキュメントを生成するのではなく、最初に仕様を記述してからコードを生成する必要があります。
-これには、次の利点があります。
+このオプションを選択すると、ビルドツール（[MavenまたはGradle](https://openapi-generator.tech/docs/plugins)）がOpenAPI（Swagger）仕様書（OAS）ファイルからAPIコードを生成するように構成されます。Swagger v2およびOpenAPI v3の両方の形式がサポートされています。
 
-- 実装の結果としてではなく、ユーザのためにAPIを設計できます。
-- 新しいサーバエンドポイントがリリースされる前に仕様ファイルを使用してモックを作成できるため、フロントエンドとバックエンドの開発をより分離できます。
-- OpenAPIドキュメントを使用するためのライブサーバは必要ありません。
+## APIファースト開発の根拠
 
-### OpenAPIジェネレータプラグインの使用
+APIファースト開発、または「契約優先開発」では、最初にAPI仕様書を作成し、そのAPI仕様からコードを生成します。これは、コードからドキュメントを生成する方法とは対照的です。
 
-OpenAPI仕様ファイルはsrc/main/resources/swagger/api.ymlにあり、実装可能なエンドポイント・インタフェースを生成するために使用されます。
-これらのインタフェースには、`501 Not implemented`HTTPステータスと空の本体で応答するデフォルトのメソッドがあります。
-[swagger-editor](http://editor.swagger.io)などのツールを使用して定義を記述し、それを`src/main/resources/swagger/api.yml`に置き、次のコマンドを実行します。
+APIファースト開発には次の利点があります：
+
+- APIは実装の結果ではなく、利用者向けに設計されます。
+- 仕様ファイルを使用して新しいサーバーエンドポイントをモックでき、フロントエンドとバックエンドの分離が進みます。
+- 仕様ファイルの使用にはライブサーバーが不要です。
+
+## デフォルト構成
+
+このHOWTOでは、JHipsterのデフォルト構成を使用し、Springのデリゲートパターンを利用します。[Spring用のOpenAPI Generator](https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/spring.md)によって生成されたコードは、実装用のモデルとデリゲートを生成します。
+
+プラグインのデフォルト構成は以下の通り（Maven）で、`pom.xml`のプロジェクトレベルの`build`プロファイルに定義されています。この構成はJHipsterによってGradleプロジェクトにも適用されます。
+
+```xml
+<plugin>
+    <!--
+        openapi-generator-cliを使用して、OpenAPI定義ファイルから
+        Spring-MVCエンドポイントのスタブをコンパイル時に生成するプラグイン
+    -->
+    <groupId>org.openapitools</groupId>
+    <artifactId>openapi-generator-maven-plugin</artifactId>
+    <version>${openapi-generator-maven-plugin.version}</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>generate</goal>
+            </goals>
+            <configuration>
+                <inputSpec>${project.basedir}/src/main/resources/swagger/api.yml</inputSpec>
+                <generatorName>spring</generatorName>
+                <apiPackage>demo.jhipster.myapp.web.api</apiPackage>
+                <modelPackage>demo.jhipster.myapp.service.api.dto</modelPackage>
+                <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
+                <skipValidateSpec>false</skipValidateSpec>
+                <configOptions>
+                    <!-- delegatePatternはspringジェネレータにのみ使用可能 -->
+                    <delegatePattern>true</delegatePattern>
+                    <title>jhipster</title>
+                    <useSpringBoot3>true</useSpringBoot3>
+                </configOptions>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+> ℹ️ JHipsterユーザーは、ビルドツールを環境の特性や組織で採用されている標準に合わせて調整することが推奨されます。JHipsterはスケールに対応できるツールとプラクティスを備え、プロジェクトに適した基盤を提供します。JHipsterで使用するSpringのデリゲートパターンが組織の標準でない場合は、`configOption:delegatePattern`を削除できます（デフォルトは`false`です）。
+>
+> JHipsterのデフォルト動作に変更を加える際の影響を理解することが求められます。JHipsterはSpringの使用方法を教えることはできないため、Springに対する変更がJHipsterで文書化できない動作を引き起こす可能性があります。
+
+## openapi-generator-maven-pluginの使用
+
+OpenAPI仕様書（OAS）ファイルは、プラグインの`inputSpec`要素で定義されたファイルからジェネレータによって読み込まれます。JHipsterのOASのデフォルト場所は`src/main/resources/swagger/api.yml`です。プラグインはOASからインターフェースとデータ転送オブジェクト（DTO）を生成します。インターフェースには、HTTPステータス`501 未実装`と空の本文で応答するデフォルトメソッドが含まれます。
+
+### OpenAPI仕様書を用いたAPIの開発
+
+このガイドでは、簡潔さのためにOpenAPIのクラシックなペットストア仕様を使用します。OASの記述はガイドの範囲外ですが、API開発者は[swagger-editor](http://editor.swagger.io)などのツールを使用してOASを記述し、`src/main/resources/swagger/api.yml`に配置できます。また、多くのIDEがOAS編集用ツールを提供しています。
+
+#### プロ・ヒント
+
+JHipsterで`API first development using OpenAPI-generator`を選択した場合、Swagger EditorのDocker Compose記述ファイルが`src/main/docker/swagger-editor.yml`に提供されます。このエディタをローカルで使用するには、`docker compose -f src/main/docker/swagger-editor.yml up -d`を実行してください。
+
+### JHipsterのレイヤードアーキテクチャとArchUnitによる技術構造テスト
+
+OpenAPI Generatorプラグインによって生成されたデリゲートを実装する前に、JHipsterのレイヤードアーキテクチャ設計を確認し理解することをお勧めします。このアーキテクチャは[TNG TechのArchUnit](https://www.archunit.org/motivation)によってテストされ、`src/test/java/com/mycompany/myapp/TechnicalStructureTest.java`で定義されています。デリゲートクラスの適切な実装により、このレイヤードアーキテクチャを逸脱しないようにします。
+
+## 実装ガイド
+
+### Pet Store v3
+
+ここからは、OpenAPI Initiativeによる[JHipster対応版の拡張Pet Store v3](/doing-api-first-development/api/api.yml)に基づいて説明を行います（[こちらにあります](https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v3.0/petstore-expanded.yaml)）。このJHipsterバージョンでは、`server:url`がJHipsterのデフォルトである`http://localhost:8081/api`に設定されています（ポートはデフォルトで`8081`、生成されたコントローラは`/api`を基準パスとし、デフォルトの`SecurityConfiguration#filterChain(HttpSecurity,  MvcRequestMatcher.Builder)`実装に一致します）。
+
+### サーバーソースの生成
+
 ```bash
 ./mvnw generate-sources
 ```
-
-Or for gradle:
-```shell
+またはGradleの場合：
+```bash
 ./gradlew openApiGenerate
 ```
-次に、`${buildDirectory}/generated-sources/openapi/src/main/java/${package}/web/api/`で生成された"Delegate"インタフェースを`@Service`クラスで実装します。
 
-有名な[petstore](http://petstore.swagger.io)についてコードを書く例は以下のとおりです。
+### ツールの検証
+
+`target/generated-sources`内の生成されたクラスが実装用にクラスパスに含まれていることを確認します。ほとんどのIDEはこれらのディレクトリを自動的に検出し設定します。問題がある場合はIDEのドキュメントを参照してください。
+
+### 生成されたクラスの確認
+
+`generated-sources`を確認します。
+
+```text
+target/generated-sources
+└── openapi
+    └── src
+        └── main
+            └── java
+                └── demo
+                    └── jhipster
+                        ├── service
+                        │   └── api
+                        │       └── dto
+                        │           ├── Error.java
+                        │           ├── NewPet.java
+                        │           └── Pet.java
+                        └── web
+                            └── api
+                                ├── ApiUtil.java
+                                ├── PetsApi.java
+                                ├── PetsApiController.java
+                                └── PetsApiDelegate.java
+```
+
+> ⚠️OpenAPI GeneratorはDTO（「モデル」）およびデリゲートの生成を担当します。実装は`target/generated-sources`に配置しないでください。これらのクラスはいつでも再生成される可能性があるため、ソース管理には追加しないでください。
+
+### 実装
+
+デリゲートの実装ごとに以下のステップを繰り返します：
+
+1. [デリゲートの実装](#implement-the-delegate)
+2. [実装のテスト駆動](#test-drive-the-implementation)
+3. [開発中のエンドポイントモック](#mocking-endpoints-in-development)
+
+#### デリゲートの実装
+
+実装クラスではSpringの`@Service`アノテーションを使用します。
+
+##### APIパッケージの作成
+
+`web`レイヤーに`api`パッケージを作成します。例：`mkdir -p src/main/java/demo/jhipster/web/api`。[プロ・ヒント](#pro-tip-1)を参照してください。
+
+##### PetApiのメソッドをオーバーライドする
+
+OpenAPI Generatorは、OASの各`paths`要素に対して`operationId`を使用して`demo.jhipster.web.api.PetApi`インターフェースに`@RequestMapping`メソッドを作成します。OASの記述はガイドの範囲外ですが、`demo.jhipster.web.api.PetApi`内の各`@RequestMapping`アノテーションと生成されたメソッドを確認してください。注目すべき例としては、`operationId: find by pet id`と、その結果としてのインターフェースメソッド`findPetById`があり、以下のようにオーバーライドされます：
+
 ```java
-@Service
-public class PetApiDelegateImpl implements PetApiDelegate {
+package demo.jhipster.web.api;
 
-    @Override
-    public ResponseEntity<List<Pet>> findPetsByStatus(List<String> status) {
-        return ResponseEntity.ok(
-            status.stream()
-                .distinct()
-                .map(Pet.StatusEnum::fromValue)
-                .map(statusEnum -> new Pet().id(RandomUtils.nextLong()).status(statusEnum))
-                .collect(Collectors.toList())
-        );
+import demo.jhipster.service.api.dto.Pet;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class PetsApiDelegateImpl implements PetsApiDelegate {
+
+    private final List<Pet> pets = new ArrayList<>();
+
+   @Override
+    public ResponseEntity<Pet> findPetById(Long id) {
+        Pet pet = getPets().stream().filter(p -> id.equals(p.getId())).findAny().orElse(null);
+        if (pet != null) {
+            return ResponseEntity.ok(pet);
+        }
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
+
+    private List<Pet> getPets() {
+        Pet pet0 = new Pet();
+        pet0.setId(1L);
+        pet0.setName("Chessie Cat");
+        pet0.setTag("cat");
+        pets.add(pet0);
+        return pets;
     }
 }
 ```
-デリゲートインタフェースに`NativeWebRequest`Beanを提供すると、オーバーライドされていないメソッドの基本的なサンプルボディが返されます（HTTPステータスコードは501のままです）。
-これは、実際の実装を提供する前にエンドポイントをモックするのに便利です。
+
+##### プロ・ヒント
+
+OpenAPI Generatorが期待する型やコードを生成していない場合、ドキュメントを確認してください。JHipsterのデフォルト設定は多くのAPIに適合するように一般的に調整されています。より柔軟な設定が必要な場合は、提供されているプラグインの`importMappings`および`typeMappings`[オプション](https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator-maven-plugin)を参照してください。
+
+#### 実装のテスト駆動
+
+ターミナル（または「コマンドプロンプト」）で以下を実行します：
+
+```shell
+./mvnw # サーバーの起動、または 'npm run app:start'も試してください。package.jsonに他のスクリプトもあります！
+curl -H "Accept: application/json" http://localhost:8081/api/pets/1
+{
+  "name" : "Chessie Cat",
+  "tag" : "cat",
+  "id" : 1
+}
+```
+
+### 開発中のエンドポイントモック
+
+`NativeWebRequest`をデリゲートインターフェースに提供することで、オーバーライドされていないメソッドに対して例の応答本文を返すことができます。エンドポイントは引き続きHTTPステータス`501 Not Implemented`で応答しますが、実装前にエンドポイントをモックする際に便利な場合があります。
+
+> ℹ️ OASサンプルには、ドキュメントとして例の本文が提供されています。各操作の`schemas`にはOpenAPI Generatorが応答本文を生成するために`example`を定義する必要があります。以下のスニペットが役立ちます：
+
+```yaml
+# ...
+# 省略
+components:
+  schemas:
+    Pet:
+      allOf:
+        - $ref: '#/components/schemas/NewPet'
+        # 省略
+      example:
+        name: Chessie Cat
+        id: 1
+        tag: cat
+```
+
+#### デリゲート実装のデフォルトコンストラクタをオーバーライド
+
+OASが適切に定義されている場合、以下のように`NativeWebRequest`を実装に追加します。例の実装では以下の手順を示します：
+
+1. 実装に`NativeWebRequest request`プロパティを追加します。
+2. 引数なしのデフォルトコンストラクタ`public PetsApiDelegateImpl(NativeWebRequest request){...}`をオーバーライドします。
+3. `demo.jhipster.web.api.PetsApiDelegate#getRequest()`をオーバーライドし、`Optional<NativeWebRequest>`を返します。
+
 ```java
+package demo.jhipster.web.api;
+
+import demo.jhipster.service.api.dto.Pet;
+// その他のインポートは省略
+
 @Service
-public class PetApiDelegateImpl implements PetApiDelegate {
+public class PetsApiDelegateImpl implements PetsApiDelegate {
 
     private final NativeWebRequest request;
+    private final List<Pet> pets = new ArrayList<>();
 
-    public PetApiDelegateImpl(NativeWebRequest request) {
+    public PetsApiDelegateImpl(NativeWebRequest request) {
         this.request = request;
     }
 
+    /**
+     * NativeWebRequestを実装クラスに提供します。
+     */
     @Override
     public Optional<NativeWebRequest> getRequest() {
         return Optional.ofNullable(request);
     }
+
+    @Override
+    public ResponseEntity<Pet> findPetById(Long id) {
+        // 上記で既に示したもの
+    }
+
+    /**
+     * PetsApiの/petsのRequestMappingで使用されるメソッドを実装します。
+     * <p>
+     * OpenAPI仕様書で定義された例の応答本文を使用し、HTTPステータス501 Not Implementedで応答します。
+     * OpenAPI Generator for Springによって生成されたOpenAPI仕様ファイルです。
+     */
+    @Override
+    public ResponseEntity<List<Pet>> findPets(List<String> tags, Integer limit) {
+        return PetsApiDelegate.super.findPets(tags, limit);
+    }
+
+    private List<Pet> getPets() {
+        // 上記で既に示したもの
+    }
 }
 ```
-そうすれば、以下のような例を得ることができます。
-```sh
-$ curl -X GET --header 'Accept: application/json' 'http://localhost:8080/v2/pet/findByStatus?status=pending'
-{  "photoUrls" : [ "photoUrls", "photoUrls" ],  "name" : "doggie",  "id" : 0,  "category" : {    "name" : "name",    "id" : 6  },  "tags" : [ {    "name" : "name",    "id" : 1  }, {    "name" : "name",    "id" : 1  } ],  "status" : "available"}%
-$ curl -X GET --header 'Accept: application/xml' 'http://localhost:8080/v2/pet/findByStatus?status=pending'
-<Pet>  <id>123456789</id>  <name>doggie</name>  <photoUrls>    <photoUrls>aeiou</photoUrls>  </photoUrls>  <tags>  </tags>  <status>aeiou</status></Pet>%
+
+サーバーを再起動し、ターミナル（または「コマンドプロンプト」）で`curl`や他のHTTPツール（例：Insomnia、Postman、httpie）を使用して以下を確認します：
+
+```shell
+$ curl -H "Accept: application/json" http://localhost:8081/api/pets/1
+ {
+  "name" : "Chessie Cat",
+  "tag" : "cat",
+  "id" : 1
+}
+$ curl -H "Accept: application/json" http://localhost:8081/api/pets?tags=cat
+*   Trying [::1]:8081...
+* Connected to localhost (::1) port 8081
+> GET /api/pets?tags=cat HTTP/1.1
+> Host: localhost:8081
+> User-Agent: curl/8.4.0
+> Accept: application/json
+>
+< HTTP/1.1 501 Not Implemented
+# 一部ヘッダを省略
+< Content-Type: application/json; charset=UTF-8
+< Content-Length: 108
+<
+{ [108 bytes data]
+* Connection #0 to host localhost left intact
+[ { "name" : "Chessie Cat", "id" : 1, "tag" : "cat" }, { "name" : "Chessie Cat", "id" : 1, "tag" : "cat" } ]
 ```
 
-IDEがソースから出力フォルダを除外している可能性があります。生成されたクラスを検出するには、必ず構成を再ロードしてください。
-これは、IDE UIまたはコマンドを使用して実行できます。
+例の本文が返され、応答のHTTPステータスは`501 Not Implemented`です。
 
-EclipseまたはVSCodeを使用する場合は以下のとおりです。
+### 認証
 
-* mavenの場合
-```bash
-./mvnw eclipse:clean eclipse:eclipse
+JHipsterはデフォルトで、`demo.jhipster.config.SecurityConfiguration#filterChain(HttpSecurity,  MvcRequestMatcher.Builder)`内の`/api/**`を認証が必要に設定します。例：`.requestMatchers(mvc.pattern("/api/**")).authenticated()`。
+
+認証の詳細はこのガイドの範囲外です。ただし、`demo.jhipster.security.jwt.TokenAuthenticationIT`統合テストの確認により、Insomnia、Postman、curl、および他のHTTPツールで認証をテストする際の参考になるかもしれません。例えば、以下のようにDockerを使用してJWTベアラートークンを生成することが可能です：
+
+```shell
+docker run --rm --name jwt-cli bitnami/jwt-cli encode \
+-S b64:<JHIPSTER_JWT_SECRET> \
+-P 'auth=["ROLE_ADMIN"]' \
+-e=$(date -v+60S +%s) \ # man date; produce an epoch system time + 60 seconds, macOS date command shown
+-s anonymous \
+-A HS512 \
+--no-typ
 ```
-IntelliJを使う場合は以下となります。
-* mavenの場合
-```bash
-./mvnw idea:idea
+
+これにより、以下のようにAPIコール用のBearerトークンが生成されます：
+
+```shell
+curl -v -H "Accept: application/json" -H "Authorization: Bearer <ENCODED_TOKEN>" http://localhost:8081/api/pets/1
 ```
-
-### `openapi-client`サブジェネレータの使用
-
-JHipsterは、[Spring Cloud OpenFeign](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/)を使用したクライアントコードの生成や、OpenAPI/Swagger仕様を使用したリアクティブアプリ用のSpring Webclientのサポートも提供します。
-生成されたクライアントは、モノリシックアプリケーションとマイクロサービスアプリケーションの両方で使用でき、Swagger v2とOpenAPI v3の定義をサポートします。このサブジェネレータを呼び出すには、`jhipster openapi-client`を実行してください。
-
-
-
-

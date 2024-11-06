@@ -25,7 +25,7 @@ export default function Goals() {
         <li>
           <div>
             <div className={styles.cardIcon}>
-              <RxStack className="h-6 w-6" />
+              <RxStack />
             </div>
             <h3 className={styles.cardTitle}>堅牢なサーバサイドのスタック</h3>
             <p className={styles.cardDescription}>
@@ -37,7 +37,7 @@ export default function Goals() {
         <li>
           <div>
             <div className={styles.cardIcon}>
-              <MdOutlineStyle className="h-6 w-6" />
+              <MdOutlineStyle />
             </div>
             <h3 className={styles.cardTitle}>モダンで洗練されたUI</h3>
             <p className={styles.cardDescription}>
@@ -49,7 +49,7 @@ export default function Goals() {
         <li>
           <div>
             <div className={styles.cardIcon}>
-              <GoWorkflow className="h-6 w-6" />
+              <GoWorkflow />
             </div>
             <h3 className={styles.cardTitle}>パワフルなワークフロー</h3>
             <p className={styles.cardDescription}>
@@ -61,7 +61,7 @@ export default function Goals() {
         <li>
           <div>
             <div className={styles.cardIcon}>
-              <TbCloudDataConnection className="h-6 w-6" />
+              <TbCloudDataConnection />
             </div>
             <h3 className={styles.cardTitle}>弾性（Resilient）のあるアーキテクチャ</h3>
             <p className={styles.cardDescription}>
@@ -73,7 +73,7 @@ export default function Goals() {
         <li>
           <div>
             <div className={styles.cardIcon}>
-              <GrDeploy className="h-6 w-6" />
+              <GrDeploy />
             </div>
             <h3 className={styles.cardTitle}>迅速なデプロイ</h3>
             <p className={styles.cardDescription}>

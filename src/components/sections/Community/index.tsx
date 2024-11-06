@@ -42,23 +42,17 @@ export default function Community({ color }: Props) {
         </p>
       </SectionDescription>
 
-      <ul className={styles.sectionList}>
-        <li>
+      <div className={styles.sectionList}>
           <CommunityCard
             value={`${npmDownloads.downloads}`}
             text="最近の30日間のダウンロード数"
           />
-        </li>
-        <li>
           <CommunityCard
             value={`${githubConfig.stargazers_count}`}
             text="GitHub スター数"
           />
-        </li>
-        <li>
           <CommunityCard value="600" text="コントリビューター数" postfix="+" />
-        </li>
-      </ul>
+      </div>
 
       <div className={styles.sectionButtons}>
         <GithubButton>GitHubで参加する</GithubButton>

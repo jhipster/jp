@@ -1,0 +1,113 @@
+---
+title: リリース 8.7.3
+slug: /2024/11/01/jhipster-release-8.7.3.html
+displayed_sidebar: docsSidebar
+sidebar_class_name: hidden
+---
+
+# JHipster v8.7.3 リリース
+
+これはJHipster v8のパッチリリースです。
+
+[8.7.2リリース](/2024/10/28/jhipster-release-8.7.2.html)以降、[メインブランチで35のクローズされた課題とプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.7.3)が含まれています。
+
+## 新機能
+
+* ブループリントのテストサポートを修正 ([#27710](https://github.com/jhipster/generator-jhipster/pull/27710))
+* Node 22にアップグレード ([#27722](https://github.com/jhipster/generator-jhipster/pull/27722))
+* データベース無しのデイリービルドを修正 ([#27724](https://github.com/jhipster/generator-jhipster/pull/27724))
+* typescript-eslint を 8.11.0 から 8.12.1 にアップグレード ([#27721](https://github.com/jhipster/generator-jhipster/pull/27721))
+
+### 更新されたブループリント
+
+* Entity Audit [v5.7.0](https://github.com/jhipster/generator-jhipster-entity-audit/releases/tag/v5.7.0)
+* Ionic [v8.3.0](https://github.com/jhipster/generator-jhipster-ionic/releases/tag/v8.3.0)
+* jOOQ [v3.2.0](https://github.com/jhipster/generator-jhipster-jooq/releases/tag/v3.2.0)
+* Micronaut [v3.5.0](https://github.com/jhipster/generator-jhipster-micronaut/releases/tag/v3.5.0)
+* Migrate [v1.5.0](https://github.com/jhipster/generator-jhipster-migrate/releases/tag/v1.5.0)
+* Native / GraalVM [v2.5.0](https://github.com/jhipster/generator-jhipster-native/releases/tag/v2.5.0)
+* Quarkus [v3.3.0](https://github.com/jhipster/generator-jhipster-quarkus/releases/tag/v3.3.0)
+* React Native [v5.1.0](https://github.com/jhipster/generator-jhipster-react-native/releases/tag/v5.1.0)
+
+:::note
+.NET CoreおよびNodeブループリントはJHipster 8.7.3での動作に[モジュール化](https://github.com/jhipster/generator-jhipster/issues/27764)や[調整](https://github.com/jhipster/generator-jhipster-nodejs/issues/538)が必要であるため、更新されませんでした。
+:::
+
+## クローズされたチケットとマージされたプルリクエスト
+
+詳細は[GitHubの8.7.3リリースノート](https://github.com/jhipster/generator-jhipster/releases/tag/v8.7.3)をご覧ください。
+
+いつも通り、**[クローズされたすべてのチケットとマージされたプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.7.3)** を確認できます。
+
+## インストール方法
+
+JHipster v8.7.3をインストールするには：
+
+```
+npm install -g generator-jhipster@8.7.3
+```
+
+また、JHipster Dockerイメージでも利用可能です。ソースコードから自動的にビルドされます。
+
+- [JHipster Online](https://start.jhipster.tech)
+- [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
+
+## アップグレード方法
+
+**自動アップグレード**
+
+既存のアプリケーションで[JHipster upgradeサブジェネレーター](/upgrading-an-application/)を使用して自動アップグレードを行います。
+
+JHipsterのバージョンをアップグレードするには以下のコマンドを使用します：
+
+```
+npm update -g generator-jhipster
+```
+
+その後、アップグレードサブジェネレーターを実行します：
+
+```
+jhipster upgrade
+```
+
+高度なアップグレード機能には、[migrate blueprint](https://github.com/jhipster/generator-jhipster-migrate) を使用できます。
+
+```
+npm i -g generator-jhipster-migrate
+jhipster-migrate
+```
+
+**手動アップグレード**
+
+手動でアップグレードする場合は、まず以下のコマンドでJHipsterのバージョンをアップグレードします：
+
+```
+npm update -g generator-jhipster
+```
+
+既存のプロジェクトは生成時のJHipsterバージョンを使用します。
+プロジェクトをアップグレードするには、まず `node_modules` フォルダを削除してから以下を実行します：
+
+```
+jhipster
+```
+
+JHipster 8.0以降、このコマンドでプロジェクト全体とすべてのエンティティが更新されます。
+
+また、エンティティサブジェネレーターを再度実行することで、エンティティを個別に更新することも可能です。たとえば、エンティティ名が _Foo_ の場合は、以下を使用します：
+
+```
+jhipster entity Foo --single-entity
+```
+
+## ヘルプとバグ
+
+このリリースで問題が見つかった場合は、以下の方法でご報告ください：
+
+- [バグトラッカー](https://github.com/jhipster/generator-jhipster/issues?state=open) にバグを追加
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info) で質問を投稿
+- [GitHub](https://github.com/jhipster/generator-jhipster/discussions) で新しいディスカッションを開始
+
+緊急のバグやセキュリティ問題については以下もご利用ください：
+
+- Twitterで [@jhipster](https://twitter.com/jhipster) に連絡

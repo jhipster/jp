@@ -5,11 +5,10 @@ last_update:
   date: 2020-09-11T00:00:00-00:00
 ---
 
-# <i class="fa fa-cloud"></i> プロダクション環境下でのマイクロサービス
-
 マイクロサービスは、特定の種類のJHipsterアプリケーションです。プロダクションビルドの実行、最適化、およびセキュリティ保護の詳細については、メインの[プロダクション環境下でのJHipsterのドキュメント](/production)を参照してください。
 
-<h2 id="elk">マイクロサービスの監視</h2>
+
+## マイクロサービスの監視
 
 JHipsterレジストリを使用する場合、使用可能なランタイムダッシュボードとその使用方法については、[JHipsterレジストリのドキュメント](/jhipster-registry)を参照してください。
 
@@ -19,7 +18,8 @@ JHipsterレジストリを使用する場合、使用可能なランタイムダ
 - マイクロサービスのメトリクスを収集するPrometheus
 - サービス全体のHTTP要求をトレースするZipkin
 
-<h2 id="docker_compose">Docker Composeを使用した開発とデプロイ</h2>
+
+## Docker Composeを使用した開発とデプロイ
 
 マイクロサービスアーキテクチャで作業するということは、複数の異なるサービスとデータベースを連携させる必要があるということであり、その意味でDocker Composeは、開発、テスト、運用環境を管理するための優れたツールです。
 
@@ -27,31 +27,14 @@ JHipsterレジストリを使用する場合、使用可能なランタイムダ
 
 Docker SwarmはDocker Machineと同じAPIを使用しているため、クラウドにマイクロサービスアーキテクチャをデプロイすることは、ローカルマシンにデプロイすることとまったく同じです。JHipsterでDocker Composeを使用する方法の詳細については、[Docker Composeドキュメント](/docker-compose/)に従ってください。
 
-<h2 id="cloudfoundry">Cloud Foundryによる本番環境への移行</h2>
 
-[Cloud Foundryサブジェネレータ](/cloudfoundry/)は、マイクロサービスアーキテクチャでも同じように動作しますが、主な違いは、デプロイするアプリケーションがより多いことです。
+## Herokuを使用した本番環境への移行
 
-- [Cloud Foundryサブジェネレータ](/cloudfoundry/)を使用して、最初にJHipsterレジストリ（通常のJHipsterアプリケーション）をデプロイします。
-- JHipsterレジストリがデプロイされているURLをメモします。アプリケーションはすべてそのURLを指している必要があります。
-  - `bootstrap-prod.yml`ファイルでは、`spring.cloud.config.uri`は`http(s)://<your_jhipster_registry_url>/config/`を指している必要があります。
-  - `application-prod.yml`ファイルでは、`eureka.client.serviceUrl.defaultZone`は`http(s)://<your_jhipster_registry_url>/eureka/`を指している必要があります。
-- ゲートウェイとマイクロサービスをデプロイします。
-- Cloud Foundryを使用して、アプリケーションを通常どおりにスケールアップします。
+Heroku sub-generator](/heroku)は、マイクロサービスアーキテクチャでもほぼ同じように動作しますが、主な違いはデプロイするアプリケーションが増えることです：
 
-覚えておくべき重要な点の1つは、JHipsterレジストリはデフォルトでは保護されておらず、マイクロサービスは外部からアクセスできないことになっていることです。ユーザはゲートウェイを使用してアプリケーションにアクセスすることになります。
+JHipsterレジストリをワンクリックで直接デプロイできます：
 
-この問題を解決するには、次の2つの方法があります。
-
-- 特定のルートを使用してCloud Foundryを保護します。
-- すべてを公開したまま、すべての場所でHTTPSを使用し、Spring Securityの基本認証サポートを使用してJHipsterレジストリを保護します。
-
-<h2 id="heroku">Herokuを使用した本番環境への移行</h2>
-
-[Herokuサブジェネレータ](/heroku/)は、マイクロサービスアーキテクチャとほぼ同じように動作しますが、主な違いは、デプロイするアプリケーションがより多いことです。
-
-ワンクリックでJHipsterレジストリを直接デプロイします。
-
-[![Herokuへのデプロイ](https://camo.githubusercontent.com/c0824806f5221ebb7d25e559568582dd39dd1170/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e706e67)](https://dashboard.heroku.com/new?&template=https%3A%2F%2Fgithub.com%2Fjhipster%2Fjhipster-registry)
+[![Deploy to Heroku](https://camo.githubusercontent.com/c0824806f5221ebb7d25e559568582dd39dd1170/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e706e67)](https://dashboard.heroku.com/new?&template=https%3A%2F%2Fgithub.com%2Fjhipster%2Fjhipster-registry)
 
 JHipsterレジストリをセキュアにする方法を理解するには、[Herokuサブジェネレータのドキュメント](/heroku/)に従ってください。
 

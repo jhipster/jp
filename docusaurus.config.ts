@@ -3,9 +3,22 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import redirectsPlugin from './redirects.config';
 
+const baseUrl = process.env.SITE_BASE_URL ?? '/';
+const isDocsArchive = process.env.IS_DOCS_ARCHIVE === 'true';
+
+const archiveDocsThemeConfig = {
+  announcementBar: {
+    id: 'docs-archive',
+    content:
+      'This documentation is for an older version of JHipster. Click <a href="https://jhipster.tech/">here</a> for the current version of the documentation.',
+    isCloseable: false,
+  },
+} satisfies Preset.ThemeConfig;
+
 const config: Config = {
+  noIndex: isDocsArchive,
+
   title: 'JHipster',
-  // tagline: 'Dinosaurs are cool',
   favicon: 'images/favicon.ico',
 
   // Set the production url of your site here
@@ -19,10 +32,8 @@ const config: Config = {
   organizationName: 'jhipster',
   projectName: 'jp',
 
-  // onBrokenLinks: 'throw',
-  onBrokenLinks: 'ignore',
-  // onBrokenMarkdownLinks: 'warn',
-  onBrokenMarkdownLinks: 'ignore',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
   onBrokenAnchors: 'ignore',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -43,15 +54,14 @@ const config: Config = {
           editUrl: 'https://github.com/jhipster/jhipster.github.io/tree/main/',
           routeBasePath: '/',
           showLastUpdateTime: true,
+          versions: {
+            current: {
+              path: '/',
+            },
+          },
+          onlyIncludeVersions: ['current'],
         },
         blog: false,
-        // blog: {
-        //   showReadingTime: true,
-        //   // Please change this to your repo.
-        //   // Remove this to remove the "edit this page" links.
-        //   editUrl:
-        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        // },
         theme: {
           customCss: './src/scss/custom.scss',
         },
@@ -60,11 +70,10 @@ const config: Config = {
           lastmod: 'datetime',
           ignorePatterns: ['/modules/marketplace/details/\\*', '/search'],
         },
-        // IMPORTANT: uncomment for jhipster.github.io in production
-        // gtag: {
-        //   trackingID: 'G-4L9RJVPGJT',
-        //   anonymizeIP: true
-        // },
+        gtag: {
+          trackingID: 'G-4L9RJVPGJT',
+          anonymizeIP: true,
+        },
       } satisfies Preset.Options,
     ],
   ],
@@ -74,6 +83,7 @@ const config: Config = {
     redirectsPlugin,
     './src/plugins/google-fonts.ts',
     './src/plugins/module-details.ts',
+    'plugin-image-zoom',
   ],
 
   themeConfig: {
@@ -95,11 +105,16 @@ const config: Config = {
         height: 32,
       },
       items: [
+        // {
+        //   type: 'docSidebar',
+        //   sidebarId: 'docsSidebar',
+        //   position: 'right',
+        //   label: 'Docs',
+        // },
         {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
-          position: 'right',
+          to: '/getting-started',
           label: 'ドキュメント',
+          position: 'right',
         },
         {
           to: '/modules/marketplace/',
@@ -129,12 +144,18 @@ const config: Config = {
       additionalLanguages: ['java', 'bash', 'yaml', 'gradle', 'diff'],
     },
     algolia: {
-      appId: 'BH4D9OD16A',
-      apiKey: '9bd47d3de4af6f3662fd11a7f0e38819',
+      appId: 'T3OWTRXITU',
+      apiKey: '012c1b755b9e42f5e300959da6ad25cd',
       indexName: 'jhipster',
       // Temporary disabled, need setup https://docusaurus.io/docs/search#algolia-troubleshooting
       contextualSearch: false,
     },
+    imageZoom: {
+      // CSS selector to apply the plugin to, defaults to '.markdown img'
+      // exclude images from zoom with "italicized" markdown, e.g., _![](/img/portal/new.png)_
+      selector: '.markdown :not(em) > img',
+    },
+    ...(isDocsArchive ? archiveDocsThemeConfig : {}),
   } satisfies Preset.ThemeConfig,
 
   headTags: [

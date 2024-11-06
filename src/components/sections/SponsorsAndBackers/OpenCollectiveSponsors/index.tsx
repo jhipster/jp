@@ -15,28 +15,29 @@ export default function OpenCollectiveSponsors({ title, sponsors }: Props) {
 
   return (
     <OpenCollectiveWrapper title={title}>
-      <ul className={styles.sectionList}>
+      <div className={styles.sectionList}>
         {sponsors.map((item, idx) => (
-          <li key={`sponsor-${idx}`}>
-            <Link href={item.website ?? item.profile}>
-              <div className={clsx('card', styles.card)}>
-                <div className={clsx('card__image', styles.cardImage)}>
-                  <img
-                    className="truncate"
-                    src={
-                      item.image ??
-                      `/images/open-collective/${item.name.toLowerCase()}.png`
-                    }
-                    alt={item.name}
-                    width={70}
-                    height={70}
-                  />
-                </div>
+          <Link key={`sponsor-${idx}`} href={item.website ?? item.profile}>
+            <div className={clsx('card', styles.card)}>
+              <div className={clsx('card__image', styles.cardImage)}>
+                <img
+                  className="truncate"
+                  src={
+                    item.image ??
+                    require(
+                      `@site/static/images/open-collective/${item.name.toLowerCase()}.png`,
+                    ).default
+                  }
+                  alt={item.name}
+                  width={70}
+                  height={70}
+                  loading="lazy"
+                />
               </div>
-            </Link>
-          </li>
+            </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </OpenCollectiveWrapper>
   );
 }
