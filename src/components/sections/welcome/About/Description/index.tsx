@@ -19,12 +19,7 @@ export default function Description() {
         デプロイにおいては、DockerやKubernetesによるクラウドネイティブの原則を採用しています。
       </li>
       <li>
-<<<<<<< HEAD
-        デプロイ支援としてAWS, Azure, Cloud Foundry, Google Cloud Platform, Heroku, and OpenShiftに対応しています。
-=======
-        Deployment support exists for AWS, Azure, Google Cloud Platform, Heroku,
-        and OpenShift.
->>>>>>> upstream/main
+        デプロイ支援としてAWS, Azure, Google Cloud Platform, Heroku, and OpenShiftに対応しています。
       </li>
     </ul>
   );

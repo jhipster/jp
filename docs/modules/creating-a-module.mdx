@@ -5,15 +5,17 @@ last_update:
   date: 2015-12-05T18:40:00-00:00
 ---
 
-# <i class="fa fa-cube"></i> スタンドアロンのBlueprint(別名Module)の作成
+## スタンドアロンのBlueprint(別名Module)の作成
 
 JHipster v7.9.0では、ModuleサポートがBlueprintサポートにマージされました。同じルールが適用されます。
 
 Blueprintを作成する前に、必ず[Blueprinの基本](/modules/extending-and-customizing/#-blueprint-basics)を読んでください。
 
+
 ## 例
 
 [JHipster Ionic](https://github.com/jhipster/generator-jhipster-ionic)はModuleからBlueprintに変換されました。
+
 
 ## 移行
 
@@ -24,15 +26,9 @@ mv generators/app generators/app-module
 mv generators/entity generators/entity-module
 ```
 
-<<<<<<< HEAD
 - generator-jhipster generatorに一致する他のすべてのジェネレータの名前を変更します（そうでない場合は、Blueprintと呼ばれます）。
 その後、参照を更新します。
 - カスタムCLI(`cli/cli.mjs`)を追加します。
-=======
-- Rename every other generator that matches a generator-jhipster generator (otherwise they will be called as a blueprint).
-And update references.
-- Add a custom cli (`cli/cli.mjs`)
->>>>>>> upstream/main
 
 ```js
 #!/usr/bin/env node

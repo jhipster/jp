@@ -25,11 +25,7 @@ const config: Config = {
   url: 'https://www.jhipster.tech',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-<<<<<<< HEAD
   baseUrl: '/jp/',
-=======
-  baseUrl,
->>>>>>> upstream/main
 
   // GitHub pages deployment config.
   deploymentBranch: 'gh-pages',
@@ -116,16 +112,9 @@ const config: Config = {
         //   label: 'Docs',
         // },
         {
-<<<<<<< HEAD
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
-          position: 'right',
-          label: 'ドキュメント',
-=======
           to: '/getting-started',
-          label: 'Docs',
+          label: 'ドキュメント',
           position: 'right',
->>>>>>> upstream/main
         },
         {
           to: '/modules/marketplace/',

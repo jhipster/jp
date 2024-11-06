@@ -5,27 +5,17 @@ last_update:
   date: 2017-05-03T00:00:00-00:00
 ---
 
-# <i class="fa fa-bolt"></i> マイクロサービスの構築
-
-<<<<<<< HEAD
 マイクロサービスはJHipsterアプリケーションの一種であり、フロントエンドを持たず（Angularフロントエンドは[gateway](/api-gateway/)で生成される必要があります）、[Consul](/consul/)と連携して設定、検出、管理されます。
 
-<h2 id="entities">マイクロサービスアーキテクチャにおけるエンティティ</h2>
-=======
-## Entities in a microservices architecture
->>>>>>> upstream/main
+## マイクロサービスアーキテクチャにおけるエンティティ
 
 JWTまたはDTOを使用する場合、Userエンティティはマイクロサービスで生成されません。OAuth 2.0が使用される場合、マイクロサービスには、トークンからユーザーデータを抽出し、それをマイクロサービスのデータベースに保存するメカニズムがあります。そのため、JWTおよびDTOの場合、Userエンティティはゲートウェイのデータベースにのみ存在するため、Userエンティティとの関係を使用または定義できません。
 
 異なるマイクロサービスのエンティティ間の関係はサポートされていません。
 
-<<<<<<< HEAD
-<h2 id="generating_entities">エンティティの生成</h2>
+## エンティティの生成
 
 マイクロフロントエンドのエンティティについては、[マイクロフロントエンド](#microfrontends)を参照してください。
-=======
-## Generating entities
->>>>>>> upstream/main
 
 [エンティティサブジェネレータ](/creating-an-entity/)を使用すると、フロントエンドとバックエンドのコードが同じアプリケーションに配置されないため、マイクロサービスアーキテクチャでの動作が少し異なります。
 
@@ -38,30 +28,18 @@ JWTまたはDTOを使用する場合、Userエンティティはマイクロサ�
 
 ## マイクロフロントエンド
 
-<<<<<<< HEAD
-Microfrontendサポートは進行中です。実装は変更される可能性があり、フレームワークによって異なります。最新のステータスについては、[マイクロフロントエンドのサポート](https://github.com/jhipster/generator-jhipster/issues/17031)を参照してください。
-
-JHipsterのマイクロフロントエンド実装は、[Webpack Module Federation](https://webpack.js.org/concepts/module-federation/)を使用し、フロントエンドエンティティの実装をゲートウェイではなくマイクロサービスに配置できるようにします。
+JHipsterのマイクロフロントエンド実装は、[Module Federation](https://module-federation.io/)を使用し、フロントエンドエンティティの実装をゲートウェイではなくマイクロサービスに配置できるようにします。
 
 開発段階では、認証プロセスのためにゲートウェイを実行する必要があります。
 
-ゲートウェイを使用して、または単独でマイクロフロントエンドを起動する方法については、生成されたREADMEを参照してください。
-=======
-## Microfrontends
+ゲートウェイを使用して、または単独でマイクロフロントエンドを起動する方法については、生成されたREADMEを参照してください。例として、[jhipster-micro-frontends](https://github.com/mraible/jhipster-micro-frontends) を参照してください。
 
-JHipster's microfrontends implementation uses [Module Federation](https://module-federation.io/) and allows the frontend entities implementation to be located in the microservice instead of in the gateway.
->>>>>>> upstream/main
+## Hazelcastによる分散キャッシュ
 
-<h2 id="hazelcast">Hazelcastによる分散キャッシュ</h2>
-
-<<<<<<< HEAD
 アプリケーションでSQLデータベースを使用している場合、JHipsterはマイクロサービスを使用した異なる第2レベルのキャッシュソリューションを提案しています。
 
 - マイクロサービスを備えたJHipsterのデフォルトのキャッシュソリューションはHazelcastです。
 - Ehcache（モノリスアプリケーションのデフォルトソリューション）またはCaffeineを選択するか、キャッシュをまったく使用しないことも選択できます。
-=======
-You can find more information about starting microfrontends using gateway or alone in the generated README. See [jhipster-micro-frontends](https://github.com/mraible/jhipster-micro-frontends) for an example.
->>>>>>> upstream/main
 
 このアーキテクチャでは、サービスを拡張するという考え方であるため、このソリューションはマイクロサービスのデフォルトです。
 
@@ -74,20 +52,8 @@ You can find more information about starting microfrontends using gateway or alo
 - `dev`プロファイルを使用すると、JHipsterはインスタンスごとに異なるポートを使用して、localhost(`127.0.0.1`)にこれらのインスタンスのクラスタを作成します。デフォルトでは、Hazelcastポートは`アプリケーションのポート+5701`です（したがって、アプリケーションのポートが`8081`の場合、Hazelcastはポート`13782`を使用します）。
 - `prod`プロファイルを使用すると、JHipsterはデフォルトのHazelcastポート（`5701`）を使用して、検出した他のすべてのノードとともにクラスタを作成します。
 
-<h2 id="no_database">データベースを持たないマイクロサービス</h2>
+## データベースを持たないマイクロサービス
 
 マイクロサービスのアプリケーションはデータベースなしで作成することができます。これは、マイクロサービスが小さく、ユーザ管理コードがないためです。
 
-<<<<<<< HEAD
 データベースのないマイクロサービスは非常に小さく、レガシーシステムのような特定のバックエンドに接続するためや、領域外にある他のサービスへのプロキシとして利用できます。
-=======
-- At start-up, your application will connect to the Service Registry to find if other instances of the same service are running
-- With the `dev` profile, JHipster will create a cluster of those instances on localhost (`127.0.0.1`),  using a different port per instance. By default, the Hazelcast port is `your application's port + 5701` (so if your application's port is `8081`, Hazelcast will use port `13782`)
-- With the `prod` profile, JHipster will create a cluster with all the other nodes it finds, using the default Hazelcast port (`5701`)
-
-## Microservices with no database
-
-Microservices applications can be created without a database. This is because microservices are small and do not have user-management code.
-
-A microservice without a database is very small, and could be used to connect to a specific back-end like a legacy system or serve as a proxy to other services outside your realm.
->>>>>>> upstream/main

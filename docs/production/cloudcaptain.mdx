@@ -5,28 +5,19 @@ last_update:
   date: 2022-01-21T00:00:00-00:00
 ---
 
-# CloudCaptainを使ったデプロイ
-
 このガイドでは、[CloudCaptain](https://cloudcaptain.sh/)を使用してJHipsterアプリケーションをデプロイする方法を示します。
 
 [![CloudCaptain](/images/logo/logo-cloudcaptain.png)](https://cloudcaptain.sh/)
 
 CloudCaptainは**JHipsterの最高クラスのサポート**を提供しており、アプリケーションに対して最小限の不変マシンイメージを作成することで機能します。
 
-<<<<<<< HEAD
-:::tip
-
-CloudCaptainの代わりに、<a href="/aws/">Elastic Beanstalk</a>を使用してJHipsterアプリケーションをデプロイできます。
-
-:::
 
 ## 前提条件
-=======
->>>>>>> upstream/main
 
 デプロイするには、まず[CloudCaptainのアカウントを作成](https://console.cloudcaptain.sh)し、[CloudCaptainクライアント](https://cloudcaptain.sh/getstarted/download)をインストールする必要があります。
 
 また、[CloudCaptainコンソール](https://console.cloudcaptain.sh)でアカウントに接続する必要があります。
+
 
 ## デプロイの準備
 
@@ -88,10 +79,12 @@ Deployment completed successfully. myuser/jhipster:1.0 is up and running at http
 `application-prod.yml`ファイルと含まれるjarに基づいて、JHipster warからそれらを自動検出します。
 必要に応じて、これらの自動検出設定を上書きできますが、ほとんどの場合、上書きする必要はありません。
 
+
 ## アップデートの導入
 
 既存のアプリケーションに更新をデプロイするには、前述の準備およびデプロイの手順に従います。すべての更新は、
 停止時間ゼロのブルー・デプロイメントとして実行されます。
+
 
 ## 詳細情報
 
