@@ -7,7 +7,7 @@ MODE          = sys.argv[1] if len(sys.argv) > 1 else "full"
 UPSTREAM_DIR  = "upstream"
 FROM_SHA      = os.environ.get("FROM_SHA", "").strip()
 API_KEY       = os.environ["GEMINI_API_KEY"]
-TRANS_MODEL   = os.environ.get("GEMINI_TRANSLATE_MODEL", "models/gemini-1.5-pro")
+TRANS_MODEL   = os.environ.get("GEMINI_TRANSLATE_MODEL", "models/gemini-2.5-flash")
 REVIEW_MODEL  = os.environ.get("GEMINI_REVIEW_MODEL", TRANS_MODEL)
 SRC_LANG      = os.environ.get("SOURCE_LANG", "en")
 TGT_LANG      = os.environ.get("TARGET_LANG", "ja")
@@ -51,9 +51,9 @@ if not commits:
 def ask(model, prompt, text, max_tokens=2048):
     for attempt in range(3):
         try:
-            # Make the API request
-            response = genai.GenerativeModel(model).generate_content(
-                [{"role":"user","text":prompt},{"role":"user","text":text}])
+            # Make the API request - 修正: 正しいフォーマットでリクエストを送信
+            content = f"{prompt}\n\n{text}" if text else prompt
+            response = genai.GenerativeModel(model).generate_content(content)
             
             # Debug logging of response structure
             print(f"Response type: {type(response).__name__}")
