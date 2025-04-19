@@ -172,7 +172,7 @@ for c in commits:
         git_local("commit", "-m", f"Translate: {subj} (upstream {short})")
         pr_lines.append(f"- [{short}](https://github.com/{UPSTREAM_REPO}/commit/{c}) : {subj}")
 
-if git_local("rev-list", f"{branch} --not origin/{os.environ['BASE_BRANCH']}"):
+if git_local("rev-list", branch, "--not", f"origin/{os.environ['BASE_BRANCH']}"):
     git_local("push", "origin", branch)
     env = f"PULL_REQUEST_BRANCH={branch}\nPR_BODY={'\\n'.join(pr_lines)}\n"
     open(os.environ["GITHUB_ENV"], "a").write(env)
