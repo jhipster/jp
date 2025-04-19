@@ -49,14 +49,19 @@ if not commits:
     sys.exit(0)
 
 def ask(model, prompt, text, max_tokens=2048):
-    for _ in range(3):
+    for attempt in range(3):
         try:
             r = genai.GenerativeModel(model).generate_content(
                 [{"role":"user","text":prompt},{"role":"user","text":text}])
             return r.text.strip()
-        except Exception:
-            time.sleep(2)
-    raise RuntimeError("Gemini error")
+        except Exception as e:
+            print(f"Attempt {attempt + 1} failed: {type(e).__name__} - {e}")
+            # Log additional debugging information
+            print(f"Model: {model}, Text length: {len(text)}")
+            time.sleep(5 + attempt * 5)  # Exponential backoff: 5s, 10s, 15s
+    error_msg = f"Gemini API interaction failed after 3 attempts with model {model}"
+    print(f"ERROR: {error_msg}")
+    raise RuntimeError(error_msg)
 
 REVIEW_PROMPT = textwrap.dedent("""\
     以下は Git 差分です
