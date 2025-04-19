@@ -174,7 +174,8 @@ for c in commits:
 
 if git_local("rev-list", branch, "--not", f"origin/{os.environ['BASE_BRANCH']}"):
     git_local("push", "origin", branch)
-    env = f"PULL_REQUEST_BRANCH={branch}\nPR_BODY={'\\n'.join(pr_lines)}\n"
+    pr_body = '\n'.join(pr_lines)
+    env = f"PULL_REQUEST_BRANCH={branch}\nPR_BODY={pr_body}\n"
     open(os.environ["GITHUB_ENV"], "a").write(env)
 else:
     open(os.environ["GITHUB_ENV"], "a").write("PULL_REQUEST_BRANCH=\n")
