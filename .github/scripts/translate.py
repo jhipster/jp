@@ -51,14 +51,37 @@ if not commits:
 def ask(model, prompt, text, max_tokens=2048):
     for attempt in range(3):
         try:
-            r = genai.GenerativeModel(model).generate_content(
+            # Make the API request
+            response = genai.GenerativeModel(model).generate_content(
                 [{"role":"user","text":prompt},{"role":"user","text":text}])
-            return r.text.strip()
+            
+            # Debug logging of response structure
+            print(f"Response type: {type(response).__name__}")
+            print(f"Response attributes: {dir(response)}")
+            
+            # Validate response
+            if not hasattr(response, 'text'):
+                print(f"WARNING: Response missing 'text' attribute. Full response: {response}")
+                if hasattr(response, 'parts'):
+                    print(f"Response parts: {response.parts}")
+                if hasattr(response, 'candidates'):
+                    print(f"Response candidates: {response.candidates}")
+                raise KeyError("Response is missing 'text' attribute")
+            
+            # Return the text content if valid
+            return response.text.strip()
+            
         except Exception as e:
             print(f"Attempt {attempt + 1} failed: {type(e).__name__} - {e}")
             # Log additional debugging information
             print(f"Model: {model}, Text length: {len(text)}")
+            
+            # If we have response details, log them for debugging
+            if 'response' in locals():
+                print(f"Response details: {response}")
+            
             time.sleep(5 + attempt * 5)  # Exponential backoff: 5s, 10s, 15s
+    
     error_msg = f"Gemini API interaction failed after 3 attempts with model {model}"
     print(f"ERROR: {error_msg}")
     raise RuntimeError(error_msg)
