@@ -1,0 +1,72 @@
+# .github/workflows/translate.yml
+name: Auto‑Translate‑Docs
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'         # 毎週月曜 00:00 UTC
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'test = 最古 1 コミットのみ / full = 全コミット'
+        type: choice
+        default: full
+        options: [full, test]
+      from_sha:
+        description: '初回だけ翻訳を開始したい upstream コミット SHA'
+        required: false
+        default: ''
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    env:
+      # --- 変更の必要があるのはここだけ ---
+      UPSTREAM_REPO:   jhipster/jhipster.github.io
+      BASE_BRANCH:     main
+      # --------------------------------------
+      BR_PREFIX:       auto-translate
+      GEMINI_TRANSLATE_MODEL: models/gemini-1.5-pro
+      GEMINI_REVIEW_MODEL:   models/gemini-1.5-pro
+      TARGET_LANG:     ja
+      SOURCE_LANG:     en
+    steps:
+      - name: jp リポジトリ checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.BASE_BRANCH }}
+          persist-credentials: true
+
+      - name: upstream checkout
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ env.UPSTREAM_REPO }}
+          ref: main
+          path: upstream
+          fetch-depth: 0
+
+      - name: Python ライブラリ install
+        run: pip install google-generativeai requests patch-ng
+
+      - name: 翻訳スクリプト実行
+        id: run
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FROM_SHA:       ${{ github.event.inputs.from_sha }}
+        run: |
+          python .github/scripts/translate.py ${{ github.event.inputs.mode || 'full' }}
+
+      - name: Pull Request 作成
+        if: env.PULL_REQUEST_BRANCH != ''
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const body = (process.env.PR_BODY || '').replace(/\\n/g, '\n');
+            const pr = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              title: "自動翻訳: Upstream 変更を反映",
+              head:  process.env.PULL_REQUEST_BRANCH,
+              base:  process.env.BASE_BRANCH,
+              body:  "翻訳対象の upstream コミット一覧:\n\n" + body
+            });
+            console.log(`PR URL: ${pr.data.html_url}`);
