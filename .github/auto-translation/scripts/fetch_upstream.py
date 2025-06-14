@@ -70,8 +70,14 @@ class UpstreamFetcher:
         branch_name = f"sync-{commit_hash}"
         
         try:
-            # origin/mainから新しいブランチを作成
-            subprocess.run(["git", "checkout", "origin/main"], check=True)
+            # CI環境ではorigin/mainから、ローカルではauto-translationから分岐
+            if os.getenv('CI') or os.getenv('GITHUB_ACTIONS'):
+                # GitHub Actions環境ではorigin/mainから分岐
+                subprocess.run(["git", "checkout", "origin/main"], check=True)
+            else:
+                # ローカル環境ではauto-translationから分岐
+                subprocess.run(["git", "checkout", "auto-translation"], check=True)
+            
             subprocess.run(["git", "switch", "-c", branch_name], check=True)
             print(f"Created branch: {branch_name}")
             return True
@@ -81,17 +87,18 @@ class UpstreamFetcher:
     
     def merge_upstream(self, commit_hash: str) -> bool:
         """upstreamの変更をマージ（強制マージ戦略使用）"""
+        target_commit = commit_hash  # 指定されたコミットハッシュを使用
         try:
             # 通常のマージを試行
             try:
                 subprocess.run(
-                    ["git", "merge", f"{self.upstream_remote}/main", "--no-edit"],
+                    ["git", "merge", target_commit, "--no-edit"],
                     check=True
                 )
-                print("Successfully merged upstream changes (no conflicts)")
+                print(f"Successfully merged upstream changes to {target_commit} (no conflicts)")
                 return True
             except subprocess.CalledProcessError:
-                print("Merge conflicts detected, using ours strategy for some files...")
+                print(f"Merge conflicts detected, using ours strategy for some files...")
                 
                 # コンフリクトが発生した場合、日本語特有のファイルは'ours'戦略を使用
                 # まずマージを中止
@@ -99,7 +106,7 @@ class UpstreamFetcher:
                 
                 # 強制マージ（コンフリクトマーカー付きでマージ）
                 subprocess.run(
-                    ["git", "merge", f"{self.upstream_remote}/main", "--no-edit", "--no-commit"],
+                    ["git", "merge", target_commit, "--no-edit", "--no-commit"],
                     check=False
                 )
                 

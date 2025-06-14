@@ -25,3 +25,5 @@ yarn-error.log*
 # NetBeans
 nbproject/
 
+# DirEnv
+.envrc

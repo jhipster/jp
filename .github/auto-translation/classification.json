@@ -1,0 +1,207 @@
+{
+  "summary": {
+    "a": [
+      ".github/auto-translation/docs/style-guide.md",
+      ".github/auto-translation/spec.md",
+      ".github/auto-translation/tasks.md",
+      "CLAUDE.md"
+    ],
+    "b-1": [
+      "README.md"
+    ],
+    "b-2": [],
+    "c": [
+      ".github/auto-translation/.env.sample",
+      ".github/auto-translation/Makefile",
+      ".github/auto-translation/poetry.lock",
+      ".github/auto-translation/pyproject.toml",
+      ".github/auto-translation/scripts/__pycache__/classify_changes.cpython-312.pyc",
+      ".github/auto-translation/scripts/__pycache__/postprocess.cpython-312.pyc",
+      ".github/auto-translation/scripts/__pycache__/translate_chunk.cpython-312.pyc",
+      ".github/auto-translation/scripts/classify_changes.py",
+      ".github/auto-translation/scripts/commit_and_pr.py",
+      ".github/auto-translation/scripts/fetch_upstream.py",
+      ".github/auto-translation/scripts/postprocess.py",
+      ".github/auto-translation/scripts/translate_chunk.py",
+      ".github/auto-translation/tests/__pycache__/test_classify_changes.cpython-312-pytest-8.4.0.pyc",
+      ".github/auto-translation/tests/__pycache__/test_postprocess.cpython-312-pytest-8.4.0.pyc",
+      ".github/auto-translation/tests/__pycache__/test_translate_chunk.cpython-312-pytest-8.4.0.pyc",
+      ".github/auto-translation/tests/test_classify_changes.py",
+      ".github/auto-translation/tests/test_postprocess.py",
+      ".github/auto-translation/tests/test_translate_chunk.py",
+      ".github/workflows/auto-translation.yml"
+    ]
+  },
+  "details": [
+    {
+      "path": ".github/auto-translation/.env.sample",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/Makefile",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/docs/style-guide.md",
+      "status": "A",
+      "category": "a",
+      "translatable": true,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/poetry.lock",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/pyproject.toml",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/scripts/__pycache__/classify_changes.cpython-312.pyc",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/scripts/__pycache__/postprocess.cpython-312.pyc",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/scripts/__pycache__/translate_chunk.cpython-312.pyc",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/scripts/classify_changes.py",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/scripts/commit_and_pr.py",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/scripts/fetch_upstream.py",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/scripts/postprocess.py",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/scripts/translate_chunk.py",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/spec.md",
+      "status": "A",
+      "category": "a",
+      "translatable": true,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/tasks.md",
+      "status": "A",
+      "category": "a",
+      "translatable": true,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/tests/__pycache__/test_classify_changes.cpython-312-pytest-8.4.0.pyc",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/tests/__pycache__/test_postprocess.cpython-312-pytest-8.4.0.pyc",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/tests/__pycache__/test_translate_chunk.cpython-312-pytest-8.4.0.pyc",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/tests/test_classify_changes.py",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/tests/test_postprocess.py",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/auto-translation/tests/test_translate_chunk.py",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": ".github/workflows/auto-translation.yml",
+      "status": "A",
+      "category": "c",
+      "translatable": false,
+      "has_conflicts": false
+    },
+    {
+      "path": "CLAUDE.md",
+      "status": "A",
+      "category": "a",
+      "translatable": true,
+      "has_conflicts": false
+    },
+    {
+      "path": "README.md",
+      "status": "M",
+      "category": "b-1",
+      "translatable": true,
+      "has_conflicts": false
+    }
+  ],
+  "total_files": 24,
+  "translatable_files": 5
+}
