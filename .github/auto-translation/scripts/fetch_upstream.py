@@ -86,56 +86,23 @@ class UpstreamFetcher:
             return False
     
     def merge_upstream(self, commit_hash: str) -> bool:
-        """upstreamの変更をマージ（強制マージ戦略使用）"""
-        target_commit = commit_hash  # 指定されたコミットハッシュを使用
+        """upstreamの変更をマージ（ワークフロー方式）"""
+        target_commit = commit_hash
         try:
-            # 通常のマージを試行
-            try:
-                subprocess.run(
-                    ["git", "merge", target_commit, "--no-edit"],
-                    check=True
-                )
-                print(f"Successfully merged upstream changes to {target_commit} (no conflicts)")
-                return True
-            except subprocess.CalledProcessError:
-                print(f"Merge conflicts detected, using ours strategy for some files...")
-                
-                # コンフリクトが発生した場合、日本語特有のファイルは'ours'戦略を使用
-                # まずマージを中止
-                subprocess.run(["git", "merge", "--abort"], check=False)
-                
-                # 強制マージ（コンフリクトマーカー付きでマージ）
-                subprocess.run(
-                    ["git", "merge", target_commit, "--no-edit", "--no-commit"],
-                    check=False
-                )
-                
-                # 日本語特有のファイルは'ours'を選択
-                japanese_specific_files = [
-                    "docusaurus.config.ts",
-                    "sidebars.ts",
-                    "src/theme/",
-                    "CLAUDE.md"
-                ]
-                
-                for file_pattern in japanese_specific_files:
-                    subprocess.run(
-                        ["git", "checkout", "--ours", file_pattern],
-                        check=False
-                    )
-                
-                # ステージング
-                subprocess.run(["git", "add", "."], check=True)
-                
-                # コミット
-                subprocess.run(
-                    ["git", "commit", "-m", f"merge: upstream {commit_hash} with conflict resolution"],
-                    check=True
-                )
-                
-                print("Successfully merged upstream changes (with conflict resolution)")
-                return True
-                
+            print(f"Merging upstream changes from {target_commit}...")
+            
+            # マージ実行（失敗を許容）
+            subprocess.run(
+                ["git", "merge", target_commit, "--allow-unrelated-histories", "--no-edit"],
+                check=False
+            )
+            
+            # コンフリクト込みでコミット（失敗を許容）
+            subprocess.run(["git", "commit", "-a", "--no-edit"], check=False)
+            
+            print(f"✓ Merged upstream {target_commit} (conflicts preserved if any)")
+            return True
+            
         except subprocess.CalledProcessError as e:
             print(f"Error merging upstream: {e}")
             return False

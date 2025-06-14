@@ -112,8 +112,9 @@ class GeminiTranslator:
 2. コードブロック、URL、ファイルパス、コマンドは翻訳しないでください
 3. 技術用語は適切な日本語に翻訳するか、必要に応じて英語のまま残してください
 4. 文体は常体（である調）を使用してください
-5. 元の文書の構造と改行を保持してください
+5. **CRITICAL**: 元の文書の行数と改行位置を厳密に保持してください（行の追加・削除は禁止）
 6. HTMLタグやマークダウン記法は変更しないでください
+7. 空行、段落区切りを完全に維持してください
 
 翻訳対象テキスト：
 
@@ -123,8 +124,109 @@ class GeminiTranslator:
         
         return prompt
     
+    def create_conflict_translation_prompt(self, content: str, stage: str) -> str:
+        """2段階コンフリクト翻訳用プロンプト"""
+        style_guide_section = ""
+        if self.style_guide_content:
+            style_guide_section = f"""
+以下のスタイルガイドに従って翻訳してください：
+
+{self.style_guide_content}
+
+---
+
+"""
+        
+        if stage == "translate":
+            # 第1段階：新規英文を既存日本語スタイルで翻訳
+            return f"""{style_guide_section}以下のテキストはGitマージコンフリクトを含むJHipsterドキュメントです。第1段階として、新規英語内容を既存日本語のスタイルに合わせて翻訳してください。
+
+重要：コンフリクトマーカー（<<<<<<<、=======、>>>>>>>）は削除せず、そのまま保持してください。
+
+翻訳指示：
+1. <<<<<<< HEAD と ======= の間：既存の日本語版 → 参考として利用（翻訳スタイル、用語選択の基準）
+2. ======= と >>>>>>> の間：上流の新規英語版 → 既存日本語のスタイルに合わせて翻訳
+3. 既存日本語の文体、用語選択、表現方法を参考にして新規英語を翻訳
+4. コンフリクトマーカーは削除しない
+5. **CRITICAL**: 行数と改行位置を厳密に保持（行の追加・削除は禁止）
+6. マークダウン形式、URL、コマンドは翻訳しない
+7. 文体は既存部分と同じ常体（である調）を使用
+
+入力テキスト：
+
+{content}
+
+第1段階結果（新規英文を既存スタイルで翻訳済み、マーカー保持）："""
+        else:  # stage == "merge"
+            # 第2段階：HEAD側を削除し、翻訳された新規内容を採用
+            return f"""{style_guide_section}以下のテキストはコンフリクトマーカーを含む文書です。第2段階として、HEAD側を完全に削除し、新規翻訳内容のみを採用してください。
+
+マージ指示：
+1. <<<<<<< HEAD と ======= の間：既存バージョン → 完全に削除
+2. ======= と >>>>>>> の間：翻訳済み新規バージョン → これを採用
+3. HEAD側の内容は削除し、新規翻訳内容で完全に置き換える
+4. コンフリクトマーカーを完全に削除
+5. 最終的には翻訳済み新規内容のみが残る
+6. **CRITICAL**: 翻訳後の行数と改行位置を厳密に保持
+7. マークダウン構造は保持
+
+入力テキスト：
+
+{content}
+
+第2段階結果（HEAD削除、新規翻訳内容のみ採用）："""
+
+    def translate_chunk_two_stage(self, content: str, retry_count: int = 3) -> Optional[str]:
+        """2段階でコンフリクト翻訳"""
+        print("   Using 2-stage conflict resolution...")
+        
+        # 第1段階：英文翻訳（マーカー保持）
+        stage1_prompt = self.create_conflict_translation_prompt(content, "translate")
+        stage1_result = None
+        
+        for attempt in range(retry_count):
+            try:
+                response = self.model.generate_content(stage1_prompt)
+                if response.text:
+                    stage1_result = response.text.strip()
+                    print(f"   Stage 1 completed (attempt {attempt + 1})")
+                    break
+            except Exception as e:
+                print(f"   Stage 1 attempt {attempt + 1} failed: {e}")
+                if attempt < retry_count - 1:
+                    time.sleep(2 ** attempt)
+        
+        if not stage1_result:
+            print("   Stage 1 failed completely")
+            return None
+        
+        # 第2段階：マージ（マーカー削除）
+        stage2_prompt = self.create_conflict_translation_prompt(stage1_result, "merge")
+        
+        for attempt in range(retry_count):
+            try:
+                response = self.model.generate_content(stage2_prompt)
+                if response.text:
+                    final_result = response.text.strip()
+                    print(f"   Stage 2 completed (attempt {attempt + 1})")
+                    return final_result
+            except Exception as e:
+                print(f"   Stage 2 attempt {attempt + 1} failed: {e}")
+                if attempt < retry_count - 1:
+                    time.sleep(2 ** attempt)
+        
+        print("   Stage 2 failed, returning stage 1 result")
+        return stage1_result
+
     def translate_chunk(self, content: str, retry_count: int = 3) -> Optional[str]:
         """単一チャンクを翻訳"""
+        # コンフリクトマーカーがあるかチェック
+        has_conflicts = any(marker in content for marker in ['<<<<<<<', '=======', '>>>>>>>'])
+        
+        if has_conflicts:
+            return self.translate_chunk_two_stage(content, retry_count)
+        
+        # 通常翻訳
         prompt = self.create_translation_prompt(content)
         
         for attempt in range(retry_count):
@@ -188,7 +290,9 @@ class GeminiTranslator:
                 output_path = file_path
             
             # 翻訳結果を保存
-            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            output_dir = os.path.dirname(output_path)
+            if output_dir:  # ディレクトリが空文字列でない場合のみ作成
+                os.makedirs(output_dir, exist_ok=True)
             with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(translated_content)
             

@@ -171,7 +171,9 @@ class PostProcessor:
                 output_path = file_path
             
             # 処理結果を保存
-            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            output_dir = os.path.dirname(output_path)
+            if output_dir:  # ディレクトリが空文字列でない場合のみ作成
+                os.makedirs(output_dir, exist_ok=True)
             with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             

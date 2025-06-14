@@ -20,16 +20,19 @@
 
 ---
 
-## フェーズ1: fetch_upstream.py
+## フェーズ1: Merge & Conflict Commit
 
-### Task 1-1: スクリプト実装
+### Task 1-1: fetch_upstream.py（統合実装）
 - **構築内容**
-  - `scripts/fetch_upstream.py` を作成。
-  - 引数 `--hash`（任意）で特定コミット checkout 可。
-  - 無指定時は upstream/main 最新を取得し `sync-<hash>` ブランチ作成。
+  - upstream 取得・ブランチ生成・マージ・コンフリクト込みコミットを一括処理
+  - ワークフロー方式に従い：
+    ```bash
+    git merge upstream/main --allow-unrelated-histories --no-edit || true
+    git commit -a --no-edit || true
+    ```
 - **確認内容**
-  - ダミーリポ上で `py tests/test_fetch_upstream.py` が PASS。
-  - ブランチ名が `sync-` で始まり short SHA7 で終わる。
+  - `git log -1 --pretty=%s` が `Merge` を含む
+  - コンフリクトファイルがある場合は `git show HEAD | grep '<<<<<<<'` でマーカー確認
 
 ---
 

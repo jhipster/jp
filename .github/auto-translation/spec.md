@@ -58,38 +58,47 @@ on:
 
 ## ワークフロー詳細
 
-1. **ブランチ生成**
-   ```bash
-   git checkout origin/main
-   HASH=$(git ls-remote https://github.com/jhipster/jhipster.github.io.git refs/heads/main | cut -c1-7)
-   BRANCH="sync-${HASH}"
-   git switch -c "$BRANCH"
-   ```
-2. **強制マージ** (`git merge -s ours` を併用)
-3. **変更判定** (`classify_changes.py`)
-   - `git diff --name-status origin/main..HEAD` でファイル一覧取得
-   - ファイルごとに次を判定
-     | 状態                    | 判定条件                             |
-     | --------------------- | -------------------------------- |
-     | a. 新規文書               | `status == "A"` & 翻訳対象拡張子        |
-     | b-1. 追記 (No conflict) | `status == "M"` かつ 差分に `<<<<` 無し |
-     | b-2. 衝突 (Conflict)    | 差分に `<<<<` 含む                    |
-     | c. 非文書／除外             | 翻訳対象外拡張子                         |
-4. **Gemini 翻訳** (`translate_chunk.py`)
-   - 4096 tokens 超は段落単位で分割
-   - プロンプト先頭に `style-guide.md` をインジェクト
-   - 出力後、原文と行数一致を確認
-5. **ポストプロセス** (`postprocess.py`)
-   - コンフリクトマーカー全削除 (`<<<<` `====` `>>>>`)
-   - `language_tool_python` で簡易文法チェック
-6. **コミット & PR**
-   - コミットメッセージ: `docs(sync): upstream ${HASH} 翻訳`
-   - PR タイトル: `docs: upstream ${HASH} Translation`
-   - PR 本文: 差分ファイル表 (Markdown)
+> **ポイント**: まず *衝突マーカーを含んだままコミット* し、その後に翻訳／マーカー除去を行う 2 段階コミット構成とする。
+
+| ステップ                                                                                                                                           | 処理         | 主要コマンド・スクリプト |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------ |
+| 1                                                                                                                                              | **ブランチ生成** | \`\`\`bash   |
+| git checkout origin/main                                                                                                                       |            |              |
+| HASH=\$(git ls-remote [https://github.com/jhipster/jhipster.github.io.git](https://github.com/jhipster/jhipster.github.io.git) refs/heads/main | cut -c1-7) |              |
+| BRANCH="sync-\${HASH}"                                                                                                                         |            |              |
+| git switch -c "\$BRANCH"                                                                                                                       |            |              |
+
+````|
+| 2 | **強制マージ & コンフリクト込みコミット**<br>（一次コミット） | ```bash
+git merge upstream/main --allow-unrelated-histories --no-edit || true
+# 衝突状態でもステージする
+git add -A
+# デフォルトメッセージでコミット（衝突マーカー残存）
+git commit --no-edit || true
+``` |
+| 3 | **変更判定 (a/b-1/b-2/c)** | `scripts/classify_changes.py` (`HEAD^` vs `HEAD` で diff 解析) |
+| 4 | **Gemini 翻訳**<br>（衝突マーカーも入力に含める） | `scripts/translate_chunk.py` — 翻訳後にマーカー除去 & 行数チェック |
+| 5 | **ポストプロセス & 翻訳コミット**<br>（二次コミット） | ```bash
+python scripts/postprocess.py   # マーカー除去 ＋ 文法チェック
+git add -A
+git commit -m "docs(translate): upstream ${HASH} 日本語翻訳" --no-verify
+``` |
+| 6 | **PR 作成** | `scripts/commit_and_pr.py` → `gh pr create` |
 
 ---
 
 ## ローカル実行
+
+### 1コミットだけ翻訳（2段階コミットを再現）
+
+```bash
+poetry install
+python scripts/fetch_upstream.py --hash <commit-sha>        # ステップ1 & 2
+python scripts/classify_changes.py                           # ステップ3
+python scripts/translate_chunk.py --mode selective           # ステップ4
+python scripts/postprocess.py                                # ステップ5-前半
+python scripts/commit_and_pr.py --push-origin false          # ステップ5-後半/6
+````
 
 ### 1コミットだけ翻訳
 
