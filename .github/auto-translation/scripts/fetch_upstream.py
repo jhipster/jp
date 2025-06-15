@@ -148,7 +148,7 @@ def main():
     
     # コミットハッシュを決定
     if args.hash:
-        commit_hash = args.hash[:7]  # 最初の7文字を使用
+        commit_hash = args.hash[:8]  # 最初の8文字を使用
     else:
         commit_hash = fetcher.get_upstream_commit_hash()
         if not commit_hash:
