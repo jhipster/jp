@@ -312,42 +312,64 @@ JSON形式で回答してください。"""
             print(f"❌ Error creating translation commit: {e}")
             return False
     
-    def check_conflict_markers_in_changed_files(self) -> List[str]:
+    def check_conflict_markers_in_changed_files(self, base_branch: str = "main") -> List[str]:
         """syncブランチで変更された翻訳対象ファイルでコンフリクトマーカーの存在をチェック"""
         files_with_conflicts = []
         
         try:
-            # git diff --name-onlyで変更されたファイルを取得
-            result = subprocess.run(
-                ["git", "diff", "--name-only", "origin/main..HEAD"],
-                capture_output=True, text=True, check=True
-            )
+            # プロジェクトルートディレクトリを取得
+            project_root = self.find_project_root()
+            original_cwd = os.getcwd()
             
-            changed_files = [f for f in result.stdout.strip().split('\n') if f]
+            # プロジェクトルートに移動してから実行
+            os.chdir(project_root)
             
-            for file_path in changed_files:
-                if not file_path or not os.path.exists(file_path):
-                    continue
+            try:
+                # git diff --name-onlyで変更されたファイルを取得（実際のベースブランチを使用）
+                result = subprocess.run(
+                    ["git", "diff", "--name-only", f"origin/{base_branch}..HEAD"],
+                    capture_output=True, text=True, check=True
+                )
                 
-                # ルートディレクトリの '.' で始まるファイル・フォルダを除外（翻訳対象外）
-                if file_path.startswith('.'):
-                    continue
+                changed_files = [f for f in result.stdout.strip().split('\n') if f]
                 
-                try:
-                    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-                        content = f.read()
-                        if any(marker in content for marker in ['<<<<<<<', '=======', '>>>>>>>']):
-                            files_with_conflicts.append(file_path)
-                except Exception:
-                    # ファイル読み込みエラーは無視
-                    continue
+                for file_path in changed_files:
+                    if not file_path or not os.path.exists(file_path):
+                        continue
+                    
+                    # 一部のルートディレクトリの隠しファイルを除外（重要でないもののみ）
+                    if file_path.startswith('.') and not file_path.startswith('.github/'):
+                        continue
+                    
+                    try:
+                        with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                            content = f.read()
+                            if any(marker in content for marker in ['<<<<<<<', '=======', '>>>>>>>']):
+                                files_with_conflicts.append(file_path)
+                    except Exception:
+                        # ファイル読み込みエラーは無視
+                        continue
+                        
+            finally:
+                # 元のディレクトリに戻る
+                os.chdir(original_cwd)
             
         except subprocess.CalledProcessError as e:
             print(f"⚠️ Error checking conflict markers: {e}")
         
         return files_with_conflicts
+    
+    def find_project_root(self) -> str:
+        """プロジェクトルートディレクトリを見つける"""
+        from pathlib import Path
+        current = Path(__file__).parent
+        while current != current.parent:
+            if (current / '.git').exists() or (current / 'package.json').exists():
+                return str(current)
+            current = current.parent
+        return str(Path.cwd())
 
-    def generate_pr_body(self, classification_file: Optional[str] = None, commit_hash: Optional[str] = None) -> str:
+    def generate_pr_body(self, classification_file: Optional[str] = None, commit_hash: Optional[str] = None, base_branch: str = "main") -> str:
         """PR本文を生成"""
         body_parts = []
         
@@ -483,7 +505,7 @@ JSON形式で回答してください。"""
                 print(f"⚠️ Error reading classification file: {e}")
         
         # コンフリクトマーカーチェック
-        files_with_conflicts = self.check_conflict_markers_in_changed_files()
+        files_with_conflicts = self.check_conflict_markers_in_changed_files(base_branch)
         if files_with_conflicts:
             body_parts.append("### ⚠️ コンフリクトマーカー検出")
             body_parts.append("")
@@ -552,10 +574,12 @@ JSON形式で回答してください。"""
     def create_pull_request(self, branch_name: str, commit_hash: str, classification_file: Optional[str] = None) -> bool:
         """プルリクエストを作成"""
         pr_title = f"docs: upstream {commit_hash} Translation"
-        pr_body = self.generate_pr_body(classification_file, commit_hash)
         
         # ベースブランチを自動検出
         base_branch = self.get_base_branch(branch_name)
+        
+        # PR本文を生成（ベースブランチ情報を含む）
+        pr_body = self.generate_pr_body(classification_file, commit_hash, base_branch)
         
         # ドライラン時は常にPR本文を標準出力
         if self.dry_run:
