@@ -13,9 +13,20 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 
+def find_project_root() -> Path:
+    """プロジェクトルートディレクトリを見つける"""
+    current = Path(__file__).parent
+    while current != current.parent:
+        if (current / '.git').exists() or (current / 'package.json').exists():
+            return current
+        current = current.parent
+    return Path.cwd()
+
+
 class ChangeClassifier:
     def __init__(self, base_branch: str = "origin/main"):
         self.base_branch = base_branch
+        self.project_root = find_project_root()
         self.translatable_extensions = {".md", ".mdx", ".adoc", ".html"}
         self.non_translatable_extensions = {
             ".png", ".jpg", ".jpeg", ".svg", ".gif", ".webp",
@@ -51,10 +62,11 @@ class ChangeClassifier:
     def has_conflict_markers(self, filepath: str) -> bool:
         """ファイルにコンフリクトマーカーが含まれているかチェック"""
         try:
-            if not os.path.exists(filepath):
+            full_path = self.project_root / filepath
+            if not full_path.exists():
                 return False
                 
-            with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+            with open(full_path, 'r', encoding='utf-8', errors='ignore') as f:
                 content = f.read()
                 return any(marker in content for marker in ['<<<<<<<', '=======', '>>>>>>>'])
                 
@@ -81,11 +93,13 @@ class ChangeClassifier:
         # 特殊ケース: 拡張子なしのファイルでもマークダウンの可能性
         if not path.suffix and filepath not in ['LICENSE', 'NOTICE', 'CNAME']:
             try:
-                with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
-                    first_line = f.readline().strip()
-                    # マークダウンのヘッダーで始まるかチェック
-                    if first_line.startswith('#') or first_line.startswith('---'):
-                        return True
+                full_path = self.project_root / filepath
+                if full_path.exists():
+                    with open(full_path, 'r', encoding='utf-8', errors='ignore') as f:
+                        first_line = f.readline().strip()
+                        # マークダウンのヘッダーで始まるかチェック
+                        if first_line.startswith('#') or first_line.startswith('---'):
+                            return True
             except:
                 pass
         
@@ -137,7 +151,7 @@ class ChangeClassifier:
                 "status": status,
                 "category": category,
                 "translatable": self.is_translatable_file(filepath),
-                "has_conflicts": self.has_conflict_markers(filepath) if os.path.exists(filepath) else False
+                "has_conflicts": self.has_conflict_markers(filepath) if (self.project_root / filepath).exists() else False
             })
         
         return {

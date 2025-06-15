@@ -12,6 +12,16 @@ import sys
 from pathlib import Path
 from typing import List, Optional
 
+
+def find_project_root() -> Path:
+    """プロジェクトルートディレクトリを見つける"""
+    current = Path(__file__).parent
+    while current != current.parent:
+        if (current / '.git').exists() or (current / 'package.json').exists():
+            return current
+        current = current.parent
+    return Path.cwd()
+
 try:
     import language_tool_python
     LANGUAGE_TOOL_AVAILABLE = True
@@ -24,6 +34,7 @@ class PostProcessor:
     def __init__(self, enable_language_tool: bool = True):
         self.enable_language_tool = enable_language_tool and LANGUAGE_TOOL_AVAILABLE
         self.language_tool = None
+        self.project_root = find_project_root()
         
         if self.enable_language_tool:
             try:
@@ -60,10 +71,13 @@ class PostProcessor:
     def check_line_count_consistency(self, original_file: str, processed_file: str) -> bool:
         """原文と翻訳の行数一致を確認"""
         try:
-            with open(original_file, 'r', encoding='utf-8') as f:
+            original_path = self.project_root / original_file
+            processed_path = self.project_root / processed_file
+            
+            with open(original_path, 'r', encoding='utf-8') as f:
                 original_lines = len(f.readlines())
             
-            with open(processed_file, 'r', encoding='utf-8') as f:
+            with open(processed_path, 'r', encoding='utf-8') as f:
                 processed_lines = len(f.readlines())
             
             if original_lines != processed_lines:
@@ -123,7 +137,8 @@ class PostProcessor:
     def process_file(self, file_path: str, output_path: Optional[str] = None) -> bool:
         """ファイルをポストプロセッシング"""
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            full_file_path = self.project_root / file_path
+            with open(full_file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
             
             print(f"📝 Post-processing: {file_path}")
@@ -168,16 +183,16 @@ class PostProcessor:
             
             # 出力ファイルパスを決定
             if output_path is None:
-                output_path = file_path
+                full_output_path = full_file_path
+            else:
+                full_output_path = self.project_root / output_path
             
             # 処理結果を保存
-            output_dir = os.path.dirname(output_path)
-            if output_dir:  # ディレクトリが空文字列でない場合のみ作成
-                os.makedirs(output_dir, exist_ok=True)
-            with open(output_path, 'w', encoding='utf-8') as f:
+            full_output_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(full_output_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             
-            print(f"✅ Post-processing completed: {output_path}")
+            print(f"✅ Post-processing completed: {full_output_path}")
             return True
             
         except Exception as e:
@@ -187,7 +202,8 @@ class PostProcessor:
     def process_files_from_classification(self, classification_file: str) -> bool:
         """分類結果からファイルをポストプロセッシング"""
         try:
-            with open(classification_file, 'r', encoding='utf-8') as f:
+            full_classification_path = self.project_root / classification_file
+            with open(full_classification_path, 'r', encoding='utf-8') as f:
                 classification = json.load(f)
             
             # 翻訳済みファイルを対象とする
@@ -204,7 +220,8 @@ class PostProcessor:
             
             success_count = 0
             for file_path in files_to_process:
-                if os.path.exists(file_path):
+                full_file_path = self.project_root / file_path
+                if full_file_path.exists():
                     if self.process_file(file_path):
                         success_count += 1
                     else:

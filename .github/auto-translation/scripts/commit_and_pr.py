@@ -438,7 +438,10 @@ JSON形式で回答してください。"""
                 body_parts.append(f"- **翻訳対象ファイル数**: {classification['translatable_files']}")
                 body_parts.append("")
                 
-                summary = classification["summary"]
+                if classification:
+                    summary = classification["summary"]
+                else:
+                    summary = {"a": [], "b-1": [], "b-2": [], "c": []}
                 if summary["a"]:
                     body_parts.append(f"#### 🆕 新規文書 ({len(summary['a'])} files)")
                     for file in summary["a"][:5]:

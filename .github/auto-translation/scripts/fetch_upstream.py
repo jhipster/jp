@@ -8,13 +8,27 @@ import argparse
 import os
 import subprocess
 import sys
+from pathlib import Path
 from typing import Optional
+
+
+def find_project_root() -> Path:
+    """プロジェクトルートディレクトリを見つける"""
+    current = Path(__file__).parent
+    while current != current.parent:
+        if (current / '.git').exists() or (current / 'package.json').exists():
+            return current
+        current = current.parent
+    return Path.cwd()
 
 
 class UpstreamFetcher:
     def __init__(self, upstream_url: str = "https://github.com/jhipster/jhipster.github.io.git"):
         self.upstream_url = upstream_url
         self.upstream_remote = "upstream"
+        self.project_root = find_project_root()
+        # プロジェクトルートに移動
+        os.chdir(self.project_root)
     
     def setup_upstream_remote(self) -> bool:
         """upstreamリモートをセットアップ"""

@@ -16,12 +16,23 @@ from typing import List, Optional, Tuple
 import google.generativeai as genai
 
 
+def find_project_root() -> Path:
+    """プロジェクトルートディレクトリを見つける"""
+    current = Path(__file__).parent
+    while current != current.parent:
+        if (current / '.git').exists() or (current / 'package.json').exists():
+            return current
+        current = current.parent
+    return Path.cwd()
+
+
 class GeminiTranslator:
     def __init__(self, api_key: str, model_name: str = "gemini-1.5-flash"):
         self.api_key = api_key
         self.model_name = model_name
         self.max_tokens = 4096
         self.style_guide_content = ""
+        self.project_root = find_project_root()
         
         # Gemini APIを設定
         genai.configure(api_key=api_key)
@@ -32,20 +43,10 @@ class GeminiTranslator:
     
     def load_style_guide(self):
         """スタイルガイドを読み込み"""
-        # 実行位置に関係なく、正しいパスを探索
-        possible_paths = [
-            Path("docs/style-guide.md"),
-            Path(".github/auto-translation/docs/style-guide.md"),
-            Path("../docs/style-guide.md"),
-            Path("../../docs/style-guide.md")
-        ]
+        # プロジェクトルートから相対パスで探索
+        style_guide_path = self.project_root / ".github/auto-translation/docs/style-guide.md"
         
-        style_guide_path = None
-        for path in possible_paths:
-            if path.exists():
-                style_guide_path = path
-                break
-        if style_guide_path and style_guide_path.exists():
+        if style_guide_path.exists():
             try:
                 with open(style_guide_path, 'r', encoding='utf-8') as f:
                     self.style_guide_content = f.read()
@@ -53,7 +54,7 @@ class GeminiTranslator:
             except Exception as e:
                 print(f"⚠️ Error loading style guide: {e}")
         else:
-            print(f"⚠️ Style guide not found in any of the expected locations")
+            print(f"⚠️ Style guide not found: {style_guide_path}")
     
     def count_tokens_estimate(self, text: str) -> int:
         """テキストのトークン数を概算"""
@@ -258,7 +259,9 @@ class GeminiTranslator:
     def translate_file(self, file_path: str, output_path: Optional[str] = None) -> bool:
         """ファイル全体を翻訳"""
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            # プロジェクトルートからの相対パスでファイルを読み込み
+            full_file_path = self.project_root / file_path
+            with open(full_file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
             
             print(f"📝 Translating: {file_path}")
@@ -287,16 +290,16 @@ class GeminiTranslator:
             
             # 出力ファイルパスを決定
             if output_path is None:
-                output_path = file_path
+                full_output_path = full_file_path
+            else:
+                full_output_path = self.project_root / output_path
             
             # 翻訳結果を保存
-            output_dir = os.path.dirname(output_path)
-            if output_dir:  # ディレクトリが空文字列でない場合のみ作成
-                os.makedirs(output_dir, exist_ok=True)
-            with open(output_path, 'w', encoding='utf-8') as f:
+            full_output_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(full_output_path, 'w', encoding='utf-8') as f:
                 f.write(translated_content)
             
-            print(f"✅ Translation completed: {output_path}")
+            print(f"✅ Translation completed: {full_output_path}")
             return True
             
         except Exception as e:
@@ -306,7 +309,9 @@ class GeminiTranslator:
     def translate_files_from_classification(self, classification_file: str, mode: str = "all") -> bool:
         """分類結果から翻訳対象ファイルを翻訳"""
         try:
-            with open(classification_file, 'r', encoding='utf-8') as f:
+            # プロジェクトルートからの相対パスで分類ファイルを読み込み
+            full_classification_path = self.project_root / classification_file
+            with open(full_classification_path, 'r', encoding='utf-8') as f:
                 classification = json.load(f)
             
             files_to_translate = []
