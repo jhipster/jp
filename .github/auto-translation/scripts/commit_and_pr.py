@@ -369,6 +369,10 @@ JSON形式で回答してください。"""
             current = current.parent
         return str(Path.cwd())
 
+    def generate_upstream_link(self, file_path: str, commit_hash: str) -> str:
+        """翻訳元英文への参照リンクを生成"""
+        return f"https://github.com/jhipster/jhipster.github.io/blob/{commit_hash}/{file_path}"
+    
     def generate_pr_body(self, classification_file: Optional[str] = None, commit_hash: Optional[str] = None, base_branch: str = "main") -> str:
         """PR本文を生成"""
         body_parts = []
@@ -409,7 +413,8 @@ JSON形式で回答してください。"""
                         analysis = file_result["analysis"]
                         line_info = analysis.get("line_info", {})
                         
-                        body_parts.append(f"#### 📄 `{file_path}`")
+                        upstream_link = self.generate_upstream_link(file_path, commit_hash) if commit_hash else "#"
+                        body_parts.append(f"#### 📄 `{file_path}` - [翻訳元を確認]({upstream_link})")
                         body_parts.append("")
                         body_parts.append(f"**行数**: {line_info.get('upstream_lines', 'N/A')}行 → {line_info.get('current_lines', 'N/A')}行 (差:{line_info.get('line_diff', 'N/A')}行)")
                         body_parts.append(f"**LLM分析**: {analysis.get('summary', 'N/A')}")
@@ -436,7 +441,8 @@ JSON形式で回答してください。"""
                     
                     for summary in quality_results["analysis_summary"]:
                         line_info = summary.get("line_info", {})
-                        body_parts.append(f"- ✅ `{summary['file']}` ({line_info.get('upstream_lines', 'N/A')} → {line_info.get('current_lines', 'N/A')}行, 差:{line_info.get('line_diff', 'N/A')}行): {summary['summary']}")
+                        upstream_link = self.generate_upstream_link(summary['file'], commit_hash) if commit_hash else "#"
+                        body_parts.append(f"- ✅ `{summary['file']}` - [翻訳元を確認]({upstream_link}) ({line_info.get('upstream_lines', 'N/A')} → {line_info.get('current_lines', 'N/A')}行, 差:{line_info.get('line_diff', 'N/A')}行): {summary['summary']}")
                     body_parts.append("")
                 else:
                     body_parts.append("⚠️ 行数差異ファイルのLLM分析ができませんでした（LLM未利用）。手動確認を推奨します。")
@@ -467,7 +473,8 @@ JSON形式で回答してください。"""
                 if summary["a"]:
                     body_parts.append(f"#### 🆕 新規文書 ({len(summary['a'])} files)")
                     for file in summary["a"][:5]:
-                        body_parts.append(f"- `{file}`")
+                        upstream_link = self.generate_upstream_link(file, commit_hash) if commit_hash else "#"
+                        body_parts.append(f"- `{file}` - [翻訳元を確認]({upstream_link})")
                     if len(summary["a"]) > 5:
                         body_parts.append(f"- ... and {len(summary['a']) - 5} more files")
                     body_parts.append("")
@@ -475,7 +482,8 @@ JSON形式で回答してください。"""
                 if summary["b-1"]:
                     body_parts.append(f"#### ✏️ 更新文書 - 衝突なし ({len(summary['b-1'])} files)")
                     for file in summary["b-1"][:5]:
-                        body_parts.append(f"- `{file}`")
+                        upstream_link = self.generate_upstream_link(file, commit_hash) if commit_hash else "#"
+                        body_parts.append(f"- `{file}` - [翻訳元を確認]({upstream_link})")
                     if len(summary["b-1"]) > 5:
                         body_parts.append(f"- ... and {len(summary['b-1']) - 5} more files")
                     body_parts.append("")
@@ -486,7 +494,8 @@ JSON形式で回答してください。"""
                     body_parts.append("⚠️ これらのファイルには翻訳衝突が含まれていました。手動確認が推奨されます。")
                     body_parts.append("")
                     for file in summary["b-2"][:5]:
-                        body_parts.append(f"- `{file}`")
+                        upstream_link = self.generate_upstream_link(file, commit_hash) if commit_hash else "#"
+                        body_parts.append(f"- `{file}` - [翻訳元を確認]({upstream_link})")
                     if len(summary["b-2"]) > 5:
                         body_parts.append(f"- ... and {len(summary['b-2']) - 5} more files")
                     body_parts.append("")
@@ -496,7 +505,8 @@ JSON形式で回答してください。"""
                     body_parts.append("以下のファイルは翻訳対象外のため、そのままコピーされました。")
                     body_parts.append("")
                     for file in summary["c"][:5]:
-                        body_parts.append(f"- `{file}`")
+                        upstream_link = self.generate_upstream_link(file, commit_hash) if commit_hash else "#"
+                        body_parts.append(f"- `{file}` - [翻訳元を確認]({upstream_link})")
                     if len(summary["c"]) > 5:
                         body_parts.append(f"- ... and {len(summary['c']) - 5} more files")
                     body_parts.append("")

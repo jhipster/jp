@@ -85,6 +85,50 @@ git commit -m "docs(translate): upstream ${HASH} 日本語翻訳" --no-verify
 ``` |
 | 6 | **PR 作成** | `scripts/commit_and_pr.py` → `gh pr create` |
 
+### PR本文生成
+
+自動翻訳システムで作成されるPRには以下の内容が含まれる：
+
+#### 基本情報
+- 翻訳元コミットハッシュ（JHipster upstream リポジトリへのリンク付き）
+- 自動検出されたベースブランチ（main または auto-translation）
+- **翻訳元英文参照リンク**：各翻訳対象ファイルの上流版へのGitHubリンク
+  - 形式：`https://github.com/jhipster/jhipster.github.io/blob/{commit_hash}/{file_path}`
+  - 例：`https://github.com/jhipster/jhipster.github.io/blob/abc1234/docs/installation.md`
+
+#### 翻訳品質分析
+1. **行数差異検出**：上流版と翻訳版で行数差（1行以上）があるファイルを検出
+2. **LLM詳細分析**：行数差があるファイルのみをGemini 1.5 Flashで詳細分析
+   - 重要な情報の欠落（import文、画像、リンク、コンポーネントなど）
+   - 構造的な変更（セクション、段落の削除・追加）
+   - マークダウン記法の問題
+   - 意図しない内容の重複
+   - 翻訳の一貫性
+
+#### ファイル分類情報
+- 総ファイル数と翻訳対象ファイル数
+- 新規文書（カテゴリA）：各ファイル名に翻訳元英文リンク付き
+- 更新文書 - 衝突なし（カテゴリB-1）：各ファイル名に翻訳元英文リンク付き
+- 更新文書 - 衝突あり（カテゴリB-2）：各ファイル名に翻訳元英文リンク付き、手動確認推奨
+- 非翻訳ファイル（カテゴリC）：各ファイル名に翻訳元英文リンク付き
+
+**リンク表示例**：
+```markdown
+- `docs/installation.md` - [翻訳元を確認](https://github.com/jhipster/jhipster.github.io/blob/abc1234/docs/installation.md)
+```
+
+#### 品質保証機能
+- **コンフリクトマーカー検出**：`<<<<<<<`、`=======`、`>>>>>>>`の残存をチェック
+- **翻訳品質問題の重要度分類**：高（🚨）、中（⚠️）、低（ℹ️）
+- **手動レビュー推奨箇所の明示**
+- **LLM分析対象ファイルの翻訳元リンク**：行数差異が検出されたファイルの詳細分析結果に翻訳元英文リンクを併記
+
+#### PR本文での翻訳元リンク生成ルール
+1. **URL形式**：`https://github.com/jhipster/jhipster.github.io/blob/{commit_hash}/{file_path}`
+2. **リンクテキスト**：「翻訳元を確認」
+3. **適用対象**：全ての翻訳対象ファイル（カテゴリA, B-1, B-2）および非翻訳ファイル（カテゴリC）
+4. **表示場所**：各ファイルリストでファイル名の直後に併記
+
 ---
 
 ## ローカル実行
