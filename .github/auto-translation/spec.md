@@ -120,6 +120,10 @@ python scripts/commit_and_pr.py --push-origin false
 - 長音符・半角英数字統一
 - 用語統一表 (例: *Generator* → *ジェネレータ*)
 
+### スタイルガイドのカスタマイズ
+特定のフォルダ以下のドキュメントに対して、文体を揃えるため、独自のスタイルガイドを適用する。
+- `docs/releases` については、`.github/auto-translation/docs/style-guide-release.md` を適用
+
 ---
 
 ## テスト

@@ -86,6 +86,76 @@ Final paragraph."""
         self.assertIn("常体", prompt)
         self.assertIn(content, prompt)
     
+    def test_get_custom_style_guide_for_path(self):
+        """カスタムスタイルガイド取得のテスト"""
+        # docs/releases/ パスのテスト
+        custom_guide = self.translator.get_custom_style_guide_for_path("docs/releases/2024-01-01-release.md")
+        
+        # カスタムスタイルガイドファイルが存在しない場合は空文字列
+        # 実際の環境では異なる場合があるため、文字列であることのみ確認
+        self.assertIsInstance(custom_guide, str)
+        
+        # 通常のdocsパスのテスト
+        normal_guide = self.translator.get_custom_style_guide_for_path("docs/getting-started.md")
+        self.assertEqual(normal_guide, "")  # カスタムスタイルガイドは適用されない
+        
+        # 非docsパスのテスト
+        other_guide = self.translator.get_custom_style_guide_for_path("src/components/test.tsx")
+        self.assertEqual(other_guide, "")  # カスタムスタイルガイドは適用されない
+    
+    def test_create_translation_prompt_with_custom_style_guide(self):
+        """カスタムスタイルガイドを含む翻訳プロンプト作成のテスト"""
+        content = "This is a release document for JHipster v8.7.0."
+        file_path = "docs/releases/2024-01-01-release.md"
+        
+        # カスタムスタイルガイドのモック
+        with patch.object(self.translator, 'get_custom_style_guide_for_path') as mock_custom_guide:
+            mock_custom_guide.return_value = "## リリースノート専用スタイル\n- です・ます調を使用\n- 冒頭で「これはJHipster vXのリリースです」と明記"
+            
+            prompt = self.translator.create_translation_prompt(content, file_path)
+            
+            # カスタムスタイルガイドが含まれていることを確認
+            self.assertIn("カスタムスタイルガイド", prompt)
+            self.assertIn("リリースノート専用スタイル", prompt)
+            self.assertIn("カスタムスタイルガイドを優先", prompt)
+            self.assertIn(content, prompt)
+            
+            # get_custom_style_guide_for_pathが正しいパスで呼ばれたことを確認
+            mock_custom_guide.assert_called_once_with(file_path)
+    
+    def test_create_conflict_translation_prompt_with_custom_style_guide(self):
+        """カスタムスタイルガイドを含むコンフリクト翻訳プロンプト作成のテスト"""
+        content = """<<<<<<< HEAD
+これはJHipster v8.6.0のリリースノートです。
+=======
+This is JHipster v8.7.0 release notes.
+>>>>>>> upstream/main"""
+        file_path = "docs/releases/2024-01-01-release.md"
+        
+        # カスタムスタイルガイドのモック
+        with patch.object(self.translator, 'get_custom_style_guide_for_path') as mock_custom_guide:
+            mock_custom_guide.return_value = "## リリースノート専用スタイル\n- です・ます調を使用\n- 冒頭で「これはJHipster vXのリリースです」と明記"
+            
+            # 第1段階（翻訳）のテスト
+            prompt_stage1 = self.translator.create_conflict_translation_prompt(content, "translate", file_path)
+            
+            # カスタムスタイルガイドが含まれていることを確認
+            self.assertIn("カスタムスタイルガイド", prompt_stage1)
+            self.assertIn("リリースノート専用スタイル", prompt_stage1)
+            self.assertIn("第1段階", prompt_stage1)
+            self.assertIn("新規英語内容を既存日本語のスタイル", prompt_stage1)
+            
+            # 第2段階（マージ）のテスト
+            prompt_stage2 = self.translator.create_conflict_translation_prompt(content, "merge", file_path)
+            
+            # カスタムスタイルガイドが含まれていることを確認
+            self.assertIn("カスタムスタイルガイド", prompt_stage2)
+            self.assertIn("第2段階", prompt_stage2)
+            self.assertIn("HEAD側を完全に削除", prompt_stage2)
+            
+            # get_custom_style_guide_for_pathが2回呼ばれたことを確認
+            self.assertEqual(mock_custom_guide.call_count, 2)
+    
     @patch.object(GeminiTranslator, 'translate_chunk')
     def test_translate_file(self, mock_translate_chunk):
         """ファイル翻訳のテスト"""
@@ -183,6 +253,45 @@ class TestGeminiTranslatorIntegration(unittest.TestCase):
         # APIが正しく呼ばれたことを確認
         mock_configure.assert_called_once_with(api_key="test_api_key")
         mock_model.generate_content.assert_called_once()
+    
+    @patch('google.generativeai.configure')
+    @patch('google.generativeai.GenerativeModel')
+    def test_translation_workflow_with_custom_style_guide(self, mock_model_class, mock_configure):
+        """カスタムスタイルガイドを含む翻訳ワークフロー全体のテスト"""
+        # APIレスポンスをモック
+        mock_model = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = "これはJHipster v8.7.0のリリースです。\n\n主な変更点は以下の通りです。"
+        mock_model.generate_content.return_value = mock_response
+        mock_model_class.return_value = mock_model
+        
+        translator = GeminiTranslator("test_api_key")
+        
+        # リリースノート用のテストコンテンツ
+        test_content = "This is JHipster v8.7.0 release.\n\nHere are the main changes."
+        file_path = "docs/releases/2024-01-01-release.md"
+        
+        # カスタムスタイルガイドのモック
+        with patch.object(translator, 'get_custom_style_guide_for_path') as mock_custom_guide:
+            mock_custom_guide.return_value = "## リリースノート専用スタイル\n- です・ます調を使用"
+            
+            # 翻訳実行
+            result = translator.translate_chunk(test_content, file_path)
+            
+            # 結果確認
+            self.assertEqual(result, "これはJHipster v8.7.0のリリースです。\n\n主な変更点は以下の通りです。")
+            
+            # カスタムスタイルガイドが取得されたことを確認
+            mock_custom_guide.assert_called_once_with(file_path)
+            
+            # APIが正しく呼ばれたことを確認
+            mock_configure.assert_called_once_with(api_key="test_api_key")
+            mock_model.generate_content.assert_called_once()
+            
+            # プロンプトにカスタムスタイルガイドが含まれていることを確認
+            call_args = mock_model.generate_content.call_args[0][0]
+            self.assertIn("カスタムスタイルガイド", call_args)
+            self.assertIn("リリースノート専用スタイル", call_args)
 
 
 if __name__ == '__main__':

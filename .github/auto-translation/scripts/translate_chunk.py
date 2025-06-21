@@ -42,7 +42,7 @@ class GeminiTranslator:
         self.load_style_guide()
     
     def load_style_guide(self):
-        """スタイルガイドを読み込み"""
+        """基本スタイルガイドを読み込み"""
         # プロジェクトルートから相対パスで探索
         style_guide_path = self.project_root / ".github/auto-translation/docs/style-guide.md"
         
@@ -50,11 +50,30 @@ class GeminiTranslator:
             try:
                 with open(style_guide_path, 'r', encoding='utf-8') as f:
                     self.style_guide_content = f.read()
-                print(f"✅ Loaded style guide: {style_guide_path}")
+                print(f"✅ Loaded base style guide: {style_guide_path}")
             except Exception as e:
-                print(f"⚠️ Error loading style guide: {e}")
+                print(f"⚠️ Error loading base style guide: {e}")
         else:
-            print(f"⚠️ Style guide not found: {style_guide_path}")
+            print(f"⚠️ Base style guide not found: {style_guide_path}")
+    
+    def get_custom_style_guide_for_path(self, file_path: str) -> str:
+        """ファイルパスに応じたカスタムスタイルガイドを取得"""
+        custom_style_guide = ""
+        
+        # docs/releases フォルダの場合、リリース用スタイルガイドを適用
+        if file_path.startswith("docs/releases/"):
+            release_style_guide_path = self.project_root / ".github/auto-translation/docs/style-guide-release.md"
+            if release_style_guide_path.exists():
+                try:
+                    with open(release_style_guide_path, 'r', encoding='utf-8') as f:
+                        custom_style_guide = f.read()
+                    print(f"✅ Applied custom style guide for releases: {file_path}")
+                except Exception as e:
+                    print(f"⚠️ Error loading release style guide: {e}")
+        
+        # 他のフォルダ固有のスタイルガイドもここに追加可能
+        
+        return custom_style_guide
     
     def count_tokens_estimate(self, text: str) -> int:
         """テキストのトークン数を概算"""
@@ -93,16 +112,27 @@ class GeminiTranslator:
         
         return chunks
     
-    def create_translation_prompt(self, content: str) -> str:
+    def create_translation_prompt(self, content: str, file_path: str = "") -> str:
         """翻訳用プロンプトを作成"""
+        # カスタムスタイルガイドを取得
+        custom_style_guide = self.get_custom_style_guide_for_path(file_path)
+        
+        # 基本スタイルガイドとカスタムスタイルガイドを統合
         style_guide_section = ""
-        if self.style_guide_content:
+        if self.style_guide_content or custom_style_guide:
+            combined_style_guide = ""
+            
+            if self.style_guide_content:
+                combined_style_guide += f"## 基本スタイルガイド\n\n{self.style_guide_content}\n\n"
+            
+            if custom_style_guide:
+                combined_style_guide += f"## カスタムスタイルガイド（{file_path}）\n\n{custom_style_guide}\n\n"
+                combined_style_guide += "**重要**: カスタムスタイルガイドの指示が基本スタイルガイドと異なる場合は、カスタムスタイルガイドを優先してください。\n\n"
+            
             style_guide_section = f"""
 以下のスタイルガイドに従って翻訳してください：
 
-{self.style_guide_content}
-
----
+{combined_style_guide}---
 
 """
         
@@ -125,16 +155,27 @@ class GeminiTranslator:
         
         return prompt
     
-    def create_conflict_translation_prompt(self, content: str, stage: str) -> str:
+    def create_conflict_translation_prompt(self, content: str, stage: str, file_path: str = "") -> str:
         """2段階コンフリクト翻訳用プロンプト"""
+        # カスタムスタイルガイドを取得
+        custom_style_guide = self.get_custom_style_guide_for_path(file_path)
+        
+        # 基本スタイルガイドとカスタムスタイルガイドを統合
         style_guide_section = ""
-        if self.style_guide_content:
+        if self.style_guide_content or custom_style_guide:
+            combined_style_guide = ""
+            
+            if self.style_guide_content:
+                combined_style_guide += f"## 基本スタイルガイド\n\n{self.style_guide_content}\n\n"
+            
+            if custom_style_guide:
+                combined_style_guide += f"## カスタムスタイルガイド（{file_path}）\n\n{custom_style_guide}\n\n"
+                combined_style_guide += "**重要**: カスタムスタイルガイドの指示が基本スタイルガイドと異なる場合は、カスタムスタイルガイドを優先してください。\n\n"
+            
             style_guide_section = f"""
 以下のスタイルガイドに従って翻訳してください：
 
-{self.style_guide_content}
-
----
+{combined_style_guide}---
 
 """
         
@@ -177,12 +218,12 @@ class GeminiTranslator:
 
 第2段階結果（HEAD削除、新規翻訳内容のみ採用）："""
 
-    def translate_chunk_two_stage(self, content: str, retry_count: int = 3) -> Optional[str]:
+    def translate_chunk_two_stage(self, content: str, file_path: str = "", retry_count: int = 3) -> Optional[str]:
         """2段階でコンフリクト翻訳"""
         print("   Using 2-stage conflict resolution...")
         
         # 第1段階：英文翻訳（マーカー保持）
-        stage1_prompt = self.create_conflict_translation_prompt(content, "translate")
+        stage1_prompt = self.create_conflict_translation_prompt(content, "translate", file_path)
         stage1_result = None
         
         for attempt in range(retry_count):
@@ -202,7 +243,7 @@ class GeminiTranslator:
             return None
         
         # 第2段階：マージ（マーカー削除）
-        stage2_prompt = self.create_conflict_translation_prompt(stage1_result, "merge")
+        stage2_prompt = self.create_conflict_translation_prompt(stage1_result, "merge", file_path)
         
         for attempt in range(retry_count):
             try:
@@ -219,16 +260,16 @@ class GeminiTranslator:
         print("   Stage 2 failed, returning stage 1 result")
         return stage1_result
 
-    def translate_chunk(self, content: str, retry_count: int = 3) -> Optional[str]:
+    def translate_chunk(self, content: str, file_path: str = "", retry_count: int = 3) -> Optional[str]:
         """単一チャンクを翻訳"""
         # コンフリクトマーカーがあるかチェック
         has_conflicts = any(marker in content for marker in ['<<<<<<<', '=======', '>>>>>>>'])
         
         if has_conflicts:
-            return self.translate_chunk_two_stage(content, retry_count)
+            return self.translate_chunk_two_stage(content, file_path, retry_count)
         
         # 通常翻訳
-        prompt = self.create_translation_prompt(content)
+        prompt = self.create_translation_prompt(content, file_path)
         
         for attempt in range(retry_count):
             try:
@@ -273,7 +314,7 @@ class GeminiTranslator:
             translated_chunks = []
             for i, chunk in enumerate(chunks):
                 print(f"   Translating chunk {i + 1}/{len(chunks)}...")
-                translated_chunk = self.translate_chunk(chunk)
+                translated_chunk = self.translate_chunk(chunk, file_path)
                 
                 if translated_chunk is None:
                     print(f"❌ Failed to translate chunk {i + 1}")
