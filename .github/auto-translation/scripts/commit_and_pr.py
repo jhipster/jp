@@ -472,20 +472,20 @@ JSON形式で回答してください。"""
                     summary = {"a": [], "b-1": [], "b-2": [], "c": []}
                 if summary["a"]:
                     body_parts.append(f"#### 🆕 新規文書 ({len(summary['a'])} files)")
-                    for file in summary["a"][:5]:
+                    for file in summary["a"][:100]:
                         upstream_link = self.generate_upstream_link(file, commit_hash) if commit_hash else "#"
                         body_parts.append(f"- `{file}` - [翻訳元を確認]({upstream_link})")
-                    if len(summary["a"]) > 5:
-                        body_parts.append(f"- ... and {len(summary['a']) - 5} more files")
+                    if len(summary["a"]) > 100:
+                        body_parts.append(f"- ... and {len(summary['a']) - 100} more files")
                     body_parts.append("")
                 
                 if summary["b-1"]:
                     body_parts.append(f"#### ✏️ 更新文書 - 衝突なし ({len(summary['b-1'])} files)")
-                    for file in summary["b-1"][:5]:
+                    for file in summary["b-1"][:100]:
                         upstream_link = self.generate_upstream_link(file, commit_hash) if commit_hash else "#"
                         body_parts.append(f"- `{file}` - [翻訳元を確認]({upstream_link})")
-                    if len(summary["b-1"]) > 5:
-                        body_parts.append(f"- ... and {len(summary['b-1']) - 5} more files")
+                    if len(summary["b-1"]) > 100:
+                        body_parts.append(f"- ... and {len(summary['b-1']) - 100} more files")
                     body_parts.append("")
                 
                 if summary["b-2"]:
@@ -493,11 +493,11 @@ JSON形式で回答してください。"""
                     body_parts.append("")
                     body_parts.append("⚠️ これらのファイルには翻訳衝突が含まれていました。手動確認が推奨されます。")
                     body_parts.append("")
-                    for file in summary["b-2"][:5]:
+                    for file in summary["b-2"][:100]:
                         upstream_link = self.generate_upstream_link(file, commit_hash) if commit_hash else "#"
                         body_parts.append(f"- `{file}` - [翻訳元を確認]({upstream_link})")
-                    if len(summary["b-2"]) > 5:
-                        body_parts.append(f"- ... and {len(summary['b-2']) - 5} more files")
+                    if len(summary["b-2"]) > 100:
+                        body_parts.append(f"- ... and {len(summary['b-2']) - 100} more files")
                     body_parts.append("")
                 
                 if summary["c"]:
