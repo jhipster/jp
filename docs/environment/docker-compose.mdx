@@ -7,33 +7,19 @@ last_update:
 
 # <i class="fa fa-music"></i> DockerとDocker Compose
 
-<<<<<<< HEAD
-## 要旨
+## 説明
 
-DockerとDocker Composeの使用は、開発では非常に推奨されており、プロダクション環境でも良い解決策となります。
+開発、テスト、CIスクリプトでは、デフォルトでDocker Composeが使用されます。これは[無効化](#disabling)できます。
 
-1. [説明](#1)
-2. [前提条件](#2)
-3. [アプリケーションのDockerイメージを構築する](#3)
-4. [複数のアプリケーション用のカスタムDocker-Compose設定の生成](#docker-compose-subgen)
-5. [データベースの操作](#4)
-6. [Elasticsearch](#5)
-7. [Sonar](#6)
-7. [Keycloak](#7)
-8. [共通コマンド](#8)
-9. [メモリの調整](#9)
-=======
-Docker Compose is used by default in development, tests and CI scripts, which can be [disabled](#disabling).
->>>>>>> 6126fea6
 
-## Description
+## 説明
 
 _注意:このDocker設定は、生成されたアプリケーションをコンテナイメージ内で実行するために使用されます。これは、JHipsterが提供する[Docker setup](/installation/)とはまったく異なります。これは、コンテナ_内でJHipsterジェネレータを実行するためのものです。_
 
 JHipsterは、次の目的のために、完全なDockerサポートを提供します。
 
 - 開発が容易になります。複雑なマイクロサービスアーキテクチャを使用している場合でも、1つのコマンドで完全なインフラストラクチャを開始できます。
-- Docker Swarmを使用しているユーザであれば、同じDocker Compose設定を使用するため、プロダクション環境に直接デプロイできます。
+- Docker Swarmを使用しているユーザであれば、同じDocker Compose設定を使用するため、本番環境に直接デプロイできます。
 
 Docker Composeの優れた機能の1つは、`docker-compose scale`コマンドを使用してコンテナをスケールできることです。これは、[マイクロサービスアーキテクチャ](#3)でJHipsterを使用する場合に非常に興味深いことです。
 
@@ -68,7 +54,7 @@ NPMのドキュメントでは、NPMパッケージをルートとしてイン�
 
 __手順 2__
 
-  - `docker container exec -u root -it jhipster bash`,
+- `docker container exec -u root -it jhipster bash`,
   - `npm install -g YOUR_PACKAGE`,
   - exitしてから `docker container exec -it jhipster bash` でコンテナにログインします。
 
@@ -135,7 +121,6 @@ jibがキャッシュ内のベースDockerイメージをまだプルしてい�
 - これらのサービスは、Consul（またはJHipsterレジストリ）が起動するまで待機します。これは、`spring.cloud[.consul].config.fail-fast`および`spring.cloud[.consul].config.retry`キーを使用して、`bootstrap-prod.yml`ファイルで設定できます。
 - レジストリーはアプリケーションを構成します。例えば、すべてのサービス間でJWTシークレットトークンを共有します。
 - 各サービスのスケーリングはDocker Composeを使用して行われます。たとえば、`docker-compose scale test-app=4`と入力すると、アプリケーション"test"の4つのインスタンスが実行されます。これらのインスタンスはゲートウェイによって自動的にロードバランシングされ、同じHazelcastクラスタに自動的に参加します（HazelcastがHibernateの第2レベルのキャッシュである場合）。
-
 
 <h2 id="4">データベースの操作</h2>
 
@@ -213,7 +198,6 @@ JHipsterでMSSQL Dockerイメージを使用したい場合は、以下のステ
 - 任意のMSSQLクライアントを使用してデータベースを作成します。
 - アプリケーションを起動します：`docker-compose -f src/main/docker/app.yml up -d <name_of_your_app>-app`
 
-
 ## Elasticsearch
 
 `docker-compose -f src/main/docker/app.yml up` によって検索エンジンが自動的に起動されます。
@@ -221,7 +205,6 @@ JHipsterでMSSQL Dockerイメージを使用したい場合は、以下のステ
 Elasticsearchノードのみを起動し、他のサービスを起動しない場合は、特定のDocker Compose設定を使用します。
 
 - `docker-compose -f src/main/docker/elasticsearch.yml up`
-
 
 ## Sonar
 
@@ -235,7 +218,6 @@ Sonarを実行するためのDocker Compose設定が生成されます。
 - Gradle: `./gradlew sonar`
 
 Sonarのレポートは次のサイトで入手できます：[http://localhost:9000](http://localhost:9000)
-
 
 ## Keycloak
 
@@ -285,15 +267,19 @@ gateway-mysql             0.03%               202.7 MB / 7.966 GB   2.54%       
 
 `docker-compose scale test-app=4`により、アプリケーション"test"の4つのインスタンスを実行します。
 
+
 ### コンテナの停止
 
 `docker-compose -f src/main/docker/app.yml stop`
+
 
 Dockerへの直接の操作もできます。
 
 `docker container stop <container_id>`
 
+
 コンテナを停止しても、コンテナを削除しない限り、データは削除されません。
+
 
 ### コンテナの削除
 
@@ -306,11 +292,13 @@ Dockerへの直接の操作もできます。
 
 コンテナで実行されるアプリケーションのメモリ使用量を最適化するために、`Dockerfile`または`docker-compose.yml`でJavaメモリパラメータを設定できます。
 
+
 ### Dockerfileへのメモリパラメータの追加
 
 環境変数を設定します。
 
 ENV JAVA_OPTS=-Xmx512m -Xms256m
+
 
 ### docker-compose.ymlへのメモリパラメータの追加
 
