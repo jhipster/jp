@@ -612,13 +612,15 @@ JSON形式で回答してください。"""
                 check=True
             )
             
-            # PRを作成
+            # PRを作成（sync-upstream.ymlと同じパターン）
+            repo_name = os.getenv('GITHUB_REPOSITORY', 'jhipster/jp')
             subprocess.run([
                 "gh", "pr", "create",
                 "--title", pr_title,
-                "--body", pr_body,
+                "--base", base_branch,
                 "--head", branch_name,
-                "--base", base_branch
+                "--repo", repo_name,
+                "--body", pr_body
             ], check=True)
             
             print(f"✅ Created pull request: {pr_title} (base: {base_branch})")

@@ -18,9 +18,16 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
+      actions: write
+      checks: write
       contents: write
-      pull-requests: write
+      deployments: write
       issues: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     
     steps:
       - name: Checkout repository
@@ -58,14 +65,10 @@ jobs:
           git remote add upstream https://github.com/jhipster/jhipster.github.io.git || true
           git fetch upstream
       
-      - name: Authenticate GitHub CLI
-        run: echo "${{ secrets.GITHUB_PAT || secrets.GITHUB_TOKEN }}" | gh auth login --with-token
-      
       - name: Run translation pipeline
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GH_TOKEN: ${{ secrets.GITHUB_PAT || secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_PAT || secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BOT_GIT_USER: jhipster-jp-bot
           BOT_GIT_EMAIL: jhipster-jp-bot@users.noreply.github.com
           LANGUAGE_TOOL_ENABLED: true
