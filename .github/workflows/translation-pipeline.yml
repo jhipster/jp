@@ -58,6 +58,9 @@ jobs:
           git remote add upstream https://github.com/jhipster/jhipster.github.io.git || true
           git fetch upstream
       
+      - name: Authenticate GitHub CLI
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+      
       - name: Run translation pipeline
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
