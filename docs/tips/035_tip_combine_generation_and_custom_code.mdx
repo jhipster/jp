@@ -1,5 +1,5 @@
 ---
-title: 生成コードとカスタム・コードの結合
+title: 生成コードとカスタムコードの結合
 slug: /tips/035_tip_combine_generation_and_custom_code.html
 last_update:
   date: 2021-09-09T21:22:00-00:00
@@ -7,35 +7,27 @@ last_update:
 
 __このTipは[@tcharl](https://github.com/tcharl)によって提出されました__
 
-# 生成コードとカスタム・コードの結合
+# 生成コードとカスタムコードの結合
 
-
-_目標:_ Jhipsterは、その強力なドメイン固有言語のおかげで、モデルエンティティの管理に非常に適しています。
-しかし、カスタムコードとジェネレーティブな世界の両方で最高のものを得ることは、常に困難な作業です。
-ここでは、それを実現するために採用できるさまざまなパターンを紹介します。
+_目標:_ JHipsterは、その強力なドメイン固有言語のおかげで、モデルエンティティの管理に非常に適しています。しかし、カスタムコードと生成コードの両方の利点を最大限に活かすことは、常に難しい作業です。ここでは、それを実現するために採用できる様々なパターンを紹介します。
 
 ## パターン1 - 初回のみ生成
 
-このアプローチは最も単純であり、ほとんどのユース・ケースで使用されます。
-これは、エンティティを一度モデリングし、最初のモデルを生成し、この最初のショットの後に必要なものをオーバーライドすることで構成されます。
-ある日再同期したい場合は、いつでも別のブランチで再生成でき、IDEで両方のコードを比較できます。
-しかし、その後のプロセスは常に苦痛であり、大規模なアップグレードには何日もかかる可能性があります。
+このアプローチは最もシンプルで、多くのユースケースで使用できます。エンティティを一度モデリングし、最初のモデルを生成し、その後に必要な部分を上書きするというものです。再同期が必要な場合は、別のブランチで再生成し、IDEで両方のコードを比較できます。しかし、その後のプロセスは常に手間がかかり、大規模なアップグレードには数日かかる可能性があります。
 
 ### 長所
 
- - 好きなようにできます。
+- 自由にカスタマイズできます。
 
 ### 短所
- 
- - JHipsterの新機能の恩恵を受けられないことになります。
 
-## パターン2 - 生成コードとカスタムコードの分割
+- JHipsterの新機能を利用できません。
 
-これは、生成されたクラスを変更するのを避け、カスタム・コードを専用のものとして立てるようにします。
-ここでは、--with-generated-flagのjhipster cliオプションを使用して、生成されたクラスとカスタムクラスを簡単に区別できます。
-最後に、生成されたホームページではなくカスタムホームページにルーティングするために、フロントエンド部分のメインルーターを変更するだけです。
+## パターン2 - 生成コードとカスタムコードの分離
 
-ルータファイルが世代ごとに上書きされるのを避けるために、プロジェクトのルートに`.yo-resolve`ファイルを作成して、yeomanに期待される動作を伝えることができます。
+これは、生成されたクラスを変更せずに、カスタムコードを専用の場所に配置する方法です。`--with-generated-flag`オプションを使用して、生成されたクラスとカスタムクラスを簡単に区別できます。最後に、フロントエンド部分のメインルーターを変更して、生成されたホームページではなくカスタムホームページにルーティングします。
+
+ルータファイルが生成によって上書きされるのを防ぐために、プロジェクトのルートに`.yo-resolve`ファイルを作成し、Yeomanに期待される動作を指定できます。
 
 例：
 ```
@@ -45,23 +37,22 @@ src/main/webapp/app/modules/home/home.tsx skip
 
 ### 長所
 
-- 生成とカスタムコードを簡単に組み合わせることができます。
+- 生成コードとカスタムコードを簡単に組み合わせることができます。
 
 ### 短所
 
 - デッドコードが存在します。
-- モデルとは異なる名前やパッケージを持つカスタムクラスが存在することになります（DDDのベストプラクティスと考えることができますが、それでも）。
+- モデルとは異なる名前やパッケージを持つカスタムクラスが存在することになります（DDDのベストプラクティスと考えることもできますが、それでも）。
 
-## パターン3 - サイド・バイ・サイド
+## パターン3 - サイドバイサイド
 
-ここでの目標は、クラス拡張とBeanの優先順位を使用して、生成されたコードの代わりにカスタム・コードを注入することです。
+ここでは、クラス拡張とBeanの優先順位を使用して、生成されたコードの代わりにカスタムコードを注入することを目指します。
 
-`Customer`jhipsterエンティティの例を見てみましょう。
+`Customer` JHipsterエンティティの例を見てみましょう。
 
 ### リポジトリ
 
-リポジトリレベルでは、jhipsterが生成したリポジトリに`NoRepositoryBean`アノテーションを使用してアノテーションを付け、検出を無効にします。
-次に、カスタムリポジトリクラスを作成します。
+リポジトリレベルでは、JHipsterが生成したリポジトリに`@NoRepositoryBean`アノテーションを付けて検出を無効にします。次に、カスタムリポジトリクラスを作成します。
 ```
 @Repository
 @Primary
@@ -70,16 +61,15 @@ MemberRepositoryPrimary extends MemberRepository
 
 ### サービス
 
-ここでは、ControllerにカスタムBeanを注入できるように、`serviceImpl`オプションを使用します。
-次に、生成されたサービスを単純に拡張し、優先順位を得るためにBeanに`@Primary`というアノテーションを付けることができます。
+ここでは、`serviceImpl`オプションを使用して、コントローラーにカスタムBeanを注入できるようにします。次に、生成されたサービスを拡張し、Beanに`@Primary`アノテーションを付けて優先順位を得ます。
 
-### コントローラ
+### コントローラー
 
-カスタム・エンドポイントには別のAPIプレフィックスを使用します（例えば`/api/v2`）。
+カスタムエンドポイントは、別のAPIプレフィックス（例：`/api/v2`）を使用します。
 
 ### Angular
 
-同じ拡張機能をフロントエンド側にも適用します。その後、`app.module.ts`ファイルでBeanの優先順位を設定します。
+同じ拡張機能をフロントエンド側にも適用し、`app.module.ts`ファイルでBeanの優先順位を設定します。
 ```
 providers: [
 // 別のエントリをキープする
@@ -89,83 +79,79 @@ providers: [
 
 ### 長所
 
-- 生成されたコードの動作をオーバーライドできます。
+- 生成されたコードの動作を上書きできます。
 - カスタムコードの検索が容易です。
-- カスタムコードに対してもJhipsterのベストレイアウトを維持できます。
+- カスタムコードに対してもJHipsterのベストプラクティスに従ったレイアウトを維持できます。
 
 ### 短所
 
-<<<<<<< HEAD
 - ファイルの重複が発生します。
-=======
-- File duplication
 
-## Alternative Side-by-Side Approach
+## 代替的なサイドバイサイドアプローチ
 
-This approach aims to add functionality to an existing JHipster application with minimal changes to the generated code.
+このアプローチは、生成されたコードへの変更を最小限に抑えながら、既存のJHipsterアプリケーションに機能を追加することを目的としています。
 
-### Repository Tier
+### リポジトリ層
 
-Create your repository interface with all custom methods in a separate custom package. This approach ensures that the generated repository code remains untouched, while your custom logic is organized and maintainable.
+カスタムメソッドをすべて含むリポジトリインターフェースを、別のカスタムパッケージに作成します。このアプローチにより、生成されたリポジトリコードは変更されずに維持され、カスタムロジックは整理され、保守しやすくなります。
 
-### Service Tier
+### サービス層
 
-There are three main approaches for adding custom code at this tier:
+この層にカスタムコードを追加する方法は主に3つあります。
 
-Aspect-Oriented Programming (AOP): 
+アスペクト指向プログラミング（AOP）：
 
-AOP allows you to introduce cross-cutting concerns such as logging, security, or transaction management without altering the core business logic. This separation of concerns helps maintain cleaner and more modular code.
+AOPを使用すると、ロギング、セキュリティ、またはトランザクション管理などの横断的関心事を、コアビジネスロジックを変更せずに導入できます。この懸念事項の分離は、よりクリーンでモジュール化されたコードの維持に役立ちます。
 
-Event Listeners: 
+イベントリスナー：
 
-If the new functionality is triggered by specific events in the application (e.g., after saving a Foo entity), you can use Spring's event listener mechanism. This keeps the core logic clean, though it may make the execution flow harder to trace.
+新しい機能がアプリケーション内の特定のイベント（例：Fooエンティティの保存後）によってトリガーされる場合は、Springのイベントリスナーメカニズムを使用できます。これにより、コアロジックはクリーンに保たれますが、実行フローの追跡が難しくなる可能性があります。
 
-Decorator Pattern: 
+デコレータパターン：
 
-To add new methods or modify existing behavior in a controlled manner, the decorator pattern is highly recommended. This pattern involves wrapping the original class with a decorator that provides additional functionality. It is clean, testable, and requires minimal changes to the original client classes, ensuring better maintainability.
+制御された方法で新しいメソッドを追加したり、既存の動作を変更したりするには、デコレータパターンを強くお勧めします。このパターンは、追加の機能を提供するデコレータで元のクラスをラップすることを含みます。クリーンでテスト可能であり、元のクライアントクラスへの変更は最小限に抑えられ、保守性が向上します。
 
-Step 1: Create or extend the existing Interface depending on how your service classes are generated
+ステップ1：サービスクラスの生成方法に応じて、既存のインターフェースを作成するか拡張します。
 ```
 interface IFooService {
     void newFeature();
-    //Existing method declarations
+    //既存のメソッド宣言
    ...
 }
 ```
-Step 2: Extension through Composition
+ステップ2：合成による拡張
 ```
 @Service
 @Qualifier("entended") 
 public class ExtendedFooService implements FooService{
     private final FooService existingFooService;
-    private final ExtendedFooRepository extendedFooRepository; // For new repository functionality
+    private final ExtendedFooRepository extendedFooRepository; // 新しいリポジトリ機能用
    ...
 }
 ```
-Step 3: Add the @Primary to the existing service class and mark the existing service class as an interface implementation in step 1.
+ステップ3：既存のサービスクラスに`@Primary`を追加し、ステップ1で既存のサービスクラスをインターフェースの実装としてマークします。
 
-Step 4: Change the attribute type of the original service client to the interface created in step 1.
+ステップ4：元のサービスクライアントの属性型を、ステップ1で作成したインターフェースに変更します。
 
-You can omit step 1 and adjust related changes in the following steps for a simplified implementation of this approach if you are unlikely to have multiple implementations of a service method or don't expect frequent changes in a service method.  
+サービスメソッドの複数の実装を持つ可能性が低い場合、またはサービスメソッドの頻繁な変更を期待しない場合は、ステップ1を省略し、次のステップで関連する変更を調整して、このアプローチの簡素化された実装を行うことができます。
 
-### Web Tier
+### Web層
 
-Create New Endpoint Controllers.
+新しいエンドポイントコントローラーを作成します。
 ```
 @RestController
 @RequestMapping("/api/extended/foo")
 public class ExtendedFooController {
     private final ExtendedFooService extendedFooService;
-    
-    public ExtendedFooController(ExtendedFooService extendedFooService) {
+
+public ExtendedFooController(ExtendedFooService extendedFooService) {
         this.extendedFooService = extendedFooService;
     }
 
-    // New endpoints
+// 新しいエンドポイント
     @GetMapping("/new-feature")
     public ResponseEntity<?> newFeature() {
-        // Implementation
+        // 実装
     }
 }
 ```
->>>>>>> 6126fea6
