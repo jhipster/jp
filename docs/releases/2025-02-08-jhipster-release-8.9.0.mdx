@@ -1,105 +1,107 @@
+```markdown
 ---
-title: Release 8.9.0
+title: リリース 8.9.0
 slug: /2024/12/23/jhipster-release-8.9.0.html
 displayed_sidebar: docsSidebar
 sidebar_class_name: hidden
 ---
 
-# JHipster release v8.9.0
+# JHipster リリース v8.9.0
 
-This is a minor release for JHipster v8.
+これはJHipster v8のマイナーリリースです。
 
-It includes [361 closed issues and pull requests on the main branch](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.9.0) after the [8.8.0 release](/2024/12/23/jhipster-release-8.8.0.html).
+[8.8.0リリース](/2024/12/23/jhipster-release-8.8.0.html)以降、メインブランチで[361件のクローズ済み課題とプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.9.0)が含まれています。
 
-## What's new?
+## 新機能
 
-* Upgrade to Spring Boot 3.4.2 ([#28539](https://github.com/jhipster/generator-jhipster/pull/28539))
-* Be verbose about Docker Compose requirement ([#28376](https://github.com/jhipster/generator-jhipster/pull/28376))
-* Upgrade to Node 22.13.1 ([#28527](https://github.com/jhipster/generator-jhipster/pull/28527))
-* Upgrade to Gradle 8.12.1 ([#28543](https://github.com/jhipster/generator-jhipster/pull/28543))
-* Add support for plain Time fields ([#28474](https://github.com/jhipster/generator-jhipster/pull/28474))
-* Upgrade to Angular 19.0.6 ([#28442](https://github.com/jhipster/generator-jhipster/pull/28442))
-* [Angular] Fix OAuth2/Keycloak forces HTTPS redirects in development mode ([#28366](https://github.com/jhipster/generator-jhipster/pull/28366))
-* [Angular] Upgrade to Typescript 5.7.3 ([#28502](https://github.com/jhipster/generator-jhipster/pull/28502))
-* [Angular] angular-builders beta to stable version ([#28386](https://github.com/jhipster/generator-jhipster/pull/28386))
-* [Vue] Fix upgrade to Vite 6 ([#28304](https://github.com/jhipster/generator-jhipster/pull/28304))
-* Many clean code improvements
+* Spring Boot 3.4.2へのアップグレード ([#28539](https://github.com/jhipster/generator-jhipster/pull/28539))
+* Docker Composeの必要性について詳細に説明 ([#28376](https://github.com/jhipster/generator-jhipster/pull/28376))
+* Node 22.13.1へのアップグレード ([#28527](https://github.com/jhipster/generator-jhipster/pull/28527))
+* Gradle 8.12.1へのアップグレード ([#28543](https://github.com/jhipster/generator-jhipster/pull/28543))
+* プレーンテキストのTimeフィールドのサポート追加 ([#28474](https://github.com/jhipster/generator-jhipster/pull/28474))
+* Angular 19.0.6へのアップグレード ([#28442](https://github.com/jhipster/generator-jhipster/pull/28442))
+* [Angular] 開発モードでのOAuth2/KeycloakによるHTTPSリダイレクトを強制する問題を修正 ([#28366](https://github.com/jhipster/generator-jhipster/pull/28366))
+* [Angular] Typescript 5.7.3へのアップグレード ([#28502](https://github.com/jhipster/generator-jhipster/pull/28502))
+* [Angular] angular-buildersのベータ版から安定版へのアップグレード ([#28386](https://github.com/jhipster/generator-jhipster/pull/28386))
+* [Vue] Vite 6へのアップグレードを修正 ([#28304](https://github.com/jhipster/generator-jhipster/pull/28304))
+* 多くのクリーンコードの改善
 
-## Closed tickets and merged pull requests
+## クローズ済みのチケットとマージ済みのプルリクエスト
 
-See the [8.9.0 release notes on GitHub](https://github.com/jhipster/generator-jhipster/releases/tag/v8.9.0) for more details.
+詳細は、GitHubの[8.9.0リリースノート](https://github.com/jhipster/generator-jhipster/releases/tag/v8.9.0)をご覧ください。
 
-As always, **[you can view all closed tickets and merged pull requests](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.9.0)**.
+いつものように、[すべてのクローズ済みのチケットとマージ済みのプルリクエストはこちらで確認できます](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:8.9.0)。
 
-## How to install
+## インストール方法
 
-To install JHipster v8.9.0:
+JHipster v8.9.0をインストールするには:
 
 ```
 npm install -g generator-jhipster@8.9.0
 ```
 
-It is also available using the JHipster Docker image, as it is automatically built from our source code.
+ソースコードから自動的にビルドされるため、JHipster Dockerイメージでも利用可能です。
 
 - [JHipster Online](https://start.jhipster.tech)
 - [JHipster Devbox](https://github.com/jhipster/jhipster-devbox)
 
-## How to upgrade
+## アップグレード方法
 
-**Automatic upgrade**
+**自動アップグレード**
 
-For an automatic upgrade, use the [JHipster upgrade sub-generator](/upgrading-an-application/) on an existing application:
+自動アップグレードには、既存のアプリケーションで[JHipsterアップグレードサブジェネレータ](/upgrading-an-application/)を使用します。
 
-Upgrade your version of JHipster:
+JHipsterのバージョンをアップグレードします:
 
 ```
 npm update -g generator-jhipster
 ```
 
-And then run the upgrade sub-generator:
+そして、アップグレードサブジェネレータを実行します:
 
 ```
 jhipster upgrade
 ```
 
-You can also use the [migrate blueprint](https://github.com/jhipster/generator-jhipster-migrate) for more advanced upgrade features.
+より高度なアップグレード機能には、[migrateブループリント](https://github.com/jhipster/generator-jhipster-migrate)を使用することもできます。
 
 ```
 npm i -g generator-jhipster-migrate
 jhipster-migrate
 ```
 
-**Manual upgrades**
+**手動アップグレード**
 
-For a manual upgrade, first upgrade your version of JHipster with:
+手動アップグレードの場合、まず以下のコマンドでJHipsterのバージョンをアップグレードします。
 
 ```
 npm update -g generator-jhipster
 ```
 
-If you have an existing project, it will still use the JHipster version with which it was generated.
-To upgrade your project, you must first delete its `node_modules` folder and then run:
+既存のプロジェクトがある場合、生成されたときのJHipsterバージョンを引き続き使用します。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、以下を実行する必要があります。
 
 ```
 jhipster
 ```
 
-Since JHipster 8.0, this command will update your project and all its entities.
+JHipster 8.0以降、このコマンドはプロジェクトとそのすべてのエンティティを更新します。
 
-You can also update your entities one-by-one by running again the entity sub-generator, for example if your entity is named _Foo_, use:
+エンティティサブジェネレータを再度実行することで、エンティティを1つずつ更新することもできます。例えば、エンティティ名が_Foo_の場合は、以下を使用します。
 
 ```
 jhipster entity Foo --single-entity
 ```
 
-## Help and bugs
+## ヘルプとバグ
 
-If you find any issue with this release, don't hesitate to:
+このリリースに問題が見つかった場合は、お気軽に:
 
-- Add a bug to our [bug tracker](https://github.com/jhipster/generator-jhipster/issues?state=open)
-- Post a question on [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)
-- Create a new discussion on [GitHub](https://github.com/jhipster/generator-jhipster/discussions)
+- 私たちの[バグトラッカー](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加してください
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)に質問を投稿してください
+- [GitHub](https://github.com/jhipster/generator-jhipster/discussions)で新しいディスカッションを作成してください
 
-If the issue you have is an urgent bug or security issue, please:
+緊急のバグやセキュリティ問題が発生した場合は、以下の方法で連絡してください。
 
-- Contact [@jhipster](https://twitter.com/jhipster) on Twitter
+- Twitterで[@jhipster](https://twitter.com/jhipster)に連絡してください
+```

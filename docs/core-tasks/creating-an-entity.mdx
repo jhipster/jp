@@ -8,175 +8,144 @@ last_update:
 _**新しいJHipsterアプリケーションの作成については、[ビデオチュートリアル](/video-tutorial/)を参照してください。**_
 
 :::warning
-
-JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`を実行する必要があります。詳細については、[開発でのJHipsterの使用](/development/)ページにアクセスしてください。
-
+JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`を実行する必要があります。詳細については、[開発でのJHipsterの使用](/development/)ページをご覧ください。
 :::
-
 
 ## はじめに
 
-アプリケーションを作成したら、_エンティティ_ を作成します。たとえば、_著者_ エンティティと _本_ エンティティを作成するとします。エンティティごとに、次の要素が必要です。
+アプリケーションを作成したら、エンティティを作成します。例えば、「著者」エンティティと「本」エンティティを作成するとします。エンティティごとに、次の要素が必要です。
 
-*   データベーステーブル
-*   Liquibaseチェンジセット
-*   JPAエンティティ
-*   Spring Data JPAリポジトリ
-*   基本的なCRUD操作を備えたSpring MVC RESTコントローラ
-*   Angularルータ、コンポーネント、サービス
-*   HTMLビュー
-*   すべてが期待どおりに動作することを検証するための統合テスト
-*   すべてがスムーズに動作するかどうかを確認するためのパフォーマンステスト
+* データベーステーブル
+* Liquibaseチェンジセット
+* JPAエンティティ
+* Spring Data JPAリポジトリ
+* 基本的なCRUD操作を備えたSpring MVC RESTコントローラ
+* Angularルータ、コンポーネント、サービス
+* HTMLビュー
+* すべてが期待通りに動作することを検証するための統合テスト
+* すべてがスムーズに動作するかどうかを確認するためのパフォーマンステスト
 
 複数のエンティティがある場合は、エンティティ間にリレーションシップを設定する必要があります。そのためには、次の要素が必要です。
 
-*   データベース外部キー
-*   このリレーションシップを管理するための特定のJavaScriptおよびHTMLコード
+* データベース外部キー
+* このリレーションシップを管理するための特定のJavaScriptおよびHTMLコード
 
-"エンティティ"サブジェネレータは、必要なファイルをすべて作成し、エンティティごとにCRUDフロントエンドを提供します（[Angularプロジェクトの構成](/using-angular/)および[Reactプロジェクトの構成](/using-react/)を参照）。サブジェネレータは、`jhipster entity <entityName> --[options]`を実行することで呼び出すことができます。これらのオプションの参照は、`jhipster entity--help`と入力することで見つけることができます。
+"エンティティ"サブジェネレータは、必要なファイルをすべて作成し、エンティティごとにCRUDフロントエンドを提供します（[Angularプロジェクトの構成](/using-angular/)および[Reactプロジェクトの構成](/using-react/)を参照）。サブジェネレータは、`jhipster entity <entityName> --[options]`を実行することで呼び出すことができます。これらのオプションの参照は、`jhipster entity --help`と入力することで確認できます。
 
 サポートされているオプションは次のとおりです。
 
-*   `--table-name <table_name>` - デフォルトでは、JHipsterはエンティティ名に基づいてテーブル名を生成します。別のテーブル名が必要な場合は、このオプションを渡すことで生成できます
-*   `--angular-suffix <suffix>` - すべてのAngularルートにカスタム接尾辞を付けたい場合は、このオプションを使用してそれを渡すことができます
-*   `--client-root-folder <folder-name>` - クライアント側のエンティティにルートフォルダ名を使用します。デフォルトでは、モノリスの場合は空で、ゲートウェイの場合はマイクロサービスの名前です
-*   `--regenerate` - 何も質問せずに既存のエンティティを再生成します
-*   `--skip-server` - サーバ側のコードをスキップし、クライアント側のコードのみを生成します
-*   `--skip-client` - クライアント側のコードをスキップし、サーバ側のコードのみを生成します
-*   `--skip-db-changelog` - データベース変更ログの生成をスキップします（SQLデータベースにはLiquibaseを使用します）
-*   `--db` - サーバ側の生成をスキップする場合にデータベースを指定します。それ以外の場合の影響はありません
+* `--table-name <table_name>` - デフォルトでは、JHipsterはエンティティ名に基づいてテーブル名を生成します。別のテーブル名が必要な場合は、このオプションを渡すことで生成できます。
+* `--angular-suffix <suffix>` - すべてのAngularルートにカスタム接尾辞を付けたい場合は、このオプションを使用してそれを渡すことができます。
+* `--client-root-folder <folder-name>` - クライアント側のエンティティにルートフォルダ名を使用します。デフォルトでは、モノリスの場合は空で、ゲートウェイの場合はマイクロサービスの名前です。
+* `--regenerate` - 何も質問せずに既存のエンティティを再生成します。
+* `--skip-server` - サーバ側のコードをスキップし、クライアント側のコードのみを生成します。
+* `--skip-client` - クライアント側のコードをスキップし、サーバ側のコードのみを生成します。
+* `--skip-db-changelog` - データベース変更ログの生成をスキップします（SQLデータベースにはLiquibaseを使用します）。
+* `--db` - サーバ側の生成をスキップする場合にデータベースを指定します。それ以外の場合の影響はありません。
 
 :::warning
-
 エンティティに短い名前を付けないでください（<a href="https://github.com/jhipster/generator-jhipster/issues/8446" target="_blank" rel="noopener">このチケット</a>を参照）。
-
 :::
-
 
 ## JHipster UMLとJDL Studio
 
-このページでは、標準のコマンドライン・インタフェースを使用してJHipsterでエンティティを作成する方法について説明します。多数のエンティティを作成する場合は、グラフィカル・ツールを使用することをお薦めします。
+このページでは、標準のコマンドライン・インタフェースを使用してJHipsterでエンティティを作成する方法について説明します。多数のエンティティを作成する場合は、グラフィカルツールを使用することをお勧めします。
 
 この場合、次の2つのオプションを使用できます。
 
-*   [JHipster UML](/jhipster-uml/)：UMLエディタを使用できます。
-*   [JDL Studio](https://start.jhipster.tech/jdl-studio/)：ドメイン固有の言語[JDL](/jdl/intro)を使用してエンティティとリレーションシップを作成するためのオンライン・ツールです。
+* [JHipster UML](/jhipster-uml/)：UMLエディタを使用できます。
+* [JDL Studio](https://start.jhipster.tech/jdl-studio/)：ドメイン固有の言語[JDL](/jdl/intro)を使用してエンティティとリレーションシップを作成するためのオンラインツールです。
 
 JDL Studioを使用した場合は以下の通りです。
 
-*   `jhipster jdl your-jdl-file.jh`を実行することにより、`jdl`サブジェネレータを使用してJDLファイルからエンティティを生成できます。
+* `jhipster jdl your-jdl-file.jh`を実行することにより、`jdl`サブジェネレータを使用してJDLファイルからエンティティを生成できます。
 
-    * JDLのインポート中にエンティティを再生成しない場合は、`--json-only`フラグを使用してエンティティ作成部分をスキップし、`.jhipster`フォルダにjsonファイルのみを作成できます。
+* JDLのインポート中にエンティティを再生成しない場合は、`--json-only`フラグを使用してエンティティ作成部分をスキップし、`.jhipster`フォルダにJSONファイルのみを作成できます。
 
-    ```shell
-    jhipster jdl ./my-jdl-file.jdl --json-only
-    ```
+```shell
+jhipster jdl ./my-jdl-file.jdl --json-only
+```
 
-    * デフォルトでは、`jdl`は変更されたエンティティのみを再生成します。すべてのエンティティを再生成したい場合は、`--force`フラグを渡してください。これにより、エンティティファイルに対するローカルの変更がすべて上書きされることに注意してください。
+* デフォルトでは、`jdl`は変更されたエンティティのみを再生成します。すべてのエンティティを再生成したい場合は、`--force`フラグを渡してください。これにより、エンティティファイルに対するローカルの変更がすべて上書きされることに注意してください。
 
-    ```shell
-    jhipster jdl ./my-jdl-file.jdl --force
-    ```
+```shell
+jhipster jdl ./my-jdl-file.jdl --force
+```
 
-*  `jdl`サブジェネレータの代わりにJHipster UMLを使用したい場合は、`npm install -g jhipster-uml`を実行してインストールしてから、`jhipster-uml yourFileName.jh`を実行する必要があります。
-
+* `jdl`サブジェネレータの代わりにJHipster UMLを使用したい場合は、`npm install -g jhipster-uml`を実行してインストールしてから、`jhipster-uml yourFileName.jh`を実行する必要があります。
 
 ## エンティティのフィールド
 
-エンティティごとに、必要な数のフィールドを追加できます。フィールド名とその型を入力する必要があり、JHipsterはAngular HTMLビューからLiquibase changelogまで、必要なすべてのコードと構成を生成します。
+エンティティごとに、必要な数のフィールドを追加できます。フィールド名とその型を入力する必要があり、JHipsterはAngular HTMLビューからLiquibase changelogまで、必要なすべてのコードと設定を生成します。
 
-これらのフィールドには、使用しているテクノロジで予約されているキーワードを含めることはできません。たとえば、MySQLを使用している場合は、次のようになります。
+これらのフィールドには、使用しているテクノロジで予約されているキーワードを含めることはできません。例えば、MySQLを使用している場合は、次のようになります。
 
-*   Javaの予約キーワードは使用できません（コードがコンパイルされません）
-*   MySQLの予約キーワードは使用できません（データベーススキーマの更新が失敗します）
-
+* Javaの予約キーワードは使用できません（コードがコンパイルされません）。
+* MySQLの予約キーワードは使用できません（データベーススキーマの更新が失敗します）。
 
 ## フィールドの型
 
 JHipsterは多くのフィールドタイプをサポートしています。このサポートはデータベースバックエンドに依存するため、Javaの型を使用してそれらを記述します。Javaの`String`はOracleとCassandraでは格納方法が異なります。正しいデータベースアクセスコードを生成することは、JHipsterの強みの1つです。
 
-<<<<<<< HEAD
-*   `String`：JavaのString型です。デフォルトのサイズは基盤となるバックエンドに依存します（JPAを使用している場合、デフォルトでは255です）が、検証ルールを使用して変更できます（たとえば、`max`サイズを1024に設定します）。
-*   `Integer`：JavaのInteger型です。
-*   `Long`：JavaのLong型です。
-*   `Float`：JavaのFloat型です。
-*   `Double`：JavaのDouble型です。
-*   `BigDecimal`：[java.math.BigDecimal](https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html)です。正確な数学的計算が必要な場合に使用されます（財務操作によく使用されます）。
-*   `LocalDate`：[java.time.LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html)です。Javaで日付を正しく管理するために使用されます。
-*   `Instant`：[java.time.Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html)です。タイムライン上の瞬間的なポイントであるタイムスタンプを表すために使用されます。
-*   `ZonedDateTime`：[java.time.ZonedDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html)です。特定のタイムゾーン（通常はカレンダーの予定）のローカル日時を表すために使用されます。タイムゾーンはRESTと永続化層のいずれもサポートされていないので、代わりに`Instant`を使用するべきであることに注意してください。
-*   `Duration`：[java.time.Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html)です。時間の量を表すために使用されます。
-*   `UUID`：[java.util.UUID](https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html)です。
-*   `Boolean`：JavaのBoolean型です。
-*   `Enumeration`：JavaのEnumeration型です。オブジェクトこのタイプを選択すると、サブジェネレータは列挙に必要な値を尋ね、それらを格納するための特定の`enum`クラスを作成します。
-*   `Blob`：バイナリデータを格納するために使用されるBlobオブジェクトです。このタイプを選択すると、サブジェネレータは汎用バイナリデータ、イメージオブジェクト、またはCLOB（ロングテキスト）を格納するかどうかを確認します。イメージは特にAngular側で処理されるため、エンドユーザに表示できます。
-=======
-* `String`: A Java String. Its default size depends on the underlying backend (if you use JPA, it's 255 by default), but you can change it using the validation rules (putting a `max` size of 1024, for example).
-* `Integer`: A Java Integer.
-* `Long`: A Java Long.
-* `Float`: A Java Float.
-* `Double`: A Java Double.
-* `BigDecimal`: A [java.math.BigDecimal](https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html) object, used when you want exact mathematic calculations (often used for financial operations).
-* `LocalDate`: A [java.time.LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html) object, used to correctly manage dates in Java.
-* `Instant`: A [java.time.Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html) object, used to represent a timestamp, an instantaneous point on the time-line.
-* `ZonedDateTime`: A [java.time.ZonedDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object, used to represent a local date-time in a given timezone (typically a calendar appointment). Note that time zones are neither supported by the REST nor by the persistence layers so you should most probably use `Instant` instead.
-* `Duration`: A [java.time.Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html) object, used to represent an amount of time.
-* `LocalTime`: A [java.time.LocalTime](https://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html) object, used to represent a local time without timezone. Can be used to define business hours for example.
-* `UUID`: A [java.util.UUID](https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html).
-* `Boolean`: A Java Boolean.
-* `Enumeration`: A Java Enumeration object. When this type is selected, the sub-generator will ask you what values you want in your enumeration, and it will create a specific `enum` class to store them.
-* `Blob`: A Blob object, used to store some binary data. When this type is selected, the sub-generator will ask you if you want to store generic binary data, an image object, or a CLOB (long text). Images will be handled specifically on the Angular side, so they can be displayed to the end-user.
->>>>>>> 6126fea6
+* `String`: Javaの`String`型です。デフォルトのサイズは基盤となるバックエンドに依存します（JPAを使用している場合、デフォルトでは255です）が、バリデーションルールを使用して変更できます（例えば、`max`サイズを1024に設定します）。
+* `Integer`: Javaの`Integer`型です。
+* `Long`: Javaの`Long`型です。
+* `Float`: Javaの`Float`型です。
+* `Double`: Javaの`Double`型です。
+* `BigDecimal`: [java.math.BigDecimal](https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html)オブジェクトです。正確な数学的計算が必要な場合に使用します（財務操作によく使用されます）。
+* `LocalDate`: [java.time.LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html)オブジェクトです。Javaで日付を正しく管理するために使用します。
+* `Instant`: [java.time.Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html)オブジェクトです。タイムライン上の瞬間的なポイントであるタイムスタンプを表すために使用します。
+* `ZonedDateTime`: [java.time.ZonedDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html)オブジェクトです。特定のタイムゾーン（通常はカレンダーの予定）のローカル日時を表すために使用します。タイムゾーンはRESTと永続化層のいずれもサポートされていないので、代わりに`Instant`を使用するべきであることに注意してください。
+* `Duration`: [java.time.Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html)オブジェクトです。時間の量を表すために使用します。
+* `LocalTime`: [java.time.LocalTime](https://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html)オブジェクトです。タイムゾーンを含まないローカル時刻を表すために使用します。例えば、営業時間の定義に使用できます。
+* `UUID`: [java.util.UUID](https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html)です。
+* `Boolean`: Javaの`Boolean`型です。
+* `Enumeration`: Javaの`Enumeration`型です。このタイプを選択すると、サブジェネレータは列挙に必要な値を尋ね、それらを格納するための特定の`enum`クラスを作成します。
+* `Blob`: バイナリデータを格納するために使用される`Blob`オブジェクトです。このタイプを選択すると、サブジェネレータは汎用バイナリデータ、イメージオブジェクト、またはCLOB（ロングテキスト）を格納するかどうかを確認します。イメージは特にAngular側で処理されるため、エンドユーザに表示できます。
 
+## バリデーション
 
-## 検証
+バリデーションはフィールドごとに設定できます。使用できるバリデーションのオプションは、フィールドの種類によって異なります。
 
-検証はフィールドごとに設定できます。使用できる検証のオプションは、フィールドの種類によって異なります。
+バリデーションは以下の要素に対して自動的に生成されます。
 
-検証は以下の要素に対して自動的に生成されます。
+* Angular、React、またはVueバリデーションメカニズムを使用したHTMLビュー
+* [Bean Validation](http://beanvalidation.org/)を用いたJavaのドメインオブジェクト
 
-*   Angular、React、またはVue検証メカニズムを使用したHTMLビュー
-*   [Bean Validation](http://beanvalidation.org/)を用いたJavaのドメインオブジェクト
+Beanバリデーションは、ドメインオブジェクトが以下の場所で使用されるときに、ドメインオブジェクトを自動的に検証するために使用されます。
 
-Bean検証は、ドメインオブジェクトが以下の場所で使用されるときに、ドメインオブジェクトを自動的に検証するために使用されます。
+* Spring MVC RESTコントローラ（`@Valid`アノテーションを使用）
+* Hibernate/JPA（エンティティは保存される前に自動的に検証されます）
 
-*   Spring MVC RESTコントローラ（`@Valid`アノテーションを使用）
-*   Hibernate/JPA（エンティティは保存される前に自動的に検証されます）
+バリデーション情報は、より正確なデータベース列のメタデータを生成するためにも使用されます。
 
-検証情報は、より正確なデータベース列のメタデータを生成するためにも使用されます。
+* 必須フィールドにはNULL入力不可のマークが付けられます。
+* 固有のフィールドでは、固有の制約が作成されます。
+* 最大長のフィールドは、列の長さが同じになります。
 
-*   必須フィールドにはNULL入力不可のマークが付けられます。
-*   固有のフィールドでは、固有の制約が作成されます。
-*   最大長のフィールドは、列の長さが同じになります。
+バリデーションにはいくつかの制限があります。
 
-検証にはいくつかの制限があります。
-
-*   Angular、React、Bean Validationのすべての検証オプションをサポートしているわけではありません。クライアントAPIとサーバAPIの両方に共通するもののみをサポートしています。
-*   正規表現パターンはJavaScriptとJavaでは同じように動作しないため、正規表現パターンを設定する場合は、生成されたパターンの微調整が必要な場合があります。
-*   JHipsterは、検証ルールを知らずに汎用エンティティに対して機能するユニット・テストを生成します。そのため、生成されたテストが検証ルールに合格しない可能性があります。その場合は、ユニット・テストで使用されるサンプル値を検証ルールに合格するよう更新する必要があります。
-
+* Angular、React、Bean Validationのすべてのバリデーションオプションをサポートしているわけではありません。クライアントAPIとサーバAPIの両方に共通するもののみをサポートしています。
+* 正規表現パターンはJavaScriptとJavaでは同じように動作しないため、正規表現パターンを設定する場合は、生成されたパターンの微調整が必要な場合があります。
+* JHipsterは、バリデーションルールを知らずに汎用エンティティに対して機能するユニットテストを生成します。そのため、生成されたテストがバリデーションルールに合格しない可能性があります。その場合は、ユニットテストで使用されるサンプル値をバリデーションルールに合格するよう更新する必要があります。
 
 ## エンティティのリレーションシップ
 
-エンティティのリレーションシップは、SQLデータベースでのみ使用できます。これはかなり複雑な主題であり、[リレーションシップの管理](/managing-relationships/)という独自のドキュメント・ページがあります。
+エンティティのリレーションシップは、SQLデータベースでのみ使用できます。これはかなり複雑な主題であり、[リレーションシップの管理](/managing-relationships/)という独自のドキュメントページがあります。
 
+## ビジネスロジック用に別のサービスクラスを生成する
 
-## ビジネス・ロジック用に別のサービス・クラスを生成する
-
-独立したサービスクラスを持つことで、Spring RESTコントローラを直接使用する場合と比較して、より複雑なロジックを持つことができます。サービスレイヤ（インタフェースの有無にかかわらず）を持つことでDTO（次のセクションを参照してください）を使用できるようになります。
+独立したサービスクラスを持つことで、Spring RESTコントローラを直接使用する場合と比較して、より複雑なロジックを持つことができます。サービスレイヤ（インタフェースの有無にかかわらず）を持つことでDTO（次のセクションを参照）を使用できるようになります。
 
 これは、Springサービスサブジェネレータを使用するのと同じロジックであるため、詳細については参照先のドキュメントを読むことをお勧めします。
 
+## データトランスファーオブジェクト（DTO）
 
-## データ・トランスファー・オブジェクト（DTO）
-
-デフォルトでは、JHipsterエンティティはDTOを使用しませんが、サービス・レイヤーを使用する場合はオプションとして使用できます（前のセクションを参照）。ドキュメントは[DTOを使用する](/using-dtos/)を参照してください。
-
+デフォルトでは、JHipsterエンティティはDTOを使用しませんが、サービスレイヤを使用する場合はオプションとして使用できます（前のセクションを参照）。ドキュメントは[DTOを使用する](/using-dtos/)を参照してください。
 
 ## フィルタリング
 
-オプションとして、SQLデータベースに格納されたエンティティは、JPAを使用してフィルタ処理できます。ドキュメント[エンティティのフィルタ処理](/entities-filtering/)を参照してください。
-
+オプションとして、SQLデータベースに格納されたエンティティは、JPAを使用してフィルタ処理できます。ドキュメント[エンティティのフィルタリング](/entities-filtering/)を参照してください。
 
 ## ページネーション
 
@@ -186,48 +155,42 @@ Bean検証は、ドメインオブジェクトが以下の場所で使用され�
 
 エンティティが生成されると、JHipsterは4つのページネーションのオプションを提供します。
 
-*    ページネーションなし（この場合、バックエンドのページネーション実装はされません）
-*    [Bootstrapページネーションコンポーネント](https://getbootstrap.com/docs/4.3/components/pagination/)に基づく完全なページネーションシステム
-*    [無限スクロールディレクティブ](http://sroze.github.io/ngInfiniteScroll/)に基づく無限にスクロールするシステム
-
+* ページネーションなし（この場合、バックエンドのページネーション実装はされません）
+* [Bootstrapページネーションコンポーネント](https://getbootstrap.com/docs/4.3/components/pagination/)に基づく完全なページネーションシステム
+* [無限スクロールディレクティブ](http://sroze.github.io/ngInfiniteScroll/)に基づく無限にスクロールするシステム
 
 ## 既存のエンティティの更新
 
 エンティティの設定は、`.jhipster`ディレクトリ内の特定の`.json`ファイルに保存されます。そのため、既存のエンティティ名を使用してサブジェネレータを再度実行すると、エンティティを更新または再生成できます。
 
-既存のエンティティに対してエンティティサブジェネレータを実行すると、「エンティティを更新しますか？　これにより、このエンティティの既存のファイルが置き換えられ、すべてのカスタムコードが上書きされます（Do you want to update the entity? This will replace the existing files for this entity, all your custom code will be overwritten）」というメッセージが表示され、次のオプションが表示されます。
+既存のエンティティに対してエンティティサブジェネレータを実行すると、「エンティティを更新しますか？これにより、このエンティティの既存のファイルが置き換えられ、すべてのカスタムコードが上書きされます」というメッセージが表示され、次のオプションが表示されます。
 
-*   `はい、エンティティを再生成します（Yes, re generate the entity）` - これにより、エンティティが再生成されます。ヒント：これは、サブジェネレータの実行時に`--regenerate`フラグを渡すことによって強制できます。
-*   `はい、フィールドとリレーションシップをさらに追加します（Yes, add more fields and relationships）` - これにより、フィールドとリレーションシップをさらに追加するための質問が表示されます。
-*   `はい、フィールドとリレーションシップを削除します（Yes, remove fields and relationships）` - 既存のフィールドとリレーションシップをエンティティから削除するかどうかを確認するメッセージが表示されます。
-*   `いいえ、終了します（No, exit）` - 何も変更せずにサブジェネレータを終了します。
+* `はい、エンティティを再生成します` - これにより、エンティティが再生成されます。ヒント：これは、サブジェネレータの実行時に`--regenerate`フラグを渡すことによって強制できます。
+* `はい、フィールドとリレーションシップをさらに追加します` - これにより、フィールドとリレーションシップをさらに追加するための質問が表示されます。
+* `はい、フィールドとリレーションシップを削除します` - 既存のフィールドとリレーションシップをエンティティから削除するかどうかを確認するメッセージが表示されます。
+* `いいえ、終了します` - 何も変更せずにサブジェネレータを終了します。
 
 以下のような理由がある場合に、エンティティを更新することになるでしょう。
 
-*   既存のエンティティに対してフィールドとリレーションシップを追加または削除したい
-*   エンティティのコードを元の状態にリセットしたい
-*   JHipsterを更新し、新しいテンプレートを使用してエンティティを生成したい   
-*   `.json`設定ファイルを変更して（このフォーマットはジェネレーターが尋ねる質問に非常に近いので、それほど複雑ではありません）、新しいバージョンのエンティティーを作成する
-*   既存のエンティティに類似している新しいエンティティが必要のため、`.json`ファイルをコピー/ペーストした
+* 既存のエンティティに対してフィールドとリレーションシップを追加または削除したい
+* エンティティのコードを元の状態にリセットしたい
+* JHipsterを更新し、新しいテンプレートを使用してエンティティを生成したい
+* `.json`設定ファイルを編集して（このフォーマットはジェネレーターが尋ねる質問に非常に近いので、それほど複雑ではありません）、新しいバージョンのエンティティを作成する
+* 既存のエンティティに類似している新しいエンティティが必要なため、`.json`ファイルをコピー/ペーストした
 
 :::tip
-
 すべてのエンティティを一度に再生成するには、次のコマンドを使用します（ファイルが変更されたときに質問を表示するには、`--force`を削除します）。
-
 :::
 
-*   Linux & Mac: ``for f in `ls .jhipster`; do jhipster entity ${f%.*} --force ; done``
-*   Windows: `for %f in (.jhipster/*) do jhipster entity %~nf --force`
-
+* Linux & Mac: ``for f in `ls .jhipster`; do jhipster entity ${f%.*} --force ; done``
+* Windows: `for %f in (.jhipster/*) do jhipster entity %~nf --force`
 
 ## チュートリアル
 
 これは、1対多のリレーションシップを持つ2つのエンティティとして「著者（Author）と本（Book）」の作成に関する簡単なチュートリアルです。
 
 :::warning
-
-JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`を実行する必要があります。詳細については、[開発でのJHipsterの使用](/development/)ページにアクセスしてください。
-
+JavaScript/TypeScriptコードの「ライブリロード」を行いたい場合は、`npm start`を実行する必要があります。詳細については、[開発でのJHipsterの使用](/development/)ページをご覧ください。
 :::
 
 ### 「著者」エンティティの生成
@@ -238,12 +201,12 @@ JavaScript/TypeScriptコードの「ライブリロード」を行いたい場�
 
 このエンティティのフィールドに関する次の質問に回答します。著者については以下です。
 
-*   String型の"name"
-*   LocalDate型の"birthDate"
+* String型の"name"
+* LocalDate型の"birthDate"
 
 次に、リレーションシップに関する質問に回答します。著者については以下です。
 
-*   "book"エンティティ（まだ存在しない）との1対多のリレーションシップ
+* "book"エンティティ（まだ存在しない）との1対多のリレーションシップ
 
 ### 「本」エンティティの生成
 
@@ -251,15 +214,15 @@ JavaScript/TypeScriptコードの「ライブリロード」を行いたい場�
 
 このエンティティのフィールドに関する次の質問に回答します。本については以下です。
 
-*   "String"型の"title"
-*   "String"型の"description"
-*   "LocalDate"型の"publicationDate"
-*   "BigDecimal"型の"price"
+* "String"型の"title"
+* "String"型の"description"
+* "LocalDate"型の"publicationDate"
+* "BigDecimal"型の"price"
 
 次に、リレーションシップに関する質問に回答します。本については以下です。
 
-*   "author"エンティティとの間に多対1のリレーションシップがある
-*   このリレーションシップでは、表示される"name"フィールド（著者エンティティから）を使用する
+* "author"エンティティとの間に多対1のリレーションシップがある
+* このリレーションシップでは、表示される"name"フィールド（著者エンティティから）を使用する
 
 ### 生成されたコードをチェック
 

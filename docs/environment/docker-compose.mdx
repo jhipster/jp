@@ -7,33 +7,18 @@ last_update:
 
 # <i class="fa fa-music"></i> DockerとDocker Compose
 
-<<<<<<< HEAD
-## 要旨
+## 説明
 
-DockerとDocker Composeの使用は、開発では非常に推奨されており、プロダクション環境でも良い解決策となります。
+開発、テスト、CIスクリプトでは、デフォルトでDocker Composeが使用されます。これは、[無効化](#disabling)できます。
 
-1. [説明](#1)
-2. [前提条件](#2)
-3. [アプリケーションのDockerイメージを構築する](#3)
-4. [複数のアプリケーション用のカスタムDocker-Compose設定の生成](#docker-compose-subgen)
-5. [データベースの操作](#4)
-6. [Elasticsearch](#5)
-7. [Sonar](#6)
-7. [Keycloak](#7)
-8. [共通コマンド](#8)
-9. [メモリの調整](#9)
-=======
-Docker Compose is used by default in development, tests and CI scripts, which can be [disabled](#disabling).
->>>>>>> 6126fea6
+## 説明
 
-## Description
-
-_注意:このDocker設定は、生成されたアプリケーションをコンテナイメージ内で実行するために使用されます。これは、JHipsterが提供する[Docker setup](/installation/)とはまったく異なります。これは、コンテナ_内でJHipsterジェネレータを実行するためのものです。_
+_注記:このDocker設定は、生成されたアプリケーションをコンテナイメージ内で実行するために使用されます。これは、JHipsterが提供する[Docker setup](/installation/)とはまったく異なります。これは、コンテナ_内でJHipsterジェネレータを実行するためのものです。_
 
 JHipsterは、次の目的のために、完全なDockerサポートを提供します。
 
 - 開発が容易になります。複雑なマイクロサービスアーキテクチャを使用している場合でも、1つのコマンドで完全なインフラストラクチャを開始できます。
-- Docker Swarmを使用しているユーザであれば、同じDocker Compose設定を使用するため、プロダクション環境に直接デプロイできます。
+- Docker Swarmを使用しているユーザーであれば、同じDocker Compose設定を使用するため、本番環境に直接デプロイできます。
 
 Docker Composeの優れた機能の1つは、`docker-compose scale`コマンドを使用してコンテナをスケールできることです。これは、[マイクロサービスアーキテクチャ](#3)でJHipsterを使用する場合に非常に興味深いことです。
 
@@ -48,16 +33,12 @@ DockerとDocker Composeをインストールする必要があります。
 
 Docker for MacとDocker for Windowsをダウンロードするには、Dockerストアのアカウントを作成する必要があります。今回はこれを回避します。
 
-:::tip
-
+:::ヒント
 WindowsとMac OS Xにおいては、KitematicはDocker Toolboxで提供される使いやすいグラフィカルインタフェースであり、Dockerをより簡単に使用できます。
-
 :::
 
-:::注意
-
+:::警告
 MacまたはWindowsでDocker Machineを使用している場合、DockerデーモンはOS XまたはWindowsファイルシステムへのアクセスが制限されています。Docker Machineは、/Users(OS X)やC:\Users\&lt;username&gt;(Windows)ディレクトリを自動共有しようとします。そのため、問題を回避するには、このディレクトリの下にプロジェクトフォルダを作成する必要があります。
-
 :::
 
 JHipster UML（またはバンドルされていないパッケージ）のインストール時にエラー`npm ERR! Error: EACCES: permission denied`が発生した場合は、コンテナに`sudo`がインストールされていない可能性があります（たとえば、sudoはUbuntu Xenialにバンドルされていません）。
@@ -68,7 +49,7 @@ NPMのドキュメントでは、NPMパッケージをルートとしてイン�
 
 __手順 2__
 
-  - `docker container exec -u root -it jhipster bash`,
+- `docker container exec -u root -it jhipster bash`,
   - `npm install -g YOUR_PACKAGE`,
   - exitしてから `docker container exec -it jhipster bash` でコンテナにログインします。
 
@@ -90,7 +71,7 @@ Dockerを使用せずにアプリケーションのDockerイメージを構築�
 - [Jib maven plugin documentation](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#configuration)
 - [Jib gradle plugin documentation](https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin#configuration)
 
-:::warning
+:::警告
 <p>
 Jibの動作原理として、Jibはまず、設定されたDockerレジストリからベースDockerイメージの最新バージョンをプルしようとします。CI環境では、常に最新のパッチが適用されたベースイメージの上に構築する必要があるため、これは意図的な動作です。
 </p>
@@ -136,7 +117,6 @@ jibがキャッシュ内のベースDockerイメージをまだプルしてい�
 - レジストリーはアプリケーションを構成します。例えば、すべてのサービス間でJWTシークレットトークンを共有します。
 - 各サービスのスケーリングはDocker Composeを使用して行われます。たとえば、`docker-compose scale test-app=4`と入力すると、アプリケーション"test"の4つのインスタンスが実行されます。これらのインスタンスはゲートウェイによって自動的にロードバランシングされ、同じHazelcastクラスタに自動的に参加します（HazelcastがHibernateの第2レベルのキャッシュである場合）。
 
-
 <h2 id="4">データベースの操作</h2>
 
 ### MySQL, MariaDB, PostgreSQL, Oracle, MongoDB, Couchbase, Neo4j, Cassandra
@@ -162,7 +142,7 @@ MongoDBをレプリカセットまたはシャードとそれらの間の共有�
 - イメージをビルドします：`docker-compose -f src/main/docker/mongodb-cluster.yml build`
 - データベースを実行します：`docker-compose -f src/main/docker/mongodb-cluster.yml up -d`
 - MongoDBノードサービスをスケールさせます（奇数のノードを選択する必要があります）：`docker-compose -f src/main/docker/mongodb-cluster.yml scale <name_of_your_app>-mongodb-node=<X>`
-- mongo設定サーバのレプリカを初期化します：`docker exec -it <name_of_your_app>-mongodb-config mongo  --port 27019 --eval 'rs.initiate();'`
+- mongo設定サーバのレプリカを初期化します：`docker exec -it <name_of_your_app>-mongodb-config mongo --port 27019 --eval 'rs.initiate();'`
 - レプリカセットを初期化します（パラメータXは前のステップで入力したノードの数です。フォルダはYMLファイルがあるフォルダ、デフォルトでは`docker`です）:`docker container exec -it <yml_folder_name>_<name_of_your_app>-mongodb-node_1 mongo --port 27018 --eval 'var param=<X>, folder="<yml_folder_name>"' init_replicaset.js`
 - シャードを初期化します：`docker container exec -it <yml_folder_name>_<name_of_your_app>-mongodb_1 mongo --eval 'sh.addShard("rs1/<yml_folder_name>_<name_of_your_app>-mongodb-node_1:27018")'`
 - アプリケーションのDockerイメージを構築します：`./mvnw -Pprod clean verify jib:dockerBuild`または`./gradlew -Pprod clean bootJar jibDockerBuild`
@@ -213,7 +193,6 @@ JHipsterでMSSQL Dockerイメージを使用したい場合は、以下のステ
 - 任意のMSSQLクライアントを使用してデータベースを作成します。
 - アプリケーションを起動します：`docker-compose -f src/main/docker/app.yml up -d <name_of_your_app>-app`
 
-
 ## Elasticsearch
 
 `docker-compose -f src/main/docker/app.yml up` によって検索エンジンが自動的に起動されます。
@@ -221,7 +200,6 @@ JHipsterでMSSQL Dockerイメージを使用したい場合は、以下のステ
 Elasticsearchノードのみを起動し、他のサービスを起動しない場合は、特定のDocker Compose設定を使用します。
 
 - `docker-compose -f src/main/docker/elasticsearch.yml up`
-
 
 ## Sonar
 
@@ -235,7 +213,6 @@ Sonarを実行するためのDocker Compose設定が生成されます。
 - Gradle: `./gradlew sonar`
 
 Sonarのレポートは次のサイトで入手できます：[http://localhost:9000](http://localhost:9000)
-
 
 ## Keycloak
 
@@ -281,19 +258,19 @@ msmongo-mongodb           0.34%               44.8 MB / 7.966 GB    0.56%       
 gateway-mysql             0.03%               202.7 MB / 7.966 GB   2.54%               60.84 kB / 31.22 kB   27.03 MB / 297 MB     37
 ```
 
-### コンテナのスケール
+### コンテナのスケーリング
 
-`docker-compose scale test-app=4`により、アプリケーション"test"の4つのインスタンスを実行します。
+`docker-compose scale test-app=4`で、"test"アプリケーションの4つのインスタンスを実行します。
 
 ### コンテナの停止
 
-`docker-compose -f src/main/docker/app.yml stop`
+`docker-compose -f src/main/docker/app.yml stop`を使用します。
 
-Dockerへの直接の操作もできます。
+Dockerを直接操作することもできます。
 
 `docker container stop <container_id>`
 
-コンテナを停止しても、コンテナを削除しない限り、データは削除されません。
+コンテナを停止しても、コンテナを削除しない限りデータは削除されません。
 
 ### コンテナの削除
 
@@ -301,10 +278,9 @@ Dockerへの直接の操作もできます。
 
 `docker container rm <container_id>`
 
-
 <h2 id="9">メモリの調整</h2>
 
-コンテナで実行されるアプリケーションのメモリ使用量を最適化するために、`Dockerfile`または`docker-compose.yml`でJavaメモリパラメータを設定できます。
+コンテナで実行されるアプリケーションのメモリ使用量を最適化するために、`Dockerfile`または`docker-compose.yml`でJavaのメモリパラメータを設定できます。
 
 ### Dockerfileへのメモリパラメータの追加
 
@@ -314,7 +290,7 @@ ENV JAVA_OPTS=-Xmx512m -Xms256m
 
 ### docker-compose.ymlへのメモリパラメータの追加
 
-Dockerfileよりも望ましい方法です。このようにすると、アプリケーションを構成するすべてのコンテナのメモリ構成に対して、単一のコントロールポイントを持つことができます。
+Dockerfileよりも推奨される方法です。これにより、アプリケーションを構成するすべてのコンテナのメモリ構成に対して、単一のコントロールポイントを持つことができます。
 
 `JAVA_OPTS`を`environment`セクションに追加します。
 
@@ -324,7 +300,7 @@ environment:
   - JAVA_OPTS=-Xmx512m -Xms256m
 ```
 
-Dockerベースイメージによっては、`JAVA_OPTS`が動作しない場合があります。この場合は、代わりに`_JAVA_OPTIONS`を使用してみてください。
+Dockerベースイメージによっては、`JAVA_OPTS`が機能しない場合があります。その場合は、代わりに`_JAVA_OPTIONS`を試してください。
 
 ```yaml
 environment:
@@ -332,9 +308,9 @@ environment:
   - _JAVA_OPTIONS=-Xmx512m -Xms256m
 ```
 
-## Disabling
+## 無効化
 
-Add to src/main/resources/application.yml or application-dev.yml depending on your application configuration.
+アプリケーションの設定に応じて、`src/main/resources/application.yml`または`application-dev.yml`に以下の行を追加します。
 
 ```yaml
 spring:
@@ -343,6 +319,6 @@ spring:
       enabled: false
 ```
 
-## Alternatives
+## 代替手段
 
 - [Colima](https://github.com/abiosoft/colima#getting-started)
