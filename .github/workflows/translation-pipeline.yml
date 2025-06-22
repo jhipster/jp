@@ -59,13 +59,13 @@ jobs:
           git fetch upstream
       
       - name: Authenticate GitHub CLI
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+        run: echo "${{ secrets.GITHUB_PAT || secrets.GITHUB_TOKEN }}" | gh auth login --with-token
       
       - name: Run translation pipeline
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_PAT || secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_PAT || secrets.GITHUB_TOKEN }}
           BOT_GIT_USER: jhipster-jp-bot
           BOT_GIT_EMAIL: jhipster-jp-bot@users.noreply.github.com
           LANGUAGE_TOOL_ENABLED: true
