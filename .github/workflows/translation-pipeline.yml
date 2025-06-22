@@ -68,8 +68,7 @@ jobs:
           LANGUAGE_TOOL_ENABLED: true
           DRY_RUN: ${{ github.event.inputs.dry_run }}
         run: |
-          cd .github/auto-translation
-          python scripts/run_translation_pipeline.py \
+          python .github/auto-translation/scripts/run_translation_pipeline.py \
             --hash "${{ github.event.inputs.commit_hash }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
       
