@@ -44,11 +44,12 @@ on:
 
 ```text
 └─ scripts/
-   ├─ fetch_upstream.py   # upstream 取得 + merge
-   ├─ classify_changes.py # a/b-1/b-2/c 判定
-   ├─ translate_chunk.py  # 単一ファイル翻訳
-   ├─ postprocess.py      # 行数検査・衝突解消
-   └─ commit_and_pr.py    # コミット & PR 作成
+   ├─ run_translation_pipeline.py  # 🎯 統合パイプライン実行スクリプト（メイン）
+   ├─ fetch_upstream.py            # upstream 取得 + merge
+   ├─ classify_changes.py          # a/b-1/b-2/c 判定
+   ├─ translate_chunk.py           # 単一ファイル翻訳（Gemini API使用）
+   ├─ postprocess.py               # 行数検査・衝突解消
+   └─ commit_and_pr.py             # コミット & PR 作成
 ```
 
 - **言語:** Python 3.11
@@ -76,14 +77,14 @@ git add -A
 # デフォルトメッセージでコミット（衝突マーカー残存）
 git commit --no-edit || true
 ``` |
-| 3 | **変更判定 (a/b-1/b-2/c)** | `scripts/classify_changes.py` (`HEAD^` vs `HEAD` で diff 解析) |
-| 4 | **Gemini 翻訳**<br>（衝突マーカーも入力に含める） | `scripts/translate_chunk.py` — 翻訳後にマーカー除去 & 行数チェック |
+| 3 | **変更判定 (a/b-1/b-2/c)** | `scripts/classify_changes.py` (origin/main vs HEAD で diff 解析) |
+| 4 | **Gemini 翻訳**<br>（衝突マーカーも入力に含める） | `scripts/translate_chunk.py` — 2段階翻訳・マーカー除去・行数チェック・プロジェクトルート自動検出 |
 | 5 | **ポストプロセス & 翻訳コミット**<br>（二次コミット） | ```bash
-python scripts/postprocess.py   # マーカー除去 ＋ 文法チェック
+python scripts/postprocess.py   # マーカー除去 ＋ 文法チェック（LanguageTool）
 git add -A
-git commit -m "docs(translate): upstream ${HASH} 日本語翻訳" --no-verify
+git commit -m "docs(sync): upstream ${HASH} 翻訳" --no-verify
 ``` |
-| 6 | **PR 作成** | `scripts/commit_and_pr.py` → `gh pr create` |
+| 6 | **PR 作成** | `scripts/commit_and_pr.py` → LLM品質分析 → `gh pr create` |
 
 ### PR本文生成
 
@@ -133,28 +134,39 @@ git commit -m "docs(translate): upstream ${HASH} 日本語翻訳" --no-verify
 
 ## ローカル実行
 
-### 1コミットだけ翻訳（2段階コミットを再現）
+### 統合パイプライン実行（推奨）
+
+```bash
+# 環境セットアップ
+make dev-setup
+
+# 統合パイプライン実行（全自動）
+python scripts/run_translation_pipeline.py --hash <commit-sha>
+
+# ドライラン（実際の翻訳・コミット・PRなし）
+python scripts/run_translation_pipeline.py --hash <commit-sha> --dry-run
+```
+
+### 個別スクリプト実行（デバッグ用）
 
 ```bash
 poetry install
 python scripts/fetch_upstream.py --hash <commit-sha>        # ステップ1 & 2
-python scripts/classify_changes.py                           # ステップ3
-python scripts/translate_chunk.py --mode selective           # ステップ4
-python scripts/postprocess.py                                # ステップ5-前半
-python scripts/commit_and_pr.py --push-origin false          # ステップ5-後半/6
-````
-
-### 1コミットだけ翻訳
-
-```bash
-poetry install
-python scripts/fetch_upstream.py --hash <commit-sha>
-python scripts/classify_changes.py
-python scripts/translate_chunk.py --mode selective
-python scripts/commit_and_pr.py --push-origin false
+python scripts/classify_changes.py                          # ステップ3
+python scripts/translate_chunk.py --classification classification.json --mode selective  # ステップ4
+python scripts/postprocess.py --classification classification.json      # ステップ5-前半
+python scripts/commit_and_pr.py --classification classification.json --push-origin false  # ステップ5-後半/6
 ```
 
-- `make run` で全体一括処理も可能。
+### 翻訳モード選択肢
+
+| モード | 対象 | 説明 |
+|-------|------|------|
+| `all` | a, b-1, b-2 | 全ての翻訳対象ファイル（衝突あり含む） |
+| `selective` | a, b-1 | 新規・更新（衝突なし）のみ（デフォルト） |
+| `new-only` | a | 新規ファイルのみ |
+
+- `make run` で全体一括処理（統合パイプライン）も可能。
 
 ---
 
@@ -166,15 +178,48 @@ python scripts/commit_and_pr.py --push-origin false
 
 ### スタイルガイドのカスタマイズ
 特定のフォルダ以下のドキュメントに対して、文体を揃えるため、独自のスタイルガイドを適用する。
-- `docs/releases` については、`.github/auto-translation/docs/style-guide-release.md` を適用
+
+#### 実装詳細
+- **基本スタイルガイド**: `.github/auto-translation/docs/style-guide.md`（全ファイル共通）
+- **カスタムスタイルガイド**: ファイルパスに応じて追加適用
+  - `docs/releases/` ファイル → `.github/auto-translation/docs/style-guide-release.md`
+
+#### 適用優先順位
+1. カスタムスタイルガイドが基本スタイルガイドより優先
+2. 翻訳時にプロンプトで明示的に指示
+3. `translate_chunk.py`の`get_custom_style_guide_for_path()`で自動判定
 
 ---
+
+## 高度な機能
+
+### プロジェクトルート自動検出
+全スクリプトで`find_project_root()`関数により、実行場所に関係なくプロジェクトルートを自動検出。
+- `.git`または`package.json`の存在をチェック
+- 親ディレクトリを再帰的に探索
+- 相対パス問題を解決し、任意の場所からスクリプト実行可能
+
+### 2段階コンフリクト翻訳
+衝突ファイル（b-2カテゴリ）に対する特別な翻訳処理：
+1. **第1段階**: 新規英文を既存日本語スタイルで翻訳（マーカー保持）
+2. **第2段階**: HEAD側削除、新規翻訳内容のみ採用（マーカー削除）
+
+### LLM品質分析（commit_and_pr.py）
+PR作成時に行数差異ファイルのみ対象にGemini 1.5 Flashで詳細分析：
+- 重要な情報の欠落検出
+- 構造的変更の検出
+- マークダウン記法問題の検出
+- 意図しない重複の検出
+
+### 既存syncブランチのスキップ
+`run_translation_pipeline.py`で同一コミットハッシュのsyncブランチが既に存在する場合、自動的にスキップして重複実行を防止。
 
 ## テスト
 
 - `pytest` + `unittest.mock` で Gemini 呼出をスタブ
 - a/b-1/b-2/c ケース毎の fixture ファイル
 - GitHub Actions 内で `pytest -q` 実行
+- `make test` でローカル実行可能
 
 ---
 
