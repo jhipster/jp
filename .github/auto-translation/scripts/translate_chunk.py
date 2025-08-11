@@ -341,7 +341,7 @@ L0002=（翻訳された2行目またはそのまま維持）
         return prompt
     
     def create_conflict_translation_prompt(self, content: str, stage: str, file_path: str = "") -> str:
-        """2段階コンフリクト翻訳用プロンプト"""
+        """2段階コンフリクト翻訳用プロンプト（差分ベース強化版）"""
         # カスタムスタイルガイドを取得
         custom_style_guide = self.get_custom_style_guide_for_path(file_path)
         
@@ -364,9 +364,26 @@ L0002=（翻訳された2行目またはそのまま維持）
 
 """
         
+        # 差分情報を取得（利用可能であれば）
+        diff_section = ""
+        if self.commit_hash:
+            diff_content = self.get_file_diff(file_path, self.commit_hash)
+            if diff_content:
+                diff_section = f"""
+### 参考：upstream差分情報
+以下は、この変更に関連するupstream差分です（判断の参考にしてください）：
+
+```diff
+{diff_content}
+```
+
+**差分の活用**: 上記差分から、意味の変更がない表面的修正（typo、URL変更等）と、実際の内容変更を区別してください。
+
+"""
+        
         if stage == "translate":
             # 第1段階：新規英文を既存日本語スタイルで翻訳
-            return f"""{style_guide_section}以下のテキストはGitマージコンフリクトを含むJHipsterドキュメントです。第1段階として、新規英語内容を既存日本語のスタイルに合わせて翻訳してください。
+            return f"""{style_guide_section}{diff_section}以下のテキストはGitマージコンフリクトを含むJHipsterドキュメントです。第1段階として、新規英語内容を既存日本語のスタイルに合わせて翻訳してください。
 
 重要：コンフリクトマーカー（<<<<<<<、=======、>>>>>>>）は削除せず、そのまま保持してください。
 
@@ -379,6 +396,7 @@ L0002=（翻訳された2行目またはそのまま維持）
 6. **CRITICAL**: コンフリクトマーカーで囲まれた箇所のみ翻訳。他は変更せずそのまま維持
 7. マークダウン形式、URL、コマンドは翻訳しない
 8. 文体は既存部分と同じ常体（である調）を使用
+9. **差分最小化**: 表面的変更のみの場合は既存日本語を最大限保持
 
 入力テキスト：
 
@@ -387,7 +405,7 @@ L0002=（翻訳された2行目またはそのまま維持）
 第1段階結果（新規英文を既存スタイルで翻訳済み、マーカー保持）："""
         else:  # stage == "merge"
             # 第2段階：HEAD側を削除し、翻訳された新規内容を採用
-            return f"""{style_guide_section}以下のテキストはコンフリクトマーカーを含む文書です。第2段階として、HEAD側を完全に削除し、新規翻訳内容のみを採用してください。
+            return f"""{style_guide_section}{diff_section}以下のテキストはコンフリクトマーカーを含む文書です。第2段階として、HEAD側を完全に削除し、新規翻訳内容のみを採用してください。
 
 マージ指示：
 1. <<<<<<< HEAD と ======= の間：既存バージョン → 完全に削除
@@ -518,6 +536,56 @@ L0002=（翻訳された2行目またはそのまま維持）
             
         except Exception as e:
             print(f"   ⚠️  Failed to save translation result: {e}")
+    
+    def _save_conflict_debug_artifacts(self, file_path: str, content: str, prompt: str, stage: str) -> None:
+        """コンフリクト翻訳用のartifactを保存"""
+        try:
+            artifacts_dir = self.project_root / ".github/auto-translation/artifacts"
+            artifacts_dir.mkdir(exist_ok=True)
+            
+            # ファイル名を安全にする
+            safe_file_name = file_path.replace("/", "_").replace("\\", "_")
+            timestamp = time.strftime("%Y%m%d_%H%M%S")
+            
+            # ステージ別プロンプト保存
+            prompt_file = artifacts_dir / f"conflict_{stage}_prompt_{safe_file_name}_{timestamp}.md"
+            with open(prompt_file, 'w', encoding='utf-8') as f:
+                f.write(f"# 2-Stage Conflict Translation Prompt ({stage.upper()})\n\n")
+                f.write(f"**File:** {file_path}\n")
+                f.write(f"**Commit:** {self.commit_hash or 'N/A'}\n")
+                f.write(f"**Stage:** {stage}\n")
+                f.write(f"**Timestamp:** {timestamp}\n\n")
+                f.write(f"## Input Content\n\n")
+                f.write(f"```\n{content}\n```\n\n")
+                f.write(f"## Prompt Content\n\n")
+                f.write(prompt)
+            
+        except Exception as e:
+            print(f"   ⚠️  Failed to save conflict debug artifacts: {e}")
+    
+    def _save_conflict_translation_result(self, file_path: str, result: str, attempt: int) -> None:
+        """コンフリクト翻訳結果を保存"""
+        try:
+            artifacts_dir = self.project_root / ".github/auto-translation/artifacts"
+            artifacts_dir.mkdir(exist_ok=True)
+            
+            # ファイル名を安全にする
+            safe_file_name = file_path.replace("/", "_").replace("\\", "_")
+            timestamp = time.strftime("%Y%m%d_%H%M%S")
+            
+            # 翻訳結果保存
+            result_file = artifacts_dir / f"conflict_result_{safe_file_name}_{timestamp}_attempt{attempt}.md"
+            with open(result_file, 'w', encoding='utf-8') as f:
+                f.write(f"# 2-Stage Conflict Translation Result\n\n")
+                f.write(f"**File:** {file_path}\n")
+                f.write(f"**Commit:** {self.commit_hash or 'N/A'}\n")
+                f.write(f"**Attempt:** {attempt}\n")
+                f.write(f"**Timestamp:** {timestamp}\n\n")
+                f.write(f"## Translation Result\n\n")
+                f.write(result)
+            
+        except Exception as e:
+            print(f"   ⚠️  Failed to save conflict translation result: {e}")
 
     def translate_chunk_two_stage(self, content: str, file_path: str = "", retry_count: int = 3) -> Optional[str]:
         """2段階でコンフリクト翻訳"""
@@ -525,6 +593,10 @@ L0002=（翻訳された2行目またはそのまま維持）
         
         # 第1段階：英文翻訳（マーカー保持）
         stage1_prompt = self.create_conflict_translation_prompt(content, "translate", file_path)
+        
+        # Conflict翻訳のartifactsを保存
+        self._save_conflict_debug_artifacts(file_path, content, stage1_prompt, "stage1")
+        
         stage1_result = None
         
         for attempt in range(retry_count):
@@ -546,12 +618,18 @@ L0002=（翻訳された2行目またはそのまま維持）
         # 第2段階：マージ（マーカー削除）
         stage2_prompt = self.create_conflict_translation_prompt(stage1_result, "merge", file_path)
         
+        # Stage2のartifactsを保存
+        self._save_conflict_debug_artifacts(file_path, stage1_result, stage2_prompt, "stage2")
+        
         for attempt in range(retry_count):
             try:
                 response = self.model.generate_content(stage2_prompt)
                 if response.text:
                     final_result = response.text.strip()
                     print(f"   Stage 2 completed (attempt {attempt + 1})")
+                    
+                    # 最終結果を保存
+                    self._save_conflict_translation_result(file_path, final_result, attempt + 1)
                     return final_result
             except Exception as e:
                 print(f"   Stage 2 attempt {attempt + 1} failed: {e}")
