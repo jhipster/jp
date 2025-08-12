@@ -296,7 +296,8 @@ class TranslationPipeline:
                 "Translate files",
                 ["python", "scripts/translate_chunk.py", 
                  "--classification", str(self.classification_file),
-                 "--mode", "all"],
+                 "--mode", "all",
+                 "--commit-hash", self.commit_hash],
                 env_vars={"GEMINI_API_KEY": os.getenv("GEMINI_API_KEY", "")}
             )
             if not success:

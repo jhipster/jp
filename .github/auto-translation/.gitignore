@@ -66,3 +66,8 @@ Thumbs.db
 *.tmp
 *.log
 classification.json
+
+# Artifacts (ただしサンプルは除く)
+artifacts/
+!artifacts/.gitkeep
+!artifacts/sample_*
