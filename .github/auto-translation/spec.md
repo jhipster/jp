@@ -57,19 +57,35 @@ on:
 
 ---
 
+## ブランチ生成ロジック
+
+### 動作環境による分岐
+
+fetch_upstream.py の `create_sync_branch()` メソッドは、実行環境に応じて異なる分岐元を使用します：
+
+- **CI環境 (GitHub Actions)**: `origin/main` から `sync-{hash}` ブランチを作成
+  - 環境変数 `CI` または `GITHUB_ACTIONS` が設定されている場合
+- **ローカル環境**: 現在チェックアウト中のブランチから `sync-{hash}` ブランチを作成
+  - 作業者が任意のfeatureブランチや修正ブランチ上で作業している場合でも、その状態から分岐
+  - 現在ブランチの取得に失敗した場合は `main` ブランチにフォールバック
+
+これにより、ローカルでの開発時により柔軟なワークフローが可能になります。
+
+---
+
 ## ワークフロー詳細
 
 > **ポイント**: まず *衝突マーカーを含んだままコミット* し、その後に翻訳／マーカー除去を行う 2 段階コミット構成とする。
 
 | ステップ                                                                                                                                           | 処理         | 主要コマンド・スクリプト |
 | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------ |
-| 1                                                                                                                                              | **ブランチ生成** | \`\`\`bash   |
-| git checkout origin/main                                                                                                                       |            |              |
-| HASH=\$(git ls-remote [https://github.com/jhipster/jhipster.github.io.git](https://github.com/jhipster/jhipster.github.io.git) refs/heads/main | cut -c1-7) |              |
-| BRANCH="sync-\${HASH}"                                                                                                                         |            |              |
-| git switch -c "\$BRANCH"                                                                                                                       |            |              |
-
-````|
+| 1                                                                                                                                              | **ブランチ生成** | ```bash   |
+| # CI環境: origin/main から分岐                                                                                                                   |            |              |
+| # ローカル環境: 現在のブランチから分岐                                                                                                             |            |              |
+| HASH=$(git ls-remote https://github.com/jhipster/jhipster.github.io.git refs/heads/main | cut -c1-7) |            |              |
+| BRANCH="sync-${HASH}"                                                                                                                         |            |              |
+| git switch -c "$BRANCH"                                                                                                                       |            |              |
+|              |            | ```|
 | 2 | **強制マージ & コンフリクト込みコミット**<br>（一次コミット） | ```bash
 git merge upstream/main --allow-unrelated-histories --no-edit || true
 # 衝突状態でもステージする
