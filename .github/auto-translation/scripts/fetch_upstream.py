@@ -79,18 +79,37 @@ class UpstreamFetcher:
             print(f"Error getting upstream commit hash: {e}")
             return None
     
+    def get_current_branch(self) -> Optional[str]:
+        """現在のブランチ名を取得"""
+        try:
+            result = subprocess.run(
+                ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+                capture_output=True, text=True, check=True
+            )
+            return result.stdout.strip()
+        except subprocess.CalledProcessError as e:
+            print(f"Error getting current branch: {e}")
+            return None
+    
     def create_sync_branch(self, commit_hash: str) -> bool:
         """sync-{hash}ブランチを作成"""
         branch_name = f"sync-{commit_hash}"
         
         try:
-            # CI環境ではorigin/mainから、ローカルではauto-translationから分岐
+            # CI環境ではorigin/mainから分岐、ローカルでは現在のブランチから分岐
             if os.getenv('CI') or os.getenv('GITHUB_ACTIONS'):
                 # GitHub Actions環境ではorigin/mainから分岐
+                print("CI environment detected: branching from origin/main")
                 subprocess.run(["git", "checkout", "origin/main"], check=True)
             else:
-                # ローカル環境ではauto-translationから分岐
-                subprocess.run(["git", "checkout", "auto-translation"], check=True)
+                # ローカル環境では現在のブランチから分岐
+                current_branch = self.get_current_branch()
+                if current_branch:
+                    print(f"Local environment detected: branching from current branch '{current_branch}'")
+                    # 現在のブランチに留まる（何もしない）
+                else:
+                    print("Warning: Could not determine current branch, falling back to main")
+                    subprocess.run(["git", "checkout", "main"], check=True)
             
             subprocess.run(["git", "switch", "-c", branch_name], check=True)
             print(f"Created branch: {branch_name}")

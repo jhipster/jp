@@ -19,6 +19,10 @@ help:
 	@echo "  GEMINI_API_KEY  - Gemini APIキー（必須）"
 	@echo "  GH_TOKEN        - GitHub Token（PR作成用）"
 	@echo "  COMMIT_HASH     - 特定のコミットハッシュを指定"
+	@echo ""
+	@echo "ブランチ生成動作:"
+	@echo "  CI環境          - origin/main から sync ブランチを作成"
+	@echo "  ローカル環境      - 現在のブランチから sync ブランチを作成"
 
 # 依存関係インストール
 install:
