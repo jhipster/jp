@@ -409,7 +409,7 @@ L0002=（翻訳された2行目またはそのまま維持）
         """差分ベース翻訳を実行"""
         if not self.commit_hash:
             print("   ⚠️  No commit hash provided, falling back to regular translation")
-            return self.translate_chunk(japanese_content, file_path, retry_count)
+            return self.translate_chunk_regular(japanese_content, file_path, retry_count)
         
         print(f"   Using diff-based translation for commit {self.commit_hash}")
         
@@ -417,7 +417,7 @@ L0002=（翻訳された2行目またはそのまま維持）
         diff_content = self.get_file_diff(file_path, self.commit_hash)
         if not diff_content:
             print(f"   ⚠️  No diff available for {file_path}, using regular translation")
-            return self.translate_chunk(japanese_content, file_path, retry_count)
+            return self.translate_chunk_regular(japanese_content, file_path, retry_count)
         
         # 差分ベース翻訳プロンプトを作成
         prompt = self.create_diff_based_translation_prompt(japanese_content, diff_content, file_path)
@@ -452,7 +452,7 @@ L0002=（翻訳された2行目またはそのまま維持）
         
         # 差分ベース翻訳が失敗した場合、通常翻訳にフォールバック
         print("   ⚠️  Diff-based translation failed, falling back to regular translation")
-        return self.translate_chunk(japanese_content, file_path, retry_count)
+        return self.translate_chunk_regular(japanese_content, file_path, retry_count)
     
     def _save_debug_artifacts(self, file_path: str, prompt: str, diff_content: str, japanese_content: str) -> None:
         """デバッグ用のartifactを保存"""
@@ -569,11 +569,15 @@ L0002=（翻訳された2行目またはそのまま維持）
         if has_conflicts:
             return self.translate_chunk_two_stage(content, file_path, retry_count)
         
-        # 差分ベース翻訳が利用可能で、既存の日本語コンテンツの場合は差分ベース翻訳を使用
+        # 差分ベース翻訳（日本語コンテンツでcommit_hashがある場合）
         if self.commit_hash and self._is_japanese_content(content):
             return self.translate_chunk_diff_based(content, file_path, retry_count)
         
         # 通常翻訳（新規ファイルや英語コンテンツの場合）
+        return self.translate_chunk_regular(content, file_path, retry_count)
+
+    def translate_chunk_regular(self, content: str, file_path: str = "", retry_count: int = 3) -> Optional[str]:
+        """通常の翻訳処理（再帰回避用）"""
         prompt = self.create_translation_prompt(content, file_path)
         
         for attempt in range(retry_count):
