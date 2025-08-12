@@ -294,5 +294,132 @@ class TestGeminiTranslatorIntegration(unittest.TestCase):
             self.assertIn("リリースノート専用スタイル", call_args)
 
 
+class TestDiffBasedTranslation(unittest.TestCase):
+    """差分ベース翻訳機能のテスト"""
+    
+    def setUp(self):
+        # テスト用のダミーAPIキー
+        self.api_key = "test_api_key"
+        self.commit_hash = "abc1234"
+        
+        # Gemini APIの初期化をモック
+        with patch('google.generativeai.configure'), \
+             patch('google.generativeai.GenerativeModel') as mock_model:
+            self.translator = GeminiTranslator(self.api_key, commit_hash=self.commit_hash)
+            self.mock_model = mock_model.return_value
+    
+    def test_add_line_numbers(self):
+        """行番号付与のテスト"""
+        content = """# Title
+This is line 2
+And line 3"""
+        
+        result = self.translator.add_line_numbers(content)
+        
+        expected = """L0001=# Title
+L0002=This is line 2
+L0003=And line 3"""
+        
+        self.assertEqual(result, expected)
+    
+    def test_remove_line_numbers(self):
+        """行番号除去のテスト"""
+        numbered_content = """L0001=# Title
+L0002=This is line 2
+L0003=And line 3"""
+        
+        result = self.translator.remove_line_numbers(numbered_content)
+        
+        expected = """# Title
+This is line 2
+And line 3"""
+        
+        self.assertEqual(result, expected)
+    
+    def test_validate_line_count_consistency(self):
+        """行数一致検証のテスト"""
+        original = "Line 1\nLine 2\nLine 3"
+        translated_ok = "行1\n行2\n行3"
+        translated_ng = "行1\n行2"  # 行数が足りない
+        
+        # 正常ケース
+        self.assertTrue(self.translator.validate_line_count_consistency(original, translated_ok))
+        
+        # 異常ケース
+        self.assertFalse(self.translator.validate_line_count_consistency(original, translated_ng))
+    
+    def test_is_japanese_content(self):
+        """日本語コンテンツ判定のテスト"""
+        # 日本語コンテンツ
+        japanese_content = "これはJHipsterのドキュメントです。"
+        self.assertTrue(self.translator._is_japanese_content(japanese_content))
+        
+        # 英語コンテンツ
+        english_content = "This is JHipster documentation."
+        self.assertFalse(self.translator._is_japanese_content(english_content))
+        
+        # 空のコンテンツ
+        empty_content = ""
+        self.assertFalse(self.translator._is_japanese_content(empty_content))
+    
+    def test_create_diff_based_translation_prompt(self):
+        """差分ベース翻訳プロンプト生成のテスト"""
+        japanese_content = "これはテストです。\n新しい行です。"
+        diff_content = """diff --git a/test.md b/test.md
+index abc123..def456 100644
+--- a/test.md
++++ b/test.md
+@@ -1,2 +1,2 @@
+-This is a test.
++This is an updated test.
+ This is a new line."""
+        
+        prompt = self.translator.create_diff_based_translation_prompt(
+            japanese_content, diff_content, "test.md"
+        )
+        
+        # プロンプトに必要な要素が含まれているかチェック
+        self.assertIn("差分ベース最小限翻訳", prompt)
+        self.assertIn("L0001=", prompt)
+        self.assertIn("L0002=", prompt)
+        self.assertIn(diff_content, prompt)
+        self.assertIn("意味の変更がない英文修正", prompt)
+        self.assertIn("typo修正、URL変更", prompt)
+    
+    @patch('subprocess.run')
+    def test_get_file_diff(self, mock_subprocess):
+        """ファイル差分取得のテスト"""
+        # 成功ケース
+        mock_result = MagicMock()
+        mock_result.returncode = 0
+        mock_result.stdout = "diff --git a/test.md b/test.md\n+Added line"
+        mock_subprocess.return_value = mock_result
+        
+        diff = self.translator.get_file_diff("test.md", "abc123")
+        
+        self.assertEqual(diff, "diff --git a/test.md b/test.md\n+Added line")
+        
+        # 失敗ケース
+        mock_result.returncode = 1
+        diff = self.translator.get_file_diff("nonexistent.md", "abc123")
+        
+        self.assertIsNone(diff)
+    
+    @patch.object(GeminiTranslator, 'get_file_diff')
+    @patch.object(GeminiTranslator, 'translate_chunk')
+    def test_translate_chunk_diff_based_fallback(self, mock_translate_chunk, mock_get_diff):
+        """差分ベース翻訳のフォールバック動作テスト"""
+        # 差分取得に失敗した場合
+        mock_get_diff.return_value = None
+        mock_translate_chunk.return_value = "通常翻訳結果"
+        
+        japanese_content = "これはテストです。"
+        result = self.translator.translate_chunk_diff_based(japanese_content, "test.md")
+        
+        # 通常翻訳にフォールバックすることを確認
+        mock_translate_chunk.assert_called_once_with(japanese_content, "test.md", 3)
+        self.assertEqual(result, "通常翻訳結果")
+
+
 if __name__ == '__main__':
     unittest.main()
