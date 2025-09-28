@@ -26,7 +26,7 @@
 
 ## 5. 段階的リリース / 検証
 - [x] ローカル CLI (`tools/run-ai-docsite-translator.sh`) で `DRY_RUN=true`, `TRANSLATION_MODE=mock`, `TRANSLATION_TARGET_SHA=2d83acfe` にて検証
-- [ ] `act -j translate --secret-file .secrets.translator --env TRANSLATION_TARGET_SHA=2d83acfe` でワークフローを再現
+- [x] `act -j translate --secret-file .secrets.translator --env TRANSLATION_TARGET_SHA=2d83acfe` でワークフローを再現
 - [ ] GitHub Actions を `workflow_dispatch` で起動し、`TRANSLATION_TARGET_SHA=2d83acfe` のみ翻訳 (Phase 1)
 - [ ] "未翻訳が最も古い 2 コミット" を対象にする実行方法を調査し、実現する (Phase 2)
 - [ ] すべての未翻訳コミットを翻訳する本運用に移行し、`schedule` トリガーを有効化 (Phase 3)
