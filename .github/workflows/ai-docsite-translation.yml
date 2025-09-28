@@ -1,0 +1,97 @@
+name: ai-docsite-translation
+
+on:
+  schedule:
+    - cron: "30 3 * * *"
+  workflow_dispatch:
+    inputs:
+      translation_target_sha:
+        description: "Translate only the specified upstream commit (short SHA)"
+        required: false
+        default: ""
+      translation_limit:
+        description: "Limit the number of files to translate in this run"
+        required: false
+        default: ""
+      translation_mode:
+        description: "Override translation mode (production/dry-run/mock)"
+        required: false
+        default: ""
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    concurrency:
+      group: ai-docsite-translation
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      LLM_PROVIDER: gemini
+      LLM_MODEL: gemini-2.5-flash
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      DRY_RUN: "false"
+      MAX_FILES_PER_RUN: "0"
+      TRANSLATION_INCLUDE_PATHS: docs
+      TRANSLATION_DOCUMENT_EXTENSIONS: md,mdx,txt,html
+      TRANSLATION_TARGET_SHA: ${{ github.event.inputs.translation_target_sha }}
+      TRANSLATION_MODE_OVERRIDE: ${{ github.event.inputs.translation_mode }}
+      TRANSLATION_LIMIT_OVERRIDE: ${{ github.event.inputs.translation_limit }}
+    steps:
+      - name: Determine execution guard
+        shell: bash
+        run: |
+          if [[ -z "${GEMINI_API_KEY}" ]]; then
+            echo "SHOULD_SKIP=true" >> "$GITHUB_ENV"
+            echo "GEMINI_API_KEY is not configured. Skipping translation run." >&2
+          else
+            echo "SHOULD_SKIP=false" >> "$GITHUB_ENV"
+          fi
+
+          if [[ -n "${TRANSLATION_MODE_OVERRIDE}" ]]; then
+            echo "TRANSLATION_MODE=${TRANSLATION_MODE_OVERRIDE}" >> "$GITHUB_ENV"
+          else
+            echo "TRANSLATION_MODE=production" >> "$GITHUB_ENV"
+          fi
+
+          if [[ -n "${TRANSLATION_LIMIT_OVERRIDE}" ]]; then
+            echo "TRANSLATION_LIMIT=${TRANSLATION_LIMIT_OVERRIDE}" >> "$GITHUB_ENV"
+          else
+            echo "TRANSLATION_LIMIT=" >> "$GITHUB_ENV"
+          fi
+
+      - name: Checkout repository
+        if: env.SHOULD_SKIP != 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java (Temurin 21)
+        if: env.SHOULD_SKIP != 'true'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+
+      - name: Run ai-docsite-translator
+        if: env.SHOULD_SKIP != 'true'
+        uses: hide212131/ai-docsite-translator@7cb3090ba0fac3a0c465be39117a422ee3afa5a3
+        with:
+          upstream-url: https://github.com/jhipster/jhipster.github.io.git
+          origin-url: https://github.com/hide212131/jhipster.github.io-jp.git
+          origin-branch: main
+          translation-branch-template: sync-<upstream-short-sha>
+          mode: batch
+          translation-mode: ${{ env.TRANSLATION_MODE }}
+          log-format: json
+          limit: ${{ env.TRANSLATION_LIMIT }}
+          dry-run: false
+
+      - name: Summary
+        if: env.SHOULD_SKIP != 'true'
+        run: |
+          echo "ai-docsite-translator finished. Inspect logs above for details."
