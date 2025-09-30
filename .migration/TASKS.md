@@ -29,9 +29,10 @@
 - [x] `act -j translate --secret-file .secrets.translator --env TRANSLATION_TARGET_SHA=2d83acfe` でワークフローを再現
 - [x] GitHub Actions を `workflow_dispatch` で起動し、`TRANSLATION_TARGET_SHA=2d83acfe` のみ翻訳 (Phase 1)
 - [x] "未翻訳が最も古い 2 コミット" を対象にする実行方法を調査し、実現する (Phase 2)
-- [ ] すべての未翻訳コミットを翻訳する本運用に移行し、`schedule` トリガーを有効化 (Phase 3)
+- [x] すべての未翻訳コミットを翻訳する本運用に移行し、`schedule` トリガーを有効化 (Phase 3)
 
 > メモ: ローカル CLI から本番リポジトリへ実行し PR #82 を作成済み。GitHub Actions では `workflow_dispatch` で Phase 1 を完了し PR #83 を生成済み。Phase 2 は `translation_target_sha` を用いて `f7e3e35` / `b4b47d8` を処理（差分無し）し、続く `d7875ff` で PR #84 を生成済み。
+> Phase 3 は `sync-6779e58` ブランチで実行し PR #85 を作成済み。
 
 ## 6. フォローアップ / 未確定事項
 - [ ] `ai-docsite-translator` に古いコミットを優先する CLI オプションが存在するか確認し、欠けていれば issue を作成
