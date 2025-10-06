@@ -9,3 +9,13 @@ updates:
       docusaurus:
         patterns:
           - '@docusaurus/*'
+      react:
+        patterns:
+          - react
+          - react-dom
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    open-pull-requests-limit: 10
