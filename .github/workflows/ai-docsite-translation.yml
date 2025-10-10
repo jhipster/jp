@@ -32,7 +32,7 @@ jobs:
       LLM_PROVIDER: gemini
       LLM_MODEL: gemini-2.5-flash
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      GITHUB_TOKEN: ${{ secrets.WORKFLOWS_GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ github.token }}
       DRY_RUN: "false"
       MAX_FILES_PER_RUN: "0"
       TRANSLATION_INCLUDE_PATHS: docs
@@ -68,7 +68,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.WORKFLOWS_GITHUB_TOKEN }}
+          token: ${{ github.token }}
 
       - name: Set up Java (Temurin 21)
         if: env.SHOULD_SKIP != 'true'
