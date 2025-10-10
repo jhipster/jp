@@ -32,7 +32,7 @@ jobs:
       LLM_PROVIDER: gemini
       LLM_MODEL: gemini-2.5-flash
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.WORKFLOWS_GITHUB_TOKEN }}
       DRY_RUN: "false"
       MAX_FILES_PER_RUN: "0"
       TRANSLATION_INCLUDE_PATHS: docs
