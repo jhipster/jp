@@ -10,10 +10,10 @@
 - 非スコープ: 翻訳結果の内容レビュー、`ai-docsite-translator` 自体の機能追加や改修、翻訳対象ディレクトリ (`docs`) 以外の運用整備。
 
 ## アーキテクチャ概要
-- **CI**: `ubuntu-latest` 上で `actions/checkout@v4` → `hide212131/ai-docsite-translator@<pinned>` を実行する GitHub Actions ワークフローを新設する。
+- **CI**: `ubuntu-latest` 上で `actions/checkout@v4` → `hide212131/ai-docsite-translator@main` を実行する GitHub Actions ワークフローを新設する。
 - **ローカル検証**: `act` でワークフローを再現 / `tools/run-ai-docsite-translator.sh` (新規) で CLI を直接起動する 2 系統を用意する。
 - **構成管理**: `.github/auto-translation/**` を完全削除し、翻訳関連ドキュメントは `.migration/` と `.github/llm-translation/docs/` に整理する。
-- **Secrets**: 本番は GitHub Secrets (`GEMINI_API_KEY`, `GITHUB_TOKEN`) を使用し、ローカルは `.env.translator` (未コミット) で補完する。
+- **Secrets**: 本番は GitHub Secrets (`GEMINI_API_KEY`, `WORKFLOWS_GITHUB_TOKEN`) を使用し、ローカルは `.env.translator` (未コミット) で補完する。
 
 ## 想定ディレクトリ / ファイル構成
 | 種別 | パス | 内容 |
@@ -34,13 +34,13 @@
   - `translate` ジョブ 1 本。`concurrency: { group: ai-docsite-translation, cancel-in-progress: false }` で重複実行を防止。
   - `permissions`: `contents: write`, `pull-requests: write`。
 - **ステップ**
-  1. Checkout (`actions/checkout@v4`, `fetch-depth: 0`)
-  2. `git config` (bot 署名: `BOT_GIT_USER`/`BOT_GIT_EMAIL` は GitHub Secrets に統合予定→ `ai-docsite-translator` はコミット署名を内部で実施するため、必要に応じて `extra-args` で `--git-user`, `--git-email` を渡す)
+  1. 実行ガード: Secrets 不足 (`GEMINI_API_KEY` 未設定) 時は `SHOULD_SKIP=true` をセットし早期終了。
+  2. Checkout (`actions/checkout@v4`, `fetch-depth: 0`, `token: ${{ secrets.WORKFLOWS_GITHUB_TOKEN }}`) — PAT を用いて push/PR 権限を確保。
   3. `uses: actions/setup-java@v4` (Temurin 21) — composite Action 側でも実施されるが、キャッシュ利用とローカル `act` 対応のため事前実行する。
-  4. **翻訳実行**: `uses: hide212131/ai-docsite-translator@<commit-sha>`
+  4. **翻訳実行**: `uses: hide212131/ai-docsite-translator@main`
      - `with`
        - `upstream-url`: `https://github.com/jhipster/jhipster.github.io.git`
-       - `origin-url`: `https://github.com/hide212131/jhipster.github.io-jp.git`
+       - `origin-url`: `${{ github.server_url }}/${{ github.repository }}.git`
        - `origin-branch`: `main`
        - `translation-branch-template`: `sync-<upstream-short-sha>`
        - `mode`: `batch`
@@ -52,7 +52,7 @@
        - `TRANSLATION_INCLUDE_PATHS=docs`
        - `TRANSLATION_DOCUMENT_EXTENSIONS=md,mdx,txt,html`
        - `GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}`
-       - `GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}`
+       - `GITHUB_TOKEN=${{ secrets.WORKFLOWS_GITHUB_TOKEN }}`
        - `DRY_RUN=false`
        - `MAX_FILES_PER_RUN=0`
 - **初回段階的オペレーション**
@@ -93,13 +93,13 @@
 | `TRANSLATION_DOCUMENT_EXTENSIONS` | `md,mdx,txt,html` | 翻訳対象拡張子 |
 | `TRANSLATION_TARGET_SHA` | 任意 | 特定コミットのみ翻訳する際に設定 |
 | `GEMINI_API_KEY` | Secrets 必須 | LLM 認証 |
-| `GITHUB_TOKEN` | Secrets 必須 | Push / PR 作成用 |
+| `WORKFLOWS_GITHUB_TOKEN` | Secrets 必須 | PAT。Checkout と翻訳アクションから `GITHUB_TOKEN` として使用 |
 
 ## 実装タスク
 1. `.github/auto-translation` ディレクトリと関連ドキュメントを削除。
 2. `.gitignore` へ `.env.translator` / `.tools/cache/` を追加。
 3. `.env.translator.sample` と `tools/run-ai-docsite-translator.sh` を追加。
-4. `ai-docsite-translation.yml` ワークフローを新設し、`hide212131/ai-docsite-translator@<commit-sha>` に固定。
+4. `ai-docsite-translation.yml` ワークフローを新設し、`hide212131/ai-docsite-translator@main` を採用。
 5. `.github/llm-translation/docs/runbook.md` (新規) で運用/トラブルシュートを記載。
 6. `README.md` / `DEPLOYMENT_GUIDE.md` 等に新運用概要を追記。
 7. `act` 用シークレットテンプレート (`.secrets.translator.sample`) を提供。
@@ -115,7 +115,7 @@
 ## リスクと緩和策
 - **AI モデルのレスポンス遅延**: Gradle 実行が 30+ 分化する可能性 → `timeout-minutes` を 90 に設定し、ログフォーマット `json` を選択して監視しやすくする。
 - **Secrets 誤設定**: `act` での dry-run を義務化し、ワークフローに `if: env.GEMINI_API_KEY != ''` ガードを追加。
-- **Action バージョン追従**: `@<commit-sha>` で pin し、四半期に一度バージョン見直し。
+- **Action バージョン追従**: `@main` を追従するため、四半期ごとに上流の BREAKING CHANGE 有無を確認し、必要ならワークフロー調整。
 - **大量差分による PR 氾濫**: `MAX_FILES_PER_RUN` / `--limit` オプションで分割、runbook に対応手順を記す。
 
 ## 未確定事項 / ToDo

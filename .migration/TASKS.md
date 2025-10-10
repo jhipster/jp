@@ -5,7 +5,7 @@
 - [x] `README.md` / `DEPLOYMENT_GUIDE.md` から旧パイプラインの記述を整理
 
 ## 2. 新フローのファイル追加・調整
-- [x] `.github/workflows/ai-docsite-translation.yml` を作成し、`hide212131/ai-docsite-translator@<commit-sha>` を呼び出す
+- [x] `.github/workflows/ai-docsite-translation.yml` を作成し、`hide212131/ai-docsite-translator@main` を呼び出す
 - [x] `.gitignore` に `.env.translator` と `.tools/cache/` を追記
 - [x] `.env.translator.sample` / `.secrets.translator.sample` を追加
 - [x] `tools/run-ai-docsite-translator.sh` を追加しローカル実行を整備
@@ -13,14 +13,15 @@
 - [x] `.migration/SPEC.md` と整合が取れていることを確認
 
 ## 3. GitHub Actions 設定
+
 - [x] スケジュール (`cron: "30 3 * * *"`) と `workflow_dispatch` を設定
-- [x] `translate` ジョブで `actions/checkout@v4` (fetch-depth: 0) と `actions/setup-java@v4` (Temurin 21) を実行
-- [x] `hide212131/ai-docsite-translator` の `with` / `env` を REQUIREMENTS.md の環境変数に合わせて指定
+- [x] `translate` ジョブで `actions/checkout@v4` (fetch-depth: 0, token に `secrets.WORKFLOWS_GITHUB_TOKEN` を指定) と `actions/setup-java@v4` (Temurin 21) を実行
+- [x] `hide212131/ai-docsite-translator` の `with` / `env` を REQUIREMENTS.md の環境変数に合わせ、`origin-url=${{ github.server_url }}/${{ github.repository }}.git` を利用
 - [x] `concurrency` 設定と `timeout-minutes` (90) を付与
 - [x] `GEMINI_API_KEY` 未設定時に早期終了するガードを追加
 
 ## 4. Secrets / 環境変数整備
-- [ ] 本番リポジトリに `GEMINI_API_KEY` と `GITHUB_TOKEN` (必要なら Bot 用 `GH_TOKEN`) を登録
+- [x] 本番リポジトリに `GEMINI_API_KEY` と `WORKFLOWS_GITHUB_TOKEN` (PAT) を登録し、`actions/checkout` / 翻訳アクションから利用
 - [ ] Bot 用 Git ユーザー名・メールを決定し Secrets (or Action args) に登録
 - [x] `.env.translator` (未コミット) を用意しローカル用環境変数を設定
 
@@ -35,7 +36,6 @@
 > Phase 3 は `sync-6779e58` ブランチで実行し PR #85 を作成済み。
 
 ## 6. フォローアップ / 未確定事項
-- [ ] `ai-docsite-translator` に古いコミットを優先する CLI オプションが存在するか確認し、欠けていれば issue を作成
-- [ ] `GEMINI_API_KEY` が未設定の PR (fork 等) でスキップする挙動の是非を決定
-- [ ] 初回運用結果を runbook に反映し、残作業をレビュー
-- [ ] Action のバージョン pin を定期的に見直す運用 (例: 四半期) を runbook に追記
+- [x] 初回運用結果を runbook に反映し、残作業をレビュー
+- [x] Action の追従ポリシー（`@main` 監視）を runbook / SPEC に記載
+- [x] `.secrets.translator.sample` の説明を `WORKFLOWS_GITHUB_TOKEN` (PAT) 用語に揃える
