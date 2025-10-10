@@ -1,0 +1,41 @@
+# ai-docsite-translator 移行タスクリスト
+
+## 1. 旧ワークフローの整理
+- [x] `.github/auto-translation/**` のコードと関連ドキュメントを削除
+- [x] `README.md` / `DEPLOYMENT_GUIDE.md` から旧パイプラインの記述を整理
+
+## 2. 新フローのファイル追加・調整
+- [x] `.github/workflows/ai-docsite-translation.yml` を作成し、`hide212131/ai-docsite-translator@main` を呼び出す
+- [x] `.gitignore` に `.env.translator` と `.tools/cache/` を追記
+- [x] `.env.translator.sample` / `.secrets.translator.sample` を追加
+- [x] `tools/run-ai-docsite-translator.sh` を追加しローカル実行を整備
+- [x] `.github/llm-translation/docs/runbook.md` を作成し運用手順・段階的翻訳プロセスを記載
+- [x] `.migration/SPEC.md` と整合が取れていることを確認
+
+## 3. GitHub Actions 設定
+
+- [x] スケジュール (`cron: "30 3 * * *"`) と `workflow_dispatch` を設定
+- [x] `translate` ジョブで `actions/checkout@v4` (fetch-depth: 0, token に `secrets.WORKFLOWS_GITHUB_TOKEN` を指定) と `actions/setup-java@v4` (Temurin 21) を実行
+- [x] `hide212131/ai-docsite-translator` の `with` / `env` を REQUIREMENTS.md の環境変数に合わせ、`origin-url=${{ github.server_url }}/${{ github.repository }}.git` を利用
+- [x] `concurrency` 設定と `timeout-minutes` (90) を付与
+- [x] `GEMINI_API_KEY` 未設定時に早期終了するガードを追加
+
+## 4. Secrets / 環境変数整備
+- [x] 本番リポジトリに `GEMINI_API_KEY` と `WORKFLOWS_GITHUB_TOKEN` (PAT) を登録し、`actions/checkout` / 翻訳アクションから利用
+- [ ] Bot 用 Git ユーザー名・メールを決定し Secrets (or Action args) に登録
+- [x] `.env.translator` (未コミット) を用意しローカル用環境変数を設定
+
+## 5. 段階的リリース / 検証
+- [x] ローカル CLI (`tools/run-ai-docsite-translator.sh`) で `DRY_RUN=true`, `TRANSLATION_MODE=mock`, `TRANSLATION_TARGET_SHA=2d83acfe` にて検証
+- [x] `act -j translate --secret-file .secrets.translator --env TRANSLATION_TARGET_SHA=2d83acfe` でワークフローを再現
+- [x] GitHub Actions を `workflow_dispatch` で起動し、`TRANSLATION_TARGET_SHA=2d83acfe` のみ翻訳 (Phase 1)
+- [x] "未翻訳が最も古い 2 コミット" を対象にする実行方法を調査し、実現する (Phase 2)
+- [x] すべての未翻訳コミットを翻訳する本運用に移行し、`schedule` トリガーを有効化 (Phase 3)
+
+> メモ: ローカル CLI から本番リポジトリへ実行し PR #82 を作成済み。GitHub Actions では `workflow_dispatch` で Phase 1 を完了し PR #83 を生成済み。Phase 2 は `translation_target_sha` を用いて `f7e3e35` / `b4b47d8` を処理（差分無し）し、続く `d7875ff` で PR #84 を生成済み。
+> Phase 3 は `sync-6779e58` ブランチで実行し PR #85 を作成済み。
+
+## 6. フォローアップ / 未確定事項
+- [x] 初回運用結果を runbook に反映し、残作業をレビュー
+- [x] Action の追従ポリシー（`@main` 監視）を runbook / SPEC に記載
+- [x] `.secrets.translator.sample` の説明を `WORKFLOWS_GITHUB_TOKEN` (PAT) 用語に揃える
