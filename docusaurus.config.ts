@@ -33,7 +33,6 @@ const config: Config = {
   projectName: 'jp',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
   onBrokenAnchors: 'ignore',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -46,10 +45,22 @@ const config: Config = {
       en: {
         label: 'English',
       },
+<<<<<<< HEAD
       ja: {
         label: '日本語',        
+=======
+      jp: {
+        label: '日本語',
+        baseUrl: '/jp',
+>>>>>>> 580ad136951a06b7e288904a34314076322c3143
       },
     },
+  },
+
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    }
   },
 
   presets: [
@@ -147,7 +158,7 @@ const config: Config = {
         {
           type: 'localeDropdown',
           position: 'right',
-        },        
+        },
       ],
     },
     prism: {
