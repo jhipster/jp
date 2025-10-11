@@ -7,12 +7,10 @@ last_update:
 
 __このTipは[@tcharl](https://github.com/tcharl)によって提出されました__
 
-# 生成コードとカスタム・コードの結合
-
-
 _目標:_ Jhipsterは、その強力なドメイン固有言語のおかげで、モデルエンティティの管理に非常に適しています。
 しかし、カスタムコードとジェネレーティブな世界の両方で最高のものを得ることは、常に困難な作業です。
 ここでは、それを実現するために採用できるさまざまなパターンを紹介します。
+
 
 ## パターン1 - 初回のみ生成
 
@@ -29,6 +27,7 @@ _目標:_ Jhipsterは、その強力なドメイン固有言語のおかげで�
  
  - JHipsterの新機能の恩恵を受けられないことになります。
 
+
 ## パターン2 - 生成コードとカスタムコードの分割
 
 これは、生成されたクラスを変更するのを避け、カスタム・コードを専用のものとして立てるようにします。
@@ -38,6 +37,7 @@ _目標:_ Jhipsterは、その強力なドメイン固有言語のおかげで�
 ルータファイルが世代ごとに上書きされるのを避けるために、プロジェクトのルートに`.yo-resolve`ファイルを作成して、yeomanに期待される動作を伝えることができます。
 
 例：
+
 ```
 src/main/resources/swagger/api.yml skip
 src/main/webapp/app/modules/home/home.tsx skip
@@ -52,6 +52,7 @@ src/main/webapp/app/modules/home/home.tsx skip
 - デッドコードが存在します。
 - モデルとは異なる名前やパッケージを持つカスタムクラスが存在することになります（DDDのベストプラクティスと考えることができますが、それでも）。
 
+
 ## パターン3 - サイド・バイ・サイド
 
 ここでの目標は、クラス拡張とBeanの優先順位を使用して、生成されたコードの代わりにカスタム・コードを注入することです。
@@ -62,6 +63,7 @@ src/main/webapp/app/modules/home/home.tsx skip
 
 リポジトリレベルでは、jhipsterが生成したリポジトリに`NoRepositoryBean`アノテーションを使用してアノテーションを付け、検出を無効にします。
 次に、カスタムリポジトリクラスを作成します。
+
 ```
 @Repository
 @Primary
@@ -96,8 +98,6 @@ providers: [
 ### 短所
 
 - ファイルの重複が発生します。
-
-- ファイルの重複
 
 ## 代替のサイドバイサイド・アプローチ
 
@@ -168,6 +168,6 @@ public class ExtendedFooController {
 }
 ```
 
-Antonio Goncalves氏による歴史はこちら: https://www.youtube.com/watch?v=9WVpwIUEty0
+Antonio Goncalves氏によるヒストリーはこちら: https://www.youtube.com/watch?v=9WVpwIUEty0
 詳細なYouTubeビデオはこちら: https://youtu.be/aKvK-QpwaZA
 サイドバイサイドのサンプルを含むサンプルリポジトリはこちらで入手できます: https://github.com/OsgiliathEnterprise/jhipster-side-by-side-sample
