@@ -45,14 +45,8 @@ const config: Config = {
       en: {
         label: 'English',
       },
-<<<<<<< HEAD
       ja: {
         label: '日本語',        
-=======
-      jp: {
-        label: '日本語',
-        baseUrl: '/jp',
->>>>>>> 580ad136951a06b7e288904a34314076322c3143
       },
     },
   },
