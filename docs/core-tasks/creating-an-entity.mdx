@@ -105,6 +105,7 @@ JHipsterは多くのフィールドタイプをサポートしています。こ
 *   `Instant`：[java.time.Instant](https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html)です。タイムライン上の瞬間的なポイントであるタイムスタンプを表すために使用されます。
 *   `ZonedDateTime`：[java.time.ZonedDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html)です。特定のタイムゾーン（通常はカレンダーの予定）のローカル日時を表すために使用されます。タイムゾーンはRESTと永続化層のいずれもサポートされていないので、代わりに`Instant`を使用するべきであることに注意してください。
 *   `Duration`：[java.time.Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html)です。時間の量を表すために使用されます。
+* `LocalTime`: タイムゾーン情報を含まないローカル時刻を表すために使用される、[java.time.LocalTime](https://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html) オブジェクトです。例えば、営業時間などを定義するのに利用できます。
 *   `UUID`：[java.util.UUID](https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html)です。
 *   `Boolean`：JavaのBoolean型です。
 *   `Enumeration`：JavaのEnumeration型です。オブジェクトこのタイプを選択すると、サブジェネレータは列挙に必要な値を尋ね、それらを格納するための特定の`enum`クラスを作成します。

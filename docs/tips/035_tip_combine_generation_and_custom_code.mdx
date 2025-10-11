@@ -7,12 +7,10 @@ last_update:
 
 __このTipは[@tcharl](https://github.com/tcharl)によって提出されました__
 
-# 生成コードとカスタム・コードの結合
-
-
 _目標:_ Jhipsterは、その強力なドメイン固有言語のおかげで、モデルエンティティの管理に非常に適しています。
 しかし、カスタムコードとジェネレーティブな世界の両方で最高のものを得ることは、常に困難な作業です。
 ここでは、それを実現するために採用できるさまざまなパターンを紹介します。
+
 
 ## パターン1 - 初回のみ生成
 
@@ -29,6 +27,7 @@ _目標:_ Jhipsterは、その強力なドメイン固有言語のおかげで�
  
  - JHipsterの新機能の恩恵を受けられないことになります。
 
+
 ## パターン2 - 生成コードとカスタムコードの分割
 
 これは、生成されたクラスを変更するのを避け、カスタム・コードを専用のものとして立てるようにします。
@@ -38,6 +37,7 @@ _目標:_ Jhipsterは、その強力なドメイン固有言語のおかげで�
 ルータファイルが世代ごとに上書きされるのを避けるために、プロジェクトのルートに`.yo-resolve`ファイルを作成して、yeomanに期待される動作を伝えることができます。
 
 例：
+
 ```
 src/main/resources/swagger/api.yml skip
 src/main/webapp/app/modules/home/home.tsx skip
@@ -52,6 +52,7 @@ src/main/webapp/app/modules/home/home.tsx skip
 - デッドコードが存在します。
 - モデルとは異なる名前やパッケージを持つカスタムクラスが存在することになります（DDDのベストプラクティスと考えることができますが、それでも）。
 
+
 ## パターン3 - サイド・バイ・サイド
 
 ここでの目標は、クラス拡張とBeanの優先順位を使用して、生成されたコードの代わりにカスタム・コードを注入することです。
@@ -62,6 +63,7 @@ src/main/webapp/app/modules/home/home.tsx skip
 
 リポジトリレベルでは、jhipsterが生成したリポジトリに`NoRepositoryBean`アノテーションを使用してアノテーションを付け、検出を無効にします。
 次に、カスタムリポジトリクラスを作成します。
+
 ```
 @Repository
 @Primary
@@ -96,3 +98,76 @@ providers: [
 ### 短所
 
 - ファイルの重複が発生します。
+
+## 代替のサイドバイサイド・アプローチ
+
+このアプローチは、既存のJHipsterアプリケーションに、生成されたコードへの変更を最小限に抑えながら機能を追加することを目的としています。
+
+### リポジトリ層
+
+すべてのカスタムメソッドを含むリポジトリインターフェースを、別のカスタムパッケージ内に作成します。このアプローチにより、生成されたリポジトリコードは変更されずに保たれ、カスタムロジックは整理され、保守しやすくなります。
+
+### サービス層
+
+この層にカスタムコードを追加するための主なアプローチは3つあります。
+
+アスペクト指向プログラミング (AOP):
+
+AOPを使用すると、コアビジネスロジックを変更することなく、ロギング、セキュリティ、トランザクション管理などの横断的関心事を導入できます。この関心事の分離により、よりクリーンでモジュール化されたコードの維持に役立ちます。
+
+イベントリスナー:
+
+新しい機能がアプリケーション内の特定のイベント（例：Fooエンティティの保存後）によってトリガーされる場合、Springのイベントリスナーメカニズムを使用できます。これにより、コアロジックはクリーンに保たれますが、実行フローの追跡が難しくなる可能性があります。
+
+デコレーターパターン:
+
+新しいメソッドを追加したり、既存の動作を制御された方法で変更したりするには、デコレーターパターンが強く推奨されます。このパターンは、元のクラスを、追加機能を提供するデコレーターでラップすることを含みます。クリーンでテスト可能であり、元のクライアントクラスへの変更を最小限に抑えるため、保守性が向上します。
+
+ステップ1: サービス・クラスがどのように生成されるかに応じて、既存のインターフェースを作成または拡張します
+```
+interface IFooService {
+    void newFeature();
+    //Existing method declarations
+   ...
+}
+```
+ステップ2: コンポジションによる拡張
+```
+@Service
+@Qualifier("entended")
+public class ExtendedFooService implements FooService{
+    private final FooService existingFooService;
+    private final ExtendedFooRepository extendedFooRepository; // For new repository functionality
+   ...
+}
+```
+ステップ3: 既存のサービス・クラスに@Primaryを追加し、ステップ1で既存のサービス・クラスをインターフェースの実装としてマークします。
+
+ステップ4: 元のサービス・クライアントの属性型を、ステップ1で作成したインターフェースに変更します。
+
+サービス・メソッドの複数の実装を持つ可能性が低い場合、またはサービス・メソッドの頻繁な変更を期待しない場合は、ステップ1を省略し、このアプローチの簡略化された実装のために、以下のステップで関連する変更を調整できます。
+
+### Web層
+
+新しいエンドポイント・コントローラーを作成します。
+```
+@RestController
+@RequestMapping("/api/extended/foo")
+public class ExtendedFooController {
+    private final ExtendedFooService extendedFooService;
+
+    public ExtendedFooController(ExtendedFooService extendedFooService) {
+        this.extendedFooService = extendedFooService;
+    }
+
+    // New endpoints
+    @GetMapping("/new-feature")
+    public ResponseEntity<?> newFeature() {
+        // Implementation
+    }
+}
+```
+
+Antonio Goncalves氏によるヒストリーはこちら: https://www.youtube.com/watch?v=9WVpwIUEty0
+詳細なYouTubeビデオはこちら: https://youtu.be/aKvK-QpwaZA
+サイドバイサイドのサンプルを含むサンプルリポジトリはこちらで入手できます: https://github.com/OsgiliathEnterprise/jhipster-side-by-side-sample
