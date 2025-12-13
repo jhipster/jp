@@ -34,7 +34,10 @@ jobs:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GITHUB_TOKEN: ${{ github.token }}
       DRY_RUN: "false"
-      MAX_FILES_PER_RUN: "0"
+      MAX_FILES_PER_RUN: "3"
+      LLM_MAX_RETRY_ATTEMPTS: "10"
+      LLM_INITIAL_BACKOFF_SECONDS: "5"
+      LLM_MAX_BACKOFF_SECONDS: "120"
       TRANSLATION_INCLUDE_PATHS: docs
       TRANSLATION_DOCUMENT_EXTENSIONS: md,mdx,txt,html
       TRANSLATION_TARGET_SHA: ${{ github.event.inputs.translation_target_sha }}
