@@ -74,7 +74,7 @@ __このTipは[@deepu105](https://github.com/deepu105)から提出されまし�
     'use strict';
 
     angular.module('yourApp')
-        .controller('BootswatchController', function ($scope, BootSwatchService) {
+    /*利用可能なBootswatchテーマのリストを取得する*/
             /*Get the list of availabel bootswatch themes*/
             BootSwatchService.get().then(function(themes) {
                 $scope.themes = themes;
@@ -172,4 +172,3 @@ OAuthまたはxAuthを使用している場合は、`app/blocks/interceptor/auth
 
 ![Screenshot 5](/images/009_tips_using_bootswatch_themes_05.png)
 
-![Screenshot 6](/images/009_tips_using_bootswatch_themes_06.png)
