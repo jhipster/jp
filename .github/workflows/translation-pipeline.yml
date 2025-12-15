@@ -80,7 +80,7 @@ jobs:
       
       - name: Upload classification results
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: translation-classification-${{ github.event.inputs.commit_hash }}
           path: .github/auto-translation/classification.json
@@ -88,7 +88,7 @@ jobs:
       
       - name: Upload logs
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: translation-logs-${{ github.event.inputs.commit_hash }}
           path: .github/auto-translation/**/*.log
