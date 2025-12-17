@@ -2,10 +2,10 @@
 title: アカウント登録サービスを削除する
 slug: /tips/034_tip_remove_register_account_service.html
 last_update:
-  date: 2021-03-19T21:22:00-00:00
+  date: 2025-08-09T15:02:00-00:00
 ---
 
-__このTipは[@apuntandoanulo](https://github.com/apuntandoanulo)により提出されました__
+__ヒント提供元：[@apuntandoanulo](https://github.com/apuntandoanulo) および更新者：[@juandbc](https://github.com/juandbc)__
 
 _目標:_ ユーザーがアカウントを作成できる可能性を排除し、以前に登録したユーザーのみだけにそれをさせたい場合は、次に示すコードの一部と行を削除します。
 
@@ -19,18 +19,20 @@ _目標:_ ユーザーがアカウントを作成できる可能性を排除し�
 
 ## 2.フロントエンド側
 
-* ___2.1___ `src\main\webapp\app\account`
-  - 次の内容を含むフォルダ`register`全体を削除します：`register.component.html`、`register.component.ts`、`register.route.ts`、`register.service.ts`
+### 2.1 Angular
 
-* ___2.2___ `src\main\webapp\app\account\account.module.ts`に移動して、次の行を削除します。
+* ___2.1.1___ `src\main\webapp\app\account`
+  - `register`フォルダー全体を削除します。これには以下が含まれます： `register.component.html`、`register.component.ts`、`register.route.ts`、`register.service.ts`
+
+* ___2.1.2___ `src\main\webapp\app\account\account.module.ts` に移動し、以下の行を削除してください:
   - `import { RegisterComponent } from './register/register.component'; `
   - _declarations_ array -> `RegisterComponent`
 
-* ___2.3___ `src\main\webapp\app\account\account.route.ts`に移動して、次の行を削除します。
+* ___2.1.3___ `src\main\webapp\app\account\account.route.ts` に移動し、以下の行を削除します。
   - `import { registerRoute } from './register/register.route'; `
   - _ACCOUNT_ROUTES_ array -> `registerRoute `
 
-* ___2.4___ `src\main\webapp\app\home\home.component.html`に移動し、次のブロックを削除します。
+* ___2.1.4___ `src\main\webapp\app\home\home.component.html` に移動し、以下のブロックを削除してください。
 
 ```html
 <div class="alert alert-warning" *ngSwitchCase="false">
@@ -39,7 +41,7 @@ _目標:_ ユーザーがアカウントを作成できる可能性を排除し�
 </div>
 ```
 
-* ___2.5___ `src\main\webapp\app\layouts\navbar\navbar.component.html`に移動して、次のブロックを削除します。
+* ___2.1.5___ `src\main\webapp\app\layouts\navbar\navbar.component.html` に移動し、以下のブロックを削除してください。
 
 ```html
 <li *ngSwitchCase="false">
@@ -50,7 +52,8 @@ _目標:_ ユーザーがアカウントを作成できる可能性を排除し�
 </li>
 ```
 
-* ___2.6___ `src\main\webapp\app\shared\login\login.component.html`に移動し、次のブロックを削除します。
+* ___2.1.6___ `src\main\webapp\app\shared\login\login.component.html`を開き、以下のブロックを削除してください。
+
 ```html
 <div class="alert alert-warning">
   <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
@@ -58,7 +61,8 @@ _目標:_ ユーザーがアカウントを作成できる可能性を排除し�
 </div>
 ```
 
-* ___2.7___ `src\main\webapp\app\shared\login\login.component.ts`に移動し、次のブロックを削除します。
+* ___2.1.7___ `src\main\webapp\app\shared\login\login.component.ts` に移動し、以下のブロックを削除してください。
+
 ```ts
 register(): void {
   this.activeModal.dismiss('to state register');
@@ -66,7 +70,46 @@ register(): void {
 }
 ```
 
-* ___2.8___ メッセージ・ファイルを削除します：`src\main\webapp\i18n\ ... \register.json`
+* ___2.1.8___ メッセージファイルを削除します: `src\main\webapp\i18n\ ... \register.json`
 
-* ___2.9___ `src\test\javascript\spec\app\account`
-  - 次の内容を含むフォルダ`register`全体を削除します：`register.component.spec.ts`
+* ___2.1.9___ `src\test\javascript\spec\app\account`
+  - フォルダー `register` (これには `register.component.spec.ts` が含まれます) をすべて削除します。
+
+### 2.2 Vue
+
+* ___2.2.1___ フォルダー `src/main/webapp/app/account/register` (これには `register.component.spec.ts`、`register.component.ts`、`register.service.ts`、`register.vue` が含まれます) をすべて削除します。
+
+* ___2.2.2___ `src/main/webapp/app/router/account.ts` に移動し、以下の行を削除します。
+  - `const Register = () => import('@/account/register/register.vue');`
+  - そして以下のブロック:
+  ```javascript
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register,
+    },
+    ```
+
+* ___2.2.3___ `src/main/webapp/app/core/jhi-navbar/jhi-navbar.vue` に移動し、以下のブロックを削除します。
+
+```html
+<b-dropdown-item data-cy="register" to="/register" id="register" v-if="!authenticated" active-class="active">
+    <font-awesome-icon icon="user-plus" />
+    <span v-text="t$('global.menu.account.register')"></span>
+</b-dropdown-item>
+```
+
+* ___2.2.4___ `src/main/webapp/app/account/login-form/login-form.vue` に移動し、以下のブロックを削除します。
+
+```html
+<div>
+    <b-alert show variant="warning">
+    <span v-text="t$('global.messages.info.register.noaccount')"></span>
+    <b-link :to="'/register'" class="alert-link" v-text="t$('global.messages.info.register.link')"></b-link>
+    </b-alert>
+</div>
+```
+
+* ___2.2.5___ メッセージファイル `src/main/webapp/i18n/.../register.json` を削除します。
+
+* ___2.2.6___ テストファイル `src/test/javascript/cypress/e2e/account/register-page.cy.ts` を削除します。
