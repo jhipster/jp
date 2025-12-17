@@ -273,7 +273,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'doc',
           label: '依存関係の脆弱性チェック',
-          id: 'tests-and-qa/dependency-vulnerabities-check',
+          id: 'tests-and-qa/dependency-vulnerabilities-check',
         },
         {
           type: 'category',
