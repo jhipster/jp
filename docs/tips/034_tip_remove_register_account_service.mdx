@@ -17,23 +17,24 @@ _目標:_ ユーザーがアカウントを作成できる可能性を排除し�
 * ___1.2___ `src\main\java\ ... \rest\AccountResource.java`
   - メソッド全体を削除します：`@PostMapping("/register")   public void registerAccount(...)`
 
+
 ## 2.フロントエンド側
 
-* ___2.1___ `src\main\webapp\app\account`
-### 2.1 アンギュラー
+### 2.1 Angular
 
 * ___2.1.1___ `src\main\webapp\app\account`
+  - `register`フォルダ全体を削除してください。このフォルダには以下のファイルが含まれています：`register.component.html`、`register.component.ts`、`register.route.ts`、`register.service.ts`
 
-* ___2.2___ `src\main\webapp\app\account\account.module.ts`に移動して、次の行を削除します。
-* ___2.1.2___ `src\main\webapp\app\account\account.module.ts` に移動して、以下の行を削除します:
+* ___2.1.2___ `src\main\webapp\app\account\account.module.ts` に移動して、以下の行を削除してください。
+  - `import { RegisterComponent } from './register/register.component'; `
   - _declarations_ array -> `RegisterComponent`
 
-* ___2.3___ `src\main\webapp\app\account\account.route.ts`に移動して、次の行を削除します。
 * ___2.1.3___ `src\main\webapp\app\account\account.route.ts`を開き、以下の行を削除してください。
+  - `import { registerRoute } from './register/register.route'; `
   - _ACCOUNT_ROUTES_ array -> `registerRoute `
 
-* ___2.4___ `src\main\webapp\app\home\home.component.html`に移動し、次のブロックを削除します。
 * ___2.1.4___ `src\main\webapp\app\home\home.component.html` に移動し、以下のブロックを削除してください:
+
 ```html
 <div class="alert alert-warning" *ngSwitchCase="false">
   <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;
@@ -41,8 +42,8 @@ _目標:_ ユーザーがアカウントを作成できる可能性を排除し�
 </div>
 ```
 
-* ___2.5___ `src\main\webapp\app\layouts\navbar\navbar.component.html`に移動して、次のブロックを削除します。
 * ___2.1.5___ `src\main\webapp\app\layouts\navbar\navbar.component.html` に移動し、以下のブロックを削除してください:
+
 ```html
 <li *ngSwitchCase="false">
   <a class="dropdown-item" routerLink="account/register" routerLinkActive="active" (click)="collapseNavbar()">
@@ -52,26 +53,25 @@ _目標:_ ユーザーがアカウントを作成できる可能性を排除し�
 </li>
 ```
 
-* ___2.6___ `src\main\webapp\app\shared\login\login.component.html`に移動し、次のブロックを削除します。
-* ___2.1.6___ `src\main\webapp\app\shared\login\login.component.html` を開き、以下のブロックを削除します。
+* ___2.1.6___ `src\main\webapp\app\shared\login\login.component.html` を開き、以下のブロックを削除してください。
+
+```html
 <div class="alert alert-warning">
   <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
   <a class="alert-link" (click)="register()" jhiTranslate="global.messages.info.register.link">Register a new account</a>
 </div>
 ```
 
-* ___2.7___ `src\main\webapp\app\shared\login\login.component.ts`に移動し、次のブロックを削除します。
-```ts
 * ___2.1.7___ `src\main\webapp\app\shared\login\login.component.ts` に移動して、以下のブロックを削除してください:
+
+```ts
+register(): void {
   this.activeModal.dismiss('to state register');
   this.router.navigate(['/account/register']);
 }
 ```
 
-* ___2.8___ メッセージ・ファイルを削除します：`src\main\webapp\i18n\ ... \register.json`
-
-* ___2.9___ `src\test\javascript\spec\app\account`
-* ___2.1.8___ メッセージファイルを削除する: `src\main\webapp\i18n\ ... \register.json`
+* ___2.1.8___ メッセージ・ファイルを削除します：`src\main\webapp\i18n\ ... \register.json`
 
 * ___2.1.9___ `src\test\javascript\spec\app\account`
   - `register.component.spec.ts`が含まれる`register`フォルダー全体を削除します。
