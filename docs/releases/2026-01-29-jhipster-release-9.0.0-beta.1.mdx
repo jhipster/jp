@@ -1,0 +1,106 @@
+---
+title: 9.0.0-ベータ1 リリース
+slug: 2026年1月29日のJHipster 9.0.0ベータ1リリース
+displayed_sidebar: ドキュメントサイドバー
+sidebar_class_name: 隠れた
+---
+
+# JHipster リリース v9.0.0-beta.1
+
+これはJHipster v9の2番目のベータリリースです。
+
+[9.0.0-beta.0リリース](/2025/12/05/jhipster-release-9.0.0-beta.0.html)以降、[メインブランチで1036件のクローズされたイシューとプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:9.0.0-beta.1)が含まれています。
+
+## 新機能
+
+### Spring Boot
+- **Spring Boot 4**: Spring Boot 4.0.2にアップグレードしました ([#32035](https://github.com/jhipster/generator-jhipster/pull/32035))
+- EnableWebSocketSecurityに移行しました ([#31539](https://github.com/jhipster/generator-jhipster/pull/31539))
+
+### Angular
+- **Angular 21**: Angular v21に更新し、Jestのサポートを終了しました ([#31458](https://github.com/jhipster/generator-jhipster/pull/31458))
+- より多くのフィールドをシグナルに変換しました ([#31727](https://github.com/jhipster/generator-jhipster/pull/31727), [#31718](https://github.com/jhipster/generator-jhipster/pull/31718))
+- スタンドアロンコンポーネントを優先してSharedModule/CommonModuleを削除しました ([#31623](https://github.com/jhipster/generator-jhipster/pull/31623), [#31695](https://github.com/jhipster/generator-jhipster/pull/31695))
+
+### 内部
+- **Java 17のサポートを終了**: Java 21が最小要件バージョンになりました ([#31903](https://github.com/jhipster/generator-jhipster/pull/31903))
+- **Node 20のサポートを終了**: ネイティブTypeScriptサポートを備えたNode 22+が必須になりました ([#31845](https://github.com/jhipster/generator-jhipster/pull/31845))
+- Node.jsを24.12.0にアップグレードしました ([#31648](https://github.com/jhipster/generator-jhipster/pull/31648))
+- Gradleを9.3.0にアップグレードしました ([#31981](https://github.com/jhipster/generator-jhipster/pull/31981))
+
+## クローズされたチケットとマージされたプルリクエスト
+
+詳細については、[GitHubの9.0.0-beta.1リリースノート](https://github.com/jhipster/generator-jhipster/releases/tag/v9.0.0-beta.1)をご覧ください。
+
+いつものように、**[すべてのクローズされたチケットとマージされたプルリクエスト](https://github.com/jhipster/generator-jhipster/issues?q=is:closed+milestone:9.0.0-beta.1)を表示できます**。
+
+## インストール方法
+
+JHipster v9.0.0-beta.1をインストールするには：
+
+```
+npm install -g generator-jhipster@9.0.0-beta.1
+```
+
+JHipster Dockerイメージを使用しても利用可能です。これはソースコードから自動的にビルドされます。
+
+- [Docker Hub](https://hub.docker.com/r/jhipster/jhipster)
+- [JHipster Online](https://start.jhipster.tech)
+
+## アップグレード方法
+
+**自動アップグレード**
+
+自動アップグレードを行うには、既存のアプリケーションで[JHipsterアップグレードサブジェネレーター](/upgrading-an-application/)を使用します：
+
+JHipsterのバージョンをアップグレードします：
+
+```
+npm update -g generator-jhipster
+```
+
+そして、アップグレードサブジェネレーターを実行します：
+
+```
+jhipster upgrade
+```
+
+より高度なアップグレード機能には、[migrateブループリント](https://github.com/jhipster/generator-jhipster-migrate)も使用できます。
+
+```
+npm i -g generator-jhipster-migrate
+jhipster-migrate
+```
+
+**手動アップグレード**
+
+手動アップグレードを行うには、まずJHipsterのバージョンを以下でアップグレードします：
+
+```
+npm update -g generator-jhipster
+```
+
+既存のプロジェクトがある場合、それは生成されたJHipsterのバージョンを使い続けます。
+プロジェクトをアップグレードするには、まず`node_modules`フォルダを削除してから、以下を実行する必要があります：
+
+```
+jhipster
+```
+
+エンティティサブジェネレーターを再度実行することで、エンティティを1つずつ更新することもできます。例えば、エンティティ名が_Foo_の場合、以下を使用します：
+
+```
+jhipster entity Foo --single-entity
+```
+
+## ヘルプとバグ
+
+このリリースで何か問題を見つけた場合は、遠慮なく以下を行ってください：
+
+- [バグトラッカー](https://github.com/jhipster/generator-jhipster/issues?state=open)にバグを追加する
+- [Stack Overflow](http://stackoverflow.com/tags/jhipster/info)で質問を投稿する
+- [GitHub](https://github.com/jhipster/generator-jhipster/discussions)で新しいディスカッションを作成する
+
+もし緊急のバグやセキュリティ問題である場合は、以下を行ってください：
+
+- Twitterで[@jhipster](https://twitter.com/jhipster)に連絡する
