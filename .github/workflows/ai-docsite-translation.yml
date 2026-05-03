@@ -54,6 +54,26 @@ jobs:
             echo "SHOULD_SKIP=false" >> "$GITHUB_ENV"
           fi
 
+          upstream_url="https://github.com/jhipster/jhipster.github.io.git"
+          origin_url="${{ github.server_url }}/${{ github.repository }}.git"
+          target_sha="${TRANSLATION_TARGET_SHA}"
+
+          if [[ -z "${target_sha}" ]]; then
+            target_sha="$(git ls-remote "${upstream_url}" HEAD | awk '{print substr($1, 1, 8)}')"
+          else
+            target_sha="${target_sha:0:8}"
+          fi
+
+          if [[ -n "${target_sha}" ]]; then
+            translation_branch="sync-${target_sha}"
+            echo "TRANSLATION_BRANCH=${translation_branch}" >> "$GITHUB_ENV"
+
+            if git ls-remote --exit-code --heads "${origin_url}" "${translation_branch}" >/dev/null 2>&1; then
+              echo "SHOULD_SKIP=true" >> "$GITHUB_ENV"
+              echo "Translation branch ${translation_branch} already exists. Skipping translation run." >&2
+            fi
+          fi
+
           if [[ -n "${TRANSLATION_MODE_OVERRIDE}" ]]; then
             echo "TRANSLATION_MODE=${TRANSLATION_MODE_OVERRIDE}" >> "$GITHUB_ENV"
           else
