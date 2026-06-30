@@ -31,8 +31,13 @@
     "fetch-jsonp": "^1.4.0",
     "plugin-image-zoom": "^1.2.0",
     "prism-react-renderer": "^2.4.1",
+<<<<<<< HEAD
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
+=======
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+>>>>>>> b95243b147064dea1e4f0d7c43cb8970170056c1
     "react-icons": "^5.6.0",
     "sass": "^1.101.0"
   },
@@ -40,7 +45,11 @@
     "@docusaurus/module-type-aliases": "^3.6.0",
     "@docusaurus/tsconfig": "^3.10.1",
     "@docusaurus/types": "^3.6.0",
+<<<<<<< HEAD
     "prettier": "^3.8.4",
+=======
+    "prettier": "^3.9.3",
+>>>>>>> b95243b147064dea1e4f0d7c43cb8970170056c1
     "typescript": "~5.9.3"
   },
   "browserslist": {
