@@ -28,8 +28,14 @@ yarn-error.log*
 # NetBeans
 nbproject/
 
+<<<<<<< HEAD
 # DirEnv
 .envrc
 
 # Tools cache
 .tools/cache/
+=======
+
+# impeccable design skill cache
+/.impeccable
+>>>>>>> 2f5a1349204a1a378eff2e8ae39fab58632bab73
