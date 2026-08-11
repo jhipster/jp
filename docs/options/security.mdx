@@ -2,7 +2,7 @@
 title: セキュリティ
 slug: /security/
 last_update:
-  date: 2026-03-02T00:00:00-00:00
+date: 2026-05-26T00:00:00-00:00
 ---
 
 import Tabs from '@theme/Tabs';
@@ -131,9 +131,9 @@ Keycloakはデフォルトで組み込みH2データベースを使用してい�
 
 本番環境では、HTTPSを使用することがKeycloakによって要求されます。これを実現するには、HTTPSを管理するリバース・プロキシまたはロード・バランサを使用するなど、いくつかの方法があります。このトピックの詳細を知るには、[Keycloak HTTPSドキュメント](https://www.keycloak.org/docs/latest/server_installation/index.html#setting-up-https-ssl)を読むことをお薦めします。
 <Tabs lazy>
-<TabItem value="dashboard" label="Auth0ダッシュボードを使用してOIDCアプリを作成する" default>
+<TabItem value="dashboard" label="Auth0ダッシュボードで設定" default>
 
-
+#### Auth0 管理ダッシュボードでの設定
 ### Auth0
 
 Keycloakの代わりに[Auth0](https://auth0.com/)を使用する場合は、次の設定手順に従います。
@@ -158,13 +158,13 @@ Keycloakの代わりに[Auth0](https://auth0.com/)を使用する場合は、次
       api.idToken.setCustomClaim(`${namespace}/roles`, event.authorization.roles);
       api.accessToken.setCustomClaim(`${namespace}/roles`, event.authorization.roles);
 </TabItem>
-<TabItem value="cli" label="Auth0 CLI を使用して OIDC アプリを作成する">
+<TabItem value="cli" label="Auth0 CLI を使用して設定">
 
-#### Auth0 CLI を使用して OIDC アプリを作成する
+#### Auth0 CLI を使用して設定する
 
 1. Auth0アプリケーションを作成し、`.auth0.env`を生成します
     ```shell
-    auth0 quickstarts setup --type 'jhipster-rwa'
+    auth0 quickstarts setup --app --type regular --framework jhipster
     ```
     出力: `CLIENT_ID` (例: `FCxxxxxxxxxxxxxxxxxxxxxxxxxxxxoz`) を控えてください。
 
