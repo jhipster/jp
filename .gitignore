@@ -14,9 +14,6 @@
 .env.development.local
 .env.test.local
 .env.production.local
-.env.translator
-.secrets.translator
-act-translate.log
 
 npm-debug.log*
 yarn-debug.log*
@@ -28,14 +25,6 @@ yarn-error.log*
 # NetBeans
 nbproject/
 
-<<<<<<< HEAD
-# DirEnv
-.envrc
-
-# Tools cache
-.tools/cache/
-=======
 
 # impeccable design skill cache
 /.impeccable
->>>>>>> b2fe030a564accb0726b4e416aca032dcaf5bc40
