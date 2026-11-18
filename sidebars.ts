@@ -430,7 +430,6 @@ const sidebars: SidebarsConfig = {
           href: 'https://start.jhipster.tech/jdl-studio/',
         },
         { type: 'doc', label: 'JHipster IDE', id: 'tools/jhipster-ide' },
-        { type: 'doc', label: 'JHipster-UML', id: 'tools/jhipster-uml' },
       ],
     },
     {
@@ -536,12 +535,16 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'doc',
+<<<<<<< HEAD
           label: 'リモートシェルのREPL (非推奨)',
           id: 'tips/tip_repl_with_the_remote_shell',
         },
         {
           type: 'doc',
           label: 'KubernetesとGoogle Cloud SQL',
+=======
+          label: 'Kubernetes and Google Cloud SQL',
+>>>>>>> 8c0d88e6e33342b700c72a2890ee6fccf4e7d13f
           id: 'tips/tip_kubernetes_and_google_cloud_sql',
         },
         {
