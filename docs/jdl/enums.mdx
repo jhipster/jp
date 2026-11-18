@@ -2,7 +2,7 @@
 title: JHipsterドメイン言語(JDL) -  列挙型型
 slug: /jdl/enums
 last_update:
-  date: 2019-10-27T12:00:00-00:00
+  date: 2026-09-27T12:00:00-00:00
 ---
 
 # <i class="fa fa-star"></i> JHipsterドメイン言語(JDL) - 列挙型
@@ -27,9 +27,9 @@ enum <enum name> {
 }
 ```
 
-  - 列挙型エントリの値は必須です。
-  - 大文字のキーを使用する必要があります。
-  - 列挙型エントリの値はオプションです。丸カッコで囲む必要があります。
+  - 列挙エントリのキーは必須です
+    - そして、大文字で始まる必要があります（例：`FRANCE` または `France`）
+  - 列挙エントリの値はオプションであり、括弧で囲む必要があります
 
 ---
 
@@ -49,7 +49,11 @@ enum Country {
 使用方法は以下です。
 
 ```jdl
-enum Country {}
+enum Country {
+  BELGIUM,
+  FRANCE,
+  ITALY
+}
 
 entity A {
   country Country
